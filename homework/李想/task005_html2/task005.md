@@ -63,7 +63,7 @@ center | 对齐line盒模型的中心（中心对齐）
 justify | 两端对齐
 match-parent | 继承父对象的对齐方式
 
-[!img: text-align](./img/text_align.jpg "Text align")
+[!img: text-align](./img/text_align.png "Text align")
 
 ## px、em、rem分别是什么？有什么区别？如何使用？
 
@@ -79,7 +79,7 @@ rem | CSS3 中引入，相对于根元素 <html> 的字体大小 | 如何 <html>
 
 ## 对chrome 审查元素的功能做个简单的截图介绍
 
-[!img chrome inspect](./img/chrome_dev.jpg "Chrome 元素审查")
+[!img chrome inspect](./img/chrome_dev.png "Chrome 元素审查")
 
 ## 如下代码，设置 p为几 rem，让h1和p的字体大小相等?
 
