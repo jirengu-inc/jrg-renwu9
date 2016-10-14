@@ -1,0 +1,436 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+
+</head>
+
+<body>
+<script type="text/javascript">       
+/*var time=Date.now();
+var color=new Array();
+var count=color.push("123","345","567");
+alert (count);
+
+var count=color.push("789");
+alert (count);
+
+var count=color.pop();
+alert (count);
+
+var unco=color.shift();
+alert(unco);
+alert(count);
+color.reverse();
+alert(color);
+function compare(value1,value2)
+{
+	if (value1<value2)
+	{
+		return -1
+	}
+	else if (value1>value2)
+	{
+		return 1
+	}
+	else
+	{
+		return 0
+	}
+}
+var num=new Array;
+num.push(0,1,5,10,15);
+num.sort(compare);
+alert(num);
+var apple=["sweet","big","sour"];
+var pear=apple.concat("small","pill")
+alert (apple);
+alert (pear);
+
+var del=pear.splice(1,1,"spicy")
+alert(pear);
+alert(pear.indexOf("pill"));
+var resultevery=pear.every(function(item,index){
+		return  (index < 2);
+});
+var resultsome=pear.some(function(item,index){
+	return (index < 2);
+});
+var resultfilter=pear.filter(function(item,index){
+	return (index < 2)
+});
+var resultforeach=pear.forEach(function(item,index){
+});
+var resultmap=pear.map(function(item,index){
+	return (item +1)
+});
+var resultreduce=pear.reduce(function(prve,cur,index,array){
+	return prve + cur;
+});
+var sum=pear.reduceRight(function(prve,cur,index,array){
+	return prve+cur;
+});
+alert (resultreduce);
+alert (sum);
+alert(resultmap);
+alert(resultevery);
+alert(resultsome);
+alert(resultfilter);
+alert(pear);
+var timrstop=Date.now();
+result= timrstop-time;
+alert(result);
+var time=new Date();
+alert(time.getTimezoneOffset());//与国际协调时的相差毫秒数
+var re = null,i;
+for (i = 0;i<10;i++)
+{
+	re=/\.at/g;
+	re.test("catastrophe");
+}
+for (var i = 0;i<10;i++)
+{
+	re=new RegExp("\\.at","g");
+	var result=re.test("catastrophe");
+}
+alert(result);
+alert(re.source);
+var text= "mom and dad and baby";
+var pattern=/mom( and dad( and baby)?)?/gi;
+var matches=pattern.exec(text);
+alert(matches.index);
+alert(matches[0]);
+alert(matches[1]);
+alert(matches[2]);
+alert(matches.input);*/
+/*var time=Date.now();
+var text="a short passage";
+var pattern=/(.)hort/g;
+if(pattern.test(text)){
+	document.write(RegExp.input);
+	document.write(RegExp.lastMatch);
+	document.write(RegExp.lastParen);
+	document.write(RegExp.leftContext);
+	document.write(RegExp.rightContext);
+	document.write(RegExp.multiline);
+	document.write(RegExp.$_);
+	document.write(RegExp["$&"]);
+	document.write(RegExp["$+"]);
+	document.write(RegExp["$`"]);
+	document.write(RegExp["$*"]);
+	document.write(RegExp["$'"]);
+}
+var now=Date.now();
+ti=now-time;
+alert(ti);
+function sum(num1,num2){
+	return num1+num2;
+}
+function callsum(num1,num2){
+	return sum.apply(this,arguments);
+}
+function callsum2(num1,num2){
+	return sum.apply(this,[num1,num2]);
+}
+function callSum(num1,num2){
+	return sum.call(this,num1,num2);
+}
+alert(callSum(10,1));
+alert(callsum(10,10));
+alert(callsum2(10,10));
+var text="fgidfhueifeshfehufsehahfeahfeiahufeiafehafeaafejfeajfea";
+var position=new Array();
+var pos=text.indexOf("e");
+while (pos>-1){
+	position.push(pos);
+	pos=text.indexOf("e",pos+1);
+}
+alert(position);
+var letter="hello world";
+alert(letter.toLocaleUpperCase());
+var text="cat,bat,sat,fat";
+var pattern=/.at/;
+var mat=text.match(pattern);
+var result=text.search(pattern);
+var res=text.replace(/at/g,"it");
+var re=text.replace(/.at/g,"it ($1)");
+// text.replace(/(.at)/g, "word ($1)");
+alert(mat.index);
+alert(mat[0]);
+alert(pattern.lastIndex);
+alert(result);
+alert(res);
+alert(re);
+function func(text){
+	return text.replace(/[<>"&]/g,function(mat){
+		switch(mat){
+			case "<":
+			return "&lt;";
+			case ">":
+			return "&gt;";
+			case "\"":
+			return "&quot;";
+			case "&":
+			return "&amp;";
+		}
+	});
+}
+alert(func("<p class=\"fine\">fake</p>"));
+function Person(name,age,job){
+	this.name=name;
+	this.age=age;
+	this.job=job;
+	this.sayName=function(){
+		alert(this.name);
+	};
+}
+var person1=new Person("Jason",15,"architect");
+var person2=new Person("Mark",25,"artist");
+person1.sayName();
+person2.sayName();
+alert(person2.constructor == Person); 
+function Person(){}
+Person.prototype.name="Jason";
+Person.prototype.age=25;
+Person.prototype.job="architect";
+Person.prototype.sayName=function(){
+	alert(this.name);
+}
+var keys=Object.keys(Person.prototype);
+alert(keys);
+function Person(name,age,job){
+	this.name=name;
+	this.age=age;
+	this.job=job;
+}
+Person.prototype={
+	constructor:Person,
+	sayName:function(){
+		alert(this.name);
+	}
+};
+var person1=new Person("Jason",25,"artist");
+person1.sayName();
+function Person(name,age,job){
+	var o=new Object();
+o.sayName=function(){
+	alert(name);
+};
+return o;
+}
+var person=Person("Jason",15,"artist")
+person.sayName();
+function supertype(){
+	this.superproperty=true;
+}
+supertype.prototype.suProperty=function(){
+	return this.superproperty;
+}
+function subtype(){
+	this.subproperty=false;
+}
+subtype.prototype=new supertype();
+subtype.prototype.ubProperty=function(){
+	return this.subproperty;
+}
+var instance=new subtype()
+alert(instance.suProperty());
+function Sup(){
+	this.name=["green","red","black"];
+}
+function SubProperty(){
+	Sup.call(this);
+}
+var super1=new SubProperty();
+super1.name.push("white");
+alert(super1.name);
+var super2=new SubProperty();
+alert(super2.name);
+function SuperType(name){
+	this.name=name;
+	this.colors=["green","red","blue"];
+}
+ SuperType.prototype.sayName = function(){
+            alert(this.name);
+        };
+
+function SubType(name,age){
+	SuperType.call(this,name);
+	this.age=age;
+}
+SubType.prototype=new SuperType();
+SubType.prototype.sayAge=function(){
+	alert(this.age);
+};
+var instance1=new SubType("Jason",55);
+instance1.colors.push("dark");
+instance1.sayAge();
+instance1.sayName();
+alert(instance1.colors);
+var instance2=new SubType("Mark",56);
+alert(instance2.colors);
+instance2.sayAge();
+instance2.sayName();
+var person={
+	name:"nicholas",
+	friend:["Jack","May","March","Monday"]
+};
+var person1=Object.create(person);
+person1.name="Jason";
+person1.friend.push("February");
+alert(person1.name);
+var person2=Object.create(person);
+person2.name="January";
+person2.friend.push("april");
+alert(person2.name);
+alert(person2.friend);
+alert(person.friend);
+function person(name){
+	var o=Object(name);
+	o.sayhi=function(){
+		alert("HI!");
+	};
+	return o;
+}
+var person1={
+	name:"Jason"
+}
+var per=new person(person1);
+per.sayhi();
+function SuperType(name){
+	this.name=name;
+	this.color=["green","red","blue"];
+}
+SuperType.prototype.sayName=function(){
+	alert(this.name);
+};
+function SubType(name,age){
+	SuperType.call(this,name);
+	this.Age=age;
+}
+function inherit(SuperType,SubType){
+	var proto=Object(SuperType.prototype);
+	proto.constructor=SubType;
+	SubType.prototype=proto;
+}
+inherit(SuperType,SubType);
+SubType.prototype.sayAge=function(){
+	alert(this.Age);
+};
+
+var person=new SubType("nicholas",55);
+person.sayAge();
+person.sayName();
+alert(person.color);
+alert(SubType.prototype.isPrototypeOf(person));
+function compare(property){
+	return function (object1,object2){
+		var value1=object1[property];
+		var value2=object2[property];
+		if(value1<value2){
+			return -1;
+		}
+		else if(value2<value1){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	};
+}
+var date=[{name:"Mark",age:55},{name:"Jason",age:22}];
+date.sort(compare("name"));
+alert(date[0].name);
+date.sort(compare("age"));
+alert(date[0].name);
+
+function OutPut(){
+	var element=document.getElementById("someelement");
+	var id=element.id;
+	element.oncilck=function(){
+		alert(id);
+	};
+	element=null;
+}
+output();
+
+function closure(){
+	var result=new Array();
+	for(var i=0;i<10;i++){
+		result[i]=function(num){
+			return function(){
+				return num;
+			};
+		}(i);
+	}
+	return result;
+}
+var res=closure();
+for(var i=0;i<res.length;i++){
+	document.write(res[i]()+"<br/>");
+}
+
+(function(){
+	var now = new date();
+	if(now.getMonth()==8 && now.getDay()==8){
+		alert("Happy new years");
+	}
+})();
+
+function person(name){
+	this.getname=function(){
+		return name;
+	}
+	this.setname=function(value){
+		name=value;
+	}
+})();
+var person1=new person("nicholas");
+alert(person1.getname());
+person1.setname("Jack");
+alert(person1.getname());
+
+var pagewidth=window.innerWidth;
+var pageheight=window.innerHeight;
+if (typeof pagewidth!="number"){
+	if(document.compatMode==CSS1Compat){
+		pagewidth=document.documentElement.cliehtWidth;
+		pageheight=document.documentElement.cliehtheight;
+	}
+	else{
+		pagewidth=document.body.cilentwidth;
+		pageheight=document.body,clientheight;
+	}
+}
+
+window.open("http:\\www.baidu.com","baidu","resizable=yes")
+alert(pagewidth);
+alert(pageheight);
+
+function locationsearch(){
+	var Search=loction.search.length>0?location.search.substring(1):"";
+	args={};
+	var result=Search.length>0?Search.split("&"):[];
+    var len=result.length;
+	for (var i=0;i<len;i++){
+		var res=result[i].split("=");
+		var name=decodeURIComponent(res[0]);
+		var value=decodeURIComponent(res[1]);
+		if(value.length>0){
+			args[name]=value;
+		}
+	}
+	return args;
+}
+var res1=locationsearch();
+alert(arg["q"]);
+alert(arg["num"]);
+
+
+alert("17".replace(/^-\d{0,1}\d{1,}$/,"X"))
+	*/
+document.write("<strong>"+(new Date())+"<strong>");
+</script>
+</body>
+</html>
