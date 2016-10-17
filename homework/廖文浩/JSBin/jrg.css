@@ -1,0 +1,50 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    height: 100%;
+}
+.fl {
+    float: left;
+}
+.container{
+    width: 200px;
+    height: 100%;
+    border-right: 1px solid #b0b0b0;
+    box-shadow: 1px 1px 6px #888888;
+    background-color: #232B2B;
+}
+p{
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+}
+.content{
+    height: 100%;
+    width: calc(100% - 201px);
+    margin-left: 201px;
+    padding: 50px;
+    box-sizing: border-box;
+}
+#jrg {
+    position: absolute;
+    height: 132px;
+    top: 50%;
+    margin-top: -66px;
+    margin-left: 80px;
+    text-align: center;
+    width: 42px;
+    background-color: #DC3D24;
+    border-radius: 3px;
+}
+#jrg span {
+    font-size: 40px;
+    color: black;
+}
+.art{
+    width: calc(100% - 201px - 50px);
+    margin: 0 auto;
+    border-left: 5px solid #E3AE57;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
