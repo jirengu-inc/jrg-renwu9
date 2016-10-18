@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>juzhong</title>
+	<style>
+	.class1,.class3,.class2,.class4{
+		width:500px;
+		height:500px;
+		border:1px solid #ccc;
+		margin-top:20px;
+	}
+	.class1 div,.class3 div,.class4 div{
+		width:100px;
+		height:100px;
+		border:1px solid red;
+	}
+	.class1{
+		text-align: center;
+		/*用text-align:center设定class1内中块级元素水平居中是无效的*/
+	}
+	.class2{
+		text-align: center;
+		/*用text-align:center设定class2内中行内元素水平居中是有效的*/
+	}
+	.class3 div{
+		margin: 0 auto;
+		/*用margin:0 auto设定class2内中块级元素水平居中是有效的*/
+		/*不过margin：0 auto设定是的子元素，居中的也是子元素*/
+		/*text-align:center设定的是父元素，居中的是子元素*/
+	}
+	.class4 div{
+		display:inline-block;
+		/*设定这个块级元素为行内块级元素*/
+	}
+	.class4{
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div class="class1">
+		<div>
+			我是块级元素
+		</div>
+	</div>
+	<div class="class2">
+		<p>我是行内元素</P>
+	</div>
+	<div class="class3">
+		<div>
+			我还是块级元素
+		</div>
+	</div>
+	<div class="class4">
+		<div>
+			我将要变成内联块级元素	
+		</div>
+	</div>	
+</body>
+</html>
