@@ -104,3 +104,7 @@ JS/CSS 前 or 后？
 - [JS、CSS 之间的顺序与 HTML 页面的性能关系](http://frontenddev.org/link/js-css-between-the-order-of-the-relationship-with-the-performance-of-the-html-page.html)
 - [JS 和 CSS 的位置对其他资源加载顺序的影响](https://lifesinger.wordpress.com/2012/02/03/performance-impact-of-js-css-loading-order/)
 - [网站前端性能优化之javascript和css](http://www.haorooms.com/post/web_xnyh_jscss)
+- [网站性能优化35计](http://www.w3ctech.com/topic/1416)
+- [前端工程与性能优化](http://div.io/topic/371)
+- [网站性能优化的三重境界](http://www.raychase.net/311)
+- [关于网站性能优化准则](https://segmentfault.com/a/1190000003901620)
