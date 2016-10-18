@@ -93,7 +93,7 @@ console.log()用于在控制台输出信息。常用来插入代码段里进行�
 这是默认值，根据正常阅读习惯.    
 ![](./img/left.jpg "left") 
 ### right
-![](./img/right "right") 
+![](./img/right.jpg "right") 
 ### center
 ![](./img/center.jpg "center") 
 ### justify
