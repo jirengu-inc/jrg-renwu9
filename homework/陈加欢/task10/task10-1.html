@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#wrap{
+			width:100%;
+			min-width: 500px;
+		}
+		#nav{
+			background: #333;
+			height:60px;
+			
+		}
+		#nav-in{
+			width:900px;
+			height:100%;
+			margin:0 auto;
+			position:relative;
+			overflow: hidden;
+		}
+		#main{
+			width:900px;
+			height:600px;
+			margin:10px auto 0;	
+			overflow: hidden;
+			position:relative;
+
+		}
+		#sidebar{
+			width: 200px;
+			height:100%;
+			background: #eee;
+			float:left;
+
+		}
+		#content{
+			margin-left:210px;
+			background: #eee;
+			color:#656565;
+			padding: 20px 10px;
+		}
+		#footer{
+			background: #333;
+			height: 60px;
+		}
+		#footer-in{
+			width:900px;
+			height:100%;
+			margin:0 auto;
+			position:relative;
+			overflow: hidden;
+		}
+		img{
+			width: 
+			float:left;
+			position: absolute;
+			left:0px;
+			
+		}
+		#nav-in ul{
+			
+			position: absolute;
+			right:0px;
+			float:right;
+			overflow: hidden;
+			
+		}
+		#footer-in ul{
+			float:left;
+		}
+		li{
+			float:left;
+			list-style:none;
+			margin-left:20px;
+			
+			
+		}
+		a{	
+			display: block;
+			height:60px;
+			line-height:60px;
+			padding:0 15px;
+			color:#fff;
+			text-decoration: none;
+			font-size:20px;
+		}
+		#nav-in a:hover{
+			background: #fff;
+			color:#333;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="nav">
+			<div id="nav-in">
+				<img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="图片下载失败">
+				<ul>
+					<li><a href="#">技能</a></li>
+					<li><a href="#">经历</a></li>
+					<li><a href="#">作品</a></li>
+					<li><a href="#">关于</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main">
+			<div id="sidebar"></div>
+			<div id="content">
+				<h1>我的作品</h1><br/>
+				<p>生活很美好</p>
+				<p>心情不错</p>
+				<p>代码写的很漂亮</p>
+
+			</div>
+		</div>
+		<div id="footer">
+			<div id="footer-in">
+				<ul>
+					<li><a href="#">饥人谷</a></li>
+					<li><a href="#">JSCODE</a></li>
+					<li><a href="#">JSBIN</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

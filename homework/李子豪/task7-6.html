@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>iframe</title>
+	<style>
+		.left-list{
+			width:20%;
+			height:600px;
+			border:2px solid #000;
+		}
+
+		.left-list li {
+			list-style: none;
+		}
+		.left-list li a{
+			border:1px solid #fff;
+			width:80%;
+			height:30px;
+			padding-top: 10px;
+			text-align: center;
+			background:#333;
+			color:white;
+			float:left;	
+			text-decoration:none;
+			color:white;
+		}
+		.left-list li a:hover{
+			color:#000;
+			background: #666;
+		}
+		iframe{
+			width:80%;
+			height:600px;
+			float:right;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<iframe src="http://www.baidu.com" name="web"></iframe>
+	</div>
+	<div class='left-list'>
+		<ul>
+			<li><a href="#" target="web">目录</a></li>
+			<li><a href="http://www.baidu.com" target="web">百度</a></li>
+			<li><a href="http://www.jirengu.com" target="web">饥人谷</a></li>
+			<li><a href="http://www.taobao.com" target="web">淘宝</a></li>
+			<li><a href="http://www.jd.com/" target="web">京东</a></li>
+		</ul>
+	</div>
+</body>
+</html>
