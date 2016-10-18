@@ -59,7 +59,7 @@ link标记是一个很少使用但完全合法的标记，它在HTML规范里存
     <!--绝对路径对象是当期系统，如果换了一台电脑，很有可能找不到此文件-->
 ```
 #### **相对路径**
-相对路径提供了一种更宽松的访问方法
+相对路径提供了一种更宽松的访问方法    
 `"./"`：代表目前所在目录
 ``` html
      <img alt="test" src="./main.css" />
@@ -90,15 +90,15 @@ console.log()用于在控制台输出信息。常用来插入代码段里进行�
 它用来操控`块级元素`内文本的`水平对齐`方式
 一共有5个值，最后一个是inherit，它表示继承父级的水平对齐样式值。
 ### left
-这是默认值，根据正常阅读习惯。
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/62af4f75-0260-4315-9d6e-b90aa3f64e3e) 
+这是默认值，根据正常阅读习惯.    
+![](./img/left.jpg "left") 
 ### right
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/b8d6de2d-afd1-434f-86e7-7983bda445a9) 
+![](./img/right "right") 
 ### center
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/c63a6a32-a6cd-4720-98a9-ef90a6e52ba2) 
+![](./img/center.jpg "center") 
 ### justify
-这个值会使得文本调整词与字之间的间距，使得两边文本两端对齐。
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/30c96e9e-2f3f-4a11-b790-f97665eb4425) 
+这个值会使得文本调整词与字之间的间距，使得两边文本两端对齐。    
+![](./img/justify.jpg "justify") 
 
 ---
 > px、em、rem分别是什么？有什么区别？如何使用？
@@ -111,10 +111,10 @@ em的值并不是固定的；em会继承父级元素的字体大小。
 rem是CSS3新增的一个相对单位（`root em`）,看名字，所以它是以html为根元素，且大小相对于根元素。
 
 ## 实践
-文字太抽象，直接写个JsBin截图我们来看看效果:[JSbin](http://js.jirengu.com/cexaweyujo/2/edit?html,output)
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/eab67d48-348f-45c3-8e3c-3e79604ed928) 
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/ff79c982-93e1-482e-be3f-ca1ab2d19087) 
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/6c0883b5-e838-46de-ba34-64194613b52c) 
+文字太抽象，直接写个JsBin截图我们来看看效果:[JSbin](http://js.jirengu.com/cexaweyujo/2/edit?html,output)    
+![](./img/font1.jpg "px")    
+![](./img/font2.jpg "em")    
+![](./img/font3.jpg "rem") 
 
 ### 使用rem作为字体单位还有一个妙用：
 ##### 响应式！ 当屏幕大小变化时使用媒体查询，此时只要设置html根元素的大小，就可以使所有文字同样进行响应式缩放！
@@ -122,14 +122,14 @@ rem是CSS3新增的一个相对单位（`root em`）,看名字，所以它是以
 ---
 > 对chrome 审查元素的功能做个简单的截图介绍
 
-![](http://7xpvnv.com2.z0.glb.qiniucdn.com/6e4c4e53-37d6-461f-8ce0-ad6b90e7f236) 
+![](./img/chrome.jpg) 
 - Element：用来查看网页的文档，可以展开，看到所有元素，以及元素具体的样式。
 - Console：Console可以查看网页运行后提示的消息，错误或者警告以及输出内容等，网页后台可以使用`Console.debug("输出内容")`；来在Console输出显示，可以做到调试的作用吧，不过一般真正调试不是拿Console。`console.debug`;console是小写形式，不然提示没有Console
 - Sources：在左侧的脚本代码编号，鼠标点击即可添加断点，添加断点后，刷新网页，程序运行到断点即可看到断点调式的状态了，具体调试需要在自己想查看某个方法里边是否有问题，一步步排除，效果很好
 - NetWork：可以看到网页加载的脚本和资源的时间，还可以看到某些不能加载成功的资源；
 - Timeline：提供了加载页面时花费时间的完整分析，所有事件，从下载资源到处理Javascript，计算CSS样式等花费的时间都展示在Timeline中；
 - Profiles：分析web应用或者页面的执行时间以及内存使用情况；
-- Application：记录网站加载的所有资源信息，包括存储数据（`Local Storage`、`Session Storage`、`IndexedDB`、`Web SQL`、`Cookies`）、缓存数据、字体、图片、脚本、样式表等。
+- Application：记录网站加载的所有资源信息，包括存储数据（`Local Storage`、`Session Storage`、`IndexedDB`、`Web SQL`、`Cookies`）、缓存数据、字体、图片、脚本、样式表等。
 - Security：判断当前网页是否安全。
 - Audits：对当前网页进行网络利用情况、网页性能方面的诊断，并给出一些优化建议。比如列出所有没有用到的CSS文件等。
 ---
