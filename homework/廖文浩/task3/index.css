@@ -1,0 +1,215 @@
+
+*{   /*初始化，消除浏览器默认设置。*/
+	padding:0px;
+	margin:0px;
+}
+
+body {
+    background-color: #dedede;
+    min-width:830px;
+    /*font-family: "DE>\5FAE\8F6F\96C5\9ED1DE"; */
+}
+
+.header_main{
+	background-color:#333;
+	height:80px;
+	width:100%;
+}
+
+.header_main img{
+	margin:15px 40px;
+	height:50px;
+	width:50px;
+	bodrer-style:solid;
+	border-width:3px;
+	border-radius:50%;
+}
+
+.nav_main{
+	float:right;
+}
+
+.nav_main li{   /* <li>是块级元素，可以设置高宽 */
+	float:left;
+	width:100px;
+	line-height: 80px; /* 占据整行，自然上下居中 */
+	font-size:15px;
+
+}
+
+.nav_main a{
+	text-decoration:none;
+	color:#FFF;
+}
+
+.nav_main a:hover{
+	color:#FFCC00;
+}
+
+.author_time,h2,h3{
+	line-height:2em;
+	font-family:"SimHei";
+}
+
+.author_time,h3{
+	color:#808080;
+}
+
+h3{
+	font-weight: bold;
+	color:black;
+}
+.passage{
+	line-height:1.8em;
+	text-indent:2em;
+}
+
+ul{
+	list-style:none;
+	line-height:1.7em;
+}
+
+#a2ul{
+	margin:15px;
+}
+
+article, section, aside{
+            background-color:#FFF;
+            margin:20px;
+            padding:30px;
+            box-shadow: 2px 2px 2px #848484;
+            overflow:auto;
+        }
+aside{
+	width:350px;
+}
+aside, section{
+	float:right;
+}
+
+article, section{
+	margin-right:450px;
+}
+
+
+figure{
+	display:inline-block;
+	border:1px solid #C0C0C0;
+	margin:10px;
+	padding:10px;
+	text-align:center;
+	width: 150px;
+    height: 150px;
+}
+
+figure figcaption{
+	font-size:10px;
+	line-height:20px;
+	font-family:"sans-serif";
+}
+
+article ol{
+	margin-bottom:20px;
+}
+article li {
+    margin: 10px 40px;
+    font-weight:bold;
+}
+
+article img{
+	max-width:300px;
+}
+
+@media screen and (max-width:830px) {
+  article img{
+	width:100%;
+}
+
+}
+
+table {
+  border: 1px solid #cccccc;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+table thead {
+  background-color: #333333;
+  color: white;
+}
+
+table th, table td{
+	padding:3px;
+	font-size:13px;
+	border: 1px solid #ccc;
+}
+
+aside header {
+  border-left: 3px solid #ccc;
+  padding: 1px 0 1px 10px;
+  margin-bottom: 25px;
+}
+
+table tfoot{
+	background-color: #cccccc;
+	font-weight:bold;
+}
+
+aside form{
+	display:block;
+}
+
+aside form div{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+aside form .please{
+	text-align:right;
+	display: inline-block;
+	width:40%;
+}
+aside form .tips{
+	font-size:10px;
+	margin-left:calc(40% + 3px);
+	color:#cccccc;
+}
+
+aside form input[type="email"],
+aside form input[type="password"],
+aside form textarea,
+aside form select {
+  padding: 3px;
+}
+
+aside form label{
+	font-size:10px;
+	margin-right:3px;
+	margin-left:5px;
+}
+
+aside form textarea{
+	width:50%;
+	vertical-align: text-top;
+	margin-bottom:5px;
+}
+
+#button{
+	width:100%;
+	font-size:20px;
+	background-color:#3048D8;
+	border: 1px solid #3048D8;
+        border-radius: 5px;
+        color: #F0F0F0;
+        padding:10px 0px;
+}
+
+footer{
+	width:100%;
+	color:#FFF;
+	line-height: 80px;
+	background-color:#333;
+	height:80px;
+	text-align:center;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>百度</title>
+	<style type="text/css">
+	    #header{
+	    	border:1px;
+	    	padding-left: 65%;
+	    	display: inline-block;
+			text-align: right;
+			word-spacing: 10px;
+			white-space: nowrap;
+			font-size: 15px;
+	    }
+		#header ul>li{
+			height: 20px;
+			display: inline-block;
+		}
+		#header ul{
+			display: inline-block;
+		}
+		.head1 li a{
+			color: #333;
+			transition: 0.5s;
+			font-weight: bolder;			
+		}
+		.head1 li a:active{
+			test:expression(target="_blank");
+		}
+		.head1 li a:hover{
+			color: #00c;			
+		}
+		#header .checkin a{
+            color:black;
+            font-weight: normal;
+		}
+		#header .checkin a:hover{
+            color:#00c;
+		}
+		#header .more a{
+			border:1px;
+			padding:5px;
+			text-decoration: none;
+			background-color: #38f;
+			color: #fff;
+		}
+		#header .more a:hover{
+			background-color: #ccc;
+		}
+		#content{
+			text-align: center;
+			margin: 30px;
+		}
+		.search{
+			margin-top: 20px;
+			margin-right: 0; 
+			display: inline-block;
+
+		}
+		.btn{
+			background-color: #1E90FF;
+			width: 100px;
+			height: 36px;
+			color: #fff;
+			margin-left: -9px;
+			margin-bottom: 0; 
+			display: inline-block;
+			border: none;
+			padding: 3px 0 3px 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<ul class="head1">
+			<li><a href="https://www.nuomi.com/?cid=002540">糯米</a></li>
+			<li><a href="http://news.baidu.com/">新闻</a></li>
+			<li><a href="#">hao123</a></li>
+			<li><a href="#">地图</a></li>
+			<li><a href="#">视频</a></li>
+			<li><a href="#">贴吧</a></li>
+			<li class="checkin"><a href="#">登录</a></li>
+			<li class="checkin"><a href="#">设置</a></li>
+			<li class="more"><a href="#">更多产品</a></li>
+		</ul>		
+	</div>
+	<div id="content">
+		<img src="https://www.baidu.com/img/bd_logo1.png" alt="baidu" height="129px"><br>
+		<form class="search">
+			<input type="text" name="search" style="width: 500px; height: 30px;">
+			<input class="btn" type="submit" name="百度一下" value="百度一下">		
+		</form>
+	</div>
+	<div id="footer"></div>
+
+</body>
+</html>
