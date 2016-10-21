@@ -8,36 +8,39 @@
 </head>
 <body>
   <style>
-  p,span,input{
+  div{
     font-family: "微软雅黑",Arial;
+    margin:0.7em 0;
   }
   </style>
   <form name="travel" method="post">
-    <p>
+    <div>
       姓名：<input type="text" name="name" placeholder="用户名">
-    </p>
-    <p>
+    </div>
+    <div>
       密码：<input type="password" name="pwd" value="12345678">
-    </p>
-    <p>
+    </div>
+    <div>
       性别：
       <input type="radio" name="sexual" value="male" checked="checked">男
       <input type="radio" name="sexual" value="female">女
-   </p>
-    <p>
+   </div>
+    <div>
       取向：
       <input type="radio" name="ididntknow" value="male2">男
       <input type="radio" name="ididntknow" value="female2" checked="checked">女
-    </p>
-    <p>
+    </div>
+    <div>
       爱好：
       <input type="checkbox" name="dota">dota
       <input type="checkbox" name="travel"checked="checked">旅游
       <input type="checkbox" name="pet" checked="checked">宠物
-    </p>
-    <span>评论：</span>
-    <textarea cols="40" rows="10" placeholder="ddd" name="comment"></textarea>
-    <p>
+    </div>
+    <div>
+      评论：
+      <textarea cols="40" rows="10" placeholder="ddd" name="comment"></textarea>
+    </div>
+    <div>
       我的car:
       <select>
         <option value="saab" selected="selected">萨博</option>
@@ -45,6 +48,6 @@
         <option value="ford">福特</option>
       </select>
       <input type="submit" value="提交">
-    </p>
+    </div>
 </body>
 </html>
