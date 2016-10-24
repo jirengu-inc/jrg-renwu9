@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding: 0;
+			list-style: none;
+			color:#333;
+			font-family:Microsoft YaHei;
+			text-decoration: none;
+			font-size: 18px;
+		}
+		a{	
+			display: block;
+			padding: 10px 20px;
+		}
+		li:hover,a:hover{
+			background:#aaa;
+		}
+		#wrap{
+			width:960px;
+			margin:10px auto;
+			background: #ccc;
+		}
+		.nav>li{
+			float:left;
+			position: relative;
+		}
+		.sublist{
+			display: none;
+			position: absolute;
+			left:0;
+			top:100%;
+			border:1px solid #ccc;
+		}
+		.nav>li:hover .sublist {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul class="nav">
+			<li><a href="#">前端</a>
+				<ul class="sublist">
+					<li><a href="#">JavsScript</a></li>
+					<li><a href="#">CSS</a></li> 
+					<li><a href="#">HTML</a></li>
+				</ul>
+			</li>
+			<li><a href="#">服务端</a>
+				<ul class="sublist">
+					<li><a href="#">Node</a></li>
+					<li><a href="#">PHP</a></li> 
+					<li><a href="#">Java</a></li>
+				</ul>
+			</li>
+			<li><a href="#">前端工具</a>
+				<ul class="sublist">
+					<li><a href="#">Sublime</a></li>
+					<li><a href="#">WebStom</a></li> 
+					<li><a href="#">Git</a></li>
+				</ul>
+			</li>
+			<li><a href="#">HTML</a></li>
+			<li><a href="#">NODE</a></li>
+		</ul>
+		<div style="clear:both"></div>
+	</div>
+</body>
+</html>
