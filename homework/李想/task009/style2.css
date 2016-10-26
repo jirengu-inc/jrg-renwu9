@@ -1,0 +1,10 @@
+li {
+  display: block;
+  float: left;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+li:hover {
+  color: #a663b1;
+}

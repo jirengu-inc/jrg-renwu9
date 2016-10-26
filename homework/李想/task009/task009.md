@@ -66,27 +66,4 @@ caniuse.com
 
 ---
 
-# 笔记 #
-
-## 关于 inline-block 的问题 ##
-
-真正意义上的 inline-block 水平呈现的元素间，换行显示或空格分隔的情况下会有间距。IE8-9、Firefox、Safari等浏览器，inline-block 之间会留下空隙（4px）。而在 Chrome 下空隙为 8px。
-
-消除空白间隙有多种方法：
-
-1. 改变 HTML 结构
-2. 负 margin 方法：`margin-right: -4px`。这种解决方法并不完美，如果你的父元素设置的字号不一样，可能你的“-4px”就不能解决问题。况且在 Chrome 中你需要另外设置一个负的 margin 值才能实现同等的效果。这种方法受字体大小影响。
-3. 设置父元素字体为 0：在 safari 下问题依然存在。
-4. 丢失结束标签
-5. jQuery 方法
-6. 使用 float 或者 flexbox 替代
-
-全兼容的样式解决方法：在父元素中设置 `font-size: 0;` 来兼容 Chrome，而使用 `letter-spacing: -4px;` 兼容 safari。
-
-- [如何解决inline-block元素的空白间距](http://www.w3cplus.com/css/fighting-the-space-between-inline-block-elements)
-- [去除inline-block元素间间距的N种方法](http://www.zhangxinxu.com/wordpress/2012/04/inline-block-space-remove-%E5%8E%BB%E9%99%A4%E9%97%B4%E8%B7%9D/)
-- [Fighting the Space Between Inline Block Elements](https://css-tricks.com/fighting-the-space-between-inline-block-elements/)
-
----
-
 FrankFang：搜索引擎一般只看 meta title a h1
