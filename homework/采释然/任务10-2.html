@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务10-2</title>
+	<style type="text/css">
+	    div{
+		    margin: 0;
+		    padding: 0;
+	    }
+	    .box{
+		    margin-bottom: 20px;
+	    }
+	    .clearfix:after{
+	    	display: block;
+	    	content: ".";
+	    	height: 0;
+	    	clear: both;
+	    	overflow: hidden;
+	    	visibility: hidden;
+	    }
+	    .box-1{
+        	width: 300px;
+        	height: 200px;
+        	border: 1px solid #ccc;
+        }
+        .box-2{
+        	position: relative;
+        }
+        .triangle-1{
+        	width: 0;
+        	height: 0;
+        	border-left: 10px solid transparent;
+        	border-right: 10px solid transparent;
+        	border-bottom: 10px solid #888;
+        	position: relative;
+        	left: 10px;
+        } 
+        .triangle-2{
+        	width: 0;
+        	height: 0;
+        	border-left: 20px solid transparent;
+        	border-top: 20px solid #ff0000;
+        	float: right;
+        }
+        .triangle-3{
+        	width: 0;
+        	height: 0;
+        	border-left: 10px solid transparent;
+        	border-right: 10px solid transparent;
+        	border-bottom: 10px solid #ccc;
+        	position: absolute;
+        	left: 10px;
+        	top: -10px;
+        }
+        .triangle-4{
+        	width: 0;
+        	height: 0;
+        	border-left: 10px solid transparent;
+        	border-right: 10px solid transparent;
+        	border-bottom: 10px solid #fff;
+        	position: absolute;
+        	top: -9px;
+        	left: 10px;
+	</style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="triangle-1"></div>
+        <div class="box-1"></div>
+    </div>
+    <div class="box">
+        <div class="box-1 clearfix">
+            <div class="triangle-2"></div>
+        </div>
+    </div>
+    <div class="box-2">
+        <div class="triangle-3"></div>
+        <div class="triangle-4"></div>
+        <div class="box-1"></div>
+    </div>
+</body>
+
+</html>
