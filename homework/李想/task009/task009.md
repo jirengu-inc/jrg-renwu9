@@ -63,3 +63,7 @@ caniuse.com
 ![图片](http://7xpvnv.com2.z0.glb.qiniucdn.com/49bf909c-9ad6-420c-be68-2f68d8f12d60)
 
 [按钮效果图](http://codepen.io/lix90/pen/qaQvRv?editors=1100)
+
+---
+
+FrankFang：搜索引擎一般只看 meta title a h1
