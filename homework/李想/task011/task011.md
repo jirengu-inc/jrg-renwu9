@@ -33,9 +33,11 @@ categories: []
 
 父子外边距合并范例：
 
-``` html
+[Codepen](http://codepen.io/lix90/pen/ozOaLj?editors=1100#0)
 
-```
+参考资料：
+
+[Collapsing margins——合并的外边距](http://geekplux.com/2014/03/14/collapsing_margins.html)
 
 ## 去除 inline-block 内缝隙有哪几种常见方法? ##
 
@@ -90,6 +92,10 @@ categories: []
 
 可以通过触发浮动元素父元素的 BFC 使得该父元素可以包含浮动元素。
 
+- 使用空 DIV 方法
+- overflow 法：触发 BFC
+- clearfix 法：构建 after 伪元素
+
 ## 以下代码每一行的作用是什么？为什么会产生作用？和 BFC 撑开空间有什么区别？ ##
 
 ``` css
@@ -103,10 +109,21 @@ categories: []
 }
 ```
 
+`.clearfix:after` 声明 clearfix 类元素的 after 伪元素样式
+`content: '';` 添加内容属性
+`display: block;` 将 after 伪元素显示模式为块级元素
+`clear: both;` 清除左右浮动
+`zoom: 1;` 触发 IE 浏览器的 haslayout；解决 IE 下的浮动，margin 重叠等问题。
+
+上面的代码可用于浮动清除。这种清除浮动的方式使用的是清除属性，并未触发 BFC。触发 BFC 时，父元素总会包裹其子元素，从而解决清除浮动对容器的高度塌陷问题。（疑问？）
+
 # 代码 #
 
-实现如下效果的导航条
-利用BFC的原理实现下图所示两栏布局
+## 实现如下效果的导航条 ##
+
+[Codepen](http://codepen.io/lix90/pen/GjLzVx)
+
+## 利用BFC的原理实现下图所示两栏布局 ##
 
 ``` html
 <div id="header">header</div>
@@ -119,3 +136,5 @@ categories: []
 </div>
 <div id="footer"></div>
 ```
+
+[Codepen](http://codepen.io/lix90/pen/jrRRNA)
