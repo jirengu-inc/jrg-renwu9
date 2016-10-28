@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    #header{
+      background:#aaa;
+      height:60px;
+     
+    }
+    #container{
+     
+      min-width:600px;     
+    }
+    #container .column{
+      float:left;
+      height:500px;
+     
+     
+    }
+    .inner-ct{
+    	margin-left: 200px;
+    	margin-right:200px;
+    	background: green;
+    	height:500px;
+    }
+    #center{
+      width:100%;
+     background:#ddd;
+     
+     
+    }
+    #left{
+      width:200px;
+      background:red;
+      margin-left:-100%; 
+     
+  
+    }
+    #right{
+      width:200px;
+      background:yellow;
+      margin-left:-200px; 
+    
+      
+    }
+    #footer{
+      clear:both;
+      background:#aaa;
+      height:60px;
+    }
+  </style>
+</head>
+<body>
+  <div id=header></div>
+<div id=container>
+  <div id=center class=column>
+  	<div class=inner-ct></div>
+  </div>
+  <div id=left class=column></div>
+  <div id=right class=column></div>
+</div>
+  <div id=footer></div>
+</body>
+</html>

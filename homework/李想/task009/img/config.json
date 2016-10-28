@@ -1,0 +1,28 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "d0673ef38e1c458a6de52aad2a2f800d",
+      "css": "right-circled2",
+      "code": 61838,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "e835d9d0f2ee39ae01b01cc6a6fa24ab",
+      "css": "play-circled2",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "5434b2bf3a3a6c4c260a11a386e3f5d1",
+      "css": "stop-circle-o",
+      "code": 62094,
+      "src": "fontawesome"
+    }
+  ]
+}

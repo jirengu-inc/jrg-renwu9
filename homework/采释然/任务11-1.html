@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    #header {
+        height: 30px;
+        background-color: #C0C0C0;
+        line-height: 30px;
+        padding-left: 15px;
+        font-family: '微软雅黑',sans-serif;
+    }
+    
+    ul,
+    li {
+        list-style: none;
+    }
+    
+    #header>ul>li {
+        display: inline-block;
+        text-align: center;
+        position: relative;
+    }
+    
+    .btn {
+        display: none;
+        position: absolute;
+        top: 100%;
+        border-right: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+    }
+    
+    a {
+        text-decoration: none;
+        color: #434343;
+        display: inline-block;
+        padding: 0 10px;
+    }
+    
+    li:hover {
+        background-color: #AAA;
+    }
+    
+    #header>ul>li:hover .btn {
+        display: block
+    }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <ul>
+            <li>
+                <a href="#">前端</a>
+                <ul class="btn">
+                    <li>
+                        <a href="#">Javascript</a>
+                    </li>
+                    <li>
+                        <a href="#">CSS</a>
+                    </li>
+                    <li>
+                        <a href="#">HTML</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">服务端</a>
+                <ul class="btn">
+                    <li>
+                        <a href="">Node</a>
+                    </li>
+                    <li>
+                        <a href="">PHP</a>
+                    </li>
+                    <li>
+                        <a href="">Java</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="">前端工具</a>
+                <ul class="btn">
+                    <li>
+                        <a href="">Sublime</a>
+                    </li>
+                    <li>
+                        <a href="">WebStrom</a>
+                    </li>
+                    <li>
+                        <a href="">Git</a>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">NODE</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
