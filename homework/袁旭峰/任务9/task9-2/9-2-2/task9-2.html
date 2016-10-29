@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="iconfont/iconfont.js"></script>
+</head>
+<body>
+  <style>
+  .icon {
+   width: 1em;
+   height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+  }
+  .stop .icon{
+    width: 0.8em;
+    height: 0.8em;
+    vertical-align: -0.03em;
+  }
+  .forward,.play,.stop{
+	  width:18px;
+	  height:18px;
+    float: left;
+    margin-top: 2px;
+  }
+  .button{
+    float: left;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+  .button:hover{
+    color:#d4237a;
+  }
+  span{
+    font-family: "黑体";
+    font-size: 20px;
+  }
+  </style>
+  <div>
+    <div class="button">
+      <div class="forward">
+        <svg class="icon" aria-hidden="true">
+           <use xlink:href="#icon-forward"></use>
+        </svg>
+      </div>
+      <span>向前</span>
+    </div>
+    <div class="button">
+      <div class="play">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-next"></use>
+        </svg>
+      </div>
+      <span>播放</span>
+    </div>
+    <div class="button">
+      <div class="stop">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-fontcolor"></use>
+        </svg>
+      </div>
+      <span>停止</span>
+    </div>
+  </div>
+</body>
+</html>
