@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>close()</title>
+  <script type="text/javascript">
+     
+     function openUrl()
+     {
+         var mywin=window.open("http://www.imooc.com");
+         var pages = confirm("是否关闭新页面？");
+         if(pages == true){
+                mywin.close(); 
+                alert("页面已关闭！");
+         }else{
+                alert("页面未关闭！");
+         }
+     }
+  </script>
+</head>
+<body>
+    <input name="button" type="button" onClick="openUrl()" value="点击我，打开新的网页！" />
+</body>
+</html>
