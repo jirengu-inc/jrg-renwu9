@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#header,#footer{
+		height:70px;
+		background: red;
+		font-size: 20px;
+	}
+	#content .aside{
+		float:left;
+		width:400px;
+		background-color: pink;
+	}
+	#content .main{
+		overflow: hidden;
+		height:500px;
+		background: #ccc;
+	}
+
+	</style>
+</head>
+<body>
+<--!两栏布局-->
+	<div id="header">header</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">
+            我是main 
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main... 
+        </div>
+    </div>
+    <div id="footer">footer</div>
+</body>
+
+<--!导航栏
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+  *{
+  padding:0;
+  margin:0;
+  list-style:none;
+  text-decoration:none;
+  color:#333;
+  font-weight:bold;
+  font-family:"微软雅黑"; 
+  font-size:16px;
+}
+.nav{
+  display:inline-block;
+  margin:0 auto;
+  background:#eee;
+  width:100%;
+  
+}
+.main>li{
+  display:inline-block;
+  padding-left:15px;
+  line-height:30px;
+  position:relative;
+}
+.main>li:hover{
+  background:#ccc;
+  cursor:pointer;
+ 
+} 
+.child{
+  border:1px solid #ccc;
+  background:#fff;
+  line-height:35px;
+  position:absolute;
+  top:100%;
+  left:0px;
+  display:none;
+}
+
+.main>li:hover .child{
+  display:block;
+  background:white;
+  cursor:pointer;
+}
+.clearFix{
+  clear:both;
+}
+
+  </style>
+</head>
+<body>
+<div class="nav">
+    <ul class="main">
+     <li>
+     <a href="#">前端</a>
+     <ul class="child">
+       <li><a href="#">JavaScript</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">HTML</a></li>
+     </ul>
+     </li>
+     <li>
+       <a href="#">服务端</a>
+       <ul class="child">
+        <li><a href="#">PHP</a></li>
+        <li><a href="#">NODE</a></li>
+        <li><a href="#">JAVA</a></li>
+      </ul>
+     </li>
+     <li>
+        <a href="#">前端工具</a>
+        <ul class="child">
+          <li><a href="#">WebStrom</a></li>
+          <li><a href="#">Sublime</a></li>
+          <li><a href="#">Git</a></li>
+     </ul>
+     </li>
+     <li><a href="#">HTML</a></li>
+     <li><a href="#">NODE</a></li>
+    </ul>
+ <div class="clearFix"></div>
+</div>
+</body>
+</html>
+-->
