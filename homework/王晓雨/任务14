@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>实战1</title>
+	<style type="text/css">
+	html,body,h1,p,ul,li{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+		font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	li,h1,h2,h3,h5,h6,p{
+		text-align: center;
+		padding: 10px;
+	}
+	h4{
+		text-align: center;
+		padding: 25px 0;
+	}
+	html,body{
+		height: 100%;
+		width: 100%;
+		font-size:16px;
+	}
+	#header{
+		height: 100%;
+		background: url("http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/bg.jpg") 0 0 no-repeat;
+		background-size:cover;
+	}
+	@font-face {font-family: "iconfont";
+  	src: url('font/iconfont.eot?t=1478228769553'); /* IE9*/
+  	src: url('font/iconfont.eot?t=1478228769553#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  	url('font/iconfont.woff?t=1478228769553') format('woff'), /* chrome, firefox */
+  	url('font/iconfont.ttf?t=1478228769553') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  	url('font/iconfont.svg?t=1478228769553#iconfont') format('svg'); /* iOS 4.1- */
+	}
+
+	.iconfont {
+  font-family:"iconfont" !important;
+  font-size:50px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+	}
+	#wrap{
+		display: table;
+		height: 100%;
+		margin: 0 auto;
+	}
+	
+	.vertical-center{
+		display: table-cell;
+		vertical-align: middle;
+		padding: 10px; 
+	}
+	.text-center{
+		text-align: center;
+	}
+	hr{
+		width: 100px;
+		border: 1px solid #eee;
+		margin-bottom: 20px;
+	}
+	.container{
+		width:800px;
+		margin: 0 auto;
+	}
+	.container1{
+		width:800px;
+		margin: 0 auto;
+		height: 400px;
+	}
+	.container2{
+		width:800px;
+		margin: 0 auto;
+	}
+	.btn{
+		display: inline-block;
+		width: 140px;
+		height: 30px;
+		line-height: 30px;
+		background: rgba(144,144,144,0.5);
+		padding:5px;
+		text-decoration: none; 
+		color: #fff;
+		text-align: center;
+		}
+	.btn1{
+		display: inline-block;
+		width: 140px;
+		height: 30px;
+		line-height: 30px;
+		background: rgba(255,255,255,0.5);
+		padding:5px;
+		text-decoration: none; 
+		color: #fff;
+		text-align: center;
+		}
+	.btn:hover{
+		background: rgba(0,0,0,0.5);
+		cursor: pointer;
+	}
+	.btn1:hover{
+		background: rgba(255,255,255,0.3);
+		cursor: pointer;
+	}
+	#main .info{
+		margin-top:50px;
+		text-align: center;
+	}
+	.about{
+		padding: 40px 0;
+	}
+	.service{
+		padding: 50px 0;
+		color:white;
+		background:#337ab7;
+		width:100%;
+	}
+	.clearfix{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	.container1 li{
+		float: left;
+		width:25%;
+	}
+	.box{
+		width: 800px;
+		margin: 10px;
+		height: 400px;
+		margin: 0 auto;
+	}
+	.callout{
+		background: url(http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/callout.jpg) 0 0 no-repeat;
+		background-size: cover;
+		padding: 200px 0;
+  		color: white;
+	}
+	.work{
+		padding: 50px 0;
+	}
+	.work ul{
+		margin-right: -30px;
+	}
+	.container2 li{
+		float: left;
+		width: 50%;	
+		margin-bottom: 30px;
+	}
+	.container2 li img{
+		width: 390px;
+		height: 305px;
+	}
+	.container2 li a:hover{
+		background-color: rgba(255,0,0,0.4);
+		cursor: pointer;
+	}
+	.motto{
+		background: #337ab7;
+		color: #fff;
+		padding: 50px 0;
+	}
+	.contact-icon{
+		margin: 0 auto;
+		padding: 10px;
+	}
+	.contact-icon li{
+		display: inline-block;
+		text-align: center;
+	}
+	.contact-icon li:first-child{
+		margin-left: 282px;
+	}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div id="wrap">
+			<div class="text-center vertical-center">
+				<h1>Garen Wang</h1>
+				<p>一个爱前端的菜鸟</p>
+				<a href="javascript:;" class="btn">FindOutMore</a>
+			</div>
+		</div>
+	</div>
+	<div id="main">
+		<div class="info">
+			<div class="about">
+				<div class="container">
+					<h1>小菜鸟的辛苦闯关之路--终于打到第一个BOSS了</h1>
+					<p>尽管任务虐我千百遍
+						我待任务任务如初恋，菜鸟也有春天！
+						<a href="javascript:；">征途</a>
+					</p>
+				</div>
+			</div>
+			<div class="service container1">
+				<h2>必备技能</h2>
+				<hr>
+				<div class="box">
+			<ul class="clearfix">
+			<li>
+				<i class="iconfont">&#xe601;</i>
+				<h4>HTML&CSS</h4>
+				<p>hTML+CSS布局</p>
+				<a href="../项目实战01/index.html" class="btn1" target="_blank">360囧图</a>
+			</li>
+			<li>
+				<i class="iconfont">&#xe603;</i>
+				<h4>JS$JQUERY</h4>
+				<p>原生JS、JQ插件</p>
+				<a href="../项目实战01/index.html" class="btn1" target="_blank">科学计算器</a>
+			</li>
+			<li>
+				<i class="iconfont">&#xe621;</i>
+				<h4>项目实战</h4>
+				<p>我的作品</p>
+				<a href="../项目实战01/index.html" class="btn1" target="_blank">天猫app</a>
+			</li>
+			<li>
+				<i class="iconfont">&#xe660;</i>
+				<h4>个人博客</h4>
+				<p>学习总结</p>
+				<a href="../项目实战01/index.html" class="btn1" target="_blank">点击简书</a>
+			</li>
+			</ul>
+				</div>
+			</div>
+		</div>
+		<div class="callout">
+			<div class="container">
+				<h1>努力闯关，早日进阶</h1>
+			</div>
+		</div>
+		<div class="work">
+			<div  class="container2 text-center">
+				<h2>作品展示</h2>
+				<hr>
+				<ul class="clearfix">
+					<li>
+						<a href="#"><img src="portfolio-1.jpg"></a>
+					</li>
+					<li>
+						<a href="#"><img src="portfolio-2.jpg"></a>
+					</li>
+					<li>
+						<a href="#"><img src="portfolio-3.jpg"></a>
+					</li>
+					<li>
+						<a href="#"><img src="portfolio-4.jpg"></a>
+					</li>
+					<a href="#" class="btn">更多作品</a>
+				</ul>
+			</div>
+		</div>
+		<div class="motto">
+			<div class="container text-center">
+				<h3>只要努力，菜鸟也会有春天！</h3>
+				<a href="#" class="btn1">Click Me</a>
+				<a href="#" class="btn">Look at Me</a>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="container">
+			<h4>About Me</h4>
+			<p>3000 Nature Street,HeFei
+        	<br> AnHui Province, China </p>
+        	<ul class="contact-info">
+				<li>(861)123-8888</li>
+				<li><span><a href="#">Garen Wang@163.com</a></span></li>
+			</ul>
+			<ul class="contact-icon">
+				<li>
+					<a href="#"><i class="iconfont">&#xe606;</i></a>
+				</li>
+				<li>
+					<a href="#"><i class="iconfont">&#xe600;</i></a>
+				</li>
+				<li>
+					<a href="#"><i class="iconfont">&#xe622;</i></a>
+				</li>
+			</ul>
+			<hr>
+			<p>Copyright © GarenWang 2016</p>
+		</div>
+	</div>
+</body>
+</html>
