@@ -169,11 +169,11 @@ virtualbox 安装 xp 虚拟机
 
 ## IE 7,8 比较
 
-### 声明 doctype ###
+### 不声明 doctype ###
 
 ![no-doctype](img/no-doctype.JPG)
 
-### 不声明 doctype ###
+### 声明 doctype ###
 
 ![has-doctype](img/has-doctype.JPG)
 
