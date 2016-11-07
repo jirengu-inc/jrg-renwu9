@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局2</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		body{
+			font-size: '微软雅黑',sans-serif;
+		}
+		#header{
+			height: 50px;
+			background-color: #ccc;
+		}
+		#content{
+			padding-left: 200px;
+		}
+		#content::after{
+            content: '';
+            clear: both;
+            display: block;
+		}
+		.main{
+			float: left;
+			background-color: green;
+			min-height: 500px;
+			width: 100%;
+		}
+		.aside{
+			float: left;
+			margin-left: -100%;
+			position: relative;
+			left: -200px;
+			background-color: red;
+			min-height: 500px;
+			width: 200px;
+		}
+		#footer{
+			height: 50px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="content">
+		<div class="main">内容区</div>
+		<div class="aside">左边栏</div>
+	</div>
+	<div>
+	<div id="footer">尾部</div>
+</body>
+</html>

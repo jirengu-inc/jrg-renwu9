@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	html,body,li,ul,div{
+		padding:0px;
+		margin:0px;
+	}
+	.layout{
+		width:900px;
+		margin:0 auto;
+	}
+	.header{
+		background-color: #ccc;
+		margin-top: 10px;
+		padding:10px 0;
+	}
+	.header .panels::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#content .panels{
+		margin-left:-20px;
+	}
+	.panels li{
+		list-style: none;
+		width:286px;
+		height:80px;
+		background:green;
+		float:left;
+		margin-top: 10px;
+		margin-left: 20px;
+	}
+	</style>
+</head>
+<body>
+	<div id="content" class="layout">
+		<div class="header">
+			<ul class="panels">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
