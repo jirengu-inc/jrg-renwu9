@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 html,body,ul,li{
+	 	margin:0;
+	 	padding:0;
+	 }
+	li{
+		list-style:none;
+	}
+	.box{
+		border:1px solid red;
+		overflow: hidden;
+		/*添加浮动之后，将父元素使用overflow撑开*/
+	}
+	.box>li{
+		float:left;
+		background: blue;
+		color:white;
+		padding:3px;
+	}
+	.box1{
+		border:1px solid red;
+		margin-top: 30px;
+		/*删除li标签的缝隙*/
+	}
+	.box1>li{
+		display: inline-block;
+		background: blue;
+		color:white;
+		padding:3px;
+	}
+	.box2{
+		border:1px solid red;
+		margin-top: 30px;
+		
+	}
+	.box2>li{
+		display: inline-block;
+		background: blue;
+		color:white;
+		padding:3px;
+		margin-left: -8px;
+		/*使用负margin使li之间的缝隙去除*/
+	}
+	.box2 li:first-child{
+		margin-left: 0px;
+		/*将第一个li的margin改为0，不然li会跑到父容器外面*/
+	}
+	.box3{
+		border:1px solid red;
+		margin-top: 30px;
+		font-size: 0;
+		/*s使用父容器的字体大小为0，子元素为原本大小也可以消除缝隙*/
+	}
+	.box3>li{
+		display: inline-block;
+		background: blue;
+		color:white;
+		padding:3px;
+		font-size: 16px;
+	}
+	</style>
+</head>
+<body>
+	<div >
+		<ul class="box">
+			<li>tag1</li>
+			<li>tag2</li>
+			<li>tag3</li>
+		</ul>
+	</div>
+	<div >
+		<ul class="box1">
+			<li>tag1</li
+			><li>tag2</li
+			><li>tag3</li>
+		</ul>
+	</div>
+	<div >
+		<ul class="box2">
+			<li>tag1</li>
+			<li>tag2</li>
+			<li>tag3</li>
+		</ul>
+	</div>
+	<div >
+		<ul class="box3">
+			<li>tag1</li>
+			<li>tag2</li>
+			<li>tag3</li>
+		</ul>
+	</div>
+</body>
+</html>
