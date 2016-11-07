@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  .grey div:first-of-type{
+    width: 0px;
+    height: 0px;
+    border-bottom: 20px solid #ccc;
+    border-top: 20px solid #fff;
+    border-left: 20px solid #fff;
+    border-right: 20px solid #fff;
+    margin-left: 15px;
+  }
+  .grey div:nth-child(2){
+    width: 200px;
+    height: 100px;
+    border: 1px solid #ccc;
+  }
+  .red div:nth-child(2){
+    width: 0px;
+    height: 0px;
+    border-bottom: 15px solid transparent;
+    border-top: 15px solid #f00;
+    border-left: 15px solid transparent;
+    border-right: 15px solid #f00;
+    position: relative;
+    left:172px;
+    bottom:102px;
+  }
+  .red div:first-of-type{
+    width: 200px;
+    height: 100px;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+  }
+  .white div:nth-child(2){
+    width: 0px;
+    height: 0px;
+    border-bottom: 20px solid #fff;
+    border-top: 20px solid transparent;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    position: relative;
+    bottom:141px;
+    left: 16px;
+    z-index: 2;
+  }
+  .white div:first-of-type{
+    width: 200px;
+    height: 100px;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+  }
+  .white div:nth-child(3){
+    width: 0px;
+    height: 0px;
+    border-bottom: 22px solid #ccc;
+    border-top: 22px solid transparent;
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    position: relative;
+    bottom:185px;
+    left: 14px;
+    z-index: 0;
+  }
+</style>
+<body>
+  <div class="grey">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="red">
+    <div></div>
+    <div></div>
+  </div>
+  <div class="white">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</body>
+</html>
