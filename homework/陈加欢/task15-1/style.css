@@ -1,0 +1,108 @@
+html,body,ul,li {
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif
+	font-size:14px;
+}
+h2,h3,p,a {text-align: center;}
+li { list-style: none; }
+a { text-decoration: none;}
+h2 { font-size: 28px; }
+hr { border-top: 1px solid #eee; } 
+.layout {
+	width:1000px;
+	margin:0 auto;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear:both;
+}
+.btn {
+	display: inline-block;
+	width:45px;
+	padding: 8px 5px;
+	color:#666;
+	border:1px solid #ccc;
+	border-radius: 3px;
+}
+/*#header {padding: 20px 0;}*/
+#header a{color:#666;}
+#header a:hover {color:#333;}
+#header .icon-rocket {font-size: 35px;}
+.nav>li {
+	float:left;
+	position: relative;
+	height: 55px;
+	line-height: 55px;
+	padding:0 10px;
+	text-align: center;
+}
+.nav>li:hover ul{
+	display: block;
+}
+.nav ul {
+	position: absolute;
+	left:0;
+	top:100%;
+	display: none;
+	text-align: left;
+	border:1px solid #ddd;
+	background-color: #fff;
+}
+.nav ul li {
+	height:35px;
+	line-height: 35px;
+	padding:0 10px;
+	border-bottom: 1px dashed #ddd;
+}
+.nav ul li:last-child { border-bottom: none; }
+.nav ul li:hover {background-color: #eee}
+.intro {
+	padding:20px 0;
+	background-color: #b84d45;
+	color:#fff;
+}
+.intro h2,.intro p {text-align: left;}
+.intro p {
+	height: 25px;
+	line-height: 25px;
+}
+.homepage { margin:45px 0;}
+.homepage .homepage-bg {
+	padding:15px;
+	box-sizing: border-box;
+	background: #eee;
+}
+.homepage a {color:#b84d45;}
+.homepage span {color:#666;}
+.works {text-align: center;}
+.works ul {margin-right:-45px;}
+.works li{
+	float: left;
+	margin-right:45px;
+	margin-bottom: 20px;
+	padding-bottom: 13px;
+	border:1px solid #ccc;
+}
+.works img {
+	width:300px;
+	height: 200px;
+}
+.works .btn:hover { color:#333; }
+.aboutme {
+	margin-bottom: 30px;
+	padding: 15px 0;
+	text-align: center;
+	color:#fff;
+	background-color: #b84d45;
+}
+.aboutme a.btn{ color:#fff; }
+#footer .border{
+	margin-top:30px;
+	padding:25px;
+	border-top:1px solid #eee;
+}
+

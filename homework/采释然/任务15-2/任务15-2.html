@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务15-2</title>
+    <style type="text/css">
+        *{
+        	margin: 0;
+        	padding: 0;
+        }
+        ul{
+        	list-style: none;
+        }
+        a{
+        	text-decoration: none;
+        }
+    	.layout{
+    		width: 1000px;
+    		margin: 0 auto;
+    	}
+    	#header,#main{
+    		font-family: '微软雅黑',sans-serif;
+    	}
+    	#header{
+    		background-image: url(./images/beijin.jpg);
+    		background-repeat: repeat-x;
+    		background-size: contain;
+    		padding: 350px 0 150px 0;
+    		color: #fff;
+    		text-align: center;
+    	}
+    	.nav{
+    		height: 70px;
+    		line-height: 70px;
+    		background-color: rgba(0,0,0,0.6);
+    	    position: fixed;
+    	    top: 0;
+    	    left: 0;
+    	    width: 100%;
+    	    z-index: 2;
+    	}
+    	.nav ul{
+    		float: right;
+    	}
+    	.nav li{
+    		float: left;
+    		margin: 0 20px;
+    	}
+    	.nav li>a{
+    		color: #fff;
+    	}
+    	.nav li>a:hover{
+    		color: #FEBF14;
+    	}
+    	.nav::after{
+    		content: '';
+    		clear: both;
+    		display: block;
+    	}
+    	#header h1{
+    		font-size: 50px;
+    		background-color: rgba(0,0,0,0.4);
+    		margin-bottom: 20px;
+    	}
+    	#header p{
+    		font-size: 20px;
+    		line-height: 30px;
+    		background-color: rgba(0,0,0,0.4);
+    		margin-bottom: 40px;
+    	}
+    	#header .button{
+    		display: inline-block;
+    		height: 50px;
+    		line-height: 50px;
+    		text-align: center;
+    		width: 150px;
+    		padding: 10px;
+    		color: #fff;
+    		background-color: rgba(155,0,0,0.7);
+    		font-size: 28px;
+    		font-weight: bold;
+    		border-radius: 10px;
+    	}
+    	#header .layout>a:hover{
+    		background-color: #911C1E;
+    	}
+    	.nav i{
+    		float: left;
+    	}
+    	#main{
+    		padding-top: 100px;
+    		text-align: center;
+    	}
+    	.line-height{
+    		line-height: 70px;
+    	}
+    	.strategy{
+    		margin-left: -20px;
+    		margin-bottom: 100px;
+       	}
+       	.strategy::after{
+       		content: '';
+       		clear: both;
+       		display: block;
+       	}
+       	.strategy>div{
+           width: 320px;
+           height: 200px;
+           float: left;
+           margin: 50px 0 50px 20px;
+       	}
+        .strategy i:hover{
+        	color: #F7D371;
+        }
+        .scenic-spot{
+            margin-left: -50px;
+        }
+        .scenic-spot::after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+        .scenic-spot>div{
+             width: 300px;
+             height: 420px;
+             float: left;
+             margin-left: 50px;
+             margin-top: 20px;
+             background-color: #fff;
+             position: relative;
+             line-height: 21px;
+
+        }
+        .scenic-spot img{
+        	width: 300px;
+        	height: 200px;
+        }
+        .gray-background{
+    		background-color: #eee;
+    		padding: 70px 0;
+    	}
+    	.shade{
+    		width: 300px;
+    		height: 200px;
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		background-color: rgba(246,200,135,0);
+    		z-index: 1;
+    		line-height: 200px;
+
+    	}
+    	.scenic-spot a:hover .shade{
+            background-color: rgba(246,200,135,0.7)
+    	}
+    	.scenic-spot a:hover .iconfont-2{
+    		color: rgba(255,255,255,1);
+    	}
+    	.way{
+             padding: 100px 0;
+             position: relative;
+    	}
+    	.axis{
+    		position: absolute;
+    		top: 480px;
+    		left: 50%;
+    		bottom: 235px;
+    		border: 3px solid #ccc;
+    		z-index: -1;
+    	}
+    	.way li{
+             padding: 20px 0;
+             margin-bottom: 70px;
+    	}
+    	.way li::after{
+    		content:'';
+    		clear: both;
+    		display: block;
+    	}
+    	.way h2{
+             margin-bottom: 100px;
+    	}
+    	.way li:nth-child(2n+1) div{
+    		display: inline-block;
+    		width: 300px;
+    		height: 250px;
+    		line-height: 30px;
+    		vertical-align: middle;
+            margin-left: -350px;
+
+    	}
+        .way li:nth-child(2n+1) img{
+        	width: 200px;
+        	height: 200px;
+        	border: 10px solid #ccc;
+        	border-radius: 50%;
+        	vertical-align: middle;
+        	margin-left:50px;
+ 
+        }
+        .way li:nth-child(2n) div{
+            display: inline-block;
+    		width: 300px;
+    		height: 250px;
+    		line-height: 30px;
+    		vertical-align: middle;
+            margin-right: -350px;
+        }
+        .way li:nth-child(2n) img{
+        	width: 200px;
+        	height: 200px;
+        	border: 10px solid #ccc;
+        	border-radius: 50%;
+        	vertical-align: middle;
+        	margin-right:50px;
+        }
+        .logon{
+        	padding: 100px 0;
+        	background-image: url(./images/jiaruwomen.jpg);
+        	background-repeat: no-repeat;
+        	background-size:cover;
+        }
+        .logon form{
+        	position: relative;
+        }
+        .logon h2{
+        	margin-bottom: 70px;
+        }
+        .input-text{
+        	width: 470px;
+        	height: 60px;
+        	font-size: 20px;
+        	margin-bottom: 23px;
+        	display: block;
+        	border: 1px solid #ccc;
+        	border-radius: 5px;
+        	padding-left: 20px;
+
+        }
+        .input-submit{
+        	width: 150px;
+        	height: 60px;
+        	background-color: #FED136;
+        	color: #fff;
+        	border: none;
+        	font-size: 20px;
+        	font-weight: bold;
+        }
+        .input-submit:hover{
+        	background-color: #F95733;
+        }
+        .logon textarea{
+        	position: absolute;
+        	top:0;
+        	right: 0;
+        	border: 1px solid #ccc;
+        	border-radius: 5px;
+        	font-size: 20px;
+        	padding-left: 20px;
+        	padding-top: 22px;
+        }
+    	@font-face {
+            font-family: 'iconfont';  /* project id："174232" */
+            src: url('http://at.alicdn.com/t/font_2kugsob0r1jj1yvi.eot');
+            src: url('http://at.alicdn.com/t/font_2kugsob0r1jj1yvi.eot') format('embedded-opentype'),
+            url('http://at.alicdn.com/t/font_2kugsob0r1jj1yvi.woff') format('woff'),
+            url('http://at.alicdn.com/t/font_2kugsob0r1jj1yvi.ttf') format('truetype'),
+            url('http://at.alicdn.com/t/font_2kugsob0r1jj1yvi.svg#iconfont') format('svg');
+        }
+        .nav .iconfont{
+           font-family:"iconfont" !important;
+           font-size:50px;font-style:normal;
+           -webkit-font-smoothing: antialiased;
+           -webkit-text-stroke-width: 0.2px;
+           -moz-osx-font-smoothing: grayscale;
+           color: #fff;
+        }
+         .strategy .iconfont-1{
+    	   font-family:"iconfont" !important;
+           font-size:70px;font-style:normal;
+           -webkit-font-smoothing: antialiased;
+           -webkit-text-stroke-width: 0.2px;
+           -moz-osx-font-smoothing: grayscale;
+           color: #000;
+    	}
+    	.scenic-spot .iconfont-2{
+           font-family:"iconfont" !important;
+           font-size:50px;font-style:normal;
+           position: absolute;
+           margin-left: -28px;
+           -webkit-font-smoothing: antialiased;
+           -webkit-text-stroke-width: 0.2px;
+           -moz-osx-font-smoothing: grayscale;
+           color: rgba(255,255,255,0);
+    	}
+    	.footer{
+    		padding: 50px 0 30px 0;
+            text-align: center;
+    	}
+    	.footer a{
+    		margin: 0 20px;
+    	}
+    	.footer p{
+    		margin-bottom: 20px;
+    	}
+    	.footer .iconfont-3{
+           font-family:"iconfont" !important;
+           font-size:40px;font-style:normal;
+           -webkit-font-smoothing: antialiased;
+           -webkit-text-stroke-width: 0.2px;
+           -moz-osx-font-smoothing: grayscale;
+           color: #000;
+    	}
+    </style>
+</head>
+<body>
+	<div id="header">
+	    <div class="nav">
+	        <div class="layout">
+		        <a href="#"><i class="iconfont">&#xe621;</i></a>
+		        <ul>
+		            <li><a href="#">首页</a></li>
+		            <li><a href="#">西藏指南</a></li>
+		            <li><a href="#">值得一看</a></li>
+		            <li><a href="#">推荐路线</a></li>
+		            <li><a href="#">加入我们</a></li>
+		       </ul>
+		    </div>
+	    </div>
+	    <div class="layout">
+	        <h1>出 发 ！去 西 藏</h1>
+	        <p>做你想做的事，成为你想成为的人</p>
+		    <a href="#" class="button">出 发</a>
+	    </div>
+	</div>
+	<div id="main">
+		<div class="layout">
+		    <h2 class="line-height">西 藏 指 南</h2>
+		    <p>关于西藏的一切，我们都可以解答。</p>
+		    <div class="strategy">
+			    <div>
+				    <a href="#"><i class="iconfont-1">&#xe60c;</i></a>
+				    <h3 class="line-height">西藏地图</h3>
+				    <p>最详细的高清西藏地图</p>
+			    </div>
+		        <div>
+				    <a href="#"><i class="iconfont-1">&#xe60e;</i></a>
+				    <h3 class="line-height">进藏装备</h3>
+				    <p>进藏必备装备推荐</p>
+			    </div>
+	            <div>
+				    <a href="#"><i class="iconfont-1">&#xe614;</i></a>
+				    <h3 class="line-height">住宿攻略</h3>
+				    <p>西藏住宿大全</p>
+		        </div>
+		    </div>
+		</div>
+        <div class="gray-background">
+            <div class="layout">
+	        	<h2 class="line-height">值 得 一 看</h2>
+	        	<p>去西藏不可错过的地方</p>
+	        	<div class="scenic-spot">
+	        		<div>
+	        		    <a href="#">
+	        		        <div class="shade">
+	        		            <i class="iconfont-2">&#xe60f;</i>
+	        		        </div>
+	        		    </a>
+	        			<img src="./images/budalagong.jpg">
+	        			<h4>布达拉宫</h4>
+	        			<p>布达拉宫位于中国西藏自治区首府拉萨市区西北的玛布日山上，是一座宫堡式建筑群，最初是吐蕃王朝赞普松赞干布为迎娶尺尊公主和文成公主而兴建。于17世纪重建后，成为历代达赖喇嘛的冬宫居所，为西藏政教合一的统治中心。现被列为世界文化遗产。</p>
+	        		</div>
+	        		<div>
+	        		    <a href="#">
+	        		        <div class="shade">
+	        		            <i class="iconfont-2">&#xe60f;</i>
+	        		        </div>
+	        		    </a>
+	        			<img src="./images/yangzhuoyongcuo.jpg">
+	        			<h4>羊卓雍错</h4>
+	        			<p>羊卓雍错，通常简称为“羊湖”，与玛旁雍错、纳木错并称西藏三大神湖。羊卓雍错是寻找转世灵童的圣湖，大活佛可以从湖中看出显影，指示灵童所在的大方位。不同时刻阳光的照射，羊湖会显现出不同层次、极其丰富的蓝色，如梦似幻，初见羊湖，她的艳丽让人几乎不敢相信。</p>
+	        		</div>
+	        		<div>
+	        		    <a href="#">
+	        		        <div class="shade">
+	        		            <i class="iconfont-2">&#xe60f;</i>
+	        		        </div>
+	        		    </a>
+	        			<img src="./images/namucuo.jpg">
+	        			<h4>纳木错</h4>
+	        			<p>纳木错是西藏最大的湖泊，也是世界上海拔最高的咸水湖，更是朝圣者心目中的圣地。据传纳木错是帝释之女、念青唐古拉之妻，被善男信女视为必去的神圣之地，从古到今香客不断。</p>
+	        		</div>
+	        		<div>
+	        		    <a href="#">
+	        		        <div class="shade">
+	        		            <i class="iconfont-2">&#xe60f;</i>
+	        		        </div>
+	        		    </a>
+	        			<img src="./images/gugewangguo.jpg">
+	        			<h4>古格王国遗址</h4>
+	        			<p>在公元10世纪至17世纪初，古格王国雄居在西藏西部，弘扬佛法，抵御外侵，在西藏吐蕃王朝以后的历史舞台上扮演了重要的角色，由于1630年的一场战争使之灰飞烟灭，销声匿迹。在西藏社会进入各自为政，割据时期。影响最大最长的是古格长达七百年的历史，并为后人留下了壁画、雕塑、石刻等精堪绝伦的宗教艺术作品。</p>
+	        		</div>
+	        		<div>
+	        		    <a href="#">
+	        		        <div class="shade">
+	        		            <i class="iconfont-2">&#xe60f;</i>
+	        		        </div>
+	        		    </a>
+	        			<img src="./images/zhashibulunsi.jpg">
+	        			<h4>扎什伦布寺</h4>
+	        			<p>扎什伦布寺意为“吉祥须弥寺”，全名为“扎什伦布白吉德钦曲唐结勒南巴杰瓦林”，意为“吉祥须弥聚福殊胜诸方州”。扎什伦布寺是西藏日喀则地区最大的寺庙，位于日喀则市城西的尼玛山东面山坡上。扎什伦布寺为四世之后历代班禅驻锡之地。它与拉萨的“三大寺”甘丹寺、色拉寺、哲蚌寺合称藏传佛教格鲁派的“四大寺”。</p>
+	        		</div>
+	        		<div>
+	        		    <a href="#">
+	        		        <div class="shade">
+	        		            <i class="iconfont-2">&#xe60f;</i>
+	        		        </div>
+	        		    </a>
+	        			<img src="./images/shenshan.jpg">
+	        			<h4>冈仁波齐神山</h4>
+	        			<p>冈仁波齐是冈底斯山脉的主峰。藏语的意思是“雪山之宝”或“雪圣”。被西藏苯教、佛教、印度教及古耆那教的信奉者尊为神灵之所在的世界中心。相传它是佛主释迦牟尼的道场。印度教说它是湿婆大圣的殿堂，佛教中的须弥山便指此山。</p>
+	        		</div>
+	        	</div>
+	        </div>
+	    </div>
+	     <div class="layout way">
+	        <div class="axis"></div>
+	        <h2>路 线 推 荐 </h2>
+	        <ul>
+	            <li>
+	                <div>
+	            	    <h3>第一站</h3>
+	            	    <h4>拉萨</h4>
+	            	    <p>
+	            	       拉萨是中国西藏自治区的首府，西藏的政治、经济、文化和宗教中心，
+	            	       也是藏传佛教圣地，拉萨推荐景点有：布达拉宫，大昭寺，八廊街。
+	            	    </p>
+	            	</div>
+	            	    <img src="./images/lasa.jpg">
+	            </li>
+	            <li>
+	                <img src="./images/linzhi.jpg">
+	            	<div>
+	            	    <h3>第二站</h3>
+	            	    <h4>林芝</h4>
+	            	    <p>
+	            	       林芝市是西藏自治区的一个地级市，古称工布，
+	            	       “林芝”是藏文“尼池”或“娘池”音译而来，藏语意为“娘氏家庭的宝座或太阳的宝座”。
+	            	       林芝推荐景点有：雅鲁藏布大峡谷，南迦巴瓦峰，米堆冰川，八一镇。
+	            	    </p>
+	            	</div>
+	            </li>
+	            <li>
+	                <div>
+	            	    <h3>第三站</h3>
+	            	    <h4>山南</h4>
+	            	    <p>
+	            	       南是中华人民共和国西藏自治区下辖的一个地级市，位于冈底斯山至念青唐古拉山以南，雅鲁藏布江干流中下游地区，北接西藏首府拉萨，西与日喀则毗邻，东与林芝相连，南与印度、不丹两国接壤，是西藏古文明的发祥地之一。山南推荐景点有：羊卓雍措，拉姆拉错，雍布拉康。
+	            	    </p>
+	            	</div>
+	            	    <img src="./images/shannan.jpg">
+	            </li>
+	            <li>
+	            	<img src="./images/rikeze.jpg">
+	            	<div>
+	            	    <h3>第四站</h3>
+	            	    <h4>日喀则</h4>
+	            	    <p>
+	            	       日喀则建城至今已有600多年的历史，是西藏的第二大城市，是后藏曾经的政教中心，也是历代班禅的驻锡之地。美丽旖旎的自然风光，独具特色的后藏生活，日喀则被誉为“最如意美好的庄园”，境内有“世界第一高峰”——珠穆朗玛峰。山南推荐景点有：扎什伦布寺，珠峰大本营，卡若拉冰川。
+	            	    </p>
+	            	</div>
+	            </li>
+	            <li>
+	            	<div>
+	            	    <h3>第五站</h3>
+	            	    <h4>纳木错</h4>
+	            	    <p>
+	            	       纳木错位于西藏自治区中部，是西藏第二大湖泊，也是中国第三大的咸水湖。“纳木错”为藏语，蒙古语名称为“腾格里海”，都是“天湖”之意。纳木错是西藏的“三大圣湖”之一。纳木措是古象雄佛法雍仲本教的第一神湖，为著名的佛教圣地之一。山南推荐景点有：玛尼堆，扎西半岛。
+	            	    </p>
+	            	</div>
+	                <img src="./images/namucuo.jpg">
+	            </li>
+	        </ul>
+	    </div>
+	    <div class="logon">
+	    	<div class="layout">
+	    	    <h2>加入我们</h2>
+	    	    <form action="" method="post">
+	    	    	<input type="text" name="name" placeholder="YOUR NAME" class="input-text">
+	    	    	<input type="text" name="email" placeholder="YOUR EMAIL" class="input-text">
+	    	    	<input type="text" name="nember" placeholder="YOUR PHONE" class="input-text">
+	    	    	<textarea name="messsage" placeholder="YOUR MESSAGE" rows="9" cols="36"></textarea>
+	    	    	<input type="submit" value="提 交" class=input-submit>
+	    	    </form>
+	    		
+	    	</div>
+	    </div>
+	</div>
+	<div class="footer">
+	    <p>Copyright © AllenWalker Website 2016</p>
+	    <a href="#"><i class="iconfont-3">&#xe6ed;</i></a>
+	    <a href="#"><i class="iconfont-3">&#xe602;</i></a>
+	    <a href="#"><i class="iconfont-3">&#xe636;</i></a>
+	</div>
+</body>
+</html>
