@@ -7,6 +7,12 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
+<style type="text/css">
+    iframe{
+        width: 100%;
+        height: 500px;
+    }
+</style>
 </head>
 <body>
 <form name="myForm" action="/test/6.php" method="get">
@@ -32,9 +38,11 @@
       <option value="audi" selected>Audi</option>
     </select>
     <button type="submit">提交</button>
-</form>
+     </form>
 
-</form>
-    
+<iframe src="page.html"></iframe>
+<iframe src="http://www.baidu.com" name="myPage"></iframe>
+<p><a href="http://www.w3cschool.cc" target="myPage">W3Cschool.cc</a></p>
+   
 </body>
 </html>
