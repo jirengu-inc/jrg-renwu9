@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>The Last Of US</title>
+	<style>
+	*{
+		padding:0px;
+		margin:0px;
+		font-family:"微软雅黑";
+	}
+	a{
+		text-decoration: none;
+	}
+	.layout{
+		width:900px;
+		margin:0 auto;
+	}
+	#header{
+		background:url(http://i1.piimg.com/1949/5195bfdc23061d3c.jpg) no-repeat ;
+		background-size: 100% ;
+		height:800px;
+		display:flex;
+        align-items: center;
+	}
+	#header .title{
+		text-align: center;
+		color:white;
+		font: 50px/1.2 "Georgia";
+	}
+	#header .title a{
+		margin:20px auto;
+		display: block;
+		line-height: 40px;
+		width:150px;
+		height:40px;
+		background:#2F4F4F ;
+		font-size: 20px;
+		color:white;
+	}
+	#header .title a:hover{
+		background:rgb(20,68,106);
+	}
+	#main{
+		text-align: center;
+		padding-top:50px;
+		padding-bottom: 50px;
+		line-height: 40px;
+		
+	}
+	
+	#content-top{
+		background:rgba(9,74,66,0.6) no-repeat;
+		background-size:100%;
+		height:500px;
+	}
+	#content-top>.content>div:first-child{
+		text-align: center;
+		color:white;
+		font-size:30px;
+		padding:20px 0;
+	}
+	#content-top>.content div:nth-child(2){
+		width:100px;
+		margin:0 auto;
+		border:2px solid white
+		;
+	}
+	#content-top>.content div:nth-child(3) li{
+		list-style: none;
+		float:left;
+		margin:60px;
+		text-align: center;
+		padding-top:50px;
+	}
+	#content-top>.content div:nth-child(3) li div{
+		width:100px;
+		height:100px;
+		border-radius: 100px;
+		background: white;
+		text-align: center;
+		line-height: 100px;
+	}
+	#content-top>.content div:nth-child(3) li>h3,
+	#content-top>.content div:nth-child(3) li>p
+	{
+		padding-top: 10px;
+	}
+	#content-top>.content div:nth-child(3) li>a{
+		margin:20px auto;
+		display: block;
+		line-height: 30px;
+		width:100px;
+		height:30px;
+		background:#2F4F4F ;
+		font-size: 16px;
+		color:white;
+	}
+	#content-top>.content div:nth-child(3) li a:hover{
+		background:rgb(20,68,106);
+	}
+	@font-face {
+ 		font-family: 'iconfont';  /* project id："170187" */
+  		src: url('http://at.alicdn.com/t/font_jtv8kzo7l60w9udi.eot');
+  		src: url('http://at.alicdn.com/t/font_jtv8kzo7l60w9udi.eot') format('embedded-opentype'),
+ 		 url('http://at.alicdn.com/t/font_jtv8kzo7l60w9udi.woff') format('woff'),
+  		url('http://at.alicdn.com/t/font_jtv8kzo7l60w9udi.ttf') format('truetype'),
+ 		 url('http://at.alicdn.com/t/font_jtv8kzo7l60w9udi.svg#iconfont') format('svg');
+	}
+	.iconfont {
+  		font-family:"iconfont" !important;
+ 		 font-size:50px;
+  		font-style:normal;
+  		color:rgb(3,36,58);
+  		cursor: pointer;
+	}
+	#content-center img{
+		width:100%;
+		height:600px;
+		display: block;
+		float:left;
+	}
+	#content-center .background{
+		width:100%;
+		height:300px;
+		float:left;
+		background: rgba(0,0,0,0.4);
+		margin-left: -100%;
+		color:white;
+		font-size: 60px;
+		text-align: center;
+		padding-top:300px;
+	}
+	#content-center .background:hover{
+		background: rgba(0,0,0,0)
+	}
+	#content-bottom {
+		background:rgba(0,0,0,0.1);
+
+	}
+	#content-bottom::after{
+		content: "";
+		display: block;
+		clear: both;
+		height:30px;
+	}
+	#content-bottom li{
+		float:left;
+		list-style: none;
+		margin-right:20px;
+		margin-top: 20px
+	}
+	
+	#content-bottom .layout p{
+		clear:both;
+		padding-top: 30px;
+		text-align: center;
+		font-size:40px;
+		color:rgba(0,0,0,0.4);
+	}
+	#content-bottom  li:nth-child(even){
+		position: relative;
+		left:20px;
+	}
+	#content-bottom  li:nth-child(n+1)
+	{	
+		background-size:430px 260px;
+		width:430px;
+		height:260px;
+	}
+	#content-bottom  li:first-child{
+		background:url(http://i1.piimg.com/1949/817a188c8a58a94f.jpg) no-repeat ;
+	}
+	#content-bottom li:nth-child(2){
+		background:url(http://i1.piimg.com/1949/4a5e6510d6f2fbb9.jpg) no-repeat ;
+	}
+	#content-bottom li:nth-child(3){
+		background:url(http://i1.piimg.com/1949/7fac54f3619c5e23.jpg) no-repeat ;
+	}
+	#content-bottom li:nth-child(4){
+		background:url(http://i1.piimg.com/1949/f3a3a6cfed669fdf.jpg) no-repeat ;
+	}
+	#content-bottom  li:nth-child(n+1) a{
+		text-align: center;
+		padding-top:100px;
+		display: none;
+	}
+	#content-bottom  li:nth-child(n+1):hover a{
+		display: block;
+		background:rgba(255,255,255,0.3);
+		width:430px;
+		height:160px;
+		
+	}
+	#content-bottom div:nth-child(2){
+		margin:20px auto;
+		width:200px;
+		border-bottom: 2px solid rgba(0,0,0,0.4);
+	}
+	#content-bottom ul::after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	#content-bottom .layout>a{
+		display: block;
+		width:160px;
+		height:60px;
+		background: rgb(20,68,106);
+		line-height: 60px;
+		font-size: 30px;
+		text-align: center;
+		margin: 30px auto;
+		color:white;
+	}
+	#footer{
+		background: rgb(23,50,70);
+		width:100%;
+	}
+	.footer-content{
+		text-align: center;
+	}
+	.footer-content p{
+		font:30px/1.2 "GungsuhChe";
+		padding:30px 0;
+		color:white;
+	}
+	.footer-content a{
+		display: inline-block;
+		margin:0px 20px 30px 0;
+		width:150px;
+		height:40px;
+		font-size:20px;
+		line-height: 40px;
+		background:rgb(197,31,31);
+		color:white;
+	}
+	.footer-content a:hover{
+		background: white;
+		color:rgb(197,31,31);
+	}
+	.link-list{
+		padding-top: 50px;
+		width:250px;
+		margin:0 auto;
+	}
+	.link-list li{
+		list-style: none;
+		text-align: center;
+		padding:10px 0;
+	}
+	.link-list li i{
+		font-size:16px;
+	}
+	.link-list li:nth-child(n+5){
+		float:left;
+	}
+	.link-list li:nth-child(n+5) i{
+		font-size:60px;
+		color:rgb(0,90,171);
+		padding-left:10px;
+	}
+	.link-list li:last-child i{
+		margin-left:10px;
+	}
+	.link-list ul:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	.link-list>div{
+		border-top:2px solid #ccc;
+		opacity: 0.4;
+		width:100px;
+		margin:20px auto;
+	}
+	.link-list>p{
+		font-size:12px;
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="title layout" >
+			<h2>The Last Of Us</h2>
+			<p><a href="#content-top">了解更多</a>
+		</div>
+	</div>
+	<div id='main' class="layout">
+		<h2>你该如何在这个充满恐怖的世界中存活下来？</h2>
+		<p>或许你需要一把好武器或者<a href="">一本生存指南</a></p>
+	</div>
+	<div id="content-top">
+		<div class="content layout" >
+			<div >游戏性能</div>
+			<div></div>
+			<div class="items">
+				<ul>
+					<li>
+						<div><i class="iconfont">&#xe6a3;</i></div>
+						<h3>丰富的游戏</h3>
+						<p>更多场景互动</p>
+						<a href="">场景图片</a>
+					</li
+					><li>
+						<div><i class="iconfont">&#xe621;</i></div>
+						<h3>多样的枪支</h3>
+						<p>上百种武器</p>
+						<a href="">武器展示</a>
+					</li
+					><li>
+						<div><i class="iconfont">&#xe61c;</i></div>
+						<h3>多选的难度</h3>
+						<p>挑战你的极限</p>
+						<a href="">危险敌人</a>
+					</li
+					><li>
+						<div><i class="iconfont">&#xe600;</i></div>
+						<h3>细腻的感情</h3>
+						<p>带入感十足</p>
+						<a href="">故事概括</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="content-center">
+		<img src="http://i1.piimg.com/1949/20c5356287750a57.jpg" alt="">
+		<div class="background"><p>欢迎来到美国末日</p>
+		</div>
+	</div>
+	<div id="content-bottom">
+		<div class="layout">
+			<p>游戏细节</p>
+			<div></div>
+			<div>
+				<ul>
+					<li><a href=""><i class="iconfont">&#xe60e;</i></a></li>
+					<li><a href=""><i class="iconfont">&#xe60e;</i></a></li>
+					<li><a href=""><i class="iconfont">&#xe60e;</i></a></li>
+					<li><a href=""><i class="iconfont">&#xe60e;</i></a></li>				
+				</ul>
+			</div>
+			<a href="">现在购买</a>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footer-content layout">
+		<p>Now there's more content waiting for you to find！</p>
+		<a href="">全新DLC</a>
+		<a href="">多人合作</a>
+		</div>
+	</div>
+	<div id="footer-end" class="layout">
+		<div class="link-list">
+			<ul>
+				<li><h2>关于我们</h2></li>
+				<li>美国加尼福利亚圣莫尼卡Naughty Dog公司</li>
+				<li><i class="iconfont">&#xe601;</i>023-354587</li>
+				<li><i class="iconfont">&#xe624;</i><a href="">web@naughtydog.com</a></li>
+				<li><i class="iconfont">&#xe616;</i></li>
+				<li><i class="iconfont">&#xe603;</i></li>
+				<li><i class="iconfont">&#x3436;</i></li>
+			</ul>
+			<div></div>
+			<p>Copyright © Your Website 2016</p>
+		</div>
+
+	</div>
+</body>
+</html>
