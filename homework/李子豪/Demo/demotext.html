@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>The Last Of Us</title>
+	<style>
+	html,body,div,ul,li,p,h1,h2,h3,h4,h5{
+		margin:0px;
+		padding:0px;
+		box-sizing:border-box;
+	}
+	@font-face {
+  		font-family: 'iconfont';  /* project id："170276" */
+ 		 src: url('http://at.alicdn.com/t/font_at4cey9f6xenrk9.eot');
+ 		 src: url('http://at.alicdn.com/t/font_at4cey9f6xenrk9.eot') format('embedded-opentype'),
+  		 url('http://at.alicdn.com/t/font_at4cey9f6xenrk9.woff') format('woff'),
+ 		 url('http://at.alicdn.com/t/font_at4cey9f6xenrk9.ttf') format('truetype'),
+ 		 url('http://at.alicdn.com/t/font_at4cey9f6xenrk9.svg#iconfont') format('svg');
+	}
+	@media only screen and(max-width:720px){
+		.layout{
+			width:600px;
+		}
+		#content .works ul li{
+		float:left;
+		width:180px;
+		height:140px;
+		border:1px solid #ccc;
+		border-radius: 2px;
+		list-style: none;
+		margin-right:10px;
+		margin-top: 10px;
+		text-align: center;
+		padding-top: 3px;
+		font-family: "Verdana";
+		font-family: "微软雅黑";
+		line-height: 20px;
+	}
+	}
+	.iconfont{
+		font-family: 'iconfont'!important;
+  		font-style:normal;
+  		margin-left: 5px;
+	}
+	.layout{
+		width:1000px;
+		margin:0 auto;
+	}
+	#header::after{
+		content: "";
+		display: block;
+		clear: both;
+		*zoom:1;
+	}
+	#header{
+		background: #202424;
+	}
+	#header>a{
+		float:left;
+		margin-top: 10px;
+		margin-left: 30px;
+	}
+	#header .title>.header-list>li{
+		list-style:none;
+		float:left;
+		font:20px/2.6 "微软雅黑";
+		position: relative;		
+	}
+	#header .title>.header-list>li:hover{
+		background: #14001C;
+		color:#ccc;
+	}
+	#header .title>.header-list>li>a{
+		text-align: center;
+		display: block;
+		padding: 0 30px;
+		color:white;
+		text-decoration: none;
+	}
+	#header .child{
+		display: none;
+		list-style: none;
+		position: absolute;
+		top:100%;
+		left:0px;
+	}
+	#header .child li a{
+		display: block;
+		width:150%;
+		text-align: center;
+		text-decoration: none;
+		background:#202424;
+		color:white;
+	}
+	#header .child li a:hover{	
+		background: #14001c;
+	}
+	#header .title>.header-list>li:hover .child{
+		display: block;
+	}
+	#content .intor{
+		background: url(http://p1.bpimg.com/1949/6b27faad5c86b0b0.jpg) no-repeat;
+		background-size: 100% 430px;
+		width:100%;
+		height:430px;
+	}
+	#content {
+		background:url(http://p1.bqimg.com/1949/6b37147a137e4f54.jpg)  no-repeat;
+		background-size: 100% 100%;
+	}
+	.breadcrumb{
+		padding:10px 10px;
+		border-radius: 5px;
+		background: rgba(0,0,28,0.5);
+		margin-top: 30px;
+		font:20px/1.2 "微软雅黑";
+		color:#eee;
+	}
+	.breadcrumb a{
+		text-decoration: none;
+		color:#aaa;
+	}
+	#content .works ul li:nth-child(3),
+	#content .works ul li:nth-child(6){
+		margin-right:-50px;
+	}
+	#content .works ul li{
+		float:left;
+		width:300px;
+		height:360px;
+		border:1px solid #ccc;
+		border-radius: 2px;
+		list-style: none;
+		margin-right:50px;
+		margin-top: 50px;
+		text-align: center;
+		padding-top: 3px;
+		font-family: "Verdana";
+		font-family: "微软雅黑";
+		line-height: 40px;
+	}
+	#content .works img{
+		border:1px solid #ddd;
+	}
+	#content .works h2{
+		color:#ccc;
+	}
+	#content .works p{
+		font-size: 13px;
+		color:#aaa;
+	}
+	#content .works a:last-child,#footer a{
+		display: inline-block;
+		border:1px solid #ccc;
+		width:60px;
+		height:30px;
+		text-decoration: none;
+		line-height: 30px;
+		border-radius: 2px;
+		color:#999;
+		margin-top: 10px;
+	}
+	#content .works a:last-child:hover,#footer a:hover{
+		color:#666;
+		border:1px solid #666 ;
+	}
+	#content::after{
+		content: "";
+		display: block;
+		clear: both;
+		margin-bottom:30px;
+		*zoom:1;
+	}
+	#footer{
+		background:#222;
+		font:30px/1.5 "微软雅黑";
+		text-align: center;
+		padding: 20px 0;
+		color:#eee;
+	}
+	#footer a{
+		font-size: 14px;
+	}
+	 .ending{
+		background: white;
+		margin-top:50px;
+		border-top: 2px solid #ccc;
+		padding: 40px 0;
+		text-align: center;
+		line-height: 1.5;
+		font-family: "微软雅黑";
+	}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<a href=""><img src="http://p1.bqimg.com/1949/3e8295fbd437c472.jpg" alt=""></a>
+		<div class="layout title">
+			<ul class="header-list">
+				<li><a href="">顽皮狗</a></li>
+				<li><a href="">故事</a></li>
+				<li><a href="">内容</a></li>
+				<li><a href="">购买</a></li>
+				<li>
+					<a href="">更多<i class="iconfont">&#xe616;</i></a>
+					<ul class="child">
+						<li><a href="">全新DLC</a></li>
+						<li><a href="">多人联机</a></li>
+						<li><a href="">Life behind</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>	
+	</div>
+	<div id="content">
+		<div class="intor">
+		</div>
+		<div class="layout breadcrumb">
+			<a href="">封面</a>/玩家作品
+		</div>
+		<div class="works layout">
+			<ul>
+				<li>
+					<a href=""><img src="http://p1.bqimg.com/1949/400f2442b82c1474.jpg" alt=""></a>
+					<h2>Life Behind</h2>
+					<p>Welcome Play The New DLC</p>
+					<a href="">查看</a>
+				</li>
+				<li>
+					<a href=""><img src="http://p1.bqimg.com/1949/eda59e620bab226d.jpg" alt=""></a>
+					<h2>Free Theme</h2>
+					<p>Three Themes For You  Choose</p>
+					<a href="">查看</a>
+				</li>
+				<li>
+					<a href=""><img src="http://p1.bqimg.com/1949/be06ee30d18643bb.jpg" alt=""></a>
+					<h2>DualShock4</h2>
+					<p>Limited DualShock4 For You</p>
+					<a href="">查看</a>
+				</li>
+				<li>
+					<a href=""><img src="http://p1.bqimg.com/1949/89dbfda3697fccb0.jpg" alt=""></a>
+					<h2>MultiPlayer</h2>
+					<p>Experience The Fresh Felling</p>
+					<a href="">查看</a>
+				</li>
+				<li>
+					<a href=""><img src="http://p1.bqimg.com/1949/b47141cbcfd84009.jpg" alt=""></a>
+					<h2>New Finger</h2>
+					<p>Product Over Value Price</p>
+					<a href="">查看</a>
+				</li>
+				<li>
+					<a href=""><img src="http://p1.bqimg.com/1949/fbf042b6ce70530f.jpg" alt=""></a>
+					<h2>New OST</h2>
+					<p>A Collection Of 12 songs</p>
+					<a href="">查看</a>
+				</li>
+			</ul>
+		</div>
+	</div>	
+	<div id="footer">
+		<h2>还有更多游戏等待你的发现</h2>
+		<p>期待再次与你相遇</p>
+		<a href="">查看更多</a>
+	</div>
+	<div class="ending layout">
+			本网页不作宣传使用
+			<br/>有侵犯版权行为请联系本人
+			<p><a href="mailto:784757555@qq.com">联系我</a></p>
+		</div>
+</body>
+</html>
