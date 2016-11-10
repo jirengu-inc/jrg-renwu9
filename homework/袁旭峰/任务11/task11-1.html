@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>task11-1</title>
+</head>
+<body>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+    }
+    .nav{
+      height: 30px;
+      width: 100%;
+      background:#ccc;
+    }
+    div > ul{
+      width:500px;
+      height:30px;
+    }
+    .list{
+      list-style-type: none;
+      float:left;
+      padding-left: 3px;
+      padding-right:3px;
+      text-align: center;
+      position:relative;
+    }
+    .list a{
+      font-family: "微软雅黑";
+      line-height: 30px;
+      text-decoration: none;
+      color: #000;
+      padding-left: 12px;
+      padding-right:12px;
+    }
+    .list:hover{
+      background:#999;
+    }
+    .list:hover .hidden{
+      display:block;
+    }
+    .hidden{
+      display: none;
+      position:absolute;
+      height:100%;
+    }
+    .hidden li{
+      list-style-type:none;
+      border-left:1px solid #eee;
+      border-right:1px solid #eee;
+      padding-right:12px;
+      padding-left:12px;
+    }
+    .hidden li:hover{
+      background:#eee;
+    }
+    .hidden li:nth-child(3){
+      border-bottom:1px solid #eee;
+    }
+    .front li{
+      margin-left:-15px;	
+    }
+    .front-tool li{
+      margin-left:-20px; 
+    }
+    .server li{
+      margin-left:-11px;
+    }
+    .hidden li:hover{
+      background:#ccc;
+    }
+  </style>
+  <div class="nav">
+    <ul>
+      <li class="list front">
+        <a href="#">前端</a>
+        <ul class="hidden">
+          <li>
+            <a href="#">Javascript</a>
+          </li>
+          <li>
+            <a href="#">CSS</a>
+          </li>
+          <li>
+            <a href="#">HTML</a>
+          </li>
+        </ul>
+      </li>
+      <li class="list server">
+        <a href="#">服务端</a>
+        <ul class="hidden">
+          <li>
+            <a href="#">Node</a>
+          </li>
+          <li>
+            <a href="#">PHP</a>
+          </li>
+          <li>
+            <a href="#">JAVA</a>
+          </li>
+        </ul>
+      </li>
+      <li class="list front-tool">
+        <a href="">前端工具</a>
+        <ul class="hidden">
+          <li>
+            <a href="#">Sublime</a>
+          </li>
+          <li>
+            <a href="#">Webstorm</a>
+          </li>
+          <li>
+            <a href="#">Git</a>
+          </li>
+        </ul>
+      </li>
+      <li class="list html">
+        <a href="#">HTML</a>
+      </li>
+      <li class="list node">
+        <a href="#">NODE</a>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
