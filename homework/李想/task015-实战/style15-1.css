@@ -1,0 +1,204 @@
+/* width=1000px; */
+/* @import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"); */
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+#header {
+  background: white;
+}
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.container-header {
+  height: 50px;
+  line-height: 50px;
+}
+
+.logo {
+  float: left;
+}
+
+.logo i {
+  line-height: 50px;
+  color: #444;
+}
+
+.menu {
+  height: 50px;
+  float: left;
+  margin: 0;
+}
+
+.menu li {
+  float: left;
+  line-height: 50px;
+  margin-left: 20px;
+  font-size: 0.9em;
+}
+
+.menu li:hover a {
+  color: #666;
+}
+
+li a {
+  color: #444;
+}
+
+.submenu {
+  position: relative;
+}
+
+.drop-down {
+  position: absolute;
+  border: 1px solid #ccc;
+  background: white;
+}
+
+.drop-down {
+  display: none;
+}
+
+.submenu:hover .drop-down {
+  display: block;
+}
+
+.drop-down li:hover {
+  background: #eee;
+}
+
+.drop-down li {
+  display: block;
+  width: 60px;
+  height: 35px;
+  line-height: 35px;
+  margin-left: 0;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.drop-down li:first-child {
+  border-bottom: 1px dashed #eee;
+}
+
+.drop-down li:last-child {
+  border-top: 1px dashed #eee;
+}
+
+/* self */
+.self {
+  background: #b84d45;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.container-self {
+  color: white;
+}
+
+/* works */
+.bar {
+  width: 100%;
+  border-radius: 3px;
+  background: #eee;
+  padding-left: 10px;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.bar a {
+  color: #b84d45;
+}
+
+.bar p {
+  color: #333;
+  line-height: 50px;
+}
+
+.list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-works li {
+  float: left;
+  width: 300px;
+  height: 350px;
+  border: 1px solid #eee;
+  text-align: center;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 30px;
+}
+
+.list-works img {
+  width: 300px;
+}
+
+.btn {
+  display: block;
+  width: 70px;
+  height: 35px;
+  line-height: 35px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+}
+
+.btn-works {
+  margin: 0 auto;
+  text-align: center;
+  line-height: 35px;
+}
+
+/* more */
+.more {
+  clear: both;
+  background: #b84d45;
+}
+
+.container-more {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-more {
+  background: transparent;
+  color: white;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+/* footer */
+.container-footer {
+  border: 1px solid transparent;
+  border-top-color: #ccc;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.8em;
+}
+
+/* clear float */
+.clearfix:after {
+  content: " ";
+  display: block;
+  clear: both;
+}

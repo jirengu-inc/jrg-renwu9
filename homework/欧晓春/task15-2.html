@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task15-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	*
+	{
+		margin: 0;
+		padding: 0;
+	}
+	.layout
+	{
+		width: 1200px;
+		margin: 0 auto;
+	}
+	@font-face 
+	{
+  		font-family: 'iconfont';  /* project id："170716" */
+  		src: url('http://at.alicdn.com/t/font_1uhnrfcbq5eo2yb9.eot');
+  		src: url('http://at.alicdn.com/t/font_1uhnrfcbq5eo2yb9.eot') format('embedded-opentype'),
+  		url('http://at.alicdn.com/t/font_1uhnrfcbq5eo2yb9.woff') format('woff'),
+  		url('http://at.alicdn.com/t/font_1uhnrfcbq5eo2yb9.ttf') format('truetype'),
+  		url('http://at.alicdn.com/t/font_1uhnrfcbq5eo2yb9.svg#iconfont') format('svg');
+	}
+	.iconfont {
+  		font-family:"iconfont" !important;
+  		font-size:16px;
+  		font-style:normal;
+  		-webkit-font-smoothing: antialiased;
+  		-webkit-text-stroke-width: 0.2px;
+  		-moz-osx-font-smoothing: grayscale;
+	}
+	#nav
+	{
+		width: 100%;
+		background: rgba(0,0,0,0.4);
+		position: fixed;
+		z-index: 2;
+	}
+	#nav:after
+	{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	
+	#nav .layout img
+	{
+		width: 140px;
+		height: 70px;
+		float: left;
+		border-radius: 35px;
+	}
+	#nav .layout ul
+	{
+		float: right;
+		line-height: 70px;
+	}
+	#nav .layout ul li
+	{
+		list-style-type: none;
+		float: left;
+	}
+	#nav .layout ul li a
+	{
+		color: #fff;
+		text-decoration: none;
+		font-size: 18px;
+		font-family: '微软雅黑';
+		font-weight: bold;
+		display: inline-block;
+		padding: 0 25px;
+	}
+	#nav .layout ul li a:hover
+	{
+		color: yellow;
+	}
+	#header
+	{
+		width: 100%;
+		background: url(http://f.hiphotos.baidu.com/zhidao/pic/item/279759ee3d6d55fb27e1d9596b224f4a20a4ddae.jpg) no-repeat;
+		background-size: cover;
+		text-align: center;
+	}
+	#header .layout
+	{
+		padding: 294px 0;
+	}
+	#header h1,#header p
+	{
+		margin-bottom: 30px;
+		padding: 15px 0;
+		color: #fff;
+	}
+    #header h1
+    {
+    	font-style: italic;
+    	font-size: 60px;
+    }
+    #header p
+    {
+    	font-size: 40px;
+    	font-weight: bold;
+    }
+    #header a
+    {
+    	text-decoration: none;
+    	color: white;
+    	display: inline-block;
+    	padding: 15px 25px;
+    	background: rgba(200,85,55,0.7);
+    	font-size: 20px;
+    	font-weight: bold;
+    	font-family: '微软雅黑';
+    	border-radius: 8px;
+    }
+    #header a:hover
+    {
+    	background: rgb(200,85,55);
+    }
+    .services .layout
+    {
+    	padding: 140px 0;
+    }
+    .services .layout:after
+    {
+    	content: '';
+    	display: block;
+    	clear: both;
+    }
+	.services h2,.services p
+	{
+		text-align: center;
+	}
+	.services h2
+	{
+		padding-bottom: 20px;
+	}
+	.services h2
+	{
+		font-size: 30px;
+		font-family: '微软雅黑';
+	}
+	.services .layout>p
+	{
+		font-family: '微软雅黑';
+		padding: 20px 0 60px 0; 
+	}
+	.services ul
+	{
+		margin-left: -30px;
+	}
+	.services li
+	{
+		list-style-type: none;
+		float: left;
+		width: 350px;
+		height:220px;
+		text-align: center;
+		margin-left: 50px;
+	}
+	.services li h3
+	{
+		padding: 20px 0;
+	}
+	.services li i
+	{
+		font-size: 100px;
+		color: #b84d45;
+	}
+	.services li p
+	{
+		color: #777;
+	}
+	.corporation
+	{
+		background: #f7f7f7;
+		width: 100%;
+	}
+	.corporation .layout:after
+	{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.corporation img
+	{
+		height: 260px;
+		width: 360px;
+		border: 1px solid #eee;
+	}
+	.corporation .add
+	{
+		width: 100%;
+		height: 261px;
+		background: rgba(254,209,54,0.8);
+		position: absolute;
+		top: 0;
+		display: none;
+		line-height: 261px;
+	}
+	.corporation .add a
+	{
+		font-size: 100px;
+		font-family: '微软雅黑';
+		font-weight: 900;
+		text-decoration: none;
+		color: white;
+	}
+	.corporation img:hover+.add,.add:hover
+	{
+		display: block;
+	}
+	.corporation .layout
+	{
+		padding: 120px 0;
+		text-align: center;
+	}
+	.corporation h2,.corporation p
+	{
+		font-family: '微软雅黑';
+	}
+	.corporation h2
+	{
+		padding-bottom: 20px;
+	}
+	.corporation .layout p
+	{
+		padding-bottom: 50px;
+		font-style: italic;
+	}
+	.corporation ul
+	{
+		margin-left: -55px;
+	}
+	.corporation li
+	{
+		float: left;
+		list-style-type: none;
+		margin-left: 55px;
+		background: #fff;
+		margin-bottom: 40px;
+		position: relative;
+	}
+	.corporation li h4
+	{
+		padding: 30px 0 10px 0;
+	}
+
+	.pic 
+	{
+		text-align: center;
+		position: relative;
+	}
+	.pic ul:before
+	{
+		content: '';
+		background: #ddd;
+		width: 3px;
+		border: 1px solid #ddd;
+		height: 1300px;
+		position: absolute;
+		z-index: -1;
+		left: 948px;
+	}
+	.pic li
+	{
+		list-style-type: none;
+		padding: 0 119px;
+		margin-bottom: 125px;
+	}
+	.pic ul img,.pic-more
+	{
+		width: 156px;
+		height: 156px;
+		border-radius: 78px;
+		float: left;
+		border: 8px solid #ddd;
+		margin: 0 45px;
+	}
+	.pic ul .recommend
+	{
+		float: left;
+		height: 156px;
+		width: 350px;
+	}
+	.pic ul li:after
+	{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.pic ul li .blank
+	{
+		width: 350px;
+		height: 156px;
+		overflow: hidden;
+		float: left;
+	}
+	.pic-more
+	{
+		background: yellow;
+		font-size: 30px;
+		line-height: 156px;
+		font-family: '微软雅黑';
+	}
+	.pic-title
+	{
+		font-family: '微软雅黑';
+		padding: 100px 0;
+	}
+	.recommend h4
+	{
+		padding: 15px 0;
+	}
+	.recommend p
+	{
+		font-style: italic;
+	}
+	.team
+	{
+		background: #ccc;
+		text-align: center;
+	}
+	.team:after
+	{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.team ul
+	{
+		margin-left: -145px;
+	}
+	.team ul:after
+	{
+		content: '';
+		clear: both;
+		display: block;
+	}
+	.team ul img
+	{
+		width: 225px;
+		height: 225px;
+		border: 8px solid #ddd;
+		border-radius: 113px;
+	}
+	.team li
+	{
+		float: left;
+		list-style-type: none;
+		margin-left: 190px;
+	}
+	.team-title
+	{
+		padding: 80px;
+	}
+	.team-title h3
+	{
+		font-family: '微软雅黑';
+		font-size: 40px;
+		padding: 20px 0;
+	}
+	.team-title p
+	{
+		font-style: italic;
+		font-size: 20px;
+		font-family: '微软雅黑';
+	}
+	.team li h5
+	{
+		padding: 20px 0;
+		font-size: 20px;
+	}
+	.team li p
+	{
+		padding-bottom: 20px;
+		font-style: italic;
+	}
+	.team li .iconfont
+	{
+		font-size: 35px;
+		padding: 0 10px;
+	}
+	.team li a
+	{
+		text-decoration: none;
+		color: #000;
+	}
+	.team li .iconfont:hover
+	{
+		color: #fed136;
+	}
+	.team .layout>p
+	{
+		font-size: 20px;
+		font-style: bold;
+		padding: 60px 0;
+	}
+	.sponsor img
+	{
+		margin: 0 47px;
+	}
+	.connect
+	{
+		background: url(http://7xpvnv.com2.z0.glb.qiniucdn.com/1296e2c0-86db-479c-b5b0-d78d56b17e1a);
+		background-size: cover;
+		padding: 200px 0; 
+	}
+	.connect
+	{
+		text-align: center;
+	}
+	.connect:after
+	{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.connect h3
+	{
+		font-size: 40px;
+		font-family: '微软雅黑';
+		padding-bottom: 100px;
+		color: #ef7;
+		letter-spacing: 15px;
+	}
+	.connect .message
+	{
+		float: left;
+	}
+	.connect input
+	{
+		display: block;
+		width: 550px;
+		height: 60px;
+		border-radius: 10px;
+		margin: 20px 0;
+		outline: none;
+		font-size: 20px;
+		text-indent: 1em;
+	}
+	.connnect .words
+	{
+		float: right;
+	}
+	.connect textarea
+	{
+		width: 540px;
+		height: 215px;
+		margin-top: 20px;
+		border-radius: 10px;
+		padding-top: 15px;
+		outline: none;
+		font-size: 20px;
+		text-indent: 1em;
+	}
+	.connect .connect-btn
+	{
+		margin: 80px auto 0 auto;
+	}
+	.connect .connect-btn a
+	{
+		text-decoration: none;
+		color: yellow;
+		width: 150px;
+		height: 70px;
+		background: rgba(200,85,55,0.7); 
+		line-height: 70px;
+		margin: 80px auto 0 auto;
+		border-radius: 10px;
+		font-size: 30px;
+		display: block;
+	}
+	.connect .connect-btn a:hover
+	{
+		background: rgb(200,85,55);
+	}
+	#footer
+	{
+		padding: 50px 0;
+	}
+	.copyright
+	{
+		text-align: center;
+		float: left;
+		font-weight: bold;
+	}
+	.footer-icon
+	{
+		float: left;
+		margin: 0 270px;
+	}
+	.footer-icon .iconfont
+	{
+		font-size: 30px;
+		margin: 0 15px;
+	}
+	.footer-icon a
+	{
+		text-decoration: none;
+		color: #000;
+	}
+	.footer-icon a:hover
+	{
+		color: #fed136
+	}
+	.privacy
+	{
+		float: left;
+	}
+	.privacy a
+	{
+		color: #fed136;
+		font-weight: bold;
+	}
+	
+	
+</style>
+</head>
+<body>
+    <div id="nav">
+    	<div class="layout">
+    		<img src="http://img10.3lian.com/show2014/6/48/11.jpg" alt="">
+    		<ul>
+    			<li><a href="#">服务项目</a></li>
+    			<li><a href="#">合作事宜</a></li>
+    			<li><a href="#">狗狗美照</a></li>
+    			<li><a href="#">队伍成员</a></li>
+    			<li><a href="#">联系我们</a></li>
+    		</ul>
+    	</div>
+    </div>
+    <div id="header">
+    	<div class="layout">
+    		<h1>欢迎来到OXC狗狗领养站</h1>
+    		<p>这是一个狗狗的乐园</p>
+    		<p>也希望他们能带给你欢乐</p>
+    		<a href="#">了解更多</a>
+    	</div>
+    </div>
+    <div id="content">
+    	<div class="services">
+    		<div class="layout">
+	    		<h2>服务项目</h2>
+	    		<p>致力于最优质的服务</p>
+	    		<ul>
+	    			<li>
+	    				<i class="iconfont">&#xe638;</i>
+	    				<h3>狗狗领养</h3>
+	    				<p>我们这里有全国各地最可爱的狗狗，如果你是爱狗狗的人，选择我们是绝对不会错的，期待你的到来哦。</p>
+	    			</li>
+	    			<li>
+	    				<i class="iconfont">&#xe621;</i>
+	    				<h3>狗狗托管</h3>
+	    				<p>如果你想来次旅游，又怕家里的狗狗感到寂寞，那么，你需要我们为你提供的狗狗托管服务。</p>
+	    			</li>
+	    			<li>
+	    				<i class="iconfont">&#xe63d;</i>
+	    				<h3>狗狗用品</h3>
+	    				<p>我们这里还有最优质的狗狗食物，玩具，质量上乘，价格公道，需要的话也可以购买。</p>
+	    			</li>
+	    		</ul>
+	    	</div>
+	    </div>
+	    <div class="corporation">
+	    		<div class="layout">
+	    			<h2>合作公司简介</h2>
+	    			<p>他们都是一些有爱的公司哦</p>
+	    			<ul>
+	    				<li>
+	   						<img src="http://www.lgstatic.com/thumbnail_300x300/image1/M00/38/91/CgYXBlWmD52AY8R1AAB5uZ99Pqo131.jpg?cc=0.09644223633222282" alt="">
+	    					<div class="add">
+	    						<a href="#">+</a>
+	    					</div>
+	    					<h4>饥人谷</h4>
+	    					<p>最有爱的前端学习社区</p>    			
+	    					
+	    				</li>
+	    				<li>
+	    					<img src="http://images.forwallpaper.com/files/thumbs/preview/43/432043__apple_p.jpg" alt="">
+	    					<div class="add">
+	    						<a href="#">+</a>
+	    					</div>
+	    					<h4>苹果</h4>
+	    					<p>一直致力于各种电子设备的开发</p>
+	    				</li>
+	    				<li>
+	    					<img src="http://img.sj33.cn/uploads/allimg/201401/7-140124100233347.jpg" alt="">
+	    					<div class="add">
+	    						<a href="#">+</a>
+	    					</div>
+	    					<h4>小米</h4>
+	    					<p>质优价廉手机的代表</p>
+	    				</li>
+	    				<li>
+	    					<img src="http://upload.chinaz.com/2013/1119/1384824637635.png" alt="">
+	    					<div class="add">
+	    						<a href="#">+</a>
+	    					</div>
+	    					<h4>腾讯</h4>
+	    					<p>网络社交的领导者</p>
+	    				</li>
+	    				<li>
+	    					<img src="http://i1.sinaimg.cn/cj/2014/0327/U8190P31DT20140327092155.jpg" alt="">
+	    					<div class="add">
+	    						<a href="#">+</a>
+	    					</div>
+	    					<h4>阿里巴巴</h4>
+	    					<p>中国电商开创者</p>
+	    				</li>
+	    				<li>
+	    					<img src="http://pic.baike.soso.com/p/20131213/20131213115637-1062134399.jpg" alt="">
+	    					<div class="add">
+	    						<a href="#">+</a>
+	    					</div>
+	    					<h4>百度</h4>
+	    					<p>中国搜索引擎一哥</p>
+	    				</li>
+	    			</ul>
+	    		</div>
+    	</div>
+    	<div class="pic">
+    		<div class="layout">
+	    		<div class="pic-title">
+	    			<h2>狗狗美照</h2>
+	    		</div>
+	    		<ul>
+	    			<li>
+	    				<div class="recommend">
+	    					<h4>哈士奇</h4>
+	    					<p>西伯利亚雪橇犬（俄语：Сибирский хаски，Sibirskiy haski，英语：Siberian husky）常见别名哈士奇。俗名：二哈或撒手没。西伯利亚雪橇犬体重介于25~72磅(16~32kg)，身高大约20~23.5英寸(51~60cm)，是一种中型犬。西伯利亚雪橇犬是原始的古老犬种，在西伯利亚东北部、格陵兰南部生活。哈士奇名字的由来，是源自其独特的嘶哑声。</p>
+	    				</div>
+	    				<img src="http://d.hiphotos.baidu.com/baike/c0%3Dbaike272%2C5%2C5%2C272%2C90/sign=5517a8633f87e950561afb3e71513826/2fdda3cc7cd98d10e2feab91243fb80e7bec906c.jpg" alt="">
+	    				<div class="blank"></div>
+	    			</li>
+	    			<li>
+	    				<div class="blank"></div>
+	    				<img src="http://g.hiphotos.baidu.com/baike/c0%3Dbaike180%2C5%2C5%2C180%2C60/sign=055d2ed5cbea15ce55e3e85bd7695196/8c1001e93901213fbe680e8c56e736d12f2e9502.jpg" alt="">
+	    				<div class="recommend">
+	    					<h4>金毛</h4>
+	    					<p>金毛犬（英语：Golden Retriever）是比较现代并很流行的狗的品种，是单猎犬，作为用来在猎捕野禽的寻回犬而培养出来的，游泳的续航力极佳。它是最常见的家犬之一，因为它很容易养，有耐心并且对主人要求不多，只要定期的运动，食物和兽医体检就可以了。金毛的独特之处在于它讨人喜欢的性格，是属于匀称、有力、活泼的一个犬种，特征是稳固、身体各部位配合合理，腿既不太长也不笨拙，表情友善，个性热情、机警、自信而且不怕生。</p>
+	    				</div>
+	    			</li>
+	    			<li>
+	    				<div class="recommend">
+	    					<h4>萨摩耶</h4>
+	    					<p>萨摩耶犬（Samoyed），别名萨摩耶，原是西伯利亚的原住民萨摩耶族培育出的犬种。机警、强壮、灵活、美丽、高贵优雅、乖巧可爱，有着非常引人注目的外表，体格强健，有“微笑天使”的称号，也有着“微笑天使面孔，捣蛋魔鬼内心”之称，一岁前调皮、灵动。</p>
+	    				</div>
+		    			<img src="http://b.hiphotos.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=8a17e3254c36acaf4ded9eae1db0e675/38dbb6fd5266d01648dc3e34902bd40734fa35e0.jpg" alt="">
+		    			<div class="blank"></div>
+	    			</li>
+	    			<li>
+	    				<div class="blank"></div>
+	    				<img src="http://g.hiphotos.baidu.com/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=55485d576ad9f2d3341c2cbdc885e176/91ef76c6a7efce1bb3aaaa7ca751f3deb58f6586.jpg" alt="">
+	    				<div class="recommend">
+	    					<h4>柴犬</h4>
+	    					<p>柴犬是体型中等并且又最古老的犬。柴犬能够应付陡峭的丘陵和山脉的斜坡，拥有灵敏的感官，使得柴犬屡次成为上乘的猎狩犬。
+							柴犬性格活泼、好动；对自己喜欢的玩具、会一天到晚的把玩。对外有极强警惕性户主看家护院：特别是对大型同类，并且不服输。草丛中的耗子、鸟都会是它的猎物及玩具。</p>
+	    				</div>
+	    			</li>
+	    			<li>
+	    				<div class="blank"></div>
+	    				<div class="pic-more">
+	    					<p>更多靓照</p>
+	    				</div>
+	    				<div class="blank"></div>
+	    			</li>
+	    		</ul>
+	    	</div>
+    	</div>
+    	<div class="team">
+    		<div class="layout">
+    			<div class="team-title">
+		    		<h3>我们的队伍成员</h3>
+		    		<p>他们都是最优秀的人才</p>
+		    	</div>
+	    		<ul>
+	    			<li>
+	    				<img src="http://img3.redocn.com/tupian/20091230/gemingouxiangqiegewala_103898_small.jpg" alt="">
+	    				<h5>Kay Garland</h5>
+	    				<p>Lead Designer</p>
+	    				<a href="#"><i class="iconfont">&#xe609;</i></a>
+	    				<a href="#"><i class="iconfont">&#xe63e;</i></a>
+	    				<a href="#"><i class="iconfont">&#xe620;</i></a>
+	    			</li>
+	    			<li>
+	    				<img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/9d1844fa-c45f-492c-8f2b-fdd8d5d896ac" alt="">
+	    				<h5>Kay Garland</h5>
+	    				<p>Lead Designer</p>
+	    				<a href="#"><i class="iconfont">&#xe609;</i></a>
+	    				<a href="#"><i class="iconfont">&#xe63e;</i></a>
+	    				<a href="#"><i class="iconfont">&#xe620;</i></a>
+	    			</li>
+	    			<li>
+	    				<img src="http://pic.58pic.com/58pic/13/19/87/42H58PICfiX_1024.jpg" alt="">
+	    				<h5>Kay Garland</h5>
+	    				<p>Lead Designer</p>
+	    				<a href="#"><i class="iconfont">&#xe609;</i></a>
+	    				<a href="#"><i class="iconfont">&#xe63e;</i></a>
+	    				<a href="#"><i class="iconfont">&#xe620;</i></a>
+	    			</li>
+	    		</ul>
+	    		<p>同时，我们也期待你的加入，共同开创狗狗的美好生活。</p>
+    		</div>
+    	</div>
+    	<div class="sponsor">
+    		<div class="layout">
+    			<a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/53e9fd09-fb72-4879-83f6-2390628fa608" alt=""></a>
+    			<a href="#"><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/251d4c2e-d568-416a-975c-ed6e10ab170a" alt=""></a>
+    			<a href=""><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/033b8921-67d7-434b-a158-e5cc0a04b1a3" alt=""></a>
+    			<a href=""><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/c3b76e94-8719-4b89-8115-7b7ef06c2a1b" alt=""></a>
+    		</div>
+    	</div>
+    	<div class="connect">
+    		<div class="layout">
+    			<h3>联系我们</h3>
+    			<div class="message">
+    				<input type="text" id="name" placeholder="姓名"/>
+    				<input type="text" id="name" placeholder="邮箱"/>
+    				<input type="text" id="name" placeholder="电话"/>
+    			</div>
+    			<div class="words">
+    				<textarea name="words" id="" placeholder="你的留言" cols="30" rows="10"></textarea>
+    			</div>
+    			<div class="connect-btn">
+    				<a href="#">发送</a>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div id="footer">
+    	<div class="layout">
+	    	<div class="copyright">
+	    		<p>Copyright © Your Website 2014 </p>
+	    	</div>
+	    	<div class="footer-icon">
+	    		<a href="#"><i class="iconfont">&#xe620;</i></a>
+	    		<a href="#"><i class="iconfont">&#xe609;</i></a>
+	    		<a href="#"><i class="iconfont">&#xe63e;</i></a>
+	    	</div>
+	    	<div class="privacy">
+	    		<a href="#">Privacy Policy</a>
+	    		<a href="#">Terms of Use</a>
+	    	</div>
+	    </div>
+    </div>
+</body>
+</html>
