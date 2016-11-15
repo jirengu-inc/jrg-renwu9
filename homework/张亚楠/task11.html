@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>两联布局</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+#head,
+#foot
+{
+	height: 50px;
+	background: black;
+}
+.left
+{
+	float: left;
+	width:200px;
+	height:700px;
+	background: #ccc;
+}
+.main
+{	
+	height: 700px;
+	background:pink;
+	margin-left: 0px;
+	border: 1px solid;
+	margin-left: 10px;
+	
+	
+
+}
+.wrap
+{
+ overflow: hidden;
+	
+}
+#content
+{
+	
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+ul,li,body
+{
+	padding:0px;
+	margin:0px;
+	list-style: none;
+}
+a
+{
+	text-decoration: none;
+}
+.nav
+{
+	width: 450px;
+	margin: 20px auto;
+	height: 50px;
+
+}
+.nav>li
+{
+	float: left;
+	background: #ccc;
+	width: 80px;
+	height: 50px;
+	text-align: center;
+	padding: 0 5px;
+}
+.nav a
+{
+	height: 50px;
+	line-height: 50px;
+	color: white;
+	font-size: 18px;
+}
+.child
+{
+	display: none;
+	position: absolute;
+	top:50px;
+	left:-5px;
+
+}
+.clear:after
+{
+	content: "";
+	display: block;
+	clear: both;
+}
+.nav>li:hover
+{
+	background:red;
+}
+.nav>li:hover .child
+{
+	display: block;
+}
+.child>li:hover
+{
+	background:red;
+}
+.child li
+{
+   height: 50px;
+   line-height: 50px;
+   background: #ccc;
+   padding: 0 5px;
+   width: 90px;
+}
+.position
+{
+	position: relative;
+}
+
+
+
+
+
+
+</style>
+</head>
+<body>
+<div id="head"></div>
+<div id="content">
+	<div class="left"></div>
+	<div class="wrap">
+		<div class="main">
+
+			<ul class="nav clear">
+				<li class="position">
+				<a href="#">前端</a>
+				<ul class="child">
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">CSS</a></li>
+					<li><a href="#">HTML</a></li>
+				</ul>
+				
+				</li>
+				<li class="position">
+				<a href="#">服务端
+				<ul class="child">
+					<li><a href="#">Java</a></li>
+					<li><a href="#">PHP</a></li>
+					<li><a href="#">NODE</a></li>
+				</ul>
+				
+				</li>
+				<li class="position">
+				<a href="#">前端工具</a>
+				<ul class="child">
+					<li><a href="#">Sublime</a></li>
+					<li><a href="#">WebStrom</a></li>
+					<li><a href="#">Git</a></li>
+				</ul>
+				</li>
+				<li><a href="#">HTML</a></li>
+				<li><a href="#">NODE</a></li>
+			</ul>
+		</div>
+	</div>		
+</div>
+<div id="foot"></div>
+    
+</body>
+</html>
