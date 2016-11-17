@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task12-2</title>
+</head>
+<body>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+    }
+    .header , .footer{
+      height: 30px;
+      width: 100%;
+      margin:0 auto;
+      background: #ccc;
+    }
+    .parent{
+      padding:0 200px;
+    }
+    .parent:after{
+      display:block;
+      clear:both;
+      content:"";
+    }
+    .main{
+      height:300px;
+      width:100%;
+      background:#0f0;
+      float:left;
+    }
+    .left{
+      height:200px;
+      width:200px;
+      background:#f00;
+      float:left;
+      margin-left:-100%;
+      position:relative;
+      right:200px;
+    }
+    .right{
+      width:200px;
+      height:200px;
+      background:#ff0;
+      float:left;
+      margin-left:-200px;
+      position:relative;
+      left:200px;
+    }
+  </style>
+    <div class="header">头部</div>
+    <div class=parent>
+      <div class=main></div>
+      <div class=left></div>
+      <div class=right></div>
+    </div>
+    <div class="footer">尾部</div>
+</body>
+</html>
