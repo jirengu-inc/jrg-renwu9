@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://js.jirengu.com
+
+Copyright (c) 2016 by Zephyr000 (http://js.jirengu.com/suwa/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Form练习</title>
+</head>
+<body>
+  <form name="myForm" action="/test/6.php" method="get">
+    姓名:
+    <input type="text" placeholder="用户名" name="username"/> <br/>
+    密码:
+    <input type="password" name="pwd" placeholder="密码" value="123456789"/><br/>
+    性别:
+    <input type="radio" name="sex" value="male"/ checked>男
+    <input type="radio" name="sex"  value="female"/>女<br/>
+    取向:
+    <input type="radio" name="target" value="male"/>男
+    <input type="radio" name="target" value="female" checked/>女<br/>
+    爱好:
+    <input type="checkbox" name="dota"/>dota
+    <input type="checkbox" name="travel" checked/>旅游
+    <input type="checkbox" name="pet" checked/>宠物<br/>
+    评论:<textarea name="comment" maxlength=50 placeholder="ddd" rows="13" cols="30"></textarea><br/>
+    我的Car:
+    <select name="myCar">
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option> 
+      <option value="bmw">BMW</option> 
+      <option value="audi" selected>Audi</option> 
+    </select>
+    <input type="submit" value="提交"/>
+  </form>
+</body>
+</html>

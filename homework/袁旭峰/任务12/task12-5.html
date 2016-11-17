@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task12-5</title>
+</head>
+<body>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+    }
+    .header, .footer{
+      width: 100%;
+      height: 30px;
+      background: #ccc;
+      margin:0 auto;
+    }
+    .parent:after{
+      display:block;
+      clear:both;
+      content:"";
+    }
+    .main{
+      height:200px;
+      width:100%;
+      float:left;
+    }
+    .content{
+      height:200px;
+      background:#0f0;
+      margin-right: 200px;
+    }
+    .right{
+      width:200px;
+      height:200px;
+      background:#ff0;
+      float:left;
+      margin-left:-200px;
+    }
+  </style>
+  <div class="header">头部</div>
+  <div class=parent>
+    <div class=main>
+      <div class="content"></div>
+    </div>
+    <div class=right></div>
+  </div>
+  <div class="footer">尾部</div>
+</body>
+</html>

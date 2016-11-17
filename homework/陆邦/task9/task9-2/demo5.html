@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>demo5提示框</title>
+		<style>
+		.demo1{width: 200px;
+		       height: 100px;
+		       border:1px solid red;
+		       position: relative;
+		       
+		       }
+		.demo1:before{content: "";
+		              display:block;
+		              border-top:1px solid red;
+		              border-left:1px solid red;
+		              width: 10px;
+		              height: 10px;
+		              transform: rotate(45deg);
+		              position:absolute;
+		              left: 50px;
+		              top:-6px;
+		              background-color:#fff 
+		              }
+		.demo2{width: 200px;
+		       height: 100px;
+		       border:1px solid red;
+		       position: relative;
+		       margin-top:50px;
+		       }
+		.demo2:before{content: "";
+		              display:block;
+		              width: 0;
+		              height: 0;
+		              border-top:10px solid transparent;
+		              border-left:10px solid transparent ;
+		              border-bottom: 10px solid red;
+		              border-right:10px solid transparent;
+		              position: absolute;
+		              top:-20px;
+		              left:50px;
+		              }
+		.demo2:after{content: "";
+		              display:block;
+		              width: 0;
+		              height: 0;
+		              border-top:10px solid transparent;
+		              border-left:10px solid transparent ;
+		              border-bottom: 10px solid #fff;
+		              border-right:10px solid transparent;
+		              position: absolute;
+		              top:-19px;
+		              left:50px;
+		              }
+		.demo3{width: 190px;
+		       height: 90px;
+		       border:1px solid red;
+		       position: relative;
+		       margin-top:50px;
+		       margin-left: 20px;
+		       padding:10px 0px 0px 10px;
+		       }
+		.demo3:before{content: "";
+		              display:block;
+		              width:0;
+		              height: 0;
+		              border-top:10px solid transparent;
+		              border-left:10px solid transparent;
+		              border-bottom:10px solid transparent;
+		              border-right:10px solid red;
+		              position:absolute;
+		              left: -20px;
+		              top:-2px;
+		               }                                                       
+		</style>
+	</head>
+	<body>
+	<div class="demo1"></div>
+	<div class="demo2"></div>
+	<div class="demo3">你好,这里是饥人谷</div>
+		
+	
+	</body>
+</html>
