@@ -20,5 +20,5 @@
 
 这个 repo 里的代码可以在 http://book.jirengu.com/jirengu-inc/jrg-renwu9/
 预览。
-
+代码路径换成https://jirengu-inc.github.io/jrg-renwu9/homework...就可以预览了。
 
