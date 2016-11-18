@@ -9,13 +9,113 @@
 <link href="" rel="stylesheet">
 <style>
 	div{margin: 20px;}
-	.item0{width: 0;height: 0;border:50px solid; border-color:#090ffc #f9000c #1e8c13 #ffff30;}
-	.item1{width: 0;height: 0;border-left: 50px solid transparent; border-right: 50px solid transparent; border-top:50px solid #090ffc;}
-	.item2{width: 0;height: 0;border-bottom: 50px solid transparent; border-top: 50px solid transparent; border-left:50px solid #f9000c;}
-	.item3{width: 0;height: 0;border-bottom: 50px solid transparent; border-top: 50px solid transparent; border-right:50px solid #ffff30;}
-	.item4{width: 0;height: 0;border-right: 50px solid transparent; border-left: 50px solid transparent; border-bottom:50px solid #1e8c13;}
-	.item5{width: 0;height: 0;border-left: 50px solid transparent; border-bottom:50px solid #f9000c;}
-	.item6{width: 0;height: 0;border-right: 50px solid transparent; border-bottom:50px solid #1e8c13;}
+	.item0{
+		width: 0;
+		height: 0;
+		border:50px solid;
+		border-color:#090ffc #f9000c #1e8c13 #ffff30;
+	}
+	.item1{
+		width: 0;
+		height: 0;
+		border-left: 50px solid transparent; 
+		border-right: 50px solid transparent; 
+		border-top:50px solid #090ffc;
+	}
+	.item2{
+		width: 0;
+		height: 0;
+		border-bottom: 50px solid transparent; 
+		border-top: 50px solid transparent; 
+		border-left:50px solid #f9000c;
+	}
+	.item3{
+		width: 0;
+		height: 0;
+		border-bottom: 50px solid transparent; 
+		border-top: 50px solid transparent; 
+		border-right:50px solid #ffff30;
+	}
+	.item4{
+		width: 0;
+		height: 0;
+		border-right: 50px solid transparent; 
+		border-left: 50px solid transparent; 
+		border-bottom:50px solid #1e8c13;
+	}
+	.item5{
+		width: 0;
+		height: 0;
+		border-left: 50px solid transparent; 
+		border-bottom:50px solid #f9000c;
+	}
+	.item6{
+		width: 0;
+		height: 0;
+		border-right: 50px solid transparent; 
+		border-bottom:50px solid #1e8c13;
+	}
+	#heart { 
+		position: relative; 
+		width: 100px; 
+		height: 90px; 
+	} 
+	#heart:before, 
+	#heart:after { 
+		position: absolute; 
+		content: ""; 
+		left: 50px; 
+		top: 0; 
+		width: 50px; 
+		height: 80px; 
+		background: red; 
+		border-radius: 50px 50px 0 0; 
+		transform: rotate(-45deg); 
+		transform-origin: 0 100%; 
+	} 
+	#heart:after { 
+		left: 0; 
+		transform: rotate(45deg); 
+		transform-origin :100% 100%; 
+	} 
+
+	#yin-yang{
+		width:100px;
+		height: 50px;
+		background: #fff;
+		border-width:2px 2px 52px 2px;
+		border-radius: 100%;
+		border-color: #000;
+		border-style: solid;
+		position:relative;
+		animation:rotate 6s infinite linear;
+	}
+	#yin-yang:before{
+		content: " ";
+		position: absolute; 
+		top: 50%; 
+		left: 0; 
+		background:#fff;
+		border:20px solid #000;
+		border-radius: 100%;
+		width: 10px;
+		height: 10px;
+	}
+	#yin-yang:after { 
+		content: ""; 
+		position: absolute; 
+		top: 50%; 
+		left: 50%; 
+		background: #000; 
+		border: 20px solid #fff; 
+		border-radius:100%; 
+		width: 10px; 
+		height: 10px; 
+	}
+	@keyframes rotate {
+	  0% {transform: rotate(0deg);}
+	  100% {transform: rotate(360deg);} 
+    }
 </style>
 </head>
 <body>
@@ -26,5 +126,7 @@
     <div class="item4"></div>
     <div class="item5"></div>
     <div class="item6"></div>
+	<div id="heart"></div>
+	<div id="yin-yang"></div>
 </body>
 </html>
