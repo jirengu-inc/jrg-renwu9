@@ -37,7 +37,7 @@ a{
   position:relative;
   background-position: center;
 }
-.title{
+.header-title{
   position:absolute;
   top: 50%;
   left:50%;
@@ -46,14 +46,14 @@ a{
   margin-left: -182px;
   margin-top: -122.5px;
 }
-.title h1{
+.header-title h1{
   font-size: 50px;
   margin:20px auto;
 }
-.title span{
+.header-title span{
   font-size: 20px;
 }
-.title a{
+.header-title a{
   display: block;
   padding: 12px 10px 8px 9px;
   width: 115px;
@@ -65,7 +65,7 @@ a{
   margin: 0 auto;
   margin-top: 28px;
 }
-.title a:hover{
+.header-title a:hover{
   background: #444;
 }
 .after-header{
@@ -175,19 +175,19 @@ a{
 .work .container{
   position: relative;
 }
-.hidden{
+.work-list-cover{
   position: absolute;
 }
-.hidden a{
+.work-list-cover a{
   display: block;
   height: 300px;
 }
-.hidden li{
+.work-list-cover li{
   background-color: #444;
   opacity: 0;
   transition: 0.6s;
 }
-.hidden li:hover{
+.work-list-cover li:hover{
   opacity: 0.3;
 }
 .work > a{
