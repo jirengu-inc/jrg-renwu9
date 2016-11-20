@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style media="screen">
+        .box {
+            border: 1px solid gray;
+            width: 200px;
+            height: 100px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .one:before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid gray;
+            border-top: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            top: -20px;
+            left: 5px;
+        }
+
+        .two:before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid transparent;
+            border-top: 10px solid red;
+            border-left: 10px solid transparent;
+            border-right: 10px solid red;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .three:before {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid gray;
+            border-top: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            top: -20px;
+            left: 5px;
+        }
+
+        .three:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid white;
+            border-top: 10px solid transparent;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            position: absolute;
+            top: -19px;
+            left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box one"></div>
+    <div class="box two"></div>
+    <div class="box three"></div>
+</body>
+
+</html>
