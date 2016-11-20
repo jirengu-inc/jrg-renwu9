@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	.ts1, .ts2, .ts3, .ts4
+	{
+		height: 100px;
+		width: 200px;
+		border: 1px solid #ccc;
+		margin:40px 0;
+		position: relative;
+		
+		
+		
+
+	}
+	.ts1:before
+	{
+		content:"";
+		display: block;
+		position: absolute;
+		top:-20px;
+		left:20px;
+		border-bottom:10px solid #ccc;
+		border-top:10px solid transparent; 
+		border-right:10px solid transparent; 
+		border-left:10px solid transparent;  
+		width: 0px;
+		height: 0px;
+	}
+	.ts2:before
+	{
+		content:"";
+		display: block;
+		position: absolute;
+		top:0px;
+		right:0px;
+		border-bottom:7px solid transparent;
+		border-top:7px solid red; 
+		border-right:7px solid red; 
+		border-left:7px solid transparent;  
+		width: 0px;
+		height: 0px;
+	}
+	.ts3:before
+	{
+		content:"";
+		display: block;
+		position: absolute;
+		top:-9px;
+		left:15px;
+		border-left: 1px solid #ccc;
+		border-top: 1px solid #ccc;
+		width: 15px;
+		height: 15px;
+		transform:rotate(45deg);
+		background: #fff;
+	}
+	.ts4:before
+	{
+		content:"";
+		display: block;
+		position: absolute;
+		top:-20px;
+		left:20px;
+		border-bottom:10px solid #ccc;
+		border-top:10px solid transparent; 
+		border-right:10px solid transparent; 
+		border-left:10px solid transparent;  
+		width: 0px;
+		height: 0px;
+	}
+	.ts4:after
+	{
+		content:"";
+		display: block;
+		position: absolute;
+		top:-19px;
+		left:20px;
+		border-bottom:10px solid #fff;
+		border-top:10px solid transparent; 
+		border-right:10px solid transparent; 
+		border-left:10px solid transparent;  
+		width: 0px;
+		height: 0px;
+	}
+	.tj
+	{
+		position: relative;
+	}
+	.tj-left
+	{
+		width: 100px;
+		height: 200px;
+		border-radius: 100px 0 0 100px;
+		background: black;
+		position: absolute;
+	}
+	.tj-left:before
+
+	{
+		content: "";
+		display:black;
+		width: 50px;
+		height: 100px;
+		border-radius: 0 50px 50px 0;
+		background: black;
+		position: absolute;
+		top:0;
+		left: 100px;
+		z-index: 2;
+	}
+	.tj-left:after
+
+	{
+		content: "";
+		display:black;
+		width: 20px;
+		height: 20px;
+		border-radius: 20px;
+		background: white;
+		position: absolute;
+		top:35px;
+		left:100px;
+	
+		z-index: 3;
+	}
+	.tj-right
+	{
+		width: 100px;
+		height: 200px;
+		border-radius:0 100px 100px 0;
+		background: white;
+		position: absolute;
+		top:0;
+		left: 100px;
+
+	}
+	.tj-right:before
+
+	{
+		content: "";
+		display:black;
+		width: 50px;
+		height: 100px;
+		border-radius: 50px 0 0 50px;
+		background: white;
+		position: absolute;
+		top:100px;
+		left:-50px;
+		z-index: 2;
+	}
+	.tj-right:after
+
+	{
+		content: "";
+		display:black;
+		width: 20px;
+		height: 20px;
+		border-radius: 20px;
+		background: black;
+		position: absolute;
+		bottom:50px;
+		left:0px;
+		z-index: 3;
+	}
+	
+		
+
+
+
+	
+</style>
+</head>
+<body>
+<div class="ts1"></div>
+<div class="ts2"></div>
+<div class="ts3"></div>
+<div class="ts4"></div>
+<div class="tj">
+	<div class="tj-left"></div>
+	<div class="tj-right"></div>
+</div>
+</body>
+</html>
