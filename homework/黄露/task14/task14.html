@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>任务14-实战1</title>
+	<link rel="stylesheet" type="text/css" href="../../../../Font-Awesome-3.2.1/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../../../Font-Awesome-3.2.1/css/font-awesome-ie7.min.css">	
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		html,body,h1,h2,h4,ul{
+			margin: 0;
+			padding:0;
+			font-family:Arial,Verdana,Sans-serif;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#header{
+			background: url(img/header.jpg);
+			background-size: cover;
+			width: 100%;
+			height: 100%;
+		}
+		.main{
+			margin: 0 auto;
+			width: 960px;
+			display: table;
+			height: 100%;
+		}
+		.table{
+			display: table-cell;
+			vertical-align: middle;
+			text-align: center;
+		}
+		.btn1{
+			width: 140px;
+			height: 50px;
+			background: #777;
+			color: #fff;
+			display: inline-block;
+			line-height: 50px;
+		}
+		.btn1:hover{
+			background: #444;
+		}
+		.about{
+			padding: 50px 0;
+			font-size: 20px;
+		}
+		.about a{
+			color: #03c;
+		}
+		.about a:hover{
+			text-decoration: underline;
+		}
+		.skill{
+			background: rgba(215,144,135,0.6);
+			color: #fff;
+			padding: 50px;
+		}
+		.skill .sk{
+			width: 100px;
+			height: 100px;
+			border-bottom: 2px solid #fff;
+			margin: 0 auto;
+			line-height: 100px;
+			text-align: center;
+		}
+		.skill .icon{
+			font-size: 112px;
+		}
+		.skill .btn2{
+			width: 95px;
+			height: 30px;
+			background: #fff;
+			display: inline-block;
+			line-height: 30px;
+		}
+		.skill .btn2:hover{
+			background: #eee;
+		}
+		.skill li{
+			width: 25%;
+			text-align: center;
+			float: left;
+		}
+		.skill a{
+			color: #333;
+		}
+		.clearfix:after{
+			content:'';
+			display: block;
+			clear: both;
+		}
+		.desc{
+			background: url(img/work.jpg);
+			background-size: cover;
+			width: 100%;
+			height: 550px;
+		}
+		.img-cover{
+			background: rgba(0,0,0,0.5);
+			width: 100%;
+			height: 550px;
+		}
+		.desc h1{
+			font-size: 60px;
+			color: #fff;
+		}
+		.works h1{
+			text-align: center;
+			margin-top: 60px;
+		}
+		.works .line{
+			border:1px solid #eee;
+			width: 100px;
+			margin: 10px auto;
+		}
+		.works ul{
+			margin-right:-30px; 
+		}
+		.works li{
+			float: left;
+			width: 465px;
+			height: 305px;
+			margin-bottom: 30px;
+			margin-right: 30px;  
+		}
+		.works img{
+			width: 465px;
+			height: 305px;
+		}
+		.works .btn3{
+			width:140px;
+			height: 30px;
+			background: #777;
+			color: #fff;
+			line-height: 30px;
+			text-align: center;
+			margin:0 auto;
+		}
+		.btn3:hover{
+			background: #444;
+		}
+		.click-me{
+			padding:50px 0;
+			margin-top: 50px;
+			background: rgba(215,144,135,0.6);
+			color: #fff;
+		}
+		.btn4{
+			width: 140px;
+			height: 50px;
+			background: #fff;
+			line-height: 50px;
+			text-align: center;
+			margin-left: 328px;
+			margin-right: 5px;
+			display: inline-block;
+		}
+		.btn4:hover{
+			background: #eee;
+		}
+		.btn5{
+			width: 140px;
+			height: 50px;
+			background: rgba(0,0,0,0.5);
+			color: #fff;
+			line-height: 50px;
+			text-align: center;
+			display: inline-block;
+		}
+		.btn5:hover{
+			background: rgba(0,0,0,0.8);
+		}
+		.click-me h3{
+			text-align: center;
+		}
+		#footer{
+			width: 100%;
+			margin: 100px 0;
+		}
+		#footer li{
+			margin: 20px 10px;
+			display: inline-block;
+		}
+		.icon2 a{
+			font-size: 50px;
+			color: rgba(215,144,135,0.8);
+		}
+		.icon2 a:hover{
+			color: #969;
+		}
+		#footer .line{
+			width: 100px;
+			border: 1px solid #eee;
+			margin: 0 auto;
+		}
+		#footer p a:hover{
+			text-decoration: underline;
+		}
+
+	</style>
+
+</head>
+<body>
+<div id="header">
+	<div class="main">
+	  <div class="table">
+		<table>
+		    <tr><h1>Lulu</h1></tr>
+		    <tr><p>一个热爱前端的妹纸</p></tr>
+		    <tr><a href="#" class="btn1">查看更多</a></tr>
+	    </table>
+	  </div>	
+	</div>
+</div>
+
+<div class="about">
+	<div class="main">
+	    <div class="table">
+		    <h2>这是个标题</h2>
+		    <p>关于我的简介
+		      <span><a href="#">作品</a></span>
+		    </p>
+	    </div>
+    </div>
+</div> 
+
+<div class="skill clearfix">
+	<div class="main">
+		<div class="sk"><h1>技能</h1></div>
+	</div>
+	<div class="main">
+		<ul>
+			<li>
+				<div class="icon">
+				   <i class="icon-cloud-download"></i>
+				</div>
+				<h4>HTML&CSS</h4>
+				<p>html css相关技能，比如...</p>
+				<a href="#" class="btn2">相关作品</a>
+			</li>
+
+			<li>
+				<div class="icon">
+				   <i class="icon-shopping-cart"></i>
+				</div>
+				<h4>JS&Jquery</h4>
+				<p>JS组件、插件。比如...</p>
+				<a href="#" class="btn2">相关作品</a>
+			</li>
+
+			<li>
+				<div class="icon">
+				   <i class="icon-trophy"></i>
+				</div>
+				<h4>PROJECT</h4>
+				<p>比如XXX,XXXXX,XXX...</p>
+				<a href="#" class="btn2">我的项目</a>
+			</li>
+
+			<li>
+				<div class="icon">
+				   <i class="icon-leaf"></i>
+				</div>
+				<h4>BLOG</h4>
+				<p>学习历程总结,做了什么事</p>
+				<a href="#" class="btn2">查看博客</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="desc">
+	<div class="img-cover">
+		<div class="main">
+			<h1 class="table">又是一段话</h1>
+		</div>
+	</div>
+</div>
+
+<div class="works">
+	<div class="main">
+		<h1>我的作品</h1>
+		<div class="line"></div>
+		<ul class="clearfix">
+			<li><a href="#"><img src="img/portfolio-1.jpg"></a></li>
+			<li><a href="#"><img src="img/Pro2.jpg"></a></li>
+			<li><a href="#"><img src="img/work.jpg"></a></li>
+			<li><a href="#"><img src="img/Pro4.jpg"></a></li>
+		</ul>
+		<div class="btn3">查看更多</div>
+    </div>
+</div>
+
+<div class="click-me">
+	<div class="main">
+		<h3>我是一个聪明勤奋的人。</h3>
+		<a href="#" class="btn4">click me</a>
+		<a href="#" class="btn5">look at me</a>
+	</div>
+</div>
+
+<div id="footer">
+	<div class="main">
+		<div class="table">
+			<B>我的信息</B>
+			<p>3481 Melrose Place</p>
+			<p>Beverly Hills, CA 90210</p>
+			<p><i class="icon-phone"></i>(123)456-7890</p>
+			<p><i class="icon-envelope"></i><a href="#">name@example.com</a></p>
+			<ul class="icon2">
+				<li><a href="#" class="icon-github-sign"></a></li>
+				<li><a href="#" class="icon-twitter"></a></li>
+				<li><a href="#" class="icon-coffee"></a></li>
+			</ul>
+			<div class="line"></div>
+			<p>Copyright © hunger-hl 2016</p>	
+		</div>
+	</div>
+</div>
+</body>
+</html>

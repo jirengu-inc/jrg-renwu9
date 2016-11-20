@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<link rel="stylesheet"  type="text/css"  href="./iconfont/iconfont.css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+ <style>
+ 
+ body,ul,h1,p
+ {
+     margin:0px;
+     padding:0px;
+ }
+ li
+ {
+ 	list-style: none;
+ }
+ a
+ {
+ 	text-decoration:none;
+ }
+ *
+ {
+ 	font-family: 'Lato', sans-serif;
+ }
+
+ .clear:after
+ {
+ 	content:"";
+ 	display: block;
+ 	clear: both;
+ }
+html,body
+{
+	height: 100%;
+
+}
+ #header
+ {
+ 	background: url(./image/bg.png) no-repeat;
+ 	width: 100%;
+ 	display: table;
+ 	height: 100%;
+ }
+ .center
+ {
+ 	width: 960px;
+ 	margin: 0 auto;
+ 	min-width: 960px;
+ }
+ .header-content
+ {
+ 	
+ 	text-align: center;
+ 	display: table-cell;
+ 	vertical-align: middle;
+
+ }
+ .header-content h1
+ {
+ 	font-size: 42px;
+ 	
+ }
+ .header-content p
+ {
+ 	font-size: 16px;
+ 	padding-bottom: 36px;
+ 	padding-top: 24px;
+ 	font-weight: bold;
+ }
+ .header-content a
+ {
+     display:inline-block;
+     width: 140px;
+     height: 48px;
+     background: rgb(109,125,132);
+     line-height:48px;
+     color: white;
+     font-size: 14px;
+     font-weight: bold;
+ }
+ .header-content a:hover
+ {
+ 	background: black;
+ }
+ .header-content a:active
+ {
+ 	color: red;
+ }
+ .header-content a:visited
+ {
+ 	color: green;
+ }
+ #wrap
+ { 	
+	margin-top:68px;	
+	width: 100%;
+}
+ .wrap-head
+ {
+ 	width: 960px;
+ 	text-align: center;
+ }
+ .wrap-head span
+ {
+ 	font-size: 20px;
+ 	font-weight: bold;
+ 	display: inline-block;
+ 	line-height:38px;
+ }
+ .wrap-head p
+ {
+ 	font-size: 16px;
+ 	color: #717072;
+ 	line-height:42px; 
+ }
+ .wrap-head p a
+ {
+ 	color: #6898c5;
+ }
+ .wrap-head p a:hover
+ {
+ 	color: red;
+ }
+.wrap-nav
+{
+	margin-top: 64px;
+	background: #337ab7;
+	
+	width: 100%;
+}
+.nav
+{
+	text-align: center;
+}
+.nav>p
+{
+	font-size: 24px;
+	color: white;
+	font-weight:bold;
+	padding-top: 74px;
+	line-height: 24px;
+
+}
+.line
+{
+	width: 100px;
+	border-bottom: 1px solid white;
+	display:inline-block;
+
+}
+.nav ul
+{
+	float: left;
+	padding-top: 26px;
+	
+
+}
+.nav ul li
+{
+	float: left;
+	width: 240px;
+	color: white;
+	padding-bottom: 80px;
+
+
+}
+.parcel
+{
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;	
+	background: white;
+	text-align: center;
+	margin-left: 70px;
+}
+.iconfont
+{
+	color: #337ab7;
+	font-size: 50px;
+	line-height: 100px;
+	font-style: normal;
+
+}
+.nav span
+{
+   font-size: 16px;
+   font-weight: bold;
+   display: block;
+   padding-top:20px;
+   padding-bottom: 12px;
+   
+}
+
+.nav-content p
+{
+	font-size: 14px;
+	text-align: center;
+	line-height: 22px;
+}
+.nav-content a
+{
+	color:black;
+	display:inline-block;
+	height: 36px;
+	width: 90px;
+	font-size: 12px;
+	background:white;
+	line-height: 36px;
+	margin-top:8px;
+	
+
+}
+.nav-content a:hover
+{
+	background: black;
+	color: red;
+	border-radius: 10px;
+}
+.nav-content a:visited
+{
+	color: green;
+}
+.wrap-bg
+{
+	
+	height:400px;
+	background: url(./image/contentbg.png)no-repeat ;
+	background-size: cover;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+.wrap-bg p
+{
+	display: inline-block;
+	line-height: 400px;
+	color: white;
+	font-size: 44px;
+	font-weight: bold;
+}
+.wrap-content 
+{
+
+	text-align: center;
+	margin-top: 28px;
+	margin-bottom: 50px;
+
+}
+.wrap-content p
+{
+	font-size: 22px;
+	line-height: 114px;
+	font-weight: bold;
+
+}
+.wrap-content ul
+{
+	float: left;
+	margin-left: 7px;
+}
+.wrap-content ul li
+{
+	float: left;
+	width: 458px;
+	height: 306px;
+	vertical-align: middle;
+	margin-bottom: 30px;
+
+	
+}
+.wrap-content ul li:nth-of-type(2)
+{
+	margin-left: 30px;
+}
+.wrap-content ul li:nth-of-type(4)
+{
+	margin-left: 30px;
+}
+.wrap-content a
+{
+	display:inline-block;
+	background: #9e9a9b;
+	width: 100px;
+	height:34px; 
+	color: #f8f8f9;
+	line-height: 34px;
+	padding:0 12px;
+	font-size: 12px;
+	font-weight: bold;
+}
+.wrap-content a:hover
+{
+	background: black;
+	color: red;
+}
+.wrap-foot
+{
+	background: #337ab7;
+	height: 220px;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 98px;
+}
+.wrap-foot p
+{
+	font-weight: bold;
+	font-size: 20px;
+	line-height: 64px;
+	padding-top: 50px;
+	color: white;
+}
+.wrap-foot a
+{
+	display: inline-block;
+	width: 102px;
+	height: 46px;
+	line-height: 46px;
+	font-size: 14px;
+	background: white;
+}
+.wrap-foot a:hover
+{
+	background: #205372;
+	color: white;
+	font-weight: bold;
+}
+#footer
+{
+	text-align: center;
+}
+#footer p:first-of-type
+{
+	font-size: 14px;
+	line-height: 42px;
+	color: #020603;
+    font-weight:bold; 
+}
+#footer p:nth-of-type(2)
+{
+	font-size: 12px;
+	line-height: 22px;
+	color: #434245;
+}
+#footer p:nth-of-type(3)
+{
+	font-size: 10px;
+	line-height: 20px;
+	color: #434245;
+}
+#footer p:nth-of-type(4)
+{
+	font-size: 10px;
+	line-height: 20px;
+	color: #434245;
+	padding-top:6px;
+}
+#footer p>i
+{
+	font-size: 10px;
+	color: black;
+	line-height: 20px;
+}
+#footer a
+{
+	display:inline-block;
+	font-size: 10px;
+	line-height: 24px;
+	color: #6898c5;
+}
+#footer>i
+{
+	display: inline-block;
+	font-size: 10px;
+	color: black;
+	line-height: 20px;
+}
+#footer div>i
+{
+	font-size:40px;
+	line-height: 90px;
+	padding-left: 20px;
+	height: 40px;
+}
+#footer div>i:last-of-type
+{
+	position: relative;
+	top:-5px;
+}
+#footer>p:last-of-type
+{
+	font-size: 14px;
+	line-height: 58px;
+	margin-bottom:90px;
+}
+
+
+ </style>
+</head>
+<body>
+  <div id="header">
+  	<div class="header-content center">
+  	
+  		<h1>Start Bootstrap</h1>
+  		<p>Free Bootstrap Themes & Templates</p>
+  		<a href="####">Find Out More</a>
+  		
+  	</div>
+  </div>
+  <div id="wrap">
+  	<div class="wrap-head center">
+  		<span>Stylish Portfolio is the perfect themme for your next project</span>
+  		<p>This them features some wonderful photography courtesy of <a href="##">Death the Stock Photo</a></p>
+  	</div>
+  	<div class="wrap-nav">
+  		<div class="nav center clear">
+  			<p>Our Services</p>
+  			<div class="line"></div>	
+	  		<ul class="nav-content">
+	  			<li>
+	  				<div class="parcel"><i class="iconfont">&#xe819;</i></div>
+	  				<span>Server Name</span>
+	  				<p>Lorem ipsum dolor sit amet, consectetur adipsicing elit</p>
+	  				<a href="#**">Learn More</a>
+	  			</li>
+	  			<li>
+	  				<div class="parcel"><i class="iconfont">&#xe607;</i></div>
+	  				<span>Server Name</span>
+	  				<p>Lorem ipsum dolor sit amet, consectetur adipsicing elit</p>
+	  				<a href="#**">Learn More</a>
+	  			</li>
+	  			<li>
+	  				<div class="parcel"><i class="iconfont">&#xe608;</i></div>
+	  				<span>Server Name</span>
+	  				<p>Lorem ipsum dolor sit amet, consectetur adipsicing elit</p>
+	  				<a href="#**">Learn More</a>
+	  			</li>
+	  			<li>
+	  				<div class="parcel"><i class="iconfont">&#xe65e;</i></div>
+	  				<span>Server Name</span>
+	  				<p>Lorem ipsum dolor sit amet, consectetur adipsicing elit</p>
+	  				<a href="#**">Learn More</a>
+	  			</li>
+	  		</ul>
+	  	</div>	
+  	</div>
+  	<div class="wrap-bg">
+  		<div class="center">
+  			<p>Verticall Centered Text</p>
+  		</div>
+  		
+  	</div>
+  	<div class="wrap-content center clear">
+  		<p>Our Work</p>
+  		<ul class="clear">
+  			<li><img src="./image/work1.png" alt=""></li>
+  			<li><img src="./image/work2.png" alt=""></li>
+  			<li><img src="./image/work3.png" alt=""></li>
+  			<li><img src="./image/work4.png" alt=""></li>
+  		</ul>
+  		<a href="#">View More Items</a>
+  	</div>
+  	<div class="wrap-foot">
+  		<div class="center">
+  			<p>The buttons below are impossible to resist</p>
+  			<a href="">Click Me!</a>
+  			<a href="">Look at Me!</a>
+  		</div>
+  	</div>
+  </div>	
+  <div id="footer" class="center">
+  	<p>Start Bootstrap</p>
+  	<p>3481 Melrose Place</p>
+  	<p>Beverly Hills,CA902110</p>
+  	<p><i class="iconfont">&#xe61e;</i>(123)456-7890</p>
+  	<i class="iconfont">&#xe6fb;</i> <a href="#3">name@example.com</a>
+  	<div>
+  		<i class="iconfont">&#x3596;</i>
+  		<i class="iconfont">&#xe736;</i>
+  		<i class="iconfont">&#xe680;</i>
+  	</div>
+  	
+  	<p>Copyright &copy Your Website 2014 </p>
+  </div>
+ 
+</body>
+</html>
