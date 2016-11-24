@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>导航</title>
+	<style>
+	/*重置*/
+	body,ul,li{margin: 0;
+	     padding: 0;
+	     }
+	a{text-decoration: none;color:#000;}
+	li{list-style:none;}
+	.clearfix:after{content: "";
+	                display:block;
+	                clear:both;
+	                }
+	/*样式*/
+	.nav{background-color:#ccc;
+	     width: 500px;
+	     margin: 0 auto;
+	     font-size:20px;
+	     height: 30px;
+	     line-height:30px;
+	     }
+	
+	.nav>li{float: left;
+	        margin-right:30px;
+	        position: relative;
+	        } 
+	.list{display: none;
+	      position:absolute ;
+	      left:0;
+	      top:100%;
+	      border:1px solid #ccc;
+	      }
+	.nav>li:hover .list{display: block;}
+	.nav li:hover{background-color:#888 ;} 	
+	</style>
+	</head>
+	<body>
+		<ul class="nav clearfix">
+			<li><a href="">前端</a>
+				<ul class="list">
+					<li><a href="">Javascript</a></li>
+					<li><a href="">CSS</a></li>
+					<li><a href="">HTML</a></li>
+				</ul>
+			</li>
+			<li><a href="">服务端</a>
+				<ul class="list">
+					<li><a href="">Node</a></li>
+					<li><a href="">PHP</a></li>
+					<li><a href="">Java</a></li>
+				</ul>
+			</li>
+			<li><a href="">前端工具</a>
+				<ul class="list">
+					<li><a href="">Submlie</a></li>
+					<li><a href="">Webstorm</a></li>
+					<li><a href="">Git</a></li>
+				</ul>
+			</li>
+			<li><a href="">HTML</a></li>
+			<li><a href="">NODE</a></li>
+		</ul>
+	
+	</body>
+</html>
