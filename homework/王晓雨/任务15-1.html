@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-15</title>
+	<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<style type="text/css">
+	/*重置样式*/
+	html,body,h1,h2,h3,h4,h5,h6,ul,li,p{
+		margin: 0;
+		padding: 0;
+	}
+	li{list-style: none;}
+	a{text-decoration: none;color: black;}
+	/*基本样式*/
+	#header,#banner,#main,#footer{
+		font-family: "Arial","Microsoft YaHei",sans-serif;
+	}
+	.container{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	.clearfix{
+		display: block;
+		content: "";
+		clear: both;	
+	}
+	/*头部样式*/
+	.logo{
+		float: left;
+		cursor: pointer;
+		margin-top:7px;
+	}
+	#header{
+		height: 50px;
+	}
+	#header .navbar{
+		float: left;
+		margin-left: 20px;
+	}
+	#header .navbar>li{
+		float: left;
+		position: relative;
+		font-size: 16px;
+		padding: 0 10px;
+		line-height: 50px;
+		height: 50px;	
+	}
+	#header .navbar .droplist{
+		display: none;
+		position: absolute;
+		left: 0;
+		top:100%;
+		width: 100%;
+		background: #fff;
+		color:#ccc;
+		text-align: center;
+		border: 1px solid #eee;
+	}
+	#header .navbar li:hover .droplist{
+		display: block;
+	}
+	#header .navbar .droplist>li{
+		line-height: 1;
+		color: #333;
+    	padding: 10px;
+		border-bottom: 1px dashed #ccc;
+	}
+	#header .navbar .droplist>li:last-child{
+		border: none;
+	}
+	/*广告样式*/
+	#banner{
+		background: rgb(180,80,80);
+		color: #fff;
+		padding:60px 0;
+	}
+	#banner h1{
+		font-size: 40px;
+		margin: 5px 0;	
+	}
+	#banner p{
+		font-size: 16px;
+		line-height: 1.5;
+	}
+	/*主体部分-subnav*/
+	#main{
+		height: 800px;
+		margin-top: 40px;
+		margin-bottom: 30px;
+	}
+	#main .wrap{
+		background-color: rgb(240,240,240);
+		height: 40px;
+		margin-bottom: 30px;
+	}
+	#main .subnav{
+		margin-top: 30px;
+		margin-bottom: 20px;	
+	}
+	#main .subnav>li:first-child{
+		margin-left: 7px;
+
+	}
+	#main .subnav>li{
+		float: left;
+		padding: 8px 5px;
+		font-size: 16px;		
+	}
+	#main .subnav>li>a{
+		color: #333;
+	}
+	#main .subnav>li:first-child>a{
+		color: rgb(184,88,70);
+	}
+	#main .subnav>li>a:hover{
+		color: #ccc;
+	}
+	/*主体部分-作品样式*/
+	#main .works{
+		margin-left: -30px;
+	}
+	#main .works>li{
+		float: left;
+		margin-left: 30px;
+		margin-bottom: 30px;
+	}
+	#main .work{
+		box-sizing: border-box;
+		width: 100%;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding: 5px 5px;
+		text-align: center;	
+	}
+	#main .work>li{
+		margin-bottom: 10px;
+	}
+	#main .work>li:last-child{
+		margin: 20px 0;
+	}
+	#main .img img{
+		width: 300px;
+		height: 200px;
+	}
+	#main .title{
+		font-size: 20px;
+	}
+	#main .describle{
+		font-size: 16px;
+	}
+	#main .btn a{
+		color: #333;
+		padding: 5px 10px;
+		border:1px solid #ccc;
+		border-radius: 5px;
+	}
+	#main .btn a:hover{
+		background: #eee;
+	}
+
+   /*尾部样式*/
+	.center{text-align: center;}
+	#footer .container p{
+		margin-top:10px;
+	}
+	#footer .container p a{
+		color: #fff;
+		padding: 5px 10px;
+		border:1px solid #ccc;
+		border-radius: 5px;
+	}
+	#footer .copyright{
+		padding: 30px 0;
+	}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="container clearfix">
+			<span class="logo"><i class="fa fa-github fa-2x"></i></span>
+			<ul class="navbar">
+				<li>
+					<a href="#">我的前端</a>
+					<ul class="droplist">
+						<li><a href="#">HTML</a></li>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">JS</a></li>
+					</ul>	
+				</li>
+				<li>
+					<a href="#">博客</a>
+					<ul class="droplist">
+						<li><a href="#">HTML</a></li>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">JS</a></li>
+					</ul>	
+				</li>
+				<li>
+					<a href="#">项目</a>
+					<ul class="droplist">
+						<li><a href="#">HTML</a></li>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">JS</a></li>
+					</ul>	
+				</li>
+				<li>
+					<a href="#">更多<i class="fa fa-caret-down"></i></a>
+					<ul class="droplist">
+						<li><a href="#">HTML</a></li>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">JS</a></li>
+					</ul>	
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="banner">
+		<div class="container">
+				<h1>我的简介</h1>
+				<p>我是一个爱前端的菜鸟</p>
+				<p>努力学习，早日进阶，早日毕业</p>
+		</div>
+	</div>
+	<div id="main">
+		<div class="container">
+			<div class="wrap">
+				<ul class="subnav">
+					<li>
+						<a href="#">首页</a>
+					</li>
+					<li>
+						<a href="#">/&nbsp&nbsp 我的作品</a>
+					</li>
+				</ul>
+			</div>
+			<ul class="works clearfix">
+				<li>
+					<ul class="work">
+						<li class="img">
+							<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt="照片">
+						</li>
+						<li class="title">
+							<h2>Creative</h2>
+						</li>
+						<li class="describle">
+							<p>A one page creative theme</p>
+						</li>
+						<li class="btn">
+							<a href="#">查看</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="work">
+						<li class="img">
+							<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt="照片">
+						</li>
+						<li class="title">
+							<h2>Creative</h2>
+						</li>
+						<li class="describle">
+							<p>A one page creative theme</p>
+						</li>
+						<li class="btn">
+							<a href="#">查看</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="work">
+						<li class="img">
+							<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt="照片">
+						</li>
+						<li class="title">
+							<h2>Creative</h2>
+						</li>
+						<li class="describle">
+							<p>A one page creative theme</p>
+						</li>
+						<li class="btn">
+							<a href="#">查看</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="work">
+						<li class="img">
+							<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt="照片">
+						</li>
+						<li class="title">
+							<h2>Creative</h2>
+						</li>
+						<li class="describle">
+							<p>A one page creative theme</p>
+						</li>
+						<li class="btn">
+							<a href="#">查看</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="work">
+						<li class="img">
+							<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt="照片">
+						</li>
+						<li class="title">
+							<h2>Creative</h2>
+						</li>
+						<li class="describle">
+							<p>A one page creative theme</p>
+						</li>
+						<li class="btn">
+							<a href="#">查看</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<ul class="work">
+						<li class="img">
+							<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt="照片">
+						</li>
+						<li class="title">
+							<h2>Creative</h2>
+						</li>
+						<li class="describle">
+							<p>A one page creative theme</p>
+						</li>
+						<li class="btn">
+							<a href="#">查看</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="banner">
+			<div class="container center">
+				<h1>想了解更详细的我？</h1>
+				<p>下载简历，快打我电话找我把!</p>
+				<p><a href="#">下载</a></p>
+			</div>
+		</div>
+		<div class="container center">
+			<div class="copyright">
+				<p>Copyright©GarenWang 2016</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
