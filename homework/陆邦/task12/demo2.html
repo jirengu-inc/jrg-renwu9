@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>demo2圣杯布局</title>
+		<style>
+		#header,#footer{background: #ccc;
+		                height: 100px;
+		                }
+		#content{overflow: auto;
+		         padding: 0 200px;
+		         }                
+		.centerbox{background: green;
+		           height:300px;
+		           width: 100%;
+		           float: left;
+		          }
+		.leftbox{background: red;
+		         width: 200px;
+		         height: 200px;
+		         margin-left:-100%;
+		         float:left;
+		         position: relative;
+		         left: -200px;
+		         }
+		.rightbox{background: yellow;
+		         width: 200px;
+		         height: 200px;
+		         float: left;
+		         margin-left:-200px;
+		         position: relative;
+		         right:-200px;
+		         
+		         }                                	
+		</style>
+	</head>
+	<body>
+	<div id="header">头部</div>	
+	<div id="content">
+		<div class="centerbox"></div>
+		<div class="leftbox"></div>
+		<div class="rightbox"></div>
+		
+	</div>
+	<div id="footer">尾部</div>
+	</body>
+</html>
