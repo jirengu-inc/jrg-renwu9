@@ -1,0 +1,160 @@
+/*----------------------------全局-------------------------------*/
+body,ul,li,p,h1,h2,h3,h4 {
+	margin: 0;
+	padding:0;
+}
+body{
+  font: 14px/1.5  normal; /*font-family*/
+  color: #333;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #666;
+}
+.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+ a:hover {
+	color: black;
+}
+.btn1 {
+	display: inline-block;
+	width: 50px;
+	height: 30px;
+	border: 1px solid; 
+	border-radius: 3px;
+	line-height: 30px;
+}
+hr {
+	border: 1px solid #eee;
+	width: 1000px;
+	margin
+}
+.layout {
+ 	width: 1000px;
+	margin: 0 auto;
+}
+.btn2 {
+	display: inline-block;
+	width: 40px;
+	height: 30px;
+	line-height: 30px;
+	border: 1px solid #fff;
+	border-radius: 2px; 
+	color: #fff;
+}
+.text-center {
+	text-align: center;
+}
+/*----------------------------header-------------------------------*/
+#header .fa-github {
+	float: left;
+	padding: 7px;
+	font-size: 30px;
+ }
+#header .fa-github:hover {
+	color: rgba(0,0,0,0.8);
+}
+
+.nav-bar {
+	float: left;
+}
+.nav-bar>li {
+	position: relative;
+	float: left;
+	padding: 15px;
+
+}
+.drop-down {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	border: 1px solid;
+	background-color: #fff;
+}
+.drop-down>li {
+	padding: 10px; 
+}
+.drop-down>li:nth-of-type(2) {
+	border-top: 1px dashed;
+	border-bottom: 1px dashed;
+}
+.nav-bar>li:hover .drop-down {/*选择的是 他自己的drop-down*/
+	display: block;
+}
+.drop-down>li:hover {
+	background-color: #eee;
+}
+/*----------------------------content-------------------------------*/
+#content .intro {
+	background-color: #b84d45;
+	padding: 40px; 
+	color: #fff;
+}
+#content .intro h2 {
+	font-size: 28px;
+}
+#content .title  {
+	background-color: #eee;
+	padding: 10px;
+	margin: 30px 0;
+	border-radius: 3px;
+}
+#content .title a {
+	color: #b84d45; 
+}
+.title .bar>li{
+	display: inline-block;
+	padding: 4px;
+}
+.portfolio>ul {
+	margin-left: -49px;
+}
+.portfolio li>a>img {
+	width: 303px;
+	height: 198px;
+}
+.portfolio li {
+	float: left;
+	margin-left: 45px; 
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	margin-bottom: 20px;
+	text-align: center;
+}
+.portfolio li>h4 {
+	text-align: left;
+	font-size: 16px;
+	padding: 5px;
+}
+.portfolio li>p {
+	text-align: left;
+	padding: 5px;
+}
+
+.portfolio li>a {
+	margin-bottom: 10px;
+}
+.cv {
+	background-color: #b84d45;
+	padding: 10px; 
+	margin: 20px 0;
+	color: #fff;
+}
+.cv h2 {
+	font-size: 28px;
+}
+.cv p {
+	padding: 9px;
+}
+/*----------------------------footer-------------------------------*/
+#footer p {
+	margin: 30px;
+}
+
