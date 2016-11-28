@@ -33,7 +33,7 @@
 - 把DOM和CSSOM组合成渲染树(render tree)
 - 在渲染树的基础上进行Layout，定位坐标和大小，是否换行，各种positiono，verflow，z-index属性
 - 把每个节点绘制到屏幕上
-- 某些动态修改dom属性或是css属性的js会导致重新layout
+- 某些动态Js修改DOM属性或是修改css属性会导致重新layout
 - Reflow重新验证并计算Render Tree并layout，Repaint重新layout
 
 - [参考](http://coolshell.cn/articles/9666.html)
