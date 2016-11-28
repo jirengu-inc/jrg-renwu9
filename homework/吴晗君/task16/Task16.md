@@ -22,6 +22,7 @@
 [携程](http://ued.ctrip.com/blog/script-defer-and-async.html#)
 [segmentfault1](https://segmentfault.com/q/1010000000640869)
 [segmentfault2](https://segmentfault.com/a/1190000006778717)
+
 ### 四、简述网页的渲染机制
 - 解析HTML标签，构建DOM树
 - 解析CSS标签，构建CSSOM树
@@ -32,10 +33,12 @@
 - Reflow重新验证并计算Render Tree并layout，Repaint重新layout
 [参考](http://coolshell.cn/articles/9666.html)
 [How to browsers work译文](http://www.cnblogs.com/lhb25/p/how-browsers-work.html#CSS_parsing)
+
 ### 五、JavaScript 定义了几种数据类型? 哪些是简单类型?哪些是复杂类型?
 - 6+Symbol类型
 - 简单：number/string/boolean/undefined/null
 - 复杂：object{object狭义/数组/函数}
+
 ### 六、NaN、undefined、null分别代表什么?
 - NaN（not a number）:本质是number类型，是js的特殊值，主要出现在将字符串解析成数字出错的场合。
 - underfined和null是两种特殊的数据类型。
@@ -44,6 +47,7 @@
 2. 对象没有赋值的属性
 3. 函数没有返回值时默认返回undefined
 - null:空指针。表示一个值被定义了，定义为空值，即该处的值现在为空。比如，调用函数时，不需要传入某个参数，这时就可以传入null。
+
 ### 七、typeof和instanceof的作用和区别?
 - 两者都是数据类型
 - typeof运算符：返回一个值的数据类型（number|string|boolean|function|undefined|object）
