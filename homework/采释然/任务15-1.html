@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>任务15-1</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.layout{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		#header,#main,#footer{
+			font-family: '微软雅黑',sans-serif;
+		}
+		.nav::after{
+			content:'';
+			clear: both;
+			display: block;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.nav>ul>li{
+			float: left;
+			height: 50px;
+			line-height: 50px;
+			width: 70px;
+			text-align: center;
+		}
+		.nav a,.content a{
+			color: #535353;
+			font-size: 14px;
+		}
+		.nav>ul>li{
+			position: relative;
+		}
+		.nav a:hover,.content a:hover{
+            color: #262626;
+		}
+		.triangle{
+			width: 1px;
+			height: 0;
+			border-top: 5px solid;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+		.drop-down-menu{
+			display: none;
+			border: 1px solid #9A9A9A;
+			position: absolute;
+			top: 100%;
+			line-height: 30px;
+			background-color: #fff;
+		}
+		.drop-down-menu li{
+			width: 70px;
+			text-align: center;
+		}
+		.drop-down-menu li:nth-child(1){
+			border-bottom: 1px dashed #9A9A9A;
+		}
+		.drop-down-menu li:nth-child(2){
+			border-bottom: 1px dashed #9A9A9A;
+		}
+		.drop-down-menu li:hover{
+			background-color: #eeeeee;
+		}
+		.nav>ul>li:hover .drop-down-menu{
+			display: block;
+		}
+		.headline{
+			background-color: #B84D45;
+			color: #fff;
+			padding: 35px 0;
+		}
+		.headline p{
+			font-size: 14px;
+			line-height: 30px;
+		}
+		.content-nav{
+            height: 40px;
+            line-height: 40px;
+            margin: 50px 0;
+            background-color: #EEE;
+            font-size: 14px;
+            padding-left: 10px; 
+		}
+		.content-nav a{
+			color:#B84E46;
+		}
+		.content{
+            margin-left: -35px;
+            padding-top: 1px;
+		}
+		.content::after{
+			content: '';
+			clear: both;
+			display: block;
+		}
+		.content li{
+			width: 310px;
+			height: 350px;
+			border: 1px solid #CCC;
+			float: left;
+			margin: 0 0 20px 35px;
+			box-sizing: border-box;
+			text-align: center;
+		}
+		.content a{
+            border: 1px solid #9A9A9A;
+            padding: 5px 10px;
+		}
+		.content img{
+			width: 308px;
+			height: 220px;
+		}
+		.content h4{
+			line-height: 50px;
+		}
+		.content p{
+			margin-bottom: 10px;
+			font-size: 14px;
+		}
+		@font-face {
+            font-family: 'iconfont';  /* project id："173502" */
+            src: url('http://at.alicdn.com/t/font_ep0w008cfsrcz0k9.eot');
+            src: url('http://at.alicdn.com/t/font_ep0w008cfsrcz0k9.eot') format('embedded-opentype'),
+            url('http://at.alicdn.com/t/font_ep0w008cfsrcz0k9.woff') format('woff'),
+            url('http://at.alicdn.com/t/font_ep0w008cfsrcz0k9.ttf') format('truetype'),
+            url('http://at.alicdn.com/t/font_ep0w008cfsrcz0k9.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:40px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        #footer{
+        	background-color: #B84D45;
+        	color: #fff;
+        	text-align: center;
+        	padding: 30px;
+        }
+        #footer p{
+            margin-bottom: 30px;
+        }
+        #footer a{
+        	color: #fff;
+        	border: 1px solid #fff;
+        	padding: 5px 10px;
+        }
+        .line{
+        	width: 1000px;
+        	height: 0;
+        	border-top: 1px solid #ccc;
+        	margin: 30px auto 0 auto;
+        }
+        .writer{
+        	text-align: center;
+        	line-height: 70px;
+        }
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="nav layout">
+			<ul>
+				<li>
+					<a href="#"><i class="iconfont">&#xe62a;</i></a>
+				</li>
+				<li>
+					<a href="#">博客</a>
+				</li>
+				<li>
+					<a href="#">项目</a>
+				</li>
+				<li>
+					<a href="#">简历</a>
+				</li>
+				<li>
+					<a href="#">更多<div class="triangle"></div></a>
+					<ul class="drop-down-menu">
+						<li><a href="#">GitHub</a></li>
+						<li><a href="#">知乎</a></li>
+						<li><a href="#">微博</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="headline">
+			<div class="layout">
+				<h2>我的简介</h2>
+				<p>没有西天，没有极乐.</p>
+				<p>只有永远无尽的长路，走着一代代不肯绝望的人。</p>
+			</div>
+		</div>
+	</div>
+	<div id="main" class="layout">
+		<div class="content-nav">
+			<a href="#">首页</a>
+			<span>/我的作品</span>
+		</div>
+		<div class="content">
+			<ul>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg">
+					<h4>Creative</h4>
+					<p>A one page creative theme.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/2.jpg">
+					<h4>Agency</h4>
+					<p>A one page agency theme.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/3.jpg">
+					<h4>Freelancer</h4>
+					<p>A one page freelancer theme.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/4.jpg">
+					<h4>Grayscale</h4>
+					<p>A multipurpose one psge theme.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/5.jpg">
+					<h4>Landing Page</h4>
+					<p>A claen,functional landing page theme.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/6.jpg">
+					<h4>Stylish Portfolio</h4>
+					<p>A stylish Bootsteap portfolio theme.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/7.jpg">
+					<h4>Full Width Pics</h4>
+					<p>Full width picture backgrounds.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/8.jpg">
+					<h4>One Page Wonder</h4>
+					<p>A simple one page website template.</p>
+					<a href="#">查看</a>
+				</li>
+				<li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/9.jpg">
+					<h4>Half</h4>
+					<p>A half page image slider templatel.</p>
+					<a href="#">查看</a>
+				</li>
+			    <li>
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/10.jpg">
+					<h4>Full Sliderf</h4>
+					<p>A full page image slider template.</p>
+					<a href="#">查看</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="layout">
+			<h1>想更详细了解我？</h1>
+			<p>下载简历，打电话找我吧</p>
+			<a href="#">下载</a>
+		</div>
+	</div>
+	<div class="line"></div>
+	<p class="writer">来自@AllenWalker</p>
+</body>
+</html>

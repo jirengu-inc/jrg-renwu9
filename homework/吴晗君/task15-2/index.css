@@ -1,0 +1,603 @@
+body, h1, h2, h3, h4, h5, p, ul {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+	color: #cdbe91;
+}
+ul, li{
+	list-style: none;
+}
+form {
+	margin-top: 80px;
+}
+a {
+	text-decoration: none;
+	color: #cdbe91;
+}
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
+.clearfix:after {
+	display: block;
+	content: '';
+	clear: both;
+}
+.text-center {
+	text-align: center;
+}
+/*-----------------------------------------导航条--------------------------------------------*/
+#nav {
+	background-color:rgba(0,0,0,.7);
+	position: fixed;
+	width: 100%;
+	z-index: 2;
+}
+.nav-logo {
+	float: left;
+	line-height: 84px; 
+	height: 84px;
+}
+.nav-logo:hover {
+	transform: rotateZ(360deg); /*怎么可以让他转起来，是不是太窄了*/
+}
+.nav-logo > img {
+	display: inline-block;
+	width: 121px;
+	height: 84px;
+}
+.nav-bar {
+	float: right;
+}
+.nav-bar > li {
+	float:left;
+	margin: 10px 9px;
+	padding: 8px 3;
+	height: 40px; 
+	line-height: 40px;
+	border-radius: 6px;
+	transition: all 2s;
+}
+.nav-bar a {
+	color: #fabe0a;
+} 
+.nav-bar li:hover {
+	background-color: #fed136;
+	color:#fff; /*怎么做可以让它生效？*/
+
+}
+#header {
+	background-image: url(pictrues/luoli.jpg);
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+}
+#header:before {
+	content:'';
+	display: block; 
+	height: 1px;
+}
+.header-wrap {
+	margin-top: 650px;
+	width: 300px;
+
+}
+/*.header-wrap */h4 {
+	font-size: 20px;
+}
+/*.header-wrap */h1 {
+	font-size: 40px;
+}
+/*.header-wrap*/ p {
+	font-size: 14px;
+}
+/*------------------------------------------------赛季全明星-----------------------------------------------*/
+#favorite,
+#season-star {
+	background-image: url(pictrues/beijing.jpg);
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	position: relative;
+}
+/*-----line----*/
+#season-star .title:before {
+	content: '';
+	border-top: 1px solid rgb(120, 90, 40);
+	position: absolute;
+	width: 621px;
+	left: 0; 
+	top: 48px;
+}
+#season-star .title:after {
+	content: '';
+	border-top: 1px solid rgb(120, 90, 40);
+	position: absolute;
+	width: 621px;
+	right: 0; 
+	top: 48px;
+}
+/*#season-cream h2,
+#around-world h2,
+#favorite h2,
+#season-star h2,
+#dark-horse */h2 {
+	font-size: 35px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+
+/*----阻止外边距合并----*/
+#footer:before,
+#contact:before,
+#season-cream:before,
+#around-world:before,
+#favorite:before,
+#season-star:before,
+#dark-horse:before {
+	content: '';
+	display: block;
+	height: 1px;
+}
+#season-cream .title h2,
+#around-world .title h2,
+#favorite .title h2, 
+#season-star .title h2,
+#dark-horse .title h2{
+	margin-top: 30px;
+}
+.favor-hero,
+.star-hero {
+	margin-left: -5px;
+	margin-top: 160px;
+	position: relative;
+}
+.favor-hero li,
+.star-hero li {   /*如果是inline-block元素的话下面的每个小图标就不用每个都定位了*/
+	float:left;  
+	position: relative;   
+}
+.favor-hero a img,
+.star-hero a img {
+	width: 196px;
+	height: 270px;
+	/*transform: translateZ(-0.1px) skew(-9deg);*/
+	margin-left: 5px;
+
+}
+.box-cover {
+	position: absolute;
+	width: 202px;
+	height: 290px;
+	left: 0;
+	top: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1;
+}
+.favor-hero li:hover .box-cover,
+.star-hero li:hover .box-cover {
+	z-index: -2;
+}
+/*----小图标绝对定位----*/
+.favor-hero li>img,
+.star-hero li>img {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 39%;
+	bottom: -20px;
+}
+/*.favor-hero li:nth-child(1) img,
+.star-hero li:nth-child(1) img {
+	left: 78px;                          错误定位的结果
+	bottom: -26px;
+}
+.favor-hero li:nth-child(2) img,
+.star-hero li:nth-child(2) img {
+	left: 276px;
+	bottom: -26px;
+}
+.favor-hero li:nth-child(3) img,
+.star-hero li:nth-child(3) img {
+	left: 478px;
+	bottom: -26px;
+}
+.favor-hero li:nth-child(4) img,
+.star-hero li:nth-child(4) img {
+	left: 678px;
+	bottom: -26px;
+}
+.favor-hero li:nth-child(5) img,
+.star-hero li:nth-child(5) img {
+	left: 878px;
+	bottom: -26px;
+}*/
+/*------------------------------------------------玩家最爱&&突围之星标题线-----------------------------------------------*/	
+#favorite .title:before,
+#contact .title:before,
+#dark-horse .title:before {
+	content: '';
+	border-top: 1px solid rgb(120, 90, 40);
+	position: absolute;
+	width: 671px;
+	left: 0; 
+	top: 48px;
+}
+#contact .title:after,
+#favorite .title:after,
+#dark-horse .title:after {
+	content: '';
+	border-top: 1px solid rgb(120, 90, 40);
+	position: absolute;
+	width: 671px;
+	right: 0; 
+	top: 48px;
+}
+/*------------------------------------------------突围之星-----------------------------------------------*/
+/*----婕拉和约里克----*/
+#dark-horse {
+	background-image: url(pictrues/beijing.jpg);
+	width: 100%;
+	height: 170%;
+	background-size: cover;
+	position: relative;
+}
+.horse-third img,
+.horse-first img {
+	float: left;
+	width: 400px;
+	height: 226px;
+	margin-top: 120px;
+	margin-left: 60px;
+	border: 2px solid rgb(120, 90, 40);
+}
+.horse-yorick,
+.horse-zyra {
+		float: right;	
+		margin-top: 45px;
+		margin-right: 80px;
+}
+.horse-yorick h3,
+.horse-zyra h3 {
+	font-size: 35px;
+	margin-top: 150px; 
+}
+/*----巴德----*/
+.horse-second img {
+	float:right;
+	width: 400px;
+	height: 226px;
+	margin-top: 120px;/*160*/
+	margin-left: 60px;
+	border: 2px solid rgb(120, 90, 40);
+}
+.horse-bard {
+	float: left;	
+	margin-top: 45px;
+	margin-left: 80px;
+}
+.horse-bard h3 {
+	font-size: 35px;
+	margin-top: 150px; 
+}
+.bar {
+	background-color:#463711;
+	max-width: 100px;
+	height: 1px;
+	margin: 40px auto 0;
+}
+/*------------------------------------------------------环球英雄联盟-------------------------------------------------*/
+#season-cream,
+#around-world {
+	position: relative;
+	background-image: url(pictrues/beijing.jpg);
+	width: 100%;
+	height: 110%;
+	background-size: cover;
+}
+#season-cream .title:before,
+#around-world .title:before {
+	content: '';
+	border-top: 1px solid rgb(120, 90, 40);
+	position: absolute;
+	width: 621px;
+	left: 0; 
+	top: 48px;
+}
+#season-cream .title:after,
+#around-world .title:after {
+	content: '';
+	border-top: 1px solid rgb(120, 90, 40);
+	position: absolute;
+	width: 621px;
+	right: 0; 
+	top: 48px;
+}
+.world-map {
+	width: 100%;
+	height: 90%;
+}
+.world-position {
+	width:0px;
+	height:0px;
+	border-right:10px solid  #cdfafa;
+	border-top:10px solid #0ac8b9;
+	border-bottom:10px solid #0ac8b9;
+	border-left:10px solid  #cdfafa;
+	border-radius: 6px;
+	position:absolute;
+    transition: all 2s;/*要加在这里，放在下面hover的话鼠标离开的时候没有delay*/
+    cursor: pointer;
+}
+#around-world .p1 {
+	left: 290px;
+	top: 341px; 
+}
+#around-world .p2 {
+	left: 300px;
+	top: 500px; 
+}
+#around-world .p3 {
+	left: 230px;
+	top: 450px; 
+}
+#around-world .p4 {
+	left: 561px;
+	top: 300px; 
+}
+#around-world .p5 {
+	left: 920px;
+	top: 370px; 
+}
+#around-world .p6 {
+	left: 360px;
+	top: 450px; 
+}
+#around-world .p7 {
+	left: 1018px;
+	top: 460px; 
+}
+#around-world .p8 {
+	left: 1088px;
+	top: 455px; 
+}
+#around-world .p9 {
+	left: 880px;
+	top: 420px; 
+}
+#around-world .p10 {
+	left: 317px;
+	top: 420px; 
+}
+#around-world .p11 {
+	left: 960px;
+	top: 480px; 
+}
+#around-world .p12 {
+	left: 1111px;
+	top: 300px; 
+}
+#around-world .p13 {
+	left: 1088px;
+	top: 355px; 
+}
+.world-position:hover{
+    transform:rotateZ(360deg);
+}
+/*-------------------------------------2016精华片段------------------------------------*/
+.timeline-first {
+	width: 1000px;
+	height: 375px;
+	margin-top: 70px;
+}
+.season-beginning h4 {
+	margin-top: 60px;
+}
+#season-cream .season-beginning h2 {
+	margin: 10;
+}
+.time-line1 {
+	width: 2px;
+	height: 990px;
+	background-color: #fabe0a;
+	position: absolute;
+	top: 720px;
+	bottom: 0;
+	left: 50%;
+}
+.time-line2 {
+	width: 2px;
+	height: 800px;
+	background-color: #fabe0a;
+	position: absolute;
+	top: 2777px;
+	bottom: 0;
+	left: 50%;
+}
+.time-line3 {
+	width: 2px;
+	height: 990px;
+	background-color: #fabe0a;
+	position: absolute;
+	top: 4120px;
+	bottom: 0;
+	left: 50%;
+}
+.time-line1:before,
+.time-line2:before,
+.time-line3:before {
+	width: 12px;
+	height: 12px;
+	display: block;
+	content: '';
+	position: absolute;
+	border: 2px solid rgb(120, 90, 40);
+	background-color: #fabe0a;
+	transform: rotate(45deg);
+	top: -5px;
+	left: -6px;
+}
+.time-line2:after {
+	width: 12px;
+	height: 12px;
+	display: block;
+	content: '';
+	position: absolute;
+	border: 2px solid rgb(120, 90, 40);
+	background-color: #fabe0a;
+	transform: rotate(45deg);
+	top: 800px;
+	left: -6px;
+}
+.time-line3:after,
+.time-line1:after {
+	width: 12px;
+	height: 12px;
+	display: block;
+	content: '';
+	position: absolute;
+	border: 2px solid rgb(120, 90, 40);
+	background-color: #fabe0a;
+	transform: rotate(45deg);
+	top: 990px;
+	left: -6px;
+}
+#season-cream {
+	height: 780%;
+}
+.hero-aurelionsol img,
+.hero-taric img,
+.hero-taliyah img,
+.hero-poor img,
+.hero-taliyah img,
+.hero-kled img,
+.hero-ivern img,
+.hero-teemo  img,
+.hero-jhin img{
+	width: 372px;
+	height: 202px;
+	border: 2px solid  rgb(120, 90, 40);
+}
+
+
+.hero-jhin {
+	float: right;
+	margin-top: 90px;
+}
+.hero-ivern,
+.hero-taliyah,
+.hero-taric {
+	float: right;
+}
+.hero-poor,
+.hero-kled,
+.hero-teemo,
+.hero-aurelionsol {
+	float: left;
+}
+.midseason-vido {
+	margin-bottom: 40px;
+}
+#season-cream h3 {
+	font-size: 30px;
+	margin-bottom: 30px; 
+}
+.cream-btn {
+	display: inline-block;
+	padding: 5px 10px;
+	border: 2px solid rgb(120, 90, 40);
+	border-radius: 7px;
+}
+.cream-btn:hover {
+	color: #F0E6D2;
+}
+.midseasonmagic img{
+	width: 1000px;
+	height: 375px;
+}
+.midseasonmagic {
+	margin-top: 50px;
+	margin-bottom: 140px;
+}
+.sourse-plan {
+	margin-top: 70px;
+	margin-bottom: 70px;
+}
+.world-finals {
+	margin-bottom: 80px;
+	margin-top: 80px;
+}
+.world-finals .cream-btn{
+	margin-top: 40px;
+}
+/*---------------------------------------------contact--------------------------------------------*/
+#contact {
+	background-image: url(pictrues/beijing.jpg);
+	width: 100%;
+	height: 80%;
+	background-size: cover;
+	position: relative;
+}
+#contact .title {
+	margin-bottom: 40px;
+}
+.wrap-left {
+	display: table-cell;
+	vertical-align: top;
+}
+.form-control {
+	padding: 21px 290px 21px 20px;
+	margin-bottom: 31px;
+	margin-right: 60px;
+	border: 3px solid #fabe0a;
+	border-radius: 4px;
+	background-color: #eee;
+}
+.wrap-right {
+	display:table-cell;
+	vertical-align: top;
+	height: 100px;
+}
+.form-control2 {
+	border: 3px solid #fabe0a;
+	border-radius: 4px;
+	background-color: #eee;
+}
+.form-submit {
+	padding: 20px;
+	border: 3px solid #fabe0a;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.form-submit:hover {
+	background-color: #f2a008;
+	border: 3px solid #c2c2c2;
+}
+/*---------------------------------footer----------------------------------------------*/
+#footer {
+	background-color: #020e1a;
+	width: 100%;
+}
+#footer .copyright {
+	float: left;
+	margin-bottom: 20px; 
+}
+#footer .link {
+	float: right;
+	margin-bottom: 20px; 
+}
+#footer .icon {
+	float: left;
+	margin-left: 200px;
+	margin-bottom: 20px;
+}
+#footer .icon .fa {
+	margin-left: 10px;
+	font-size: 26px;
+}
+#footer .fa:hover {
+	color: #fabe0a;
+}

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<link rel="stylesheet" href="./iconfont/iconfont.css" type="text/css" >
+</head>
+<style>
+	body,ul,p,h2,h3
+{
+  margin:0px;
+  padding:0px;
+}
+li
+{
+	list-style: none;
+}
+a
+{
+	text-decoration:none;
+}
+#header .iconfont
+{
+	font-size: 30px;
+	color:#ccc;
+}
+.center
+{
+	width: 1000px;
+	margin:0 auto;
+}
+.clear:after
+{
+	content: "";
+	display: block;
+	clear: both;		
+}
+#header .more:before
+{
+   width: 0px;
+   height: 0px;
+   border-bottom:5px solid transparent;
+   border-left:5px solid transparent;
+   border-right:5px solid transparent;
+   border-top:5px solid black;
+   content:"";
+   display: block;
+   position: absolute;
+   top: 23px;
+   left: 40px;
+}
+#header .more
+{
+	position: relative;
+}
+#header .nav
+{
+  height: 50px;
+}
+#header .nav>li
+{
+	float: left;
+	height: 50px;
+	padding-right: 20px;
+}
+.nav li a
+{
+	color: black;
+	line-height: 50px;
+	font-size: 14px;
+}
+#header .iconfont:hover
+{
+   color: black;
+}
+#header .position
+{
+	position: absolute;
+}
+.introduction
+{
+	background: #b84d45;
+	padding:30px 0px;
+}
+.introduction h2
+{
+	font-size: 28px;
+	color: white;
+	line-height: 44px;
+}
+.introduction p
+{
+   font-size: 14px;
+   color: white;
+   line-height: 20px;
+}
+.position
+{
+	display: none;
+	position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+}
+.position li 
+{
+	text-align: center;
+	border-bottom: 1px dashed;
+	height: 30px;
+}
+.position li:last-of-type
+{
+	border: none;
+}
+.position li a
+{
+	line-height: 30px;
+	
+}
+#header .more:hover .position
+{
+  display: block;
+}
+#wrap .home-page
+{
+   background: #eee;
+   border-radius: 5px;
+   padding-left: 10px;
+   margin-top:40px;
+   margin-bottom: 30px;
+}
+#wrap .home-page li
+{
+  float: left;
+  font-size: 16px;
+  padding:12px 6px 14px 0px;
+}
+#wrap .home-page li:first-of-type a
+{
+	color: red;
+}
+#wrap .main
+{
+	margin-left: -10px;
+}
+#wrap .main li
+{
+	border: 1px solid #ccc;
+	float: left;
+	width: 240px;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	padding-bottom: 10px;
+	
+}
+#wrap .main li h3
+{
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 50px;
+	text-align: left;
+}
+#wrap .main li p
+{
+	font-size:16px;
+	line-height:30px;
+	text-align: left;
+}
+#wrap .main li a
+{
+	display: inline-block;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#footer
+{
+	background: #b84d45;
+}
+.foot-main
+{
+	text-align: center;
+	color: white;
+	padding-top: 26px;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+}
+.foot-main h2
+{
+	font-size: 30px;
+	font-weight: bold;
+}
+.foot-main p
+{
+	font-size: 14px;
+	padding-top:12px;
+	padding-bottom: 24px;
+	font-weight: bold;
+	
+}
+.foot-main a
+{
+	border: 1px solid #ccc;
+	padding: 10px;
+	color: white;
+	font-weight: bold;
+}
+.author
+{
+	text-align: center;
+	border-top: 1px solid #ccc;
+	padding: 32px 0px;
+}
+.author p
+{
+	font-size: 16px;
+	color: black;
+
+}
+
+</style>
+
+<body>
+<div id="header">
+	<ul class="nav center clear">
+		<li><a class="iconfont">&#xe695;</a></li>
+		<li><a href="##">博客</a></li>
+		<li><a href="#">项目</a></li>
+		<li><a href="#">简历</a></li>
+		<li class="more">
+			<a href="#">更多</a>
+			<ul class="position">
+				<li><a href="#">GitHub</a></li>
+				<li><a href="#">知乎</a></li>
+				<li><a href="#">微博</a></li>
+			</ul>
+		</li>
+	</ul>
+	<div class="introduction">
+		<div class="center">
+			<h2>我的简介</h2>
+			<p>我的简介：姓名</p>
+			<p>我的简介: 性别</p>
+		</div>
+	</div>
+</div>
+<div id="wrap" class="center">
+	<ul class="home-page clear">
+		<li><a href="">首页</a></li>
+		<li>/</li>
+		<li><p>我的作品</p></li>
+	</ul>	
+	<ul class="main clear">
+			<li>
+				<img src="./image/work1.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work2.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work3.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work4.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work5.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work6.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work7.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work8.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work9.jpg" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work10.png" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work11.png" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			<li>
+				<img src="./image/work12.png" alt="">
+				<h3>作品标签</h3>
+				<p>作品介绍</p>
+				 <a href="#">查看</a>
+			</li>
+			
+			
+	</ul>
+	
+</div>
+<div id="footer">
+	<div class="center foot-main">
+		<h2>想更了解我？</h2>
+		<p>下载我的简历吧</p>
+		<a href="">下载</a>
+	</div>
+
+</div>
+<div class="center author">
+		
+		<p>来自饥人谷张亚楠</p>
+</div>
+    
+</body>
+</html>

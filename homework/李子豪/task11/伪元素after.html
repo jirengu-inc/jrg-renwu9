@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.clearfix>div{
+		float:left;
+		width:100px;
+		height:100px;
+		background: #ccc;
+	}
+	.clearfix{
+		border: 1px solid;
+		background: red;
+	}
+	.clearfix:after{
+    content: '';/*这个是将这个after的伪元素产生出来*/
+    display: block;/*将这个伪元素的显示方式为块级元素*/
+    clear: both;/*清除伪元素左右的浮动，用来撑开父元素的高度*/
+	}
+	.clearfix{
+    *zoom: 1;/*这个是针对IE6/7触发hasLayout用的，是为了当IE6/7版本不支持伪元素时，避免容器高度塌陷用的*/
+	}
+	</style>
+</head>
+<body>
+	<div class="clearfix">
+		<div></div>
+	</div>
+</body>
+</html>
