@@ -21,11 +21,11 @@
 2. async加载完js后马上执行，无顺序。谁快谁先上。
 3. 兼容性：async>IE9，defer<=9会有bug.
 
-操作dom的脚本不用async和defer(或者该部分脚本回调)
-执行脚和好页面执行共用一个线程，不能同时进行。
-[携程](http://ued.ctrip.com/blog/script-defer-and-async.html#)
-[segmentfault1](https://segmentfault.com/q/1010000000640869)
-[segmentfault2](https://segmentfault.com/a/1190000006778717)
+- 操作dom的脚本不用async和defer(或者该部分脚本回调)
+- 执行脚本和页面执行共用一个线程，不能同时进行。
+- [携程](http://ued.ctrip.com/blog/script-defer-and-async.html#)
+- [segmentfault1](https://segmentfault.com/q/1010000000640869)
+- [segmentfault2](https://segmentfault.com/a/1190000006778717)
 
 ### 四、简述网页的渲染机制
 - 解析HTML标签，构建DOM树
@@ -36,8 +36,8 @@
 - 某些动态修改dom属性或是css属性的js会导致重新layout
 - Reflow重新验证并计算Render Tree并layout，Repaint重新layout
 
-[参考](http://coolshell.cn/articles/9666.html)
-[How to browsers work译文](http://www.cnblogs.com/lhb25/p/how-browsers-work.html#CSS_parsing)
+- [参考](http://coolshell.cn/articles/9666.html)
+- [How to browsers work译文](http://www.cnblogs.com/lhb25/p/how-browsers-work.html#CSS_parsing)
 
 ### 五、JavaScript 定义了几种数据类型? 哪些是简单类型?哪些是复杂类型?
 
