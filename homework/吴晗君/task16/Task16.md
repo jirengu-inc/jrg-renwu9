@@ -1,47 +1,50 @@
-## ÎÊ´ð
-### Ò»¡¢CSSºÍJSÔÚÍøÒ³ÖÐµÄ·ÅÖÃË³ÐòÊÇÔõÑùµÄ£¿
--  Ê¹ÓÃlink±êÇ©½«cssÑùÊ½±í·ÅÔÚ¶¥²¿
--  ½«`<script></script>`·ÅÔÚÎ²²¿
-### ¶þ¡¢½âÊÍ°×ÆÁºÍFOUC
-1. ÏÈ°ÑÑùÊ½¼ÓÔØÍê»ã×ÜÔÙäÖÈ¾µÄä¯ÀÀÆ÷
-2. ÏÈ°ÑÄÚÈÝ¼ÓÔØ³öÀ´µÈ·¢ÏÖÑùÊ½µÄÊ±ºòÔÙÈ¥»æÖÆÒ»±éµÄä¯ÀÀÆ÷
-- Èç¹ûÊÇ1Ààä¯ÀÀÆ÷Èç¹û½«css·ÅÔÚºóÃæ£¬ÒòÎªµÈ´ýÊ±¼ä¼ÓÉÏ×ÔÉíµÄÏÂÔØÊ±¼ä£¬»á³öÏÖ³¤Ê±¼ä°×ÆÁ,Èç¹ûÊÇÊ¹ÓÃ@import±êÇ©ÒýÈëcssÒ²»á³öÏÖ°×ÆÁÏÖÏó[@import¼û¼òÊé](http://www.jianshu.com/p/d35dca8dea3e)
-- Èç¹ûÊÇ2Ààä¯ÀÀÆ÷»á³öÏÖFlash of Unstyled Content
-- ÈôÎ´½«js·ÅÔÚµ×²¿£¬½Å±¾½ûÓÃ²¢·¢²¢×èÈûÆäËûÄÚÈÝÏÂÔØ²¢³ÊÏÖ£¬µ¼ÖÂ°×ÆÁ»òÕßÄÚÈÝ¼ÓÔØµ½Ò»°ëÍ£×¡µÄÇé¿ö¡£
-### Èý¡¢asyncºÍdeferµÄ×÷ÓÃÊÇÊ²Ã´£¿ÓÐÊ²Ã´Çø±ð
-- ×÷ÓÃ£ºÈç¹û½«js·ÅÔÚ`<head>`ÄÚ£¬ayyncºÍdeferÑÓ³Ù¼ÓÔØscript.js£¬ÊµÏÖÒì²½¼ÓÔØ·ÀÖ¹×èÈûºóÃæÄÚÈÝ³ÊÏÖºÍÔÚ×é¼þÏÂÔØ¡£
-- Çø±ð£º
-1. deferÑÓ³Ùµ½ÎÄµµ½âÎöºÍÏÔÊ¾ºóÖ´ÐÐ£¬ÓÐË³Ðò£¨ÔÚÏÖÊµÖÐä¯ÀÀÆ÷²»Ò»¶¨°´Ë³ÐòÖ´ÐÐÒ²²»Ò»¶¨ÔÚDomContentloadÖ´ÐÐÖ®Ç°Íê³É¡£µ«ÊÇÎ´À´¿Ï¶¨»áÔ½À´Ô½×ñ´ÓECMA¶ø¹æ·¶¡££©
-2. async¼ÓÔØÍêjsºóÂíÉÏÖ´ÐÐ£¬ÎÞË³Ðò¡£Ë­¿ìË­ÏÈÉÏ¡£
-3. ¼æÈÝÐÔ£ºasync>IE9£¬defer<=9»áÓÐbug.
-²Ù×÷domµÄ½Å±¾²»ÓÃasyncºÍdefer(»òÕß¸Ã²¿·Ö½Å±¾»Øµ÷)
-Ö´ÐÐ½ÅºÍºÃÒ³ÃæÖ´ÐÐ¹²ÓÃÒ»¸öÏß³Ì£¬²»ÄÜÍ¬Ê±½øÐÐ¡£
-[Ð¯³Ì](http://ued.ctrip.com/blog/script-defer-and-async.html#)
+## é—®ç­”
+
+### ä¸€ã€CSSå’ŒJSåœ¨ç½‘é¡µä¸­çš„æ”¾ç½®é¡ºåºæ˜¯æ€Žæ ·çš„ï¼Ÿ
+-  ä½¿ç”¨linkæ ‡ç­¾å°†cssæ ·å¼è¡¨æ”¾åœ¨é¡¶éƒ¨
+-  å°†`<script></script>`æ”¾åœ¨å°¾éƒ¨
+
+### äºŒã€è§£é‡Šç™½å±å’ŒFOUC
+1. å…ˆæŠŠæ ·å¼åŠ è½½å®Œæ±‡æ€»å†æ¸²æŸ“çš„æµè§ˆå™¨
+2. å…ˆæŠŠå†…å®¹åŠ è½½å‡ºæ¥ç­‰å‘çŽ°æ ·å¼çš„æ—¶å€™å†åŽ»ç»˜åˆ¶ä¸€éçš„æµè§ˆå™¨
+- å¦‚æžœæ˜¯1ç±»æµè§ˆå™¨å¦‚æžœå°†cssæ”¾åœ¨åŽé¢ï¼Œå› ä¸ºç­‰å¾…æ—¶é—´åŠ ä¸Šè‡ªèº«çš„ä¸‹è½½æ—¶é—´ï¼Œä¼šå‡ºçŽ°é•¿æ—¶é—´ç™½å±,å¦‚æžœæ˜¯ä½¿ç”¨@importæ ‡ç­¾å¼•å…¥cssä¹Ÿä¼šå‡ºçŽ°ç™½å±çŽ°è±¡[@importè§ç®€ä¹¦](http://www.jianshu.com/p/d35dca8dea3e)
+- å¦‚æžœæ˜¯2ç±»æµè§ˆå™¨ä¼šå‡ºçŽ°Flash of Unstyled Content
+- è‹¥æœªå°†jsæ”¾åœ¨åº•éƒ¨ï¼Œè„šæœ¬ç¦ç”¨å¹¶å‘å¹¶é˜»å¡žå…¶ä»–å†…å®¹ä¸‹è½½å¹¶å‘ˆçŽ°ï¼Œå¯¼è‡´ç™½å±æˆ–è€…å†…å®¹åŠ è½½åˆ°ä¸€åŠåœä½çš„æƒ…å†µã€‚
+
+### ä¸‰ã€asyncå’Œdeferçš„ä½œç”¨æ˜¯ä»€ä¹ˆï¼Ÿæœ‰ä»€ä¹ˆåŒºåˆ«
+- ä½œç”¨ï¼šå¦‚æžœå°†jsæ”¾åœ¨`<head>`å†…ï¼Œayyncå’Œdeferå»¶è¿ŸåŠ è½½script.jsï¼Œå®žçŽ°å¼‚æ­¥åŠ è½½é˜²æ­¢é˜»å¡žåŽé¢å†…å®¹å‘ˆçŽ°å’Œåœ¨ç»„ä»¶ä¸‹è½½ã€‚
+- åŒºåˆ«ï¼š
+1. deferå»¶è¿Ÿåˆ°æ–‡æ¡£è§£æžå’Œæ˜¾ç¤ºåŽæ‰§è¡Œï¼Œæœ‰é¡ºåºï¼ˆåœ¨çŽ°å®žä¸­æµè§ˆå™¨ä¸ä¸€å®šæŒ‰é¡ºåºæ‰§è¡Œä¹Ÿä¸ä¸€å®šåœ¨DomContentloadæ‰§è¡Œä¹‹å‰å®Œæˆã€‚ä½†æ˜¯æœªæ¥è‚¯å®šä¼šè¶Šæ¥è¶Šéµä»ŽECMAè€Œè§„èŒƒã€‚ï¼‰
+2. asyncåŠ è½½å®ŒjsåŽé©¬ä¸Šæ‰§è¡Œï¼Œæ— é¡ºåºã€‚è°å¿«è°å…ˆä¸Šã€‚
+3. å…¼å®¹æ€§ï¼šasync>IE9ï¼Œdefer<=9ä¼šæœ‰bug.
+æ“ä½œdomçš„è„šæœ¬ä¸ç”¨asyncå’Œdefer(æˆ–è€…è¯¥éƒ¨åˆ†è„šæœ¬å›žè°ƒ)
+æ‰§è¡Œè„šå’Œå¥½é¡µé¢æ‰§è¡Œå…±ç”¨ä¸€ä¸ªçº¿ç¨‹ï¼Œä¸èƒ½åŒæ—¶è¿›è¡Œã€‚
+[æºç¨‹](http://ued.ctrip.com/blog/script-defer-and-async.html#)
 [segmentfault1](https://segmentfault.com/q/1010000000640869)
 [segmentfault2](https://segmentfault.com/a/1190000006778717)
-### ËÄ¡¢¼òÊöÍøÒ³µÄäÖÈ¾»úÖÆ
-- ½âÎöHTML±êÇ©£¬¹¹½¨DOMÊ÷
-- ½âÎöCSS±êÇ©£¬¹¹½¨CSSOMÊ÷
-- °ÑDOMºÍCSSOM×éºÏ³ÉäÖÈ¾Ê÷(render tree)
-- ÔÚäÖÈ¾Ê÷µÄ»ù´¡ÉÏ½øÐÐLayout£¬¶¨Î»×ø±êºÍ´óÐ¡£¬ÊÇ·ñ»»ÐÐ£¬¸÷ÖÖpositiono£¬verflow£¬z-indexÊôÐÔ
-- °ÑÃ¿¸ö½Úµã»æÖÆµ½ÆÁÄ»ÉÏ
-- Ä³Ð©¶¯Ì¬ÐÞ¸ÄdomÊôÐÔ»òÊÇcssÊôÐÔµÄjs»áµ¼ÖÂÖØÐÂlayout
-- ReflowÖØÐÂÑéÖ¤²¢¼ÆËãRender Tree²¢layout£¬RepaintÖØÐÂlayout
-[²Î¿¼](http://coolshell.cn/articles/9666.html)
-[How to browsers workÒëÎÄ](http://www.cnblogs.com/lhb25/p/how-browsers-work.html#CSS_parsing)
-### Îå¡¢JavaScript ¶¨ÒåÁË¼¸ÖÖÊý¾ÝÀàÐÍ? ÄÄÐ©ÊÇ¼òµ¥ÀàÐÍ?ÄÄÐ©ÊÇ¸´ÔÓÀàÐÍ?
-- 6+SymbolÀàÐÍ
-- ¼òµ¥£ºnumber/string/boolean/undefined/null
-- ¸´ÔÓ£ºobject{objectÏÁÒå/Êý×é/º¯Êý}
-### Áù¡¢NaN¡¢undefined¡¢null·Ö±ð´ú±íÊ²Ã´?
-- NaN£¨not a number£©:±¾ÖÊÊÇnumberÀàÐÍ£¬ÊÇjsµÄÌØÊâÖµ£¬Ö÷Òª³öÏÖÔÚ½«×Ö·û´®½âÎö³ÉÊý×Ö³ö´íµÄ³¡ºÏ¡£
-- underfinedºÍnullÊÇÁ½ÖÖÌØÊâµÄÊý¾ÝÀàÐÍ¡£
-- undefined:ÏµÍ³Îª±äÁ¿·ÖÅäÁËÄÚ´æµØÖ·ÓÐÖ¸Õë¡£µ«Î´¸ø±äÁ¿¸³Öµ¡£
-1. Èçµ÷ÓÃº¯ÊýÊ±¸Ã´«µÝµÄ²ÎÊýÎ´Ìá¹©
-2. ¶ÔÏóÃ»ÓÐ¸³ÖµµÄÊôÐÔ
-3. º¯ÊýÃ»ÓÐ·µ»ØÖµÊ±Ä¬ÈÏ·µ»Øundefined
-- null:¿ÕÖ¸Õë¡£±íÊ¾Ò»¸öÖµ±»¶¨ÒåÁË£¬¶¨ÒåÎª¿ÕÖµ£¬¼´¸Ã´¦µÄÖµÏÖÔÚÎª¿Õ¡£±ÈÈç£¬µ÷ÓÃº¯ÊýÊ±£¬²»ÐèÒª´«ÈëÄ³¸ö²ÎÊý£¬ÕâÊ±¾Í¿ÉÒÔ´«Èënull¡£
-### Æß¡¢typeofºÍinstanceofµÄ×÷ÓÃºÍÇø±ð?
-- Á½Õß¶¼ÊÇÊý¾ÝÀàÐÍ
-- typeofÔËËã·û£º·µ»ØÒ»¸öÖµµÄÊý¾ÝÀàÐÍ£¨number|string|boolean|function|undefined|object£©
-- instanceofÔËËã·û:Çø·ÖobjectÀàÐÍÀïÃæ{window|º¯Êý|Êý×é|null}instanceofÔËËã·ûÓÃÀ´²âÊÔÒ»¸ö¶ÔÏóÔÚÆäÔ­ÐÍÁ´ÖÐÊÇ·ñ´æÔÚÒ»¸ö¹¹Ôìº¯ÊýµÄ prototype ÊôÐÔ¡£
+### å››ã€ç®€è¿°ç½‘é¡µçš„æ¸²æŸ“æœºåˆ¶
+- è§£æžHTMLæ ‡ç­¾ï¼Œæž„å»ºDOMæ ‘
+- è§£æžCSSæ ‡ç­¾ï¼Œæž„å»ºCSSOMæ ‘
+- æŠŠDOMå’ŒCSSOMç»„åˆæˆæ¸²æŸ“æ ‘(render tree)
+- åœ¨æ¸²æŸ“æ ‘çš„åŸºç¡€ä¸Šè¿›è¡ŒLayoutï¼Œå®šä½åæ ‡å’Œå¤§å°ï¼Œæ˜¯å¦æ¢è¡Œï¼Œå„ç§positionoï¼Œverflowï¼Œz-indexå±žæ€§
+- æŠŠæ¯ä¸ªèŠ‚ç‚¹ç»˜åˆ¶åˆ°å±å¹•ä¸Š
+- æŸäº›åŠ¨æ€ä¿®æ”¹domå±žæ€§æˆ–æ˜¯csså±žæ€§çš„jsä¼šå¯¼è‡´é‡æ–°layout
+- Reflowé‡æ–°éªŒè¯å¹¶è®¡ç®—Render Treeå¹¶layoutï¼ŒRepainté‡æ–°layout
+[å‚è€ƒ](http://coolshell.cn/articles/9666.html)
+[How to browsers workè¯‘æ–‡](http://www.cnblogs.com/lhb25/p/how-browsers-work.html#CSS_parsing)
+### äº”ã€JavaScript å®šä¹‰äº†å‡ ç§æ•°æ®ç±»åž‹? å“ªäº›æ˜¯ç®€å•ç±»åž‹?å“ªäº›æ˜¯å¤æ‚ç±»åž‹?
+- 6+Symbolç±»åž‹
+- ç®€å•ï¼šnumber/string/boolean/undefined/null
+- å¤æ‚ï¼šobject{objectç‹­ä¹‰/æ•°ç»„/å‡½æ•°}
+### å…­ã€NaNã€undefinedã€nullåˆ†åˆ«ä»£è¡¨ä»€ä¹ˆ?
+- NaNï¼ˆnot a numberï¼‰:æœ¬è´¨æ˜¯numberç±»åž‹ï¼Œæ˜¯jsçš„ç‰¹æ®Šå€¼ï¼Œä¸»è¦å‡ºçŽ°åœ¨å°†å­—ç¬¦ä¸²è§£æžæˆæ•°å­—å‡ºé”™çš„åœºåˆã€‚
+- underfinedå’Œnullæ˜¯ä¸¤ç§ç‰¹æ®Šçš„æ•°æ®ç±»åž‹ã€‚
+- undefined:ç³»ç»Ÿä¸ºå˜é‡åˆ†é…äº†å†…å­˜åœ°å€æœ‰æŒ‡é’ˆã€‚ä½†æœªç»™å˜é‡èµ‹å€¼ã€‚
+1. å¦‚è°ƒç”¨å‡½æ•°æ—¶è¯¥ä¼ é€’çš„å‚æ•°æœªæä¾›
+2. å¯¹è±¡æ²¡æœ‰èµ‹å€¼çš„å±žæ€§
+3. å‡½æ•°æ²¡æœ‰è¿”å›žå€¼æ—¶é»˜è®¤è¿”å›žundefined
+- null:ç©ºæŒ‡é’ˆã€‚è¡¨ç¤ºä¸€ä¸ªå€¼è¢«å®šä¹‰äº†ï¼Œå®šä¹‰ä¸ºç©ºå€¼ï¼Œå³è¯¥å¤„çš„å€¼çŽ°åœ¨ä¸ºç©ºã€‚æ¯”å¦‚ï¼Œè°ƒç”¨å‡½æ•°æ—¶ï¼Œä¸éœ€è¦ä¼ å…¥æŸä¸ªå‚æ•°ï¼Œè¿™æ—¶å°±å¯ä»¥ä¼ å…¥nullã€‚
+### ä¸ƒã€typeofå’Œinstanceofçš„ä½œç”¨å’ŒåŒºåˆ«?
+- ä¸¤è€…éƒ½æ˜¯æ•°æ®ç±»åž‹
+- typeofè¿ç®—ç¬¦ï¼šè¿”å›žä¸€ä¸ªå€¼çš„æ•°æ®ç±»åž‹ï¼ˆnumber|string|boolean|function|undefined|objectï¼‰
+- instanceofè¿ç®—ç¬¦:åŒºåˆ†objectç±»åž‹é‡Œé¢{window|å‡½æ•°|æ•°ç»„|null}instanceofè¿ç®—ç¬¦ç”¨æ¥æµ‹è¯•ä¸€ä¸ªå¯¹è±¡åœ¨å…¶åŽŸåž‹é“¾ä¸­æ˜¯å¦å­˜åœ¨ä¸€ä¸ªæž„é€ å‡½æ•°çš„ prototype å±žæ€§ã€‚
