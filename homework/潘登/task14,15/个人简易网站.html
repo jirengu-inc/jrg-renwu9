@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<style>
+	html,body,h1,h3,p,ul,li,a,h4{
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	body,html{
+		width: 100%;
+		height: 100%;
+		font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        text-align: center;
+	}
+	.container{
+		width: 960px;
+		margin: 0 auto;
+	}
+	.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#header{
+		width: 100%;
+		height: 100%;
+		background:url("image/bg.jpg")  no-repeat;
+		background-size: cover;
+	}
+	#header .wrap {
+		text-align: center;
+        padding: 240px 0;
+	}
+	#header .wrap p{
+		padding: 20px; 0
+	}
+	#header .wrap a{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		color: white;
+		background: black;
+		opacity: 0.3;
+		text-align: center;
+        line-height: 30px;
+        border-radius: 5px;
+	}
+	#header .wrap a:hover{
+		background: black;
+		opacity: 0.8;
+	}
+	@-webkit-keyframes move{
+
+	  0%{
+		left:0;
+	  }
+	100%
+	  {
+		left:-960px;
+	  }	
+    }
+    .por{
+    	width:960px;
+    	height:188px;
+    	border:1px solid #000;
+    	position:relative;
+    	margin:100px auto;
+    	overflow:hidden;
+    }
+    #list{
+        position:absolute;
+    	left:0;
+    	top:0;
+    	margin:0;
+    	padding:0;
+    	animation:5s move infinite linear;
+    	width:200%;
+    }
+    #list li{
+        list-style:none;
+        width:188px;
+        height:188px;
+        border:1px solid #fff;
+        background:#000;
+        color:#fff;
+        font:50px/98px Arial;
+        text-align:center; 
+        float:left;
+    }
+    .por:hover #list{
+        animation-play-state:paused;
+    }
+    .por #list img{
+       width:188px;
+       height:188px;
+   }
+
+	.service{
+        background:rgb(129,216,208);
+	}
+	.skill h2{
+		text-align: center;
+	}
+	.skill ul li{
+		float: left;
+		padding:10px;
+		text-align: center;
+		width: 220px;
+	}
+	.skill ul li span{
+		font-size: 112px;
+	}
+	.skill ul li p{
+		padding: 20px 0;
+	}
+	.skill ul li a{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		background: #ccc;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 5px;
+		color: black;
+	}
+	.skill ul li a:hover{
+		background: red;
+		opacity: 0.6;
+	}
+	.callout{
+		height: 653px;
+		background: url("image/callout.jpg") no-repeat;
+		background-size: cover;
+	}
+	.callout .container{
+		text-align: center;
+	}
+	.callout .container h1{
+		padding: 300px;
+		color: white;
+	}
+	.port{
+		padding: 50px 0;
+		text-align: center;
+	}
+	.port h1{
+		text-align: center;
+	}
+	.port ul{
+		margin-left: -30px;
+
+	}
+	.port ul li{
+		float: left;
+		margin-left:30px;
+		margin-top: 30px;
+		width: 465px;
+		height: 305px;
+	}
+	.port ul li a img{
+		width: 465px;
+		height: 305px;
+	}
+	.port .more{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		color: white;
+		border-radius: 5px;
+		background: #ccc;
+		margin-top: 30px;
+	}
+	.port .more:hover{
+		background: black;
+		opacity: 0.8;
+	}
+	.hobby{
+		text-align: center;
+		background:rgb(129,216,208);
+	}
+	.hobby .hobby-1 ul{
+		margin-left: -30px;
+	}
+	.hobby .hobby-1 ul li{
+		float: left;
+		width: 300px;
+		margin:30px 0 30px 30px;
+	}
+	.hobby .hobby-1 ul li a span{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		color: black;
+		border-radius: 5px;
+		background: #ccc;
+		margin-top: 30px;
+	}
+	.hobby .hobby-1 ul li a span:hover{
+		background: red;
+		opacity: 0.6;
+	}
+	.hobby .hobby-1 ul li a img{
+		width: 300px;
+		height: 300px;
+	}
+	#footer{
+		padding: 100px 0;
+		text-align: center;
+	}
+	#footer .information .p1{
+		margin: 10px 0;
+	}
+	#footer .information .contact-1{
+		text-align: center;
+	}
+	#footer .information .contact-1 li{
+		float: left;
+		padding:0 139px;
+		
+	}
+	 #box{
+    	width: 465px;
+    	height: 305px;
+    	border: 10px solid #ccc;
+    	margin: -40px auto;
+    	position: relative;
+    }
+    .inpu{
+    	position: relative;
+    	top: -59px;
+    }
+    #box span{
+    	position: absolute;
+    	top: -29px;
+    	left: 95px;
+    }
+    #box a{
+    	display: inline-block;
+    	text-align: center;
+    	width: 40px;
+    	height: 40px;
+    	line-height: 40px;
+    	color: #000;
+    	background: #fff;
+    	opacity: 0.8;
+    	position: absolute;
+        top: 130px;
+    }
+    #prev{
+    	left: 10px;
+    }
+    #next{
+    	right: 10px;
+    }
+    #box #strong1{
+    	width: 465px;
+    	height: 30px;
+    	line-height: 30px;
+    	text-align: center;
+    	background: #000;
+    	opacity: 0.8;
+    	color: #fff;
+    	position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #box #p1{
+    	width: 465px;
+    	height: 30px;
+    	line-height: 30px;
+    	text-align: center;
+    	background: #000;
+    	opacity: 0.8;
+    	color: #fff;
+    	position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    #img1{
+    	width:465px;
+    	height:305px;
+    }
+    .wrap-1{
+    	width:100px;
+    	height:100px;
+    	padding:50px;
+    	margin:50px auto;
+    	perspective:200px;
+    	transform:scale(2);
+    	perspective-origin:center center;
+    }
+    .box-1{
+    	width:100px;
+    	height:100px;
+    	background:red;
+    	position:relative;
+    	transform-style:preserve-3d;
+    	transition:2s;
+    	transform-origin:center center -50px;
+    }
+   .box-1 div{
+   	width:100px;
+   	height:100px;
+   	position:absolute;
+   	color:#fff;
+   	font-size:50px;
+   	text-align:center;
+   	line-height:100px;
+   }
+   .box-1 div:nth-of-type(1){
+   	left:0;
+   	top:-100px;
+   	background:#9C0;
+   	transform-origin:bottom;
+   	transform:rotateX(90deg);
+   }
+   .box-1 div:nth-of-type(2){
+   	left:-100px;
+   	top:0px;
+   	background:#CF3;
+   	transform-origin:right;
+   	transform:rotateY(-90deg);
+   }
+   .box-1 div:nth-of-type(3){
+   	left:0px;
+   	top:0px;
+   	background:#CCF;
+   }
+   .box-1 div:nth-of-type(4){
+   	left:100px;
+   	top:0;
+   	background:#0C9;
+   	transform-origin:left;
+   	transform:rotateY(90deg);
+   }
+   .box-1 div:nth-of-type(5){
+   	left:0px;
+   	top:100px;
+   	background:#69C;
+   	transform-origin:top;
+   	transform:rotateX(-90deg);
+   }
+   .box-1 div:nth-of-type(6){
+   	left:0;
+   	top:0;
+   	background:#F0C;
+   	transform:translateZ(-100px) rotateX(180deg);
+   }
+   .wrap-1:hover .box-1{
+   transform:rotateX(180deg);
+}
+#box-2{
+	width:206px;
+	height:206px;
+	margin:80px auto;
+	position:relative;
+}
+#dial{
+	height:200px;
+	border:3px solid #000;
+	border-radius:103px;
+	position:relative;
+}
+#box-2 span{
+	width:2px;
+	height:6px;
+	background:#666;
+	position:absolute;
+	left:99px;
+	top:0;
+	transform-origin:0 100px;
+}
+#hand{
+	width:12px;
+	height:12px;
+	position:absolute;
+	left:97px;
+	top:97px;
+}
+#hour{
+	width:4px;
+	 height:45px;
+	 background:#000;
+	 position:absolute;
+	 left:4px;
+	 bottom:6px;
+	 transform-origin:bottom;
+	}
+#min{
+	width:2px;
+	height:60px;
+	background:#666;
+	position:absolute;
+	left:5px;
+	bottom:6px;
+	transform-origin:bottom;
+}
+#sec{
+	width:2px;
+	height:75px;
+	background:red;
+	position:absolute;
+	left:5px;
+	bottom:6px;
+	transform-origin:bottom;
+}
+#centre{
+	height:12px;
+	border-radius:9px;
+	background:#000;
+	position:relative;
+}
+#dial span:nth-of-type(5n+1){
+	height:10px;background:#000;
+}
+.ul0{
+  background:#cbcbcb;
+}
+.ul0>li{
+  float:left;
+  line-height:30px;
+  height:30px;
+  padding:0 110px;
+  position:relative;
+}
+.ul0 li:hover{
+  background:#aaa;
+}
+.ul2{
+  display:none;
+  position:absolute;
+  left:0;
+  top:30px;
+  border-left:1px solid #ccc;
+  border-right:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+}
+.ul2>li{
+  padding:10px 100px;
+}
+.ul0 li:hover .ul2{
+  display:block;
+}
+.ul0 a{
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</style>
+	<script>
+	window.onload = function(){
+
+    var oDiv = document.getElementById("box");
+    var oPrev = document.getElementById("prev");
+    var oNext = document.getElementById("next");
+    var oP = document.getElementById("p1");
+    var oStrong = document.getElementById("strong1");
+    var oImg = document.getElementById("img1");
+    var oBtn = document.getElementsByTagName("input");
+
+
+    var arrUrl = [ 'image/1.jpg', 'image/2.jpg', 'image/3.jpg', 'image/4.jpg' ];
+    var arrText = [ '文字一', '文字二', '文字三', '识文断字' ];
+    var num = 0;
+    var onOff = true;
+    oBtn[0].onclick=function(){onOff=true;document.getElementsByTagName("span")[4].innerHTML="图片可从最后一张跳转到第一张循环切换";};
+    oBtn[1].onclick = function(){onOff=false;document.getElementsByTagName("span")[4].innerHTML="图片只能到最后一张\或只能到第一张切换";};
+
+    function Tab(){
+    	oP.innerHTML=arrText[num];
+    	oStrong.innerHTML=num+1 + "/" + arrText.length;
+    	oImg.src=arrUrl[num];
+    }
+    Tab();
+    oPrev.onclick = function(){
+
+   num--;
+   if(num==-1){
+      if(onOff){
+	    num=arrText.length;
+	  }else{
+	  
+	    alert("这已经是第一张了");
+		num=0;
+	  }
+   
+   }
+   Tab();
+
+   };
+   oNext.onclick = function(){
+
+   num++;
+   if(num==arrText.length){
+      if(onOff){
+	    num=0;
+	  }else{
+	  
+	    alert("这已经是最后一张了");
+		num=arrText.length-1;
+	  }
+   
+   }
+   Tab();
+
+  };
+
+
+
+    var oDial=document.getElementById("dial");
+	var oHour=document.getElementById("hour");
+	var oMin=document.getElementById("min");
+	var oSec=document.getElementById("sec");
+	toDial(oDial);
+	toTime(oHour,oMin,oSec);
+	setInterval(function(){
+		toTime(oHour,oMin,oSec);
+	},1000)
+
+
+    function toTime(oHour,oMin,oSec)
+{
+	  var oDate=new Date();
+	  var iSec=oDate.getSeconds();
+	  var iMin=oDate.getMinutes()+iSec/60;
+	  var iHour=(oDate.getHours()%12)+iMin/60;
+	  oSec.style.WebkitTransform="rotate("+(iSec*360/60)+"deg)";
+	  oMin.style.WebkitTransform="rotate("+(iMin*360/60)+"deg)";
+	  oHour.style.WebkitTransform="rotate("+(iHour*360/12)+"deg)";
+}
+    function toDial(obj)
+{
+	  var sHtml="";
+	  var iDeg=6;
+	  for(var i=0;i<60;i++)
+	  {
+		 sHtml+="<span style='-webkit-transform:rotate("+iDeg*i+"deg)'></span>"
+	  }
+	  obj.innerHTML=sHtml;
+}
+
+
+
+};
+	</script>
+</head>
+<body>
+  <div id="header">
+  	<div class="wrap container">
+  	<h1>一个前端初学者</h1>
+  	<p>Hello!</p>
+  	<a class="btn" href="#">查看更多</a>
+  	</div>
+  </div>
+  <div id="main">
+    <ul class="ul0 clearfix">
+    <li><a href="#">前端</a>
+      <ul class="ul2">
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">HTML</a></li>
+      </ul>
+    </li>
+    <li><a href="#">服务端</a>
+      <ul class="ul2">
+        <li><a href="#">NODE</a></li>
+        <li><a href="#">PHP</a></li>
+        <li><a href="#">Java</a></li>
+      </ul>
+    </li>
+    <li><a href="#">前端工具</a>
+      <ul class="ul2">
+        <li><a href="#">Sublime</a></li>
+        <li><a href="#">WebStorm</a></li>
+        <li><a href="#">Git</a></li>
+      </ul>
+    </li>
+    <li><a href="#">HTML</a></li>
+    <li><a href="#">NODE</a></li>
+  </ul>
+  	<div class="por container">
+  	  <ul id="list">
+    	<li><img src="image/1.jpg"></li>
+        <li><img src="image/2.jpg"></li>
+        <li><img src="image/3.jpg"></li>
+        <li><img src="image/4.jpg"></li>
+        <li><img src="image/12313.jpg"></li>
+        <li><img src="image/1.jpg"></li>
+        <li><img src="image/2.jpg"></li>
+        <li><img src="image/3.jpg"></li>
+        <li><img src="image/4.jpg"></li>
+        <li><img src="image/12313.jpg"></li>
+      </ul>
+  	</div>
+  	<div class="service">
+  	  <div class="skill container">
+  		  <h2>技能</h2>
+  		  <hr>
+  		  <ul class="clearfix">
+  			  <li><span class="fa fa-cloud-download"></span>
+                <h4>HTML&CSS</h4>
+                <p>html css相关技能，比如...</p>
+                <a href="#" class="btn2">相关作品</a>
+  			  </li>
+  			  <li><span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                <h4>JS&Jquery</h4>
+                <p>JS组件、插件.比如...</p>
+                <a href="#" class="btn2">相关作品</a>
+  			  </li>
+  			  <li><span class="fa fa-trophy" aria-hidden="true"></span>
+                <h4>项目</h4>
+                <p>比如 xxx, xxxx, xxxx, xxx</p>
+                <a href="#" class="btn2">我的项目</a>
+  			  </li>
+  			  <li><span class="fa fa-leaf" aria-hidden="true"></span>
+                <h4>个人博客</h4>
+                <p>学习历程总结，比如，做了什么事</p>
+                <a href="#" class="btn2">查看博客</a>
+  			  </li>
+  		  </ul>
+  	  </div>
+  	</div>
+  	<div class="callout">
+  		<div class="container">
+  			<h1>Vertically Centered Text</h1>
+  		</div>
+  	</div>
+  	<div class="port container">
+  		<h1>我的作品</h1>
+  		<hr>
+  		<ul class="clearfix">
+  			<li>
+  				<input type="button"  value="循环切换" class="inpu" />
+              <input type="button"  value="顺序切换" class="inpu" />
+              <div id="box">
+    	        <span>图片可从最后一张跳转到第一张循环切换</span>
+    	        <a id="prev" href="javascript:;"><</a>
+	            <a id="next" href="javascript:;">></a>
+                <p id="p1">图片文字加载中……</p>
+                <strong id="strong1">图片数量计算中……</strong>
+	            <img id="img1" />
+             </div>
+  			</li>
+  			<li>
+  				<div class="wrap-1">
+                  <div class="box-1">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </div>
+                </div>
+  			</li>
+  			<li>
+  			    <div id="box-2">
+                  <div id="dial"></div>
+                  <div id="hand">
+                    <div id="hour"></div>
+                    <div id="min"></div>
+                    <div id="sec"></div>
+                    <div id="centre"></div>
+                  </div>
+                </div>
+  			</li>
+  			<li><a href="#"><img src="image/portfolio-1.jpg"/></a></li>
+  		</ul>
+  		<a href="#" class="more">更多作品</a>
+  	</div>
+  	<div class="hobby">
+  		<div class="hobby-1 container">
+  			<h1>个人爱好</h1>
+  			<hr>
+  			<ul class="clearfix">
+  			  <li><a href="#"><img src="image/u=2358558921,1754049501&fm=23&gp=0.jpg"/><span>前端</span></a></li>
+  			  <li><a href="#"><img src="image/u=2889529913,4224711074&fm=23&gp=0.jpg"/><span>篮球</span></a></li>
+  			  <li><a href="#"><img src="image/409b3c1220681b6518687f2097156ecc.jpg"/><span>七龙珠</span></a></li>
+  			  <li><a href="#"><img src="image/u=105228323,1287421560&fm=23&gp=0.jpg"/><span>dota2</span></a></li>
+  			  <li><a href="#"><img src="image/u=1206466926,3102352426&fm=23&gp=0.jpg"/><span>足球</span></a></li>
+  			  <li><a href="#"><img src="image/12313.jpg"/><span>汽车</span></a></li>
+  		    </ul>
+
+  		</div>
+  	</div>
+  </div>
+  <div id="footer">
+  	<div class="information container">
+  		<h3>My information</h3>
+  		<p class="p1">3481 Melrose Place Beverly Hills, CA 90210</p>
+  		<ul class="contact">
+  			<li class="fa fa-phone">123-456-789</li><br/>
+  			<li class="fa fa-envelope-o">name@qq.com</li>
+  		</ul>
+  		<ul class="contact-1 clearfix">
+  			<li><a href="#" class="fa fa-github fa-3x"></a>
+  			<li><a href="#" class="fa fa-twitter fa-3x"></a>
+  			<li><a href="#" class="fa fa-weibo fa-3x"></a>
+  		</ul>
+  		<hr>
+  		<p>Copyright © hunger 2016</p>
+  	</div>
+  </div>
+</body>
+</html>

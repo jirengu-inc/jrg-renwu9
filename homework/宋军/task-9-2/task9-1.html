@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Sprites</title>
+    <style media="screen">
+        .item {
+            background: url(icon.png) no-repeat 0 0;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        .item:hover {
+            background-position: -1px -193px;
+            cursor: pointer;
+        }
+
+        .item+div {
+            background: url(icon.png) no-repeat 0 -59px;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        .item+div:hover {
+            background-position: -7px -260px;
+            cursor: pointer;
+        }
+
+        .item+div+div {
+            background: url(icon.png) no-repeat -5px -123px;
+            background-size: cover;
+            width: 50px;
+            height: 50px;
+        }
+
+        .item+div+div:hover {
+            background-position: 1px -320px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="item"></div>
+    <div class=""></div>
+    <div class=""></div>
+</body>
+
+</html>

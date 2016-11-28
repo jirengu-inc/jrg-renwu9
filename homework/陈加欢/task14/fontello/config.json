@@ -1,0 +1,64 @@
+{
+  "name": "",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "f5999a012fc3752386635ec02a858447",
+      "css": "download-cloud",
+      "code": 61677,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9affc98d652b86628d650ee58dbf0357",
+      "css": "basket",
+      "code": 59392,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "ab656e280958018a7859eba9a1eabbc7",
+      "css": "award",
+      "code": 59393,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "19e7b342a5e6bd0cd86de6d6208486a4",
+      "css": "leaf",
+      "code": 59394,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0f6a2573a7b6df911ed199bb63717e27",
+      "css": "github-circled",
+      "code": 61595,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "627abcdb627cb1789e009c08e2678ef9",
+      "css": "twitter",
+      "code": 61593,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "3a26448b711645ba1abfc86c1a6e2f30",
+      "css": "coffee",
+      "code": 61684,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "9f7e588c66cfd6891f6f507cf6f6596b",
+      "css": "phone",
+      "code": 59395,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "ccc2329632396dc096bb638d4b46fb98",
+      "css": "mail-alt",
+      "code": 61664,
+      "src": "fontawesome"
+    }
+  ]
+}

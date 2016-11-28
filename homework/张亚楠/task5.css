@@ -1,0 +1,14 @@
+body
+{
+	font-family: "微软雅黑","helvetica";
+	font-size:16px;
+	color: #333;
+	line-height: 1.5;
+}
+p
+{
+	color: #000;
+	line-height: 1.5;
+	text-indent:2em;
+
+}

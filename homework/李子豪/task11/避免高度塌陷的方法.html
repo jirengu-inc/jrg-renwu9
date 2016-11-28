@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.class{
+		border:1px solid red;
+		background-color: blue;
+		margin-top:200px;
+		width:500px;
+	}
+	.class div:first-child{
+		width:100px;
+		height:100px;
+		background-color: #ccc;
+		float:left;
+	}
+	.class1{
+		overflow: hidden;
+		/*使用overflow将父容器撑开*/
+	}
+	.class2::after{
+		content: "";
+		display: block;
+		clear:both;
+		/*使用父容器中的after元素添加clear：both属性撑开*/
+	}
+	.class3 div:last-child{
+		clear:both;
+		/*在浮动元素后面加入一个空的元素，添加clear：both消除高度塌陷*/
+	}
+	.class4{
+		display: inline-block;
+		/*将父元素设置为内联块级元素，也可以消除高度塌陷*/
+	}
+	.class5{
+		float: left;
+		/*将父级元素也设置为一个浮动元素，消除高度塌陷*/
+	}
+	.class6{
+		clear:both;
+		margin-top:500px;
+		display: flex;
+		/*将父级元素设置为flex也可以消除高度塌陷*/
+	}
+	.class7{
+		position: absolute;
+		left:10;
+		top:1800px;
+		/*使用绝对定位也可以消除高度塌陷*/
+	}
+	</style>
+</head>
+<body>
+	<!--消除高度塌陷一共有三种大的方式，第一个方式就是将自己的父元素也脱离文档流，第二种方式就是将父元素设定为可以包裹住浮动元素的元素，第三种方式就是加入一个新的空的元素撑开父元素-->
+	<div class="class1 class">
+		<div>1</div>
+	</div>
+	<div class="class2 class">
+		<div>2</div>
+	</div>
+	<div class="class3 class">
+		<div>3</div>
+		<div >  </div>
+	</div>
+	<div class="class4 class">
+		<div>4</div>
+	</div>
+	<div class="class5 class">
+		<div>5</div>
+	</div>
+	<div class="class6 class">
+		<div>6</div>
+	</div>
+	<div class="class7 class">
+		<div>7</div>
+	</div>
+</body>
+</html>

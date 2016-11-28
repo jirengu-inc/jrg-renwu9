@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>对话框</title>
+		<style>
+		.demo1{width: 200px;
+		       height: 100px;
+		       border:1px solid #ccc;
+		       position: relative;
+		       }
+		.demo1:before{content: "";
+		              display: block;
+		              width:0;
+		              height: 0;
+		              border-top:10px solid transparent;
+		              border-left:10px solid transparent;
+		              border-bottom:10px solid #ccc;
+		              border-right:10px solid transparent;
+		              position:absolute;
+		              top:-20px;
+		              left:10px;
+		              }
+		.demo2{width: 200px;
+		       height: 100px;
+		       border:1px solid #ccc;
+		       position: relative;
+		       margin-top: 40px;
+		       }
+		.demo2:before{content: "";
+		              display: block;
+		              width:0;
+		              height: 0;
+		              border-top:10px solid red;
+		              border-left:10px solid transparent;
+		              border-bottom:10px solid transparent;
+		              border-right:10px solid red;
+		              position:absolute;
+		              top:0px;
+		              right:0px;
+		              }                  
+		.demo3{width: 200px;
+		       height: 100px;
+		       border:1px solid #ccc;
+		       position: relative;
+		       margin-top: 40px;
+		       }
+		.demo3:before{content: "";
+		              display:block;
+		              border-top:1px solid #ccc;
+		              border-left:1px solid #ccc;
+		              width: 10px;
+		              height: 10px;
+		              transform: rotate(45deg);
+		              position:absolute;
+		              left: 10px;
+		              top:-6px;
+		              background-color:#fff 
+		              }	
+		</style>
+	</head>
+	<body>
+	<div class="demo1"></div>
+	<div class="demo2"></div>
+	<div class="demo3"></div>
+	</body>
+</html>

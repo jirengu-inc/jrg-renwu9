@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务10-1</title>
+    <style type="text/css">
+    body,div,ul,li,h1,p {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        font-family: '微软雅黑' sans-serif;
+        color: #656565;
+    }
+    
+    a {
+        text-decoration: none;
+    }
+    
+    .clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        overflow: hidden;
+        visibility: hidden;
+        height: 0;
+    }
+    
+    .content {
+        width: 900px;
+        margin: 0 auto;
+    }
+    
+    #header {
+        background-color: #333;
+        height: 70px;
+        text-align: center;
+    }
+    
+    .logo {
+        float: left;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+    
+    #header ul {
+        float: right;
+        list-style-type: none;
+    }
+    
+    #header ul>li {
+        float: left;
+        margin: 0 5px;
+    }
+    
+    #header ul>li>a {
+        color: #fff;
+        display: block;
+        height: 70px;
+        line-height: 70px;
+        width: 70px;
+    }
+    
+    #header li>a:hover {
+        background-color: #fff;
+        color: #333;
+    }
+    
+    .box {
+        padding-top: 10px;
+    }
+    
+    .aside {
+        float: left;
+        width: 200px;
+        height: 600px;
+        background-color: #eee;
+    }
+    
+    .main {
+        float: left;
+        width: 680px;
+        height: 300px;
+        background-color: #eee;
+        margin-left: 10px;
+        padding-left: 10px;
+    }
+    
+    .main h1 {
+        height: 150px;
+        line-height: 150px
+    }
+    
+    .footer {
+        background-color: #333;
+        height: 40px;
+        line-height: 40px;
+        padding-left: 20px;
+    }
+    
+    .footer a {
+        color: #fff;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="content clearfix">
+            <a href="#" class="logo">
+                <img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="jirengu">
+            </a>
+            <ul>
+                <li><a href="#">技能</a></li>
+                <li><a href="#">经历</a></li>
+                <li><a href="#">作品</a></li>
+                <li><a href="#">关于</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="clearfix box">
+            <div class="aside"></div>
+            <div class="main">
+                <h1>我的作品</h1>
+                <p>生活很美好</p>
+                <p>心情不错</p>
+                <p>代码写的很漂亮</p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="content">
+            <a href="">饥人谷</a>
+            <a href="">JSCODE</a>
+            <a href="">JSBIN</a>
+        </div>
+    </div>
+</body>
+
+</html>
