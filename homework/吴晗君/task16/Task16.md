@@ -62,4 +62,4 @@
 - 两者都是数据类型
 
 1. typeof运算符：返回一个值的数据类型（number|string|boolean|function|undefined|object）
-2. instanceof运算符:区分object类型里面{window|函数|数组|null}instanceof运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。
+2. instanceof运算符:区分object类型里面{window|函数|数组|null}instanceof运算符用来测试一个对象在其原型链中是否存在一个构造函数的 prototype 属性。简单来说是区别是哪种对象。返回布尔值。
