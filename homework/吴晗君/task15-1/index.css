@@ -62,7 +62,7 @@ hr {
 }
 
 .nav-bar {
-	float: left;
+	float: left;/*这个可以不要*/
 }
 .nav-bar>li {
 	position: relative;
