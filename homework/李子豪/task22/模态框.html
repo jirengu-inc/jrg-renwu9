@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#modal-1{
+		display:none;
+	}
+	.content ,.header{
+		padding-left: 20px;
+	}
+	.cover{
+		width:100%;
+		height:800px;
+		background: #ccc;
+		position: absolute;
+		top:0;
+		opacity: 0.7;
+	}
+	.modle-ct{
+		border:1px solid #ccc;
+		border-radius: 5px;
+		width:400px;
+		background: white;
+		z-index: 2;
+		position: absolute;
+		top:30%;
+		left:40%;
+	}
+	.header{
+		border-bottom: 1px solid #ccc;
+	}
+	.header h3{
+		display: inline;
+		line-height: 2;
+	}
+	.header a{
+		float:right;
+		margin: 10px 10px;
+	}
+	.content{
+		border-bottom: 1px solid #ccc;
+	}
+	.footer{
+		line-height: 2;
+		float:right;
+	}
+	a{
+		text-decoration: none;
+		color:#000;
+	}
+	</style>
+</head>
+<body>
+<div class="btn-group">
+<button id="btn-modal">点我</button>
+</div>
+<div id="modal-1" class="modal-dialog">
+	<div class="cover"></div>
+	<div class="modle-ct">
+		<div class="header">
+			<h3>我是标题1</h3>
+			<a class="close" href="#">X</a>
+		</div>
+		<div class="content">
+			<p>我是内容1</p>
+			<p>我是内容1</p>
+		</div>
+		<div class="footer">
+			<a href="javascript:" class="btn btn-confirm">确定</a>
+			<a href="javascript:" class="btn btn-cancel">取消</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	var btn=$$("#btn-modal"),
+		modal=$$("#modal-1"),
+		modalCt=$$("#modal-1 .modle-ct");
+btn.addEventListener('click',function(){
+	showmol(modal)
+});
+//操作隐藏按钮
+modal.addEventListener("click",function(e){
+	e.stopPropagation();
+	console.log(hasClass(e.target,"btn-confirm"));
+	if( hasClass(e.target, "cover") || hasClass(e.target,"close") || hasClass(e.target,"btn-cancel")){
+		hiddenmol(modal);
+	}
+});
+
+//显示模块
+var showmol=function(modal){
+	modal.style.display="block"
+};
+//隐藏模块
+var hiddenmol=function(modal){
+	modal.style.display="none"
+}
+//寻找命名
+function hasClass(ele,cls){
+	return !!ele.className.match(new RegExp('\\b'+cls+"\\b"))
+}
+//工具函数
+function $$ (selector,tre){
+	if (tre=="all"){
+	return document.querySelectorAll(selector);
+	}
+	else{
+	return document.querySelector(selector);
+	}
+};
+</script>
+</body>
+</html>
