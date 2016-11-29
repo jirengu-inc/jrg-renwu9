@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lv-14</title>
+	<!-- <link rel="stylesheet" href="font/iconfont.css"> -->
+	<style>
+
+		*{
+			margin:0;
+			padding: 0; 
+		}
+		@font-face {
+		  font-family: 'iconfont';  /* project id："186808" */
+		  src: url('http://at.alicdn.com/t/font_toww2cn74kq8semi.eot');
+		  src: url('http://at.alicdn.com/t/font_toww2cn74kq8semi.eot?#iefix') format('embedded-opentype'),
+		  url('http://at.alicdn.com/t/font_toww2cn74kq8semi.woff') format('woff'),
+		  url('http://at.alicdn.com/t/font_toww2cn74kq8semi.ttf') format('truetype'),
+		  url('http://at.alicdn.com/t/font_toww2cn74kq8semi.svg#iconfont') format('svg');
+		}
+		.header{
+			width: 100%;
+			height: 700px;
+			background: url('http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/bg.jpg');
+			background-size: cover;
+			position:relative;
+		}
+		.ct1{
+			margin:0 auto;
+			width: 960px;
+			height:200px; 
+			position:absolute;
+		    top:50%;
+		    left:50%;
+		    margin-left:-480px;
+		    margin-top:-100px;
+		    text-align: center;
+		}
+		.ct1>p:first-child{
+			font: normal bold 50px "微软雅黑";
+		}
+		.ct1>p:nth-child(2){
+			font: normal bold 20px "微软雅黑";
+			color: #444;
+			margin-top: 10px;
+		}
+		.header a{
+			text-decoration: none;
+			color: white;
+			background:#999;
+			font:  normal normal 16px "微软雅黑";
+			display: block;
+			margin: 30px 400px;
+			margin-bottom: 0px;
+			padding: 8px 15px; 
+		}
+		.header a:hover{
+			background: #666;
+		}
+		.blank{
+			width: 100%;
+			height:200px; 
+		}
+		.ct2{
+			margin:60px auto;
+			width: 960px;
+		    text-align: center;
+		}
+		.ct2>p:first-child{
+			font:  normal normal 30px "微软雅黑";
+		}
+		.ct2>p:nth-child(3){
+			font:  normal normal 18px "微软雅黑";
+		}
+		.ct2 a{
+			text-decoration: none;
+			color: skyblue;
+		}
+		.content1{
+            width: 100%;
+			height: 500px;
+			background: #337ab7;
+		}
+		.content1>p{
+			padding-top: 70px;
+			padding-bottom: 20px;
+			display: block;
+			text-align: center;
+			font: normal normal 30px "微软雅黑";
+			color: white;
+		}
+		.line{
+			display: block;
+			width: 100px;
+			margin: 0 auto;
+            border-top: 1px solid #eee;
+		}
+		.content1 .logo{
+			float: left;
+		}
+ 		.content1 .lg{
+ 			width: 1100px;
+ 			margin: 0 auto;
+ 			margin-top: 20px;
+ 		}
+ 		.logo p,.logo a,.logo i{
+ 			display: block;
+ 			text-align: center;
+ 		}
+ 		.lg .logo{
+ 			width: 25%;
+ 		}
+ 		.iconfont {
+        font-family:"iconfont" !important;
+        font-size:100px;
+        font-style:normal;
+        color: #fff;
+       -webkit-font-smoothing: antialiased;
+       -webkit-text-stroke-width: 0.2px;
+       -moz-osx-font-smoothing: grayscale;
+		}
+		.logo>p:first-of-type{
+			font: normal bold 20px "微软雅黑";
+			color: #fff;
+		}
+		.logo .pct{
+			font:  normal normal 14px "微软雅黑";
+			color: #fff;
+		}
+		.logo a{
+			
+		    margin:0 auto; 
+		    margin-top: 10px;
+			text-decoration: none;
+			width:120px; 
+			height: 40px;
+			background: #fff;
+			line-height: 40px;
+			font:normal bold 15px/40px "微软雅黑";
+			color: #000;
+		}
+		.content2{
+			background: url(http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/callout.jpg) no-repeat;
+			background-size:cover;
+		}
+		.content2 p{
+			font: normal bold 60px/500px "微软雅黑";
+			color: white;
+			text-align: center;
+		}
+		.content3 ul{
+			overflow: auto;
+			margin: 0 auto; 
+		}
+		.content3 p{
+			display: block;
+			text-align: center;
+			margin: 0 auto;
+			margin-top: 50px;
+			margin-bottom: 30px;
+			font: normal normal 30px/30px "微软雅黑";
+
+		}
+		.content3 li{
+			background-size: cover;
+			float: left;
+			margin: 10px;
+			list-style:none;
+		}
+		.content3 ul{
+			display: block;
+			margin: 0 auto;
+			padding-left: 150px;
+		}
+		.content3>a{
+			display: block;
+			text-decoration: none;
+			font: normal normal 20px/40px "微软雅黑";
+			width: 250px;
+			height: 45px;
+			background: rgba(0,0,0,0.3);
+			color: #fff;
+			margin: 0 auto;
+			margin-top: 50px;
+			margin-bottom: 80px;
+			text-align: center;
+		}
+		.line1{
+			display: block;
+			width: 100px;
+			margin: 0 auto;
+            border-top: 1px solid #eee;
+            margin-bottom: 15px;
+		}
+		.content4{
+			background: #337ab7;
+			width: 100%;
+			height: 300px;
+		}
+		.content4 p{
+			color: #fff;
+			font:normal normal 30px "微软雅黑" ;
+			display: block;
+			padding-top:100px;
+			text-align: center;
+		}
+		.content4 div{
+			margin: 0 auto;
+			width: 250px;
+			height: 40px;
+			margin-top: 30px;
+		}
+		.content4 a{
+			display:inline-block; 
+			font: normal normal 16px/40px  "微软雅黑";
+			height: 40px;
+			text-align: center;
+			text-decoration: none;
+		}
+		.content4 .ca1{
+			width: 100px;
+			background: #fff;
+			color: #000;
+		}
+		.content4  .ca2{
+			width: 130px;
+			margin-left: 14px;
+			background: rgba(0,0,0,0.5);
+			color: #fff;
+		}
+		.footer{
+			width: 100%;
+			height: 350px;
+			padding-top: 150px;
+		}
+		.fct{
+			width: 300px;
+			height: 350px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.fct>p .iconfont{
+        font-family:"iconfont" !important;
+        font-size:16px;
+        font-style:normal;
+        color: black;
+       -webkit-font-smoothing: antialiased;
+       -webkit-text-stroke-width: 0.2px;
+       -moz-osx-font-smoothing: grayscale;
+		}
+		.fct .iconfont{
+        font-family:"iconfont" !important;
+        font-size:50px;
+        font-style:normal; 
+        color: #337ab7;
+       -webkit-font-smoothing: antialiased;
+       -webkit-text-stroke-width: 0.2px;
+       -moz-osx-font-smoothing: grayscale;
+		}
+		.fct>p:first-of-type{
+			font: normal bold 20px "微软雅黑";
+		}
+		.line2{
+			display: block;
+			width: 100px;
+			margin: 0 auto;
+            border-top: 1px solid #eee;
+            margin-bottom: 15px;
+            margin-top: 50px;
+		}
+		.fct p{
+			font: normal normal 15px  "微软雅黑";
+		}
+		.fct>p:nth-of-type(6){
+			color: #666;
+			font-size: 17px;
+		}
+		.fct div{
+			width: 300px;
+		}
+		.fct div i{
+			display: inline-block;
+			margin: 0px 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="header">
+		<div class="ct1">
+			<p>Start Bookstrap</p>
+			<p>Free Bookstrap Theme&Templates</p>
+			<a href="#">Find Out More</a>
+		</div>
+	</div>
+	<div class="blank1">
+		<div class="ct2">
+			<p>Stylish Portfolio is the perfect theme for your next project!</p>
+			<br/>
+			<p>This theme features some wonderful photopraphy courtesy of <a href="#">Death to the Stock Phto</a></p>
+		</div>
+	</div>
+	<div class="content1">
+		<p>Our Services</p>
+		<hr class="line">
+		<br>
+		<div class="lg">
+			<div class="logo logo1"><i class="iconfont">&#xe6d6;</i>
+				<p>Service Name</p>
+				<br>
+				<p class="pct">lorem ipsum dolor sit amet,</p>
+				<p class="pct">consectetur adipisicing elit.</p>
+				<a href="#">Learn More</a>
+			</div>
+			<div class="logo logo2"><i class="iconfont">&#xe60a;</i>
+				<p>Service Name</p>
+				<br>
+				<p class="pct">lorem ipsum dolor sit amet,</p>
+				<p class="pct">consectetur adipisicing elit.</p>
+				<a href="#">Learn More</a>
+			</div>
+			<div class="logo logo3"><i class="iconfont">&#xe614;</i>
+				<p>Service Name</p>
+				<br>
+				<p class="pct">lorem ipsum dolor sit amet,</p>
+				<p class="pct">consectetur adipisicing elit.</p>
+				<a href="#">Learn More</a>
+			</div>
+			<div class="logo logo4"><i class="iconfont">&#xe65e;</i>
+				<p>Service Name</p>
+				<br>
+				<p class="pct">lorem ipsum dolor sit amet,</p>
+				<p class="pct">consectetur adipisicing elit.</p>
+				<a href="#">Learn More</a>
+			</div>
+			
+		</div>
+	</div>
+	<div class="content2">
+		<p>Vertically Centered Text</p>
+	</div>
+	<div class="content3">
+		<p>Our Work</p>
+		<hr class="line1">
+		<ul>
+			<li><a href="#">
+				<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/portfolio-1.jpg" alt="">
+			</a></li>
+			<li>
+			<a href="#">
+				<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/portfolio-1.jpg" alt="">
+			</a></li>
+			<li>
+			<a href="#">
+			<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/portfolio-1.jpg" alt=""></a></li>
+			<li><a href="#">
+				<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/portfolio-1.jpg" alt="">
+			</a></li>
+		</ul>	
+		<a href="#">View More Items</a>
+	</div>
+	<div class="content4">
+		<p>The buttons below are impossible to resist.</p>
+		<div>
+			<a href="#" class="ca1">Click Me!</a><a href="#" class="ca2">Look at Me!</a>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="fct">
+			<p>Start Bootstrap</p>
+			<br>
+			<p>3481 Melrose Place</p>
+			<p>Beverly Hills,CA 90210</p>
+			<p><i class="fctl iconfont ">&#xe601;</i>(123)456-7890</p>
+			<p><i class="fctl iconfont ">&#xe693;</i>25081683@qq.com</p>
+			<br>
+			<div>
+				<i class="iconfont">&#xe616;</i>
+				<i class="iconfont">&#xe609;</i>
+				<i class="iconfont">&#xe605;</i>
+			</div>
+			<br>
+			<hr class="line2">
+			<p>Copyright@Z X Y 2016</p>
+		</div>
+	</div>
+</body>
+</html>
