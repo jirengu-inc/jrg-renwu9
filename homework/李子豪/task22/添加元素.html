@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="trip"id="layout">
+		<li>这里是</li>
+		<li>饥人谷</li>
+		<li>前端6班</li>
+	</ul>
+	<input id="addText" type="text">
+	<input id="addFirstChild" type="button" value="添加第一元素">
+	<input id="addLastChild" type="button" value="添加最后元素">
+<script>
+//获取元素
+var ul=$('#layout');
+var addtext=$('#addText');
+var addFirst=$('#addFirstChild');
+var addLast=$('#addLastChild');
+
+
+
+//添加开头
+var addfirst=function(w){
+	p=document.createElement("li");
+	p.innerHTML=addtext.value;
+	if(p.innerHTML){
+		ul.insertBefore(p,ul.firstChild)
+	}
+};
+addFirst.addEventListener('click',addfirst);
+//添加结尾
+var addlast= function(w){
+	p=document.createElement("li");
+	p.innerHTML=addtext.value;
+	if(p.innerHTML){
+	ul.appendChild(p);}
+};
+addLast.addEventListener('click',addlast);
+
+//打印元素
+function handler(e){
+	console.log(e.target.innerHTML)
+};
+ul.addEventListener('click',handler);
+
+//工具函数
+function $ (selector,tre){
+	if (tre=="all"){
+	return document.querySelectorAll(selector);
+	}
+	else{
+	return document.querySelector(selector);
+	}
+};
+
+</script>
+</body>
+</html>
