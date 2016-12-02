@@ -1,0 +1,313 @@
+@charset "UTF-8";
+
+body, html{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Helvetica, "微软雅黑";
+}
+hr{
+  border-top: 1px solid #ddd;
+  max-width: 100px;
+  margin: 0 auto;
+}
+a{
+  text-decoration: none;
+}
+.service-icon{
+   width: 5em;
+   height: 5em;
+   vertical-align: -0.15em;
+   fill: #fff;
+   overflow: hidden;
+   display: block;
+   margin: 0 auto;
+}
+.container{
+  width: 960px;
+  margin: 0 auto;
+}
+#header{
+  width: 100%;
+  height: 100%;
+  background: url(./image/bg.jpg) 0 0 no-repeat;
+  background-size: cover;
+  position:relative;
+  background-position: center;
+}
+.header-title{
+  position:absolute;
+  top: 50%;
+  left:50%;
+  text-align: center;
+  color: #333;
+  margin-left: -182px;
+  margin-top: -122.5px;
+}
+.header-title h1{
+  font-size: 50px;
+  margin:20px auto;
+}
+.header-title span{
+  font-size: 20px;
+}
+.header-title a{
+  display: block;
+  padding: 12px 10px 8px 9px;
+  width: 115px;
+  background: #888;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.5s;
+  opacity: 0.8;
+  margin: 0 auto;
+  margin-top: 28px;
+}
+.header-title a:hover{
+  background: #444;
+}
+.after-header{
+  text-align: center;
+  padding: 74px 0px;
+}
+.after-header span{
+  font-size: 23px;
+}
+.after-header p{
+  font-family: "微软雅黑";
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+.after-header a:hover{
+  text-decoration: underline;
+  color: #118;
+}
+.service{
+  background: #337ab7;
+  color: #eee;
+  padding-top: 80px;
+  padding-bottom: 75px;
+}
+.service .container{
+  text-align: center;
+}
+.service .container > span{
+  font-size: 25px;
+  display: block;
+  padding: 0 auto;
+}
+.service hr{
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.service-list{
+  padding-left: 0;
+}
+.service-list:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.service-list li{
+  list-style-type: none;
+  width: 25%;
+  float: left;
+}
+.service-list span{
+  display: block;
+  margin: 25px 0px 20px 0px;
+  font-weight: bold;
+}
+.service-list a{
+  display: block;
+  width: 85px;
+  padding: 8px 0px 7px 0px;
+  margin: 0 auto;
+  background: #fff;
+  color: #337;
+  font-size: 12px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.service-list a:hover{
+  background: #999;
+}
+.bg-center{
+  background:url(./image/callout.jpg) 0 0 no-repeat;
+  background-size: cover;
+  padding: 140px 0px;
+  color: #fff;
+  text-align: center;
+  background-position: center;
+}
+.bg-center h1{
+  font-size: 65px;
+}
+.work{
+  text-align: center;
+  margin-top: 80px;
+}
+.work span{
+  font-size: 25px;
+}
+.work hr{
+   margin-bottom: 15px;
+   margin-top: 18px;
+}
+.work-list{
+  margin: 0 auto;
+  padding-left: 0;
+}
+.work-list:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.work-list li{
+  float: left;
+  width: 450px;
+  height: 300px;
+  list-style-type: none;
+  margin: 0px 15px 30px 15px;
+}
+.work .container{
+  position: relative;
+}
+.work-list-cover{
+  position: absolute;
+}
+.work-list-cover a{
+  display: block;
+  height: 300px;
+}
+.work-list-cover li{
+  background-color: #444;
+  opacity: 0;
+  transition: 0.6s;
+}
+.work-list-cover li:hover{
+  opacity: 0.3;
+}
+.work > a{
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  padding: 8px;
+  background: #999;
+  width: 100px;
+  margin: 0 auto;
+  transition: 0.2s
+}
+.work > a:hover{
+  color: #ddd;
+  background: #777;
+}
+.buttons{
+  background: #337ab7;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 35px;
+  color: #fff;
+  margin-top: 50px;
+}
+.buttons span{
+  font-size: 20px;
+}
+.button-box{
+  margin: 25px auto 0px auto;
+  width: 255px;
+  position: relative;
+  left:10px
+}
+.button-box:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.button-box a{
+  float: left;
+  padding: 15px 10px 13px 10px;
+  font-weight: bold;
+}
+.button-box a:first-of-type{
+  background: #fff;
+  color: #337;
+  width: 80px;
+  margin-right: 25px;
+  transition: 0.5s
+}
+.button-box a:first-of-type:hover{
+  background: #bbf;
+}
+.button-box a:nth-child(2){
+  background: rgba(10, 10, 20, 0.5);
+  color: #ddd;
+  width: 110px;
+  transition: 0.5s;
+}
+.button-box a:nth-child(2):hover{
+  color: #99f;
+}
+#footer{
+  margin-top: 100px;
+}
+.footer-container{
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+.footer-container span, .footer-container p{
+  line-height: 22px;
+}
+.footer-container a:first-of-type:hover{
+  text-decoration: underline;
+  color:#99f;
+}
+.footer-icon {
+   width: 1em;
+   height: 1em;
+   vertical-align: -0.25em;
+   fill: #222;
+   overflow: hidden;
+}
+.media-list{
+  width: 200px;
+  margin: 35px auto 20px auto;
+  padding-left: 0;
+}
+.media-list:after{
+  content: "";
+  display: block;
+  clear: both;
+}
+.media-list li{
+  float: left;
+  list-style-type: none;
+  width: 33.33%
+}
+.media-icon{
+   vertical-align: -0.15em;
+   fill: #337ab7;
+   overflow: hidden;
+}
+.facebook{
+  width: 2.9em;
+  height: 2.9em;
+  margin-left: -10px;
+}
+.tuite{
+  width: 3em;
+  height: 3em;
+}
+.coffee{
+  width: 3.6em;
+  height: 3.6em;
+  margin-top: -5px;
+  margin-left: 13px;
+}
+.footer-container hr{
+  margin-bottom: 25px;
+}

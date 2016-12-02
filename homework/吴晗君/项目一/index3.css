@@ -1,0 +1,214 @@
+/*----------------------------------------全局---------------------------------------*/
+body,li ,ul, a{
+	margin: 0;
+	padding: 0;
+	/*box-sizing: border-box;*/
+}
+body {
+	font: 14px "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+html, body {
+	width: 100%;
+	height: 100%;
+}
+a {
+	text-decoration: none; 
+}
+hr {
+	color: #eee;
+	max-width: 100px;
+	margin-top: 20px; 
+	margin-bottom: 20px;
+}
+li {
+	list-style: none;
+}
+.vertical-center {
+	display: table-cell;
+	vertical-align: middle;
+}
+.text-center {
+	text-align: center;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+.btn1 {
+	display: inline-block;
+	width: 140px;
+	height: 30px;
+	background-color: rgba(0,0,0,0.4);
+	color: #fff;
+	line-height: 30px;
+}
+.btn2 {
+	display: inline-block;
+	width: 95px;
+	height: 30px;
+	background-color:#fff;
+	line-height: 30px;
+	color: #000;
+}
+.btn-bigger {
+	display: inline-block;
+	width: 140px;
+	height: 50px;
+	line-height: 50px;
+}
+/*----------------------------------------iconfont---------------------------------------*/
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1479566435112'); /* IE9*/
+  src: url('iconfont.eot?t=1479566435112#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff?t=1479566435112') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf?t=1479566435112') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1479566435112#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-xiazai:before { content: "\f007f"; }
+
+.icon-yezi:before { content: "\f003c"; }
+
+.icon-gouwuche:before { content: "\f0082"; }
+
+.icon-github:before { content: "\e69f"; }
+
+.icon-jiangbei:before { content: "\e627"; }
+
+.icon-youjian05:before { content: "\ed19"; }
+
+.icon-dianhua:before { content: "\e78d"; }
+
+.icon-coffee:before { content: "\e69c"; }
+
+.icon-usetuite01:before { content: "\e638"; }
+
+/*----------------------------------------header---------------------------------------*/
+#header {  /*错误一，没引入css文件*/
+	background-image: url(http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/bg.jpg);
+	height: 100%;
+	width: 100%;
+	background-size:cover; 
+}
+#header .table {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+#header .wrap h3 {
+	font-size: 30px;
+}
+
+/*----------------------------------------content---------------------------------------*/
+#content .about {
+	padding: 50px;
+}
+#content .about h2 {
+	font-size: 30px;
+}
+#content .about p {
+	font-size: 21px;
+}
+#content .about a {
+	color: #337ab7;
+}
+#content .about a:hover {
+	text-decoration:underline;
+}
+#content .skills {
+	background-color: #337ab7;
+	padding: 50px;
+	color: #fff;
+}
+.skills .title h2 {
+	font-size: 30px;
+}
+.skills ul {
+
+	margin-left: 
+}
+.skills li {
+	float: left;
+	width: 25%;
+}
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+} 
+.skills .iconfont {
+	font-size: 112px;
+}
+.monologue {
+	background-image: url(http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A119-%E5%AE%9E%E6%88%983/img/callout.jpg);
+	background-size: cover;
+	padding: 200px;
+	color: #fff;
+}
+.monologue .container h1 {
+	font-size: 4.5em;
+}
+.portfolio {
+	padding: 50px;
+
+}
+.portfolio .container h2{
+	font-size: 30px;
+}
+.portfolio .pictrue li{
+	float: left;
+	padding-left: 30px;
+	padding-bottom: 30px;
+}
+.portfolio ul:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.portfolio .pictrue img {
+	display: inline-block;
+	width: 465px;
+	height: 305px;
+}
+.portfolio .pictrue {
+	margin-left: -30px; 
+}
+.portfolio .container .btn1:hover {
+	background-color: rgba(0,0,0,0.7);
+}
+.introduction {
+	background-color: #337ab7;
+	padding: 50px;
+}
+.introduction h3 {
+	color: #fff;
+}
+.introduction .btn2:hover {
+	background-color: #eee;
+} 
+.introduction .btn1:hover {
+	background-color: rgba(0,0,0,0.7);
+} 
+
+/*----------------------------------------footer---------------------------------------*/
+#footer {
+	padding: 100px;
+}
+#footer .contact-icon li{
+	display: inline-block;
+	padding: 30px 10px 15px;
+
+}
+#footer .contact-icon .iconfont {
+	font-size: 45px; 
+	color: #337ab7;
+}

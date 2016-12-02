@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*-------------------第一题-----------------*/
+        var a = 3, b = "string", c = true, d = undefined, e = null;
+        function isNumber(el){              //形参不能漏
+            return typeof (el) === "number";
+        }
+        function isString(el){
+            return typeof(el) === "string";  //
+        }
+        function isBoolean(el){
+            return typeof (el) === "boolean";
+        }
+        function isFunction(el){
+            return typeof (el) === "function";
+        }
+        function isUndefined(el){
+            return typeof (el) == "undefined";
+        }
+        function isundefined(el){
+            if(el == "undefined"){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        function isNull(el){
+            return typeof (el) === "object";
+        }
+        console.log(isNumber(a));
+        console.log(isString(b));
+        console.log(isBoolean(c));
+        console.log(isFunction(isNumber));
+        console.log(isUndefined(d));
+        console.log(isNull(e));//被归类在object。
+        console.log(isUndefined(e));
+        console.log(isundefined(e));//null == undefined -->true;但是if(null == undefined)就会报错undefined未定义。
+        /*--------------------------第二题--------------------------*/
+        console.log(1 + 1); //2
+        console.log("2" + "4");//"24"
+        console.log(2 + "4");//2"4"
+        console.log(+new Date());//1970年1月1日至今的毫秒数。
+        console.log(+"4");//4
+        /*------------------------第三题--------------------------*/
+        var a = 1;
+        console.log(a+++a); //3
+        console.log(typeof a+2);//"number2"
+        /*-------------遍历数组输出数组每项平方---------------------*/
+        function f(){
+            for(var i = 0; i<arguments.length;++i){
+                console.log(Math.pow(arguments[i], 2));
+            }
+        }
+        f(3,4,5,6);//9, 16, 25,36
+       /* ----------------------遍历json，输出里面的值---------------*/
+        var obj = {
+            name: "wuhanjun",
+            sex: "male",
+            age: 28
+        };
+        function printfPersonInfo(name, age, sex){
+            console.log(arguments);
+        }
+        printfPersonInfo("wuhanjun", "male", 28, "male");//如果我
+        for(var property in obj){
+            console.log(property + ":" + obj[property]);
+        }
+        /*-----------------------第六题-------------------*/
+        console.log(q);//undefined， 因为在打印之前q变量未定义且赋值，但是变量提升使它有了定义。
+        var q = 1;
+        console.log(q);//1
+        console.log(w);//w is not defined
+
+    </script>
+</body>
+</html>
