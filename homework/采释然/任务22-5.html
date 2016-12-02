@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	    *{
+	    	padding: 0;
+	    	margin: 0;
+	    }
+	    .hide{
+	    	display: none;
+	    }
+		.dialog-box{
+			width: 300px;
+			border: 1px solid #ccc;
+			z-index: 2;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -87px;
+			margin-left: -151px;
+			background-color: #fff;
+			display: block;
+		}
+        .layout{
+        	padding: 10px;
+        	border-bottom: 1px solid #ccc;
+        }
+		p{
+			line-height: 40px;
+		}
+		.btn{
+			float: right;
+			margin: 10px;
+			cursor: pointer;	
+		}
+		.shade{
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: rgba(0,0,0,0.6);
+			z-index: 1;
+			display: block;
+		}
+		.dialog-box::after{
+			content:'';
+			clear: both;
+			display: block;
+		}
+		@font-face {
+            font-family: 'iconfont';  /* project id 193899 */
+            src: url('http://at.alicdn.com/t/font_oj35va71e3zncdi.eot');
+            src: url('http://at.alicdn.com/t/font_oj35va71e3zncdi.eot?#iefix') format('embedded-opentype'),
+            url('http://at.alicdn.com/t/font_oj35va71e3zncdi.woff') format('woff'),
+            url('http://at.alicdn.com/t/font_oj35va71e3zncdi.ttf') format('truetype'),
+            url('http://at.alicdn.com/t/font_oj35va71e3zncdi.svg#iconfont') format('svg');
+        }
+        .iconfont {
+            font-family:"iconfont" !important;
+            font-size:16px;
+            font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;
+            float: right;
+            cursor: pointer;
+        }
+	</style>
+</head>
+<body>
+	<button>点我</button>
+	<div class="hide"></div>
+	<div class="hide">
+		<div>
+		   <div class="layout">
+			   <i class="iconfont">&#xe652;</i>
+			   <h4>我是标题</h4>
+		   </div>
+		   <div class="layout">
+		   	   <p>我是内容1</p>
+			   <p>我是内容2</p>
+		   </div>
+			<button class="btn">取消</button>
+			<button class="btn">确定</button>
+		</div>
+	</div>
+    <script type="text/javascript">
+    	var btnclick = document.getElementsByTagName("button")[0];
+    	var shade = document.querySelectorAll(".hide")[0];
+    	var dialogbox = document.querySelectorAll(".hide")[1];
+    	var iconfont = document.querySelector(".iconfont");
+    	var btnclose = document.querySelector(".btn");
+        btnclick.addEventListener('click',function(){
+        	shade.setAttribute("class","shade");
+        	dialogbox.setAttribute("class","dialog-box");
+        },false);
+        shade.addEventListener('click',function(){
+        	shade.setAttribute("class","hide");
+        	dialogbox.setAttribute("class","hide");
+        },false);
+        iconfont.addEventListener('click',function(){
+        	shade.setAttribute("class","hide");
+        	dialogbox.setAttribute("class","hide")
+        },false);
+        btnclose.addEventListener('click',function(){
+        	shade.setAttribute("class","hide");
+        	dialogbox.setAttribute("class","hide")
+        },false);
+    </script>
+</body>
+</html>
