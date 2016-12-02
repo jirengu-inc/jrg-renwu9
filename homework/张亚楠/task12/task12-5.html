@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	#header,
+	#footer
+	{
+		height: 40px;
+		background: #ccc;
+
+	}
+	.clear:after
+
+	{ 
+		content: "";
+		display: block;
+		clear: both;
+
+	}
+	
+	.main
+	{
+		width: 100%;	
+		float: left;
+		height: 200px;
+	}
+	.main>.content
+	{
+		height:200px;
+		background:green;	
+		margin-right:200px;
+	}
+
+	.right
+	{
+		width: 200px;
+		height: 200px;
+		float: left;
+		background: yellow;
+		margin-left:-200px;
+	}
+		
+
+</style>
+</head>
+<body>
+    <div id="header">头部</div>
+    <div id="wrap" class="clear">
+    	<div class="main">
+	    	<div class="content">
+	    	双飞翼布局
+	    	</div>
+    	</div>
+    	<div class="right">右侧边栏，固定高度</div>
+    </div>
+    <div id="footer">尾部</div>
+</body>
+</html>

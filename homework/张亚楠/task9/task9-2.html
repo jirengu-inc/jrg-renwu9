@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<link rel="stylesheet" type="text/css" href="./fonts/iconfont.css">
+<meta name="description" content="">
+<meta name="keywords" content="">
+
+</head>
+<style>
+ul
+{
+	margin:0px;
+	padding:0px;
+}
+div{
+	margin-top: 30px;
+}
+.clear:after
+{
+	content: "";
+	display: black;
+	clear: both;
+}
+.wrap
+{
+	width: 330px;
+	height: 50px;
+	border: 1px solid;
+
+}
+.form li
+{ 
+	float: left;
+	list-style:none;
+	width: 100px;
+	padding-left: 10px;
+	line-height: 50px;
+	text-align:center;
+}
+.form li:first-of-type
+{
+	background:url(./image/1.jpg) 8px 6px no-repeat;
+}
+.form li:nth-of-type(2)
+{
+	background:url(./image/1.jpg) -145px 4px no-repeat;
+}
+.form li:last-of-type
+{
+	background:url(./image/1.jpg) -282px 9px no-repeat;
+}
+.form li:first-of-type:hover
+{
+	color: pink;
+	background: url(./image/1.jpg) no-repeat -431px 6px;
+}
+.form li:nth-of-type(2):hover
+{
+	color: pink;
+	background: url(./image/1.jpg) no-repeat -575px 8px;
+}
+.form li:last-of-type:hover
+{
+	color: pink;
+	background: url(./image/1.jpg) no-repeat -719px 3px;
+}
+.zfx
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid blue;
+	border-right:30px solid yellow;
+	border-left:30px solid red;
+	border-bottom:30px solid green ;
+}
+.top
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid blue;
+	border-right:30px solid transparent;
+	border-left:30px solid transparent;
+	border-bottom:30px solid transparent ;
+
+}
+.right
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid transparent;
+	border-right:30px solid yellow;
+	border-left:30px solid transparent;
+	border-bottom:30px solid transparent ;
+	
+}
+.bottom
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid transparent;
+	border-right:30px solid transparent;
+	border-left:30px solid transparent;
+	border-bottom:30px solid green;
+	
+}
+.left
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid transparent;
+	border-right:30px solid transparent;
+	border-left:30px solid red;
+	border-bottom:30px solid transparent ;
+	
+}
+.left-bottom
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid transparent;
+	border-right:30px solid transparent;
+	border-left:30px solid red;
+	border-bottom:30px solid red ;
+	
+}
+.right-bottom
+{
+	width: 0px;
+	height:0px;
+	border-top:30px solid transparent;
+	border-right:30px solid green;
+	border-left:30px solid transparent;
+	border-bottom:30px solid green ;
+	
+}
+.wrap2
+{
+	width: 330px;
+	height: 50px;
+	border: 1px solid;
+
+}
+.form2 li
+{
+	float: left;
+	list-style:none;
+	width: 100px;
+	padding-left: 10px;
+	line-height: 50px;
+	text-align:center;
+}
+.form2 li:hover
+{
+	color: pink;
+}
+
+
+
+</style>
+<body>
+<div class="wrap clear">
+	<ul class="form">
+		<li>前进</li>
+		<li>开始</li>
+		<li>停止</li>
+	</ul>
+</div>
+<div class="zfx"></div>
+<div class="top"></div>
+<div class="right"></div>
+<div class="bottom"></div>
+<div class="left"></div>
+<div class="left-bottom"></div>
+<div class="right-bottom"></div>
+<div class="wrap2 clear">
+	<ul class="form2">
+		<li>
+		<i class="iconfont">&#xe654;</i>
+		前进
+		</li>
+		<li>
+		<i class="iconfont">&#xe61a;</i>
+		开始
+		</li>
+
+		<li>
+		<i class="iconfont">&#xe8c8;</i>
+		停止
+		</li>
+	</ul>
+</div>
+    
+</body>
+</html>
