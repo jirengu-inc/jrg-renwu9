@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26-1</title>
+	<script src=http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js></script>
+	<style type="text/css">
+	.active{background: red;}
+	#node,#box,#box3,#box5{width: 100px;height: 100px;border:1px solid;margin: 10px;}
+	fieldset{margin-bottom: 10px;}
+	#box6{width:100px;height: 100px;border: 1px solid;padding:10px;margin: 10px;}
+	.box1{position: fixed;top:0;right: 50px;width: 100px;height: 100px;background: yellow;}
+	.hunger{color:red;font-size: 14px}
+	</style>
+</head>
+<body>
+	<h1>常用功能的jquery</h1>
+	<fieldset>
+		<legend>1.给元素 $node 添加 class active，给元素 $noed 删除 class active</legend>
+		<div id="node"></div>
+		<button id="btn1">添加Class</button>
+		<button id="btn2">删除Class</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>2.展示元素$node, 隐藏元素$node</legend>
+		<div id="box"></div>
+		<button id="btn3">展示盒子</button>
+		<button id="btn4">隐藏盒子</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>3.获取元素$node 的 属性: id、src、title， 修改以上属性</legend>
+		<div id=box2 style="width: 1024px;height: 800px;">
+		<img src="http://img06.tooopen.com/images/20161022/tooopen_sy_182719487645.jpg" title="星空" id="pic"><br>
+		<p></p>
+		</div>
+		<button id="btn5">获取属性</button>
+		<button id="btn6">修改属性</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>4.给元素添加自定义属性data-src</legend>
+		<div id=box3>
+		</div>
+		<p></p>
+		<button id="btn7">添加自定义属性data-src</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>5.添加元素、删除元素、内容清空</legend>
+		<div id=box4 style="width: 150px;height: 150px;">
+		<h5>我是box里东东</h5>
+		</div>
+		<button id="btn8">开头添加</button>
+		<button id="btn9">尾部添加</button>
+		<button id="btn10">删除段落</button>
+		<button id="btn11">清空内容</button>
+	</fieldset>
+
+
+	<fieldset>
+		<legend>5.在$ct里设置html</legend>
+		<div id=box5>
+			<p>修改前的HTML</p>
+		</div>
+		<button id="btn12">设置HTML</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>6.获取、设置$node的宽度、高度(分别不包括内边距、包括内边距、包括边框、包括外边距)</legend>
+		<div id=box6>
+			获取、设置高度
+		</div>
+		<p class="p1"></p>
+		<p class="p2"></p>
+		<button id="btn13">获取盒子的宽高</button>
+		<input type='text' class="txt1" placeholder="请输入新的宽度"/>
+		<input type='text' class="txt2" placeholder="请输入新的高度"/>
+		<button id="btn14">设置盒子的宽高</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>7.获取窗口滚动条的垂直滚动高度</legend>
+		<div class="box1"></div>
+	</fieldset>
+	<fieldset>
+		<legend>8.获取$node到根节点水平、垂直偏移距离</legend>
+		<div class="box2" style="width: 100px;height: 100px;background: yellow"></div>
+		<p class="p3"></p>
+		<p class="p4"></p>
+		<button id="btn15">获取$node到根节点水平、垂直偏移距离</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>9.修改$node的样式，字体颜色设置红色，字体大小设置14px</legend>
+		<p class="p5">hunger world</p>
+		<button id="btn16">修改样式</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>10.遍历节点，把每个节点里面的文本内容重复一遍</legend>
+		<ul class="ul1">
+			<li>NO.1</li>
+			<li>NO.2</li>
+			<li>NO.3</li>
+			<li>NO.4</li>
+		</ul>
+		<ul class="ul2"></ul>
+		<button id='btn17'>遍历</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>11.从$ct里查找class 为.item的子元素</legend>
+		<ul class="ul3">
+			<li>NO.1</li>
+			<li class="item">NO.2</li>
+			<li>NO.3</li>
+			<li>NO.4</li>
+		</ul>
+		<button id='btn18'>找元素</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>12.获取$ct里面的所有孩子</legend>
+		<ul class="ul4">
+			<li>老大</li>
+			<li>老二</li>
+			<li>老三</li>
+			<li>老四</li>
+			<li>老五</li>
+		</ul>
+		<button id="btn19">找孩子</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>13.对于$node，向上找到class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子</legend>
+		<ul class="ct">
+			<li>老大</li>
+			<li>老二</li>
+			<li class="panel">老三</li>
+			<li>老四</li>
+			<li>老五</li>
+		</ul>
+		<button id="btn20">找元素</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>14.获取选择元素的数量</legend>
+		<div class="ct1">
+			<h4 class="one">one </h4>
+			<p class="two">two</p>
+			<p class="three">three</p>
+			<ul class="ct2">
+				<li class="one">one</li>
+				<li>hello </li>
+				<li>hello world</li>
+			</ul>
+		</div>
+		<p class="num"></p>
+		<button id="btn21">获取class相同元素的数量</button>
+	</fieldset>
+
+	<fieldset>
+		<legend>获取当前元素在兄弟中的排行</legend>
+			<ul class="ct3">
+			<li>老大</li>
+			<li>老二</li>
+			<li>老三</li>
+			<li>老四</li>
+			<li>老五</li>
+		</ul>
+		当前元素的排行：<span class="ct4"></span>
+	</fieldset>
+
+
+
+	<script type="text/javascript">
+		$('#btn1').on('click',function(){
+			$('#node').addClass('active')
+		})
+		$('#btn2').on('click',function(){
+			$('#node').removeClass('active')
+		})
+//***************
+		$('#btn3').on('click',function(){
+			$('#box').show()
+		})
+		$('#btn4').on('click',function(){
+			$('#box').hide()
+		})
+//***************
+		$('#btn5').on('click',function(){
+			var id=$('#pic').attr('id')
+			var src=$('#pic').attr('src')
+			var title=$('#pic').attr('title')
+			$("#box2 p").html('图片id: '+id+'<br>'+'图片的src: '+src+'<br>'+'图片的title: '+title)
+
+		})
+		$('#btn6').on('click',function(){
+			$('#pic').attr({
+			 	src:'http://img03.tooopen.com/images/20160706/tooopen_sy_169305625518.jpg',
+			 	id: 'newpic',
+			 	title:'universe'
+			 });
+			var id=$('#newpic').attr('id')
+			var src=$('#newpic').attr('src')
+			var title=$('#newpic').attr('title')
+			$("#box2 p").html('修改后<br />图片id: '+id+'<br>'+'图片的src: '+src+'<br>'+'图片的title: '+title)
+		})
+//***************
+			$('#btn7').on('click',function(){
+			$('#box3').attr('dataSrc','http://baidu.com')
+				var dataSrc=$('#box3').attr('dataSrc');
+				$('#box3+p').text('dataSrc属性：'+dataSrc)
+			})
+//***************
+			$('#btn8').on('click',function(){
+				$('#box4').prepend('<p>我是开头添加的内容</p>')
+			})
+			$('#btn9').on('click',function(){
+				$('#box4').append('<p>我是尾部添加的内容</p>')
+			})
+			$('#btn10').on('click',function(){
+				$('#box4 h5').remove()
+			})
+			$('#btn11').on('click',function(){
+				$('#box4').empty()
+			})
+//***************
+			$('#btn12').on('click',function(){
+				$('#box5 p').html('<div class="btn" style="width:50px;height:50px">更改后的HTML</div>')
+			})
+//***************
+			$('#btn13').on('click',function(){
+				var width=$('#box6').width();
+				var innerWidth=$('#box6').innerWidth();
+				var outerWidth=$('#box6').outerWidth();
+				var outerWidthTrue=$('#box6').outerWidth(true);
+				var height=$('#box6').height();
+				var innerHeight=$('#box6').innerHeight();
+				var outerHeight=$('#box6').outerHeight();
+				var outerHeightTrue=$('#box6').outerHeight(true);
+
+				$('.p1').html("不含内边距的宽度是： "+width+"<br>"+"含内边距的宽度是： "+innerWidth+"<br>"+"含边框的宽度是： "+outerWidth+"<br>"+"含外边距的宽度是： "+outerWidthTrue+"<br>")
+				$('.p2').html("不含内边距的高度是： "+height+"<br>"+"含内边距的高度是： "+innerHeight+"<br>"+"含边框的高度是： "+outerHeight+"<br>"+"含外边距的高度是： "+outerHeightTrue+"<br>")
+			})
+			$('#btn14').on('click',function(){
+				$('#box6').width($('.txt1').val())
+				$('#box6').height($('.txt2').val())
+			})
+//***************
+			$(window).on('scroll',function(){
+				$('.box1').text('垂直滚动距离'+$(window).scrollTop()+'px')
+			})
+
+//***************
+			$('#btn15').on('click',function(){
+				var offset=$('.box2').offset();
+				$('.p3').text('距离根节点水平距离为：'+offset.left+'px')
+				$('.p4').text('距离根节点垂直距离为：'+offset.top+'px')
+			})
+//***************
+			$('#btn16').on('click',function(){
+				$('.p5').addClass('hunger')
+			})
+//***************
+			$('#btn17').on('click',function(){
+				$('.ul1 li').each(function(index){
+					$('.ul2').append(index+':'+$(this).text()+'<br>')
+				})
+			})
+//***************
+			$('#btn18').on('click',function(){
+				$('.ul3').find('.item').css('color','red')
+			})
+//***************
+			$('#btn19').on('click',function(){
+				$('.ul4').children().css('color','red')
+			})
+//***************
+			$('#btn20').on('click',function(){
+				$(this).parents().find('.ct').find('.panel')
+					   .css('color','red')
+			})
+//***************
+			$('#btn21').on('click',function(){
+				$('.num').text('one的数量为：'+$('.ct1').find('.one').length)
+			})
+//***************
+			$('.ct3 li').on('click',function(){
+				$('.ct4').text($(this).index()+1)
+			})
+	</script>
+</body>
+</html>
