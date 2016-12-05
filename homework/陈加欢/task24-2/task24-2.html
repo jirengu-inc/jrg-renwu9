@@ -87,6 +87,13 @@
 			testPassword2();
 		})
 
+		btn.addEventListener('click',function(){
+	        if(testUsername()&& testPassword1()&&testPassword2()&&testUserNameUsed()){
+	            alert('注册成功！');
+	        }
+	    })
+
+
 		function testUsername(){
 			if(isValidUsername(userName.value)){
 				msgs[0].innerHTML="该用户名可用";
