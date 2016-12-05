@@ -88,7 +88,7 @@
 		})
 
 		btn.addEventListener('click',function(){
-	        if(testUsername()&& testPassword1()&&testPassword2()&&testUserNameUsed()){
+	        if(testUsername()&&testPassword1()&&testPassword2()&&testUserNameUsed()){
 	            alert('注册成功！');
 	        }
 	    })
@@ -110,6 +110,7 @@
 		}
 
 		function testUserNameUsed(){
+			var flag;
 		        ajax({
 		            url:'server.php',
 		            type:'get',
@@ -121,16 +122,17 @@
 		                    msgs[0].innerHTML="用户名已经存在";
 		                    addClass(userName,"failed");
 							addClass(msgs[0],"red");
-		                    return false;
+		                    flag=false;
 		                }
 		                else if(ret===0){
 		                    msgs[0].innerHTML="该用户名可用";
 		                    removeClass(userName,"failed");
 							removeClass(msgs[0],"red");
-		                    return true;
+		                    flag=true;
 		                }
 		            }
 		        });
+		       return flag;
 		    }
 
 		function testPassword1(){
