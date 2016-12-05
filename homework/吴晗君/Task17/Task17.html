@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+        <html lang="zh-CH">
+<head>
+    <meta charset="utf-8">
+    <title>Task16</title>
+</head>
+<body>
+<script>
+    console.log(".以下代码输出什么？ （难度**）");
+    function getInfo(name, age, sex){
+        console.log(arguments);
+        console.log("name", name);
+        console.log("age", age);
+        console.log("sex", sex);
+        arguments[0] = "valley";
+        console.log("name", name);
+    }
+    getInfo("hunger", 28, "男");
+    getInfo("hunger",28);
+    getInfo("男");
+    /*------------------------------------第二题------------------------------------------------------*/
+    console.log("写一个函数，返回参数的平方和？如 （难度**）");
+    function sumOfSquares(){
+        var sum = 0;
+        for(var i=0; i<arguments.length; ++i ){
+           sum+=Math.pow(arguments[i], 2);
+        }
+        console.log(sum);
+    }
+    sumOfSquares(2, 3, 4);
+    sumOfSquares(5, 8);
+    /*-----------------------------------第三题---------------------------------------------------------*/
+    console.log("如下代码的输出？为什么 （难度*）");
+    console.log(a); //undefined 变量a提升，但未赋值
+    var a =1;
+    console.log(b);//b is not defined; b变量根本就比没有被定义。
+    /*-----------------------------------第四题---------------------------------------------------------*/
+    console.log("如下代码的输出？为什么 （难度*）");
+    sayName("world");
+    sayAge(10);
+    function sayName(name){
+        console.log("hello", name);
+    }
+    var sayAge = function(age){
+        console.log(age);
+    }
+    /*-----------------------------------------*/
+    console.log("变量提升");
+    var sayAge;
+    function sayName(name){
+        console.log("hello", name);
+    }
+        /*--------------------------------第五题------------------------------------------------------*/
+    sayName("world");  //hello world
+    sayAge(10); //报错，因为提升的是变量sayAge,函数在原位置声明。
+   sayAge = function(age){
+        console.log(age);
+    };
+    /*------------------------------------第六题-------------------------------------------------------*/
+   console.log("如下代码的输出？为什么 （难度**）");
+    function fn(fn2){
+        console.log(fn2);
+        var fn2 = 3;
+        console.log(fn2);
+        console.log(fn);
+        function fn2(){
+            console.log("fnnn2");
+        }
+    }
+    fn(10);
+    /*-----------------------------------------*/
+   console.log("变量提升");
+   function fn(fn2) { //当10000作为形参传递到函数里面的时候，是number类型的。但是我依然可以任意定义fn2
+       var fn2;
+       function fn2(){
+           console.log("fnnn2");
+       }
+       console.log(fn2);//输出fn2整个函数，函数提升。
+       fn2 = 3;
+       console.log(fn2);//3，上一步fn2被定义为3
+       console.log(fn);//输出整个fn函数。fn的作用域包括这个执行环境。
+   }
+   fn(10000);
+    /*--------------------------------------------第七题-------------------------------------------------*/
+   console.log("如下代码的输出？为什么 （难度***）");
+   var fn = 1;
+   function fn(fn){
+       console.log(fn);
+   }
+   console.log(fn(fn)); //报错，fn不是函数。因为全局变量fn是变量1
+    /*------------------------------------------第八题----------------------------------------------------*/
+   console.log("如下代码的输出？为什么 （难度***）");
+   //作用域
+   console.log(j);
+   console.log(i);
+   for(var i=0; i<10; i++){
+       var j = 100;
+   }
+   console.log(i);
+   console.log(j);
+    /*-----------------------------------------*/
+   console.log("变量提升）");
+   var i, j;
+   console.log(j); //undefined
+   console.log(i);//undefined
+   for(i=0; i<10; i++){
+       j = 100;
+   }
+   console.log(i);//10  原因都是变量提升。
+   console.log(j);//100
+    /*------------------------------------------第九题----------------------------------------------------*/
+   console.log("如下代码的输出？为什么 （难度***）");
+   fn();
+   var i = 10;
+   var fn = 20;
+   console.log(i);
+   function fn(){
+       console.log(i);
+       var i = 99;
+       fn2();
+       console.log(i);
+       function fn2(){
+           i = 100;
+       }
+   }
+    /*-----------------------------------------*/
+   console.log("变量提升");
+   var i, fn;
+   fn(); //fn is not a function ，变量提升。fn是一个变量而不是函数。
+   i = 10;
+   fn = 20;
+   console.log(i);
+   function fn(){
+       console.log(i);
+       var i = 99;
+       fn2();
+       console.log(i);
+       function fn2(){
+           i = 100;
+       }
+   }
+    /*-------------------------------------------第十题-------------------------------------------------*/
+   console.log("如下代码的输出？为什么 （难度***）");
+   var say = 0;
+   (function say(n){
+       console.log(n);  //10 9 8 7 6 5 4 3 2
+       if(n<3) return;//注意if如果不加{}只执行下一句。
+       say(n-1); //递归执行。
+   }( 10 ));//参数为10
+   console.log(say); //0 立即执行的函数不会覆盖变量say
+
+</script>
+</body>
+</html>

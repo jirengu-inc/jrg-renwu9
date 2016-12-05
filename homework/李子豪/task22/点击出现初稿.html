@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="trip"id="layout">
+		<li>这里是</li>
+		<li>饥人谷</li>
+		<li>前端6班</li>
+	</ul>
+<script>
+var btnClick=$("ul");
+//打印标签
+var handler =function (w){
+	console.log(w.target.innerText)
+}
+btnClick.addEventListener("click",handler);
+//方法函数
+function $ (selector,tre){
+	if (tre=="all"){
+	return document.querySelectorAll(selector);
+	}
+	else{
+	return document.querySelector(selector);
+	}
+}
+
+</script>
+</body>
+</html>
+

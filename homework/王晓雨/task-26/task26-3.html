@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>用 jquery ajax 实现如下效果</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<style type="text/css">
+	html,body,ul,li,a{margin: 0;padding: 0}
+	.ct{margin: 10px}
+	.ct li{
+		list-style: none;
+		padding: 10px;
+		margin-left: 5px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		margin-bottom: 10px;
+	}
+	.liStyle{
+		background: rgba(0,255,0,0.7);
+		color: #fff;
+		cursor: pointer;
+
+	}
+	.btn{
+		display: block;
+		width: 100px;
+		height:20px;
+		color: red;
+		border: 1px solid red;
+		padding: 10px 5px;
+		text-decoration: none;
+		text-align: center;
+		margin: 0 auto;
+		border-radius: 5px;
+	}
+	</style>
+</head>
+<body>
+	<ul class="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<a href="" class="btn">加载更多</a>
+	<script type="text/javascript">
+		//当点击加载更多会加载数据展示到页面。当鼠标放置上去会变色
+		$('.ct').on('mouseenter','li',function(){
+			$(this).addClass('liStyle')
+		})
+		$('.ct').on('mouseleave','li',function(){
+			$(this).removeClass('liStyle')
+		})
+		//ajax 接收后台数据和处理数据
+		var num = 2,
+        lock = false;
+    $('.btn').on('click',function(e) {
+        e.preventDefault();
+        if(!lock){
+            lock = true;
+            $.ajax({
+                url: 'getMore.php',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    start: num,
+                    len: 6
+                },
+                success: function(ret){
+                    if(ret.status == 1){
+                        $(ret.data).each(function(i){
+                            $('ul').append('<li>' + ret.data[i] + '</li>');
+                        })
+                        num += 6;
+                    }else{
+                        alert('服务器暂时无法连接')
+                    }
+                },
+                error: function(){
+                    alert('出错了')
+                }
+            });
+            lock = false;
+        }
+    })
+	</script>
+</body>
+</html>
