@@ -1,0 +1,28 @@
+<html>
+<meta charset='utf-8'>
+<title>task 5</title>
+<style type="text/css">
+body
+ {background-color: skyblue;}
+p#left
+ {test-align:left;color:darkred}
+p#right
+ {text-align:right;color: darkblue}
+p#center
+ {text-align:center;color: darkviolet}
+p.justify
+ {text-align:justify;color: darkgreen}
+</style>
+</head>
+<body>
+<p id="left">左对齐text-align:left</p>
+<p id="right">右对齐text-align:right</p>
+<p id="center">居中对齐text-align:center</p>
+<p class="justify">文本两端对齐text-align:justify</p>
+<p class="justify">
+文本两端对齐文本两端对齐文本两端对齐文本两端对齐
+文本两端对齐文本两端对齐文本两端对齐文本两端对齐
+文本两端对齐文本两端对齐文本两端对齐文本两端对齐
+文本两端对齐文本两端对齐文本两端对齐文本两端对齐
+文本两端对齐文本两端对齐text-align:justify</p>
+</body>
