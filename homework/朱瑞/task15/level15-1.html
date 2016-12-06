@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task15-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">	
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}	
+	a{
+		text-decoration: none;
+		color: #666;
+	}
+	a:hover{
+		color: #333;
+	}
+	li{
+		list-style: none;
+	}
+	.container{
+		width: 1000px;
+		margin: 0 auto;
+	}
+	.clearfix:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	#header{
+		border:1px solid #ccc;
+	}
+	#nav li{
+		position: relative;
+		margin-top: 20px;
+		float: left;
+		padding: 0 10px;
+		line-height: 40px;
+	}
+	#nav .child{
+		position: absolute;
+		left: 0;
+		top: 100%;
+
+		background: #fff;
+		boder:1px solid #ccc;
+		display: none;
+	}
+	#nav .child li{
+		line-height: 6px;
+		padding: 10px;
+		border-bottom: 1px dashed #ccc;
+	}
+	#nav>li:hover .child{
+		display: block;
+	}
+	#header .intro{
+		background-color: rgb(177, 62, 66);
+		color: #fff;
+		padding: 30px;
+	}
+	#content .first-page{
+		margin-top: 30px;
+		background-color: #eee;
+		border-radius: 3px;
+	}
+	#content .first-page ul{
+		padding: 10px;
+	}
+	#content .first-page li{
+		display: inline-block;
+	}
+	#content .first-page a{
+		color: rgb(177, 62, 66);
+	}
+	#content .projects{
+		margin-top: 10px;
+	}
+	#content .projects .btn{
+		display: inline-block;
+		padding: 0 10px;
+		border:1px solid #ccc;
+		border-radius: 3px;
+	}
+	.projects .container>ul{
+		margin-right: -40px;
+	}
+	.projects .container>ul>li{
+		border:1px solid #eee;
+		border-radius: 3px;
+		float: left;
+		text-align: center;
+		padding: 10px;
+		margin: 5px 10px;
+		/*margin-bottom: 10px;*/
+		line-height: 40px;
+	}
+	.projects .container>ul>li img{
+		width: 300px;
+		height: 200px;
+	}
+	.contact-message{
+		margin-top: 40px;
+		padding: 20px 0;
+		line-height: 30px;
+		text-align: center;
+		color: #fff;
+		background-color: rgb(177, 62, 66);
+	}
+	.contact-message .btn{
+		color: white;
+	}
+	#footer p{
+		margin-top: 30px;
+		padding: 20px;
+		text-align: center;
+		border-top: 1px solid #ccc;
+	}
+</style>
+</head>
+<body>
+    <div id="header">
+    	<div class="container clearfix">
+    		<ul id="nav">
+    			<li><a href="">博客</a></li>
+    			<li><a href="">博客</a></li>
+    			<li><a href="">项目</a></li>
+    			<li><a href="">简历</a></li>
+    			<li><a href="">更多</a>
+					<ul class="child">
+						<li><a href="">GitHub</a></li>
+						<li><a href="">知乎</a></li>
+					</ul>
+    			</li>
+    		</ul>
+    	</div>
+    	<div class="intro" class="container">
+    		<h1>我的简介</h1>
+    		<p>爱好前端的妹纸一枚</p>
+    	</div>
+    </div>
+
+    <div id="content">
+    	<div class="first-page container">
+    		<ul class="clearfix">
+    			<li></li>
+    			<li><a href="">首页</a></li>
+    			<li>/</li>
+    			<li>我的作品</li>
+    		</ul>
+    	</div>
+		<div class="projects container">
+			<div class="container">
+				<ul class="clearfix">
+					<li>
+						<a href=""><img src="img/1.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/2.jpg"  alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/3.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/4.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/5.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/6.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/7.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/8.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/9.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+					<li>
+						<a href=""><img src="img/10.jpg" alt=""></a>
+						<h1>作品标题</h1>
+						<p>作品介绍</p>
+						<a href="" class="btn">查看</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+    </div>
+    <div class="contact-message">
+    	<div class="container">
+    		<h2>想更了解我</h2>
+    		<p>下载我的简历吧</p>
+    		<p><a href="" class="btn">下载</a></p>
+    	</div>
+    </div>
+    <div id="footer">
+    	<div class="container">
+    		<p>来自@lesley</p>
+    	</div>
+    </div>
+</body>
+</html>

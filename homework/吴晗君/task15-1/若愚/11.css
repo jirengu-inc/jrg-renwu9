@@ -1,0 +1,149 @@
+
+html,body,ul,li,p,h1,h2,h3,h4,h5,h6,div{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  color: #666;
+}
+a:hover{
+  color: #333;
+}
+.layout{
+  width: 1000px;
+  margin: 0 auto;
+}
+.clearfix:after{
+  content:'';
+  display: block;
+  clear: both;
+}
+
+.btn{
+  display: inline-block;
+  padding: 5px 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+body{
+  font: 14px/1.5 normal;
+  font-family:  "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif
+  color: #333;
+}
+
+#header{
+  border: 1px solid #ccc;
+}
+#header .logo{
+  font-size: 30px;
+  line-height: 50px;
+  float:left;
+}
+#header .navbar{
+  float: left;
+  margin-left: 20px;
+}
+#header .navbar>li{
+  float: left;
+  position: relative;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+}
+#header .navbar .droplist {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    display: none;
+    border: 1px solid #ccc;
+}
+#header .navbar>li:hover .droplist{
+  display: block;
+}
+.droplist li {
+    line-height: 1; /*为了消除父元素设置的行高，数值是1，行高就是该字体大小*1。*/
+    padding: 10px;
+    border-bottom: 1px dashed #ccc;
+}
+.droplist li:last-child{
+  border: none;
+}
+.droplist li:hover{
+  background: #eee;
+}
+
+.intro{
+  background-color: #b84d45;
+  color: #fff;
+  padding: 30px 0;
+}
+
+.breadcrumb{
+  margin-top: 40px;
+  background: #eee;
+  border-radius: 3px;
+}
+.breadcrumb>ul{
+  padding: 10px;
+}
+
+.breadcrumb li{
+  display: inline-block;
+  color: #666;
+}
+.breadcrumb a{
+  color: #b84d45;
+}
+
+.works{
+  margin-top: 10px;
+}
+.works>ul{
+  margin-left: -45px;
+}
+.works>ul>li{
+  float: left;
+  margin-left: 45px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+.works>ul>li img{
+  width: 300px;
+  height: 200px;
+}
+.works>ul>li h1{
+  font-size: 16px;
+  text-align: left;
+  padding: 5px 10px;
+}
+.works>ul>li p{
+  text-align: left;
+  padding: 5px 10px;
+}
+.aboutme{
+  margin-top: 30px;
+  background-color: #b84d45;
+  text-align: center;
+  padding: 20px 0;
+  color: #fff;
+}
+.aboutme .btn{
+  color: #fff;
+  margin-top: 10px;
+}
+
+#footer p{
+  margin: 30px  0;
+  padding-top: 30px;
+  text-align: center;
+  border-top: 1px solid #eee;
+}

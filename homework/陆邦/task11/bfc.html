@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>BFC</title>
+		<style>
+		/*重置*/
+		body{margin:0;
+		     padding:0;
+		     }	
+		/*样式*/
+		#header,#footer{background-color:red;
+		        width: 100%;
+		        height: 50px;
+		        }
+		#content{overflow: auto;}
+		.aside{background-color:#ccc;
+		       float:left;
+		       width: 200px;
+		       }
+		.right{overflow: auto;}
+		.main{background-color:pink;}
+		     
+		</style>
+	</head>
+	<body>
+	<div id="header">header</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="right">
+        <div class="main">
+            我是main 
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main
+            我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main我是main 我是main 我是main 我是main 我是main 我是main... 
+        </div>
+        </div>
+    </div>
+    <div id="footer"></div>	
+	</body>
+</html>

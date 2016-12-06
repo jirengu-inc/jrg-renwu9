@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>task18</title>
+</head>
+<body>
+    <script>
+        /*-----------------------------------------------------数组--------------------------------------------------------*/
+        /*---------------------- 一、用 splice 实现 push、pop、shift、unshift方法----------------------*/
+        function push(arr){
+            for(var i =1; i < arguments.length; ++i){
+                a.splice(arr.length, 0, arguments[i]);
+            }
+            return arr.length;
+        }
+        function pop(arr){
+            return a.splice(arr.length-1, 1)[0];
+        }
+        function shift(arr){
+            return a.splice(0, 1)[0];
+        }
+        function unshift(arr){
+            for(var i = 1;i<arguments.length; ++i){
+                a.splice(0, 0, arguments[i]);
+            }
+            return arr.length;
+        }
+        /*----------------------- 二、数组拼接出如下字符串----------------------*/
+        /*---------解法一------*/
+        var prod = {
+            name:'女装',
+            styles:['短款','冬装','春装']
+        };
+        function getTpl1(data){
+            var tpl = '<dl class="product">\n';
+            tpl +='    '+ '<dt>'+data.name+'</dt>'+'\n';
+            for(var i = 0; i < prod.styles.length; ++i){
+                tpl += '    '+'<dd>' + data.styles[i] + '</dd>'+'\n';
+            }
+            tpl += '</dl>';
+            return tpl;
+        }
+        console.log(getTpl1(prod));
+        /*---------解法2-------*/
+        function getTpl2(data){
+            var htmls = [];
+            htmls.push('<dl class="product">');
+            htmls.push('    <dt>' + data.name + '</dt>');
+            for(var i = 0; i < data.styles.length; ++i){
+                htmls.push('    <dd>' + data.styles[i] + '</dd>');
+            }
+            htmls.push( '<dl>');
+            return htmls.join('\n');
+        }
+        console.log(getTpl2(prod));
+        /*-----------------------第三题----------------------*/
+        var arr = ['text', 2, 1.5, false]
+        function find(arr, val){  //indexOf方法，找到元素返回索引，未找到返回-1
+            /*var arr2 = arr.join();
+            arr2 = arr2.match(val);
+            if(arr2 !== null){
+                return
+            }*/
+            console.log( arr.indexOf(val) );
+        }
+        /*----------------------- 四、 数组 arr 中的数字过滤出来赋值给新数组newarr， 原数组arr不变----------------------*/
+        /*解法一*/
+        var arr = ['a', 'b', 1, 3, 5, 'b', 2];
+        var filterNumber = function(data){  //filter过滤
+            var newarr = [];
+            for(var i = 0; i < data.length; ++i){
+                if( (typeof data[i]) === 'number' ){
+                    newarr.push(data[i]);
+                }
+            }
+            return newarr;
+        }
+       var newarr =  filterNumber(arr);
+       console.log(newarr);
+        /*解法二*/
+                                            /* var filterNumber2 = function(data){*/
+       function filterNumber2(arr){
+       console.log( arr.filter(function(elem){ //.filter方法返回的是数组
+            return typeof elem === 'number'; //typeof返回的是true或者false
+        }));
+        }
+        /*----------------------第五题 若obj属性值不存在给定字符串则添加，若存在则删除-------------------------*/
+        var obj = {
+            className: 'hello my world'
+        };
+         function addClass(obj, val) {
+             if( obj.className.split(' ').indexOf(val) === -1 ){
+                 var a = obj.className.split(' ');//.split将字符串分割成字符串数组输出,不改变原数组
+                 a.push(val);
+                 console.log( obj.className = a.join(' ') ); //错在将数组的push用在字符串上面。
+             }
+             else{
+                console.log( obj.className);
+             }
+         }
+         removeClass = function(obj, val) {
+             var a = obj.className.split(' '); //a是字符数组
+
+             if (a.indexOf(val) >= 0) {  // >==
+                 a.splice(a.indexOf(val), 1);
+                console.log( obj.className = a.join(' ') );
+             }
+             else{
+                 console.log( obj.className);
+             }
+         }
+        /*------------------------第六题  my-short-string形式的字符串转化成myShortString------------------------*/
+        function camelize(str) {  //目标字符串驼峰化
+            var arr = str.split('-');
+            if (arr.length === 1) { return str;}
+            for (var i = 1; i < arr.length; ++i) {
+                arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].substr(1, arr[i].length - 1)//str[0].toUpperCase() + str.substr(1);
+            } //arr[i]会覆盖原来的arr[i]                                                           //这里可以写成srr[i].substr(1)就是第一位到最后一位。
+            console.log(str = arr.join(''));
+        }
+        /*--------------------第七题 解析题------------------------*
+        arr = ['a', 'b'];
+        arr.push(function(){alert(this)});//将匿名函数push到arr数组末尾。
+        arr[arr.length-1]();//原括号运算符跟在函数名后面表示调用该函数，
+                               // alert(this)的输出结果是一个包含了本数组的警告框
+        /*--------------------第八题 过滤非number类型数据------------------------*/
+        function filterNumericInPlace(arr){
+            for(var i = 0; i < arr.length; ++i){
+                if(typeof arr[i] != 'number'){ //arr.splice()改变原数组，返回的是被删除的元素数组。如[9]
+                    arr.splice(i, 1); //执行了.splice之后，后面的元素会自动往前移。
+                    i--;//如果不写i--，数字后面的元素就执行不到了。
+                }
+            }
+            console.log(arr);
+        }
+        /*-------------------第九题 根据对象属性值大小排序-------------------------*/
+        var john = { name: "John Smith", age: 23 };
+        var mary = { name: "Mary Key", age: 18 };
+        var bob = { name: "Bob-small", age: 6 };
+        var people = [ john, mary, bob ];//对象数组
+        var ageSort = function(arr){
+            /*for(var i = 0; i < arr.length; ++i){
+             var arr2 = [];
+             arr2.push( arr[i].age); //push返回的是元素数量。
+             arr2.sort(function(v1, v2){
+             return v1.age - v2.age;
+             });
+             }*/
+            arr.sort(function(v1, v2){
+                return v1.age > v2.age
+            });
+            console.log(arr);
+        };
+        /*----------------第十题 过滤出数字正数字符串----------------------------*/
+        var arr = ['2','3',8,3,'43','8',8,'3',-9,-4,'asd', 'asd'];
+        function filter(arr, fn){
+            for(var i = arr.length - 1; i >= 0; --i){
+                if(!fn(arr[i])){  //如果函数返回true则保留，返回false则删除该元素。
+                    arr.splice(i, 1);
+                }
+            }
+            console.log(arr);
+        };
+        /*function isNumber(el){
+         return typeof el === 'number';
+         }*/
+        //过滤出数字。
+        filter(arr, function(val){
+            return typeof val === 'number';
+        });
+        //过滤出正数
+        filter(arr, function(val){
+            return typeof val === 'number' && val > 0;  //我为什么要先判断是不是number类型。不理解
+        });
+        //过掠出字符串
+        filter(arr, function(val){
+            return typeof val === 'string';  //因为上面的过滤掉了字符串，所以这里输出不正常。
+        });
+        /*---------------------------------------------------字符串----------------------------------------------------*/
+        /*------------------第十一题 返回第一个字母为大写的字符------------------*/
+        function ucFirst(str){
+            console.log(str = str.replace(str[0], str[0].toUpperCase()));
+            //console.log(str[0].toUpperCase() + str.substr(1));
+        }
+        /*----------------第十二题 如果str的长度大于maxlength，会把str截断到maxlength长，并加上...--------------------*/
+        function truncate(str, maxlength){ //既可以传入字符串名，也可以传入字符串。
+                                            // 因为字符串也有.length属性
+                                            // （注意该属性不能像数组一样显式的被改变）
+                                            // 同样hello[1]这样也不能被修改。
+
+            if(str.length > maxlength){
+                console.log(str = str.substr(0, maxlength) + '...' );
+            }
+            else{console.log( str);}
+        }
+        /*------------------------------------------------数学函数-----------------------------------------*/
+        /*--------------第十三题  min到max之间的随机整数，包括min不包括max --------------------*/
+        function getRanNum1(min, max) {
+            console.log(min + Math.floor(Math.random() * (max - min)));
+            /*var num = 0;
+            for (var i = 0; i < 1000; ++i) {
+                if(min + Math.floor(Math.random() * (max - min)) > 500){++num;}
+                //得到的事件是等概略事件吗？ 经测试是的。不管放在前面的是大数还是小数。
+            }
+            console.log(num);*/
+        }
+        /*----------第十四题   min都max之间的随机整数，包括min包括max ------------------------*/
+        function getRanNum2(min, max){
+            console.log( min + Math.floor(Math.random() * (max - min + 1)) );
+        }
+        /*------------第十五题  随机数组，数组长度为len，数组元素最小值为min，最大值为max(包括)的随机整数---------------------*/
+        function getRandArray(len, min, max){
+            var arr = [];
+            for(var i = 0; i < len; ++i){
+               arr.push( min + Math.floor(Math.random() * (max - min + 1)));//arr.push返回的是被push入的值，
+            }                            // 所以不能直接console.log
+
+            console.log(arr);
+        }
+        /*----------第十六题  长度为 n 的随机字符串，字符串字符的取值范围包括0到9，a到 z，A到Z----------------------*/
+        function getRandStr(len){//rec recombine重组
+            var recStr = '',
+                randIdx,
+                str  = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for(var i = 0; i < len; ++i){
+                randIdx = Math.floor(Math.random() * str.length);
+                recStr += str[randIdx];
+            }
+            console.log(recStr);
+        }
+        /*------------第十七题 回文串----------------*/
+        /*function isPalindrome(str){
+            for(var i = 0; i < str.length; ++i){
+            if(str[i] === str[str.length - i]){
+
+            }}
+        }*/
+        function isPalindrome2(str){
+            var myArr = str.split('').reverse(); //str.reverse返回倒序数组
+            if(str === myArr.join('')){
+                console.log('true');
+            }
+            else{
+                console.log('false');
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<script>
+        var a = document.getElementsByClassName("ct")[0].getElementsByTagName("li");
+    	for(var i = 0;i<a.length;i++){
+              a[i].addEventListener('click',function(){
+              	console.log(this.innerText);
+              },false)
+    	}
+</script>
+</body>
+</html>

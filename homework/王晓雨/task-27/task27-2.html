@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task27-2</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style type="text/css">
+	html,body,ul,li{margin:0;padding: 0;}
+	li{list-style: none}
+	a{text-decoration: none;color: #fff;}
+	.box{
+		position: relative;
+		width: 400px;
+		height: 300px;
+		overflow: hidden;
+	}
+	.img-ct li a img{
+		width:400px;
+		height: 300px;
+	}
+	.img-ct:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+	.arrow{
+		position: absolute;
+		top:50%;
+		margin-top: -15px;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border-radius: 50%;
+		background-color: rgba(0,0,0,0.5);
+		box-shadow: 0 0 2px #999;
+		opacity: 0.6;
+	}
+	.arrow:hover{opacity: 1}
+	.prev{left: 30px}
+	.next{right: 30px}
+	.btns{
+		position: absolute;
+		bottom: 15px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.btns li{
+		width: 30px;
+		height: 4px;
+		display: inline-block;
+		border-radius: 2px;
+		background-color: #fff;
+		cursor: pointer;
+	}
+	.btns li.active{
+		background-color: #999;
+
+	}
+	</style>
+</head>
+<body>
+	<div  class="box box1">
+		<ul class="img-ct">
+		<li><a href="#"><img src="http://img06.tooopen.com/images/20161112/tooopen_sy_185726882764.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img04.tooopen.com/images/20130701/tooopen_10055061.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img03.tooopen.com/images/20130618/tooopen_14435192.jpg" alt="图片消失了"></a></li>	
+		</ul>
+		<a href="#" class="prev arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="btns">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="box box2">
+		<ul class="img-ct">
+		<li><a href="#"><img src="http://img06.tooopen.com/images/20161112/tooopen_sy_185726882764.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img04.tooopen.com/images/20130701/tooopen_10055061.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img03.tooopen.com/images/20130618/tooopen_14435192.jpg" alt="图片消失了"></a></li>	
+		</ul>
+		<a href="#" class="prev arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="btns">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div  class="box box3">
+		<ul class="img-ct">
+		<li><a href="#"><img src="http://img06.tooopen.com/images/20161112/tooopen_sy_185726882764.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img04.tooopen.com/images/20130701/tooopen_10055061.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img04.tooopen.com/images/20130701/tooopen_20083555.jpg" alt="图片消失了"></a></li>
+		<li><a href="#"><img src="http://img03.tooopen.com/images/20130618/tooopen_14435192.jpg" alt="图片消失了"></a></li>	
+		</ul>
+		<a href="#" class="prev arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="btns">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		//获取元素
+	function allPlay(name){
+			var $name=$('.'+name)
+			var $ct=$name.find('.img-ct')
+			var $pics=$ct.children()
+			var $prev=$name.find('.prev')
+			var $next=$name.find('.next')
+			var $btns=$name.find('.btns')
+			var imgWidth=$pics.width()
+			var imgCount=$ct.children().length;
+
+			var curIdx=0;
+			var animated=false;
+
+			$prev.on('click',function(){
+				playPrev()
+			})
+			$next.on('click',function(){
+				playNext()
+			})
+			$btns.find('li').on('click',function(){
+				var idx=$(this).index()
+				play(idx)
+			})
+
+			function playPrev(){
+				play((imgCount+curIdx-1)%imgCount)
+			}
+			function playNext(){
+				play((curIdx+1)%imgCount)
+			}
+			function play(idx){
+				if(animated){
+					return ;
+				}
+				animated=true;
+				$pics.eq(curIdx).fadeOut(1000);
+				$pics.eq(idx).fadeIn(1000, function() {
+					animated=false;
+				});
+				curIdx=idx;
+				setBtns()
+			}
+
+			function setBtns(){
+				$btns.children().removeClass('active')
+				     .eq(curIdx).addClass('active');
+			}
+			function stopPlay(){
+				clearInterval(clock)
+			}
+			function autoPlay(){
+				var clock=setInterval(function(){
+					playNext()
+				},2000)
+			}
+			play(0);
+			autoPlay();
+			}
+		allPlay('box1');
+		allPlay('box2');
+		allPlay('box3');
+	</script>
+</body>
+</html>
