@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul,li,div,body{
+		margin:0;
+		padding:0;
+	}
+	.layout{
+		width:500px;
+		
+	}
+	.tab li{
+		float:left;
+		display: block;
+		list-style: none;
+		width:33.1%;
+		line-height: 2;
+		border:1px solid #ccc;
+		text-align: center;
+	}
+	.tab::after{
+		content:"";
+		display: block;
+		clear:both;
+	}
+	.tab li:last-child{
+		margin-right: -100%;
+	}
+	#content{
+		height:300px;
+		border:1px solid #ccc;
+	}
+	</style>
+</head>
+<body>
+	<ul class="layout tab">
+		<li items="内容1">tab1</li>
+		<li items="内容2">tab2</li>
+		<li items="内容3">tab3</li>
+	</ul>
+	<div class="layout" id="content">
+	
+	</div>
+
+<script>
+//获取元素
+var ul=$$(".tab"),
+	cont=$$("#content");
+	console.log(cont.innerText);
+//替换方法
+var handler=function(e){
+	cont.innerText=e.target.getAttribute("items");
+};
+//操作列表
+ul.addEventListener("click",handler);
+//方法封装
+function $$ (selector,tre){
+	if (tre=="all"){
+	return document.querySelectorAll(selector);
+	}
+	else{
+	return document.querySelector(selector);
+	}
+}
+</script>
+</body>
+</html>

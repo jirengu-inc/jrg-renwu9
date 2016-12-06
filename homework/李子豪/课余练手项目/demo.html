@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>前端项目班</title>
+	<style>
+	html,body,header,div,ul,li,h1,h2,h3,h4,h5{
+		padding:0;
+		margin:0;
+	}
+	*{
+		box-sizing:border-box;
+		font-family: "微软雅黑"
+	}
+	.layout{
+		width:1200px;
+		margin:0 auto;
+	}
+	header{
+		background:url(http://upload-images.jianshu.io/upload_images/3257837-9a17ded8d612775b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat;
+		background-size: 100% 100%;
+	}
+	.header-title .title-list>li>a:hover
+	{
+		color:#aee0e1;
+	}
+	.header-title .title-list>li{
+		float:left;
+		list-style: none;
+		margin-right:41px;
+		margin-top:45px;
+	}
+	.header-title .title-list>li>a{
+		text-decoration: none;
+		font-size:18px;	
+		color:#fff;
+	}
+	.title-list>li:nth-child(2)>ul a,
+	.title-list>li:nth-child(4)>ul a{
+		color:#fff;
+		text-decoration: none;
+	}
+	.title-list>li:nth-child(2)>ul a:hover,
+	.title-list>li:nth-child(4)>ul a:hover{
+		color:#aee0e1;
+	}
+	.title-list>li:nth-child(2)>ul li,
+	.title-list>li:nth-child(4)>ul li{
+		list-style: none;
+		line-height: 1;
+		margin-top: 11px;
+		display: none;
+	}
+	.title-list>li:nth-child(2)>ul,
+	.title-list>li:nth-child(4)>ul{
+		position: absolute;
+		top:100%;
+		left:4px;
+	}
+	.title-list>li:nth-child(4)>ul{
+		width:170px;
+		height:200px;
+		left:0px;
+	}
+	.title-list>li:nth-child(4)>ul li{
+		width:80px;
+	}
+	.title-list>li:nth-child(4)>ul li:nth-child(5){
+		margin-left:90px;
+		margin-top: -97px;
+	}
+	.title-list>li:nth-child(4)>ul li:nth-child(6){
+		margin-left:90px;
+	}
+
+	.title-list>li:nth-child(2):hover ul>li,
+	.title-list>li:nth-child(4):hover ul>li{
+		display:block;
+	}
+	.title-list>li:nth-child(2),
+	.title-list>li:nth-child(4)
+	{
+		position: relative;
+	}
+	.header-title .title-list>li:nth-child(2) img,.header-title .title-list>li:nth-child(3) img,.header-title .title-list>li:nth-child(6) img{
+		margin-left:4px;
+	}
+	.header-title .title-list>li:nth-child(1),.header-title .title-list>li:nth-child(4),.header-title .title-list>li:nth-child(5){
+		margin-right:63px;
+	}
+	.title-img{
+		float:left;
+		margin-top: 33px;
+		margin-right: 58px;
+	}
+	.title-login li{
+		float:right;
+		margin-top: 45px;
+		list-style: none;
+	}
+	.title-login li:last-child{
+		margin-right: 28px;
+		margin-top:41px;
+		position: relative;
+			}
+
+	.title-login li:last-child span{
+		position: absolute;
+		left:10px;
+		top:3px;
+	}
+	.title-login li:last-child input{
+		border-radius: 10px;
+		background: #09274b;
+		border:none;
+		height:27px;
+		outline:none;
+		color:#aee0e1;
+	}
+	.title-login ul>li a{
+		text-decoration: none;
+		font-size:18px;	
+		color:#fff;
+	}
+	.title-login ul>li a:hover{
+		color:#aee0e1;
+	}
+	.title-login ul>li:nth-child(2){
+		color:#fff;
+		font-size:25px;
+		margin: 40px 5px 0px 5px;
+		}
+	.header-content>img{
+		margin-top:105px;
+		margin-left: 20%;
+		}
+	.header-bottom{
+		width:487px;
+		height:487px;
+		margin:0 auto 0 auto;
+		background:url(http://upload-images.jianshu.io/upload_images/3257837-268f09b0183f310a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat;
+		background-position: 22px -7px;
+	}
+
+	.header-bottom p{
+		color:#fff;
+		text-shadow:0 0 7px #69c9d2;
+		font-size: 18px;
+		line-height: 23px;
+		letter-spacing:3px;
+	}
+	.header-bottom p:first-child{
+		padding-top: 130px;
+		margin-left: 20px;
+	}
+	.header-bottom span{
+		font-size:30px;
+	}
+	.header-bottom p:nth-child(2){
+		margin-left: 150px;
+	}
+	.header-bottom>div>a{
+		display: block;
+		border:2px solid #69c9d2;
+		box-shadow:0 0 7px #fff;
+		margin:59px auto 0 auto;
+		width:140px;
+		height:50px;
+		border-radius: 5px;
+		text-align: center;
+		font-size:25px;
+		line-height:40px;
+		text-decoration: none;
+		color:rgba(255,255,255,0.8);
+		text-shadow:7 0 5px #fff;
+	}
+	#background-div{
+	width:1404px;
+	height:600px;
+	position: absolute;
+	top:184px;
+	left:300px;
+	perspective:10000px;
+	}
+	.nav-header{
+	
+	text-align:center;
+	line-height:0px;
+	position:relative;
+	border:1px solid white;
+	}
+	.nav-header p:first-child{
+		font-size:36px;
+		margin-top:79px;
+		}
+	.nav-header p:nth-child(2){
+		font-size:18px;
+		margin-bottom:83px;
+		}
+	.nav-header:before{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		top:93px;
+		left:330px;
+		}
+	.nav-header:after{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		top:93px;
+		left:750px;
+		}
+	.nav-content{
+		width:100%;
+		background:#041529;
+		
+		}
+	.nav-content section{
+		background:#071b33;
+		text-align:center;
+		color:white;
+		
+		position:relative;
+		}
+	.nav-content section p:first-child{
+		display:block;
+		font-size:30px;
+		padding:28px 0 28px 0;
+		}
+	.nav-content section img:nth-child(2){
+		display:block;
+		margin:-30px auto 0 auto;
+		}
+	.nav-content section p:nth-child(3){
+		display:block;
+		margin-top:47px;
+		font-size:24px;
+		
+		}
+	.nav-content section a:nth-child(4){
+		display:block;
+		border:2px solid #7ccef3;
+		box-shadow:0 0 5px #fff;
+		margin:-4px auto 0 auto;
+		line-height:35px;
+		width:130px;
+		height:40px;
+		border-radius:5px;
+		text-decoration:none;
+		color:#fff;
+		}
+	.nav-content section img:nth-child(5){	
+		display:block;
+		margin:0 auto;
+		padding:21px 0 32px 0
+		}
+	.nav-content section a:nth-child(6){
+		position:absolute;
+		left:1127px;;
+		top:40%;}
+	.nav-content section a:last-child{
+		position:absolute;
+		left:28px;
+		top:40%;}
+	.nav-footer{
+		
+		background:#fff;
+		text-align:center;
+		position:relative;
+		line-height:0px;
+		margin-top:-36px;
+		}
+	.nav-footer p:first-child{
+		padding-top:69px;
+		padding-bottom:11px;
+		font-size:36px;
+		}
+	.nav-footer p:nth-child(2){
+		padding-bottom:83px;
+		font-size:18px;
+		}
+	.nav-footer:before{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		top:93px;
+		left:670px;
+		}
+	.nav-footer:after{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		top:93px;
+		left:1090px;
+		}
+	.project-page{
+	position:relative;
+	}
+	.project-page ul li{
+	background:rgb(250,250,250);
+	display:block;
+	width:50%;
+	height:320px;
+	border:1px solid #ccc;
+	margin:0 auto;
+	text-align:center;
+	padding:0 60px;
+	float:left;
+	}
+	.project-page ul li img{
+		width:80px;
+		height:80px;
+		margin:20px 0}	
+	.project-page ul li P:first-child{
+	font-size:14px;}
+	.project-page ul li P:nth-child(3){
+	font-size:12px;
+	color:#888;}
+	.project-page ul li:first-child{
+	height:400px;
+	position: relative;
+	left:25%;
+	}
+	.project-page ul li:first-child img{
+	width:100px;
+	height:100px;
+	}
+	.project-page ul li:first-child p:nth-child(2){
+	font-size:18px;
+	}
+	.project-page ul li:first-child p:nth-child(3){
+	font-size:14px;
+	}
+	.project-page ul li:nth-child(2){
+	margin-top: 40px;
+	z-index:-1;
+	}
+	.project-page ul li:nth-child(3){
+	margin-left:-100%;
+	margin-top: 40px;
+	}
+	.project-page ul li:first-child:before{
+		content:"";
+		display: block;
+		clear: both;
+		width:100px;
+		box-shadow:1px 1px 30px 20px #aaa;
+		-webkit-transform:rotate(-10deg);
+		position: absolute;
+		top:390px;
+		left:25px;
+		z-index: -1;
+	}
+	.project-page ul li:first-child:after{
+		content:"";
+		display: block;
+		clear: both;
+		width:100px;
+		box-shadow:1px 1px 30px 20px #aaa;
+		-webkit-transform:rotate(10deg);
+		position: absolute;
+		top:390px;
+		left:475px;
+		z-index: -1;
+	}
+	.project-page ul li:nth-child(2):after{
+		content:"";
+		display:block;
+		clear: both;
+		width:100px;
+		box-shadow:1px 1px 30px 10px #aaa;
+		-webkit-transform:rotate(-5deg);
+		position: absolute;
+		left:10px;
+		top:350px;
+		z-index: -1
+	}
+	.project-page ul li:nth-child(3):after{
+		content:"";
+		display:block;
+		clear: both;
+		width:100px;
+		box-shadow:1px 1px 30px 10px #aaa;
+		-webkit-transform:rotate(5deg);
+		position: absolute;
+		left:1090px;
+		top:350px;
+		z-index: -1
+	}
+	.project-page ul:after,.project-page:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	.project-page:after{
+		width: 200px;
+		box-shadow:1px 1px 30px 5px #aaa;
+		margin:83px auto 0 auto;
+		border:0px solid red;
+	}
+	.combat-project{
+		clear:both;
+		
+		background:#fff;
+		text-align:center;
+		line-height:0px;
+		margin-top:180px;
+		position: relative;
+		}
+	.combat-project:before{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		left:670px;
+		top:25px;
+		}
+	.combat-project:after{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		top:25px;
+		position:absolute;
+		left:1090px;
+		}
+	.combat-project p:first-child{
+		padding-bottom:11px;
+		font-size:36px;
+		}
+	.combat-project p:nth-child(2){
+		padding-bottom:83px;
+		font-size:18px;
+		}
+	.combat-project-content{
+		background: url(http://upload-images.jianshu.io/upload_images/3257837-2ab23d041f9b4804.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat;
+		background-size: 100%;
+		width:100%;
+		border-bottom:1px solid #fff;
+		border-top:1px solid #fff;
+		position: relative;
+	}
+	.combat-project-content>div{
+		width:900px;
+		height:610px;
+		background: rgba(127,205,243,0.1);
+		margin:46px auto 51px auto;
+	}
+	.combat-project-content>div h2{
+		text-align: center;
+		padding-top:24px;
+		font-size: 24px;
+		color:#fff;
+
+	}
+	.combat-project-content>div>img{
+		display: block;
+		width:700px;
+		height:293px;
+		margin:0 auto;
+	}
+	.combat-project-content>div>a{
+		display: block;
+		position: absolute;
+		left:49%;
+		top:35%;	
+	}
+	.combat-project-content>div>ul{
+		width:700px;
+		margin: 0 auto;
+	}
+	.combat-project-content>div>ul li{
+		list-style: none;
+		color:#fff;
+		font-size: 18px;
+		float: left;
+		width:320px;
+		border:0px solid red;
+		margin-left: 21px;
+		margin-right: 91px;
+		line-height: 0px;
+	}
+	.combat-project-content>div>ul li img{
+		margin-right: 5px;
+	}
+	.combat-project-content>div>ul li:nth-child(2),
+	.combat-project-content>div>ul li:nth-child(1){
+		margin-top: 26px;
+		margin-bottom: 24px;
+	}
+	.combat-project-content>div>ul li:nth-child(5),
+	.combat-project-content>div>ul li:nth-child(6){
+		margin-top: 24px;
+		margin-bottom: 31px;
+	}
+	.combat-project-content>div>ul li:nth-child(2),
+	.combat-project-content>div>ul li:nth-child(4),
+	.combat-project-content>div>ul li:nth-child(6){
+		margin-right:-91px;
+		margin-left: -20px;
+	}
+	.combat-project-content>div>ul:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	.buy-class{
+		margin-left:112px;
+	}
+	.buy-class a{
+		display: inline-block;
+		box-shadow:0 0 5px #fff;
+		text-decoration: none;
+		height:25px;
+		border-radius: 10px;
+		color:#fff;
+		font-size: 12px;
+		text-align: center;
+		line-height: 25px;
+		margin-right: 10px;
+	}
+	.buy-class a:first-child{
+		width:70px;
+		background: #4cbaef;
+	}
+	.buy-class a:nth-child(2){
+		width:40px;
+		background: #6dee4b;
+	}
+	.buy-class a:nth-child(3){
+		width:110px;
+		background: #ce2a21;
+		position: relative;
+		z-index: 2;
+	}
+	
+	.buy-class a:nth-child(4){
+		display: block;
+		width:104px;
+		height:55px;
+		border-radius: 0;
+		background: #9b2929;
+		box-shadow: none;
+		position: absolute;
+		padding:15px 3px 10px 3px;
+		top:82%;
+		left:780px;
+		z-index: 1;
+		opacity:0;
+		line-height: 18px;
+	}
+	#buy-line{
+		width:300px;
+		margin:20px auto 18px auto;
+		border-top: 1px solid #7fcdf3;
+		position: relative;
+	}
+	#buy-line:before,#buy-line:after{
+		content: "·";
+		clear: both;
+		display: block;
+		color:#7fcdf3;
+		font-size: 40px;
+		position: absolute;
+	}
+	#buy-line:before{
+		top:-29px;
+		left:-5px;
+	}
+	#buy-line:after{
+		top:-29px;
+		left:295px;
+	}
+	.learning-style{
+		text-align: center;
+		background:#fff;
+		font-size: 36px;
+		line-height:10px;
+		margin-top:110px;
+		margin-bottom: 70px;
+		position: relative;
+		}
+	.learning-style:before{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		left:330px;
+		top:25px;
+
+		}
+	.learning-style:after{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		top:25px;
+		position:absolute;
+		left:750px;
+		text-align: center;
+		}
+	.learning-style-content ul li{
+		margin-top: 10px;
+		border:3px solid #206090;
+		border-radius: 10px;
+		list-style: none;
+		display: inline-block;
+	}
+	.learning-style-content ul li p{
+		display: inline-block;
+		margin-left:20px;
+		margin-top: 5px;
+	}
+	.learning-style-content ul li:nth-last-child(n+5) p{
+		transform:skewX(20deg);
+	}
+	.learning-style-content ul li:nth-child(n+4) p{
+		transform:skewX(-2deg);
+		padding: 20px 20px 0 20px;
+		width:90%;
+	}
+	.learning-style-content ul li:nth-last-child(n+5){
+		width:25%;
+		text-align: center;
+		font-size:36px;
+		line-height: 90px;
+		height:100px;
+		margin-left:50px;
+		transform:skewX(-20deg);
+		position: relative;
+		border:none;
+		box-shadow:7px 7px 1px #ccc inset;		
+	}
+	.learning-style-content ul li:nth-last-child(n+5):before{
+		border-radius:15px;
+		content: "";
+		display: block;
+		clear: both;
+		position: absolute;
+		width:100%;
+		height:95px;
+		border:3px solid #206090;
+		box-shadow:5px 7px  1px #ccc;
+		z-index:-1;
+	}
+
+	.learning-style-content ul li:nth-child(n+4){
+		width:25%;
+		font-size:18px;
+		line-height:1.5em;
+		height:150px;
+
+		margin-top: 40px;
+		margin-left:40px;
+		transform:skewX(3deg);
+		position: relative;
+		border:none;
+		box-shadow:7px 7px 1px #ccc inset;		
+	}
+	.learning-style-content ul li:nth-child(5),
+	.learning-style-content ul li:nth-child(6){
+		margin-left:50px;
+	}
+	.learning-style-content ul li:nth-child(n+4):before{
+		border-radius: 10px;
+		content: "";
+		display: block;
+		clear: both;
+		position: absolute;
+		width:100%;
+		height:150px;
+		border:3px solid #206090;
+		box-shadow:5px 7px  1px #ccc;
+		z-index:-1;
+	}
+	.learning-style-content ul li:nth-child(2),
+	.learning-style-content ul li:nth-child(3),
+	.learning-style-content ul li:nth-child(5),
+	.learning-style-content ul li:nth-child(6){
+		width:30%;
+	}
+	.learning-style-content ul li:last-child{
+		width:90%;
+		transform:skewX(-20deg);
+		height:100px;
+	}
+	.learning-style-content ul li:last-child:before{
+		height:100px;
+	}
+	.learning-style-content ul li:last-child p{
+		font-size:36px;
+		line-height:50px;
+		transform:skewX(20deg);
+		margin-left:40px;
+	}
+	.learning-style-content ul li:last-child p span:first-child{
+		font-size:30px;
+		margin-left: 150px;
+	}
+	.learning-style-content ul li:last-child:after{
+		content: "";
+		display: block;
+		clear: both;
+		border-left: 1px solid #0a1921;
+		height:50px;
+		position: absolute;
+		top:30px;
+		left:280px;
+	}
+	footer{
+		background: #041529;
+		margin-top: 150px;
+		margin-bottom: -20px;
+	}
+	footer ul{
+		width:500px;
+		padding-top: 40px;
+		margin:0 auto 40px auto;
+	}
+	footer ul li{
+		float:left;
+		font-size:18px;
+		list-style:none;
+		margin-left:70px;
+	}
+	footer ul li a{
+		color:#fff;
+		text-decoration: none;
+	}
+	footer ul li a:hover{
+		color:#aee0e1;
+	}
+	footer p{
+		color:white;
+		font-size:14px;
+		text-align: center;
+		padding-bottom: 40px;
+	}
+	#ufo{
+		position: absolute;
+		top:176px;
+		left:45%;
+	}
+	.header-title:after{
+		display: block;
+		content:"";
+		clear: both;
+		margin-bottom: 30px;
+	}
+	</style>
+</head>
+<body>
+<header>
+	<div id="background-div">
+		<img id="background-img" src="http://upload-images.jianshu.io/upload_images/3257837-b03a20a76d7a938c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+	</div>
+	<div id="ufo">
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-d68162b751cb29bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+	</div>
+	<div class="header-title layout">
+		<div class="title-img">
+			<a href=""><img src="http://upload-images.jianshu.io/upload_images/3257837-76369d24af40e0e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+		</div>
+		<ul class="title-list">
+			<li><a href="">首页</a></li>
+			<li><a href="">课程<img src="http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+				<ul>
+					<li><a href="">关于</a></li>
+					<li><a href="">班级</a></li>
+					<li><a href="">收费</a></li>
+					<li><a href="">试学</a></li>
+				</ul>
+			</li>
+			<li><a href="">学习<img src="http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a></li>
+			<li><a href="">更多<img src="http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+				<ul>
+					<li><a href="">谷内学习</a></li>
+					<li><a href="">知乎专栏</a></li>
+					<li><a href="">学习API</a></li>
+					<li><a href="">JScoed</a></li>
+					<li><a href="">学生作品集</a></li>
+					<li><a href="">简书博文汇</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="title-login">
+			<ul>
+				<li><a href="">注册</a></li>
+				<li>|</li>
+				<li><a href="">登录</a></li>
+				<li><input type="text" ><span><img src="http://upload-images.jianshu.io/upload_images/3257837-3765a07c94900f06.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="header-content layout">
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-265221fc04e1d486.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+		<div class="header-bottom">
+			<p>阿里腾讯<span>资身</span>前端工程师授课</p>
+			<p>业内<span>绝无仅有</span>的Nodejs课程</p>
+			<div>
+				<a href="">申请试听</a>
+			</div>
+		</div>
+	</div>
+</header>
+<nav class="layout nav-header">
+<p>导师介绍</p>
+<p>TEACHER INTRODUCTION</p>
+</nav>
+<nav class="nav-content">
+<section class="layout">
+	<p>方方</P>
+	<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+	<p>人称“芳姐”，毕业于华中科技大学，曾就职腾讯，阿里巴巴B2B商家后台开发<br>
+	负责商家营销设置、客户管理等系统。精通Backbone（Marionette）、AngularJ
+	</p>
+	<a href="">他的授课</a>
+	<img src="http://upload-images.jianshu.io/upload_images/3257837-5941ed1baf9db0ac.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+	<a href=""><img src="http://upload-images.jianshu.io/upload_images/3257837-617196adffaa1f16.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+	<a href=""><img src="http://upload-images.jianshu.io/upload_images/3257837-429432b83edf241c.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+</section>
+</nav>
+<div class="nav-footer">
+	<p>实战项目</p>
+	<p>Actual combat project</p>
+</div>
+<div class="project-page layout">
+	<ul>
+		<li>
+			<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+			<p>方方导师项目介绍</p>
+			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。[1] 
+				CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力</p>
+		</li>
+		<li >
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+			<p>方方导师项目介绍</p>
+			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。[1] 
+				CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力</p>
+		</li>
+		<li >
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+			<p>方方导师项目介绍</p>
+			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来表现HTML（标准通用标记语言的一个应用）或XML（标准通用标记语言的一个子集）等文件样式的计算机语言。CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。[1] 
+				CSS 能够对网页中元素位置的排版进行像素级精确控制，支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力</p>
+		</li>
+	</ul>
+</div>
+<div class="combat-project">
+	<p>课程内容</p>
+	<p>Actual combat project</p>
+</div>
+<div class="combat-project-content">
+	<div>
+		
+		<h2>Node.JS项目组</h2>
+		<div id="buy-line"></div>
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-d4e0c8266f7599d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+		<a href="javascript:"><img src="http://upload-images.jianshu.io/upload_images/3257837-f244fd98dbabb79b.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></a>
+		<ul>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">NodeJS历史、优势、生态、社区介绍</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">HTTP、实现一个WEB服务器</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">CommonJS规范</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">Express、Mongoose搭建网站</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">NodeJS语法</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">多进程、OS、Cluster部署</li>
+		</ul>
+		<div class="buy-class">
+		<a href="">更多查看</a>
+		<a href="">查询</a>
+		<a id="buy-class" href="javascript:">￥ 168 | 点击购买</a>
+		<a id="buy-finsh" href="">购买完成后请联系<br>青青QQ1223456</a>
+		</div>
+	</div>
+</div>
+<div class="learning-style layout">
+	<p>学习方式</p>
+	<p>Learning style</p>
+</div>
+<div class="learning-style-content layout">
+	<ul>
+	<li><p>录频学习</p></li>
+	<li><p>项目驱动</p></li>
+	<li><p>直播班</p></li>
+	<li><p>超清视频会议软件直播课程，可清晰地观看老师屏幕，和老师语音对话</p></li>
+	<li><p>超清视频会议软件直播课程，可清晰地观看老师屏幕，和老师语音对话</p></li>
+	<li><p>超清视频会议软件直播课程，可清晰地观看老师屏幕，和老师语音对话</p></li>
+	<li><p>适用人群<span>有JavaScript基础或者前端实际工作经验的同学</span></p></li>
+	</ul>
+</div>
+<footer>
+	<ul>
+		<li><a href="">关于我们</a></li>
+		<li><a href="">加入我们</a></li>
+		<li><a href="">报名收费</a></li>
+	</ul>
+	<p>课程内容版权均归杭州饥人谷教育科技有限公司所有 浙ICP 备14041127号 -1</p>
+</footer>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$("#background-div").on("mousemove",function(e){
+	
+	var offset=$("#background-div").offset();
+	
+	var x=e.pageX-offset.left;
+	var y=e.pageY-offset.top;
+	
+	var centerX=$("#background-div").outerWidth()/2;
+	var centerY=$("#background-div").outerHeight()/2;
+		var deltaX=x-centerX;
+		var deltaY=y-centerY;
+		var percentX=deltaX/centerX;
+		var percentY=deltaY/centerY;
+		var deg=10;
+		$("#background-img").css({transform: 'rotateX('+deg*percentY+'deg)'+' rotateY('+deg*percentX+'deg)'})
+		});
+
+ 	var buy=document.getElementById("buy-class");
+ 	var buyfinsh=document.getElementById("buy-finsh");
+ 	buy.addEventListener("click",function(e){
+ 		e.preventDefault();
+ 		buyfinsh.style.opacity="1";
+ 	})
+ </script>
+
+</body>
+</html>

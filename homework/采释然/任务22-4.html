@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <style type="text/css">
+      table,td{
+        border: 1px solid #ccc;
+        border-collapse: collapse;
+      }
+      .td-normal{
+        width: 200px;
+        height: 40px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .td-special{
+        height: 400px;
+        vertical-align: baseline;
+      }
+      .bg{
+        background-color: #aaa;
+      }
+      .content{
+        display: none;
+      }
+      .content-show{
+        display: block;
+        padding: 20px;
+      }
+  </style>
+</head>
+<body>
+    <table>
+      <tr>
+        <td class="td-normal">tab1</td>
+        <td class="td-normal">tab2</td>
+        <td class="td-normal">tab3</td>
+      </tr>
+      <tr>
+        <td class="td-special" colspan="3">
+          <div class="content">内容一</div>
+          <div class="content">内容二</div>
+          <div class="content">内容三</div>
+        </td>
+      </tr>
+    </table>
+    <script type="text/javascript">
+      var tdnormal = document.querySelectorAll(".td-normal");
+      var tdspaecial = document.querySelector(".td-special");
+      var table = document.getElementsByTagName("table")[0];
+      var div = document.querySelectorAll(".content");
+      table.addEventListener('click',function(e){
+             if(e.target.innerText === tdnormal[0].innerText){
+              div[0].setAttribute("class","content-show");//让对应内容显示
+              div[1].setAttribute("class","content");//隐藏其他内容
+              div[2].setAttribute("class","content");//隐藏其他内容
+              tdnormal[0].setAttribute("class","td-normal bg");//让对应tab显示背景色
+              tdnormal[1].setAttribute("class","td-normal");//隐藏其他tab背景色
+              tdnormal[2].setAttribute("class","td-normal");//隐藏其他tab背景色
+             }else if(e.target.innerText === tdnormal[1].innerText){
+              div[1].setAttribute("class","content-show");
+              div[0].setAttribute("class","content");
+              div[2].setAttribute("class","content");
+              tdnormal[1].setAttribute("class","td-normal bg");
+              tdnormal[0].setAttribute("class","td-normal");
+              tdnormal[2].setAttribute("class","td-normal");
+             }else{
+              div[2].setAttribute("class","content-show");
+              div[0].setAttribute("class","content");
+              div[1].setAttribute("class","content");
+              tdnormal[2].setAttribute("class","td-normal bg");
+              tdnormal[0].setAttribute("class","td-normal");
+              tdnormal[1].setAttribute("class","td-normal");
+             }
+      },false)
+    </script>
+</body>
+</html>

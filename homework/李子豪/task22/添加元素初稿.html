@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="trip"id="layout">
+		<li>这里是</li>
+		<li>饥人谷</li>
+		<li>前端6班</li>
+	</ul>
+	<input id="addText" type="text">
+	<input id="addFirstChild" type="button" value="添加第一元素">
+	<input id="addLastChild" type="button" value="添加最后元素">
+<script>
+
+
+
+var addlast= function(w){
+	ul=$("#layout");
+	p=document.createElement("li");
+	p.innerHTML=$("#addText").value;
+	if(p.innerHTML){
+	ul.appendChild(p);}
+};
+var addfirst=function(w){
+	ul=$("#layout");
+	p=document.createElement("li");
+	p.innerHTML=$("#addText").value;
+	if(p.innerHTML){
+		ul.insertBefore(p,ul.firstChild)
+	}
+
+};
+var firstbtn=$("#addFirstChild");
+firstbtn.addEventListener("click",addfirst);
+var lastbtn=$("#addLastChild");
+lastbtn.addEventListener("click",addlast);
+
+var handler =function (w){
+	console.log(w.target.innerText)
+}
+var btnClick =$('li',"all");
+for(var i=0;i<btnClick.length;i++){
+btnClick[i].addEventListener("click",handler,true);}
+//方法封装
+function $ (selector,tre){
+	if (tre=="all"){
+	return document.querySelectorAll(selector);
+	}
+	else{
+	return document.querySelector(selector);
+	}
+}
+
+</script>
+</body>
+</html>
