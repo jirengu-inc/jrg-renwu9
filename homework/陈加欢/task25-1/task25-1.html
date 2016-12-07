@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		ul,li{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.nav{
+			width:200px;
+			background: #c91213;
+		}
+		.category{
+			position: relative;
+			padding:0 10px;
+			border-bottom: 1px solid #d31a1b;
+			font-size: 14px;
+			position: relative;
+		}
+		.category >a{
+			display: block;
+			padding: 10px;
+			color:#fff;
+		}
+		.category >span{
+			position: absolute;
+			right: 10px;
+			top:10px;
+			color:#fff;
+		}
+		.item{
+			position:absolute;
+			left:200px; 
+			top:0;
+			width:200px;
+			border:1px solid #ccc;
+			display:none;
+		}
+		.item a{
+			float: left;
+			width:80px;
+			margin:10px;
+			font-size: 12px;
+			color:#444;
+
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li class="category clearfix">
+			<a href="#">珠宝玉器</a>
+			<span>></span>
+			<ul class="item">
+				<li><a href="#">翡翠</a></li>
+				<li><a href="#">玉石</a></li>
+				<li><a href="#">水晶</a></li>
+				<li><a href="#">白金</a></li>
+				<li><a href="#">玛瑙</a></li>
+				<li><a href="#">珍珠</a></li>
+				<li><a href="#">黄金</a></li>
+				<li><a href="#">银饰</a></li>
+			</ul>
+		</li>
+		<li class="category clearfix">
+			<a href="#">潮流男装</a>
+			<span>></span>
+			<ul class="item">
+				<li><a href="#">羽绒服</a></li>
+				<li><a href="#">外套</a></li>
+				<li><a href="#">夹克</a></li>
+				<li><a href="#">毛衣</a></li>
+				<li><a href="#">牛仔裤</a></li>
+			</ul>
+		</li>
+		<li class="category clearfix">
+			<a href="#">运动户外</a>
+			<span>></span>
+			<ul class="item">
+				<li><a href="#">钓竿</a></li>
+				<li><a href="#">运动鞋</a></li>
+				<li><a href="#">篮球鞋</a></li>
+				<li><a href="#">运动套转</a></li>
+				<li><a href="#">运动裤</a></li>
+				<li><a href="#">比赛</a></li>
+				<li><a href="#">足球</a></li>
+				<li><a href="#">登山</a></li>
+			</ul>
+		</li>
+		<li class="category clearfix">
+			<a href="#">电子数码</a>
+			<span>></span>
+			<ul class="item">
+				<li><a href="#">手机</a></li>
+				<li><a href="#">耳机</a></li>
+				<li><a href="#">显示器</a></li>
+				<li><a href="#">显卡</a></li>
+				<li><a href="#">键盘</a></li>
+				<li><a href="#">充电宝</a></li>
+				<li><a href="#">笔记本</a></li>
+				<li><a href="#">相机</a></li>
+				<li><a href="#">鼠标</a></li>
+			</ul>
+		</li>
+		
+		<li class="category clearfix">
+			<a href="#">时尚箱包</a>
+			<span>></span>
+			<ul class="item">
+				<li><a href="#">时尚女包</a></li>
+				<li><a href="#">潮流肩包</a></li>
+				<li><a href="#">旅行箱</a></li>
+				<li><a href="#">品质男包</a></li>
+			</ul>
+		</li>
+	</ul>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(".category").on("mouseenter",function(){
+			$(this).siblings().find(".item").hide();
+			$(this).find(".item").show();
+		})
+		$(".category").on("mouseleave",function(){
+			$(".item").hide();
+		})
+	</script>
+</body>
+</html>
