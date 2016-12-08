@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task25-1</title>
+	<style type="text/css">
+	/*基本样式*/
+	html,body,div,ul,li,a,span{
+		margin: 0;
+		padding: 0;
+	}
+	li{list-style: none;}
+	a,span{text-decoration: none;color: #fff}
+
+	/*导航栏样式*/
+	#navbar{
+		margin-left: 20px;
+		margin-top: 20px;
+
+	}
+	.left-nav{
+		width: 200px;
+		background:#c7171e;
+	}
+	.list{
+		position: relative;/*定位有利于panel找位置*/
+		width: 160px;
+		padding: 10px;
+		margin-left:10px;
+		border-bottom: 1px dotted #de272e;
+	}
+	.list:last-child{
+		border-bottom: none;
+	}
+	.list .icon-go{
+		margin-left:67px;
+		/*可以margin-left,margin-right无效*/
+		/*也可以position但是3句代码*/
+	}
+	.list a{
+		font:1.2em bold;
+		/*font和color用于包含文字的<a>*/
+	}
+	.panel{
+		position: absolute;
+		top:0;
+		left: 190px;
+		border:1px solid #ccc;
+		background: #fff;
+		width: 210px;
+		font-size: 12px;
+		display: none;
+	}
+	/*css直接设置成 .list:hover .panel也行*/
+	/*jquery必须在样式给它添加类 .hover 否则不行*/
+	.list.hover .panel{
+		display: block;
+	}
+	.panel li{
+		width: 70px;
+		padding: 10px 15px;
+		float: left;/*算好每个li的宽度，浮动成两栏*/
+	}
+	.panel li a{
+		color: black;
+	}
+	/*测试不能给panel加清除浮动，加了会固定panel???
+	.clearfix{
+		display: block;
+		content: '';
+		clear:both;
+	}*/
+	</style>
+</head>
+<body>
+	<div id="navbar">
+		<ul class="left-nav">
+			<li class="list">
+				<a href="#" class="cate-title">珠宝玉器</a>
+				<span class="icon-go">></span>
+				<ul class="panel clearfix">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">宝石</a></li>
+					<li><a href="#">水晶</a></li>
+					<li><a href="#">玛瑙</a></li>
+					<li><a href="#">珍珠</a></li>
+					<li><a href="#">钻石</a></li>
+					<li><a href="#">琥珀</a></li>
+					<li><a href="#">和田</a></li>
+					<li><a href="#">琥珀</a></li>
+				</ul>
+			</li>
+			<li class="list">
+				<a href="#" class="cate-title">珠宝玉器</a>
+				<span class="icon-go">></span>
+				<ul class="panel clearfix">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">宝石</a></li>
+					<li><a href="#">水晶</a></li>
+					<li><a href="#">玛瑙</a></li>
+					<li><a href="#">珍珠</a></li>
+				</ul>
+			</li>
+			<li class="list">
+				<a href="#" class="cate-title">珠宝玉器</a>
+				<span class="icon-go">></span>
+				<ul class="panel clearfix">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">宝石</a></li>
+					<li><a href="#">水晶</a></li>
+				</ul>
+			</li>
+			<li class="list">
+				<a href="#" class="cate-title">珠宝玉器</a>
+				<span class="icon-go">></span>
+				<ul class="panel clearfix">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">宝石</a></li>
+					<li><a href="#">水晶</a></li>
+					<li><a href="#">玛瑙</a></li>
+					<li><a href="#">珍珠</a></li>
+				</ul>
+			</li>
+			<li class="list">
+				<a href="#" class="cate-title">珠宝玉器</a>
+				<span class="icon-go">></span>
+				<ul class="panel clearfix">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">宝石</a></li>
+					<li><a href="#">水晶</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script type="text/javascript">
+	/*注释：
+	$(function(){ })等同于$(document).ready(function(){}) ;用于存放操作DOM对象的代码，执行其中代码时DOM对象已存在。不可用于存放开发插件的代码，因为jQuery对象没有得到传递，外部通过jQuery.method也调用不了其中的方法（函数）。 
+	(function(){ })($),其实际上是执行()(para)匿名方法,只不过是传递了jQuery对象；用于存放开发插件的代码，执行其中代码时DOM不一定存在，所以直接自动执行DOM操作的代码请小心使用*/
+		$(function(){
+			$('.list').on('mouseenter',function(){
+				$(this).addClass('hover')
+			})
+			$('.list').on('mouseleave',function(){
+				$(this).removeClass('hover')
+			})
+		})
+
+	</script>
+	<script type="text/javascript">
+		// $(function(){
+  //   	$('.nav-aside .category').on('mouseenter', function(){
+  //   		$(this).addClass('hover');
+  //   		// 或者
+  //   		// $(this).find('.panel').show();
+  //   		// 或者
+  //   		// $(this).find('.panel').css('display', 'block');
+  //   	});
+  //    	$('.nav-aside .category').on('mouseleave', function(){
+  //   		$(this).removeClass('hover');
+  //   		// 或者
+  //   		// $(this).find('.panel').hide();
+  //   		// 或者
+  //   		// $(this).find('.panel').css('display', 'none');
+  //   	});   	
+   // });
+	</script>
+</body>
+</html>

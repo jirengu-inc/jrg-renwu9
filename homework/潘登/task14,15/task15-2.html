@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+	html,body,ul,li,h1,h2,h3,h4,p{
+		margin: 0;
+		padding: 0;
+	}
+	html,body{
+		width: 100%;
+		height: 100%;
+		font-family: Tahoma;
+		font-size: 16px;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: black;
+	}
+	.content{
+		width: 960px;
+		margin: 0 auto;
+	}
+	.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#nav{
+		background: rgba(0, 0, 0,0.8);
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 3;
+	}
+	#nav .ul1{
+		float: right;
+	}
+	#nav .ul1 li{
+		float: left;
+		padding: 20px;
+	}
+	#nav .ul1 li a{
+		color: white;
+	}
+	#nav .ul1 li a:hover{
+		color: yellow;
+	}
+	#nav .wrap img{
+		padding: 10px 0;
+	}
+	#header{
+		width: 100%;
+		height: 100%;
+		background: url("image/dota2_01.jpg") no-repeat;
+		background-size: cover;
+		text-align: center;
+	}
+	#header .wrap-1{
+		padding: 266px 0;
+	}
+	#header h1{
+		padding-bottom: 50px;
+		color: white;
+		font-size: 60px;
+	}
+	#header a{
+		display: inline-block;
+		width: 166px;
+		height: 70px;
+		color: white;
+		border: 1px solid white;
+		line-height: 70px;
+		color: #ccc;
+		border-radius: 15px;
+	}
+	#header a:hover{
+		border: 1px solid orange;
+		color: orange;
+	}
+	#main{
+		width: 100%;
+		padding: 100px 0 0 0;
+		text-align:center;
+	}
+	#main .main-1{
+		background: url('image/match_team_bg.jpg') no-repeat;
+		background-size:cover;
+		
+	}
+	#main .wrap-2{
+		padding-bottom: 150px;
+		color: white;
+	}
+	#main h3{
+		margin: 20px 0 70px 0;
+	}
+	#main .ul2{
+		margin-left: -180px;
+	}
+	#main .ul2 li{
+        float: left;
+        margin-left: 180px;
+        width: 200px;
+
+	}
+	#main .ul2 li img{
+		width: 200px;
+		height: 200px; 
+	}
+	#main .ul2 li h4{
+		padding: 20px 0;
+	}
+	#main .active{
+		padding: 150px 0;
+		background:url('image/match_team_bg.jpg') no-repeat;
+		color: white;
+	}
+	#main .ul3{
+		margin-left: -30px;
+	}
+	#main .ul3 li{
+        float: left;
+        margin-left: 30px;
+        width: 300px;
+        position: relative;
+	}
+	#main .ul3 li img{
+		width: 300px;
+		height: 200px; 
+	}
+	#main .ul3 h4{
+		padding: 30px 0;
+	}
+	#main .ul3 .div1{
+		width: 300px;
+		height: 200px;
+		position: absolute;
+		background: rgba(255,255,0,0.6);
+		display: none;
+		line-height: 200px;
+	}
+	#main .ul3 .div1 span{
+		font-size: 80px;
+	}
+	
+	#main .ul3 li:hover .div1{
+        display: block;
+	}
+	#main .timeline{
+		text-align: center;
+		padding: 150px 0;
+	}
+	.ul4{
+		position: relative;
+	}
+	.ul4:before{
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 2px;
+		background: #ccc;
+		z-index: 2;
+
+	}
+	.ul4>li{
+		text-align: center;
+		position: relative;
+		padding-bottom: 100px;
+	}
+	.ul4>li img{
+		border-radius: 50%;
+		width: 235px;
+		height: 235px;
+
+	}
+	.ul4 .timeline-1{
+		position: absolute;
+		width: 350px;
+	}
+	.ul4 .timeline-1 h4{
+		padding: 10px;
+	}
+	.ul4 .timeline-1 p{
+		font-size: 14px;
+		color: #777;
+	}
+	.ul4 .timeline-2{
+		position: absolute;
+		left: 605px;
+		width: 350px;
+	}
+	.ul4 .timeline-2 h4{
+		padding: 10px;
+	}
+	.ul4 .timeline-2 p{
+		font-size: 14px;
+		color: #777;
+	}
+	#main .store{
+		background:url('image/match_team_bg.jpg') no-repeat;
+		background-size: cover;
+		color: #f1f1f1;
+		padding-bottom: 100px;
+	}
+	#main .store .ul5>li{
+		float: left;
+		padding: 0 58px;
+	}
+	#main .store .ul5 a{
+		color: white;
+		padding: 0 10px;
+	}
+	#main .store .ul5 a:hover{
+		color: yellow;
+	}
+	#main .hero h1{
+		color: orange;
+		padding: 30px 0;
+	}
+	#main .hero h2{
+		padding-bottom: 20px;
+	}
+	#main .hero img{
+		border-radius: 50%;
+	}
+	#main .hero .img1{
+		padding: 0 122px;
+	}
+	#main .contact{
+		padding: 150px 0;
+		background: url('image/map-image.png') no-repeat;
+		background-color: #222;
+		width: 100%;
+		height: 100%;
+		background-position: center;
+	}
+	#main .contact h1{
+		color: white;
+	}
+	#main .contact .contact-2{
+		float: left;
+	}
+	#main .contact .contact-3{
+		float: right;
+	}
+	#main .contact input{
+		display: block;
+		padding: 20px;
+		width: 450px;
+		margin: 30px 0;
+		border-radius: 5px;
+
+	}
+	#main .contact .contact-3 textarea{
+		margin: 30px 0;
+		border-radius: 5px;
+		width: 425px;
+		height: 232px;
+	}
+	.btn1{
+		display: inline-block;
+		color: #fff;
+		padding: 20px 40px;
+		background:#fed136;
+		border-radius: 5px;
+		font-size: 18px;
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-weight: 700;
+		border-color: #fed136;
+		cursor: pointer;
+	}
+	.btn1:hover{
+		background: #fec503;
+		border-color: #f6bf01;
+	}
+	#footer{
+		padding: 25px 0;
+		background: black;
+	}
+	#footer .footer-1{
+		text-align: center;
+	}
+	#footer .footer-1 img{
+		float: left;
+		padding-right: 70px;
+	}
+	#footer .footer-1 .ul6{
+		float: right;
+	}
+	#footer .footer-1 .ul6 li{
+		float: left;
+		padding: 0 10px;
+	}
+	.footer-1 a{
+        padding: 0 5px;
+        color: white;
+	}
+	.footer-1 a:hover{
+		color: orange;
+	}
+	.footer-1 .ul6 a{
+		color: orange;
+	}
+	.footer-1 .ul6 a:hover{
+		color: yellow;
+	}
+	.a1{
+		text-align: center;
+	}
+	
+</style>
+<body>
+	<div id="nav">
+	  <div class="wrap content clearfix">
+		<img src="image/dota2.png"/>
+		<ul class="ul1 clearfix">
+			<li><a href=".wrap-2">Dota2装备</a></li>
+			<li><a href="javascript:;">活动中心</a></li>
+			<li><a href="javascript:;">英雄简介</a></li>
+			<li><a href="javascript:;">神秘商店</a></li>
+			<li><a href="javascript:;">联系我们</a></li>
+		</ul>
+		</div>
+	</div>
+	<div id="header">
+	  <div class="wrap-1 content">
+		<h1>
+			2016秋季勇士联赛
+		</h1>
+		<a href="javascript:;">查看更多</a>
+		</div>
+	</div>
+	<div id="main">
+	  <div class="main-1">
+		<div class="wrap-2 content">
+			<h2>Dota2装备</h2>
+			<h3>深渊之刃，血棘，圣剑</h3>
+			<ul class="ul2 clearfix">
+				<li><img src="image/大晕锤.jpg">
+                  <h4>深渊之刃</h4>
+                  <p>深渊指挥官的失落宝剑，能够轻易刺穿敌人的灵魂。</p>
+				</li>
+				<li><img src="image/血棘.jpg">
+                  <h4>血棘</h4>
+                  <p>一把亵渎之刃，受害者临死前的每次挣扎都会使其砍得更深。</p>
+				</li>
+				<li><img src="image/圣剑.jpg">
+                  <h4>圣剑</h4>
+                  <p>它强横无匹，并不满足于侍奉唯一的主人。</p>
+				</li>
+			</ul>
+		</div>
+		</div>
+		<div class="active">
+			<div class="active-1 content">
+				<h2>活动中心</h2>
+				<h3>关注更多Dota2国内外赛事</h3>
+				<ul class="ul3 clearfix">
+					<li><div class="div1"><span class="fa fa-trophy"></span></div><a href="javascript:;"><img src="image/wings.jpg"></a>
+                      <h4>Wings获2016国际邀请赛冠军</h4>
+					</li>
+					<li><div class="div1"><span class="fa fa-trophy"></span></div><a href="javascript:;"><img src="image/2016中国DOTA2年度人物评选.jpg"></a>
+                      <h4>2016中国DOTA2年度人物评选</h4>
+					</li>
+					<li><div class="div1"><span class="fa fa-trophy"></span></div><a href="javascript:;"><img src="image/2016年波士顿特技锦标赛.jpg"></a>
+                      <h4>2016年波士顿特技锦标赛</h4>
+					</li>
+					<li><div class="div1"><span class="fa fa-trophy"></span></div><a href="javascript:;"><img src="image/新英雄孽主驾临DOTA2.jpg"></a>
+                      <h4>新英雄孽主驾临DOTA2</h4>
+					</li>
+					<li><div class="div1"><span class="fa fa-trophy"></span></div><a href="javascript:;"><img src="image/2016秋季勇士联赛上线.jpg"></a>
+                      <h4>2016秋季勇士联赛上线</h4>
+					</li>
+					<li><div class="div1"><span class="fa fa-trophy"></span></div><a href="javascript:;"><img src="image/热门RPG地图介绍.jpg"></a>
+                      <h4>热门RPG地图介绍</h4>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="timeline content">
+			<h2>英雄简介</h2>
+			<h3>Dota2代表英雄介绍</h3>
+			<ul class="ul4">
+				<li class="clearfix">
+                  <div class="timeline-1">
+                  	<h4>影魔</h4>
+                  	<h4>Shadow Fiend</h4>
+                  	<p>据说影魔奈文摩尔有着一个诗人的灵魂，事实上，他吞噬的诗人灵魂早已成千上万。千百年来，他收集了各式各样的灵魂，包括诗人，牧师，帝王，乞丐，奴隶，哲人，罪犯，当然，还有英雄。他拥有着世间所有种类的灵魂。然而没人知道他收集这些灵魂作何之用。从来没有人得以窥视影魔的魂渊之秘，他从魂渊中伸出灵魂触须，蔓延在精神位面。</p>
+                  </div>
+                  <img src="image/sf.jpg">
+				</li>
+				<li class="clearfix">
+				  <div class="timeline-2">
+                  	<h4>狙击手</h4>
+                  	<h4>Sniper</h4>
+                  	<p>卡德尔鹰眼出生在诺轮山脉的山谷中，这里的住民从太古以来就靠猎杀居住在村庄上方悬崖上的一种奇怪生物为生，他们从远距离杀死这种叫峭壁潜行兽的生物，然后收集他们掉下来的尸体。鹰眼是这些怪异住民中其中最棒的射手之一，对他来说，枪械是他身体的一部分，射击就和触摸一样自然。。</p>
+                  </div>
+                  <img src="image/sniper_vert.jpg">
+				</li>
+				<li class="clearfix">
+				  <div class="timeline-1">
+                  	<h4>祈求着</h4>
+                  	<h4>Invoker</h4>
+                  	<p>一个智力超群，忆力惊人的天才，以祈求者的名字为人们所知。在年少时，祈求者就已经掌握了不下十种法术。是的，不是四五个，也不是七个，而是十个，而且他还能毫不费力的施放这些法术。他学到过更多的法术，但是因为觉得没用，试过一次以后就彻底从脑中遗忘，这样才能为其他更为有用的法术留出空间。这些法术就是包括永生之术——能让施法者永生的法术，那些在世界之初吟唱了这个法术的人现在还活得好好的（除非他们被物质毁灭了）。而大多数这样的准不朽者都低调的生活在我们中间，害怕他们的秘密泄露：然而祈求者不是一个喜欢隐藏自己的天赋的人。他来自远古，比任何人都要博学，而他的心智还有余力让他去思考他无穷的自我价值。</p>
+                  </div>
+                  <img src="image/invoker_vert.jpg">
+				</li>
+				<li class="clearfix">
+				  <div class="timeline-2">
+                  	<h4>敌法师</h4>
+                  	<h4>Antimage</h4>
+                  	<p>当山下的王国被潮水般的侵略者们横扫的时候，星隐寺的僧侣们只是在山上默默的注视着那崎岖的山谷。苦行且务实的他们在偏远高山的寺院里，独自沉浸在远离尘嚣的冥想中，不受任何魔法元素或者神灵的干扰。然而，死亡之神的军队来了，寺院只坚持了不到两个星期，甚至还有一些刚从冥想中醒来的僧侣认为，这些入侵者不过是恶魔用来干扰他们冥想的幻象，于是他们死在了自己的冥想垫上。只有一个人幸免于难，他是来星隐寺寻求智慧，却尚未得到寺院认可的侍僧。他惊恐地看着自己曾经侍奉过的僧侣们被杀，然后又被复活成为死亡之神的祭司。带着星隐寺残存的珍贵教义卷轴，他艰难地到达了一个相对安全的地方，他发誓，不仅要消灭死亡之神的魔法师，更要将“魔法”这个词从世上抹去。</p>
+                  </div>
+                  <img src="image/am.jpg">
+				</li>
+			</ul>
+			<embed src='http://player.youku.com/player.php/sid/XMTY4MjY4ODU0NA==/v.swf' allowFullScreen='true' quality='high' width='280' height='200' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+			<p>Dota2齐天大圣预告片</p>
+		</div>
+        <div class="store">
+          <div class="store-1 content">
+        	<h1>神秘商店</h1>
+        	<h2>喜爱周边玩家的聚集地</h2>
+        	<ul class="ul5 clearfix">
+        		<li><img src="image/黑鸟.png">
+                  <div>
+                  	<a href="javascript:;"><span class="fa fa-weibo fa-2x"></span></a>
+                  	<a href="javascript:;"><span class="fa fa-weixin fa-2x"></span></a>
+                  	<a href="javascript:;"><span class="fa fa-shopping-cart fa-2x"></span></a>
+                  </div>
+        		</li>
+        		<li><img src="image/死亡先知.png">
+                  <div>
+                  	<a href="javascript:;"><span class="fa fa-weibo fa-2x"></span></a>
+                  	<a href="javascript:;"><span class="fa fa-weixin fa-2x"></span></a>
+                  	<a href="javascript:;"><span class="fa fa-shopping-cart fa-2x"></span></a>
+                  </div>
+        		</li>
+        		<li><img src="image/赏金猎人.png">
+                  <div>
+                  	<a href="javascript:;"><span class="fa fa-weibo fa-2x"></span></a>
+                  	<a href="javascript:;"><span class="fa fa-weixin fa-2x"></span></a>
+                  	<a href="javascript:;"><span class="fa fa-shopping-cart fa-2x"></span></a>
+                  </div>
+        		</li>
+        	</ul>
+        	<img src="image/周边.png">
+          </div>
+        </div>
+        <div class="hero content">
+            <h1>传统大后期</h1>
+            <h2>美杜莎，幽鬼，幻影刺客</h2>
+        	<img src="image/medusa_vert.jpg">
+        	<img class="img1" src="image/spe.jpg">
+        	<img src="image/phantom_assassin_vert.jpg">
+        </div>
+        <div class="contact">
+        	<div class="contact-1 content clearfix">
+        		<h1>联系我们</h1>
+        		<div class="contact-2">
+        				<input type="text" placeholder="YOUR NAME*" name="username"/>
+        				<input type="text" placeholder="YOUR NAME*" name="username"/>
+        				<input type="text" placeholder="YOUR NAME*" name="username"/>
+        		</div>
+        		<div class="contact-3">
+        			<textarea name="comment" maxlength=50 placeholder="YOUR MESSAGE*"></textarea>
+        		</div>
+        	</div>
+        	<div class="btn">
+        		<button type="submit" class="btn1">发送消息</button>
+        	</div>
+        </div>
+	</div>
+	<div id="footer">
+		<div class="footer-1 content clearfix">
+			<img src="image/完美.png">
+			  <a href="javascript:;" class="fa fa-facebook-official fa-2x"></a>
+			  <a href="javascript:;" class="fa fa-info-circle fa-2x"></a>
+			  <a href="javascript:;" class="fa fa-envelope fa-2x"></a>
+			<ul class="ul6 clearfix">
+				<li><a href="javascript:;">Privacy Policy</a></li>
+				<li><a href="javascript:;">Terms of Use</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

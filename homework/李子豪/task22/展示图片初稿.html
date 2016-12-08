@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="trip"id="layout">
+		<li data-img="1.png" id="img1">鼠标放置出现图片</li>
+		<li data-img="2.png" id="img2">鼠标放置出现图片</li>
+		<li data-img="3.png" id="img3">鼠标放置出现图片</li>
+	</ul>
+<div class="img-preview"></div>
+<script>
+//获取元素
+var ul=$("#layout");
+var newimg=$(".img-preview");
+p=document.createElement("img");
+	newimg.appendChild(p);
+//函数
+
+function handler(e){
+	if(e.target.id=="img1"){
+		p.src="http://jirengu.com/addons/theme/stv1/_static/app/index-new/imgs/1.gif"
+	}
+	else if(e.target.id=="img2"){
+		p.src="http://jirengu.com/addons/theme/stv1/_static/app/index-new/imgs/gate.gif"
+	}
+	else {
+		p.src="http://jirengu.com/addons/theme/stv1/_static/app/index-new/imgs/talk.png"
+	}
+};
+ul.addEventListener('mouseover',handler);
+ul.addEventListener('mouseout',function(){
+	p.src="";
+});
+
+//方法封装
+function $ (selector,tre){
+	if (tre=="all"){
+	return document.querySelectorAll(selector);
+	}
+	else{
+	return document.querySelector(selector);
+	}
+}
+</script>
+</body>
+</html>

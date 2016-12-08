@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css"/>
+	<style>
+	html,body,h1,h3,p,ul,li,a,h4{
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	body,html{
+		width: 100%;
+		height: 100%;
+		font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 14px;
+	}
+	.container{
+		width: 960px;
+		margin: 0 auto;
+	}
+	.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#header{
+		width: 100%;
+		height: 100%;
+		background:url("image/bg.jpg")  no-repeat;
+		background-size: cover;
+	}
+	#header .wrap {
+		text-align: center;
+        padding: 240px 0;
+	}
+	#header .wrap p{
+		padding: 20px; 0
+	}
+	#header .wrap a{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		color: white;
+		background: black;
+		opacity: 0.3;
+		text-align: center;
+        line-height: 30px;
+        border-radius: 5px;
+	}
+	#header .wrap a:hover{
+		background: black;
+		opacity: 0.8;
+	}
+	#main .por{
+		text-align: center;
+	}
+	#main .por p,#main .por h1{
+		margin: 50px;
+	}
+
+	.service{
+        background:rgb(129,216,208);
+	}
+	.skill h2{
+		text-align: center;
+	}
+	.skill ul li{
+		float: left;
+		padding:10px;
+		text-align: center;
+		width: 220px;
+	}
+	.skill ul li span{
+		font-size: 112px;
+	}
+	.skill ul li p{
+		padding: 20px 0;
+	}
+	.skill ul li a{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		background: #ccc;
+		text-align: center;
+		line-height: 30px;
+		border-radius: 5px;
+		color: black;
+	}
+	.skill ul li a:hover{
+		background: red;
+		opacity: 0.6;
+	}
+	.callout{
+		height: 653px;
+		background: url("image/callout.jpg") no-repeat;
+		background-size: cover;
+	}
+	.callout .container{
+		text-align: center;
+	}
+	.callout .container h1{
+		padding: 300px;
+		color: white;
+	}
+	.port{
+		padding: 50px 0;
+		text-align: center;
+	}
+	.port h1{
+		text-align: center;
+	}
+	.port ul{
+		margin-left: -30px;
+
+	}
+	.port ul li{
+		float: left;
+		margin-left:30px;
+		margin-top: 30px;
+		width: 465px;
+		height: 305px;
+	}
+	.port ul li a img{
+		width: 465px;
+		height: 305px;
+	}
+	.port .more{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		color: white;
+		border-radius: 5px;
+		background: #ccc;
+		margin-top: 30px;
+	}
+	.port .more:hover{
+		background: black;
+		opacity: 0.8;
+	}
+	.hobby{
+		text-align: center;
+		background:rgb(129,216,208);
+	}
+	.hobby .hobby-1 ul{
+		margin-left: -30px;
+	}
+	.hobby .hobby-1 ul li{
+		float: left;
+		width: 300px;
+		margin:30px 0 30px 30px;
+	}
+	.hobby .hobby-1 ul li a span{
+		display: inline-block;
+		width: 130px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		color: black;
+		border-radius: 5px;
+		background: #ccc;
+		margin-top: 30px;
+	}
+	.hobby .hobby-1 ul li a span:hover{
+		background: red;
+		opacity: 0.6;
+	}
+	.hobby .hobby-1 ul li a img{
+		width: 300px;
+		height: 300px;
+	}
+	#footer{
+		padding: 100px 0;
+		text-align: center;
+	}
+	#footer .information .p1{
+		margin: 10px 0;
+	}
+	#footer .information .contact-1{
+		text-align: center;
+	}
+	#footer .information .contact-1 li{
+		display: inline-block;
+		margin: 10px;
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+  <div id="header">
+  	<div class="wrap container">
+  	<h1>一个前端初学者</h1>
+  	<p>Hello!</p>
+  	<a class="btn" href="#">查看更多</a>
+  	</div>
+  </div>
+  <div id="main">
+  	<div class="por container">
+  		<h1>这里是个标题</h1>
+  		<p>关于我的简介 <a href="#">作品</a></p>
+  	</div>
+  	<div class="service">
+  	  <div class="skill container">
+  		  <h2>技能</h2>
+  		  <hr>
+  		  <ul class="clearfix">
+  			  <li><span class="fa fa-cloud-download"></span>
+                <h4>HTML&CSS</h4>
+                <p>html css相关技能，比如...</p>
+                <a href="#" class="btn2">相关作品</a>
+  			  </li>
+  			  <li><span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                <h4>JS&Jquery</h4>
+                <p>JS组件、插件.比如...</p>
+                <a href="#" class="btn2">相关作品</a>
+  			  </li>
+  			  <li><span class="fa fa-trophy" aria-hidden="true"></span>
+                <h4>项目</h4>
+                <p>比如 xxx, xxxx, xxxx, xxx</p>
+                <a href="#" class="btn2">我的项目</a>
+  			  </li>
+  			  <li><span class="fa fa-leaf" aria-hidden="true"></span>
+                <h4>个人博客</h4>
+                <p>学习历程总结，比如，做了什么事</p>
+                <a href="#" class="btn2">查看博客</a>
+  			  </li>
+  		  </ul>
+  	  </div>
+  	</div>
+  	<div class="callout">
+  		<div class="container">
+  			<h1>Vertically Centered Text</h1>
+  		</div>
+  	</div>
+  	<div class="port container">
+  		<h1>我的作品</h1>
+  		<hr>
+  		<ul class="clearfix">
+  			<li><a href="#"><img src="image/portfolio-1.jpg"/></a></li>
+  			<li><a href="#"><img src="image/portfolio-1.jpg"/></a></li>
+  			<li><a href="#"><img src="image/portfolio-1.jpg"/></a></li>
+  			<li><a href="#"><img src="image/portfolio-1.jpg"/></a></li>
+  		</ul>
+  		<a href="#" class="more">更多作品</a>
+  	</div>
+  	<div class="hobby">
+  		<div class="hobby-1 container">
+  			<h1>个人爱好</h1>
+  			<hr>
+  			<ul class="clearfix">
+  			  <li><a href="#"><img src="image/u=2358558921,1754049501&fm=23&gp=0.jpg"/><span>前端</span></a></li>
+  			  <li><a href="#"><img src="image/u=2889529913,4224711074&fm=23&gp=0.jpg"/><span>篮球</span></a></li>
+  			  <li><a href="#"><img src="image/409b3c1220681b6518687f2097156ecc.jpg"/><span>七龙珠</span></a></li>
+  			  <li><a href="#"><img src="image/u=105228323,1287421560&fm=23&gp=0.jpg"/><span>dota2</span></a></li>
+  			  <li><a href="#"><img src="image/u=1206466926,3102352426&fm=23&gp=0.jpg"/><span>足球</span></a></li>
+  			  <li><a href="#"><img src="image/12313.jpg"/><span>汽车</span></a></li>
+  		    </ul>
+
+  		</div>
+  	</div>
+  </div>
+  <div id="footer">
+  	<div class="information container">
+  		<h3>My information</h3>
+  		<p class="p1">3481 Melrose Place Beverly Hills, CA 90210</p>
+  		<ul class="contact">
+  			<li class="fa fa-phone">123-456-789</li><br/>
+  			<li class="fa fa-envelope-o">name@qq.com</li>
+  		</ul>
+  		<ul class="contact-1 clearfix">
+  			<li><a href="#" class="fa fa-github fa-3x"></a>
+  			<li><a href="#" class="fa fa-twitter fa-3x"></a>
+  			<li><a href="#" class="fa fa-weibo fa-3x"></a>
+  		</ul>
+  		<hr>
+  		<p>Copyright © hunger 2016</p>
+  	</div>
+  </div>
+</body>
+</html>

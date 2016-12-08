@@ -1,0 +1,125 @@
+/*重置*/
+html,body,ul,li{margin: 0;
+                padding: 0;
+                }
+li{list-style: none;}
+a{text-decoration: none;}
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+hr{width: 100px;
+   margin-top: 20px;
+   margin-bottom: 20px;
+    }
+/*清除浮动*/
+.clearfix{zoom: 1;}
+.clearfix:after{content: "";
+                display: block;
+                clear: both;
+                }
+/*页面宽度*/
+.layout{width: 960px;
+        margin: 0 auto;
+        }
+/*居中*/
+.text-center{text-align: center;}
+.vertical-center{display: table-cell;
+                 vertical-align:middle;
+                 }
+.table{display: table;
+       height: 100%;
+       }                         
+/*头部*/
+#header{width: 100%;
+        height: 100%;
+        background:url(../image/header-bg.jpg);
+        background-size: cover;
+        }
+.header-btn{width: 130px;
+            height: 40px;
+            background-color:rgba(0,0,0,0.4);
+            line-height: 40px;
+            display: inline-block;
+            color: white;
+     }
+.header-btn:hover{background-color:rgba(0,0,0,0.7);}
+/*内容*/
+/*关于我*/
+.about{padding: 50px 0;}
+.about a:hover{text-decoration: underline;
+               color:red;
+               }
+/*技能*/
+.skill{background-color:#337ab7 ;
+       padding:50px 0;
+       }
+.skill li{float: left;
+          width: 25%;
+          color:white;
+          }
+.skill span{font-size:100px;}
+.skill-btn{width: 80px;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            background-color:white ;
+            color:black;
+            }
+.skill-btn:hover{background-color:#ccc;}
+/*介绍*/
+.introduce{background: url(../image/introduce-bg.jpg);
+           background-size:cover ;
+           padding: 200px 0;
+           }
+.introduce p{font-size: 80px;
+             color:white;
+             }    
+/*作品*/
+ .demo{padding:50px 0;}
+ .demo ul{margin-right:-30px;}
+ .demo li{float: left;
+          margin-bottom: 30px;
+          margin-right:30px;
+          }                   
+ .demo li img{width: 465px;
+              height: 365px;
+              } 
+ .demo-btn{width: 120px;
+            height: 30px;
+            line-height: 30px;
+            color:white;
+            background-color:#888 ;
+            display:inline-block;
+            }
+ .demo-btn:hover{background-color:#333 ;}                   
+/*联系我*/
+.contact{padding: 50px 0;
+         background-color:#337ab7 ;
+         color:white;
+         }
+.contact-btn1{width: 120px;
+              height: 40px;
+              line-height: 40px;
+              display: inline-block;
+              color: black;
+              background-color:white ;
+              }
+.contact-btn1:hover{background-color:#ccc ;}              
+.contact-btn2{width: 120px;
+              height: 40px;
+              line-height: 40px;
+              display: inline-block;
+              color: white;
+              background-color:rgba(0,0,0,0.4);
+              }
+.contact-btn2:hover{background-color:rgba(0,0,0,0.7) ;}
+/*底部*/
+#footer{padding: 100px 0;}
+.social{margin: 30px 0 10px 0;}
+#footer span a{font-size: 45px;
+               margin:0 10px;
+               }
+#footer .adjustment{font-size: 35px;}

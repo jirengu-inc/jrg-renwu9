@@ -1,0 +1,45 @@
+div {
+	zoom: 1;
+}
+#library {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+}
+#control {
+	z-index: auto !important;
+}
+.control {
+	z-index: auto !important;
+}
+.help {
+	z-index: auto !important;
+}
+.button-dropdown-arrow::after {
+	content: url(/images/down-arrow.png);
+}
+.fake-dropdown::after {
+	content: url(/images/down-arrow.png);
+}
+.toppanel-wrapper {
+	white-space: nowrap;
+}
+.toppanel-column {
+	white-space: normal;
+}
+a.toppanel-logo {
+	background: url("../images/jsbin_16.png") no-repeat center; left: -10px; top: 195px; width: 20px; position: relative;
+}
+a.toppanel-logo:hover {
+	background-position: center; background-repeat: no-repeat;
+}
+.toppanel a.toppanel-logo {
+	left: 35px; top: 0px; width: 100px; position: relative; background-image: url("../images/jsbin-32.png");
+}
+.toppanel-logo img {
+	visibility: hidden;
+}
+.toppanel-button-dropdown::after {
+	text-align: center;
+}
+.toppanel-button-disabled {
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5;
+}
