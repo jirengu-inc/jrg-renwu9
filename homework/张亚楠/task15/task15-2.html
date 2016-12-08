@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="./font/iconfont.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Taviraj" rel="stylesheet">
+<style>
+body,html
+{
+	height: 100%;
+}
+body,ul,p,h2,h3,form,textarea
+{
+	padding: 0px;
+	margin: 0px;
+
+}
+li
+{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: white;
+}
+*
+{
+ font-family: 'Taviraj', serif;
+}
+
+.center
+{
+	width: 1000px;
+	margin: 0 auto;
+}
+.clear:after
+{
+	content: "";
+	display: block;
+	clear: both;
+}
+#header
+{
+	background: url(./image-2/headerbg.jpg) no-repeat center 0px;
+	height: 100%;
+	
+}
+ #header-nav
+{
+	background: black;
+	
+	position: fixed;
+	width: 100%;
+
+
+}
+
+#header-nav ul
+{
+	float: right;
+
+}
+#header-nav ul li
+{
+	float: left;
+	padding:35px 10px;
+}
+	
+#header-nav ul li a:hover
+{
+   color: red;
+}
+#header .content
+{
+	text-align: center;
+	padding:180px 0px;
+}
+#header .content h2
+{
+	font-size:30px;
+	color: white;
+}
+#header .content p
+{
+	font-size: 80px;
+	color: white;
+	margin-bottom:40px;
+}
+#header .content a
+{
+	
+	padding:10px 15px;
+	background: #7a0f07;
+	border-radius: 8px;
+}
+#header .content a:hover
+{
+		background:black;
+		color: red;
+}
+#wrap
+{
+	margin-top: 140px;
+}
+.services-top,
+.portfolio-top,
+.about-top,
+.team-top,
+.footer-top
+
+{
+  text-align: center;
+  padding-top:160px;
+
+}
+ 
+.services-top h3,
+.portfolio-top h3,
+.about-top h3,
+.team-top h3,
+.footer-top h3
+{
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+.services-top p,
+.portfolio-top p,
+.about-top p,
+.team-top p,
+.footer-top p
+{
+	font-size: 16px;
+	font-style:italic;
+
+}
+.services-main,
+.portfolio-main,
+.about-main,
+.team-main
+{
+	margin-top: 80px;
+	margin-bottom:200px;
+	
+}
+.services-main ul
+{
+	margin-left: -50px;
+	float: left;
+	padding-bottom:50px;
+}
+.services-main li
+{
+	float: left;
+	width: 300px;
+	margin-left:50px;
+	text-align: center;	
+}
+.services-main img
+{
+	border-radius: 50%;
+}
+
+.portfolio-main li
+{
+	float: left;
+	width: 200px;
+	margin: 0px 66px 20px;
+	text-align: center;
+
+}
+.portfolio-main li a
+{
+	display: inline-block;
+	position: relative;
+	width: 200px;
+	height: 170px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+.cover
+{
+	width: 100%;
+	height:100%;
+	position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;   
+}
+    
+
+
+.portfolio-main li>a:hover .cover
+
+{
+   background:rgba(0,0,0,0.5);
+   transition: background 2s;
+}
+
+
+.portfolio-main li>a:hover .logo
+{
+	display: block;
+}
+.about-main ul
+{
+	position: relative;
+}
+.about-main ul li
+{
+	margin-bottom: 20px;
+}
+
+
+.about-main .absolute
+{
+	left: 50%;
+	position: absolute;
+	margin-left: -160px;
+	height: 200px;
+	width: 320px;	
+}
+.absolute img
+{
+	border-radius: 50%;
+	box-shadow: -10px 0px 8px rgba(0,0,0,0.5),10px 0px 8px rgba(0,0,0,0.5);
+	
+}
+
+	
+
+
+
+.about-main .float-left
+{
+	float: left;
+	width: 30%;
+	padding: 0 10px 20px 30px;
+    text-align: right;
+    height: 200px;
+}
+.about-main .float-right
+{
+	float: right;
+	width: 30%;
+	padding: 0 30px 20px 10px;
+    text-align: left;
+    height: 200px;
+}
+
+
+.line>li:after
+{
+   content: "";
+   display:block;
+   clear: both;
+}
+.team-main li
+{ 
+  float: left;
+  text-align: center;
+  margin: 0 66px;
+}
+.team-main li a
+{
+	display: inline-block;
+    width: 200px;
+    height: 200px;
+}
+
+.team-main li  img
+{
+   width: 200px;
+   height: 200px;
+   border-radius: 50%;
+   box-shadow: inset 0 0 25px hsla(0,0%,0%,.2),0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333,0px 8px 0px #333,0px 7px 0px #333, 0px 9px 6px #001135;
+}
+.iconfont
+{
+	font-size:22px;
+	color: blue;
+	letter-spacing:20px;
+}
+#footer
+{
+	background: url(./image-2/footerbg.png) no-repeat;
+	height: 100%;
+	background-size: cover;
+}
+.footer-main
+{
+	padding:0px 150px 150px;
+	text-align: center;
+}
+.footer-main li
+{
+   float: left; 
+   
+   width: 50%;
+}
+.usermg input
+{
+	height: 60px;
+	margin: 10px;
+	width: 90%;
+}
+.usermg textarea
+{
+    margin: 10px;
+}
+.submit
+{
+	padding: 10px 20px;
+	margin-top:50px;
+	color:white;
+	background:#161616;
+	font-size: 16px;
+	border: none;
+	border-radius: 8px;
+}
+</style>
+</head>
+<body>
+<div id="header-nav" class="clear"> 
+  	 <div class="center nav clear">
+  	 	<img src="./image-2/logo-2.png">
+  	 	<ul>
+  	 		<li><a href="#services">SERVICES</a></li>
+  	 		<li><a href="#portfolio">PORTFOLIO</a></li>
+  	 		<li><a href="#about">ABOUT</a></li>
+  	 		<li><a href="#team">TEAM</a></li>
+  	 		<li><a href="#contact">CONTACT</a></li>
+  	 	</ul>
+  	 </div>	
+ </div> 	 	 
+ <div id="header" class="clear">
+  	 <div class="center content">
+  	 	<h2>WORLD WARCRAFT</h2>
+  	 	<p>Wating For Your</p>
+  	 	<a href="#services">Tell You More</a>
+  	 </div>
+ </div>
+ <div id="wrap" class="center">
+  	<div id="services" class="services-top">
+  		<h3>SERVICES</h3>
+  		<p>Lorem ipsum dolor sit amet consecteur</p>
+  	</div>
+  	<div class="services-main clear">
+  		<ul class="clear">
+  			<li>
+  				<img src="./image-2/line1.png">
+  				<h3>The Account Back</h3>
+  				<p>If you are in the process of the game by others to steal account you have two times a year opportunity to recover your account in your mailbox</p>
+  			</li>
+  			<li>
+  			    <img src="./image-2/line2.png">
+  				<h3>The Game The Punishment</h3>
+  				<p>If you were to report USES we will close your account In addition you can also inform against other plugins.This is a fair game</p>
+  			</li>
+  			<li>
+  			    <img src="./image-2/line3.png">
+  				<h3>Change The Game Prizes</h3>
+  				<p>According to you buy point card number we will randomly winning number.You can use the winning Numbers for the mount</p>
+  			</li>
+  		</ul>
+  	</div>	
+  	<div id="portfolio" class="portfolio-top">
+  		<h3>PORTFOLIO</h3>
+  		<p>Lorem ipsum dolor sit amet consecteur</p>
+  	</div>
+  	<div class="portfolio-main clear">
+  		<ul>
+  			<li>
+  				<a href="javascript:;">
+  					<img src="./image-2/main1.png" alt="">
+  					<span class="cover">  				
+  					</span>
+  				</a>
+  				<h3>Warlock</h3>
+  				<p>Undead destruction</p>
+  			</li>
+  			<li>
+  				<a href="javascript:;">
+  					<img src="./image-2/main2.png" alt="">
+  					<span class="cover">
+  					</span>
+  				</a>
+  				<h3>Warrior</h3>
+  				<p>Fighters who are beast</p>
+  			</li>
+  			<li>
+  				<a href="javascript:;">
+  					<img src="./image-2/main3.png" alt="">
+  					<span class="cover">
+  					</span>
+  				</a>
+  				<h3>The hunter</h3>
+  				<p>The night elf hunters</p>
+  			</li>
+  			<li>
+  				<a href="javascript:;">
+  					<img src="./image-2/main4.png" alt="">
+  					<span class="cover">
+  					</span>
+  				</a>
+  				<h3>The priest</h3>
+  				<p>The panda pastor</p>
+  			</li>
+  			<li>
+  				<a href="javascript:;">
+  					<img src="./image-2/main5.png" alt="">
+  					<span class="cover">
+  					</span>
+  				</a>
+  				<h3>The druids</h3>
+  				<p>Tauren druid</p>
+  			</li>
+  			<li>
+  				<a href="javascript:;">
+  					<img src="./image-2/main6.png" alt="">
+  					<span class="cover">
+  					</span>
+  				</a>
+  				<h3>The thieves</h3>
+  				<p>The troll thieves</p>
+  			</li>
+  		</ul>			
+  	</div>
+  	<div id="about" class="about-top">
+  		<h3>ABOUT</h3>
+  		<p>Lorem ipsum dolor sit amet consecteur</p>
+  	</div>
+  	<div class="about-main clear">
+  		<ul class="line">
+  			<li>
+  				<div class="absolute"><img src="./image-2/work1.png"></div>
+  				<div class="float-left">
+  					<h3>The panda park</h3>
+  					<p>The panda park is like a fairyland, there are mountain water this is the place where the panda family rest acrobatics.In this to cultivation of the body.</p>
+  				</div>
+  			</li>
+  			<li>
+  				<div class="absolute"><img src="./image-2/work2.png"></div>
+  				<div class="float-right">
+	  				<h3>A lonely hunter</h3>
+	  				<p>A lonely hunter, only his baby to accompany every day wandering outside, his baby to protect his care for her, although he was very lonely but always accompanied by his baby</p>
+	  			</div>	
+  			</li>
+  			<li>
+  				<div class="absolute"><img src="./image-2/work3.png"></div>
+  				<div class="float-left">
+	  				<h3>The black dragon sister</h3>
+	  				<p>The black dragon sister, the extraordinary ability, which is the symbol of the forces of evil, kill she can bring you unexpected harvest</p>
+	  			</div>	
+  			</li>
+  			<li>
+  				<div class="absolute"><img src="./image-2/work4.png"></div>
+  				<div class="float-right">
+	  				<h3>The angry mt</h3>
+	  				<p>Mt is said a team in one of the most front, he against most of the damage, is the indispensable professional in the team.Without his team will not be able to finish the task</p>
+	  			</div>	
+  			</li>
+  			<li>
+  				<div class="absolute"><img src="./image-2/work5.png"></div>
+  				<div class="float-left">
+	  				<h3>Epic weapons</h3>
+	  				<p>A team to complete a copy of the large will surely epic weapons, he will bring player characters over nature.Out of the weapon gorgeous, it is to have a few players</p>
+	  			</div>	
+  			</li>
+  			<li>
+  				<div class="absolute"><img src="./image-2/work6.png"></div>
+  				<div class="float-right">
+	  				<h3>The family</h3>
+	  				<p>All players into the horde and alliance, in a crisis situation, please don't give up your friend, because there are they in your side, to allow you to grow up.Let's spend the difficulties together with my family</p>
+	  			</div>	
+  			</li>
+  		</ul>
+  	</div>
+  	<div id="team" class="team-top">
+  		<h3>OUR Team</h3>
+  		<p>The most powerful team</p>
+  	</div>
+  	<div class="team-main clear">
+  		<ul>
+  			<li>
+  				<a href="#"><img src="./image-2/zh1.jpg" alt=""></a>
+  				<h3>A warrior</h3>
+  				<p>The team's Mt</p>
+  				<i class="iconfont">&#xe601;&#xe65f;&#xe6c9;</i>
+  			</li>
+  			<li>
+  				<a href="#"><img src="./image-2/zh2.jpg" alt=""></a>
+  				<h3>The mage</h3>
+  				<p>The output of the team</p>
+  				<i class="iconfont">&#xe601;&#xe65f;&#xe6c9;</i>
+  			</li>
+  			<li>
+  				<a href="#"><img src="./image-2/zh3.jpg" alt=""></a>
+  				<h3>The priest</h3>
+  				<p>The treatment of team</p>
+  				<i class="iconfont">&#xe601;&#xe65f;&#xe6c9;</i>
+  			</li>
+  		</ul>
+  	</div>
+ </div>
+ <div id="footer">
+	<div class="center">
+ 		<div id="contact"  class="footer-top">
+ 			<h3>CONTACT</h3>
+  			<p>Hurry to join the world of warcraft</p>
+ 		</div>
+ 		<form  class="footer-main" action="" method="post">
+ 			<ul class="clear usermg">
+ 				<li>
+ 					<input type="text" name="username" placeholder="Your Name"><br>
+ 					<input type="text" name="useremail" placeholder="Your Email"><br>
+ 					<input type="text" name="userphone" placeholder="Your Phone"><br>
+ 				</li>
+ 				<li><textarea name="" id="" cols="40" rows="10" placeholder="Your Advise"></textarea></li>
+ 			</ul>
+ 			<input class="submit" type="submit" name="" value="submit">
+ 		</form>
+ 		</form>
+ 	</div>	
+ </div>
+
+</body>
+</html>

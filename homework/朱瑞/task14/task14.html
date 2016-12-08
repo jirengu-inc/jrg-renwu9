@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>实战1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	html,body,ul,li{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	html,body{
+		width: 100%;
+		height: 100%;
+		font-size: 14px;
+		font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	li,a,h1,h2,h3,h4,p{
+		text-align: center;
+	}
+	.clearfix:after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.container{
+		width: 960px;
+		margin: 0 auto;
+	}
+	/*字体图标*/
+	/*1.使用font-face声明字体*/
+	@font-face{
+		font-family: 'iconfont';  /* project id："170057" */
+    src: url('http://at.alicdn.com/t/font_ekcnkdpxedz5xw29.eot');
+    src: url('http://at.alicdn.com/t/font_ekcnkdpxedz5xw29.eot') format('embedded-opentype'),
+    url('http://at.alicdn.com/t/font_ekcnkdpxedz5xw29.woff') format('woff'),
+    url('http://at.alicdn.com/t/font_ekcnkdpxedz5xw29.ttf') format('truetype'),
+    url('http://at.alicdn.com/t/font_ekcnkdpxedz5xw29.svg#iconfont') format('svg');
+	}
+	/*2.定义使用iconfont的样式*/
+	/*3.挑选相应图标并获取字体编码，应用于页面*/
+	.iconfont {
+  		font-family:"iconfont" !important;
+  		font-size:50px;
+  		font-style:normal;
+  		-webkit-font-smoothing: antialiased;
+  		-webkit-text-stroke-width: 0.2px;
+ 		-moz-osx-font-smoothing: grayscale;
+	}
+    .iconfont:hover{
+   	 	color:#BA55D3;
+    	cursor:pointer;
+	}
+	
+	#header{
+		width: 100%;
+		height: 100%;
+		background: url(img/bg.jpg);
+		background-size: cover;
+	}
+	.table{
+		display: table;
+		height: 100%;
+	}
+	.vertical-align{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.text-align{
+		text-align: center;
+	}
+	.btn{
+		display: inline-block;
+		width: 140px;
+		height: 30px;
+		background: rgba(144,144,144,0.5);
+		color: #fff;
+		padding: 5px;
+		line-height: 30px;
+		text-align: center;
+	}
+	.btn:hover{
+		background: rgba(0,0,0,0.5);
+		cursor: pointer;
+	}
+	#content .about{
+		padding: 50px 0;
+	}
+	#content .about p{
+		font-size: 20px;
+	}
+	#content .services{
+		padding: 50px 0;
+		color: white;
+		background-color: #337ab7;
+	}
+	.services li{
+		float: left;
+		padding: 10px;
+		width: 25%;
+	}
+	#content .callout{
+		background: url(img/callout.jpg);
+		background-size: cover;
+		color: white;
+		padding: 200px 0;
+	}
+	#content .work{
+		padding: 50px 0;
+	}
+	#content .work ul{
+		margin-right: -30px;
+	}
+	#content .work li{
+		float: left;
+		width: 50%;
+	}
+	#content .work li img{
+		width: 460px;
+		height: 333px;
+	}
+	#content .call-to-action{
+		padding: 50px;
+		background-color: #337ab7;
+		color: white;
+	}
+	.btn1 {
+		display: inline-block;
+		width: 140px;
+	     height: 30px;
+		line-height: 30px;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.4);
+	     text-align: center;
+		}
+	.btn1:hover {
+	    background-color: rgba(0, 0, 0, 0.7);
+		}
+
+	#footer{
+		padding: 50px 0;
+	}
+	#footer .contact-info{
+		margin-bottom: 20px;
+	}
+	#footer .contact-inco li{
+		display: inline-block;
+		text-align: center;
+		padding: 40px;
+	}
+	#footer .contact-inco li:first-child{
+		margin-left: 320px;
+	}
+</style>
+</head>
+<body>
+    <div id="header">
+    	<div class="container table">
+    		<div class="vertical-align text-align">
+    			<h1>菩提树下的阿靖</h1>
+    			<p>一个爱好前端的妹纸</p>
+    			<a href="javascript:;" class="btn">FindOutMore</a>
+    		</div>
+    	</div>
+    </div>
+    <div id="content">
+    	<div class="about">
+    		<div class="container">
+    			<h1>这是个标题</h1>
+    			<p>关于我的个人简介<a href="javascript:;">作品</a></p>
+    		</div>
+    	</div>
+    	<div class="services">
+    		<div class="container">
+    			<h2>必备技能</h2><hr>
+   				<ul class="clearfix">
+   					<li>
+   						<span class="iconfont">&#xe601;</span>
+   						<h4>html&css</h4>
+   						<p>html/css相关技能。比如：</p>
+   						<a href="javascript:;" class="btn">相关作品</a>
+   					</li>
+   					<li>
+   						<span class="iconfont">&#xe603;</span>
+   						<h4>js&jQuery</h4>
+   						<p>JS组件、插件等等。比如：</p>
+   						<a href="javascript:;" class="btn">相关作品</a>
+   					</li>
+   					<li>
+   						<span class="iconfont">&#xe621;</span>
+   						<h4>实战项目</h4>
+   						<p>比如：</p>
+   						<a href="javascript:;" class="btn">个人项目展示</a>
+   					</li>
+   					<li>
+   						<span class="iconfont">&#xe660;</span>
+   						<h4>blog整理</h4>
+   						<p>学习总结。比如：</p>
+   						<a href="javascript:;" class="btn">个人博客</a>
+   					</li>
+   				</ul>
+    		</div>
+    	</div>
+    	<div class="callout">
+    		<div class="container text-center">
+    			<h1>努力闯关，早日进阶</h1>
+    		</div>
+    	</div>
+    	
+    	<div class="work">
+    		<div class="container text-center">
+    			<h2>作品展示</h2><hr>
+    			<ul class="clearfix">
+    				<li>
+    					<a href="javascript:;"><img src="img/portfolio-1.jpg" ></a>
+    				</li>
+    				<li>
+    					<a href="javascript:;"><img src="img/portfolio-2.jpg" ></a>
+    				</li>
+    				<li>
+    					<a href="javascript:;"><img src="img/portfolio-3.jpg" ></a>
+    				</li>
+    				<li>
+    					<a href="javascript:;"><img src="img/portfolio-4.jpg" height="333" width="500"></a>
+    				</li>
+    			</ul>
+				<p><a href="javascript:;" class="btn1">更多作品</a></p>
+    		</div>
+    	</div>
+		<div class="call-to-action">
+    		<div class="container  text-align">
+    			<h3>努力吧，少年</h3>
+    			<p>
+    				<a href="javascript:;" class="btn">Click Me!</a>
+    				<a href="javascript:;" class="btn">Look at Me!</a>
+    			</p>
+    		</div>
+    	</div>
+    </div>
+	<div id="footer">
+		<div class="container">
+    		<h4>About Me</h4>
+    		<p>3000 Nature Street,HeFei<br> 
+    			AnHui Province, China </p>
+	<ul class="contact-info">
+       	 <li class="icon-phone">(123) 456-7890</li>
+       	 <li><a href="javascript:;">name@example.com</a></li>
+     </ul>
+	 <ul class="contact-inco">
+        <li>
+          <a href="javascript:;"><span class="iconfont">&#xe606;</span></a>
+        </li>
+        <li>
+          <a href="javascript:;"><span class="iconfont">&#xe600;</span></a>
+        </li>
+        <li>
+          <a href="javascript:;"><span class="iconfont">&#xe622;</span></a>
+        </li>
+    </ul>
+      <p>copyright @ lesley 2016</p>
+    	</div>
+	</div>
+</body>
+</html>

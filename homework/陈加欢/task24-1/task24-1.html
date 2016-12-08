@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body,ul,li{
+			margin:0;
+			padding:0;
+		}
+		li{
+			border:1px solid #ccc;
+			padding:10px;
+			list-style: none;
+			margin:10px;
+		}
+		li:hover{
+			background-color: #008000;
+		}
+		a{
+			display: block;
+			margin:10px auto;
+			width:80px;
+			text-align: center;
+			color: #e27272;
+			text-decoration: none;
+			padding:15px;
+			border:1.5px solid #e27272;
+			border-radius: 3px;
+		}
+		.hover{
+			
+		}
+
+	</style>
+</head>
+<body>
+	<ul id="wrap">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<a id="btn" href="#">加载更多</a>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script type="text/javascript">
+		var btn=document.getElementById("btn");
+		var wrap=document.getElementById("wrap");
+		var cur=2;
+		var len=6;
+		var isLoading=false;
+		btn.addEventListener("click",function(e){
+			e.preventDefault();
+			if(isLoading){
+				return;
+			}
+			isLoading=true;
+			this.innerHTML="加载中...";
+			 $.ajax({
+			    url: '/getmore', 
+			    dataType: 'json',
+			    type: 'get',
+			    data: {
+			      start: cur,
+			      len: 6
+			    },
+			    success: function(json){
+			      onSuccess(json);
+			    },
+			    error: function(){
+			      onError();
+			    }
+			});
+		})
+
+		function onSuccess(json){
+			isLoading=false;
+			btn.innerHTML="加载更多";
+			if(json.status==1){
+				for(var i=0; i<json.msg.length; i++){
+					var newLi=document.createElement("li");
+					newLi.innerHTML="内容"+parseInt(json.msg[i]+1);
+					wrap.appendChild(newLi)
+				}
+				cur +=len;
+			}else{
+				alert("获取数据失败");
+			}
+		}
+		function onError(){
+			isLoading=false;
+			btn.innerHTML="加载更多";
+			alert("系统异常");
+		}
+
+
+
+		
+	</script>
+</body>
+</html>

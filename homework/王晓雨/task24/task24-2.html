@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-24-2</title>
+	<style type="text/css">
+	html,body,ul,li{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+		border:1px solid #ccc;
+		padding:10px;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+	li:first-child{
+		margin-top: 10px;
+	}
+	li:hover{
+		cursor: pointer;
+		color: white;
+		background: rgb(30,255,50);
+	}
+	#btn{
+		display: block;
+		padding: 10px;
+		background: #fff;
+		color: green;
+		margin: 0 auto;
+		font-weight: bolder;
+		border:1px solid #ccc;
+		border-radius: 5px;
+		outline: none;
+	}
+	#btn:hover{
+		cursor:pointer;
+	}
+	</style>
+</head>
+<body>
+
+	<ul id="ct">
+	<li>内容1</li>
+	<li>内容2</li>	
+	</ul>
+
+	<button id="btn">点击加载更多...</button>
+
+	<script type="text/javascript">
+	//封装ajax函数
+		function ajax(opts){
+			var xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState===4&&xhr.status===200){
+					var json=JSON.parse(xhr.responseText);
+					console.log(json);
+					opts.success(json)
+				}
+				if(xhr.readyState===4&&xhr.status===404){
+					opts.onError()
+				}
+			}
+			var dataStr="";
+			for(var key in opts.data){
+				dataStr+=key+'='+opts.data[key]+'&';
+			}
+			dataStr=dataStr.substr(0,dataStr.length-1);
+			dataStr+='&='+new Date().getTime();//制止缓存
+			if(opts.type.toLowerCase()=="post"){
+				xhr.open(opts.type,opts.url,true);
+				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				xhr.send(dataStr);
+			}
+			if(opts.type.toLowerCase()=="get"){
+				xhr.open(opts.type,opts.url+"?"+dataStr,true);
+				xhr.send()
+			}
+
+		}
+		var btn=document.getElementById("btn")
+		var start=2;
+		var len=6;
+		btn.addEventListener('click',function(){
+	
+			ajax({
+				url:"task24-2.php",
+				type:"get",
+				data:{
+					start:start,
+					len:len,
+				},
+				success:function(ret){
+					dealWith(ret);
+					start+=this.data.len;
+				},
+				error:function(){
+					onError();
+				}
+
+			})
+		})
+		function dealWith(ret){
+			for(var i=0;i<ret.length;i++){
+				var newLi=document.createElement("li");
+				newLi.innerHTML=ret[i];
+				var ct=document.getElementById('ct');
+				ct.appendChild(newLi);
+			}
+		}
+		function onError(){
+			alert('oh,出错了....')
+		}
+	</script>
+	
+
+
+</body>
+</html>

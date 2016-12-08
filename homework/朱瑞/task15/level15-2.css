@@ -1,0 +1,337 @@
+/*@charset "UTF-8";*/
+/*通用样式*/
+	body,html{
+		margin: 0;
+		padding: 0;
+		font-family: Arial;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	.btn{}
+	.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.container{
+		width: 1140px;
+		margin: 0 auto;
+	}
+	p{
+		font-size: "times";
+		color: #777784;
+	}
+/*使用font-face声明字体*/
+@font-face {
+ 	 font-family: 'iconfont';  
+ 	 src: url('http://at.alicdn.com/t/font_nvou5kgdpl73c8fr.eot');
+  	 src: url('http://at.alicdn.com/t/font_nvou5kgdpl73c8fr.eot') format('embedded-opentype'),
+ 	 url('http://at.alicdn.com/t/font_nvou5kgdpl73c8fr.woff') format('woff'),
+ 	 url('http://at.alicdn.com/t/font_nvou5kgdpl73c8fr.ttf') format('truetype'),
+ 	 url('http://at.alicdn.com/t/font_nvou5kgdpl73c8fr.svg#iconfont') format('svg');
+	}
+/*定义使用iconfont的样式*/
+	.iconfont{
+		font-family:'iconfont'!important;
+		font-style:normal;
+	}
+/*功能模块样式*/
+/*header*/
+	#header{
+		background: url(img/header-bg.jpg) 0 -200px no-repeat;
+		padding: 1px;
+		/*background-size: cover;*/
+	}
+	.header-bg{
+		position: relative;
+	}
+	.logo a{
+		position: absolute;
+		left: 0;
+		top: -10px;
+		color: #FEC504;
+		display: inline-block;
+		height: 30px;
+		font-size: 30px;
+		font-family: Comic;
+    	font-weight: bold;
+    	font-style: italic;
+	}
+	.nav{
+		margin-top: 25px;
+	}
+	.nav li{
+		float: right;
+		padding: 15px;
+	}
+	.nav li a{
+		color: #fff;
+	}
+	.nav li a:hover{
+		color: #FEC504;
+	}
+	.header-title{
+		color: #fff;
+		text-align: center;
+		font-size: 30px;
+		padding: 200px 0;
+	}
+	.header-title h3{
+		font-family: italic;
+	}
+	.header-title a{
+		color: #fff;
+		background: #FEC504;
+		font-size: 20px;
+		border-radius: 3px;
+		padding: 15px;
+	}
+ /*	service*/
+	.title{
+		text-align: center;
+	}
+	.title h2{
+		font-size: 30px;
+	}
+	.title p{
+		font-style: italic;
+		font-size: 20px;
+	}
+	.service{
+		padding: 165px 0;
+		text-align: center;
+		background:  #CCE8CF;
+	}
+	.service ul{
+		margin-top: 75px;
+	}
+	.service li,.portfolio li{
+		float: left;
+	}
+	.service li,.portfolio li{
+		width: 33.3%;
+		padding: 0 10px;
+		box-sizing: border-box;
+	}
+	/*portfolio*/
+	.portfolio{
+		padding: 150px 0;
+		text-align: center;
+		background: #eee;
+	}
+	.portfolio li{
+		position: relative;
+		margin-bottom: 20px;
+		/*margin: 4px 4px 20px 4px;*/
+		/*border:1px solid #ccc;*/
+	}
+	.portfolio .clearfix a{
+		display: inline-block;
+	}
+	.portfolio .clearfix img{
+		width: 350px;
+	}
+	.mask i{
+		line-height: 262px;
+		font-size: 50px;
+		font-weight: bold;
+		color: #fff;
+	}
+	.portfolio ul li h2{
+		margin-bottom:2px;
+	}
+
+/*aboout*/
+	.about{
+		padding: 150px 0;
+	}
+	.about li{
+		position: relative;
+	}
+	.text{
+		width: 33.3%;
+		text-align: right;
+		font-size: 18px;
+		margin-left: 50px;
+	}
+/*解决偶数类的文本是右浮动*/
+	.about ul li:nth-child(even) .text{
+		text-align: left;
+		float: right;
+		margin-right: 50px;
+	}
+	.about ul li:nth-child(even){
+		overflow: hidden;
+	}
+/*img使用absolute垂直水平绝对定位*/
+	.about li img{
+		width: 160px;
+		height: 160px;
+		border-radius: 85px;
+		border: 6px solid #f1f1f1;
+		position: absolute;
+		z-index: 2;
+		top:50%;
+		left: 50%;
+		margin-top:-80px;
+		margin-left: -80px;
+	}
+/*设计出一条贯穿整个ul的线*/
+	.about ul{
+		position: relative;
+	}
+	.about .center:after{
+		content: '';
+		display: block;
+		width: 0px;
+		height: 900px;
+		border: 2px solid #f1f1f1;
+		position: absolute;
+		z-index: 1;  
+		top:30px;
+		left: 50%;
+		margin-left: 5px;
+	}
+/*因为继承的关系，ul里面太杂乱，把最后一个圆放在外面也就是last*/
+	.last{
+		margin:0 auto;
+	}
+	.last p{
+		margin:0 auto;
+		width: 80px;
+		padding: 40px;
+		height: 80px;
+		border-radius: 85px;
+		border: 6px solid #f1f1f1;
+		text-align: center;
+		background: #F6D032;
+		color: #fff;
+		font-size:18px;
+		position: relative;
+		top:30px;
+		left: 8px;
+	}
+
+/*team*/
+	.team{
+		padding: 150px;
+		text-align: center;
+		background-color: #eee;
+	}
+	.team li{
+		float: left;
+		width: 33.3%
+	}
+	.team li p{
+		margin-bottom: 24px;
+	}
+	.team img{
+		width: 225px;
+		height: 225px;
+		border-radius: 120px;
+	}
+	.team h3{
+		margin-bottom: 8px;
+	}
+/*图标*/
+	.team i,#footer i,.service i{
+		font-size: 28px;
+		padding: 8px;
+		border-radius: 40px;
+		color: #fff;
+		background: #000;
+		margin-left: 10px;
+	}
+	.team i:hover,#footer i:hover{
+		transition: 0.8s;
+		background: #FED136;
+	}
+/*最后文字表述*/
+	.team p:last-child{
+		margin:80px auto 0 auto;
+		width: 750px;
+		font-size: 20px;
+	}
+/*sup*/
+	.sup{
+		padding: 30px;
+	}
+	#main .sup ul{
+		margin-top: 0;
+	}
+	.sup li{
+		float: left;
+		width: 25%;
+		text-align: center;
+	}
+/*contact-us*/
+	.contact-us{
+		padding: 150px 0;
+		/*background: url(img/bg.jpg);
+		background-size: cover;*/
+		background-color: #222;
+	}
+	.contact-us h2{
+		color: #fff;
+	}
+	.contact-us .info{
+		float: left;
+		width: 570px;
+		font-size: 18px;
+	}
+	.contact-us .info  input{
+		width: 554px;
+		height: 46px;
+		margin-bottom: 20px;
+		border-radius: 3px;
+	}
+	.contact-us .message textarea{
+		width: 540px;
+		height: 190px;
+		float: right;
+		border-radius: 3px;
+	}
+	.contact-us form{
+		padding: 50px;
+	}
+	.contact-us .send{
+		font-weight: bold;
+		font-size: 18px;
+		color: #fff;
+		padding: 20px;
+		border: none;
+		background-color: #FED136;
+		border-radius: 5px;
+		cursor: pointer;    
+		position: relative;
+   	 	top: 40px;
+   		left: -90px;
+	}
+	.contact-us .send:hover{
+		background-color: #FEC503;
+	}
+/*	footer*/
+	#footer{
+		padding: 40px 0 30px 0;
+		text-align: center;
+	}
+	#footer ul li{
+		float: left;
+		width: 33.3%
+	}
+	#footer p{
+		margin-bottom: 0;
+		line-height:32px;
+	}
+	#footer ul li a{
+		margin-left: 10px;
+		color: #07f;
+		line-height:32px;
+	}
+	#footer ul li a:hover{
+		color:green;
+	}
