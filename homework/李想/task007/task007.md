@@ -131,20 +131,44 @@ class 语义化命名
 
 ### form 表单有什么作用？有哪些常用的 input 标签，分别有什么作用？ ###
 
-将用户输入的数据提交到后台。
+form 表单将用户输入的数据提交到后台，与后台进行数据交互。
 
-name：表单提交时的名称
-action：提交到的地址，后台程序对数据进行处理
-method：提交表单的 HTTP 方法，包括 GET 和 POST
+input 元素是一个可以满足多种目的的输入控制元素。
+
+`type`：控制显示的类型，默认为文本（`text`）。包括许多其他类型的值，常见的如 `button` `checkbox` `email` `file` `password` `radio` `submit` 等等
+`name`：名称控制，随着表单数据一同提交，对应于表单数据的域名称
+`checked`：如何 `type` 属性的值为 `radio` 或 `checkbox`，该属性值决定该项目是否默认被选中。
+`inputmode`：键盘输入字符类型
+`radio`：选择按钮，用于单选或者多选
 
 ### post 和 get 方式的区别？ ###
 
 post 方法：表单数据随同表单一起发送给服务器；
 get 方法：默认为 get；表单数据被添加到 action 属性的 URL 后，并将构成的 URL 发送给服务器；这种方法要避免存在副作用的情况，数据量大不适合，并且只能包含 ASCII 字符。
 
+两者的差别：
+- get 把参数包含在 URL 中，post 通过 request body 传递参数
+- get 在浏览器回退时是无害的，而 post 会再次提交请求
+- get 产生的 url 地址可以被添加到书签，而 post 不可以
+- get 请求会被浏览器主动 cache，而 post 不会，除非手动设置
+- get 请求只能进行 url 编码，而 post 支持多种编码方式
+- get 请求参数会被完整保留在浏览器历史记录里，post 中的参数不会被保留
+- get 请求在 url 中传送的参数是有长度限制的，而 post 没有
+- 对参数的数据类型，get 只接收 ascii 字符，而 post 没有限制
+- get 相比 post 较不安全，因为参数直接暴露在 url 上，所以不能用来传递敏感信息
+- get 参数通过 url 传递，post 放在 request body 中
+- get 产生一个 TCP 数据包；post 产生两个 TCP 数据包
+
+事实上，get 和 post 本质上就是 TCP 链接，并无差别。由于 HTTP 的规定和浏览器/服务器的限制，导致他们在应用过程中体现一些不同。
+
+参考资料：
+
+[99%的人都理解错了HTTP中GET与POST的区别](http://mp.weixin.qq.com/s?__biz=MzI3NzIzMzg3Mw==&mid=100000054&idx=1&sn=71f6c214f3833d9ca20b9f7dcd9d33e4#rd)
+
 ### 在 input 里，name 有什么作用？ ###
 
-传递给后台的数据的名称或索引。主要是用于获取提交表单的某表单域信息， 作为可与服务器交互数据的 HTML 元素的服务器端的标示
+- 用于传递给网站服务器（而不是数据库）表单的某表单域信息。
+- 在使用 radiobutton 时，name 可用于分组，实现单选功能。
 
 ### <button> 提交 </button>、<a class="btn" href="#">提交</a>、<input type="submit" value="提交"> 三者有什么区别？ ###
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回到顶部效果</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	.ct{margin: 0 auto;width: 1190px;}
+	#btn{
+		position: fixed;
+		left: 50%;
+		bottom: 40px;
+		height: 40px;
+		width: 40px;
+		margin-left: 610px;
+		background: url(http://img.mukewang.com/535e0dc100010e9c00400080.jpg) no-repeat left top;
+		display: none;
+	}
+	#btn:hover{
+		background: url(http://img.mukewang.com/535e0dc100010e9c00400080.jpg) no-repeat left bottom;
+	}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<img src="http://img.mukewang.com/535e0ce800015b7511902787.jpg">
+	</div>
+	<a href="javascript:;" id="btn" title="回到顶部"></a>
+	<script type="text/javascript">
+		window.onload=function (){
+			var btn=document.getElementById('btn')
+			var timer;
+			var stop=true;//上锁，滚动中可以停下来
+			//获取可视区域高度
+			var clientHeight=document.documentElement.clientHeight;
+			//alert(clientHeight);
+		//滚动条滚动时触发
+		window.onscroll=function(){
+			//alert('滚动中')可以监测到滚动
+			var osTop=document.documentElement.scrollTop||document.body.scrollTop
+			if(osTop>=clientHeight){
+				btn.style.display='block';
+			}else{
+				btn.style.display='none';
+			}
+			if(!stop){
+				clearInterval(timer)
+			}
+			stop=false;
+
+		}
+
+		btn.onclick=function(){
+			//设置定时器
+			timer=setInterval(function(){
+				var osTop=document.documentElement.scrollTop||document.body.scrollTop
+			//alert(osTop)兼容IE和谷歌，获取滚动高度
+				
+				var speed=Math.floor(-osTop/6);//控制速度，为了控制小数
+					//此时测试出现没到顶部，
+					
+
+				document.documentElement.scrollTop=document.body.scrollTop=osTop+speed;
+				console.log(osTop-speed)
+				stop=true;
+				//永远距离顶部为5px,此时speed=math.floor(5/6)=0,
+				//osTop-speed=5-0=5,循环永远为5，
+				//解决方式利用负数和加法，speed=Math.floor(-osTop/6)osTop+speed
+				//这时速度固定，不是我们想要的效果
+				//由快到慢
+				if (osTop==0) {
+					clearInterval(timer)
+				}
+			},30)
+		
+			}
+		}
+	</script>
+</body>
+</html>

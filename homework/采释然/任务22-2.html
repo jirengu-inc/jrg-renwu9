@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+<script>
+    var ct = document.querySelector(".ct");
+    var btn = document.querySelector(".ipt-add-content");
+    var check = /\S/;
+    var start = document.querySelector("#btn-add-start");
+    var end = document.querySelector("#btn-add-end");
+    function addstart(){
+      if(check.test(btn.value)){
+        var li = document.createElement("li");
+        li.innerText = btn.value;
+        ct.insertBefore(li,ct.children[0]);
+      }else{
+        alert('请输入非空白字符')
+      }
+    }
+    function addend(){
+      if(check.test(btn.value)){
+        var li = document.createElement("li");
+        li.innerText = btn.value;
+        ct.appendChild(li);
+      }else{
+        alert('请输入非空白字符')
+      }
+    }
+    start.addEventListener("click",addstart,false);
+    end.addEventListener("click",addend,false);
+    ct.addEventListener("click",function(e){
+      console.log(e.target.innerText);
+    },false);
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lv15-1</title>
+	<link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_ixi0z0vugy88semi.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.icon-huojian{
+			font-size: 30px;
+		}
+		.icon-jiantou{
+			font-size: 8px;
+		}
+		.nav-wrap li{
+			float: left;
+			list-style: none;
+			width: 50px;
+			text-align: center;
+		}
+		.nav-wrap>li:nth-of-type(5){
+				position:relative;
+		}
+		.nav-wrap li a{
+			text-decoration: none;
+			font: normal normal 15px/50px "微软雅黑";
+			width: 25px;
+			color: #000;
+		}
+		.nav-wrap{
+			float: left;
+		}
+		.nav-hid{
+			 display:none;
+			 position:absolute;
+			 left:0;
+			 top:50px;
+			 border:1px solid #ccc;
+		}
+		.nav-hid li {
+			height: 40px;
+			background: white;
+		}
+		.nav-hid li a{
+			font-size: 12px;
+		}
+		.nav-hov:hover .nav-hid{
+		    display:block;
+		}
+		.nav-hid>li:hover{
+		   background:#ccc;
+		}
+		.nav-hid>li:nth-of-type(2){
+			border-top: 1px dashed #ccc;
+			border-bottom: 1px dashed #ccc;
+		}
+		.nav{
+			width: 1000px;
+			height: 50px;
+			margin: 0 auto;
+		}
+		.intro{
+			background: #b84d45;
+			width: 100%;
+			height: 120px;
+			padding-top: 35px;
+		}
+		.intro-wrap{
+			width: 1000px;
+			margin: 0 auto;
+			color: #fff;
+		}
+		#container{
+			padding-top: 40px;
+		}
+		.wrap-nav{
+			background: #eee;
+			width: 1000px;
+			margin: 0 auto;
+			height: 45px;
+			line-height: 45px;
+			text-indent: 1em;
+			color: #555;
+		}
+		.wrap-nav a{
+			text-decoration: none;
+			color:  #b84d45;
+		}
+		.portfolio ul{
+			width: 1100px;
+			height: 700px;
+			margin: 0 auto;
+			margin-left: 173px;
+		}
+		.portfolio li{
+			display: block;
+			list-style: none;
+			float: left;
+			margin-right: 48px;
+			margin-top: 30px;
+			height: 295px;
+			border: 1px solid #ccc;
+		}
+		.portfolio img{
+			width: 300px;
+			height: 180px;
+		}
+		.portfolio h3{
+			margin: 15px 0;
+		}
+		.portfolio p{
+			font-size: 14px;
+		}
+		.portfolio .btn{
+			display: block;
+			width: 60px;
+			height: 30px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			margin: 0 auto;
+			margin-bottom: 15px;
+			text-align: center;
+			text-decoration: none;
+			line-height: 30px;
+		}
+		#footer{
+			width: 100%;
+			height: 120px;
+			background: #b84d45;
+			padding-top: 30px;
+		}
+		.wrap-footer{
+			width: 200px;
+			height: 100px;
+			margin:0 auto; 
+			text-align: center;
+			color: #fff;
+		}
+		.wrap-footer p{
+			margin-top: 10px;
+			font-size: 15px;
+		}
+		.wrap-footer .btn{
+			display: block;
+			width: 50px;
+			height: 30px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			margin: 0 auto;
+			margin-top: 15px;
+			text-align: center;
+			text-decoration: none;
+			line-height: 30px;
+			font-size: 15px;
+			color: white;
+		}
+		.copyright{
+			height: 100px;
+			width: 100%;
+			text-align: center;
+		}
+		.copyright .line{
+			width: 1000px;
+			border: 1px solid #eee;
+			margin: 0 auto;
+			margin-top: 50px;
+		}
+		.copyright p{
+			margin: 0 auto;
+			margin-top: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="nav">
+			<ul class="nav-wrap">
+				<li><a href="#"><i class="iconfont icon-huojian"></i></a></li>
+				<li><a href="#">博客</a></li>
+				<li><a href="#">项目</a></li>
+				<li><a href="#">简历</a></li>
+				<li class="nav-hov"><a href="#" >更多 <i class="iconfont icon-jiantou"></i></a>
+					<ul class="nav-hid">
+						<li><a href="#">GitHub</a></li>
+						<li><a href="#">微博</a></li>
+						<li><a href="#">知乎</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="intro">
+			<div class="intro-wrap">
+				<h1>我的简介</h1>
+				<p>这里是我的简介</p>
+				<p>我的简介我的简介</p>
+
+			</div>
+		</div>
+	</div>
+	<div id="container">
+		<div class="wrap-nav">	
+			<p><a href="#">首页 </a>/ 我的作品</p>
+		</div>
+		<div class="portfolio">
+			<ul>
+				<li>
+					<a href="#"> 
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt=""></a>
+					<h3>作品标题</h3>
+					<p>作品介绍</p>
+					<a href="" class="btn">查看</a>
+				</li>
+				<li>
+					<a href="#"> 
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt=""></a>
+					<h3>作品标题</h3>
+					<p>作品介绍</p>
+					<a href="" class="btn">查看</a>
+				</li>
+				<li>
+					<a href="#"> 
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt=""></a>
+					<h3>作品标题</h3>
+					<p>作品介绍</p>
+					<a href="" class="btn">查看</a>
+				</li>
+				<li>
+					<a href="#"> 
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt=""></a>
+					<h3>作品标题</h3>
+					<p>作品介绍</p>
+					<a href="" class="btn">查看</a>
+				</li>
+				<li>
+					<a href="#"> 
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt=""></a>
+					<h3>作品标题</h3>
+					<p>作品介绍</p>
+					<a href="" class="btn">查看</a>
+				</li>
+				<li>
+					<a href="#"> 
+					<img src="http://book.jirengu.com/jirengu-inc/task/%E4%BB%BB%E5%8A%A117-%E5%AE%9E%E6%88%981/img/1.jpg" alt=""></a>
+					<h3>作品标题</h3>
+					<p>作品介绍</p>
+					<a href="" class="btn">查看</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="wrap-footer">
+			<h2>想更详细了解我？</h2>
+			<p>下载我的简历吧</p>
+			<a href="#" class="btn">下载</a>
+		</div>
+	<div class="copyright">
+		<div class="line"></div>
+		<p>来自@CyanCC</p>
+	</div>	
+	</div>
+</body>
+</html>
