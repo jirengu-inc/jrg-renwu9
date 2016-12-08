@@ -17,12 +17,15 @@
 		margin:0 auto;
 	}
 	header{
-		background: url(http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/header5.png) center 0px  no-repeat,
-				    url(http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/header2.png) center 250px no-repeat,
-				    url(http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/header1.png) center 165px no-repeat,
-				    url(http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/header3.png) center 170px no-repeat;
+		background:url(http://hoop8.com/1612A/cJ0bkyxk.png)center 0px  no-repeat,
+		 	url(http://upload-images.jianshu.io/upload_images/3257837-e6a2a1b7d3888113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)center 250px no-repeat,
+ 			url(http://upload-images.jianshu.io/upload_images/3257837-d68162b751cb29bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)center 165px no-repeat,
+ 			url(http://upload-images.jianshu.io/upload_images/3257837-b03a20a76d7a938c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)center 170px no-repeat;
 		background-blend-mode:lighten;
+		width:100%;
+		min-width:1200px;
 		position: relative;
+		overflow: hidden;
 	}	
 	header a{
 		text-decoration: none;
@@ -43,37 +46,38 @@
 		float:left;
 		margin-right:41px;
 		margin-top:45px;
+		position: relative;
 	}
 	.header-title-list>li>a{
 		font-size:18px;	
 	}
 	.header-title-list li img{
+		background: url("http://upload-images.jianshu.io/upload_images/3257837-9c6537bdc3901af3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat 0px 10px;
+		width:19px;
+		height:19px;
+		border-width:0px;
+		border-style:none;
+	}
+	.header-title-list li img{
 		margin-left:4px;
 	}
-	.header-title-list>li ul li{
-		line-height: 1;
-		margin-top: 11px;
-		display: none;
-		width:80px;
-	}
 	.header-title-list>li>ul{
-		position: absolute;
-		top:100%;
-		width:170px;
-		height:200px;
-		left:0px;
+		display:none;
+		position:absolute;
+		width:200px;
+		line-height:1.7rem;
 	}
-	.header-title-list>li:hover ul>li{
+	.header-title-list li:hover ul{
 		display:block;
+	}
+	.header-title-list li a:hover img{
+		background: url("http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat 0px 10px;
 	}
 	.header-title-list>li:nth-child(4):hover ul>li:nth-child(n+5){
 		margin-left: 80px;
 	}
 	.header-title-list>li:nth-child(4):hover ul>li:nth-child(5){
-		margin-top:-97px;
-	}
-	.header-title-list>li{
-		position: relative;
+		margin-top:-108px;
 	}
 	.title-login li{
 		float:right;
@@ -142,7 +146,6 @@
 	.header-content>a{
 		display:block;
 		border:2px solid #69c9d2;
-		box-shadow:0 0 7px #fff;
 		margin:59px auto 220px auto;
 		width:160px;
 		height:50px;
@@ -153,6 +156,7 @@
 		text-decoration: none;
 		color:rgba(255,255,255,0.8);
 		text-shadow:7 0 5px #fff;
+		transition:2s;
 	}
 	header:after{
 		content:"";
@@ -308,7 +312,7 @@
 	.project-page ul li:nth-child(2):before,
 	.project-page ul li:first-child:after{
 		content:"";
-		z-index:-1;
+		z-index:-9999;
 		width:100px;
 		box-shadow:1px 1px 30px 20px #aaa;
 		-webkit-transform:rotate(-10deg);
@@ -321,7 +325,7 @@
 		-webkit-transform:rotate(10deg);
 		top:370px;
 		left:595px;
-		z-index: -1;
+		z-index: -9999;
 	}
 	.project-page ul li:nth-child(2):before{
 		-webkit-transform:rotate(-5deg);
@@ -347,14 +351,14 @@
 		display: block;
 		clear: both;
 		width: 300px;
-		box-shadow:1px 1px 30px 5px #aaa;
+		box-shadow:1px 1px 30px 3px #ccc;
 		margin:83px auto 100px auto;	}
 /*以上是实战项目内容的样式*/
 	.study-content{
 		background: url(http://upload-images.jianshu.io/upload_images/3257837-2ab23d041f9b4804.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat ;
 		background-size:cover;
 		width:100%;
-		min-width: 720px;
+		min-width:1200px;
 		border-bottom:1px solid #fff;
 		border-top:1px solid #fff;
 		position: relative;
@@ -425,6 +429,7 @@
 	}
 	.buy-class{
 		margin-left:112px;
+		position: relative;
 	}
 	.buy-class a{
 		display: inline-block;
@@ -449,24 +454,23 @@
 	.buy-class a:nth-child(3){
 		width:110px;
 		background: #ce2a21;
-		position: relative;
 		z-index: 2;
+		position: relative;
+
 	}
-	
 	.buy-class a:nth-child(4){
-		display: block;
-		width:104px;
-		height:55px;
+		width:150px;
+		transition:2s;
+		height:25px;
 		border-radius: 0;
 		background: #9b2929;
 		box-shadow: none;
 		position: absolute;
-		padding:15px 3px 0px 3px;
-		top:82%;
-		left:780px;
-		z-index: 1;
-		line-height: 18px;
-		display: none;
+		top:35px;
+		left:140px;
+		z-index:1;
+		line-height:25px;
+		opacity:0;
 	}
 	#buy-line{
 		width:300px;
@@ -491,7 +495,8 @@
 		left:295px;
 	}
 	#buy-class:hover + #buy-finsh{
-		display: block;/*同级hover并且相邻的两个元素可以使用+来操作*/
+		opacity:1;
+		width:200px;/*同级hover并且相邻的两个元素可以使用+来操作*/
 	}
 /*以上是学习内容的样式*/
 	.learning-style-content ul li{
@@ -525,6 +530,7 @@
 		border:3px solid #206090;
 		height:100%;
 		width:100%;
+
 		top:-7px;
 		left:-7px;
 	}
@@ -585,6 +591,7 @@
 		background: #041529;
 		margin-top: 150px;
 		margin-bottom: -20px;
+		min-width:1200px;
 	}
 	footer ul{
 		width:500px;
@@ -610,25 +617,47 @@
 		text-align: center;
 		padding-bottom: 40px;
 	}
-	header>img{
-		width:100%;
-		height:100%;
-		position: absolute;
-		border:1px solid #ccc;
-		z-index: -1;
-	}
+
 /*以上是页脚的内容*/
 .flash{
 	position: absolute;
 	z-index: 3;
-	color:#fff;
+	color:#aaa;
 	font-size:50px;
+	transition:1s;
 }
 #flash li:first-child{
 	top:43px;
-	left:725px;
+	left:1225px;
 }
-
+#flash li:nth-child(2){
+	top:183px;
+	left:525px;
+}
+#flash li:nth-child(3){
+	top:143px;
+	left:1225px;
+}
+#flash li:nth-child(4){
+	top:443px;
+	left:425px;
+}
+#flash li:nth-child(5){
+	top:643px;
+	left:985px;
+}
+#flash li:nth-child(6){
+	top:343px;
+	left:1125px;
+}
+#flash li:nth-child(7){
+	top:543px;
+	left:1325px;
+}
+#flash li:nth-child(8){
+	top:343px;
+	left:525px;
+}
 	</style>
 </head>
 <body>
@@ -642,40 +671,29 @@
 			<li class="flash">.</li>
 			<li class="flash">.</li>
 			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash"></li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
-			<li class="flash">.</li>
+			<li class="flash">.</li>		
 		</ul>
 	</div>
 	<div class="header-title layout">
 		<div class="hunger-logo">
-			<a href="http://www.jirengu.com/"><img src="http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/hungervalley3.png"></a>
+			<a href="http://www.jirengu.com/"><img src="http://upload-images.jianshu.io/upload_images/3257837-76369d24af40e0e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
 		</div>
 		<ul class="header-title-list">
 			<li><a href="http://www.jirengu.com/">首页</a></li>
-			<li><a href="javascript:;">课程<img src="http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+			<li><a href="javascript:;">课程<img src="http://upload-images.jianshu.io/upload_images/3257837-4b057ad88dcd01bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
 				<ul>
 					<li><a href="http://www.jirengu.com/app/album/index">视频</a></li>
 					<li><a href="http://book.jirengu.com/">课件</a></li>
 					<li><a href="http://www.jirengu.com/app/teacher/index">讲师</a></li>
 				</ul>
 			</li>
-			<li><a href="javascript:;">学习<img src="http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+			<li><a href="javascript:;">学习<img src="http://upload-images.jianshu.io/upload_images/3257837-4b057ad88dcd01bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
 				<ul>
 					<li><a href="http://www.jirengu.com/index.php?app=classroom&mod=About&act=charge">课程说明</a></li>
 					<li><a href="http://www.wenjuan.com/s/uUjEZv/#rd">填表说明</a></li>
 				</ul>
 			</li>
-			<li><a href="javascript:;">更多<img src="http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+			<li><a href="javascript:;">更多<img src="http://upload-images.jianshu.io/upload_images/3257837-4b057ad88dcd01bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
 				<ul>
 					<li><a href="http://1.lintask.applinzi.com/http:/www.jirengu.com/blog">谷内学习</a></li>
 					<li><a href="https://zhuanlan.zhihu.com/study-fe">知乎专栏</a></li>
@@ -687,20 +705,20 @@
 			</li>
 		</ul>
 		<div class="title-login">
-			<ul>
+			<!--<ul>
 				<li><a href="">注册</a></li>
 				<li>|</li>
 				<li><a href="">登录</a></li>
 				<li><input type="text" ><span><a href=""><img src="http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/serch.png" alt=""></a></span></li>
 			</ul>
-		</div>
+		</div>-->
 	</div>
 <!-- ————————————————顶部菜单栏完成———————————————— -->
 	<div class="header-content layout">
-		<img src="http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/title.png">
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-ff53ac9f65fe2719.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 		<p>阿里腾讯<span>资深</span>前端工程师授课</p>
 		<p>业内<span>绝无仅有</span>的Nodejs课程</p>
-		<a href="https://www.wenjuan.com/s/uUjEZv/">申请试听</a>
+		<a id="login" href="https://www.wenjuan.com/s/uUjEZv/">申请试听</a>
 		<!--<img src="飞石.png" alt="">-->
 		<!--<img src="1.png" alt="">-->
 	</div>
@@ -754,7 +772,7 @@
 			   支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力
 			</p>
 		</li>
-		<li >
+		<li>
 		<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 			<p>方方导师项目介绍</p>
 			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来
@@ -791,7 +809,7 @@
 		<a href="">更多查看</a>
 		<a href="">查询</a>
 		<a id="buy-class" href="javascript:">￥ 168 | 点击购买</a>
-		<a id="buy-finsh" href="">购买完成后请联系<br>青青QQ1223456</a>
+		<a id="buy-finsh" href="">购买完成后请联系班主任</a>
 		</div>
 	</div>
 </div>
@@ -823,9 +841,30 @@
 </footer>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <script>
-	var Width=window.screen.width;
-	var screenWidth=$(".screen");
-	screenWidth.css("min-width",Width-20);
+	var hot=document.getElementsByClassName("flash");
+	function run(value){
+		for(i=0;i<value.length;i++){
+		if(value[i].style.textShadow=="none"){
+			value[i].style.textShadow="0px 0px 20px #fff";
+		}
+		else{
+			value[i].style.textShadow="none"
+		}
+	}
+	}
+	setInterval("run(hot)",500);
+
+	var cool=document.getElementById("login");
+	function light(value){
+		if(value.style.boxShadow=='none'){
+			value.style.boxShadow="0px 0px 20px #fff";
+		}
+		else{
+			value.style.boxShadow='none'
+		}
+	}
+	setInterval("light(cool)",500)
+	;
 </script>
 </body>
 </html>
