@@ -1,0 +1,45 @@
+li {
+  font-size: 20px;
+  float: left;
+  display: block;
+  padding: 10px 10px 10px 40px;
+  /* border: 1px solid black; */
+  /* height: 40px; */
+  /* vertical-align: center; */
+  /* text-align: middle; */
+}
+
+/* 背景原图切图尺寸不够标准 */
+li:first-child {
+  background: url(./img/result.png) 1px -37px no-repeat;
+}
+
+li:nth-child(2) {
+  background: url(./img/result.png) 3px 7px no-repeat;
+}
+
+li:nth-child(3) {
+  background: url(./img/result.png) 0 -85px no-repeat;
+}
+
+li:first-child:hover {
+  background: url(./img/result.png) 0 -176px no-repeat;
+  color: #a663b1
+}
+
+li:nth-child(2):hover {
+  background: url(./img/result.png) -2px -130px no-repeat;
+  color: #a663b1
+}
+
+li:nth-child(3):hover {
+  background: url(./img/result.png) 4px -223px no-repeat;
+  color: #a663b1
+}
+
+/* background-position: 0px 0px; */
+/* background-position: 0px -43px; */
+/* background-position: 0px -88px; */
+/* background-position: 0px -134px; */
+/* background-position: 0px -181px; */
+/* background-position: 0px -230px; */

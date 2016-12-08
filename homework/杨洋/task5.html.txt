@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>任务5代码</title>
+  <style>
+    body {
+      font-family:微软雅黑;
+      font-size:16px;
+      line-height:1.5em;
+      color:#333;
+    }
+    p {
+      color:#000;
+      text-indent:2em;
+      line-height:1.5em;
+    }
+  </style>
+</head>
+<body>
+<h1>饥人谷是什么</h1>
+  饥人谷是前百度阿里工程师联合创立的互联网前端技能在线培训机构，为想从事前端行业的同学提供最专业的导师、最贴心的服务
+  <p>爱总结、爱分享、爱说教是他们的共性，青春、聪明、开放、负责是他们的特点，高标准、严要求、授之以渔是他们的态度
+  </p>
+</body>
+</html>

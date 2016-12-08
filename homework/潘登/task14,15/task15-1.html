@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+	<style>
+		html,body,ul,li,h1,p{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color: black;
+		}
+		#header .ul1 .a1{
+			padding: 10px 20px 10px 20px;
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		#header .ul1 li span{
+			display: inline-block;
+			width: 0;
+			height: 0;
+			border-top: 5px solid black;
+			border-right: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			border-left: 5px solid transparent;
+			position: absolute;
+            top: 26px;
+            right: 7px;
+		}
+		.content{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		#header .ul1>li{
+			float: left;
+			padding: 20px;
+			position: relative;
+
+		}
+		#header .ul1>li a:hover{
+			color: red;
+		}
+		#header .ul1 .ul2{
+			border-left: 1px solid black;
+			border-right: 1px solid black;
+			border-bottom: 1px solid black;
+			display: none;
+			position: absolute;
+			top: 36px;
+			background: white;
+		}
+		#header .ul1 .ul2 li{
+			padding: 15px;
+		}
+		#header .ul1 .li1{
+			position: relative;
+		}
+		#header .ul1 .li1:hover .ul2{
+			display: block;
+		}
+		#header .ul1 .ul2 li:hover{
+          background: #ccc;
+		}
+		#main .wrap{
+			background: #b84d45;
+		}
+		#main .wrap h1{
+			padding: 20px;
+		}
+		#main .wrap p{
+			padding: 10px;
+		}
+		#main .wrap .wrap-1{
+			color: white;
+		}
+		#main .port{
+			margin-top:40px;
+			background: #ccc;
+		}
+		#main .port p{
+			padding: 15px;
+		}
+		#main .port p a{
+			color:#b84d45 ;
+		}
+		#main .pic .ul3{
+			margin-left: -35px;
+		}
+		#main .pic .ul3 li{
+			float: left;
+            margin-left: 35px;
+            border: 1px solid #ccc;
+            text-align: center;
+            margin-top: 20px;
+            padding-bottom: 10px;
+		}
+		#main .pic .ul3 li img{
+			width: 308px;
+			height: 260px;
+		}
+		#main .pic .ul3 li h1{
+			padding-top:15px;
+		}
+		#main .pic .ul3 li p{
+			padding: 10px 0;
+		}
+		.a2{
+			display: inline-block;
+			width: 50px;
+			height: 25px;
+			border: 1px solid #ccc;
+			line-height: 25px;
+			border-radius: 5px;
+			color: #666;
+		}
+		.a2:hover{
+			color: black;
+		}
+		#main .aboutme{
+			background: #b84d45;
+			margin-top: 40px;
+			margin-bottom: 40px;
+		}
+		#main .aboutme-1{
+			text-align: center;
+			color: white;
+			padding: 10px 0;
+		}
+		#main .aboutme-1 h1{
+			padding-top:30px;
+		}
+		#main .aboutme-1 p{
+			padding: 15px 0;
+		}
+		#footer .footer-1{
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		#footer .footer-1 p{
+			padding: 20px 0;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="header">
+		<ul class="ul1 content clearfix">
+			<li class="a1"><a class="fa fa-comment fa-2x" href="javascript:;"></a></li>
+			<li class="li1"><a href="javascript:;">我的作品<span></span></a>
+              <ul class="ul2">
+              	<li><a href="javascript:;">CSS3</a></li>
+              	<li><a href="javascript:;">轮播</a></li>
+              	<li><a href="javascript:;">拖拽</a></li>
+              </ul>
+			</li>
+			<li><a href="javascript:;">博客</a></li>
+			<li><a href="javascript:;">项目</a></li>
+			<li><a href="javascript:;">关于我</a></li>
+		</ul>
+	</div>
+    <div id="main">
+    	<div class="wrap">
+    		<div class="wrap-1 content">
+    			<h1>页面特征</h1>
+    			<p>不需要处理响应式，不使用Bootstrap，不需要js。<br/>
+                    图标使用font-awesome，页面中心固定宽度1000px
+    			</p>
+    		</div>
+    	</div>
+    	<div class="port content">
+    			<p><a href="javascript:;">首页</a>/我的作品</p>
+        </div>
+        <div class="pic content">
+        	<ul class="ul3 clearfix">
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        		<li><a href="javascript:;"><img src="image/aaa.jpg"></a>
+                  <h1>作品名称</h1>
+                  <p>作品简介</p>
+                  <a class="a2" href="javascript:;">查看</a>
+        		</li>
+        	</ul>
+        </div>
+        <div class="aboutme">
+        	<div class="aboutme-1 content">
+        		<h1>想更详细的了解我？</h1>
+        		<p>下载简历，打我电话找我吧</p>
+        		<a href="javascript:;" class="a2">下载</a>
+        	</div>
+        </div>
+    </div>
+    <div id="footer">
+    	<div class="content footer-1">
+    		<hr>
+    		<p>来自@Zephyr</p>
+    	</div>
+
+    </div>
+</body>
+</html>
