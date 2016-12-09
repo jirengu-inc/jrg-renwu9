@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stick-up</title>
+	<style type="text/css">
+	#header{background: red;height: 80px;line-height: 80px;text-align: center;}
+	#nav{height: 40px;margin-top: 20px;background: blue;}
+	#content{min-height: 800px;background: #ccc;padding: 10px;overflow: auto;}
+	#content .aside{float: left;width: 100px;min-height: 400px;background: green;}
+	#content .main{overflow: auto;background: #fff;padding-left: 20px;min-height: 800px}
+	#footer{background: #333;}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="nav">nav</div>
+	<div id="content">
+		<div class="aside">aside</div>
+		<div class="main">main</div>
+	</div>
+	<div  id="footer">footer</div>
+	 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	 <script type="text/javascript">
+	 	var $cur=$('#nav'),
+	 		$curH=$cur.height(),
+	 		$curW=$cur.width(),
+	 		offsetTop=$cur.offset().top,
+	 		offsetLeft=$cur.offset().left;
+//把目标元素克隆一个用于占位，否则目标元素 Position 变为 fix后脱离文档流，导致页面跳动 
+
+	 		var $curClone=$cur.clone().css({'visibility':'hidden','display':'none'})
+	 						  .insertBefore($cur);
+
+//监听窗口的滚动距离
+			$(window).on('scroll',function(){
+				var scrollTop=$(this).scrollTop();
+				if(scrollTop>=offsetTop){
+					if(!isFixed()){
+						setFixed()//如果滚动距顶部的距离大于nav距离顶部的距离，并且没有固定，就让他固定住
+					}
+				}else{
+					if(isFixed()){
+						unsetFixed();
+					}
+				}
+			})	
+
+			//判断是否固定的函数
+			function isFixed(){
+				return $cur.data('data-fixed')
+			}
+			//固定的函数
+			function setFixed(){
+				$cur.data('data-fixed',true)
+					.css({
+						'position':'fixed',
+						'top':0,
+						'left':offsetLeft,
+						'width':$curW,
+						'margin':0,
+						'z-index':9999
+					})
+					$curClone.show();		
+			}
+			function unsetFixed(){
+				$cur.data('data-fixed',false)
+					.removeAttr('style')
+				$curClone.hide();
+			}
+	 </script>
+</body>
+</html>

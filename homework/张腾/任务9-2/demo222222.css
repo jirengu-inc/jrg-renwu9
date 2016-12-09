@@ -1,0 +1,19 @@
+@charset 'UTF-8';
+
+/**
+ *
+ * @authors Your Name (you@example.org)
+ * @date    2016-12-01 14:44:23
+ * @version $Id$
+ */
+
+.caret
+{
+    width: 0;
+    height: 0;
+
+    border-top: 50px solid black;
+    border-right: 50px solid white;
+    border-bottom: 50px solid transparent;
+    border-left: 50px solid transparent;
+}

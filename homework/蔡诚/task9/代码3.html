@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+.triangle{
+  height:0px;
+  width:0px;
+  border-top:30px solid blue;
+  border-bottom:30px solid green;
+  border-left:30px solid red;
+  border-right:30px solid yellow;
+  margin-right:10px;
+  display:inline-block
+}
+.full{
+  margin-left:15px;
+}
+.top{
+  border-top:30px solid blue;
+  border-bottom:30px solid transparent;
+  border-left:30px solid transparent;
+  border-right:30px solid transparent;
+}
+.left{
+  border-top:30px solid transparent;
+  border-bottom:30px solid transparent;
+  border-left:30px solid red;
+  border-right:30px solid transparent;
+}
+.bottom{
+  border-top:30px solid transparent;
+  border-bottom:30px solid green;
+  border-left:30px solid transparent;
+  border-right:30px solid transparent;
+}
+.right{
+  border-top:30px solid transparent;
+  border-bottom:30px solid transparent;
+  border-left:30px solid transparent;
+  border-right:30px solid yellow;
+}
+.rightbottom{
+  border-top:20px solid transparent;
+  border-bottom:20px solid green;
+  border-left:20px solid transparent;
+  border-right:20px solid green;
+}
+
+.leftbottom{
+  border-top:20px solid transparent;
+  border-bottom:20px solid red;
+  border-left:20px solid red;
+  border-right:20px solid transparent;
+}
+.tooltip1,.tooltip2,.tooltip3{
+  position:relative;
+  margin-top:30px;
+  width:100px;
+  height:62px;
+  border:1px solid #ccc;
+  margin-left:15px;
+}
+.tooltip1:before{
+  content:"";
+  display:block;
+  position:absolute;
+  left:-16px;
+  top:-1px;
+  height:0px;
+  width:0px;
+  border-top:8px solid #ccc;
+  border-bottom:8px solid transparent;
+  border-left:8px solid transparent;
+  border-right:8px solid #ccc;
+}
+.tooltip2:before{
+  content:"";
+  display:block;
+  position:absolute;
+  left:38px;
+  top:-20px;
+  height:0px;
+  width:0px;
+  border-top:10px solid transparent;
+  border-bottom:10px solid #ccc;
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+}
+
+.tooltip2:after{
+  content:"";
+  display:block;
+  position:absolute;
+  left:38px;
+  top:-18px;
+  height:0px;
+  width:0px;
+  border-top:10px solid transparent;
+  border-bottom:10px solid rgb(247,247,247);
+  border-left:10px solid transparent;
+  border-right:10px solid transparent;
+}
+
+.tooltip3:before{
+  content:"";
+  display:block;
+  position:absolute;
+  right:0px;
+  top:-1px;
+  height:0px;
+  width:0px;
+  border-top:8px solid #ccc;
+  border-bottom:8px solid transparent;
+  border-left:8px solid transparent;
+  border-right:8px solid #ccc;
+}
+.tooltip3:after{
+  content:"";
+  display:block;
+  position:absolute;
+  left:40px;
+  top:-9px;
+  height:14px;
+  width:14px;
+  background-color:rgb(247,247,247);
+  border-top:1px solid #ccc;
+  border-left:1px solid #ccc;
+  transform:rotate(45deg)
+}
+</style>
+</head>
+<body>
+    <div>
+  <div class="triangle full">
+  </div>
+  <div class="triangle top">
+  </div>
+  <div class="triangle left">
+  </div>
+  <div class="triangle bottom">
+  </div>
+  <div class="triangle right">
+  </div>
+  <div class="triangle rightbottom">
+  </div>
+  <div class="triangle leftbottom">
+  </div>
+  </div>
+  
+  <div class="tooltip1">
+  </div>
+  <div class="tooltip2">
+  </div>
+  <div class="tooltip3">
+  </div>
+  <div class="box tooltip3">
+  </div>
+</body>
+</html>
