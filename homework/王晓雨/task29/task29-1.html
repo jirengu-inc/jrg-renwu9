@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>回到顶部</title>
+	<style type="text/css">
+	p{height: 80px;line-height: 80px;width: 100px;text-indent: 1em;}
+	p:nth-child(even){background: #f3c;}
+	p:nth-child(odd){background: #0fc;}
+	p:nth-child(3n){background: aqua;}
+	p:nth-child(4n){background: indigo;}
+	#go-top{
+		position: fixed;
+		bottom:20px;
+		right: 30px;
+		width: 100px;
+		height: 50px;
+		line-height: 50px;
+		color: #fff;
+		text-align: center;
+		background: orange;
+		border-radius: 5px ;
+		border: 1px dashed #ccc;
+		box-shadow: 4px 4px 5px #FFFFFF;
+		text-shadow: 3px 3px 5px #fff,-4px -4px 5px #666;
+		cursor: pointer;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容5</p>
+	<p>内容6</p>
+	<p>内容7</p>
+	<p>内容8</p>
+	<p>内容9</p>
+	<p>内容10</p>
+	<p>内容11</p>
+	<p>内容12</p>
+	<p>内容13</p>
+	<p>内容14</p>
+	<p>内容15</p>
+	<p>内容16</p>
+	<p>内容17</p>
+	<p>内容18</p>
+	<p>内容19</p>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+	var $goTop=$('<div id="go-top">回到顶部</div>');
+		$('body').append($goTop)
+	$(window).on('scroll',function(e){
+		var offsetTop=$('body').scrollTop();
+			//console.log(offsetTop);
+		if(offsetTop>100){
+			$goTop.show();
+		}else{
+			$goTop.hide();
+		}
+	})
+	$goTop.on('click',function(){
+		$(window).scrollTop(0);
+	})
+		
+	
+
+</script>
+</body>
+</html>

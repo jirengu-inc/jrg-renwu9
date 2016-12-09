@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+#box {
+	height:100px;
+	width:400px;
+	margin:0 auto;
+}
+
+.icon {
+	width:45px;
+	height:40px;
+	line-height: 40px;
+	float: left;
+	padding-left: 37px;
+	background: url(../images/result.png)  rgba(0,0,0,0) no-repeat;
+	cursor: pointer;
+}
+.icon:hover {
+	color: #A663BE;
+}
+.next {
+	background-position: 0px 0px;
+}
+.stop {
+	background-position: 0px -95px;
+}
+.start {
+	background-position: 5px -137px;
+}
+.next:hover {
+	background-position: -1px -46px;
+}
+.stop:hover {
+	background-position: 3px -227px;
+}
+.start:hover {
+	background-position: 0px -183px;
+}
