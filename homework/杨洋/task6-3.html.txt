@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+ <table border=1>
+    <tr class="tab">
+      <th>姓名</th>
+      <th>性别</th>
+    </tr>
+    <tr>
+      <td>小明</td>
+      <td>男</td>
+    </tr>
+    <tr>
+      <td>小花</td>
+      <td>女</td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+table {
+  border-collapse: collapse;
+  width:100%;
+}
+
+.tab {
+  background-color:#22AAAA
+}
+
+tr:hover{
+  background-color:#F8F8F8;
+}
+
+td {
+  text-align:center;
+}
+
