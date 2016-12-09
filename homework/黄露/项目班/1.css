@@ -26,7 +26,7 @@ li{
 	background: url(项目班图片/1.png) 711px 156px no-repeat,
 	url(项目班图片/地球.png) center 250px no-repeat,
 	url(项目班图片/bgimg1.png) center 0px no-repeat,
-	url(项目班图片/饥人谷前端项目班2.png) center 184px no-repeat;
+	url(项目班图片/饥人谷前端项目班2.PNG) center 184px no-repeat;
 	background-blend-mode:lighten;
 }
 .ct{
@@ -273,7 +273,7 @@ li{
 .nodejs{
 	width: 100%;
 	padding: 1px 0;
-	background: url(项目班图片/组1.png) no-repeat;
+	background: url(项目班图片/组1.PNG) no-repeat;
 	background-size: 100% 100%;
 }
 .node-bg{
