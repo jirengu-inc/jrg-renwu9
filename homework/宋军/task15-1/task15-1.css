@@ -1,0 +1,139 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.layout{
+	width: 1000px;
+	margin: 0 auto;
+	font-family: fontello;
+}
+.layout:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+ul{
+	list-style: none;
+}
+li{
+	float: left;
+}
+a{
+	display: block;
+	text-decoration: none;
+	color: gray;
+	width: 80px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+a:hover{
+	color: black;
+}
+.nav-more{
+	position: relative;
+}
+.nav-more .drop-list{
+	display: none;
+}
+.nav-more:hover .drop-list{
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 100%;
+	background: white;
+	border: 1px solid gray;
+	border-top: none;	
+}
+.drop-list a{
+	border-bottom: 1px dashed gray;
+}
+.drop-list li+li+li a{
+	border-bottom: none;
+}
+.drop-list a:hover{
+	background: #ddd;
+}
+.intro{
+	background: darkred;
+    height: 200px;
+}
+.intro .layout{
+	padding: 72px 0;
+	color: white;
+}
+.index{
+	background: gray;
+	padding-left: 20px;
+	margin-top: 50px;
+}
+.index a{
+	display: inline;
+	color: red;
+}
+
+.mywork a{
+	display: inline;
+}
+.mywork img{
+	width: 300px;
+	height: 200px;
+}
+.mywork li{
+	border: 1px solid gray;
+	margin: 47px 47px 0 0;
+}
+.mywork{
+	margin-right: -47px;
+	text-align: center;
+}
+.mywork h2, .mywork p{
+	text-align: left;
+	margin: 10px;
+}
+#content .layout{
+	margin-bottom: 50px;
+}
+.mywork .btn{
+	display: inline-block;
+	border: 1px solid gray;
+    border-radius: 5px;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	margin: 10px 0;
+}
+.mywork .btn:hover{
+	color: black;
+}
+
+.dload{
+	background: darkred;
+    height: 200px;
+}
+.dload .layout{
+	padding: 46px 0;
+    color: white;
+	text-align: center;
+}
+.dload p{
+    margin: 5px;
+}
+.dload a{
+	display: inline-block;
+	border: 1px solid white;
+    border-radius: 5px;
+    color: white;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+}
+.dload a:hover{
+	color: gray;
+}
+.author{
+	text-align: center;
+	border-top: 1px solid gray;
+	margin: 30px 0 0 0;
+	padding: 50px 0;
+}
