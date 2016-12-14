@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>Tab切换</title>
+	<style type="text/css">
+html,body,ul{
+	box-sizing: border-box;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+li{
+	width:33%;
+	height: 30px;
+	margin: 0;
+	text-align: center;
+	list-style: none;
+	border-right:1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	float: left; 
+	cursor: pointer;
+}
+li:nth-child(3){
+	border-right: none;
+}
+li.active{
+	background: #eee;
+}
+.ct{
+	width: 99%;
+	height: 300px;
+	border: 1px solid #ccc;
+}
+.content{
+	display: none;
+}
+.active{
+	display: block;
+}
+	</style>
+</head>
+<body>
+<ul class="tab">
+	<li>tab1</li>
+	<li>tab2</li>
+	<li>tab3</li>
+</ul>
+<div class="ct">
+	<div class="content">内容1：大大大大是</div>
+    <div class="content">内容2：啦啦啦</div>
+    <div class="content">内容3：叽叽叽叽就</div>
+</div>
+
+<script type="text/javascript">
+var Utils = {
+
+    hasClass: function (el,cls){
+    var reg=new RegExp('(\\s|^)'+cls+'(\\s|$)','g');
+    return reg.test(el.className);
+},
+    
+    addClass:function(el,cls){
+	    	 if(Utils.hasClass(el,cls)){
+	             return;
+		    }else{
+		        el.className=el.className+' '+cls;
+		    }   
+    },
+    
+    removeClass: function(el,cls){
+	   
+	    for(var i=0;i<el.length;i++){
+		    el[i].className=el[i].className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+	    }
+    },
+    
+    indexOf: function(ele){
+        var parent = ele.parentElement,
+            siblings = parent.children;
+        for(var i=0; i<siblings.length; i++){
+            if(ele === siblings[i]) return i;
+        }
+        return -1;
+    }
+};
+
+var tab=document.querySelector('.tab');
+tab.addEventListener('click',function(e){
+    var target=e.target,
+    li=tab.children,
+    index=Utils.indexOf(target),
+    contents=document.querySelectorAll('.content');
+
+    if(index >-1){
+    	Utils.removeClass(li,'active');
+    	Utils.addClass(target,'active');
+    	Utils.removeClass(contents,'active');
+    	Utils.addClass(contents[index],'active');
+    }
+})
+
+</script>
+</body>
+</html>

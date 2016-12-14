@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>Task19</title>
+</head>
+<body>
+<script>
+    /*--------------------*第一题 ：写一个函数getIntv，获取从当前时间到指定日期的间隔时间*------------*/
+    function getIntv(date){
+        var interval = Date.parse(date) -  Date.now();
+        var dayM = 1000 * 60 * 60 * 24;
+
+        var day = Math.floor( interval / dayM );
+        var hour = Math.floor( interval % dayM / (dayM/24) );  //总毫秒数除每天的毫秒数取余，再除以每小时的毫秒数。Math.floor得到小时数
+        var minu = Math.floor( interval % (dayM/24) / (1000*60) ); //总毫秒数除每小时的毫秒数取余，再除以每分钟的毫秒数，Math.floor得到分钟数
+        var seco = Math.floor( interval % (dayM/24/60) / 1000 ); //总毫秒数除每分钟的毫秒数取余，再除以每秒种的毫秒数，Math.floor得到秒数。
+
+        console.log('距离给定日期还有' + day + '天' + (hour-8) + '小时' + minu + '分' + seco + '秒');
+    }
+    /*--------------------------*第二题、 把数字日期改成中文日期*--------------------------*/
+    function getChsDate(time){
+        var a = ['零','一','二','三','四','五','六','七','八','九','十',
+            '十一','十二','十三','十四','十五', '十六','十七','十八','十九',
+            '二十','二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十','三十一'];
+        var t = new Date(time);//new Date()默认创建当前时间的时间对象。添加时间的话创建该时间对象。
+        var n = '';
+
+        var year = t.getFullYear() + ''; //使数字变成字符串
+        var month = t.getMonth() + 1;  //Date系列都没有参数，就算填了返回的也是前面对象的属性值
+        var date = t.getDate();
+
+        for(var i = 0; i < year.length; ++i){
+            n += a[year[i]];
+        }
+        console.log(n + '年' + a[month] + '月'  + a[date] + '日');
+    }
+    /*--------------------*第三题  写一个函数获取n天前的日期*------------------------*/
+    function getLastNDays(val){
+        var date = new Date( Date.now() - val * 24 * 60 * 60 *1000 );
+        return date;
+    }
+    /*--------------------------*第四题 求代码执行时间*----------------------*/
+    var Runtime = function(){
+        var startTime, endTime;
+        var obj = {
+            start:function(){
+                startTime = new Date();
+            },
+            end:function(){
+                endTime = new Date();
+            },
+            get: function(){
+                var interval = endTime - startTime;
+                var dayM = 24*60*60*1000;  //microsecond
+                var day = Math.floor(interval / dayM);
+                var hour = Math.floor(interval % dayM / (dayM/24));
+                var minu = Math.floor(interval % (dayM/24) / (60*1000));
+                var sec = Math.floor(interval % (60*1000) / 1000);
+                console.log('程序运行了'+ day + '天' + hour + '小时' + minu + '分钟' + sec + '秒');
+            }
+        };
+        return obj;  //将obj返回给Runtime
+    }();  //这里如果是立即调用函数,runtime得到的值就不是函数本身了。
+    Runtime.start();
+    for(var i  = 0; i < 200; ++i){
+        console.log(1);
+    }
+    Runtime.end();
+    Runtime.get();
+    /*-------------------第五题、 楼梯有20级，每次走1级或是2级，从底走到顶一共有多少种走法？用代码（递归）实现---------------------*/
+    function getMethod(n){  //原理：f(n) = f(n - 1) + f(n - 2);
+        if(n === 1){return 1;}
+        else if(n === 2){return 2;}
+        else{
+            return getMethod(n - 1) + getMethod(n - 2);
+        }
+    }
+    /*-*--------第六题、 json对象深拷贝的方法，json对象可以多层嵌套，值可以是字符串、数字、布尔、json对象中的任意项（PS:尝试另外一种方法 var obj2 = JSON.parse( JSON.stringify(obj1) ）----------*/
+    var obj1 = {
+
+        age:18,
+        sex:'male',
+        name1:{name:'han', age:21},   //在对象里面相同属性名的后面的键值对会覆盖前面的。
+        name2:'wu'
+    }
+    function deepCopy(oldObj) {  //对象内的键值乱序进入
+        if (typeof oldObj === 'object') {
+            var newObj = {};
+
+            if (oldObj instanceof Array) {
+                newObj = [];
+            }
+            for (var index in oldObj) {  //浅拷贝直接将对象内的指针赋值给新对象，两者指向同一内存空间）
+                if (typeof oldObj[index] === 'object') { // 深拷贝是将对象转化为简单类型再赋值给新数组，两者指向的不同内存地址，只是系统分配的这两块内存地址上的变量相同而已。
+                    newObj[index] = deepCopy(oldObj[index]);//在这里将对象拆分进入递归
+                }
+                else{
+                    newObj[index] = oldObj[index]; //在这里将简单类型赋值，两个都是键值。
+                }
+            }
+            return newObj;//在这里返回整个对象。
+        }
+    }
+    function deepCopy2(oldObj){
+        var newObj = JSON.parse(JSON.stringify(oldObj));
+        return newObj;
+    }
+    /*----------------------------------------------------问答题------------------------------------------*/
+
+    var obj1 = {a:1, b:2};
+    var obj2 = {a:1, b:2};
+    console.log(obj1 == obj2);  //引用类型内存放的是指针，这两个变量内存放的指针指向两个不同的内存地址。
+    console.log(obj1 = obj2); //将obj2里的地址赋值给obj1
+    console.log(obj1 == obj2);//两者内部存放的指针指向同一地址。
+</script>
+</body>
+</html>
