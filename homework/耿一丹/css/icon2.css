@@ -1,0 +1,17 @@
+@charset "UTF-8";
+#box {
+	height:100px;
+	width:400px;
+	margin:0 auto;
+}
+
+.icon {
+	width:105px;
+	height:40px;
+	line-height: 40px;
+	float: left;
+	cursor: pointer;
+}
+.icon:hover {
+	color: #A663BE;
+}
