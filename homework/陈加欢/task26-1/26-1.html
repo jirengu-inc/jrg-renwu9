@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style type="text/css">
+    button{
+      margin-top:5px;
+    }
+    img{
+      margin-right: 10px;
+    }
+    fieldset{
+      margin-bottom: 30px;
+      padding: 20px;
+    }
+    li{
+      padding: 5px;
+
+    }
+    
+    .clearfix:after{
+      content: "";
+      display: block;
+      clear:both;
+    }
+    .box{
+      width:100px;
+      height: 100px;
+      border:1px solid #ccc;
+      margin:10px;
+    }
+    .active{
+      background: orange;
+    }
+    .addAttr{
+      float: left;
+      margin-right: 10px;
+      font-size: 40px;
+      text-align: center;
+      line-height: 100px;
+      width: 130px;
+      height: 130px;
+    }
+    .getValBox{
+      width: 100px;
+      height: 100px;
+      margin:10px;
+      padding:15px;
+      border: 3px solid blue;
+      background: #a1b2c3;
+
+    }
+    .fix{
+      position: fixed;
+      display: none;
+      right: 0;
+      top:100px;
+      widows: 200px;
+      height: 100px;
+      padding: 20px;
+      font-size: 30px;
+      background: rgba(0,0,0,0.3);
+    }
+    .scrollx{
+      width: 2500px;
+      height: 1px;
+      display: none;
+    }
+
+    .offset{
+      width: 250px;
+      height: 100px;
+      float: left;
+      line-height: 30px;
+      padding: 10px;
+      margin:10px;
+      background: #b1c3f6
+    }
+    .changeStyle{
+      color:red;
+      font-size: 14px;
+    }
+    .fatherUl{
+      background: #ddd;
+    }
+    .sonUl{
+      background: pink;
+      margin:5px;
+    }
+    .sonLi{
+      background: #aaa;
+      margin:5px;
+    }
+    .grandLi{
+      background:#b1c3f6;
+      margin:5px;
+    }
+
+    
+  </style>
+</head>
+<body>
+    <fieldset>
+        <legend>1.给元素添加calss,给元素删除calss<br> 2.隐藏元素展示元素</legend>
+        <div class="box box1"></div>
+        <button class="add">添加calss</button>
+        <button class="remove">删除calss</button>
+        <button class="toggle">显示/隐藏</button>
+    </fieldset>
+
+    <fieldset>
+        <legend>3.获取元素的id、src、title,并修改以上属性</legend>
+        <img id="pic" src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" title="戒指">
+        <p>id: <span class="id"></span></p>
+        <p>src: <span class="src"></span></p>
+        <p class="clearfix">title: <span class="title"></span></p>
+
+        <div>
+          <button class="getId">获取id</button>
+          <button class="getSrc">获取src</button>
+          <button class="getTitle">获取title</button>
+        </div>
+        <div>
+          <button class="setId">设置id</button>
+          <button class="setSrc">设置src</button>
+          <button class="setTitle">设置title</button>
+        </div>
+     </fieldset>
+
+
+
+      <fieldset>
+          <legend>4.给$node添加自定义属性data-src</legend>
+          <div class="box addAttr">A</div>
+          <div class="box addAttr">B</div>
+          <div class="box addAttr">C</div>
+      </fieldset>
+
+
+
+      <fieldset>
+          <legend>5.在$ct内部最开头添加元素$node<br> 6.在$ct内部最末尾添加元素$node <br>7.删除$node&nbsp;&nbsp&nbsp;&nbsp 8.清空$ct&nbsp;&nbsp&nbsp;&nbsp </legend>
+          <div class="ct">
+              <p class="origin">白日依山尽，黄河入海流</p>
+          </div>
+          <button class="before">开头添加</button>
+          <button class="after">末尾添加</button><br>
+          <button class="del">删除元素</button>
+          <button class="clearAll">清空所有</button>
+      </fieldset>
+
+
+
+
+      <fieldset>
+        <legend>9.在$ct里设置html&ltdiv class="btn"&gt &lt/div&gt</legend>
+        <div class="box ct1"></div>
+        <button class="addHtml">设置html</button>
+      </fieldset>
+
+
+       <fieldset>
+          <legend>10.获取设置$node的宽度、高度</legend>
+          <div class="getValBox">内容内容内容内容内容内容内容内容内容内容内容内容</div>
+          <p class="wh">
+              width(仅内容宽度):<input style="width:40px;"></input>&nbsp&nbsp&nbsp
+              height(仅内容高度):<input style="width:40px;"></input>
+          </p>
+          <p class="inner">
+              innerW(包括内边距):<input style="width:40px;"></input>&nbsp&nbsp&nbsp
+              innerH(包括内边距):<input style="width:40px;"></input>
+          </p>
+          <p class="outer">
+              outerW(包括内边距和边框):<input style="width:40px;"></input>&nbsp&nbsp&nbsp
+              outerH(包括内边距和边框):<input style="width:40px;"></input>
+          </p>
+          <p class="outerT">
+              outerWT(包括内外边距和边框):<input style="width:40px;"></input>&nbsp&nbsp&nbsp
+              outerHT(包括内外边距和边框):<input style="width:40px;"></input>
+          </p>
+          <button class="getVal">获取宽/高度</button><br>
+          修改width和height后，<button class="setVal">重新设置宽高</button>
+
+      </fieldset>
+
+    
+      <fieldset>
+          <legend>11.获取窗口滚动条垂直滚动距离</legend>
+          <button class="scroDisBtn">获取窗口滚动距离</button>
+          <div class="fix">
+            窗口滚动条垂直滚动距离：<span></span><br>
+            窗口滚动条水平滚动距离：<span></span>
+          </div>
+      </fieldset>
+
+
+      <fieldset>
+        <legend>12.获取$node到根节点水平、垂直偏移距离</legend>
+        <div class="offsetWrap clearfix">
+            <div class="offset">
+                到根节点的水平偏移距离：<span></span><br>
+                到根节点的垂直偏移距离：<span></span>
+            </div>
+            <div class="offset">
+                到根节点的水平偏移距离：<span></span><br>
+                到根节点的垂直偏移距离：<span></span>
+            </div>
+            <div class="offset">
+                到根节点的水平偏移距离：<span></span><br>
+                到根节点的垂直偏移距离：<span></span>
+            </div>
+        </div>
+        <button class="getOffset">获取偏移距离</button>
+      </fieldset>
+
+
+      <fieldset>
+          <legend>13.修改$node的样式，字体颜色设置为红色，字体大小设置为14px</legend>
+          <div class="box">文本文本文本</div>
+          <button class="changeStyleBtn">修改样式</button>
+      </fieldset>
+
+      <fieldset>
+          <legend>14.遍历节点，把每个节点里的文本内容重复一遍</legend>
+          <ul class="cloneUl">
+            <li>内容一</li>
+            <li>内容二</li>
+            <li>内容三</li>
+          </ul>
+          <button class="through">遍历节点</button>
+      </fieldset>
+
+
+
+      <fieldset>
+          <legend>15.查找$ct中class为item的子元素<br>16.获取$ct里所有的孩子<br>18.获取选择元素的数量</legend>
+          <ul class="findItmCt">
+              <a href="javascript:" class="item">我的class是"item"</a>
+              <li class="item">我的class是"item"</li>
+              <li class="myitem">我的class是"myitem"</li>
+              <li>
+                <ul>
+                  <li class="myitem">我的class是"myitem"</li>
+                  <li class="myitem">我的class是"myitem"</li>
+                  <a href="javascript:" class="item">我的class是"item"</a>
+                </ul>
+              </li>
+              <li class="myitem">我的class是"myitem"</li>
+          </ul>
+          <button class="findItmBtn">查找class为item的子元素</button>
+          数量为：<input class="itemNum"><br>
+          <button class="findAllBtn">查找$ct的所有孩子</button>
+          数量为：<input class="myitemNum">
+      </fieldset>
+
+
+
+
+      <fieldset>
+          <legend>17.对于$node,向上查找到class为".ct"的父亲，再从该父亲找到".panel"的孩子</legend>
+          <ul class="father">
+            <li class="son1">son1</li>
+            <li class="son2">son2</li>
+            <li class="panel">panel</li>
+            <li class="son3">son3</li>
+          </ul>
+          <button class="findSon">通过son1的父亲找到son2</button>
+      </fieldset>
+
+
+      <fieldset>
+          <legend>19.获取当前元素在兄弟中的排行</legend>
+          <ul class="fatherUl">
+              <li class="sonLi item">li1</li>
+              <li class="sonLi item">li2</li>
+              <li class="sonLi item">li3
+                 <ul class="sonUl item">
+                   <li class="grandLi item">1</li>
+                   <li class="grandLi item">2</li>
+                   <li class="grandLi item">3</li>
+                 </ul>
+                 <ul class="sonUl item">
+                   <li class="grandLi item">1</li>
+                   <p class="grandLi item">一个段落</p>
+                   <li class="grandLi item">2</li>
+                   <li class="grandLi item">3</li>
+                   <li class="grandLi item">4</li>
+                 </ul>
+              </li>
+              <li class="sonLi item">li4</li>
+          </ul>
+          当前元素在兄弟中的排行：<input class="idx">
+      </fieldset>
+
+
+      <div class="scrollx"></div>
+      
+
+      
+    
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  
+    <script type="text/javascript">
+        $(".add").on("click",function(){
+          $(".box1").addClass("active");
+        })
+        $(".remove").on("click",function(){
+          $(".box1").removeClass("active");
+        })
+        $(".toggle").on("click",function(){
+          $(".box1").toggle("slow");
+        })
+
+        $(".getId").on("click",function(){
+          var id=$("img").attr("id");
+          $(".id").html(id);
+        })
+        $(".getSrc").on("click",function(){
+          var src=$("img").attr("src");
+          $(".src").html(src);
+        })
+        $(".getTitle").on("click",function(){
+          var title=$("img").attr("title");
+          $(".title").html(title);
+        })
+        $(".setId").on("click",function(){
+          var id=$("img").attr("id","mypic");
+        })
+        $(".setSrc").on("click",function(){
+          var src=$("img").attr("src","http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg");
+        })
+        $(".setTitle").on("click",function(){
+          var title=$("img").attr("title","吊坠");
+        })
+
+
+        var dataSrc=[
+        "http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg",
+        "http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg",
+        "http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg"
+        ]
+
+        $(".addAttr").on("mouseenter",function(){
+          var idx=$(this).index()-1;
+          $(this).attr("data-src",dataSrc[idx]);
+          var src=$(this).attr("data-src");
+          $(this).css("background", "url("+src+")");
+        })
+
+        var n=0,i=0;
+        $(".before").on("click",function(){
+            $(".ct").prepend("<p>新添内容"+(++n)+"</p>");
+        })
+        $(".after").on("click",function(){
+            $(".ct").append("<p>新添内容"+(++i)+"</p>");
+        })
+
+        $(".del").on("click",function(){
+          $(".origin").remove();
+        })
+
+        $(".clearAll").on("click",function(){
+          $(".ct").empty();
+        })
+
+        $(".addHtml").on("click",function(){
+            $(".ct1").html("<div class='btn'> 新添的html</div>");
+        })
+
+         $(".getVal").on("click",function(){
+              var $width=$(".getValBox").width();
+              var $height=$(".getValBox").height();
+              var $innerW=$(".getValBox").innerWidth();
+              var $innerH=$(".getValBox").innerHeight();
+              var $outerW=$(".getValBox").outerWidth();
+              var $outerH=$(".getValBox").outerHeight();
+              var $outerWT=$(".getValBox").outerWidth(true);
+              var $outerHT=$(".getValBox").outerHeight(true);
+              $($(".wh").find("input")[0]).val($width+"px");
+              $($(".wh").find("input")[1]).val($height+"px");
+              $($(".inner").find("input")[0]).val($innerW+"px");
+              $($(".inner").find("input")[1]).val($innerH+"px");
+              $($(".outer").find("input")[0]).val($outerW+"px");
+              $($(".outer").find("input")[1]).val($outerH+"px");
+              $($(".outerT").find("input")[0]).val($outerWT+"px");
+              $($(".outerT").find("input")[1]).val($outerHT+"px");
+        })
+
+          $(".setVal").on("click",function(){
+              var $width= $($(".wh").find("input")[0]).val();
+              var $height=$($(".wh").find("input")[1]).val();
+              $(".getValBox").width($width);
+              $(".getValBox").height($height);
+        })
+
+
+          
+          $(window).on("scroll",function(){
+              var $scrollTop=$(window).scrollTop();
+              var $scrollLeft=$(window).scrollLeft();
+              $($(".fix").find("span")[0]).text($scrollTop);
+              $($(".fix").find("span")[1]).text($scrollLeft);
+             
+          })
+
+          $(".scroDisBtn").on("click",function(){
+              $(".fix").show();
+              $(".scrollx").show();
+          })
+
+
+
+          $(".getOffset").on("click",function(){
+            $(".offset").each(function(){
+              $($(this).find("span")[0]).text($(this).offset().left);
+              $($(this).find("span")[1]).text($(this).offset().top);
+            })
+          })
+
+          $(".changeStyleBtn").on("click",function(){
+            $(this).parent().find(".box").addClass('changeStyle');
+          })
+
+          $(".through").on("click",function(){
+             console.log($(this));
+            $(this).parent().find("li").each(function(i,ele){
+              console.log($(this));
+              $(".cloneUl").append($(this).clone().css("color","orange"));
+            })
+          })
+
+          $(".findItmBtn").on("click",function(){
+              $(".findItmCt").find("*").css("border","")
+              $(".findItmCt").find(".item").css("color","orange")
+              var length=$(".findItmCt").find(".item").length;
+              $(".itemNum").val(length);
+          })
+           $(".findAllBtn").on("click",function(){
+              $(".findItmCt").find(".item").css("color","black");
+              $(".findItmCt").find("*").css("border","1px solid red")
+              var length=$(".findItmCt").find("*").length;
+              $(".myitemNum").val(length);
+          })
+
+          $(".findSon").on("click",function(){
+             $(".son1").parents(".father").find(".panel").css("color","orange");
+          })
+
+          $(".item").on("click",function(){
+              event.stopPropagation();
+              $(".idx").val($(this).index());
+          })
+
+
+
+
+
+          
+
+
+
+
+
+       
+
+          
+
+        
+
+
+        
+
+       
+    </script>
+</body>
+</html>

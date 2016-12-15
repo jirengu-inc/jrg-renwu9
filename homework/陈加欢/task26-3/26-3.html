@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        li{
+            border:1px solid #ccc;
+            margin:10px;
+            padding: 10px;
+            list-style: none;
+        }
+        li:hover{
+            background: #008000;
+            cursor: pointer;
+        }
+        button{
+            position: relative;
+            left: 50%;
+            transform: translate(-50%);
+            border:1px solid #e27272;
+            border-radius: 3px;
+            color:#e27272;
+            background: #fff;
+            padding:10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+  </style>
+</head>
+<body>
+    <ul>
+        <li>内容1</li>
+        <li>内容2</li>   
+    </ul>
+    
+    <button>加载更多</button>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        var cur=2,
+            len=6;
+        $("button").on("click",function(){
+            if($(this).data("isloading")){
+                return;
+            }
+            $(this).data("isloading",true)
+                   .text("正在加载...")
+            $.ajax({
+                url:"getmore.php",
+                dataType:"json",
+                type:"get",
+                data:{
+                    start:cur,
+                    len:len
+                },
+                success:function(json){
+                    onSuccess(json);
+                },
+                error:function(){
+                    onError();
+                }
+
+            });
+        })
+        function onSuccess(json){
+            // console.log(json.data)
+            $("button").data("isloading",false)
+                       .text("加载更多");
+            if(json.status==1){
+                append(json.data);
+                cur +=6;
+            }else{
+                alert("获取数据失败")
+            }
+        }
+
+        function onError(){
+            $("button").data("isloading",false)
+                      .text("加载更多");
+            alert("系统异常")
+        }
+
+        function append(arr){
+            for(var i=0; i<arr.length; i++){
+                $("ul").append("<li>"+arr[i]+"</li>");
+            }
+        }
+    </script>
+
+</body>
+</html>
