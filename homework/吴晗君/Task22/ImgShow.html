@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ImgShow</title>
+</head>
+<body>
+<ul>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<img src="" alt=""/>
+
+<script>
+    var ul = document.getElementsByTagName('ul')[0];
+    var div1 = document.getElementsByClassName("img-preview")[0];
+    var child = ul.children;
+    //用事件代理
+    function f(event) {
+        var dataImg = event.target.getAttribute('data-img');
+        div1.innerHTML = '<img src="' + dataImg + '">';
+    }
+    ul.addEventListener('mouseover', f, false);
+    //用for循环
+    function f2() {
+        var dataImg = this.getAttribute('data-img');
+        div1.innerHTML = '<img src = "' + dataImg + '">';
+    }
+    for (var i = 0; i < child.length; ++i) {
+        child[i].addEventListener('mouseenter', f2, false);
+    }
+</script>
+</body>
+</html>
