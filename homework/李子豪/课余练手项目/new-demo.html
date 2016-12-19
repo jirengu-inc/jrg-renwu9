@@ -627,38 +627,7 @@
 	font-size:50px;
 	transition:1s;
 }
-#flash li:first-child{
-	top:43px;
-	left:1225px;
-}
-#flash li:nth-child(2){
-	top:183px;
-	left:525px;
-}
-#flash li:nth-child(3){
-	top:143px;
-	left:1225px;
-}
-#flash li:nth-child(4){
-	top:443px;
-	left:425px;
-}
-#flash li:nth-child(5){
-	top:643px;
-	left:985px;
-}
-#flash li:nth-child(6){
-	top:343px;
-	left:1125px;
-}
-#flash li:nth-child(7){
-	top:543px;
-	left:1325px;
-}
-#flash li:nth-child(8){
-	top:343px;
-	left:525px;
-}
+
 	</style>
 </head>
 <body>
@@ -720,8 +689,6 @@
 		<p>阿里腾讯<span>资深</span>前端工程师授课</p>
 		<p>业内<span>绝无仅有</span>的Nodejs课程</p>
 		<a id="login" href="https://www.wenjuan.com/s/uUjEZv/">申请试听</a>
-		<!--<img src="飞石.png" alt="">-->
-		<!--<img src="1.png" alt="">-->
 	</div>
 </header>
 <!-- ——————————————————HEADER内容完成—————————————— -->
@@ -847,13 +814,15 @@
 		for(i=0;i<value.length;i++){
 		if(value[i].style.textShadow=="none"){
 			value[i].style.textShadow="0px 0px 20px #fff";
+			value[i].style.top=Math.random()*800+"px";
+			value[i].style.left=Math.random()*1920+"px"
 		}
 		else{
 			value[i].style.textShadow="none"
 		}
 	}
 	}
-	setInterval("run(hot)",500);
+	setInterval("run(hot)",2000);
 
 	var cool=document.getElementById("login");
 	function light(value){

@@ -1,0 +1,103 @@
+/*重置*/
+html,body,ul,li,p,h1,h4{margin:0;
+                    padding:0;
+                    }
+html,body{width: 100%;
+          height: 100%;
+          }
+li{list-style:none;}
+a{text-decoration: none;
+  color:#666;
+  }
+a:hover{color:#333;}
+.layout{width: 1000px;
+        margin:0 auto;
+        }
+.clearfix:after{content: "";
+          display: block;
+          clear: both;
+          }
+.btn{border: 1px solid #ccc;
+             width: 50px;
+             height: 30px;
+             line-height: 30px;
+             display: inline-block;
+             border-radius: 3px;
+             }          
+/*头部*/
+#header{border: 1px solid #ccc;}       
+/*logo*/
+.header-logo{float: left;
+             font-size:30px;
+             line-height: 50px;
+             }
+/*导航*/
+.header-nav{float: left;
+            margin-left:20px ;
+            }
+.header-nav>li{float:left;
+               height: 50px;
+               line-height: 50px;
+               padding: 0 10px;
+               position:relative;
+               }
+.header-nav .menu{position: absolute;
+                  top:100%;
+                  left:0;
+                  display: none;
+                  border: 1px solid #ccc;
+                  background-color:#fff ;
+                  }
+.header-nav>li:hover .menu{display: block;}
+.menu>li{line-height: 1;
+         padding:10px;
+         border-bottom: 1px dashed #ccc;
+         }
+.menu>li:last-child{border: none;}         
+.menu>li:hover{background-color:#eee ;}
+/*内容*/
+.main-title{background-color:#b84d45 ;
+            color: #fff;
+            padding:30px 0;
+            border-radius: 3px;
+            }
+.main-list{background-color:#eee ;
+           margin-top:40px;
+           padding: 10px 10px;
+           }
+.main-list a{color:brown}
+.project{margin-left:-45px ;
+         margin-top:30px ;
+         }
+.project>li{float: left;
+            margin-left:45px ;
+            border: 1px solid #ccc;
+            padding-bottom: 10px;
+            text-align: center;
+            margin-bottom:20px ;
+            }
+.project>li>img{width: 300px;
+                height: 200px;
+                }            
+.project li>h4{text-align: left;
+               padding: 5px 10px;
+               }
+.project li>p{text-align: left;
+               padding: 5px 10px;
+               }               
+.project p{font-size: 14px;}
+.download{background-color:#b84d45 ;
+          text-align: center;
+          color: #fff;
+          padding: 30px 0;
+          margin-top:30px;
+          }
+.download a{color: #fff;
+            margin-top:10px ;
+            }
+/*底部*/
+#footer p{text-align: center;
+          border-top: 1px solid #ccc;
+          margin: 30px 0;
+          padding-top:30px ;
+          }

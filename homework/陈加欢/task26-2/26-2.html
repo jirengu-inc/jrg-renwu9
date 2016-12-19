@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+
+        fieldset{
+            margin-bottom: 20px;
+        }
+        input{
+            outline:none;
+        } 
+        .btn{
+            width: 80px;
+            height: 40px;
+           }
+
+        .fix{
+          position: fixed;
+          display: none;
+          right: 0;
+          top:100px;
+          widows: 200px;
+          height: 100px;
+          padding: 20px;
+          font-size: 30px;
+          background: rgba(0,0,0,0.3);
+        }
+        .scrollx{
+              width: 2500px;
+              height: 3000px;
+              display: none;
+        }
+        .box{
+            width:100px;
+            height: 100px;
+            border:1px solid #ddd;
+        }
+
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>1.当点击$btn时，让$btn的背景色变为红色再变为蓝色</legend>
+        <button class="btn">$btn</button>
+    </fieldset>
+
+
+
+     <fieldset>
+          <legend>2.获取窗口滚动条垂直滚动距离</legend>
+          <button class="scroDisBtn">点击获取窗口滚动距离</button>
+          <div class="fix">
+            窗口滚动条垂直滚动距离：<span></span><br>
+            窗口滚动条水平滚动距离：<span></span>
+          </div>
+      </fieldset>
+
+
+
+      <fieldset>
+        <legend>3.当鼠标放置在$div上，$div背景色变成红色，移除时变为白色</legend>
+        <div class="box"></div>
+    </fieldset>
+
+
+    <fieldset>
+          <legend>4.input框激活时边框变为蓝色，内容改变时把内容变大写，失去焦点时去掉蓝色边框，控制台展示输入框里的内容</legend>
+          <input class="ipt">
+      </fieldset>
+
+
+
+    <fieldset>
+        <legend>5.当选择select后，获取用户选择的内容</legend>
+        <select>
+            <option>苹果</option>
+            <option>香蕉</option>
+            <option>樱桃</option>
+            <option>菠萝</option>
+        </select>
+        用户选择的是：<input class="select">
+    </fieldset>
+
+
+    <div class="scrollx"></div>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(".btn").on("click",function(){
+            var $this=$(this)
+            $this.css("background","red");
+            setTimeout(function(){
+                $this.css("background","blue")
+            },1000)
+                   
+        })
+
+
+         $(window).on("scroll",function(){
+              var $scrollTop=$(window).scrollTop();
+              var $scrollLeft=$(window).scrollLeft();
+              $($(".fix").find("span")[0]).text($scrollTop);
+              $($(".fix").find("span")[1]).text($scrollLeft);
+             
+          })
+
+          $(".scroDisBtn").on("click",function(){
+              $(".fix").show();
+              $(".scrollx").show();
+          })
+
+        $(".box").on("mouseenter",function(){
+            $(this).css("background","red");
+        })
+         $(".box").on("mouseleave",function(){
+            $(this).css("background","#fff");
+        })
+
+        $(".ipt").on("focusin",function(){
+            $(this).css("border","1px solid blue");
+            $(this).css("box-shadow","1px 1px 4px blue");
+         })
+        $(".ipt").on("focusout",function(){
+            $(this).css("border","1px solid #a9a9a9");
+             $(this).css("box-shadow","");
+         })
+        $(".ipt").on("change",function(){
+            $(this).val($(this).val().toUpperCase());
+            console.log($(this).val());
+         })
+
+        $("select").on("change",function(){
+            $(".select").val($("select option:selected").val())
+        })
+    </script>
+</body>
+</html>

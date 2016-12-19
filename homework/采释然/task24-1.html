@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	    li{
+	    	list-style: none;
+			border: 1px solid #aaa;
+			padding: 10px;
+			cursor: pointer;
+			margin-bottom: 10px;
+		}
+		.btn{
+			padding: 5px 10px;
+			border: 1px solid #DB5A5D;
+			background-color: #fff;
+			border-radius: 5px;
+			color: #DB5A5D;
+			cursor: pointer;
+			display: block;
+			margin: 0 auto;
+		}
+		li:hover{
+			background-color: #228C4C;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<button class="btn">加载更多</button>
+	<script type="text/javascript">
+		function ajax(obj){
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState === 4 && xhr.status === 200){
+					var json = JSON.parse(xhr.responseText);
+					obj.success(json)
+				}else if(xhr.readyState === 4 && xhr.status === 404){
+					obj.error()
+				}
+			};
+		var datastr = '';
+		for(var i in obj.data){
+                datastr += i+'='+obj.data[i]+'&';
+		}
+		datastr = datastr.substr(0,datastr.length-1);
+		if(obj.type.toUpperCase() === 'GET'){
+		    xhr.open('GET',obj.url+'?'+datastr,true);
+		    xhr.send();
+		}else if(obj.type.toUpperCase() === 'POST'){
+			xhr.open('POST',obj.url,true);
+			xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xhr.send(datastr);
+		}
+		}
+		var btn = document.querySelector('.btn');
+		var ul = document.getElementsByTagName('ul')[0];
+		var lock = false;
+		var start = 2;
+		btn.addEventListener('click',function(){
+            if(lock){
+            	return;
+            }else{
+            	lock = true;
+            	ajax({
+            		url: 'task24-1.php',
+            		type: 'get',
+            		data: {
+            			start: start,
+            			len: 6
+            		},
+            		success: function(vl){
+            			console.log(vl);
+            			for(var i = 0;i<vl.length;i++){
+            				var li = document.createElement('li');
+            				li.innerText = vl[i];
+            				ul.appendChild(li);
+            				start += 1;
+            			}
+            		lock = false;
+            		},
+            	    error: function(){
+            	    	alert('出错了');
+            	    	locked = false;
+            	    }
+            	})
+            }
+		},false)
+	</script>
+</body>
+</html>
