@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-30</title>
+	<style type="text/css">
+	#ct{
+		position: relative;
+	}
+	.item{
+		position: absolute;
+		margin:10px 10px 0 0; 
+		width: 200px;
+		transition: all 1s;
+	}
+	.h1{
+		background: indigo;
+		height: 200px;
+	}
+	.h2{
+		background: pink;
+		height: 300px;	
+	}
+	.h3{
+		background: blue;
+		height: 400px;	
+	}
+	
+	</style>
+</head>
+<body>
+
+ <div id="ct">
+ 	<div class="item h2">
+ 		1
+ 	</div>
+ 	<div class="item h1">
+ 		2
+ 	</div>
+ 	<div class="item h3">
+ 		3
+ 	</div>
+ 	<div class="item h2">
+ 		4
+ 	</div>
+ 	<div class="item h3">
+ 		5
+ 	</div>
+ 	<div class="item h1">
+ 		6
+ 	</div>
+ 	<div class="item h2">
+ 		7
+ 	</div>
+ 	<div class="item h3">
+ 		8
+ 	</div>
+ 	<div class="item h2">
+ 		9
+ 	</div>
+ 	<div class="item h1">
+ 		10
+ 	</div>
+ 	<div class="item h3">
+ 		11
+ 	</div>
+ 	<div class="item h2">
+ 		12
+ 	</div>
+ 	<div class="item h1">
+ 		13
+ 	</div>
+ 	<div class="item h3">
+ 		14
+ 	</div>
+
+ </div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//最粗糙了瀑布流
+	function render(){
+		// var $itemWidth=$('.item').outerWidth(true);
+	// var $colNum=parseInt($(window).width()/$itemWidth);
+	// var colSumHeight=[];
+
+	// for(var i=0;i<$colNum;i++){
+	// 	colSumHeight.push(0)
+	// }
+
+	// $('.item').each(function(){
+	// 	var $cur=$(this);
+	// 	var idx=0;
+	// 	var minSumHeight=colSumHeight[0];
+	// 	for(var i=0;i<colSumHeight.length;i++){
+	// 		if(colSumHeight[i]<minSumHeight){
+	// 			idx=i
+	// 		    minSumHeight=colSumHeight[i]
+	// 		}
+	// 	}
+	// 	$cur.css({
+	// 		left:idx*$itemWidth,
+	// 		top:minSumHeight
+	// 	})
+	// 	colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
+
+	// });
+	// $(window).on('resize',function(){
+	//				render();
+	//			})
+	}
+	render();
+	
+
+	// 没有考虑到浏览器窗口的缩放，改装后
+	$(function(){
+			var waterfall=(function($){
+
+			function render(){
+				var elWidth=$('.item').outerWidth(true),
+				colNum=parseInt($(window).width()/elWidth),
+				colSumHeight=[];
+
+				for(var i=0;i<colNum;i++){
+					colSumHeight.push(0);
+				}
+				
+				$('.item').each(function(){
+					var $cur=$(this);
+
+					var idx=0,
+					minSumHeight=colSumHeight[0];
+
+					for(var i=0;i<colSumHeight.length;i++){
+						if(colSumHeight[i]<minSumHeight){
+							idx=i;
+							minSumHeight=colSumHeight[i];
+							}
+						}
+					$cur.css({
+						left:idx*elWidth,
+						top:minSumHeight
+					});
+					colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
+				})		
+			}
+			render()
+
+			$(window).on('resize',function(){
+					render();
+				})
+			return{
+				init:render
+		    }
+		})(jQuery)
+		waterfall.init();
+
+	})
+	
+	
+	
+		
+	
+
+
+
+</script>
+
+
+</body>
+</html>

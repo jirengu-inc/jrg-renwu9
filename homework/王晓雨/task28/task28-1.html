@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task28-1</title>
+	<style type="text/css">
+	html,body,div{margin: 0;padding: 0;box-sizing: border-box;}
+	#header{
+		margin-top: 10px;
+		padding: 20px;
+		margin-bottom: 20px;
+		background: red;
+		text-align: center;
+	}
+	#nav{padding: 20px;background: blue;width: 100%}
+	#content{border:10px solid #ccc;background: #ccc;}
+	.aside{
+		float: left;
+		width:10%;
+		height: 400px;
+		background: green;	
+		font-size: 16px;
+		border-right: 20px solid #ccc;
+	}
+	 #content .main{
+		float: left;
+		height: 800px;
+		background: white;
+		width: 90%;
+		font-size: 16px;
+	}
+	#content:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+	#footer{
+		background: #333;
+		padding: 10px;
+	}
+	.fix{
+		position: fixed;
+		top:0;
+		z-index: 10;
+	}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="nav">nav</div>
+	<div id="content">
+		<div class="aside">aside</div>
+		<div class="main">main</div>
+	</div>
+	<div id="footer">footer</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script type="text/javascript">
+	/*这种方法可以插在#nav元素的前后均可，但是也有弊端，就是fixed的时候会出现
+	  #nav div元素在原来不设宽度的情况下默认占据一行的效果改变为div的宽度会缩短：
+
+	  1.在#nav前插入clone元素，宽度为盒子内部文字撑起的宽度，很短
+	  2.在#nav后插入clone元素，宽度为页面宽度的1/3左右，原因不明
+	  3.解决方法：把#nav的width写死，设置为100%即可
+	  4.老师的写法适用性更好，代码量更大
+	 */
+		$.fn.stick=function(){
+			var $nav=this;
+			//var navWidth=$nav.width();
+			var $btn=$nav.clone().css({opcity:0}).insertBefore($nav).hide();
+			var navOriginTop=$nav.offset().top;
+			$(window).scroll(function(){
+				var navTop=$(window).scrollTop();
+				if(navTop>=navOriginTop){
+					$btn.addClass('fix');
+					//$nav.width(navWidth);插在后面的写，并且$btn和$show对换
+					$btn.show();
+				}else if(navTop<navOriginTop){
+					$btn.removeClass('fix');
+					$btn.hide()
+				}
+			});
+		}	
+		$('#nav').stick();
+	</script>
+</body>
+</html>

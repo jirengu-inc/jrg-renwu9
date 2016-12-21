@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无限加载瀑布流</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0}
+	ul,li{list-style: none}
+	.waterfall{width:910px;margin: 0 auto;}
+	#list{position: relative;}
+	#list .item{
+		position: absolute;
+		width: 280px;
+		border:1px solid #ccc;
+		margin: 10px;
+		padding: 0 0 10px 0;
+		background: #fff;
+		box-shadow: 5px 5px 5px #ccc;
+		border-radius: 5px;
+		transition: all 0.8s;		
+	}
+	#list .item img{
+		width: 260px;
+		margin: 10px;
+	}
+	#list .item .header{
+		height: 25px;
+		margin: 0 12px;
+		border-bottom: 1px solid #dbd;
+	}
+	#list .item .info{
+		font-size: 12px;
+		line-height: 1.5;
+		margin: 10px 15px 0px;
+		color: #777371;		
+	}
+	.clearfix:after{
+		display: block;
+		content: '';
+		clear: both;			
+	}
+	.hide{display: none;}
+	.load{visibility: hidden;}
+	</style>
+</head>
+<body>
+	<div class="waterfall">
+		<ul  id="list" class="clearfix">
+			<!-- <li class="item">
+			<a href="#" class="link">
+				<img src="http://www.sinaimg.cn/dy/slidenews/5_img/2016_49/453_83351_716724.gif">
+			</a>
+			<h4 class="header">4米长蟒蛇将小袋鼠整个吞下</h4>
+			<p class="info">在澳大利亚天堂棕榈高尔夫球场上，一条4米长的蟒蛇将一整只小袋鼠囫囵吞下。</p>
+			</li> -->
+			<!-- 用于计算 item 宽度和列数，但不展示出来-->
+			<li class="item hide"></li>
+		</ul>
+		<div class="load">hide div</div>
+	</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//为了让用户看到数据，先加载一次
+	
+	//检查是否加载部分
+	checkShow()
+
+	function checkShow(){
+		var winH=$(window).height();
+		var scrollTop=$(window).scrollTop();
+		var loadTop=$('.load').offset().top;
+
+		if(loadTop<winH+scrollTop){
+			getData()
+		}
+	}
+
+	//当窗口滚动的时候检测是否图片已存在
+	$(window).on('scroll',function(){
+		if(clock){
+			clearInterval(clock)
+		}
+		var clock=setInterval(checkShow(),100)
+	})
+
+	//利用jsonp获取数据
+	var isLoaded=false;
+	var loadNum=6,
+		curPage=1;
+	function getData(){
+		if(!isLoaded){
+			isLoaded=true;
+			$.ajax({
+				url:'http://platform.sina.com.cn/slide/album_tech?jsoncallback=?&app_key=1271687855&num='+loadNum+'&page='+curPage,
+				dataType:'jsonp',
+				jsonp:'jsoncallback'
+				}).done(function(ret){
+					var nodes=formData(ret.data);
+					waterfallArr(nodes);
+					curPage++;
+					isLoaded=false;
+				}).fail(function(){
+					alert("Can Not Get Data,Fail!!!")
+				});
+			}
+		}
+	//处理数据的格式，字符串拼接
+	function formData(arr){
+		var nodes,
+			str='';
+
+		for(var i=0;i<arr.length;i++){
+			str+='<li class="item">';
+			str+='<a href="'+arr[i].url+'" class="link"><img src="'+arr[i].img_url+'"></a>';
+			str+='<h4 class="header">'+arr[i].short_name+'</h4>';
+			str+='<p class="info">'+arr[i].short_intro+'</p>';
+			str+='</li>';
+		}
+		nodes=$(str);
+		$('#list').append(nodes);
+		return nodes;
+	}
+
+	//瀑布流排列部分
+	var listW=$('#list').outerWidth(true);
+	var itemW=$('.item').outerWidth(true);
+	var colNum=parseInt(listW/itemW);
+	var colHeightArr=[];
+
+	 if(colHeightArr.length==0){
+	 	for(var i=0;i<colNum;i++){
+	 		colHeightArr.push(0)
+	 	}
+	 }
+
+	 function waterfallArr(nodes){
+	 	nodes.each(function(){
+	 		var cur=$(this);
+	 		cur.find('img').on('load',function(){
+	 			var idx=0,
+	 			    minColH=colHeightArr[0];
+	 			for(var i=0;i<colHeightArr.length;i++){
+	 				if(colHeightArr[i]<minColH){
+	 					idx=i;
+	 					minColH=colHeightArr[i]
+	 				}
+	 			}
+	 		cur.css({
+	 			left:idx*itemW,
+	 			top:minColH
+	 			})
+	 		colHeightArr[idx]+=cur.outerHeight(true);
+	 		})
+	 	})
+	 }
+	</script>
+</body>
+</html>

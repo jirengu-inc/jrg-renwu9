@@ -1,0 +1,139 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft Yahei";
+	text-align: center;
+}
+.intro{
+	background: url(img/headerbg.jpg);
+	height: 500px;
+}
+.intro .layout{
+	padding: 180px 0;
+}
+.intro .layout p{
+	margin: 10px;
+}
+.layout{
+	margin: 0 auto;
+	width: 960px;
+}
+.about{
+	margin: 50px 0;
+}
+a{
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	color: white;
+	text-decoration: none;
+	background: rgba(150, 150, 150, 0.6);
+}
+a:hover{
+	background: rgba(100, 100, 100, 0.5);
+}
+.layout p a{
+	display: inline;
+	background: none;
+	color: blue;
+}
+.layout p a:hover{
+	color: gray;
+	text-decoration: underline;
+}
+.services, .more{
+	background: blue;
+	color: white;
+	padding: 50px;
+}
+.services h1{
+	border-bottom: 1px solid white;
+	width: 240px;
+	padding: 10px;
+	margin: 50px auto;
+}
+.services-list a{
+	margin: 20px 0;
+}
+.fontello{
+	font-family: fontello;
+}
+.services-list .fontello{
+	font-size: 100px;
+}
+.contact .fontello-list{
+	display: inline-block;
+	margin: 30px 10px;
+	font-size: 50px;
+	color: blue;
+}
+.contact .fontello-list>li:hover{
+	color: gray;
+    cursor: pointer;
+}
+ul{
+	list-style: none;
+}
+.services-list li, .work-list li, .fontello-list li{
+	float: left;
+	margin: 30px;
+}
+.work-list li{
+	margin: 0 10px;
+}
+.fontello-list li{
+	margin: 10px;
+}
+.layout:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.services-list a{
+	background: white;
+	color: black;
+	width: 160px;
+	height: 50px;
+}
+.services-list a:hover{
+	background: gray;
+	color: white;
+}
+#content .descr{
+	background: url(img/contentbg.jpg);
+	height: 400px;
+	line-height: 400px;
+	font-size: 40px;
+	color: white;
+}
+.work h1{
+	border-bottom: 1px solid gray;
+	width: 200px;
+	padding: 10px;
+	margin: 50px auto;
+}
+.work img{
+	width: 450px;
+	height: 240px;
+}
+.work-list a{
+	display: inline;
+}
+.more{
+	margin: 50px 0;
+}
+.more a{
+	margin: 10px 0;
+}
+.more a+a{
+	background: white;
+	color: black;
+}
+.more a+a:hover{
+	background: gray;
+	color: white;
+}
+.contact{
+	margin: 100px 0;
+}

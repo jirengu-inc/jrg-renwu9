@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>dialog</title>
+	<style type="text/css">
+	html,body{height: 100%}
+	.dialog{
+		position: absolute;
+		z-index: 9999;
+		left:35%;
+		top:30%;
+		font-size: 14px;
+		padding-bottom: 10px;
+		border-radius: 3px;
+		background: #eee;
+		width: 328px;
+		box-shadow: 0px 0px 5px 2px rgba(0,0,0,.5);
+		-ms-user-select:none;
+		-webkit-user-select:none;
+		-moz-user-select: none;  
+	}
+	.dialog .dialog-header{
+		padding: 10px 19px;
+		background: orange;
+		color:#fff;
+	}
+	.dialog .dialog-header h3{
+		margin: 0;
+		font-size: 14px;
+	}
+	.dialog .dialog-header .btn-close{
+		position: absolute;
+		right: 10px;
+		top:8px;
+		font-family: fantasy;
+		cursor: pointer;
+	}
+	.dialog .dialog-content{
+		padding: 10px;
+		margin: 13px;
+		color:#666;
+		font-size: 11px;
+	}
+	.dialog .dialog-footer{
+		text-align: center;
+	}
+	a.btn{
+		position: relative;
+		text-align: center;
+		background: #e33100;
+		display: inline-block;
+		width: 50px;
+		padding: 5px 0;
+		margin: 2px;
+		text-decoration: none;
+		border-radius: 3px;
+		color:#fff;
+	}
+	a.btn:hover{
+		background: #c33100;
+	}
+	.draggable{
+		opacity: 0.8;
+		cursor: move;
+	}
+	</style>
+</head>
+<body>
+	<div class="dialog" style="display: none;">
+		<div class="dialog-box">
+			<div class="dialog-header">
+				<h3></h3>
+				<span class="btn-close">x</span>
+			</div>
+			<div class="dialog-content"></div>
+			<div class="dialog-footer">
+				<a href="#" class="btn btn-close">确定</a>
+				<a href="#" class="btn btn-confirm">取消</a>
+			</div>
+		</div>
+	</div>
+
+	<button id="open1">打开1</button>
+	<button id="open2">打开2</button>
+	<button id="open3">打开3</button>
+	<button id="open4">打开4</button>
+	<button id="open5">打开5</button>
+	<h1>知识和总结</h1>
+	<p>应该先把字符串拼接的模板测试一下,不然出现各种错误</p>
+	<p>CSS3的user-select：none属性，不让用户选中文本，IE10+以上</p>
+	<p>创建构造函数有两个功能，动态的创建dialog,为它绑定事件</p>
+	<p>dialog原型对象上设置公共的属性和方法</p>
+	<p>setOpts属性，对传入的数据进行类型检测,根据类型使用$.extend({},this.defaultOpts,opts)，合并 defaults 和 options 对象，并且不修改 defaults 对象。</p>
+	<p>鼠标事件，区分mousedown,mouseup,mousemove,</p>
+	<p>利用event.pageX/Y和dialog.offset.top/left,实现拖曳</p>
+	<p>拖拽效果有瑕疵，超出可视界面的边界？</p>
+	<p>疑惑，removeData(pos)和data(evtPos)的名称不相同，removeData()起作用？</p>
+	<p>疑惑：$('.draggable').length&& 有什么作用？是判断$('.draggable')存在才执行？</p>
+	<p>经常性错误,名字写错提示,直接ctrl+h全部替换为正确的名字,对象的属性和方法用","而不是";"</p>
+ <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+ <script type="text/javascript">
+	//功能描述：
+	// 1. 可使用 dialog.open() 去打开弹窗
+	// 2. 当点击确定、取消时可使用用户自定义事件
+	// 3. dialog 可拖动
+	// 4. 允许页面展示多个 dialog
+
+
+ 	function Dialog(){
+ 		this.createDialog();
+ 		this.bindEvent();
+ 	}
+
+ 	Dialog.prototype={
+ 		defaultOpts:{
+ 			title:'',
+ 			message:'',
+ 			isShowCloseBtn:true,
+ 			isShowComfirmBtn:false,
+ 			onClose:function(){},
+ 			onConfirm:function(){}
+ 		},
+
+ 		open:function(opts){
+ 			this.setOpts(opts);
+ 			//console.log(this.opts);
+ 			this.setDialog();
+ 			//console.log(1)
+ 			this.showDialog();
+ 		},
+
+ 		close:function(){
+ 			this.hideDialog()
+ 		},
+
+ 		setOpts:function(opts){
+ 			if(typeof opts==='string'){
+ 				this.opts=$.extend({},this.defaultOpts,{
+ 					message:opts
+ 				});				
+ 			}else if(typeof opts==='object'){
+ 				this.opts=$.extend({},this.defaultOpts,opts)
+ 			}
+ 		},
+
+ 		bindEvent:function(){
+ 			var cur=this;
+ 			cur.$dialog.find('.btn-close').on('click',function(e){
+ 				e.preventDefault();//阻止a标签的默认事件
+ 				cur.opts.onClose();
+ 				cur.hideDialog();
+ 			});
+ 			cur.$dialog.find('.btn-confirm').on('click',function(e){
+ 				e.preventDefault();
+ 				cur.opts.onConfirm();
+ 				cur.hideDialog();
+ 			});
+
+ 			cur.$dialog.on('mousedown',function(e){
+ 				var $dialog=$(this),
+ 					evtX=e.pageX-$dialog.offset().left,
+ 					evtY=e.pageY-$dialog.offset().top;
+ 				$dialog.addClass('draggable').data('evtPos', {
+ 					x:evtX,
+ 					y:evtY
+ 				});
+ 			});
+ 			$('body').on('mousemove',function(e){
+ 				$('.draggable').length && $('.draggable').offset({
+ 					top:e.pageY-$('.draggable').data('evtPos').y,
+ 					left:e.pageX-$('.draggable').data('evtPos').x
+ 				})
+ 			})
+ 			$('body').on('mouseup',function(){
+ 				$('.draggable').length && $('.draggable').removeClass('draggable').removeData('evtPos')
+ 			})
+ 		},
+
+		createDialog:function(){
+			var str='<div class="dialog" style="display:none">'
+			   str+='<div class="dialog-box">'
+			   str+='<div class="dialog-header">'
+			   str+='<h3></h3><span class="btn-close">x</span></div>'
+			   str+='<div class="dialog-content"></div>'
+			   str+='<div class="dialog-footer">'
+			   str+='<a href="#" class="btn btn-close">取消</a>'
+			   str+='<a href="#" class="btn btn-confirm">确定</a>'
+			   str+='</div>'+'</div>'+'</div>'
+			 this.$dialog=$(str);
+			 $('body').append(this.$dialog);
+		},
+
+		setDialog:function(){
+			var $dialog=this.$dialog;
+			
+			if(!this.opts.title){
+				$dialog.find('.dialog-header').hide()
+			}else{
+				$dialog.find('.dialog-header').show()
+			}
+
+			if(!this.opts.isShowCloseBtn){
+				$dialog.find('.dialog-footer .btn-close').hide()
+			}else{
+				$dialog.find('.dialog-footer .btn-close').show()
+			}
+
+			if(!this.opts.isShowComfirmBtn){
+				$dialog.find('.dialog-footer .btn-confirm').hide()
+			}else{
+				$dialog.find('.dialog-footer .btn-confirm').show()
+			}
+			$dialog.find('.dialog-header h3').text(this.opts.title)
+			$dialog.find('.dialog-content').html(this.opts.message)
+		},
+
+		showDialog:function(){
+			// console.log(2)
+			this.$dialog.show()
+		},
+
+		hideDialog:function(){
+			// console.log(3)
+			this.$dialog.hide()
+		},
+
+		// distoryDialog:function(){
+		// 	this.$dialog.remove()
+		// }
+ 	};
+
+ 	//使用new来生成对象。
+	$('#open1').on('click',function(){
+		var dialog1=new Dialog();
+		dialog1.open('hello,这里是饥人谷')
+	});
+
+	$('#open2').on('click',function(){
+		var dialog2=new Dialog();
+		dialog2.open('<a href="http://jirengu.com">饥人谷</a>');
+	})
+
+	$('#open3').on('click',function(){
+		var dialog3=new Dialog();
+		dialog3.open({
+			title:'饥人谷',
+			message:'hello',
+			isShowCloseBtn:true,
+			isShowComfirmBtn:true,
+			onClose:function(){
+				alert('关闭弹窗')
+			},
+			onConfirm:function(){
+				alert('确定')
+			}
+		})
+	});
+
+	var str='';
+	 	str+='<ul><li>列表1</li><li>列表2</li><li>列表3</li><li>列表4</li><ul>';
+	$('#open4').on('click',function(){
+		var dialog4=new Dialog();
+		dialog4.open({
+			title:'欢迎来到饥人谷',
+			message:str,
+			isShowCloseBtn:true,
+			isShowComfirmBtn:true,
+			onClose:function(){
+				alert('关闭弹窗')
+			},
+			onConfirm:function(){
+				alert('确定')
+			}
+		})
+	});
+
+	$('#open5').on('click',function(){
+		var dialog5=new Dialog();
+		dialog5.open({
+			title:'欢迎来到饥人谷',
+			message:'hello',
+			isShowCloseBtn:false,
+			isShowComfirmBtn:false
+		})
+	})
+	 	
+ </script>
+</body>
+</html>

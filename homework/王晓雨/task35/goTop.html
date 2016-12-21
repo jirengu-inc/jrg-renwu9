@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>goTop</title>
+	<style type="text/css" media="screen">
+	p{font-size: 30px;}
+	.btn{
+		display: none;
+		position: fixed;
+		right: 20px;
+		bottom: 20px;
+		width: 80px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		text-decoration: none;
+		color:#fff;
+		background: orange;
+	}
+	</style>
+</head>
+<body>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容5</p>
+	<p>内容6</p>
+	<p>内容7</p>
+	<p>内容8</p>
+	<p>内容9</p>
+	<p>内容10</p>
+	<p>内容11</p>
+	<p>内容12</p>
+	<p>内容13</p>
+	<p>内容14</p>
+	<p>内容15</p>
+	<p>内容16</p>
+	<p>内容17</p>
+	<p>内容18</p>
+	<p>内容19</p>
+	<p>内容20</p>
+	<p>内容21</p>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	//构造对象函数，传入参数 
+	function GoTop($ct,$target){
+		this.ct=$ct;
+		this.target=$target;
+	}
+	//对象的原型绑定事件和创建按钮
+	GoTop.prototype= {
+		bindEvent:function(){
+			var cur=this;
+			$(window).on('scroll',function(){
+				var offsetTop=$('body').scrollTop();
+				if(offsetTop>150){
+					cur.target.show()
+				}else{
+					cur.target.hide()
+				}
+			})
+			cur.target.on('click',function(){
+				$(window).scrollTop(0);
+			})
+		},
+		creatNode:function(){
+			this.target=$('<button class="btn">回到顶部</button>');
+			this.target.appendTo(this.ct);
+			this.bindEvent();
+		}
+	}
+	//生成对象的实例
+	var goTop=new GoTop($('html body'))
+		goTop.creatNode();
+	
+</script>
+</body>
+</html>
