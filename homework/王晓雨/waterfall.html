@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流</title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+		}
+	.box{
+		position: relative;
+		float: left;
+		}
+	.content{
+		padding: 10px;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		box-shadow: 0 0 5px #ccc;
+	}
+	.content img{
+		width: 190px;
+		height: auto;
+	}
+	</style>>
+</head>
+<body>
+	<div id="container">
+		<div class="box">
+			<div class="content">
+				<img src="img/1.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/2.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/3.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/4.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/5.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/6.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/7.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/8.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/9.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/10.jpg">
+			</div>
+		</div>	
+	<div class="box">
+			<div class="content">
+				<img src="img/1.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/2.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/3.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/4.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/5.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/6.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="../img/7.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/8.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/9.jpg">
+			</div>
+		</div>
+		<div class="box">
+			<div class="content">
+				<img src="img/10.jpg">
+			</div>
+		</div>							
+	</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(window).on("load",function(){
+			imgLocalpositon();
+		var dataImg={"data":[{"src":"1.jpg"},{"src":"2.jpg"},{"src":"3.jpg"},{"src":"4.jpg"},{"src":"5.jpg"}]};
+		window.onscroll=function(){
+			if(scrollside()){
+				$.each(dataImg.data,function(index,value){
+					var box=$("<div>").addClass("box").appendTo($("#container"));
+					var content=$("<div>").addClass("content").appendTo(box);
+					$("<img>").attr("src","img/"+$(value).attr("src")).appendTo(content);
+				});
+				imgLocalpositon();
+			}
+		}
+	})
+})
+
+function scrollside(){
+	var box=$(".box") ;
+	var lastboxHeight= box.last().get(0).offsetTop+Math.floor(box.last().height()/2);
+	var documentHeight=$(document).width();
+	var scorllHeight=$(window).scrollTop();	
+	return (lastboxHeight<scorllHeight+documentHeight)?true:false;
+}
+
+function imgLocalpositon(){
+	var box=$(".box");
+	var boxWidth=box.eq(0).width();//获取第一张图片的宽度
+	var num=Math.floor($(window).width()/boxWidth) //获取图片的数量
+	var boxArr=[];//用数组记录每个盒子的高度
+	box.each(function(index,value){	
+	//each()方法遍历，index是图片的位置，value是具体的元素
+	var boxHeight=box.eq(index).height();
+	if (index<num) {
+		boxArr[index]=boxHeight;
+	}else{
+		var minboxHeight=Math.min.apply(null,boxArr);
+		var minboxIndex=$.inArray(minboxHeight,boxArr);
+		//console.log(minboxIndex)
+		$(value).css({
+			"position":"absolute",
+			"top":minboxHeight,//距顶部的距离就是最小图片得的高度
+			"left":box.eq(minboxIndex).position().left//距左边的距离就是最小图片的左位置
+			});
+		boxArr[minboxIndex]+=box.eq(index).height();//只能使用于3.0以下版本的jquery
+		}
+	});
+}
+	</script>
+</body>
+</html>

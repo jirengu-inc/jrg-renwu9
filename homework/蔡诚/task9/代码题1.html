@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+.main{
+  height:38px;
+  width:76px;
+  /*border:1px solid black;*/
+  background:url(http://csssprites.com/results/e989ae9b129e4da6ff5f8f495115a195/result.png)
+    no-repeat;
+  background-size:38px;
+  display:inline-block;
+  line-height:38px;
+}
+.word{
+  padding-left:38px
+}
+.forward{
+  background-position:-4px 0px;
+}
+.start{
+  background-position:-2px -46px;
+}
+.stop{
+  background-position:-7px -97px;
+}
+.forward:hover{
+  background-position:-5px -147px;
+  color:purple;
+}
+.start:hover{
+  background-position:-8px -199px;
+  color:purple;
+}
+.stop:hover{
+  background-position:-2px -246px;
+  color:purple;
+}
+</style>
+</head>
+<body>
+  <div class="main forward">
+  <span class="word">前进</span>
+  </div>
+  <div class="main start">
+  <span class="word">开始</span>
+  </div>
+  <div class="main stop">
+  <span class="word">结束</span>
+  </div>
+</body>
+</html>
