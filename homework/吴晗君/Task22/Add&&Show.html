@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Year!</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+<script>
+    var lis = document.getElementsByTagName('li'),
+            addStartBtn = document.getElementById('btn-add-start'),
+            addEndBtn = document.getElementById('btn-add-end'),
+            input = document.getElementsByClassName('ipt-add-content')[0],
+            ul = lis[0].parentNode;
+    var handleStart = function () {
+        if (!input.value){return;}
+        var node = document.createElement('li');
+        node.textContent = input.value;
+        ul.insertBefore(node, lis[0]); //怎么实现在< li > 这里是 < /li >元素前添加一个新元素？
+    };//而不是每次都在最前面添加？
+    var handleEnd = function () {
+        if (!input.value){return;}  //inout.value === null不可以 ==也不可以
+        var node = document.createElement('li');
+        node.textContent = input.value;
+        ul.appendChild(node, lis[0]);
+    };
+
+    var show = function (event) {
+        console.log(event.target.textContent);
+    }
+    addStartBtn.addEventListener('click', handleStart, false);
+    addEndBtn.addEventListener('click', handleEnd, false);
+    ul.addEventListener('click', show, false);
+    /* function f1() {
+     for (var i = 0; i < lis.length; ++i) {
+     var f2 = function (i) {
+     lis[i].addEventListener('click',  function(i){console.log(lis[i].textContent)}, false);
+     console.log(i);
+     }(i);
+     }
+     return f2;   //使用闭包方法传参失败
+     }
+     f1();
+     lis[0].addEventListener('click', function(){console.log(lis[0].textContent)}, false);*/
+</script>
+</body>
+</html>

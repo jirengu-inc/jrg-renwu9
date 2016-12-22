@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>注册</title>
+	<style type="text/css">
+	    body{
+	    	font-size: 14px;
+	    }
+		.hint1,.hint2,.hint3{
+			margin-left: 80px;
+			color: #aaa;
+			font-size: 12px;
+		}
+		.user{
+			margin-left: 16px;
+		}
+		.pwd{
+			margin-left: 26px;
+		}
+		.pwd2{
+			margin-left: 0;
+		}
+		.error{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+<h3>注册</h3>
+<form>
+	用户名： <input class="user" type="text" name="user" placeholder="用户名（hunger被注册过）">
+	<p class="hint1">只能是字母、数字、下划线，3-10个字符</p>
+	密码： <input class="pwd" type="password" name="pwd">
+	<p class="hint2">大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+	再输一次： <input class="pwd2" type="password" name="pwd2" placeholder="在输一次密码">
+	<p class="hint3"></p>
+	<p><input class="submit" type="submit" value="注册"></p>
+</form>
+<script src="functions.js"></script>
+<script src="ajax.js"></script>
+<script>
+var user=document.getElementsByClassName('user')[0],
+    hint1=document.getElementsByClassName('hint1')[0],
+    hint2=document.getElementsByClassName('hint2')[0],
+    hint3=document.getElementsByClassName('hint3')[0],
+    pwd=document.getElementsByClassName('pwd')[0],
+    pwd2=document.getElementsByClassName('pwd2')[0],
+    submit=document.getElementsByClassName('submit')[0];
+var msg={
+    	'USERNAME_EXIST': '用户名已经存在',
+    	'USERNAME_TYPE_ERROR': '用户名格式不正确,只能是字母、数字、下划线，3-10个字符',
+    	'USERNAME_USEABLE': '用户名可用',
+    	'PASSWORD_TYPE_ERROR': '密码格式不正确,大写字母、小写、数字、下划线最少两种，6-15个字符',
+    	'PASSWORD_NOT_MATCH': '两次密码输入不一致'
+    };
+
+//检查用户名格式是否正确-----
+user.addEventListener('change',testUser);
+
+function testUser(){
+	var username=user.value;
+	if(username=='hunger'){
+		hint1.innerText=msg.USERNAME_EXIST;
+		addClass(user,'error');
+		return false;
+	 }
+	 else if(isValidUsernm(username)){
+		removeClass(user,'error');
+		hint1.innerText=msg.USERNAME_USEABLE;
+		return true;
+	}else{
+		addClass(user,'error');
+		hint1.innerText=msg.USERNAME_TYPE_ERROR;
+		return false;
+	}
+}
+
+
+
+//检查密码格式是否正确-----
+pwd.addEventListener('change',testPwd);
+
+function testPwd(){
+	if(!isValidPassw(pwd.value)){
+		hint2.innerText=msg.PASSWORD_TYPE_ERROR;
+		addClass(pwd,'error');
+		return false;
+	}else{
+        removeClass(pwd,'error');
+        hint2.innerText='大写字母、小写、数字、下划线最少两种，6-15个字符';
+        return true;
+	}
+}
+
+//检查两次输入的密码是否一致----
+pwd2.addEventListener('change',testPwd2);
+function testPwd2(){
+	if(pwd.value==pwd2.value){
+		removeClass(pwd2,'error');
+		return true;
+	}else{
+		hint3.innerText=msg.PASSWORD_NOT_MATCH;
+		addClass(pwd2,'error');
+		return false;
+	}
+}
+
+//按钮绑定事件----
+submit.addEventListener('click',function(){
+	if(testUser()&&testPwd()&&testPwd2()){
+		alert('正在注册...')
+	}
+})
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
