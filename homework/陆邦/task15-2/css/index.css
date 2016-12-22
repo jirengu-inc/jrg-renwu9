@@ -1,0 +1,888 @@
+/*预设*/
+html, body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.layout {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.body-bg {
+    background: #e7d4a9 url("../img/layout-bg.jpg") repeat-y center 0;
+}
+
+/*头部*/
+#header {
+    background: url("../img/banner.jpg") no-repeat 50% 0;
+    width: 1903px;
+    height: 676px;
+}
+
+#header ul {
+    float: right;
+    margin-top: 110px;
+}
+
+#header li {
+    float: left;
+    margin-right: 10px;
+}
+
+#header li > a {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+#header li > a:hover {
+    color: #fec503;
+}
+
+.header-title {
+    margin-top: 90px;
+}
+
+.header-title > h1 {
+    font-size: 50px;
+}
+
+.header-title > p {
+    font-size: 30px;
+}
+
+.header-title .btn {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    border-radius: 6px;
+    line-height: 50px;
+    color: #000000;
+    background-color: #fed136;
+}
+
+.header-title .btn:hover {
+    background-color: #fec503;
+}
+
+/*内容*/
+#main {
+    padding-top: 30px;
+}
+
+.main-title {
+    height: 35px;
+    width: 1200px;
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 50px;
+    margin: 20px auto;
+    line-height: 35px;
+    color: #251c0f;
+    background: #e1c79d url("../img/sprite.png") no-repeat -20px -258px;
+
+}
+
+/*最新消息*/
+.news {
+    padding-bottom: 30px;
+}
+
+.news ul {
+    margin-top: 50px;
+}
+
+.news li > p {
+    background: url("../img/news-title.png") no-repeat 1px -120px;
+    width: 337px;
+    height: 87px;
+    line-height: 70px;
+    text-align: center;
+    margin: 0;
+}
+
+.news p > a {
+    color: #821a0b;
+    font-size: 21px;
+    font-weight: 700;
+    text-shadow: 0 0 1px #ffd99b;
+}
+
+.news-box {
+    background: url("../img/news-box.png") no-repeat 0 0;
+    width: 321px;
+    height: 224px;
+    padding: 9px 0 0 16px;
+    margin-bottom: -28px;
+}
+
+.news li {
+    float: left;
+    margin-left: 60px;
+}
+
+/*基础知识*/
+.basis {
+    padding-bottom: 30px;
+}
+
+.basis ul {
+    margin-top: 50px;
+}
+
+.basis-img1 {
+    background: url("../img/sprite.png") -24px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img1 {
+    background: url("../img/sprite.png") -24px -90px;
+}
+
+.basis-img2 {
+    background: url("../img/sprite.png") -125px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img2 {
+    background: url("../img/sprite.png") -125px -90px;
+}
+
+.basis-img3 {
+    background: url("../img/sprite.png") -225px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img3 {
+    background: url("../img/sprite.png") -225px -90px;
+}
+
+.basis-img4 {
+    background: url("../img/sprite.png") -326px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img4 {
+    background: url("../img/sprite.png") -326px -90px;
+}
+
+.basis-img5 {
+    background: url("../img/sprite.png") -425px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img5 {
+    background: url("../img/sprite.png") -425px -90px;
+}
+
+.basis-img6 {
+    background: url("../img/sprite.png") -527px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img6 {
+    background: url("../img/sprite.png") -527px -90px;
+}
+
+.basis-img7 {
+    background: url("../img/sprite.png") -627px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img7 {
+    background: url("../img/sprite.png") -627px -90px;
+}
+
+.basis-img8 {
+    background: url("../img/sprite.png") -727px -10px;
+    width: 63px;
+    height: 63px;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.basis a:hover .basis-img8 {
+    background: url("../img/sprite.png") -727px -90px;
+}
+
+.basis li {
+    float: left;
+    margin-left: 50px;
+}
+
+.basis li > a {
+    width: 100px;
+    display: block;
+    font-weight: 700;
+}
+
+.basis-title {
+    width:80px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    padding: 0 10px;
+    color: #251c0f;
+    display: block;
+    margin: 0 auto;
+    border-radius: 3px;
+    border: 1px solid #efd9b4;
+    background: #d8bc91;
+    font-size: 15px;
+}
+
+/*现有版本*/
+.version {
+    padding-top: 30px;
+}
+
+.version ul {
+    margin-top: 50px;
+}
+
+.version li {
+    float: left;
+    padding: 0 20px 0 0;
+    margin: 0 76px 40px;
+
+}
+
+.version-bg1 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg1.png") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg1:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg1:hover {
+    width: 430px;
+}
+
+.version-bg1:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg1:hover .version-logo1 {
+    width: 78%;
+    position: absolute;
+    top: 42%;
+    left: 45%;
+
+}
+
+.version-logo1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    margin-left: -30%;
+    margin-top: -30%;
+    z-index: 2;
+}
+
+.version-bg2 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg2.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg2:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg2:hover {
+    width: 430px;
+}
+
+.version-bg2:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg2:hover .version-logo2 {
+    width: 90%;
+    position: absolute;
+    top: 50%;
+    left: 42%;
+}
+
+.version-logo2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 76%;
+    margin-left: -37%;
+    margin-top: -28%;
+    z-index: 2;
+}
+
+.version-bg3 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg3.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg3:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg3:hover {
+    width: 430px;
+}
+
+.version-bg3:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg3:hover .version-logo3 {
+    width: 76%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -37%;
+    margin-top: -28%;
+}
+
+.version-logo3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    margin-left: -30%;
+    margin-top: -30%;
+    z-index: 2;
+}
+
+.version-bg4 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg4.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg4:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg4:hover {
+    width: 430px;
+}
+
+.version-bg4:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg4:hover .version-logo4 {
+    width: 76%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -36%;
+    margin-top: -20%;
+}
+
+.version-logo4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    margin-left: -30%;
+    margin-top: -22%;
+    z-index: 2;
+}
+
+.version-bg5 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg5.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg5:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg5:hover {
+    width: 430px;
+}
+
+.version-bg5:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg5:hover .version-logo5 {
+    width: 76%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -37%;
+    margin-top: -28%;
+}
+
+.version-logo5 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    margin-left: -30%;
+    margin-top: -30%;
+    z-index: 2;
+}
+
+.version-bg6 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg6.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg6:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg6:hover {
+    width: 430px;
+}
+
+.version-bg6:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg6:hover .version-logo6 {
+    width: 76%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -37%;
+    margin-top: -34%;
+}
+
+.version-logo6 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 65%;
+    margin-left: -30%;
+    margin-top: -30%;
+    z-index: 2;
+}
+
+.version-bg7 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg7.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg7:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg7:hover {
+    width: 430px;
+}
+
+.version-bg7:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg7:hover .version-logo7 {
+    width: 65%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -30%;
+    margin-top: -30%;
+}
+
+.version-logo7 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    margin-left: -28%;
+    margin-top: -28%;
+    z-index: 2;
+}
+
+.version-bg8 {
+    display: block;
+    position: relative;
+    width: 420px;
+    height: 256px;
+    background: url("../img/banbenbg8.jpg") no-repeat center;
+    background-size: cover;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.version-bg8:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.99);
+    opacity: 0;
+    transition: opacity 300ms linear;
+}
+
+.version-bg8:hover {
+    width: 430px;
+}
+
+.version-bg8:hover:after {
+    opacity: 0.5;
+}
+
+.version-bg8:hover .version-logo8 {
+    width: 82%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -40%;
+    margin-top: -28%;
+}
+
+.version-logo8 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 76%;
+    margin-left: -36%;
+    margin-top: -30%;
+    z-index: 2;
+}
+
+/*炉石大事件*/
+.history {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.wraper {
+    position: relative;
+    width: 756px;
+    height: 282px;
+    margin: 0 auto;
+}
+
+.wraper > li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.history-title {
+    width: 756px;
+    height: 46px;
+    line-height: 46px;
+    color: #f1dbb9;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 0 0 10px #000;
+    position: absolute;
+    bottom: 2px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    z-index: 0;
+}
+
+.history-title:after {
+    display: block;
+    content: "";
+    background-color: black;
+    opacity: 0.5;
+    width: 756px;
+    height: 46px;
+    position: absolute;
+    bottom: 0px;
+    z-index: -1;
+}
+
+.slider:target {
+    z-index: 1;
+}
+
+.slider-btn {
+    margin-top: 20px;
+}
+
+.slider-btn ul {
+    width: 360px;
+    margin: 0 auto;
+}
+
+.slider-btn > ul > li {
+    float: left;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.slider-btn a {
+    color: #db6800;
+    font-size: 18px;
+    font-weight: 700;
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 30px;
+    background: #fff;
+    text-align: center;
+}
+
+/*底部*/
+/*意见反馈*/
+#footer {
+    background: url("../img/footer-bg.jpg") no-repeat center;
+    width: 1903px;
+    height: 471px;
+}
+
+.vice {
+    width: 1000px;
+    margin: 0px auto;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.footer-left {
+    float: left;
+    margin-left: 30px;
+}
+
+.footer-left > input {
+    display: block;
+    height: auto;
+    padding: 20px;
+    width: 400px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.footer-right {
+    float: left;
+}
+
+.footer-right > textarea {
+    padding: 20px;
+    height: 176px;
+    width: 400px;
+    border-radius: 6px;
+    margin-left: 50px;
+}
+
+.footer-btn {
+    clear: both;
+}
+
+.footer-btn > button {
+    width: 80px;
+    height: 50px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/*社交*/
+.social {
+    color: white;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.social > p {
+    float: left;
+    padding-left: 30px;
+}
+
+.social .font {
+    float: left;
+    margin-left: 236px;
+    margin-right: 180px;
+}
+
+.social > .font > span {
+    padding: 0 10px;
+}
+
+.social > .font > span:hover {
+    color: red;
+}
+
+.social-link {
+    float: left;
+}
+
+.social-link > a {
+    color: white;
+    padding-left: 20px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.social-link > a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+/*二维码*/
+.code {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+</head>
+<style>
+    .sign-in {
+        margin-left: 20px;
+    }
+    dt {
+        float: left;margin-right: 10px;
+    }
+    dd {
+        margin: 10px 10px;
+    }
+    .msg {
+        width: 160px;
+        height: 20px;
+        line-height: 20px;
+        margin-left: 10px;
+        padding-left: 5px;
+    }
+    .msg2 {
+        margin-left:42px;
+    }
+    .msg1 {
+        margin-left:27px;
+    }
+    .reminder {
+        font-size: 12px;
+        color: #ccc;
+        margin-left: 83px;
+    }
+    dl dt:last-child {
+        margin: 40px 100px;
+    }
+    .msg4 {
+        border-color: red;
+    }
+</style>
+<body>
+    <form class="sign-in" action="">
+        <h3>注册</h3>
+        <dl>
+            <dt>用户名</dt>
+            <dd>
+                <input class="msg msg1" type="text" placeholder="用户名(wuhanjun被注册过)">
+            </dd>
+            <dd class="reminder r1">只能是字母、数字、下划线，3-10个字符</dd>
+            <dt>密码</dt>
+            <dd>
+                <input class="msg msg2" type="text">
+            </dd>
+            <dd class="reminder r2">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+            <dt>再输一次</dt>
+            <dd>
+                <input class="msg msg3" type="text" placeholder="再输入一次密码">
+            </dd>
+            <dd class="reminder r3">  </dd>
+            <dt><button>注册</button></dt>
+        </dl>
+    </form>
+    <script>
+        var usernameIpt = document.querySelector('.msg1'),
+            passwordIpt = document.querySelector('.msg2'),
+            passwordIpt2 = document.querySelector('.msg3'),
+
+            accountReminder = document.getElementsByClassName('r1')[0],
+            passwordReminder1 = document.getElementsByClassName('r2')[0],
+            passwordReminder2 = document.getElementsByClassName('r3')[0];
+         var MSG = {
+             'USERNAME_EXIST': '用户名已存在',
+             'USERNAME_TYPE_ERROR': '用户名格式错误',
+             'USERNAME_AVAILABLE': '用户名可用',
+             'PASSWORD_TYPE_ERROR': '密码格式错误',
+             'PASSWORD_AVAILABLE': '密码可用',
+             'PASSWORD_MISMATCHING': '两次输入密码不匹配'
+         };
+
+
+        usernameIpt.addEventListener('change', function () {
+            testAccountFormat();
+            testAccountAvailable();
+            //testRepeat();
+        }, false);
+        passwordIpt.addEventListener('change', function () {
+            testPasswordFormat()
+        }, false);
+        passwordIpt2.addEventListener('change', function () {
+            testPasswordRepeat();
+        }, false);
+        function testAccountFormat() {
+            var input = usernameIpt.value;
+            if (!/^[A-z0-9_]{3,10}$/.test(input)){
+                accountReminder.textContent = MSG.USERNAME_TYPE_ERROR;
+                addClass(usernameIpt, 'msg4');
+            } else {
+                accountReminder.textContent = MSG.USERNAME_AVAILABLE;
+                removeClass(usernameIpt, 'msg4');
+            }
+        }
+        function testPasswordFormat() {
+            var input = passwordIpt.value;
+            if(isLegalPassword(input)){
+                passwordReminder1.textContent = MSG.PASSWORD_AVAILABLE;
+                removeClass(passwordIpt, 'msg4');
+            } else {
+                passwordReminder1.textContent = MSG.PASSWORD_TYPE_ERROR;
+                addClass(passwordIpt, 'msg4');
+            }
+        }
+        function testPasswordRepeat() {
+            var inputSecond = passwordIpt2.value;
+            var inputFirst = passwordIpt.value;
+            if(!isLegalPassword(inputSecond)) {
+                passwordReminder2.textContent = MSG.PASSWORD_TYPE_ERROR;
+                addClass(passwordIpt2, 'msg4');
+            }
+            if (inputFirst !== inputSecond) {
+                passwordReminder2.textContent = MSG.PASSWORD_MISMATCHING;
+                addClass(passwordIpt2, 'msg4');
+            } else {
+                passwordReminder2.textContent = MSG.PASSWORD_AVAILABLE;
+                removeClass(passwordIpt2, 'msg4');
+            }
+        }
+        function isLegalPassword(input) {
+            if (/^[A-Z][A-z0-9_]{5,14}$|^[a-z][A-z0-9_]{5,14}$|^[0-9][0-9A-z_]{5,14}$|^_[0-9A-z_]{5,14}$/.test(input)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function hasClass(node, cls) {
+            if (RegExp('\\b' + cls + '\\b').test(node.className)) {
+                return true;
+            } else {
+                return false
+            }
+        }
+        function addClass(node, cls) {
+            if(!hasClass(node, cls)) {
+                node.className += ' ' + cls;
+            }
+        }
+        function removeClass(node, cls) {
+            var s = RegExp('\\b' + cls + '\\b');
+            if(s.test(node.className)) {
+                node.className = node.className.replace(RegExp('\\b' + cls + '\\b', 'g'), '');
+                trim(node); //str.replace()不改变原字符串
+            }
+        }
+        function trim(node) {
+            if(/^\s+|\s+$/.test(node.className)){
+                node.className = node.className.replace(RegExp('^\\s+|\\s+$'), '');
+            }
+        }
+        /*用户名存在返回1， 不存在返回0*/
+        function testAccountAvailable() {
+            console.log(1);
+            ajax({
+                url:'2.php',
+                type: 'get',
+
+                data: {
+                    username: usernameIpt.value
+                },
+                success: function () {
+                        accountReminder.textContent = MSG.USERNAME_AVAILABLE;
+                        removeClass(usernameIpt, 'msg4');
+
+                },
+                error: function () {
+                    accountReminder.textContent = MSG.USERNAME_EXIST;
+                    addClass(usernameIpt, 'msg4');
+                }
+            });
+        }
+
+        function ajax(opts) {
+            opts.type = opts.type || 'post';
+            opts.data = opts.data || {};
+            var dataStr = '';
+            for (var key in opts.data){
+                dataStr += key + '=' + opts.data[key] + '&';
+            }
+            dataStr = dataStr.substring(0, dataStr.length - 1);
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.status === 200 && xhr.readyState === 4) {
+                    var json = xhr.responseText;
+                    //var json2 = JSON.parse(xhr.responseText);
+                    console.log(json);
+                    console.log(typeof json)
+                    if (json === 1) {
+                        opts.error();
+                    } else {
+                        opts.success();
+                    }
+                }
+            };
+            console.log(dataStr);
+            console.log(typeof dataStr);
+            if (opts.type.toLowerCase() === 'get'){
+                xhr.open(opts.type, opts.url + '?' + dataStr, true);
+                xhr.send();
+            } else {
+                xhr.open(opts.type, opts.url, true);
+                xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+                xhr.send(dataStr);
+            }
+
+        }
+    </script>
+</body>
+</html>
