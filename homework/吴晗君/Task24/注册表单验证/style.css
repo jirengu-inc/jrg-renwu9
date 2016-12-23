@@ -1,0 +1,33 @@
+.sign-in {
+    margin-left: 20px;
+}
+dt {
+    float: left;margin-right: 10px;
+}
+dd {
+    margin: 10px 10px;
+}
+.msg {
+    width: 160px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 10px;
+    padding-left: 5px;
+}
+.msg2 {
+    margin-left:42px;
+}
+.msg1 {
+    margin-left:27px;
+}
+.reminder {
+    font-size: 12px;
+    color: #ccc;
+    margin-left: 83px;
+}
+dl dt:last-child {
+    margin: 40px 100px;
+}
+.msg4 {
+    border-color: red;
+}
