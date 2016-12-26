@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>go-Top</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+       .item{
+        height: 50px;
+        border:1px solid #ddd;
+        margin:10px;
+       }
+       .gotop{
+        position: fixed;
+        bottom: 30px;
+        right: 10px;
+        width: 90px;
+        height: 50px;
+        background: orange;
+        display: none;
+       }
+
+    </style>
+
+  </head>
+<body>
+
+  
+
+<script type="text/javascript">
+
+    for(var i=0; i<50; i++){
+        $("body").append("<div class='item'>内容"+(i+1)+"</div>")
+    }
+
+
+    function GoTop(ct){
+        this.ct=ct;
+        this.target=$("<button class='gotop'>回到顶部</button>");
+        this.bindEvent();
+        this.createNode();
+    } 
+
+    GoTop.prototype={
+         createNode:function(){
+            var cur=this;
+            this.ct.append(this.target);  
+            $(window).on("scroll",function(){
+               if($(window).scrollTop()>300){
+                    cur.target.show();   
+                } else{
+                    cur.target.hide();
+                } 
+            })
+            
+        },
+        bindEvent:function(){
+           this.target.on("click",function(){
+                console.log(1);
+                $(window).scrollTop(0);
+            })
+        }
+    }
+  
+    new GoTop($("body"));
+
+   
+</script>
+
+</body>
+</html>
