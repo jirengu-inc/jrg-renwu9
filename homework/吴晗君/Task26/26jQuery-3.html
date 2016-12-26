@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" >
+    <title>加载更多</title>
+    <style>
+        ul,li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .content {
+
+        }
+        .content li {
+            height: 50px;
+            line-height: 50px;
+            border: 1px solid #ccc;
+            margin-bottom: 14px;
+            padding-left: 10px;
+        }
+        .content li:hover {
+            background-color: green;
+            color: #fff;
+            border-radius: 6px;
+        }
+        .load-btn {
+            display: block;
+            width: 80px;
+            height: 36px;
+            line-height: 36px;
+            border: 1px solid #E27272;
+            border-radius: 3px;
+            color: #e27272;
+            text-align: center;
+            margin: 0 auto;
+            transition: all 1s;
+        }
+        .load-btn:hover {
+            background-color: #E27272;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <ul class="content">
+        <li>内容1</li>
+        <li>内容2</li>
+    </ul>
+    <a href="" class="load-btn">加载更多</a>
+
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        var cur = 3;
+        $('.load-btn').on('click', function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: '/getMore',
+                type: 'get',
+                dataType: 'json',
+                data: {
+                    start: cur,
+                    len:3
+                },
+                success: function (json) {
+                        onSuccess(json);
+                },
+                error: function (json) {
+                        onError(json);
+
+                }
+            })
+        });
+        function onSuccess(json) {
+            if (json.status === 1) {
+                for (var i = 0; i < json.msg.length; ++i) {
+                    $('<li>' + '内容' + json.msg[i] + '</li>').appendTo('.content');
+                }
+                cur += 3;
+            }
+        }
+        function onError(json) {
+            console.log('error');
+        }
+    </script>
+</body>
+</html>
