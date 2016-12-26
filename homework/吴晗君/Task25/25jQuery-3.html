@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    ul, li {
+        margin:0;
+        padding: 0;
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+    }
+    h2 {
+        color: cornflowerblue;
+    }
+    #layout {
+        width: 800px;
+        margin: 0 auto; /*自身要设置宽度，要不然怎么自适应外边距*/
+        text-align:center;
+    }
+    #model-table {
+        margin-left: 40px;
+    }
+    .clearfix:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .clearfix{
+        *zoom: 1;
+    }
+    .products {
+        margin-left: -20px;
+    }
+    .products .items {
+        float: left;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        width: 224px;
+        height: 191px;
+    }
+    .items span {
+        color: #c81623;
+    }/*224*191.2*/
+    .hover {
+        background: #ccc;
+    }
+    .hover a{
+        color: red;
+    }
+    .products .items {
+        position: relative;
+    }
+    .hide {
+        display: none;
+    }
+    .shadow a{
+        display: block;
+        margin: 70px auto;
+        width: 64px;
+        height: 40px;
+        line-height: 40px;
+        border: 1px solid #c81623;
+        background-color: #fff;
+        text-align: center;
+        color: #c81623;
+    }
+    .shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba(0,0,0,0.4);
+        width: 224px;
+        height: 191px;
+        z-index: 1;
+        border: 1px solid;
+        transition: all 3s;
+    }
+    .add-btn {
+        display: block;
+        width: 50px;
+        height:36px;
+        line-height: 36px;
+        border: 1px solid #c81623;
+        color: #c81623;
+        text-align: center;
+        margin: 0 auto;
+
+    }
+</style>
+<body>
+<div id="layout">
+<div class="wrap"><h2>珠宝首饰</h2></div>
+<div id="model-table" class="clearfix">
+    <div class="content clearfix">
+        <ul class="products clearfix">
+            <li class="items product-hover">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt=""/>
+                <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                <span>￥1699.00</span>
+                <div class="cover hide">
+                    <a href="##" class="btn">立即抢购</a>
+                </div>
+            </li>
+            <li class="items">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt=""/>
+                <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                <span>￥1699.00</span>
+                <div class="cover hide">
+                    <a href="##" class="btn">立即抢购</a>
+                </div>
+            </li>
+            <li class="items">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt=""/>
+                <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                <span>￥1699.00</span>
+                <div class="cover hide">
+                    <a href="##" class="btn">立即抢购</a>
+                </div>
+            </li>
+            <li class="items">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt=""/>
+                <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                <span>￥1699.00</span>
+                <div class="cover hide">
+                    <a href="##" class="btn">立即抢购</a>
+                </div>
+            </li>
+            <li class="items">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt=""/>
+                <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                <span>￥1699.00</span>
+                <div class="cover hide">
+                    <a href="##" class="btn">立即抢购</a>
+                </div>
+            </li>
+            <li class="items">
+                <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt=""/>
+                <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                <span>￥1699.00</span>
+                <div class="cover hide">
+                    <a href="##" class="btn">立即抢购</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+    <div class="btn-wrap">
+        <a class="add-btn" href="">添加</a>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"> </script>
+    <script>
+        function getProdHtml(prod) {
+            var html = '';
+            html += '<li class="items">';
+            html += '<img src=' + prod.img + ' alt="">';
+            html += '<p>' + prod.name + '</p>';
+            html += '<span>' + prod.price + '</span>';
+            html += '<div class="cover hide">' + '<a href="##" class="add">立即抢购</a></div>';
+            html += '</li>';
+            return html;
+        }
+        var products = [
+            {
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手 猴哥款',
+                price: '￥405.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金转运珠 猴哥款',
+                price: '￥100.00'
+            },{
+                img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+                name: '珂兰 黄金手链 3D猴哥款',
+                price: '￥45.00'
+            }
+        ];
+        $('.add-btn').on('click', function (event) {
+            event.preventDefault();
+            $.each(products, function (idx, prod) {
+                var html = getProdHtml(prod);
+                console.log(html);
+                $('.products').append(html);
+            });
+        });
+        $('.products').on('mouseenter','.items', function () {
+            $(this).find('.cover').removeClass('hide');
+            $(this).find('.cover').addClass('shadow');
+        })
+        $('.products').on('mouseleave','.items', function () {
+            $(this).find('.cover').removeClass('shadow');
+            $(this).find('.cover').addClass('hide');
+        })
+
+        /*$('.products .items').on('mouseenter', function () {
+            console.log(1);
+            $(this).find('.cover').removeClass('hide');
+            $(this).find('.cover').addClass('shadow');
+        });  //这样相当于bind()方法。有毒，bind()方法只对已有的元素生效。
+        $('.products .items').on('mouseleave', function () {
+            $(this).find('.cover').removeClass('shadow');
+            $(this).find('.cover').addClass('hide');
+        })*/
+    </script>
+</body>
+</html>

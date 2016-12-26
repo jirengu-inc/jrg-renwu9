@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>无限加载+jsonp+瀑布流</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+        body,html,ul,li,h4,p{
+            margin:0;
+            padding: 0;
+        }
+       
+        li{
+            list-style: none;
+        }
+        h4{
+            padding: 8px 0;
+        }
+        #main{
+            width: 970px;
+            margin:0 auto;
+        }
+        .ct{
+            position: relative;
+        }
+        .ct:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .item{
+            position: absolute;
+            box-sizing: border-box;
+            width: 300px;
+            margin:10px;
+            padding:8px;
+            border:1px solid #ccc;
+            box-shadow: 0 0  2px 1px #ccc;
+            opacity: 0;
+            transition: all 1s;
+        }
+        .item img{
+            width: 282px;
+        }
+        p.intro{
+            border-top:1px solid #ccc;
+            font-size: 13px;
+            padding:10px 10px 10px 2px;
+            line-height: 22px;
+            color:#777;
+        }
+        #load{
+            height: 30px;
+            opacity: 0;
+        }
+    </style>
+
+  </head>
+<body>
+
+    <div id="main">
+        <ul class="ct">
+        </ul>
+       <div id="load"></div>
+        
+    </div>
+
+<script type="text/javascript">
+
+
+     //监听用户鼠标滚动
+     var clock;
+     $(window).on("scroll",function(){
+        if(clock){
+            clearTimeout(clock);
+        }
+        clock=setTimeout(function(){
+           loadSource();
+        },300)
+     });
+ 
+    loadSource();
+
+    //ajax后台获取数据
+    var curPage=2,pageNum=9;
+    function loadSource(){
+        if(isVisible($("#load"))){
+            $.ajax({
+                url: 'http://platform.sina.com.cn/slide/album_tech',
+                type: 'GET',
+                dataType: 'jsonp', // http://platform.sina.com.cn/slide/album_tech?jsoncallback=func&app_key=1271687855&num=3&page=4
+                jsonp:"jsoncallback",
+                data: {
+                    app_key: '1271687855',
+                    num: pageNum,
+                    page: curPage
+                },
+                success:function(ret){
+                    if(ret && ret.status.code === "0"){
+                      place(ret.data);  
+                      curPage +=pageNum;
+                    }
+                },
+                error:function(){
+                     console.log("系统错误！");
+                }
+            })
+        }
+    }   
+    
+   
+    //将获取的数据放置到页面上
+    function place(items){
+        var tpl="";
+        for(var i=0; i<items.length; i++){
+            tpl +="<li class='item'>";
+            tpl +="<a href='"+ items[i].url+"'>";
+            tpl +="<img src='"+items[i].img_url+"'></a>"
+            tpl +="<h4>"+items[i].short_name+"</h4>";
+            tpl +="<p class='intro'>"+items[i].short_intro+"</p></li>";
+        }
+        $(".ct").append(tpl);
+
+        var defereds = [];  
+        $(tpl).find('img').each(function(){
+            var defer = $.Deferred();
+            $(this).load(function(){
+                defer.resolve();
+            });   //当每个图片加载完成后，执行 resolve
+            defereds.push(defer);
+        });
+        $.when.apply(null,defereds).done(function() { 
+               waterFall();
+        });
+    }
+
+    
+    //瀑布流
+    function waterFall(){
+        var winW=$(".ct").width(),
+        colW=$(".item").outerWidth(true),
+        colNum=parseInt(winW/colW);
+        var colSumHeight=[];
+        for(var i=0; i<colNum; i++){
+            colSumHeight[i]=0;
+        }
+        $(".item").each(function(){
+            var idx=0;
+            for(var i=0; i<colNum; i++){
+                if(colSumHeight[i]<colSumHeight[idx]){
+                    idx=i;
+                }
+            }
+            $(this).css({
+                left:colW*idx,
+                top:colSumHeight[idx],
+                opacity:1
+            })
+            colSumHeight[idx]=colSumHeight[idx]+$(this).outerHeight(true);
+            $('.ct').height(Math.max.apply(null,colSumHeight));
+        })
+    }
+
+
+ function isVisible($ele){
+            var winH=$(window).height(),
+                scrollTop=$(window).scrollTop(),
+                offsetTop=$ele.offset().top,
+                $eleH=$ele.innerHeight();
+                if((winH+scrollTop>offsetTop)&&(scrollTop<offsetTop+$eleH)){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+        }
+       
+</script>
+
+</body>
+</html>
