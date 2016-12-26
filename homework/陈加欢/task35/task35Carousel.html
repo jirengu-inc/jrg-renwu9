@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Carousel</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+        html,body,ul,li{
+            margin:0;
+            padding:0;
+        }
+        li{
+            list-style: none;
+        }
+        .carousel{
+            position: relative;
+            width: 300px;
+            margin-bottom:30px;
+            overflow: hidden;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear:both;
+        }
+        .img-ct{
+            position: relative;
+        }
+        .img-ct li{
+           float: left;
+        }
+        .img-ct img{
+            width: 300px;
+        }
+        .play{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            top:50%;
+            text-align: center;
+            transform: translateY(-50%);
+            font-size: 30px;
+            border-radius: 50%;
+            color:#fff;
+            background: rgba(0,0,0,0.3);
+        }
+        .playPre{
+            left:10px;
+        }
+        .playNext{
+            right: 10px;
+        }
+        .bullet{
+            position: absolute;
+            bottom: 15px;
+            left:50%;
+            transform: translateX(-50%);
+        }
+        .bullet li{
+            float: left;
+            width: 22px;
+            height: 4px;
+            margin:5px;
+            border-radius: 3px;
+            background: #eee; 
+        }
+        .bullet .active{
+            background: #888;
+        }
+    </style>
+
+  </head>
+<body>
+    <div class="carousel">
+        <ul class="img-ct clearfix">
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        </ul>
+        <div class="play playPre"><</div>
+        <div class="play playNext">></div>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+     <div class="carousel">
+        <ul class="img-ct clearfix">
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a></li>
+            <li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a></li>
+        </ul>
+        <div class="play playPre"><</div>
+        <div class="play playNext">></div>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+  
+
+<script type="text/javascript">
+
+    function Carousel($carousel){
+        this.$carousel=$carousel;
+        this.$ct=$carousel.find('.img-ct');
+        this.$items=this.$ct.children();
+        this.$playPre=$carousel.find('.playPre');
+        this.$playNext=$carousel.find('.playNext');
+        this.$bullet=$carousel.find('.bullet');
+        this.imgCount=this.$items.length;
+        this.imgWidth= this.$items.width();
+        this.curIndex=0;
+        this.isAnimate=false;
+
+        this.addNode();
+        this.bind();
+
+    }
+
+    Carousel.prototype = {
+        addNode:function(){
+            this.$ct.prepend(this.$items.last().clone());
+            this.$ct.append(this.$items.first().clone());
+            this.imgRealCount=this.$ct.find("li").length;
+            this.$ct.css({left:-this.imgWidth,width:this.imgWidth*this.imgRealCount})
+        },
+        bind:function(){
+            var me=this;
+            this.$playNext.on('click', function(){
+                me.playNext();
+            });
+            this.$playPre.on('click', function(){
+                me.playPre();
+            });
+            this.$bullet.find("li").on("click",function(){
+                var idx=$(this).index();
+                if(idx>me.curIndex){
+                    me.playNext(idx - this.curIndex);
+                }else if(idx < me.curIndex){
+                    me.playPre(me.curIndex - idx);
+                    
+                }
+            })
+        },
+        playNext:function(dIndex){
+            var me=this,
+                dIndex = dIndex || 1;
+            if(!me.isAnimate){
+                me.isAnimate = true;
+                me.$ct.animate({left: '-='+(me.imgWidth*dIndex)},function(){
+                    me.curIndex = (me.curIndex + dIndex)%me.imgCount;
+                    if(me.curIndex === 0){
+                        me.$ct.css("left", -me.imgWidth);
+                    }
+                    me.isAnimate = false;
+                    me.setBullet();
+                });
+            }
+        },
+        playPre:function(dIndex){
+            var me=this,
+                dIndex = dIndex || 1;
+            if(!me.isAnimate){
+                me.isAnimate = true;
+                me.$ct.animate({left: '+='+(me.imgWidth*dIndex)},function(){
+                    me.curIndex = (me.imgCount + me.curIndex - dIndex)%me.imgCount;
+                    if(me.curIndex === (me.imgCount - 1)){
+                        me.$ct.css("left", -me.imgWidth*me.imgCount);
+                    }
+                    me.isAnimate = false;
+                    me.setBullet();
+                });
+            }
+        },
+        setBullet:function(){
+            this.$bullet.children().removeClass('active')
+                              .eq(this.curIndex).addClass('active');
+        }
+    };
+
+    var $node1 = $('.carousel').eq(0);
+    var $node2 = $('.carousel').eq(1);
+    var carousel1 = new Carousel($node1);
+    var carousel2 = new Carousel($node2);
+
+   
+</script>
+
+</body>
+</html>
