@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	fieldset{
+		margin-bottom: 20px;
+	}
+	legend{
+		font-family: '微软雅黑';
+	}
+		.btn{
+			width: 100px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			color: #333;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			transition: 0.3s;
+		}
+		.red{
+			background: red;
+		}
+		.blue{
+			background: #1E90FF;
+		}
+		.scoll{
+			position: fixed;
+			top: 0;
+			right: 0;
+			padding: 10px;
+			width: 120px;
+			height: 100px;
+			border: 1px solid #ccc;
+			background: rgba(0,0,255,0.3);
+			color:#fff;
+		}
+		.div{
+			height: 1000px;
+		}
+		.data{
+			color: red;
+		}
+		.div1{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #ccc;
+			border-radius: 200px;
+		}
+		.desc{
+			font-size: 12px;
+			color: #ccc;
+		}
+		.user,.fr{
+			margin: 0;
+			width: 400px;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+<fieldset> 
+	<legend>更换btn的背景色</legend>
+	<div class="btn">点我</div>
+</fieldset>
+<fieldset> 
+	<legend>获取垂直滚动距离</legend>
+     请看右上角！
+	<div class="scoll">滚动条距离窗口顶部的距离是：
+	<span class="data"></span></div>
+</fieldset>
+<fieldset> 
+	<legend>将鼠标移到圆上试试</legend>
+	<div class="div1"></div>
+</fieldset>
+<fieldset> 
+	<legend>输入框</legend>
+	用户名：<input type="text" class="ipt" name="username">
+	<p class="desc">请输入用户名，数字和字母的组合</p>
+    <p class="user"></p>
+</fieldset>
+
+<fieldset> 
+	<legend>下拉选择</legend>
+	<form>
+		<select name="fruit">
+		<option value="apple">apple</option>
+		<option value="banana">banana</option>
+		<option value="pear">pear</option>
+		<option value="mango">mango</option>
+		<option value="watermelon">watermelon</option>
+		</select>
+	</form>
+	<p class="fr"></p>
+</fieldset>
+
+<div class="div"></div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+var $btn=$('.btn');
+$btn.on('click',function(){
+	$btn.toggleClass(function(){
+	if($(this).hasClass('red')){
+		return 'blue';
+	}else{
+		return 'red';
+	}
+})
+});
+$(function() {  
+    $(window).scroll(function() {  
+        $('.data').text($(window).scrollTop());
+    });  
+});  
+
+$('.div1').hover(
+	function(){
+		$(this).css('background','pink');
+	},
+	function(){
+		$(this).css('background','#fff');
+	}
+);
+
+$('.ipt').focus(function(){
+	$(this).css('borderColor','#1E90FF');
+});
+$('.ipt').keyup(function(){
+	$(this).val($(this).val().toUpperCase());
+});
+$('.ipt').blur(function(){
+	$(this).css('borderColor','#ccc');
+	console.log($(this).val());
+	$('.user').text($(this).val()+'，欢迎您！');
+});
+
+$('select').change(function(){
+	$('.fr').text('Your favorite fruit is '+$('option:selected').val()+'.');
+});
+</script>
+
+</body>
+</html>
