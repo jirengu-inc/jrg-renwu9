@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+</head>
+<style>
+    ul {
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        list-style: none;
+    }
+    .mod-tab *{
+        box-sizing:border-box;
+    }
+    .mod-tab{
+        border:1px solid #ccc;
+    }
+    .tabs li{
+        float:left;
+        width:33.3%;
+        height:30px;
+        line-height:30px;
+        border-right:1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        text-align:center;
+        cursor:pointer;
+    }
+    .mod-tab .tabs li:last-child {
+        border-right:none;
+    }
+    .mod-tab .tabs:after {
+        content:'';
+        display:block;
+        clear:both;
+        height:0;
+    }
+    .mod-tab .tabs .active {
+        background: #eee;
+    }
+    .mod-tab .panel {
+        height:200px;
+        padding:20px;
+        display:none;
+    }
+    .mod-tab .active {
+        display:block;
+    }
+
+</style>
+<body>
+<div class="mod-tab">
+    <ul class="tabs">
+        <li class="active">tabl</li>
+        <li class="aa">tab2</li>
+        <li class="bb">tab3</li>
+    </ul>
+    <div class="panel active">内容1</div>
+    <div class="panel">内容2</div>
+    <div class="panel">内容3</div>
+</div>
+<script>
+    var tabCt = document.querySelector('.mod-tab .tabs');
+    tabCt.addEventListener('click', show, false);
+    function show(event){
+        var target = event.target;
+        var index = Utils.indexOf(target);
+        var tabs = tabCt.children;
+        var panels = document.querySelectorAll('.panel');
+        if(index > -1){
+            //console.log(1);
+            Utils.removeClass(tabs, 'active');
+            Utils.addClass(target, 'active');
+            Utils.removeClass(panels, 'active');
+            Utils.addClass(panels[index], 'active');
+        }
+    }
+    var Utils = {
+        indexOf: function (element){
+            var parent = element.parentElement,
+                siblings = parent.children;
+            for (var i = 0; i < siblings.length; ++i){
+                if(element === siblings[i]){
+                    return i;
+                }
+            }
+            return -1;
+        },//parentNode
+        removeClass: function (element, cls) {
+            if(element.length && element.length > 0){
+                for (var i = 0; i < element.length; ++i){
+                    Utils.singleRemoveClass(element[i], cls);
+                    //console.log(i);
+                }
+            } else {
+                Utils.singleRemoveClass(element, cls);
+            }
+        },
+        singleRemoveClass: function (element, cls) {
+            //console.log(element.className);
+            if (element.className === ''){return;}
+            element.className = element.className.replace(new RegExp('\\b' + cls + '\\b','g'), '');
+        },
+        addClass: function (element, cls) {
+            //console.log(element);
+            element.className = Utils.trim(element.className)+ ' ' + cls;
+        },
+        trim: function (str){
+            return str.replace(/^\s+/, '').replace(/\s+$/, '');
+        }
+    }
+</script>
+</body>
+</html>

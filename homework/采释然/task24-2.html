@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		form{
+			padding: 20px;
+		}
+		input{
+			margin-left: 20px;
+		}
+		.error{
+			border: 1px solid red;
+		}
+		p{
+			margin-left:110px;
+			color: #aaa;
+			font-size: 10px;
+		}
+		input:nth-of-type(1){
+			margin-left: 35px;
+		}
+		input:nth-of-type(2){
+			margin-left: 51px;
+		}
+		input:nth-of-type(4){
+			margin-top: 30px;
+			margin-left: 105px;
+		}
+	</style>
+</head>
+<body>
+	<form action="" method="">
+    <h4>注册</h4>
+    <label for="username">用户名：</label>
+    <input type="text" name="username" placeholder="用户名(hunger)被注册过" id="username">
+    <p>只能是字母、数字、下划线，3-10个字符</p>
+    <label for="password">密码：</label>
+    <input type="password" name="password" id="password">
+    <p>大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+    <label for="password-again">再输一次：</label>
+    <input type="password" name="passwordagain" placeholder="再输入一次密码" id="password-again">
+    <p></p>
+    <input type="submit" value="注册" name="submit">
+	</form>
+	<script type="text/javascript">  
+	//-------------------验证用户名---------------------------------
+		var username = document.getElementsByName("username")[0];
+		var p = document.getElementsByTagName('p');
+		var usernameCheck = /^\w{3,10}$/;
+		function userAuthentication(){
+            var vl = username.value;
+            if(usernameCheck.test(vl)){
+                p[0].innerText = '用户名可用';
+                username.setAttribute('class','');
+                return true;
+            }else{
+            	p[0].innerText = '用户名格式不正确,只能是字母、数字、下划线，3-10个字符';
+            	username.setAttribute('class','error');
+            	return false;
+            }
+		}
+        var result = false
+		function userRepeat(){
+			 ajax({
+			 	url: 'task24-2.php',
+                type: 'get',
+                data: {
+                	username: username.value
+                },
+                success: function(e){
+                	if(e === 1){
+                        p[0].innerText = '用户名已存在';
+            	        username.setAttribute('class','error');
+            	       result = false;
+                	}else{
+                    result = true;
+                    }
+                },
+                error: function(){
+                	alert('出错了');
+                	result = false;
+                }
+			 })
+		    return result
+        }
+		username.addEventListener('change',userAuthentication,false);
+		username.addEventListener('change',userRepeat,false);
+	//---------------------验证第一次密码--------------------------------
+        var password = document.getElementsByName('password')[0];
+        var passwordcheck = /([a-z]{6,15})|([A-Z]{6,15})|([0-9]{6,15})|(_{6,15})|(\W{6,15})/;
+        var passwordcheck2 = /\W+/g;
+        function passwordAuthentication(){
+        	if(password.value.length<6 || password.value.length>15){
+                p[1].innerText = '密码格式不正确，密码格式为：大写字母、小写、数字、下划线最少两种，6-15个字符'
+                password.setAttribute('class','error');
+        		return false;
+        	}else if(passwordcheck.test(password.value)){
+        		p[1].innerText = '密码格式不正确，密码格式为：大写字母、小写、数字、下划线最少两种，6-15个字符'
+                password.setAttribute('class','error');
+                return false;
+        	}else if(passwordcheck2.test(password.value)){
+        		p[1].innerText = '密码格式不正确，密码格式为：大写字母、小写、数字、下划线最少两种，6-15个字符'
+                password.setAttribute('class','error');
+                return false;
+        	}
+        	else{
+        		p[1].innerText = '密码格式正确';
+        		password.setAttribute('class','');
+        		return true;
+        	}
+        }
+        password.addEventListener('change',passwordAuthentication,false);
+    //---------------------第二次验证密码----------------------------------
+        var passwordAgain = document.getElementsByName('passwordagain')[0];
+        function passwordRepeat(){
+                if(passwordAgain.value.length<6 || passwordAgain.value.length>15){
+                    p[2].innerText = '密码格式不正确，密码格式为：大写字母、小写、数字、下划线最少两种，6-15个字符'
+                    passwordAgain.setAttribute('class','error');
+        		    return false;
+        	    }else if(passwordcheck.test(passwordAgain.value)){
+        		    p[2].innerText = '密码格式不正确，密码格式为：大写字母、小写、数字、下划线最少两种，6-15个字符'
+                    passwordAgain.setAttribute('class','error');
+                    return false;
+        	    }else if(passwordcheck2.test(passwordAgain.value)){
+        		    p[2].innerText = '密码格式不正确，密码格式为：大写字母、小写、数字、下划线最少两种，6-15个字符'
+                    passwordAgain.setAttribute('class','error');
+                    return false;
+        	    }else if(passwordAgain.value === password.value){
+        	    	p[2].innerText = '两次密码输入一致'
+                    passwordAgain.setAttribute('class','');
+                    return true;
+        	    }else{
+        	    	p[2].innerText = '两次密码输入不一致'
+                    passwordAgain.setAttribute('class','error');
+                    return false;
+        	    }
+        }
+        passwordAgain.addEventListener('change',passwordRepeat,false);
+    //------------------------给注册按钮绑定事件--------------------------
+        var btn = document.getElementsByName('submit')[0];
+        btn.addEventListener('click',function(e){
+            if(userAuthentication()&&userRepeat()&&passwordAuthentication()&&passwordRepeat()){
+                console.log('正在注册');
+                alert('正在注册');
+            }else{
+                e.preventDefault();
+            }
+        },false)
+    //------------------------ajax函数----------------------------------
+        function ajax(obj){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    var json = JSON.parse(xhr.responseText);
+                    obj.success(json)
+                }else if(xhr.readyState === 4 && xhr.status === 404){
+                    obj.error()
+                }
+            };
+            var datastr = '';
+            for(var i in obj.data){
+                    datastr += i+'='+obj.data[i]+'&';
+            }
+            datastr = datastr.substr(0,datastr.length-1);
+            if(obj.type.toUpperCase() === 'GET'){
+                xhr.open('GET',obj.url+'?'+datastr,true);
+                xhr.send();
+            }else if(obj.type.toUpperCase() === 'POST'){
+                xhr.open('POST',obj.url,true);
+                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xhr.send(datastr);
+            }
+        }
+	</script>
+</body>
+</html>
