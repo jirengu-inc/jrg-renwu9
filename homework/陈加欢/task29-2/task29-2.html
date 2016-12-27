@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-2</title>
+	<style type="text/css">
+		html,body,ul,li{
+			margin:0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		img{
+			width: 260px;
+			height: 350px;
+			border:1px solid #ddd;
+		}
+		.wrap{
+			width: 820px;
+			margin:0 auto;
+		}
+		.ct{
+			margin-right:-40px;
+		}
+		.ct:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.ct li{
+			float: left;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			
+		}
+		#goTop{
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			padding: 10px;
+			background: #99d9ea;
+			border-top:1px solid #fff;
+			border-left:1px solid #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 6px #ccc;
+			display: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="wrap">
+		<ul class="ct">
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/1.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/2.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/3.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/4.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/5.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/6.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/7.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/8.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/9.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/10.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/1.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/2.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/3.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/4.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/5.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/6.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/7.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/8.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/9.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/10.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/1.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/2.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/3.png"></a></li>
+			<li><a href="#"><img src="./img/blank.png" alt="图片下载失败" data-src="./img/4.png"></a></li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		var clock;
+		$(window).on('scroll', function(){
+		    if(clock){
+		      clearTimeout(clock);
+		    }
+		    clock = setTimeout(function(){
+		      // console.log(1);
+		      show();
+		    }, 300);
+		});
+
+		show();
+
+		function show(){
+			$('.ct img').each(function(){
+				var $cur = $(this);
+	      		if($cur.attr('isLoaded')){
+	        		return;
+	     		}
+				if(isVisible($cur)){
+					$cur.attr('src', $cur.attr('data-src'));
+	      			$cur.attr('isLoaded', true);
+				}
+			});
+		}
+
+		function isVisible($ele){
+		    var scrollH = $(window).scrollTop(),
+		  	    winH = $(window).height(),
+		  	    top = $ele.offset().top;
+
+	  	    if(top < winH + scrollH){
+	  	  		return true;
+	  	    }else{
+	  	  		return false;
+	  	    }
+		}
+
+		
+
+
+
+
+
+
+
+		var $goTop=$("<button id='goTop'>回到顶部</button>");
+		$("body").append($goTop);
+		$(window).on("scroll",function(){
+			var scrollTop=$(window).scrollTop();
+			if(scrollTop>500){
+				$goTop.show();
+			}else{
+				$($goTop).hide();
+			}
+		})
+		$goTop.on("click",function(){
+			$(window).scrollTop(0);
+		})
+		
+		
+	</script>
+</body>
+</html>
