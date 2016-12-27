@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Tab</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+       *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li{
+            list-style: none;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear:both;
+        } 
+        .mod-tab{
+            display: block;
+            margin:20px;
+        }
+        .tab{
+            width: 300px;
+            border-bottom:2px solid #b83e1f;
+        }
+        .tab li{
+            cursor: pointer;
+            position: relative;
+            top:2px;
+            float:left;
+            padding:10px 20px;
+            margin-right: 10px;
+            border:2px solid #ccc;
+            border-bottom:none;
+        }
+        li.active{
+            position: relative;
+            top:4px;
+            border-top:2px solid #b83e1f;
+            border-bottom:2px solid #fff;
+            background: #fff
+
+        }
+        .panel{
+            position: relative;
+            z-index: 100;
+            width: 300px;
+            height: 200px;
+            display: none;
+            padding: 20px;
+            border:2px solid #ccc;
+            border-top:none;
+            background: #fff; 
+        }
+        .panel.active{
+            display: block;
+        }
+    </style>
+
+  </head>
+<body>
+     <div class="mod-tab">
+         <ul class="tab clearfix">
+             <li class="active">tab1</li>
+             <li>tab2</li>
+             <li>tab3</li>
+         </ul>
+         <div class="panel active">内容1</div>
+         <div class="panel">内容2</div>
+         <div class="panel">内容3</div>
+     </div>  
+
+     <div class="mod-tab">
+         <ul class="tab clearfix">
+             <li class="active">tab1</li>
+             <li>tab2</li>
+             <li>tab3</li>
+         </ul>
+         <div class="panel active">内容1</div>
+         <div class="panel">内容2</div>
+         <div class="panel">内容3</div>
+     </div>    
+
+<script type="text/javascript">
+    function Tab($ct){
+        this.$ct=$ct;
+        this.$tabs=this.$ct.find('li');
+        this.$panels=this.$ct.find('.panel');
+        this.bind();
+    }
+    Tab.prototype={
+        bind:function(){
+            var me=this;
+            var idx;
+            me.$tabs.on("click",function(){
+                idx=$(this).index();
+                me.$tabs.removeClass('active');
+                $(this).addClass('active');
+                me.showContent(idx);
+            })
+        },
+        showContent:function(idx){
+            this.$panels.hide();
+            this.$panels.eq(idx).show();
+        }
+   }
+
+    new Tab($(".mod-tab").eq(0));
+    new Tab($(".mod-tab").eq(1));
+   
+</script>
+
+</body>
+</html>
