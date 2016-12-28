@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>渐变轮播</title>
+<style type="text/css">
+html,body,ul,li{
+	margin:0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.carousel{
+	position: relative;
+	width: 310px;
+	height: 206px;
+	overflow: hidden;
+}
+.img-ct{
+	position: relative;
+}
+.img-ct img{
+	width: 310px;
+	height: 206px;
+}
+.img-ct:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.img-ct li{
+	position: absolute;
+	display: none;
+}
+.arrow{
+	position: absolute;
+	top: 50%;
+	margin-top: -15px; /*垂直居中*/
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background: #444;
+	color: #fff;
+	border-radius: 30px;
+	box-shadow: 0 0 2px #888;
+	opacity: 0.7;
+}
+.arrow:hover{
+	opacity: 1;
+}
+.pre{
+	left: 10px;
+}
+.next{
+	right: 10px;
+}
+.bullet{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%); /*水平偏移，使其水平居中*/
+}
+.bullet li{
+	width: 16px;
+	height: 4px;
+	border-radius: 2px;
+	background: #fff;
+	display: inline-block;
+	cursor: pointer;
+}
+.bullet li.active{
+	background: #666;
+}
+
+</style>
+</head>
+<body>
+<div class="carousel">
+	<ul class="img-ct">
+		<li data-id='0'><a href="#"><img src="img/1.jpg"></a></li>
+		<li data-id='1'><a href="#"><img src="img/2.jpg"></a></li>
+		<li data-id='2'><a href="#"><img src="img/3.jpg"></a></li>
+		<li data-id='3'><a href="#"><img src="img/4.jpg"></a></li>
+	</ul>
+	<a href="#" class="pre arrow"><</a>
+	<a href="#" class="next arrow">></a>
+	<ul class="bullet">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+	var $ct=$('.img-ct'),
+	    $items=$ct.children(),
+	    $pre=$('.pre'),
+	    $next=$('.next'),
+	    $bullet=$('.bullet'),
+	    imgWidth=$items.width(),
+	    imgCount=$ct.children().size(); //图片数量,.size()这里相当于.length
+
+	var curIdx =0;
+	var isAnimate=false;   //设置状态锁，防止重复点击
+
+    $next.on('click',function(){
+    	playNext();
+    });
+    $pre.on('click',function(){
+    	playPre();
+    });
+    $bullet.children().on('click',function(){
+    	var idx=$(this).index();
+    	play(idx);   //获取点击的位置，展示对应的图片
+    });
+
+    play(0);
+    autoPlay();
+
+    function play(idx){
+    	if(isAnimate) return;
+    	isAnimate = true;
+    	$items.eq(curIdx).fadeOut(500); //淡出的方式隐藏匹配元素
+    	$items.eq(idx).fadeIn(500); //淡入的方式显示匹配元素
+    	isAnimate = false;
+    	curIdx = idx;
+    	setBullet(); //给对应按钮添加样式
+    }
+    function playNext(){
+    	play((curIdx+1)%imgCount)
+    }
+    function playPre(){
+    	play((imgCount+curIdx-1)%imgCount)
+    }
+    function setBullet(){
+    	$bullet.children().removeClass('active')
+    	                  .eq(curIdx).addClass('active');
+    }
+    function stopAuto(){
+    	clearInterval(clock);
+    }
+    function autoPlay(){
+    	clock = setInterval(function(){
+    		playNext();
+    	},2000)
+    }
+
+    // stopAuto();
+</script>
+</body>
+</html>
