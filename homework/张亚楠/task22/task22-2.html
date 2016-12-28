@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+</body>
+<script>
+	var Ul = document.querySelector('.ct');
+	var Input = document.querySelector('.ipt-add-content');
+	var Btn1 = document.querySelector('#btn-add-start');
+	var Btn2 = document.querySelector('#btn-add-end');
+
+	Ul.addEventListener('click', function(e){
+		console.log(e.target.innerText)
+	},false)
+
+	var addStart = function(){
+		var li = document.createElement('li');
+		li.innerText = Input.value;
+		Ul.insertBefore(li,Ul.children[0])
+		Input.value ='';
+	};
+
+
+
+	Btn1.addEventListener('click',function(){
+		if(Input.value){
+			addStart();
+		}else{
+			alert("请输入添加的内容")
+		};
+	},false)
+
+	var addEnd = function(){
+		var li = document.createElement('li');
+		li.innerText = Input.value;
+		Ul.appendChild(li);
+		Input.value ='';
+	}
+	Btn2.addEventListener('click',function(){
+		if(Input.value){
+			addEnd();
+		}else{
+			alert("请输入添加的内容")
+		};
+	},false)
+
+
+</script>
+</html>
