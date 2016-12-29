@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Infinite carousel</title>
+</head>
+<style>
+    ul,li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .img-ct li img {
+        width: 310px;
+        height: 206px;
+    }
+    .img-ct li {
+        position: absolute;
+        display: none;
+    }
+    .carousel {
+        width: 310px;
+        height: 206px;
+        overflow: hidden;
+        position: relative;
+    }
+    .carousel .arrow .circle {
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid;
+        background-color: #ccc;
+        border-radius: 40px;
+        text-align: center;
+        transition: all 1s;
+    }
+    .carousel .arrow .circle:hover {
+        opacity: 0.6;
+        color: pink;
+        background-color: white;
+    }
+    .carousel .arrow .pre {
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 15px;/* 在左边，margin-right和margin-bottom都不能用。*/
+    }
+    .carousel .arrow .next {
+        right: 0;
+        top: 50%;
+        margin-right: 15px;
+        margin-top: -15px;
+        /*margin-left: 20px; 在左边，margin-right和margin-bottom都不能用。*/
+    }
+    .bullet li{
+        float: left;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        margin-left: 4px;
+        cursor: pointer;
+    }
+    .bullet{
+        position: absolute;
+        left: 50%;
+        margin-left: -26px;
+        top: 85%;
+    }
+    .bullet .active { /*优先级，如果只写.active是不可以的！！*/
+        background-color: slategray;
+    }
+</style>
+<body>
+<div class="carousel">
+    <ul class="img-ct">
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""/></li>
+    </ul>
+    <ul class="arrow">
+        <li>
+            <a href="" class="circle pre"><</a>
+        </li>
+        <li>
+            <a href="" class="circle next">></a>
+        </li>
+    </ul>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var $blt = $('.bullet'),
+        $ct = $('.img-ct'),
+        $pre = $('.pre'),
+        $next = $('.next'),
+        $items = $('.img-ct li'),
+        crtIdx = 0;
+        isAnimate = false,
+        imgCount = $items.size();
+
+    play(0); //这里为什么要play(0)呢？因为刚开始大家都是display:none的，fadein()一下，让第一张图片display:block
+    autoPlay();
+
+    $next.on('click', function (event) {
+        event.preventDefault();
+        playNext();
+    })
+    $pre.on('click', function (event) {
+        event.preventDefault();
+        playPre();
+    })
+    $blt.on('mouseenter', 'li', function () {
+        var idx = $(this).index() ;
+        play(idx);
+    })
+    function playNext() {
+        play( (crtIdx + 1) % imgCount );
+    }
+    function playPre() {
+        play( (imgCount + crtIdx - 1) % imgCount );
+    }
+    function play(idx) {
+        if(isAnimate) return;
+        isAnimate = true;//先执行完，执行autoPlay()相当于没作用。再执行后两句。
+        fade(idx);
+        crtIdx = idx;
+        setBullet();
+    }
+    function fade(idx) {
+        $items.eq(crtIdx).fadeOut(200);
+        console.log(crtIdx);  //fadeout使原来display:none的元素dispaly:block。
+        // 这里为什么原本图片在下面，我就算去除了position:absolute（使他们重叠在一个位置），
+        // 他们不是在原来的位置出现？因为我先让上面的图片fadeOut了，所以display:none了，
+        // 下面的图片就会占据原来图片的位置。这个时候，我fadein和fadeout的两个时间加起来
+        // 就是空白的时间了。
+        $items.eq(idx).fadeIn(200, function () {
+            isAnimate = false;
+        })
+    }
+    function setBullet() {
+        $blt.children().removeClass('active') //链式调用
+                .eq(crtIdx).addClass('active');
+    }
+    function autoPlay() {
+        var timer = setInterval(playNext, 2000);
+        judge(timer);
+    }
+    function judge(timer) {
+        $ct.on('mouseenter', function () {
+            clearInterval(timer);
+        })
+        $ct.on('mouseleave', function () {
+            autoPlay();
+        })
+    }
+
+</script>
+</body>
+</html>
