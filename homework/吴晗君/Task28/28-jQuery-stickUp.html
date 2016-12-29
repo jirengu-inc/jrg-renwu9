@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>jQuery-stickUp</title>
+    <style>
+        #header {
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: red;
+            margin-bottom: 15px;
+        }
+        #nav {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: deepskyblue;
+        }
+        #content {
+            background-color: #ccc;
+            padding: 10px;
+        }
+        #content:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .aside {
+            width: 100px;
+            min-height: 400px;
+            background-color: green;
+            float: left;
+            margin-right: 20px;
+        }
+        .main {
+            background-color: #fff;
+            min-height: 700px;
+            overflow: auto;
+        }
+        #footer {
+            height: 80px;
+            background-color: black;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="header">Header</div>
+    <div id="nav">Nav</div>
+    <div id="content">
+        <div class="aside">Aside</div>
+        <div class="main">Main</div>
+    </div>
+    <div id="footer">Footer</div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $.fn.stick = function () {
+            console.log($(this))
+            var $node = $(this),
+                offsetTop = $node.offset().top,
+                offsetLeft = $node.offset().left,
+                navWidth =  $node.width(),/*变量只能有$数字字母下划线*/
+                nodeClone = $node.clone().css({
+                    display:'none',
+                    visibility:'hidden',/*或者opacity:0*/
+                    border:'1px solid'
+                }).insertBefore($node);
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() >= offsetTop) {
+                if (!isFixed()) {  //感觉错误很离谱的时候，看看括号有没有漏掉
+                    setFixed();
+                }
+            }else {
+                    if ( isFixed() ) {  //小于offset，当data-fixed为true
+                        clearFixed();
+                    }
+                }
+        })
+        function isFixed() {
+            console.log($node.data());
+            //console.log(typeof $node.attr('data-fixed'));
+            return  !!$node.data('fixed');
+        }
+            /*if($(this).scrollTop() === offsetTop) {
+                console.log('这样是取不到的，不论怎么滚动都不会等于');
+                if(data) {
+                    clearFixed();
+                } else {
+                    setFixed();
+                }
+            }*/
+        function setFixed() {
+            console.log($node);
+            $node.data('fixed', true)
+                 .css({position:'fixed',
+                        left:offsetLeft,
+                        top:0,  //一定得设置这俩，要不然会跑开。反正就记得设置了fixed，总得定位粘住最上面吧。
+                        width:navWidth
+                })
+           nodeClone.show();
+        }
+        function clearFixed() {
+            $node.data('fixed', false)//attr()可以设置data-fixed=true/false但是不能读取
+                 .removeAttr('style');//如果设置成data-fixed,
+            nodeClone.hide();/*如果不设置这个，只有clone.show()会造成一个现象，
+             第一次拉下来没事，拉上去还的时候，因为上面的隐藏块已经display:block了
+             所以，原本的nav块的位置被clone的占据了。
+             所以会发现，还没到蓝色nav位置，nav就fixed粘在屏幕上了*/
+        }
+    }
+        $('#nav').stick();
+    </script>
+</body>
+</html>
