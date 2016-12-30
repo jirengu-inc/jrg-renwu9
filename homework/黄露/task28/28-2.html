@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>28-2</title>
+	<style type="text/css">
+#ct{
+	width: 1000px;
+	margin: 0 auto;
+}
+#hd{
+	height: 50px;
+	background: red;
+}
+.nav{
+	margin-top: 20px;
+	height: 30px;
+	border: 1px solid #000;
+	background: yellow;
+}
+.aside{
+	float: left;
+	width: 200px;
+	height: 500px;
+	background: pink;
+}
+.main{
+	margin-left: 220px;
+	height: 500px;
+	background: blue;
+}
+.content:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+	</style>
+</head>
+<body>
+<div id="ct">
+	<div id="hd">header</div>
+	<div class="nav">nav1</div>
+	<div class="content">
+		<div class="aside">aside1</div>
+		<div class="main">main1</div>
+	</div>
+
+	<div class="nav">nav2</div>
+	<div class="content">
+		<div class="aside">aside2</div>
+		<div class="main">main2</div>
+	</div>
+	<div class="nav">nav3</div>
+	<div class="content">
+		<div class="aside">aside3</div>
+		<div class="main">main3</div>
+	</div>
+	<div class="nav">nav4</div>
+	<div class="content">
+		<div class="aside">aside4</div>
+		<div class="main">main4</div>
+	</div>
+</div>
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js'></script>
+<script type="text/javascript">
+	$.fn.stick=function(){
+		var cur=$(this),
+		    curW=cur.width(),
+		    curH=cur.height(),
+		    offsetTop=cur.offset().top,
+		    offsetLeft=cur.offset().left;
+
+		var curClone=cur.clone().css({visibility:'hidden',display:'none'})
+		                        .insertBefore(cur); //visibility:hidden使元素不可见，但占据空间，display：none不可见且不占据空间。
+		$(window).on('scroll',function(){
+			var scrollTop=$(this).scrollTop();
+			if(scrollTop>=offsetTop){
+				if(!isFixed()){
+					setFixed();
+				}
+			}else{
+					if(isFixed){
+						unsetFixed();
+					}
+				}
+		});
+
+		function isFixed(){
+			return cur.data('data-fixed');
+		}
+		function setFixed(){
+			cur.data('data-fixed',true); //设置状态
+			cur.css({
+				'position':'fixed',
+				'top':0,
+				'left':offsetLeft,
+				'width':curW,
+				'margin':0,
+				'z-index':1000
+			});
+			curClone.show();
+		}
+		function unsetFixed(){
+			cur.data('data-fixed',false).removeAttr('style');
+			curClone.hide();
+		}
+	}
+
+$('.nav').each(function(){
+	$(this).stick();
+})
+
+
+</script>
+
+</body>
+</html>
