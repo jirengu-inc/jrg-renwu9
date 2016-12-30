@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task40-2</title>
+	<style type="text/css">
+	div:nth-child(1){
+		height: 2000px;
+		background: linear-gradient(orange,yellow,blue,red,green,white,gray,aqua);
+		color:#fff;
+		font-size:2em;
+		text-align: center;
+		padding-top: 20px;
+	}
+	div:nth-child(2){
+		width:500px;
+		height:500px;
+		border-radius: 50%;
+		background:radial-gradient(red,orange,silver,white,yellow,green,blue);
+		font-size: 2em;
+	}
+	div:nth-child(3){
+		width:500px;
+		height:500px;
+		border-radius: 50%;
+		background:radial-gradient(red 5%,black 10%,yellow 10%,silver 5%,green 20%,blue 30%, orange 20%);
+		font-size: 2em;
+	}
+	</style>
+</head>
+<body>
+	<div>出现滚动条</div>
+	<div class="one">我只曝光一次</div>
+	<div class="always">我一直在曝光</div>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var Exposure=(function(){
+		var clock,
+			lock=false;
+		function isShow($el){
+			var $elTop=$el.offset().top,
+				winH= $(window).height(),
+				scrollTop=$(window).scrollTop();
+			if($elTop>scrollTop && (winH+scrollTop)>$elTop){
+				return true;
+			}
+		}
+		function one($el,handle){
+			$(window).on('scroll',function(){
+				if(lock){return;}
+				if(isShow($el)){
+					handle();
+					lock=true;
+				}
+			})
+		}
+		function bind($el,handle){
+			$(window).on('scroll',function(){
+				if(clock){clearTimeout(clock)}
+				clock=setTimeout(function(){
+					if(isShow($el)){
+						handle();
+					}
+				},100)
+			})
+		}
+		return {
+			bind:bind,
+			one:one
+		}
+	})()
+	Exposure.bind($('.always'),function(){
+		alert('我一直在曝光');
+	})
+	Exposure.one($('.one'),function(){
+		alert('我只曝光一次');
+	})
+</script>	
+</body>
+</html>
