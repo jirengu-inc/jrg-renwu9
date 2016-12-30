@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>stickup</title>
+	<style type="text/css">
+	#hd{
+       height: 100px;
+       background-color: pink;
+	}
+	#nav{
+		margin-top: 20px;
+		height: 40px;
+		background: blue;
+	}
+	#content{
+		padding: 10px;
+		min-height: 800px;
+		background: #ccc;
+	}	
+	#content:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	#aside{
+		float: left;
+		width: 100px;
+		height: 500px;
+		background: green;
+	}
+	#main{
+		margin-left: 100px;
+		padding-left: 20px;
+		min-height: 800px;
+		background: #fff;
+	}
+	#ft{
+		background: yellow;
+	}
+
+	</style>
+</head>
+<body>
+<div id="hd">header</div>
+<div id="nav">nav</div>
+<div id="content">
+	<div id="aside">aside</div>
+	<div id="main">main</div>
+</div>
+<div id="ft">footer</div>
+
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js'></script>
+<script>
+
+//jquery插件封装
+	$.fn.stick=function(){
+		var cur=$(this),
+		    curW=cur.width(),
+		    curH=cur.height(),
+		    offsetTop=cur.offset().top,
+		    offsetLeft=cur.offset().left;
+
+		var curClone=cur.clone().css({visibility:'hidden',display:'none'})
+		                        .insertBefore(cur); //visibility:hidden使元素不可见，但占据空间，display：none不可见且不占据空间。
+		$(window).on('scroll',function(){
+			var scrollTop=$(this).scrollTop();
+			if(scrollTop>=offsetTop){
+				if(!isFixed()){
+					setFixed();
+				}
+			}else{
+					if(isFixed){
+						unsetFixed();
+					}
+				}
+		});
+
+		function isFixed(){
+			return cur.data('data-fixed');
+		}
+		function setFixed(){
+			cur.data('data-fixed',true); //设置状态
+			cur.css({
+				'position':'fixed',
+				'top':0,
+				'left':offsetLeft,
+				'width':curW,
+				'margin':0,
+				'z-index':1000
+			});
+			curClone.show();
+		}
+		function unsetFixed(){
+			cur.data('data-fixed',false).removeAttr('style');
+			curClone.hide();
+		}
+	}
+
+$('#nav').stick();
+
+</script>
+
+</body>
+</html>
