@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task44-1</title>
+	<style type="text/css">
+	figure{
+		border: 1px solid;
+		margin:5px;
+		padding: 10px;
+	}
+	figcaption{margin-bottom: 5px;}
+	div{
+		width:50px;
+		height: 50px;
+		border:1px solid;
+		display: inline-block;
+		margin: 20px;
+		background: #f56;
+		font-size: 12px;
+		color:#fff;
+		text-align: center;
+	}
+	.circle{border-radius: 50%;}
+	.radius{border-radius: 10px;}
+	.shodow{
+		box-shadow: 5px 5px 5px 5px #ccc;
+	}
+	.big{
+		transform: scale(1.5);
+	}
+	.small{
+		transform: scale(0.5);
+	}
+	.offset{
+		transform: translate(50px,10px);
+	}
+	.rotate{
+		transform: rotate(30deg);
+	}
+	.ct{transform-style: preserve-3d;
+		-webkit-perspective: 1200px;}
+	.moveZ{transform: translate3d(10px,20px,30px);}
+	.rotateZ{transform: rotateZ(70deg);}
+	.rotateX{transform: rotateX(70deg);}
+	.rotateY{transform: rotateY(70deg);}
+	.long{transition:width 0.5s;height: 30px;}
+	.long:hover{width: 500px;}
+	.animate{
+		border-radius: 50%;border: 1px solid #ccc;line-height: 50px;
+		animation: changeColor 5s infinite;
+
+	}
+	@keyframes changeColor {
+		0%{background: red;opacity: 0.8;transition: all 0.3s}
+		40%{background: green;opacity: 0.8;transition: all 0.3s}
+		70%{background: blue;opacity: 0.8;transition: all 0.3s}
+		100%{background: silver;opacity: 0.8;transition: all 0.3s}
+	}
+	.linear,.radial{
+		width: 300px;height: 100px;
+	}
+	.linear{background:  -webkit-linear-gradient(top left,blue,red,green)}
+	.radial{background: radial-gradient( circle,red, orange, gray, green)}
+	</style>
+</head>
+<body>
+	<figure>
+		<figcaption>圆角和圆</figcaption>
+		<div class="circle"></div>
+		<div class="radius"></div>
+	</figure>
+	<figure>
+		<figcaption>div阴影</figcaption>
+			<div class="shodow"></div>
+	</figure>
+	<figure>
+		<figcaption>2D转换:放大、缩小、偏移、旋转</figcaption>
+			<div class="big"></div>
+			<div class="small"></div>
+			<div class="offset">偏移了</div>
+			<div class="rotate"></div>
+	</figure>
+	<figure class="ct">
+		<figcaption>3D 转换：移动、旋转</figcaption>
+		<div class="moveZ"></div>
+		<div class="rotateZ"></div>
+		<div class="rotateY"></div>
+		<div class="rotateX"></div>
+	</figure>
+	<figure>
+		<figcaption>过渡效果</figcaption>
+		<div class="long">点我变长</div>
+	</figure>
+	<figure>
+		<figcaption>动画</figcaption>
+		<div class="animate">变颜色</div>
+	</figure>
+	<figure>
+		<figcaption>背景色渐变</figcaption>
+		<div class="linear"></div>
+		<div class="radial"></div>
+	</figure>
+</body>
+</html>
