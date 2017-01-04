@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task40-1</title>
+</head>
+<body>
+	<script type="text/javascript">
+	function createTimer(){
+		function Timer(){
+			this.start=function(){
+				this.start= Date.now();
+			};
+			this.end=function(){
+				this.end= Date.now();
+			};
+			this.get=function(){
+				document.write('耗时'+((this.end - this.start)/1000)+'秒<br />')
+			}
+		}
+		return new Timer();
+	}
+	var timer1 = createTimer();
+	var timer2 = createTimer();
+	timer1.start();
+    for (var i = 0; i < 100; i++) {
+        console.log(i);
+    }
+    timer2.start();
+    for (var i = 0; i < 100; i++) {
+        console.log(i);
+    }
+    timer1.end();
+    timer2.end();
+    console.log(timer1.get());
+    console.log(timer2.get());
+	</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Kyle's Profile</title>
+		<link rel="stylesheet" type="text/css" href="normalize.css" />
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style>
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+				background: rgba(0, 150, 136, 0.04);
+				min-width: 900px;
+				color: #4b4b4b;
+			}
+			
+			p {
+				font-weight: 100;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.rl {
+				float: right;
+			}
+			
+			.bfc {
+				overflow: auto;
+				*zoom: 1;
+			}
+			
+			.clearfix {
+				*zoom: 1;
+			}
+			
+			.clearfix::after {
+				content: '';
+				height: 0;
+				width: 0;
+				display: block;
+				visibility: hidden;
+				clear: both;
+			}
+			
+			.container {
+				width: 900px;
+				margin: 0 auto;
+				box-sizing: border-box;
+			}
+			
+			#header>.container {
+				background: white;
+				padding: 30px;
+				position: relative;
+			}
+			
+			#header .profile>img.favicon {
+				border-radius: 50%;
+				width: 164px;
+				margin-right: 30px;
+			}
+			
+			.profile>h2 {
+				font-size: 50px;
+				font-weight: 100;
+				line-height: 1.4;
+				margin-bottom: 0;
+				margin-top: 30px;
+			}
+			
+			.profile>p {
+				margin-top: 5px;
+				font-weight: 500;
+			}
+			
+			#header .contact {
+				position: absolute;
+				right: 100px;
+				top: 0;
+			}
+			
+			.contact>h4 {
+				font-weight: 600;
+				line-height: 1.5;
+				margin: 40px 0 10px 0px;
+				border-bottom: 3px solid #3e3e3e;
+				margin-right: -100px;
+			}
+			
+			.contact ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.contact li {
+				font-weight: 300;
+				line-height: 1.8;
+			}
+			
+			.contact i {
+				margin-right: 20px;
+				display: inline-block;
+			}
+			
+			.panel {
+				width: 400px;
+			}
+			
+			#content .container {
+				background: white;
+				padding: 0 20px;
+			}
+			
+			#content h3 {
+				width: 350px;
+				text-transform: uppercase;
+				font-weight: 500;
+				line-height: 2.2;
+				border-bottom: 1px solid #d1d1d1;
+			}
+			
+			.panel h3 {
+				width: 400px !important;
+			}
+			
+			#content ul {
+				list-style: none;
+				margin-left: 10px;
+				padding-left: 70px;
+			}
+			
+			#project ul,
+			#education ul {
+				border-left: 1px solid #4e4e4f;
+			}
+			
+			#content ul li {
+				position: relative;
+				margin-top: 50px;
+			}
+			
+			#content ul li::before {
+				content: '';
+				display: block;
+				border-radius: 50%;
+				position: absolute;
+				left: -75px;
+				top: 0;
+			}
+			
+			#project ul li::before,
+			#education ul li::before {
+				width: 10px;
+				height: 10px;
+				background: #000;
+			}
+			
+			.panel ul li i {
+				display: block;
+				border-radius: 50%;
+				position: absolute;
+				left: -75px;
+				top: -10px;
+				font-size: 30px;
+			}
+			
+			#content ul li p.title {
+				line-height: 10px;
+				font-size: 18px;
+				font-weight: 300;
+			}
+			
+			#content ul li .time {
+				color: #a4a4a4;
+				margin-left: 5px;
+			}
+			
+			#education ul li>p:nth-of-type(1) {
+				margin-bottom: 8px;
+			}
+			
+			#education ul li>.major {
+				color: #a4a4a4;
+				font-weight: 100;
+			}
+			
+			#ps-skills ul {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#ps-skills ul li {
+				margin-top: 10px;
+				margin-left: 50px;
+				float: left;
+				width: 150px;
+			}
+			
+			#ps-skills ul li i {
+				display: block;
+				border-radius: 50%;
+				position: absolute;
+				left: -50px;
+				top: 10px;
+				font-size: 30px;
+			}
+			
+			#footer> .container {
+				border-top: 1px solid #e8e8e8;
+				padding: 30px;
+				text-align: center;
+				background: white;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="header">
+			<div class="container clearfix bfc">
+				<div class="profile bfc">
+					<img class="favicon fl" src="https://ww2.sinaimg.cn/large/006tNbRwgw1fbawigpyg3j30ak0ak0uk.jpg" alt="" />
+					<h2>Wenhao Liao</h2>
+					<p>&nbsp;Front End Web developer</p>
+				</div>
+				<div class="contact rl">
+					<h4>CONTATCS</h4>
+					<ul>
+						<li><i class="fa fa-map-marker"></i> Address here</li>
+						<li><i class="fa fa-phone"></i>13827460426</li>
+						<li><i class="fa fa-envelope"></i>kylevanho@gmail.com</li>
+						<li><i class="fa fa-link"></i>kylewh.github.com</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="container bfc clearfix">
+				<div id="project">
+					<h3>project experience</h3>
+					<ul>
+						<li>
+							<p class="title">Project Name /<span class="time">2016.12</span></p>
+							<p class="detail">Phosfluorescently syndicate inexpensive results rather than standardized partnerships. Uniquely visualize exceptional e-commerce whereas go forward relationships.</p>
+						</li>
+						<li>
+							<p class="title">Project Name /<span class="time">2016.12</span></p>
+							<p class="detail">Phosfluorescently syndicate inexpensive results rather than standardized partnerships. Uniquely visualize exceptional e-commerce whereas go forward relationships.</p>
+						</li>
+						<li>
+							<p class="title">Project Name /<span class="time">2016.12</span></p>
+							<p class="detail">Phosfluorescently syndicate inexpensive results rather than standardized partnerships. Uniquely visualize exceptional e-commerce whereas go forward relationships.</p>
+						</li>
+						<li>
+							<p class="title">Project Name /<span class="time">2016.12</span></p>
+							<p class="detail">Phosfluorescently syndicate inexpensive results rather than standardized partnerships. Uniquely visualize exceptional e-commerce whereas go forward relationships.</p>
+						</li>
+					</ul>
+				</div>
+				<div id="education">
+					<h3>education</h3>
+					<ul>
+						<li>
+							<p class="title">Steven Institute of Technology /<span class="time">2015.8 - 2016.12</span></p>
+							<span class="major">Computer Science</span>
+							<p class="detail">Compellingly generate collaborative markets and excellent strategic theme areas.</p>
+						</li>
+						<li>
+							<p class="title">ShenZhen University /<span class="time">2010.9 - 2014.7</span></p>
+							<span class="major">Electronic Information Engineering</span>
+							<p class="detail">Compellingly generate collaborative markets and excellent strategic theme areas.</p>
+						</li>
+					</ul>
+				</div>
+				<div id="activities" class="panel fl">
+					<h3>EXTRA CURRICULAR ACTIVITIES</h3>
+					<ul>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="title">Toefl Teaching Assistant</p>
+							<p class="detail">Teaching student Reading parts of the test.</p>
+						</li>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="title">Volunteer</p>
+							<p class="detail">The 26th Games for university students Volunteer</p>
+						</li>
+					</ul>
+				</div>
+				<div id="ps-skills" class="panel rl">
+					<h3>Personal skills</h3>
+					<ul>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="detail">HTML&CSS</p>
+						</li>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="detail">JQUERY</p>
+						</li>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="detail">JAVASCRIPT</p>
+						</li>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="detail">NODEJS</p>
+						</li>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="detail">ANGULAR</p>
+						</li>
+						<li>
+							<i class="fa fa-plus-circle"></i>
+							<p class="detail">PHOTOSHOP</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		<div id="footer">
+			<div class="container bfc">
+				<p>Copyright @Kylewh 2016</p>
+			</div>
+		</div>
+
+	</body>
+
+</html>
