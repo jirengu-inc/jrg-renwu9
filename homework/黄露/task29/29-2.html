@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>图片懒加载</title>
+	<style>
+		a{
+			text-decoration: none;
+		}
+		.ct{
+			width: 780px;
+			margin: 0 auto;
+		}
+		.ct:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.ct img{
+			float: left;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			width: 250px;
+		}
+
+	</style>
+</head>
+<body>
+<div class="ct">
+	<a href="#"><img src="img/1.jpg"></a>
+	<a href="#"><img src="img/1.jpg"></a>
+	<a href="#"><img src="img/1.jpg"></a>
+	<a href="#"><img src="img/2.jpg"></a>
+	<a href="#"><img src="img/2.jpg"></a>
+	<a href="#"><img src="img/2.jpg"></a>
+	<a href="#"><img data-src="img/3.jpg"></a>
+	<a href="#"><img data-src="img/3.jpg"></a>
+	<a href="#"><img data-src="img/3.jpg"></a>
+	<a href="#"><img data-src="img/4.jpg"></a>
+	<a href="#"><img data-src="img/4.jpg"></a>
+	<a href="#"><img data-src="img/4.jpg"></a>
+	<a href="#"><img data-src="img/5.jpg"></a>
+	<a href="#"><img data-src="img/5.jpg"></a>
+	<a href="#"><img data-src="img/5.jpg"></a>
+</div>
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js'></script>
+<script>
+	var clock;
+	$(window).on('scroll',function(){
+		if(clock){
+			clearTimeout(clock);
+		}
+		clock=setTimeout(function(){
+			console.log(1);
+			checkShow();
+		},300);
+	})
+	checkShow();
+	function checkShow(){
+		$('.ct img').each(function(){
+			var $cur=$(this);
+			if($cur.attr('isloaded')){
+				return;
+			}
+			if(isShow($cur)){
+				showImg($cur);
+			}
+		});
+	}
+
+	function isShow($el){
+		var scrollH=$(window).scrollTop(),
+		winH=$(window).height(),
+		top=$el.offset().top;
+		if(top<winH+scrollH){
+			return true;
+		}else{
+			return false;
+		}
+	}
+	function showImg($el){
+		$el.attr('src',$el.attr('data-src'));
+		$el.attr('isloaded',true);
+	}
+</script>
+</body>
+</html>
