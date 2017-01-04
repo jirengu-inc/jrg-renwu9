@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>无限加载</title>
+</head>
+<style>
+    li,ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    .content li {
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        padding-left: 10px;
+        cursor:pointer;
+    }
+    .content li:hover {
+        background-color: green;
+        color: #fff;
+    }
+    .btn {
+        display: block;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        border: 1px solid;
+        border-radius: 5px;
+        color: #E27272;
+        margin: 0 auto;
+        text-align: center;
+    }
+</style>
+<body>
+<ul class="content">
+    <li>内容1</li>
+    <li>内容2</li>
+    <li>内容3</li>
+</ul>
+<a class="btn" href="">加载更多</a>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var cur = 3,
+        timer,
+        $ele = $('.btn');
+    load();
+    $(window).on('scroll', function () {
+       //console.log(!isVisible($ele));
+        if( !isVisible($ele) ) {return;} //这是必须的，要不然还没到底部就开始发请求了。
+        if(timer){                      //而我则是把发送ajax请求和判断全部写在一起，没有考虑模块化，也很乱
+            clearTimeout(timer);
+        }
+        timer = setTimeout(function() { //监听函数：1.判断是否可见(因为获取高度和scroll连在一起)
+            load();                                //2. 设置延时器，防止滚动过程中一直发送ajax请求。
+        }, 500);
+    });
+    //判断是否可见
+    function isVisible($ele) {
+        var winH = $(window).height(),
+            scrollH = $(window).scrollTop(), //大神的写法是将计算距离放到函数中在监听函数中调用。
+            eleOffset = $ele.offset().top;//而我的在监听函数中调用还要作为参数去传递，太蠢了。其实也可以将计算距离放到函数中的
+        if (scrollH + winH > eleOffset) { //基础不牢固
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //发送ajax请求
+    /*定义接口
+
+     1) url:
+     2) 入参: { start: 2, len: 6 }
+     3) 回参:
+     {
+     status: 1, //1代表正常，0代表出错
+     data: [2,3,4,5,6,7]
+     }
+     */
+    function load() {
+        $.ajax({
+            url: '/getMore',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                start: cur,
+                len: 12
+            },
+            success: function (obj) {
+                onSuccess(obj);
+            },
+            error: function () {
+                onError();
+            }
+        })
+    }
+    //处理后台发送给来的数据
+    function onSuccess(obj) {
+        if(obj.status === 1){
+            append(obj);
+            cur += 12;
+        } else {
+            alert('获取数据失败');
+        }
+    }
+    function onError() {
+        alert('系统异常');
+    }
+    //具体处理
+    function append(obj) {
+        for (var i = 0; i < obj.msg.length; ++i) {
+            $('.content').append($('<li>' + '内容' + obj.msg[i] + '</li>'));
+        }
+    }
+</script>
+</body>
+</html>
