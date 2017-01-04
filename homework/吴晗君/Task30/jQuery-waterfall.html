@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .content {
+        position: relative;
+        border: 1px solid;
+    }
+    .item {
+        position: absolute;
+        width: 200px;
+        margin-left: 15px;
+        margin-top: 15px;
+        transition: all 1s;
+    }
+    .h1 {
+        height: 200px;
+        background-color: red;
+    }
+    .h2 {
+        height: 300px;
+        background-color: blue;
+    }
+    .h3 {
+        height: 400px;
+        background-color: pink;
+    }
+</style>
+<body>
+    <div class="content">
+        <div class="item h1">
+            1
+        </div>
+        <div class="item h3">
+            2
+        </div>
+        <div class="item h2">
+            3
+        </div>
+        <div class="item h1">
+            4
+        </div>
+        <div class="item h1">
+            5
+        </div>
+        <div class="item h3">
+            6
+        </div>
+        <div class="item h3">
+            7
+        </div>
+        <div class="item h2">
+            8
+        </div>
+        <div class="item h1">
+            9
+        </div>
+        <div class="item h3">
+            10
+        </div>
+        <div class="item h3">
+            11
+        </div>
+        <div class="item h3">
+            12
+        </div>
+        <div class="item h2">
+            13
+        </div>
+        <div class="item h2">
+            14
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        /*基础实现
+        function arrange() {
+            var parentWidth = $('.content').width(),//jQuery封装的较好，取类数组对象第一个的width
+                    eleWidth = $('.item').outerWidth(true),//outerWidth()不加margin
+                    colNumber = parseInt( parentWidth /eleWidth );//不是字符串先转化为字符串
+
+            var colArray = [];
+            for(var i = 0; i < colNumber; ++i) {
+                colArray[i] = 0;
+            }
+            $('.item').each(function () {
+                var $cur = $(this),
+                        minHeight = colArray[0],
+                        idx = 0,
+                        curHeight = $cur.height();
+                //console.log(curHeight);
+                //console.log(eleWidth);
+                for(i = 1; i < colNumber; ++i) {
+                    if(colArray[i] < minHeight) {
+                        console.log(colArray[i]);
+                        minHeight = colArray[i];
+                        idx = i;
+                    }
+                }
+                colArray[idx] = colArray[idx] + curHeight;  //这里13分钟才看出来，看到页面出现问题，应该先检查元素。快速定位到left出问题。然后看哪里设置，不要瞎找。
+                $cur.css({left: idx * eleWidth, top: minHeight});
+            })
+        }
+        arrange();
+        $(window).on('resize', function () {
+           arrange();
+        })
+        */
+
+        /*闭包方式
+       var waterfall = (function () {
+            function arrange() {
+                var parentWidth = $('.content').width(),//jQuery封装的较好，取类数组对象第一个的width
+                        eleWidth = $('.item').outerWidth(true),//outerWidth()不加margin
+                        colNumber = parseInt( parentWidth /eleWidth );//不是字符串先转化为字符串
+
+                var colArray = [];
+                for(var i = 0; i < colNumber; ++i) {
+                    colArray.push(0);//colArray[i] = 0;或是
+                }
+
+                $('.item').each(function () {
+                    var $cur = $(this),
+                            minHeight = colArray[0],
+                            idx = 0,
+                            curHeight = $cur.height();
+                    //console.log(curHeight);
+                    //console.log(eleWidth);
+                    for(i = 1; i < colNumber; ++i) {
+                        if(colArray[i] < minHeight) {
+                            console.log(colArray[i]);
+                            minHeight = colArray[i];
+                            idx = i;
+                        }
+                    }
+                    colArray[idx] = colArray[idx] + curHeight;  //这里13分钟才看出来，看到页面出现问题，应该先检查元素。快速定位到left出问题。然后看哪里设置，不要瞎找。
+                    $cur.css({
+                        left: idx * eleWidth,
+                        top: minHeight
+                    });
+                })
+            }
+            arrange();
+            $(window).on('resize', function () {
+                arrange();
+            })
+            return {
+                init: arrange
+            }
+        })();
+        waterfall.init(); //闭包方式在控制台看不到里面的参数。比较安全。
+        */
+        //所有区块拆解塞进对象
+        var waterfall = {
+            //colArray: [],
+            init: function ($ct) {
+                console.log( this ); //对象本身
+                this.$ct = $ct;
+                this.$items = $ct.find('.item');
+                this.itemWidth = this.$items.outerWidth(true);
+
+                this.bind();
+                this.start();
+            },
+            bind: function () {
+                var self = this;
+                $(window).on('resize', function () {
+                    self.start();
+                })
+            },
+            start: function () {
+                var self = this;
+                self.eleWidth = this.$items.outerWidth(true);
+                this.parentWidth = this.$ct.width();
+                this.colNumber = parseInt( this.parentWidth / this.eleWidth); //6
+
+                var colArray = [];
+
+                for(var i = 0; i < this.colNumber; ++i) {//最后我是怎么想出来的？我把问题打了出来，这个很关键。
+                    //this.colArray.push(0);  //这个地方错了，找了2个小时才找出来。首先，屏幕没变化的时候排列整齐，说明整体没有缺哪一步，
+                    colArray[i] = 0; //对log出来的东西应该想的更多，这里就是结合输出的数组看出不断有新的内容添加进来。而不是在原有的
+                   console.log(colArray);//数组元素上覆盖。
+                }
+                console.log(colArray.length);
+                this.$items.each(function () {
+                    this.eleHeight = $(this).height();
+                    var minHeight = colArray[0],
+                            idx = 0;
+                    console.log(colArray.length);//屏幕尺寸变化，新的高度没有覆盖到原来的地方，而是新增了一堆
+                    for(i = 1; i < colArray.length; ++i) {
+                        if(colArray[i] < minHeight) {
+                            minHeight = colArray[i];
+                            idx = i;
+                        }
+                    }
+                  $(this).css({left: idx * self.eleWidth, top: minHeight});
+                    console.log(idx);
+                    colArray[idx] = colArray[idx] + this.eleHeight;
+                    //console.log(minHeight);
+                })
+            }
+        };
+        waterfall.init($('.content'));
+
+    </script>
+</body>
+</html>
