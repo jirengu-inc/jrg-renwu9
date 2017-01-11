@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	.item{
+		width:100%;
+		height:60px;
+		border:2px solid #ccc;
+		list-style: none;
+		margin-top:10px 
+
+	}
+	.item:hover{
+		background: green;
+	}
+	.btn{
+		margin:10px auto;
+		width:200px;
+		height: 60px;
+		text-align: center;
+		line-height: 60px;
+		border: 1px solid #ccc;
+	}
+	</style>
+</head>
+<body>
+	<div class="c">
+			<div class="item">内容1</div>
+			<div class="item">内容2</div>
+			<div class="btn">加载更多</div>
+	</div>
+<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+<script>
+
+$(function(){
+
+	var LEN=3;
+	var ready=true;
+
+	$(".btn").on("click",function(){
+		var me = this,
+			start=$(this).index();
+			if(!ready){
+				return;
+			}
+			ready = false;
+			$(me).text("loading...");
+	$.ajax({
+		url:"loding.php",
+		type:"GET",
+		dataType:"json",
+		data:{
+			start:start,
+			len:LEN
+		},
+		success:function(data){
+			console.log(this);
+			if(data&&data.status===1){
+				var items=data.data;
+				for(var i=0;i<items.length;i++){
+					$(me).before("<div class='item'>"+items[i]+'</div>')
+				}
+			}else{
+				alert("error1")
+			}
+		},
+		error:function(){
+			alert("error2")
+		},
+		complete:function(){
+			ready=true;
+			$(me).text("加载更多");
+		}
+		});
+	})
+})
+
+	/*function ajax(opts){
+			var xmlhttp=new XMLHttpRequest();
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState==4&&xmlhttp.status==200){
+					var json=xmlhttp.responseText;
+					opts.success(json);
+				}
+				if(xmlhttp==404){
+					opts.error();
+				}
+			}
+		var dataStr="";
+			for(var key in opts.data){
+				dataStr+=key+"="+opts.data[key]+"&";
+			}
+			dataStr=dataStr.substr(0,dataStr.length-1);
+
+			if(opts.type.toLowerCase()==="post"){
+				xmlhttp.open(opts.type,opts.url,true);
+				xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xmlhttp.send(dataStr);
+			}
+			if(opts.type.toLowerCase()==="get"){
+				xmlhttp.open(opts.type,opts.url+"?"+dataStr,true);		
+				xmlhttp.send()
+			}
+		}
+		var ul=document.getElementById("list-li");
+		var liNum=ul.getElementsByTagName("li");
+		document.getElementById("btn").addEventListener("click",function(){
+			ajax({
+				url:"loding.php",
+				type:"get",
+				dataType:"json",
+				data:{
+					start:liNum.length,
+					len:6
+				},
+				success:function(data){
+					dealWith(data);
+				},
+				error:function(){
+					console.log("error")
+				}
+			});
+		});
+		function dealWith(userInfo){
+			var str=userInfo;
+			document.getElementById("list-li").innerHTML+=str
+		}*/
+	
+</script>
+</body>
+</html>
