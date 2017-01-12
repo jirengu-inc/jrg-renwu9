@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+		
+		<style type="text/css">
+			.btn {
+				text-align: center;
+				line-height: 50px;
+				width: 160px;
+				padding: 0 20px;
+				color: white;
+				border-radius: 10px;
+				margin: 10px;
+				cursor: pointer;
+				position: relative;
+			}
+			
+			.btn1 {
+				background: #0099ff
+			}
+			
+			.btn2 {
+				background: #fd435d;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="btn btn1">switch me1</div>
+		<div class="btn btn2">switch me2</div>
+		<input type="button" value="switch"/>
+		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+			(function($){
+				
+				$('input').eq(0).click(function(){
+					$('.btn').eq(0).animate({top:60},501,'linear',function(){
+						
+						
+						$('.btn').eq(1).insertBefore($('.btn').eq(0));
+						$('.btn').eq(0).css({top:''});
+						$('.btn').eq(1).css({top:''});
+						
+					});
+					$('.btn').eq(1).animate({top:-60},500,'linear',function(){
+						$('.btn').eq(0).css({top:''});
+						$('.btn').eq(1).css({top:''});
+					});
+				});
+				
+
+				
+			})(jQuery);
+			
+		</script>
+	</body>
+	
+</html>

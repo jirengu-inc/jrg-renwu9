@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Gallery</title>
+		<style type="text/css">
+			html,body{
+				margin: 0;
+				padding: 0;
+				background: #2196f3;
+			}
+			body{
+				font-family:
+					"PingFang SC",           
+					"Hiragino Sans GB",     
+					"STHeiti",               
+					"Microsoft YaHei",        
+					"Microsoft JhengHei",    
+					"Source Han Sans SC",     
+					"Noto Sans CJK SC",
+					"Source Han Sans CN",
+					"Noto Sans SC",
+					"Source Han Sans TC",
+					"Noto Sans CJK TC",       
+					"WenQuanYi Micro Hei",   
+					SimSun,                  
+					sans-serif;               
+			}
+		    .text-center{
+		    		text-align: center;
+		    }
+			.content{
+				width: 800px;
+				margin: 0 auto;
+			}
+			.clearfix{
+				*zoom: 1;
+			}
+			.clearfix::after{
+				content: '';
+				width: 0;
+				height: 0;
+				display: block;
+				visibility: hidden;
+				clear: both;
+			}
+			.content>h1{
+				color: #FFF;
+			    padding-bottom: 10px;
+			    font-weight: 400;
+			    border-bottom: 1px dashed #FFC85B;
+			}
+			ul,li{
+				padding: 0;
+				margin: 0;
+			}
+			ul{
+				margin-left: -10px;
+			}			
+			ul>.card{
+				position: relative;
+				list-style: none;
+				float: left;
+				width: 260px;
+				margin-left: 10px ;
+				margin-top: 30px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+			}
+			.card>.overlay{
+				width: 260px;
+				height: 173px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 10;
+				cursor: pointer;
+				transition: 0.3s;
+			}
+			.card>.overlay:hover{
+				background: rgba(33, 33, 33, 0.65);
+			}
+			.overlay>a{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				border: 1px solid #40eca9;
+				border-radius: 5px;
+				transform: translate(-50%,-50%);
+				line-height: 2;
+				padding: 0 10px;
+				text-decoration: none;
+				color: #40eca9;
+				opacity: 0;
+				font-weight: 200;
+				transition: 0.3s;
+			}
+			.card>.overlay:hover>a{
+				opacity: 1;
+			}
+			.card>.overlay:hover~.detail{
+				font-weight: bold;
+			}
+			.card>.picture{
+				width: 100%;
+				height: 173px;
+				background-size:cover ;
+				background-position: center;
+			}
+			.card>.detail{
+				background: #ffd54f;
+				padding: 1px 16px;
+			}
+			ul>.card:nth-child(1)>.picture{
+				background-image: url('https://ww2.sinaimg.cn/large/006y8lVagw1fb920vfy32j31kw0uzwon.jpg');
+			}
+			ul>.card:nth-child(2)>.picture{
+				background-image: url('https://ww3.sinaimg.cn/large/006y8lVagw1fb93yg9aklj31360kv7dv.jpg');
+			}
+			ul>.card:nth-child(3)>.picture{
+				background-image: url('https://ww4.sinaimg.cn/large/006y8lVagw1fb91x3k90rj31kw0uqmye.jpg');
+			}
+			ul>.card:nth-child(4)>.picture{
+				background-image: url('https://ww3.sinaimg.cn/large/006y8lVagw1fb921fkit3j31kw0uk0v2.jpg');
+			}
+			ul>.card:nth-child(5)>.picture{
+				background-image: url('https://ww2.sinaimg.cn/large/006y8lVagw1fb922zdrupj30tt0fuwf0.jpg');
+			}
+			ul>.card:nth-child(6)>.picture{
+				background-image: url('https://ww1.sinaimg.cn/large/006y8lVagw1fb92ubdwxzj31hb0p10yu.jpg');
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="content clearfix text-center">
+			<h1>作品集</h1>
+			<ul class="clearfix">
+				<li class="card">
+					<div class="overlay">
+						<a href="#">View more</a>
+					</div>
+					<div class="picture"></div>
+					<div class="detail text-center">
+						<p>原生JS可控轮播图</p>
+					</div>
+				</li>
+				<li class="card">
+					<div class="overlay">
+						<a href="#">View more</a>
+					</div>
+					<div class="picture"></div>
+					<div class="detail text-center">
+						<p>仿500px相册切换</p>
+					</div>
+				</li>
+				<li class="card">
+					<div class="overlay">
+						<a href="#">View more</a>
+					</div>
+					<div class="picture"></div>
+					<div class="detail text-center">
+						<p>仿iphone6聊天窗口</p>
+					</div>
+				</li>
+				<li class="card">
+					<div class="overlay">
+						<a href="#">View more</a>
+					</div>
+					<div class="picture"></div>
+					<div class="detail text-center">
+						<p>实时日历</p>
+					</div>
+				</li>
+				<li class="card">
+					<div class="overlay">
+						<a href="#">View more</a>
+					</div>
+					<div class="picture"></div>
+					<div class="detail text-center">
+						<p>打飞机游戏</p>
+					</div>
+				</li>
+				<li class="card">
+					<div class="overlay">
+						<a href="#">View more</a>
+					</div>
+					<div class="picture"></div>
+					<div class="detail text-center">
+						<p>音乐推荐App</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

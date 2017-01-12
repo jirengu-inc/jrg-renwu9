@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>jquery基础1</title>
+	<style type="text/css">
+		h1{
+			position: relative;
+			left: 0;
+			width: 100px;
+			height: 50px;
+			background: pink;
+		}
+		p{
+			width: 100%;
+			height: 50px;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+<div id="hd">
+	<div class="ct">
+	    <h1>标题</h1>
+		<p class="p1">段落</p>
+	</div>
+	<button class="btn">click me</button>
+</div>
+<input type="text" name="user">
+
+<img src="1.png" alt="示例图片">
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js">
+</script>
+<script type="text/javascript">
+ // $('.p1').html('<a href="#">链接</a>');
+var a =$('input').val();
+console.log(a);
+
+// $(".btn").on("click",function() {
+// 	$('.p1').show('slow');
+// 	$('h1').animate(
+// 	{
+// 		background:'red',//无法执行，除非使用jQuery.Color插件
+// 		left:'+=50px',
+// 		fontSize:'40px'
+// 	});
+// });
+    
+// $('.p1').on('mouseenter',function(){
+// 	$(this).hide('slow');
+// })
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过渡色</title>
+	<style type="text/css">
+	.ct,.ct:before,.ct:after{
+		position: absolute;
+		top: 0;bottom: 0;
+	}
+	.ct:before,.ct:after{
+		display: block;
+		content: '';
+		width: 50%;
+	}
+	.ct{
+		left: 0;right: 0;
+		background-image: url(../img/5.jpg);
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	.ct:before{
+		left: 0;
+		background: linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,1));
+	}
+	.ct:after{
+		right: 0;
+		background: linear-gradient(to bottom left, rgba(255,0,0,0), rgb(187, 61, 187));
+	}
+	</style>
+</head>
+<body>
+	<div class="ct"></div>
+</body>
+</html>

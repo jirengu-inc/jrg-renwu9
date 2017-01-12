@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+</head>
+<body>
+<ul class="ct">
+  <li>这里是</li>
+  <li>饥人谷</li>
+  <li>前端6班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+<script>
+  var oUl=document.getElementsByClassName('ct')[0];
+  var oLi=oUl.getElementsByTagName('li');
+  var oInp=document.getElementsByClassName('ipt-add-content')[0];
+  var btn1=document.getElementById('btn-add-start');
+  var btn2=document.getElementById('btn-add-end');
+  btn1.addEventListener('click',function(){
+  	var aLi=document.createElement('li');
+  	aLi.innerHTML=oInp.value;
+  	oUl.insertBefore(aLi,oUl.childNodes[0]);
+  })
+  btn2.addEventListener('click',function(){
+  	var aLi=document.createElement('li');
+  	aLi.innerHTML=oInp.value;
+  	oUl.appendChild(aLi);
+  })
+  for(var i=0;i<oLi.length;i++){
+  	oLi[i].addEventListener('click',function(){
+  		console.log(this.innerHTML);
+  	})
+  }
+</script>
+</body>
+</html>
