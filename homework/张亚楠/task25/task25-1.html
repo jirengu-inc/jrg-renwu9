@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+<style>
+	#ct{
+		width: 100px;
+		height:100px;
+		background: red;
+		position:fixed;
+		top: 100px;
+		left: 0px;
+	}
+</style>
+</head>
+<body>
+    <div id="ct"></div>
+    <input type="button" value="开始" id="input">
+    <input type="button" value="重置" id="input2">
+    <script>
+        var clock = true;
+    	$('#input').on('click',function(){
+            if (!clock) {
+            	return;
+            }
+            clock = false;
+            $('#ct').finish();
+           	$('#ct').animate({width:'200',height:'200'},2000)
+    		$('#ct').animate({opacity:'0'},2000)
+    		        .animate({opacity:'1'},3000)
+    		        .animate({top:'50%',left:'50%'},2000)
+    		$('#ct').animate({top:'100',left:'0'},3000) 
+    		$('#ct').animate({width:'100',height:'100'},2000,function(){
+    			clock =true;
+    		})            
+    		    
+    	});
+
+    	$('#input2').on('click',function(){
+
+    		$('#ct').finish();
+    	})
+    
+
+    </script>
+</body>
+</html>

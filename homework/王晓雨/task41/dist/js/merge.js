@@ -1,0 +1,2 @@
+function fun1(){var e=document.querySelector(".ct");e.style.border="1px solid #ccc",e.style.padding="20px",alert("fun1函数执行了")}fun1();
+function fun2(){var n=document.querySelector("h1");n.innerText="gulp好强大",alert("fun2函数执行了")}fun2();

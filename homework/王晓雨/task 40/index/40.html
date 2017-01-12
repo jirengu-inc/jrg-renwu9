@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+<script type="text/javascript" src="../js/40-1.js"></script>
+<script type="text/javascript">
+	function createTimer(){
+		function Timer(){
+			this.start;
+			this.end;
+		}
+		Timer.prototype= {
+			start:function(){
+				this.start=Date.now();
+			},
+			get:function(){
+				return ('耗时'+(this.end - this.start)+'毫秒')
+			},
+			end:function(){
+				this.end=Date.now();
+			}
+		}
+		return new Timer
+	}
+	var timer1= createTimer();
+	var timer2= createTimer();
+	timer1.start();
+	for(var i=0;i<100;i++){
+		console.log(i)
+	}
+	timer2.start();
+	for(var i=0;i<100;i++){
+		console.log(i)
+	}
+	timer1.end();
+	timer2.end();
+	console.log('timer1:'+timer1.get());
+    console.log('timer2:'+timer2.get());
+</script>
+
+</body>
+</html>

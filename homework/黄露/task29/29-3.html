@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>无限滚动</title>
+	<style>
+	ul{
+		margin: 10px 0;
+		padding:0;
+	}
+		.ct>li{
+			margin: 10px 0;
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			border: 1px solid #ccc;
+			list-style: none;
+		}
+		.ct>li:hover{
+			background: pink;
+		}
+		.btn{
+			margin: 0 auto;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            border:1px solid #a53;
+            border-radius: 3px;
+            background: pink;
+            cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+<ul class="ct">
+	<li>内容1</li>
+	<li>内容2</li>
+</ul>
+
+<div class="btn">加载更多</div>
+
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js'></script>
+<script>
+	var $btn=$('.btn'),
+	    $ct=$('.ct');
+	var clock;
+	var cur=2;
+	load();
+	$(window).on('scroll',function(){
+        if(clock){
+        	clearTimeout(clock);
+        }
+        clock=setTimeout(function(){
+        	if(!isVisible($btn)) return;
+        	load();
+        },100);
+	});
+
+	function load(){
+		$.ajax({
+			url:'29-3.php',
+			dataType:'json',
+			type:'get',
+			data:{
+				start:cur,
+				len:20
+			},
+			success:function(json){
+				onSuccess(json);
+			},
+			error:function(){
+				onError();
+			}
+		});
+	}
+
+	function onSuccess(json){
+       if(json.status==1){
+       	append(json.data);
+       	cur+=20;
+       }else{
+       	alert('获取数据失败');
+       }
+	}
+	function onError(){
+		alert('系统异常');
+	}
+	function append(arr){
+		for(var i=0;i<arr.length;i++){
+			$ct.append('<li>'+arr[i]+'</li>')
+		}
+	}
+	function isVisible($node){
+        var winH=$(window).height(),
+            scrollH=$(window).scrollTop(),
+            offsetH=$node.offset().top;
+        if((offsetH>scrollH)&&(offsetH<winH+scrollH)){
+        	return true;
+        }else{
+        	return false;
+        }
+	}
+
+
+</script>
+</body>
+</html>

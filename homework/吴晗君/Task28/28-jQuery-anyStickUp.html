@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    #layout {
+        width: 900px;
+        margin: 0 auto;
+    }
+    #header {
+        background-color: red;
+        line-height: 70px;
+        margin-bottom: 20px;
+    }
+    .nav {
+        height: 40px;
+        background-color: yellow;
+        border: 1px solid;
+    }
+    #content .aside {
+        min-height: 400px;
+        background-color: pink;
+        width: 200px;
+        float: left;
+        margin-right: 30px;
+    }
+    #content .main{
+        background-color: blue;
+        min-height: 400px;
+        overflow: auto;
+    }
+    #footer {
+        height: 70px;
+        margin-bottom: 80px;
+        background-color: aquamarine;
+    }
+
+</style>
+<body>
+    <div id="layout">
+        <div id="header">header</div>
+        <div class="nav1 nav">nav11</div>
+        <div id="content">
+            <div class="aside">aside1</div>
+            <div class="main">main</div>
+        </div>
+        <div id="footer">footer</div>
+    </div>
+    <div id="layout">
+        <div id="header">header</div>
+        <div class="nav2 nav">nav22</div>
+        <div id="content">
+            <div class="aside">aside2</div>
+            <div class="main">main</div>
+        </div>
+        <div id="footer">footer</div>
+    </div>
+    <div id="layout">
+        <div id="header">header</div>
+        <div class="nav3 nav">nav33</div>
+        <div id="content">
+            <div class="aside">aside3</div>
+            <div class="main">main</div>
+        </div>
+        <div id="footer">footer</div>
+    </div>
+    <div id="layout">
+        <div id="header">header</div>
+        <div class="nav4 nav">nav44</div>
+        <div id="content">
+            <div class="aside">aside4</div>
+            <div class="main">main</div>
+        </div>
+        <div id="footer">footer</div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        /*var $nav1 = $('.nav1'),
+            $nav2 = $('.nav2'),
+            $nav3 = $('.nav3'),
+            $nav4 = $('.nav4'),
+            offsetTop1 = $nav1.offset().top,
+            offsetTop2 = $nav2.offset().top,
+            offsetTop3 = $nav3.offset().top,
+            offsetTop4 = $nav4.offset().top;
+        var nodeWidth =
+        $(window).on('scroll', function () {
+            if(offsetTop1 <= $(this).offsetTop() < offsetTop2) {
+                if(!isFixed()){
+                    setFixed();
+                }
+            }else if(offsetTop2 <= $(this).offsetTop() < offsetTop3){
+                if(!isFixed()) {
+                    setFixed();
+                }
+            }else if(offsetTop3 <= $(this).offsetTop() < offsetTop4) {
+                if(!isFixed()) {
+                    setFixed();
+                }
+            }else if($(this).offsetTop() < offsetTop1) {
+                if(!isFixed()) {
+                    clearFixed();
+                }
+            }
+        })
+        function setFixed() {
+
+        }*/
+        $('.nav').each(function(){
+            console.log($(this))
+            var $node = $(this),
+                    offsetTop = $node.offset().top,
+                    offsetLeft = $node.offset().left,
+                    navWidth =  $node.width(),/*变量只能有$数字字母下划线，区分大小写*/
+                    nodeClone = $node.clone().css({
+                        display:'none',
+                        visibility:'hidden',/*或者opacity:0*/
+                        border:'1px solid'
+                    }).insertBefore($node);
+            console.log(offsetTop);
+            $(window).on('scroll', function () {
+                if ($(this).scrollTop() >= offsetTop) {
+                    if (!isFixed()) {  //感觉错误很离谱的时候，看看括号有没有漏掉
+                        setFixed();
+                    }
+                }else {
+                    if ( isFixed() ) {  //小于offset，当data-fixed为true
+                        clearFixed();
+                    }
+                }
+            })
+            function isFixed() {
+                return  !!$node.data('fixed');  //data可以存储任意类型的数据
+            }
+            /*if($(this).scrollTop() === offsetTop) {
+             console.log('这样是取不到的，不论怎么滚动都不会等于');
+             if(data) {
+             clearFixed();
+             } else {
+             setFixed();
+             }
+             }*/
+            function setFixed() {
+                console.log($node);
+                $node.data('fixed', true)
+                        .css({position:'fixed', //同时position:fixed的元素后面的会不断覆盖前面的。
+                            left:offsetLeft,
+                            top:0,  //一定得设置这俩，要不然会跑开。反正就记得设置了fixed，总得定位粘住最上面吧。
+                            width:navWidth
+                        })
+                nodeClone.show();
+            }
+            function clearFixed() {
+                $node.data('fixed', false)//attr()可以设置data-fixed=true/false但是不能读取
+                        .removeAttr('style');//如果设置成data-fixed,
+                nodeClone.hide();/*如果不设置这个，只有clone.show()会造成一个现象，
+                 第一次拉下来没事，拉上去还的时候，因为上面的隐藏块已经display:block了
+                 所以，原本的nav块的位置被clone的占据了。
+                 所以会发现，还没到蓝色nav位置，nav就fixed粘在屏幕上了*/
+            }
+        })
+    </script>
+</body>
+</html>

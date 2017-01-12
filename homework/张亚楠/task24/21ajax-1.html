@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script>
+    	function ajax(opts){
+    		var xmlhttp = new XMLHttPRequest();
+    		xmlhttp.onreadystatchange = function(){
+    			if(xmlhttp.readyState == 4 && xmlhttp.status ==200){
+    				var jason =JSON.parse(xlmhttp.responseText);
+    				opts.success(jason);
+    			}
+    			if(xmlhttp.status==404){
+    				opts.error();
+    			}
+    		}
+    		var dataStr = '';
+    		for(var key in opts.data){
+
+    			dataStr +=key+'='+opts.data[key]+'&'
+    		}
+    		dataStr =dataStr.substr(0,dataStr.length-1);
+    		if(opts.type.toLowerCase()==='get'){
+
+    			xmlhttp.open('get',opts.url+'?'+dataStr,true);
+    			xmlhttp.send();
+    		}
+    		if(opts.type.toLowerCase()==='post'){
+
+    			xmlhttp.open('post',opts.url,true);
+    			xmlgttp.sendRequestHeader(('Content-type','application/x-www-form-urlencoded')
+
+    			xmlhttp.send(dataStr);
+    		}
+             
+
+
+    	};
+ document.querySelector('#btn').addEventListener('click', function(){
+    		
+    		
+    		
+    ajax({
+        url: 'getData.php',   //接口地址
+        type: 'get',               // 类型， post 或者 get,
+        data: {
+            username: 'xiaoming',
+            password: 'abcd1234'
+        },
+        success: function(ret){
+            console.log(ret);       // {status: 0}
+        },
+        error: function(){
+           console.log('出错了')
+        }
+    })
+});
+    </script>
+
+</body>
+</html>

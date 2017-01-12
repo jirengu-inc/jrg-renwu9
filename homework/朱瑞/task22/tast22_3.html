@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22_3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+   <ul class="ct">
+  	 <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+  	 <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片2</li>
+  	 <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+
+<script>
+	var ct = document.querySelector(".ct"),
+		preview = document.querySelector(".img-preview");
+
+	//mouseover鼠标悬停，与mouseenter不同；Mouseover：不论鼠标指针穿过被选元素或其子元素，都会触发 mouseover 事件。
+	//Mouseenter：只有在鼠标指针穿过被选元素时，才会触发 mouseenter 事件。
+	ct.addEventListener("mouseover",function(e){
+		var dataImg = e.target.getAttribute("data-img");
+		if(dataImg !== null){
+			preview.innerHTML = "<img src='"+dataImg+"'>";
+		}
+	});
+
+</script>
+
+
+</body>
+</html>

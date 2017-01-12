@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <style type="text/css">
+    ul,li,a,span {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        text-decoration: none;
+    }
+    .jewelry-nav {
+        line-height: 35px;
+        position: relative;
+        width: 200px;
+        background-color: #c7171e; 
+        padding-left: 20px;
+        border-bottom: 1px dotted #de272e;
+    }
+    .jewelry-list {
+        display: inline-block;
+        color: white;
+    }
+    .jewelry-list+span{
+        color: white;
+        position: relative;
+        left: 110px;
+    }
+    .hover .jewelry-kind{
+    	display: block;
+    }
+    .jewelry-kind::after{
+    	content: '';
+    	display: block;
+    	clear: both;
+    }
+    .jewelry-kind li{
+        float: left;
+        padding-left: 10px;
+    }
+    .jewelry-kind a{
+    	margin-right: 30px;
+    	font-size: 14px;
+    }
+    .jewelry-kind{
+    	display: none;
+    	position: absolute;
+    	top: 0;
+    	left: 100%;
+    	width: 150px;
+    	border: 1px solid #ccc;
+    }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class="jewelry-nav">
+                <a href="" class="jewelry-list">珠宝玉器</a>
+                <span>></span>
+                <ul class="jewelry-kind">
+                    <li><a href="">翡翠</a></li>
+                    <li><a href="">宝石</a></li>
+                    <li><a href="">玛瑙</a></li>
+                    <li><a href="">钻石</a></li>
+                    <li><a href="">和田</a></li>
+                    <li><a href="">玉石</a></li>
+                    <li><a href="">水晶</a></li>
+                    <li><a href="">珍珠</a></li>
+                    <li><a href="">琥珀</a></li>
+                    <li><a href="">琥珀</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-nav">
+                <a href="" class="jewelry-list">珠宝玉器</a>
+                <span>></span>
+                <ul class="jewelry-kind">
+                    <li><a href="">翡翠</a></li>
+                    <li><a href="">宝石</a></li>
+                    <li><a href="">玛瑙</a></li>
+                    <li><a href="">玉石</a></li>
+                    <li><a href="">水晶</a></li>
+                    <li><a href="">珍珠</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-nav">
+                <a href="" class="jewelry-list">珠宝玉器</a>
+                <span>></span>
+                <ul class="jewelry-kind">
+                    <li><a href="">翡翠</a></li>
+                    <li><a href="">宝石</a></li>
+                    <li><a href="">玉石</a></li>
+                    <li><a href="">水晶</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-nav">
+                <a href="" class="jewelry-list">珠宝玉器</a>
+                <span>></span>
+                <ul class="jewelry-kind">
+                    <li><a href="">翡翠</a></li>
+                    <li><a href="">宝石</a></li>
+                    <li><a href="">玛瑙</a></li>
+                    <li><a href="">玉石</a></li>
+                    <li><a href="">水晶</a></li>
+                    <li><a href="">珍珠</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-nav">
+                <a href="" class="jewelry-list">珠宝玉器</a>
+                <span>></span>
+                <ul class="jewelry-kind">
+                    <li><a href="">翡翠</a></li>
+                    <li><a href="">宝石</a></li>
+                    <li><a href="">玉石</a></li>
+                    <li><a href="">水晶</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    	var $li = $('.jewelry-nav');
+    	$li.on('mouseover',function(){
+    		if($(this).hasClass('hover')){
+    			return;
+    		}else{
+    			$(this).addClass('hover');
+    		}
+    	})
+    	$li.on('mouseout',function(){
+    		if($(this).hasClass('hover')){
+    			$(this).removeClass('hover')
+    		}else{
+    			return;
+    		}
+    	})
+    </script>
+</body>
+
+</html>

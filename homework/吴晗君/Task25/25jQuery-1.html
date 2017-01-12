@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .kind-title {
+        color: white;/*为什么后面的wrap选不到*/
+        display: block;
+    }
+    a {
+        text-decoration: none;
+    }
+    ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .nav-aside>li{
+       /* margin-top: 10px;*/
+        border-bottom: 1px solid;
+        height: 30px;
+        line-height: 30px;
+        position: relative;
+        padding: 4px;
+    }
+    .nav-aside {
+        background-color: #de272e;
+        color: white;
+        font-size: 14px;
+        width: 200px;
+        padding-left: 10px;
+        border: 1px solid;
+    }
+    .nav-aside .icon-goto {
+        position: absolute;
+        right: 10px;
+        top: 3px;
+    }
+    .child-panel {
+        position: absolute;
+        right: -182px;
+        top: 0;
+        border: 1px solid;
+        border-color: black;
+        width: 180px;
+        display: none;
+    }
+    .child-panel li{
+        float: left;
+        margin-right: 40px;
+        margin-left: 10px;
+    }
+    #area-nav .nav-aside .hover .child-panel{
+        display: block;
+    }
+</style>
+<body>
+    <div id="area-nav">
+        <ul class="nav-aside">
+            <li class="jewelry-kind">
+                <a class="kind-title" href="#">珠宝玉器</a>
+                <span class="icon-goto">></span>
+                <ul class="child-panel">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">琥珀</a></li>
+                    <li><a href="#">和田</a></li>
+                    <li><a href="#">玛瑙</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">琥珀</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-kind">
+                <a  class="kind-title" href="#">珠宝玉器</a>
+                <span class="icon-goto">></span>
+                <ul class="child-panel">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">珍珠</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-kind">
+                <a  class="kind-title" href="#">珠宝玉器</a>
+                <span class="icon-goto">></span>
+                <ul class="child-panel">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">琥珀</a></li>
+                    <li><a href="#">和田</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-kind">
+                <a  class="kind-title" href="#">珠宝玉器</a>
+                <span class="icon-goto">></span>
+                <ul class="child-panel">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">琥珀</a></li>
+                    <li><a href="#">和田</a></li>
+                    <li><a href="#">玛瑙</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">琥珀</a></li>
+                </ul>
+            </li>
+            <li class="jewelry-kind">
+                <a  class="kind-title" href="#">珠宝玉器</a>
+                <span class="icon-goto">></span>
+                <ul class="child-panel">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">珍珠</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $('.jewelry-kind').on('mouseenter', function () {
+           // $(this).find('.child-panel').show();
+            $(this).addClass('hover');
+        })
+        $('.jewelry-kind').on('mouseleave', function () {
+            //$(this).find('.child-panel').hide();
+            $(this).removeClass('hover');
+        })
+
+    </script>
+</body>
+</html>

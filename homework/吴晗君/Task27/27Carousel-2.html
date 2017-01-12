@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Infinite carousel change</title>
+</head>
+<style>
+    ul,li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .img-ct li img {
+        width: 310px;
+        height: 206px;
+    }
+    .img-ct li {
+        position: absolute;/*这里需要图片在一个位置，如果没在同一个位置，有一段时间会变白再出现图片*/
+        display: none;
+    }
+    .carousel {
+        width: 310px;
+        height: 206px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 30px;
+    }
+    .carousel .arrow .circle {
+        display: block;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid;
+        background-color: #ccc;
+        border-radius: 40px;
+        text-align: center;
+        transition: all 1s;
+    }
+    .carousel .arrow .circle:hover {
+        opacity: 0.6;
+        color: pink;
+        background-color: white;
+    }
+    .carousel .arrow .pre {
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        margin-left: 15px;/* 在左边，margin-right和margin-bottom都不能用。*/
+    }
+    .carousel .arrow .next {
+        right: 0;
+        top: 50%;
+        margin-right: 15px;
+        margin-top: -15px;
+        /*margin-left: 20px; 在左边，margin-right和margin-bottom都不能用。*/
+    }
+    .bullet li{
+        float: left;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border-radius: 10px;
+        margin-left: 4px;
+        cursor: pointer;
+    }
+    .bullet{
+        position: absolute;
+        left: 50%;
+        margin-left: -26px;
+        top: 85%;
+    }
+    .bullet .active { /*优先级，如果只写.active是不可以的！！*/
+        background-color: slategray;
+    }
+</style>
+<body>
+<div class="carousel1 carousel">
+    <ul class="img-ct">
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""/></li>
+    </ul>
+    <ul class="arrow">
+        <li>
+            <a href="" class="circle pre"><</a>
+        </li>
+        <li>
+            <a href="" class="circle next">></a>
+        </li>
+    </ul>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="carousel2 carousel">
+    <ul class="img-ct">
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""/></li>
+    </ul>
+    <ul class="arrow">
+        <li>
+            <a href="" class="circle pre"><</a>
+        </li>
+        <li>
+            <a href="" class="circle next">></a>
+        </li>
+    </ul>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div class="carousel3 carousel">
+    <ul class="img-ct">
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt=""/></li>
+        <li><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt=""/></li>
+    </ul>
+    <ul class="arrow">
+        <li>
+            <a href="" class="circle pre"><</a>
+        </li>
+        <li>
+            <a href="" class="circle next">></a>
+        </li>
+    </ul>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    function method(carousel) {
+        var $parent = $(carousel),
+            $ct = $parent.find('.img-ct'),
+            $items = $ct.children(),
+            $pre = $parent.find('.pre'),
+            $next = $parent.find('.next'),
+            $blt = $parent.find('.bullet'),
+            imgCount = $ct.children().length,
+            crtIdx = 0,
+            isAnimate = false;
+        play(0);
+        autoPlay();
+
+        $next.on('click', function (event) {
+            event.preventDefault();
+            playNext();
+        })
+        $pre.on('click', function (event) {
+            event.preventDefault();
+            playPre();
+        })
+        $blt.on('mouseenter', 'li', function () {
+            var idx = $(this).index() ;
+            play(idx);
+        })
+        function playNext() {
+            play((crtIdx + 1) % imgCount);
+            //console.log((crtIdx + 1) % imgCount);
+        }
+
+        function playPre() {
+            play((imgCount + crtIdx - 1) % imgCount);
+        }
+
+        function play(idx) {
+            console.log(isAnimate);
+            if (isAnimate) return;
+           // console.log(idx);
+            isAnimate = true;//先执行完，执行autoPlay()相当于没作用。再执行后两句。
+            fade(idx);
+            crtIdx = idx;
+            setBullet();
+        }
+
+        function fade(idx) {
+            $items.eq(crtIdx).fadeOut(500);
+           // console.log(new Date());
+           // console.log(crtIdx);
+            $items.eq(idx).fadeIn(500, function () {
+                isAnimate = false;
+            })
+        }
+        function setBullet() {
+            $blt.children().removeClass('active') //链式调用
+                    .eq(crtIdx).addClass('active');
+        }
+        function autoPlay() {
+            //console.log(new Date());
+            var timer = setInterval(playNext, 3000);
+            judge(timer);
+        }
+        function judge(timer) {
+            $ct.on('mouseenter', function () {
+                clearInterval(timer);
+            })
+            $ct.on('mouseleave', function () {
+                autoPlay();
+            })
+        }
+    }
+    method('.carousel1');
+    method('.carousel2');
+    method('.carousel3');
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实验</title>
+</head>
+<style>
+    .content {
+        position: relative;
+        border: 1px solid;
+    }
+    .item {
+        position: absolute;
+        width: 200px;
+        margin-left: 15px;
+        margin-top: 15px;
+        transition: all 1s;
+    }
+    .h1 {
+        height: 200px;
+        background-color: red;
+    }
+    .h2 {
+        height: 300px;
+        background-color: blue;
+    }
+    .h3 {
+        height: 400px;
+        background-color: pink;
+    }
+</style>
+<body>
+<div class="content">
+    <div class="item h1">
+        1
+    </div>
+    <div class="item h3">
+        2
+    </div>
+    <div class="item h2">
+        3
+    </div>
+    <div class="item h1">
+        4
+    </div>
+    <div class="item h1">
+        5
+    </div>
+    <div class="item h3">
+        6
+    </div>
+    <div class="item h3">
+        7
+    </div>
+    <div class="item h2">
+        8
+    </div>
+    <div class="item h1">
+        9
+    </div>
+    <div class="item h3">
+        10
+    </div>
+    <div class="item h3">
+        11
+    </div>
+    <div class="item h3">
+        12
+    </div>
+    <div class="item h2">
+        13
+    </div>
+    <div class="item h2">
+        14
+    </div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    var waterfall = {
+        colArray:[],
+
+        init: function ($ct) {
+            console.log( this );
+            this.$ct = $ct;
+            this.$items = $ct.find('.item');
+            this.itemWidth = this.$items.outerWidth(true);
+
+            this.bind();
+            this.start();
+        },
+        bind: function () {
+            var self = this;
+            $(window).on('resize', function () {
+                self.start();
+            })
+        },
+        start: function () {
+            var self = this;
+            self.eleWidth = this.$items.outerWidth(true);
+            this.parentWidth = this.$ct.width();
+            this.colNumber = parseInt( this.parentWidth / this.eleWidth); //6
+
+            for(var i = 0; i < this.colNumber; ++i) {
+                this.colArray[i] = 0;
+            }
+            this.placeItem();
+        },
+        placeItem: function () {
+            var self = this;
+            this.$items.each(function () {
+                var obj = self.getIndexOfMin(),
+                idx = obj.idx,
+                minHeight = obj.minHeight;
+                $(this).css({left: idx * self.eleWidth, top: minHeight});
+                self.colArray[idx] = self.colArray[idx] +$(this).height();
+            })
+        },
+        getIndexOfMin: function() {
+            var self = this;
+            var minHeight = self.colArray[0],
+                    idx = 0;
+            for(i = 1; i < self.colArray.length; ++i) {
+                if(self.colArray[i] < minHeight) {
+                    minHeight = self.colArray[i];
+                    idx = i;
+                }
+            }
+            return {minHeight: minHeight, idx: idx};
+        }
+    }
+    waterfall.init($('.content'));
+
+</script>
+</body>
+</html>

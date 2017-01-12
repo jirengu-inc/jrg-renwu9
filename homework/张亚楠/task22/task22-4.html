@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	ul{
+		padding:0px;
+		margin: 0px;
+	}
+	li{
+		list-style: none;
+	}
+	
+	
+	.wrap{
+		border:1px solid;
+		width: 603px;
+	}
+	.ct>li{
+		float:left;
+		padding:10px 0;
+		text-align: center;
+		width: 200px;
+		border-right: 1px solid;
+		border-bottom: 1px solid;
+	}
+	.ct>li:last-child{
+		border-right: none;
+	}
+	.clear{
+		display: block;
+		content:"";
+		clear: both;
+
+	}
+	.panel
+	{
+		display:none ;
+		height: 180px;
+		padding:20px;
+	}
+	.active{
+		display: block;
+		
+	}
+	.ct>.active{
+		background: #ccc;
+	}
+</style>
+</head>
+<body>
+    <div class="wrap">
+    	<ul class="ct clear">
+    		<li class="active">tab1</li>
+    		<li>tab2</li>
+    		<li>tab3</li>
+    	</ul>
+    	<div class="panel active">内容1</div>
+    	<div class="panel">内容2</div>
+    	<div class="panel">内容3</div>
+    </div>
+    <script>
+    	
+   var Utils = {
+
+    hasClass: function(ele, cls){
+         var reg=new RegExp('(\\s|^)'+cls+'(\\s|$)','g');
+        return reg.test(ele.className);
+    },
+    
+    addClass:function(ele, cls){
+      if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleAddClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleAddClass(ele, cls);
+      }  
+    },
+    
+    removeClass:function(ele, cls){
+       if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleRemoveClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleRemoveClass(ele, cls);
+      }   
+    },
+    
+    singleAddClass: function(ele, cls){
+       if(Utils.hasClass(ele,cls)){
+            return;
+        }else{
+            ele.className=ele.className+' '+cls;
+        }
+    },
+
+    singleRemoveClass: function(ele, cls){
+        if(Utils.hasClass(ele,cls)){
+    			var reg1= new RegExp('(\\s+|^)'+cls+'(\\s+|$)','g');
+    	 	ele.className = ele.className.replace(reg1,'');
+
+    	 	}else{
+    	 		return 
+    		}
+    },
+    
+    indexOf: function(ele){
+        var parent = ele.parentElement,
+            siblings = parent.children;
+        for(var i=0; i<siblings.length; i++){
+            if(ele === siblings[i]) return i;
+        }
+        return -1;
+    }
+};//封装起来
+
+
+
+var tabCt = document.querySelector('.ct');
+//方法一：事件代理
+tabCt.addEventListener('click', function(e){
+   var target = e.target,
+       tabs = tabCt.children,
+       index = Utils.indexOf(target),
+       panels = document.querySelectorAll('.panel');
+
+   if(index > -1){
+       Utils.removeClass(tabs, 'active');
+       Utils.addClass(target, 'active');
+       Utils.removeClass(panels, 'active');
+       Utils.addClass(panels[index], 'active');
+   } 
+});
+    
+//    方法二：循环遍历
+//    for(var i=0;i<li.length;i++){
+//        tabs[i].addEventListener('click',function(){
+//            removeClass(this.parentElement.children,'active');
+//            addClass(this,'active');
+//            removeClass(panel,'active');
+//            addClass(panel[indexOf(this)],'active');
+//        },false)
+//    }
+//    
+
+
+    </script>
+</body>
+</html>
