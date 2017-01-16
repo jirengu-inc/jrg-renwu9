@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<link href="./font/iconfont.css" rel="stylesheet">
+
+<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+<style>
+	ul,li{
+		padding: 0px;
+		margin: 0px;
+		list-style: none;
+	}
+	.list-itmes{
+			width:200px;
+			background: red;
+		}
+	.list-itmes>li{
+			height:35px;
+			line-height:35px;
+			list-style: none;
+			color:#fff;
+			padding:0 20px;
+			font-family: "黑体";
+			position: relative;
+		}
+	i{
+		float: right;
+	}
+	.list-itmes>li:after{
+			content:"";
+			display: block;
+			border-top: 1px solid rgba(255,255,255,0.3);
+		}
+	.panle{
+			position: absolute;
+			left:200px;
+			top:-0px;
+			color:#000;
+			width:250px;
+			border: 1px solid #ccc;
+			list-style: none;
+			display: none;
+		}
+	.panle li{
+			display: inline-block;
+			width:47%;
+			text-align: center;
+			font-size:14px;
+		}
+	.active{
+			display: block;
+		}
+	.active a{
+			color:#000;
+			text-decoration: none;
+		}		
+</style>
+<script>
+	$(function(){
+		$('.list-itmes').on('mouseover','li',function(){
+			var $this =$(this);
+			var idx =$this.index();
+			$('.panle').removeClass('active');
+			$('.panle').eq(idx).addClass('active')
+		});
+		$('.list-itmes').on("mouseout",function(){
+			$('.panle').removeClass("active");
+		});
+	})
+</script>
+</head>
+<body>
+    <ul class="list-itmes">
+    	<li>珠宝玉器<i class="iconfont">&#xe71c;</i>
+              <ul class="panle">
+					<li><a href="">宝石</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+				</ul>
+    	</li>
+    	<li>珠宝玉器<i class="iconfont">&#xe71c;</i>
+    			<ul class="panle">
+					
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+				</ul> 
+    	</li>
+    	<li>珠宝玉器<i class="iconfont">&#xe71c;</i>
+    			<ul class="panle">
+					
+					<li><a href="">宝石</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+				</ul>
+    	</li>
+    	<li>珠宝玉器<i class="iconfont">&#xe71c;</i>
+    			 <ul class="panle">
+					
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+				</ul>	
+    	</li>
+    	<li>珠宝玉器<i class="iconfont">&#xe71c;</i>
+    			 <ul class="panle">
+					<li><a href="">宝石</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+					<li><a href="">宝石</a></li>
+					<li><a href="">玛瑙</a></li>
+					<li><a href="">水晶</a></li>
+					<li><a href="">黄金</a></li>
+				</ul>	
+    	</li>
+    </ul>
+</body>
+</html>

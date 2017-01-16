@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task40轮播</title>
+	<style type="text/css">
+		ul,li{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.carousel{
+			position: relative;
+			margin:10px;
+			width:310px;
+			height: 206px;
+			overflow: hidden;
+		}
+		.img-ct{
+			position: absolute;
+		}
+		.img-ct img{
+			width:310px;
+			height: 206px;
+		}
+		.img-ct li{
+			float: left;
+		}
+		.arrow{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			cursor: pointer;
+			border-radius: 50%;
+			box-shadow: 0 0 2px #999;
+			color:#fff;
+			background: #000;
+			opacity: 0.6;
+			
+		}
+		.arrow:hover{
+			opacity: 1;
+		}
+		.pre{
+			top:50%;
+			left:15px;
+			transform: translateY(-50%);
+		}
+		.next{
+			top:50%;
+			right: 15px;
+			transform: translateY(-50%);
+		}
+		.active{
+
+		}
+		.bullet{
+			position: absolute;
+			left:50%;
+			bottom: 20px;
+			transform: translate(-50%);
+		}
+		.bullet li{
+			float: left;
+			margin:0 3px;
+			width: 15px;
+			height: 3px;
+			border-radius: 5px;
+			background: #fff;
+		}
+		.bullet li.active{
+			background: #666;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="carousel">
+		<ul class="img-ct clearfix">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg""></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg""></a></li>
+		</ul>
+		<div class="pre arrow"><</div>
+		<div class="next arrow">></div>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<div class="carousel">
+		<ul class="img-ct clearfix">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg""></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg""></a></li>
+		</ul>
+		<div class="pre arrow"><</div>
+		<div class="next arrow">></div>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="carousel">
+		<ul class="img-ct clearfix">
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg""></a></li>
+			<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg""></a></li>
+		</ul>
+		<div class="pre arrow"><</div>
+		<div class="next arrow">></div>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	$.fn.carousel=function(){
+		var $this=$(this);
+		var Carousel=(function(){
+			var Carousel=function ($carousel){
+				this.$pre=$carousel.find(".pre")	  
+				this.$next=$carousel.find(".next")    
+				this.$ct=$carousel.find(".img-ct") 
+				this.$bullet=$carousel.find(".bullet")   
+				this.$items=this.$ct.children()
+
+				imgCount=this.$items.length
+				imgWidth=this.$items.width()
+
+				this.curIdx=0
+				this.isAnimate=false
+
+				this.$ct.css({width:imgWidth*imgCount})
+				this.init()
+
+			}
+			Carousel.prototype={
+				init:function(){
+					this.playAuto();
+					this.bind();
+				},
+				bind:function(){
+					var $cur=this;
+					$cur.$pre.on('click',function(){
+						$cur.playPre();
+					});
+					$cur.$next.on('click',function(){
+						$cur.playNext();
+					});
+					$cur.$bullet.find("li").on("click",function(){
+						var idx=$(this).index();
+						if(idx>$cur.curIdx){
+							$cur.playNext(idx-$cur.curIdx);
+						}
+						if(idx<$cur.curIdx){
+							$cur.playPre($cur.curIdx-idx);
+						}
+					})
+				},
+				playPre:function(idx){
+					var $cur=this;
+					var idx=idx || 1;
+					if(!$cur.isAnimate){
+						$cur.isAnimate=true;
+						$cur.stopAuto();
+						for(var i=0;i<idx;i++){
+							$cur.$ct.prepend($cur.$ct.children().last());
+						}
+						$cur.$ct.css({left:-imgWidth*idx});
+						$cur.$ct.animate({left:'+='+idx*imgWidth},function(){
+							$cur.curIdx=($cur.curIdx+imgCount-idx)%imgCount;
+							$cur.setList();
+							$cur.isAnimate=false;
+							$cur.playAuto();
+						});
+					}
+				},
+				playNext:function(idx){
+					var $cur=this;
+					var idx=idx || 1;
+					if(!$cur.isAnimate){
+						$cur.isAnimate=true;
+						$cur.stopAuto();
+						$cur.$ct.animate({left:'-='+idx*imgWidth},function(){
+							for(var i=0;i<idx;i++){
+								$cur.$ct.append($cur.$ct.children().first());
+							}
+							$cur.$ct.css({left:0});
+							$cur.curIdx=($cur.curIdx+idx)%imgCount;
+							$cur.setList();
+							$cur.isAnimate=false;
+							$cur.playAuto();
+						})
+					}
+				},
+				setList:function(){
+					var $cur=this;
+					$cur.$bullet.children().removeClass("active").eq($cur.curIdx).addClass("active");
+				},
+				playAuto:function(){
+					var $cur=this;
+					this.clock=setInterval(function(){
+						$cur.playNext();
+					},2000)
+				},
+				stopAuto:function(){
+					clearInterval(this.clock);
+				}
+			}
+			return Carousel;	
+		}());
+		new Carousel($this);
+	}
+	
+		
+		$('.carousel').each(function(){
+			$(this).carousel();
+		})
+	</script>
+</body>
+</html>
