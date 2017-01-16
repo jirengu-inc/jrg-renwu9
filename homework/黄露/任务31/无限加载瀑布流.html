@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>无限加载瀑布流</title>
+	<style>
+		body,ul,li{
+			margin: 0;
+			padding:0;
+			box-sizing: border-box;
+		}
+		#load{
+			visibility: hidden;
+			height: 20px;
+		}
+		#waterFallCt{
+			position:relative;
+			width: 900px;
+			margin: 0 auto;
+		}
+		.clearfix{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#waterFallCt li{
+			position: absolute;
+			margin-bottom: 20px;
+			margin-right: 20px;
+			width: 280px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			list-style: none;
+		}
+		#waterFallCt li img{
+/*			margin: 10px;*/
+			width: 260px;
+		}
+		#waterFallCt li .header{
+			margin: 12px;
+			border-bottom: 1px solid #ccc;
+		}
+		#waterFallCt li .desp{
+			font-size: 12px;
+			line-height: 1.8;
+			margin:10px;
+			color: #333;
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<ul id="waterFallCt" class="clearfix">
+<!-- 	<li class="item">
+		<a href=""><img src=""></a>
+		<h4 class='header'></h4>
+		<p class='desp'></p>
+	</li> -->
+	<li class="item hide"></li>
+</ul>
+<div id="load"></div>
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js'></script>
+<script>
+	var clock;
+	$(window).on('scroll',function(){
+		if(clock){
+	    	clearTimeout(clock);			
+		}
+		clock=setTimeout(function(){
+			checkShow();
+		},200);
+	});
+
+	checkShow();
+
+	function checkShow(){
+		if(isShow($('#load'))){
+			loadFalls();
+		}
+	}
+	function isShow($el){
+		var top=$el.offset().top,
+		    winH=$(window).height(),
+		    scrollH=$(window).scrollTop();
+		if(top<winH+scrollH){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+    var curPage=1,
+        perPageCount=9;
+
+	function loadFalls(){
+		$.ajax({
+			url:'http://platform.sina.com.cn/slide/album_tech',
+			dataType:'jsonp',
+			jsonp:"jsoncallback",
+			data:{
+				app_key: '1271687855',
+				num: perPageCount,
+				page: curPage
+			}
+		}).done(function(ret){
+			if(ret && ret.status && ret.status.code === "0"){
+				place(ret.data);
+			}else{
+				console.log('get error data');
+			}
+		});
+	}
+
+
+	function place(nodelist){
+		console.log(nodelist);
+		var $nodes=renderData(nodelist);
+		var defereds=[];
+		$nodes.find('img').each(function(){
+			var defer=$.Deferred();
+			$(this).load(function(){
+				defer.resolve();
+			});
+			defereds.push(defer);
+		});
+		$.when.apply(null,defereds).done(function(){
+			console.log('new images all loaded..');
+			waterFallPlace($nodes);
+		});
+	} 
+	var colSumHeight=[],
+	    nodeWidth=$('.item').outerWidth(true),
+	    colNum=parseInt($('#waterFallCt').width()/nodeWidth);
+
+	 for(var i=0;i<colNum;i++){
+	 	colSumHeight.push(0)
+	 }
+	 function waterFallPlace($nodes){
+	 	$nodes.each(function(){
+	 		var $cur=$(this);
+	 		var idx = 0,
+	 		    minSumHeight=colSumHeight[0];
+	 		for(var i=0;i<colSumHeight.length;i++){
+	 			if(colSumHeight[i]<minSumHeight){
+	 				idx=i;
+	 				minSumHeight=colSumHeight[i];
+	 			}
+	 		}
+	 		$cur.css({
+	 			left:nodeWidth*idx,
+	 			top:minSumHeight,
+	 			// opacity:1
+	 		});
+	 		colSumHeight[idx] += $cur.outerHeight(true);
+	 		$('#waterFallCt').height(Math.max.apply(null,colSumHeight));
+	 	});
+	 }
+
+	 function renderData(items){
+	 	var tpl='',
+	 	    $nodes;
+	 	for(var i=0;i<items.length;i++){
+	 		tpl+='<li calss="item">';
+	 		tpl+='<a href="'+items[i].url+'" class="link"><img src="'+items[i].img_url+'" alt=""></a>';
+	 		tpl += ' <h4 class="header">'+ items[i].short_name +'</h4>';
+			tpl += '<p class="desp">'+items[i].short_intro+'</p>';
+			tpl += '</li>';
+	 	}
+	 	$nodes=$(tpl);
+	 	$('#waterFallCt').append($nodes);
+	 	return $nodes;
+	 }
+</script>
+</body>
+</html>
