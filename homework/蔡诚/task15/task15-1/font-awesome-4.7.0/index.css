@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>选做1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="header" class="layout">
+    <ul class="menu clearfix">
+      <li><a href="#"><i class="fa fa-rocket fa-2x"" aria-hidden="true"></i></a></li>
+      <li><a href="#">博客</a></li>
+      <li><a href="#">项目</a></li>
+      <li><a href="#">简历</a></li>
+      <li>
+        <a href="#">更多</a>
+        <ul class="sub-menu">
+          <li><a href="#">Github</a></li>
+          <li><a href="#">知乎</a></li>
+          <li><a href="#">微博</a></li>
+        </ul>
+      </li>
+    </ul> 
+  </div>
+  <div id="content">
+  <div class="about-me">
+    <div class="layout">
+    <p>我的简介</p>
+    <p>这是我的简介</p>
+    <p>我的简介简介</p>
+    </div>
+  </div>
+  <div class="main layout">
+    <ul class="breadcrumb clearfix">
+      <li><a class="main-title" href="#">首页</a></li>
+      <li>/</li>
+      <li>我的作品</li>
+    </ul>
+    <ul class="myworks clearfix">
+      <li>
+      	<a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/mission15-1/img/1.jpg" alt="pic"/></a>
+      	<p>作品标题</p>
+      	<p>作品介绍</p>
+      	<a class="btn" href="#">查看</a>
+      </li>
+      <li>
+      	<a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/mission15-1/img/1.jpg" alt="pic"/></a>
+      	<p>作品标题</p>
+      	<p>作品介绍</p>
+      	<a class="btn" href="#">查看</a>
+      </li>
+      <li>
+      	<a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/mission15-1/img/1.jpg" alt="pic"/></a>
+      	<p>作品标题</p>
+      	<p>作品介绍</p>
+      	<a class="btn" href="#">查看</a>
+      </li>
+      <li>
+      	<a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/mission15-1/img/1.jpg" alt="pic"/></a>
+      	<p>作品标题</p>
+      	<p>作品介绍</p>
+      	<a class="btn" href="#">查看</a>
+      </li>
+      <li>
+      	<a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/mission15-1/img/1.jpg" alt="pic"/></a>
+      	<p>作品标题</p>
+      	<p>作品介绍</p>
+      	<a class="btn" href="#">查看</a>
+      </li>
+      <li>
+      	<a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-renwu10/homework/%E5%AD%99%E7%BA%A2%E7%85%A7/mission15-1/img/1.jpg" alt="pic"/></a>
+      	<p>作品标题</p>
+      	<p>作品介绍</p>
+      	<a class="btn" href="#">查看</a>
+      </li>
+    </ul>
+    </div>
+    <div class="download">
+     <div class="layout">
+      <p>想更详细了解我</p>
+      <p>下载我的简历</p>
+      <a class="btn" href="#">下载</a>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div id="footer">
+    <p>来自@decolo</p>
+  </div>
+</body>
+</html>

@@ -7,8 +7,49 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
+<style>
+ #content:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+.aside,.main,.extra{
+    float: left;
+}
+
+.aside{height: 300px;
+    width: 100px;
+    background: red;
+    margin-left: -100%;
+}
+.extra{
+    height:300px;
+    width:150px;
+    background: yellow;
+    margin-left: -150px;
+}
+.main{
+    width:100%;
+}
+.wrap{
+    background: blue;
+    height: 350px;
+    margin-right: 150px;
+    margin-left: 100px;
+}
+    
+
+</style>
+
 </head>
 <body>
+<div id="content">
+    <div class="main">
+        <div class="wrap">main</div>
+    </div>
+    <div class="aside">aside</div>
+    <div class="extra">extra</div>
+</div>
     
 </body>
 </html>

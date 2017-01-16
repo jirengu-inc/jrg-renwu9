@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.change-color{
+		width:200px;
+		height:200px;
+	}
+	.scroll-top{
+		border:1px solid black;
+		width:200px;
+		height:200px;
+		overflow:auto
+	}
+	.into-color{
+		width:200px;
+		height:200px;
+		border: 1px solid #ccc;
+	}
+	div{
+		margin-top: 20px
+	}
+	.input-color{
+		outline:none;
+		border-color:#ccc;
+	}
+	</style>
+</head>
+<body>
+	<div class="change-color">
+	 点击变化背景颜色
+	</div>
+
+	<div class="scroll-top">
+		This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+	</div>
+	<button class="get-scroll">点击获取滚动位置</button>
+
+	<div class="into-color">
+	 点击变化背景颜色
+	</div>
+
+	<div>
+		<input class="input-color" type="text">
+	</div>
+
+	<div>
+		<form class="select" action="" method="get"> 
+		您喜欢的水果？<br /><br /> 
+		<label><input name="Fruit" type="checkbox" value="苹果" />苹果 </label> 
+		<label><input name="Fruit" type="checkbox" value="桃子" />桃子 </label> 
+		<label><input name="Fruit" type="checkbox" value="香蕉" />香蕉 </label> 
+		<label><input name="Fruit" type="checkbox" value="梨" />梨 </label> 
+		</form> 
+		<div class="selected">
+			你已经选择了
+		</div>
+	</div>
+<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+<script>
+	$(".change-color").on("click",function(){
+		$(this).css("background-color",'red');
+		var that=$(this);
+		setTimeout(function(){
+			that.css("background-color","blue")
+		},1000)
+	})
+
+	$(".get-scroll").on("click",function(){
+	alert($(".scroll-top").scrollTop()+" px");
+})
+	$(".into-color").mouseover(function(){
+		$(this).css("background-color","red")
+	})
+	$(".into-color").on("mouseout",function(){
+		$(this).css("background-color","white")
+	})
+
+	$(".input-color").focus(function(){
+		$(this).css("border-color","red");
+				
+	})
+	$(".input-color").on("keyup",function(){
+		$(this).val($(this).val().toUpperCase());})
+	$(".input-color").blur(function(){
+		console.log($(this).val());
+		$(this).css("border-color","#ccc");
+
+	})
+
+
+	$('.select').children().children().on('change',function(e){
+        $(".selected").text($(".selected").text()+$(this).val()+" ")
+    })
+
+</script>
+</body>
+</html>
