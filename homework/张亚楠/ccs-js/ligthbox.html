@@ -1,0 +1,51 @@
+<style>
+
+ 
+
+.thumbnail {
+  max-width: 50px;
+  margin: 0 auto;
+  display: block;
+}
+
+.lightbox {
+ /* Hide lightbox image*/
+    display: none;
+
+ /*   Position/style of lightbox*/
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.8);;
+}
+
+.lightbox img {
+   /* Pad the lightbox image*/
+    max-width: 90%;
+    max-height: 80%;
+    margin-top: 30%;
+}
+
+.lightbox:target {
+   /*  Remove default outline and unhide lightbox*/
+    outline: none;
+    display: block;
+}
+</style>
+</head>
+<body>
+    <!-- thumbnail image wrapped in a link -->
+<a href="#img1">
+  <img src="../img/normal.png" class="thumbnail">
+</a>
+
+<!-- lightbox container hidden with CSS -->
+<a href="#" class="lightbox" id="img1">
+  <img src="../img/normal.png">
+</a>
+</body>
+</html>
