@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	#slider
+	{
+		position: relative;
+	}
+	.slide
+	{
+		width: 300px;
+		height: 200px;
+		position: absolute;
+		top: 0;
+	    left: 0;
+	    z-index: 0;
+	}
+	.slide:target
+	{
+		z-index: 1;
+	}
+	.slide:nth-child(1)
+	{
+		background: red;
+	}
+	.slide:nth-child(2)
+	{
+		background: pink;
+	}
+	.slide:nth-child(3)
+	{
+		background: green;
+	}
+	.slide:nth-child(4)
+	{
+		background: #ccc;
+	}
+	ul
+	{
+		position: absolute;
+		top:0;
+		left: 0;
+		z-index: 2;
+	}
+	ul a
+	{
+		color: white;
+	}
+</style>
+</head>
+<body>
+    <div id="slider">
+    	<div class="slide" id="slider-1">1</div>
+    	<div class="slide" id="slider-2">2</div>
+    	<div class="slide" id="slider-3">3</div>
+    	<div class="slide" id="slider-4">4</div>
+    	<ul>
+    		<li><a href="#slider-1">1</a></li>
+    		<li><a href="#slider-2">2</a></li>
+    		<li><a href="#slider-3">3</a></li>
+    		<li><a href="#slider-4">4</a></li>
+    	</ul>
+    </div>
+</body>
+</html>
