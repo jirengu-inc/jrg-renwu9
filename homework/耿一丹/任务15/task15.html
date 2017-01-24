@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Sherlock</title>
+<link href="css/normalize.css" rel="stylesheet">
+<link rel="stylesheet" href="css/iconfont.css">
+<style>
+nav,header,section,div,ul,li,a,h1,h2,h5,p{
+	margin: 0 ;
+	font-family: "Microsoft Yahei";
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+.layout {
+	width: 1080px;
+	margin: 0 auto;
+}
+.fixed {
+	position: fixed;
+	z-index: 2;
+}
+.clearfix:after {
+	content: ' ';
+	display: block;
+	clear: both;
+}
+nav {
+	height: 80px;
+	background: rgba(0, 0, 0, 0.7);
+	width: 100%;
+}
+.nav-list {
+	float: right;
+}
+.nav-list li {
+	float: left;
+	color: #fff;
+}
+nav .logo {
+	color: #fff;
+	font-size: 46px;
+	padding-top: 10px;
+	display: inline-block;
+}
+.nav-list li a {
+	box-sizing: border-box;
+	color: #fff;
+	display: inline-block;
+	margin-left: 30px;
+	margin-top: 22px;
+	padding: 10px 8px;
+	text-decoration: none;
+	font-size: 18px;
+}
+.nav-list li a:hover {
+	background: #FEC503;
+	border-radius: 5px;
+}
+header {
+	background-image: url(images/header-bg.jpg);
+	background-size: cover;
+	height: 700px;
+	color: #fff;
+}
+header .info {
+	height: 200px;
+	padding-top: 123px;
+	text-align: center;
+}
+.middle {
+	text-align: center;
+}
+.middle:before {
+	content: '';
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+header .info p {
+	font-size: 35px;
+	padding-top: 71px;
+	line-height: 1.5;
+}
+header .info h1 {
+	font-size: 85px;
+	letter-spacing: 3px;
+	margin-top: 35px;
+}
+header .info a {
+	margin-top: 76px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color: #FEC503;
+	font-size: 30px;
+	color: #fff;
+	border: 1px solid #FEC503;
+	border-radius: 10px;
+	line-height: 90px;
+	margin-left: -27px;
+	display: inline-block;
+
+}
+section {
+	padding: 70px 0;
+}
+section .title {
+	text-align: center;
+	padding-top: 20px;
+}
+section .title h2 {
+	line-height: 95px;
+	font-size: 40px;
+}
+#highlights .detail {
+	margin-top: 30px;
+}
+#highlights .detail li {
+	float: left;
+	width: 30%;
+	text-align: center;
+	margin-right: 20px;
+	height: 300px;
+}
+#highlights .detail .icon {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background: #fed136;
+	box-sizing: border-box;
+	display: inline-block;
+	font-size: 60px;
+	padding-top: 15px;
+	text-align: center;
+}
+#highlights .detail h5 {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	font-size: 25px;
+	line-height: 20px;
+}
+#highlights .detail p {
+	color: #777;
+	font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 18px;
+	line-height: 1.75;
+}
+#episode {
+	background: #f7f7f7;
+}
+#episode .part {
+	margin-left: -15px;
+	padding-left: 0;
+}
+#episode .part li {
+	float: left;
+	width: 350px;
+	margin-left: 15px;
+	border: 1px solid #555;
+	height: 360px;
+	box-sizing: border-box;
+	margin-top: 50px;
+	background: #fff;
+	position: relative;
+}
+#episode .part .caption {
+	text-align: center;
+}
+#episode .part h5 {
+	line-height: 45px;
+	font-size: 20px;
+}
+#episode .part p {
+	font-style: italic;
+	color: #777;
+}
+#episode .part a {
+	display: block;
+	position: relative;
+	width: 350px;
+	height: 248px;
+}
+#episode .part .hover {
+	background: rgba(254, 209, 54, .9);
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: all ease .5s;
+}
+#episode .part .hover:hover {
+	
+	opacity: 0.8;
+}
+.part .hover .logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+	font-size: 80px;
+
+
+}
+#about {
+	position: relative;
+}
+#about .timeline {
+	margin-top: 30px;
+}
+#about .timeline:after {
+	position: absolute;
+	left: 51.5%;
+	width: 2px;
+	background: #777;
+	margin-left: -1px;
+	content: '';
+	z-index: -1;
+	height: 80%;
+	bottom: 0;
+}
+.timeline li {
+	position: relative;
+	margin-top: 30px;
+}
+.timeline li:nth-of-type(odd) .timeline-intro {
+	width: 37%;
+	text-align: right;
+}
+.timeline li:nth-of-type(even) .timeline-intro {
+	width: 37%;
+	text-align: left;
+	float: right;
+}
+.timeline .timeline-intro h5 {
+	font-size: 20px;
+	line-height: 1.5em;
+}
+.timeline .timeline-intro p {
+	line-height: 1.2;
+}
+.timeline .timeline-image {
+	width: 170px;
+	height: 170px;
+	border-radius: 50%;
+	background: #FED136;
+	border: 6px solid #f1f1f1;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -90px;
+
+}
+.timeline li:last-of-type .timeline-image {
+	border: 0;
+}
+/*.timeline .timeline-image:last-of-type {
+	border: 0;
+}*/
+.timeline .timeline-image img {
+	border: 1px solid #f1f1f1;
+	border-radius: 50%;
+}
+.timeline .timeline-image .middle {
+	width: 100%;
+	height: 100%;
+
+}
+.timeline-image .middle p {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100px;
+	line-height: 1.5em;
+	font-size: 18px;
+}
+#cast {
+	margin-top: 170px;
+	background: #f7f7f7;
+}
+#cast .cast-list {
+	width: 100%;
+}
+#cast .cast-list>li {
+	width: 30%;
+	float: left;
+	margin-right: 15px;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.cast-list li img {
+	border-radius: 50%;
+}
+.cast-iconfont {
+	margin-top: 30px;
+}
+.cast-iconfont  a {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	background: #000;
+	border-radius: 50%;
+	line-height: 40px;
+
+}
+.cast-iconfont  a i {
+	color: #fff;
+	font-size: 20px;
+}
+#contact {
+	background: url(images/bg3.jpg);
+	height: 700px;
+	background-size: cover;
+}
+#contact .title {
+	color: #fff;
+}
+#contact form {
+	margin-top: 30px;
+}
+#contact form .input-group {
+	width: 50%;
+	box-sizing: border-box;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#contact form .input-group .input-text {
+	padding:20px;
+	width: 100%;
+	display: block;
+	margin-bottom: 20px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+#contact form textarea {
+	margin: 15px;
+	width: 51%;
+	padding: 20px;
+	box-sizing: border-box;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+}
+#contact form a {
+	padding: 20px;
+	background: #fec503;
+	font-size: 30px;
+	color: #fff;
+	border: 1px solid #fec503;
+	border-radius: 10px;
+	line-height: 50px;
+	display: inline-block;
+	margin-left: 15px;
+}
+footer {
+	height: 100px;
+	text-align: center;
+}
+footer p {
+	line-height: 100px;
+}
+</style>
+</head>
+<body>
+<nav class="fixed">
+	<div class="layout clearfix">
+		<a href="#" class="logo iconfont icon-zhentanjianying"></a>
+		<ul class="nav-list clearfix">
+			<li>
+				<a href="#highlights">Highlights</a>
+			</li>
+			<li>
+				<a href="#episode">Episode</a>
+			</li>
+			<li>
+				<a href="#about">About</a>
+			</li>
+			<li>
+				<a href="#cast">Cast</a>
+			</li>
+			<li>
+				<a href="#contact">Contact</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+<header>
+	<div class="layout clearfix">
+		<div class="info">
+			<p>Welcome to <br>221B Baker Street </p>
+			<a href="#">Learn More</a>
+			<h1>I am Sherlocked</h1>
+			
+		</div>
+	</div>
+</header>
+<section id="highlights">
+	<div class="layout">
+		<div class="title">
+			<h2>Highlights</h2>
+			<p>There are plenty of highlights in this brilliant TV series</p>
+		</div>
+		
+		<ul class="detail clearfix">
+			<li>
+				<span class="icon iconfont icon-weixian"></span>
+				<h5>Danger</h5>
+				<p class="comment">
+					Sherlock's life has never been peaceful,and it's full of danger and excitement.
+				</p>
+			</li>
+			<li>
+				<span class="icon iconfont icon-luojituili1"></span>
+				<h5>Logical Reasoning</h5>
+				<p class="comment">
+					You can indulge in the stunning logical inference of Sherlock Homles
+				</p>
+			</li>
+			<li>
+				<span class="icon iconfont icon-man"></span>
+				<h5>Humanity</h5>
+				<p class="comment">
+					The TV series have tried to solve a case from the angle of human nature
+				</p>
+			</li>
+		</ul>
+	</div>
+</section>
+<section id="episode">
+	<div class="layout">
+		<div class="title">
+			<h2>Episode</h2>
+			<p>Every episode is a shining beacon of hope.</p>
+		</div>
+		<ul class="part clearfix">
+			<li>
+				<a href="#">
+					<div class="hover middle">
+						<span class="logo iconfont icon-zhentanjianying"></span>
+					</div>
+					<img src="images/s4e1-1.jpg" alt="">
+				</a>
+				<div class="caption">
+					<h5>Season 4 episode 1</h5>
+					<p>The Six Thatchers</p>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+					<div class="hover middle">
+						<span class="logo iconfont icon-zhentanjianying"></span>
+					</div>
+					<img src="images/s4e2.jpg" alt="">
+				</a>
+				<div class="caption">
+					<h5>Season 4 episode 2</h5>
+					<p>The Lying Detective</p>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+					<div class="hover middle">
+						<span class="logo iconfont icon-zhentanjianying"></span>
+					</div>
+					<img src="images/s4e3.PNG" alt="">
+				</a>
+				<div class="caption">
+					<h5>Season 4 episode 3</h5>
+					<p>The Final Problem</p>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+					<div class="hover middle">
+						<span class="logo iconfont icon-zhentanjianying"></span>
+					</div>
+					<img src="images/s3e1.png" alt="">
+				</a>
+				<div class="caption">
+					<h5>Season 3 episode 1</h5>
+					<p>The Empty Hearse</p>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+					<div class="hover middle">
+						<span class="logo iconfont icon-zhentanjianying"></span>
+					</div>
+					<img src="images/s3e2.jpg" alt="">
+				</a>
+				<div class="caption">
+					<h5>Season 3 episode 2</h5>
+					<p>The Sign of Three</p>
+				</div>
+			</li>
+			<li>
+				<a href="#">
+					<div class="hover middle">
+						<span class="logo iconfont icon-zhentanjianying"></span>
+					</div>
+					<img src="images/s3e3.jpg" alt="">
+				</a>
+				<div class="caption">
+					<h5>Season 3 episode 3</h5>
+					<p>The Last Words</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+<section id="about">
+	<div class="layout clearfix">
+		<div class="title">
+			<h2>About</h2>
+			<p>Timeline of Sherlock Homles</p>
+		</div>
+		<ul class="timeline clearfix">
+			<li class="clearfix">
+				<div class="timeline-intro clearfix">
+					<h5>2010.7.25</h5>
+					<h5>Season 1 started</h5>
+					<p>Sherlock is a British television crime drama that presents a contemporary update of Sir Arthur Conan Doyle's Sherlock Holmes detective stories.It stars Benedict Cumberbatch as Holmes and Martin Freeman as Doctor John Watson.Six episodes,broadcast since 2010,have been produced,with three more episodes scheduled to begin production in early 2013.The series has been sold to over 180 territories.</p>
+				</div>
+				<div class="timeline-image">
+					<img src="images/timeline1.jpg" alt="">
+				</div>
+			</li>
+			<li class="clearfix">
+				<div class="timeline-intro clearfix">
+					<h5>2012.1.1</h5>
+					<h5>Season 2 started</h5>
+					<p>Sherlock is a British television crime drama that presents a contemporary update of Sir Arthur Conan Doyle's Sherlock Holmes detective stories.It stars Benedict Cumberbatch as Holmes and Martin Freeman as Doctor John Watson.Six episodes,broadcast since 2010,have been produced,with three more episodes scheduled to begin production in early 2013.The series has been sold to over 180 territories.</p>
+				</div>
+				<div class="timeline-image">
+					<img src="images/timeline2.jpg" alt="">
+				</div>
+			</li>
+			<li class="clearfix">
+				<div class="timeline-intro clearfix">
+					<h5>2014.1.1</h5>
+					<h5>Season 3 started</h5>
+					<p>Sherlock is a British television crime drama that presents a contemporary update of Sir Arthur Conan Doyle's Sherlock Holmes detective stories.It stars Benedict Cumberbatch as Holmes and Martin Freeman as Doctor John Watson.Six episodes,broadcast since 2010,have been produced,with three more episodes scheduled to begin production in early 2013.The series has been sold to over 180 territories.</p>
+				</div>
+				<div class="timeline-image">
+					<img src="images/timeline3.jpg" alt="">
+				</div>
+			</li>
+			<li class="clearfix">
+				<div class="timeline-intro clearfix">
+					<h5>2016.1.1</h5>
+					<h5>The Christmas special, entitled "Sherlock: The Abominable Bride"</h5>
+					<p>It was granted a Chinese release thanks to a series of cultural exchanges between the two countries.
+It's been reported that there is even an Easter Egg specially designed for Chinese viewers. However, according to audiences it's too subtle to get.
+Starring Benedict Cumberbatch and Hobbit star Martin Freeman, who's very popular here in China, the movie grossed 4.6 million dollars in its first day and had nearly 25 percent of the Chinese market share.</p>
+				</div>
+				<div class="timeline-image">
+					<img src="images/timeline5.jpg" alt="">
+				</div>
+			</li>
+			<li class="clearfix">
+				<div class="timeline-intro clearfix">
+					<h5>2017.1.1</h5>
+					<h5>Season 4 started</h5>
+					<p>After three years of waiting for Sherlock season 4, Chinese fans of the show were in a fervor on last Monday morning after they saw the first episode premiere on the BBC`s official website.According to the BBC`s official website, the titles of the three episodes in season 4 are "The Six Thatchers," "The Lying Detective" and "The Final Problem."</p>
+				</div>
+				<div class="timeline-image">
+					<img src="images/timeline4.jpg" alt="">
+				</div>
+			</li>
+			<li class="clearfix">
+				<div class="timeline-image">
+					<div class="middle">
+						<p>Wait for more masterpieces</p>
+					</div>
+					
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>
+<section id="cast">
+	<div class="layout">
+		<div class="title">
+			<h2>Cast</h2>
+			<p>Those great actors and actress bring us this fabulous masterpiece</p>
+			<ul class="cast-list clearfix ">
+				<li>
+					<img src="images/cast1.jpg" alt="">
+					<h3>Benedict Cumberbatch</h3>
+					<p>Sherlock Homles</p>
+					<div class="cast-iconfont">
+						<a href="#cast">
+							<i class="iconfont icon-facebook"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-tuite"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-instagram"></i>
+						</a>
+						
+					</div>
+				</li>
+				<li>
+					<img src="images/cast2.jpg" alt="">
+					<h3>Martin Freeman</h3>
+					<p>John Waston</p>
+					<div class="cast-iconfont">
+						<a href="#cast">
+							<i class="iconfont icon-facebook"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-tuite"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-instagram"></i>
+						</a>
+						
+					</div>
+				</li>
+				<li>
+					<img src="images/cast3.jpg" alt="">
+					<h3>Louise Brealey</h3>
+					<p>Molly Hooper</p>
+					<div class="cast-iconfont">
+						<a href="#cast">
+							<i class="iconfont icon-facebook"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-tuite"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-instagram"></i>
+						</a>
+						
+					</div>
+				</li>
+				<li>
+					<img src="images/cast4.jpg" alt="">
+					<h3>Lara·Pulver</h3>
+					<p>Irene Adler </p>
+					<div class="cast-iconfont">
+						<a href="#cast">
+							<i class="iconfont icon-facebook"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-tuite"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-instagram"></i>
+						</a>
+						
+					</div>
+				</li>
+				<li>
+					<img src="images/cast5.jpg" alt="">
+					<h3>Mark Gatiss</h3>
+					<p>Mycroft Holmes </p>
+					<div class="cast-iconfont">
+						<a href="#cast">
+							<i class="iconfont icon-facebook"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-tuite"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-instagram"></i>
+						</a>
+						
+					</div>
+				</li>
+				<li>
+					<img src="images/cast6.jpg" alt="">
+					<h3>Andrew Scott</h3>
+					<p>James Moriarty</p>
+					<div class="cast-iconfont">
+						<a href="#cast">
+							<i class="iconfont icon-facebook"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-tuite"></i>
+						</a>
+						<a href="#cast">
+							<i class="iconfont icon-instagram"></i>
+						</a>
+						
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section id="contact">
+	<div class="layout">
+		<div class="title">
+			<h2>Contact us</h2>
+			<p>Be a fan of Sherlock!</p>
+		</div>
+
+		<form action="" class="clearfix">
+			<div class="input-group">
+				<input id="name" class="input-text" placeholder="Your Name *" type="text">
+				<input id="email" class="input-text" placeholder="Your Email *" type="text">
+				<input id="phone" class="input-text" placeholder="Your Phone *" type="text">
+			</div>
+			<textarea name="message" id="" cols="30" rows="10" placeholder="Your Message"></textarea><br>
+			<a href="#">Send Message</a>
+		</form>
+	</div>
+</section>
+<footer>
+	<p>Copyright © Mcavoy's Website 2017/1/24</p>
+</footer>
+</body>
+</html>
