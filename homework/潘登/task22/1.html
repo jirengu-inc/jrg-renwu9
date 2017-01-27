@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+  <script>
+  	var ct1=document.getElementsByClassName('ct');
+  	var li1=document.getElementsByTagName('li');
+  	for(var i=0;i<li1.length;i++){
+  		(function(i){
+          li1[i].onclick=function(){
+          	console.log(li1[i].innerHTML);
+          };
+  		})(i);
+  	}
+  	//方法二：事件代理
+  	/*
+      var ct = document.querySelector('.ct');
+      ct.addEventListener('click', function(e){
+      console.log(e.target.innerText);
+      });
+   */
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-demo2</title>
+	<style type="text/css">
+		.box{
+			height: 1200px;
+			width: 50px;
+			border:1px solid;
+		}
+		.mid{
+			width: 500px;
+			height: 300px;
+			padding: 80px;
+			background: orange;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="box"></div>
+	<div class="mid">是否已经出现在窗口中？</div>
+	<div class="box"></div>
+
+
+	
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		function isVisible($ele){
+			var winH=$(window).height(),
+			    scrollTop=$(window).scrollTop(),
+			    offsetTop=$ele.offset().top,
+			    $eleH=$ele.innerHeight();
+			    if((winH+scrollTop>offsetTop)&&(scrollTop<offsetTop+$eleH)){
+			    	return true;
+			    }
+			    else{
+			    	return false;
+			    }
+		}
+
+		var isShow=false;
+		$(window).on("scroll",function(){
+			if(isShow){
+				return;
+			}
+			if(isVisible($(".mid"))){
+				isShow=true;
+				console.log(true);
+			}
+		})
+
+
+		
+		
+
+		
+	</script>
+</body>
+</html>

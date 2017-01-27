@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>fullPage</title>
+    <!--存在的问题：
+    1.刚载入页面时，从第一张图片跳到最后一张空白怎么解决-->
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    html, body, #header, #header .carousel, #header .img-ct ,#header .img-ct .items{
+        height: 100%;
+        width: 100%; /*要给图片的父容器设置高度，图片因为是背景，所以设置的铺满就可以了*/
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    #header .carousel {
+        position: relative;
+        overflow: hidden;
+    }
+    #header .cover {
+        background-repeat: no-repeat;
+        background-position:center; /*调图片的位置，不过有了cover，这个直接设为center/left就行*/
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    #header .items .main {
+        position: absolute;
+        top: 80%;
+        left: 5%;
+        color: white;
+    }
+    #header .carousel .bullet {
+        position: absolute;
+        left: 50%;
+        margin-left: -45px;
+        bottom: 20px;
+    }
+    #header .carousel .bullet li {
+        float: left;
+        width: 14px;
+        height: 14px;
+        border-radius: 14px;
+        background-color: #fff;
+        margin-left: 9px;
+        cursor: pointer;
+    }
+    #header .carousel .bullet .active {
+        background-color: #1e76da;
+    }
+    #header .carousel .img-ct .items {
+        float: left;
+        position: relative; /*为了文字定位用*/
+    }
+    #header .carousel .img-ct:after {
+        content: '';
+        display: block;/*after === append*/
+        clear: both;
+    }
+    #header .carousel .img-ct {
+        position: absolute;
+    }
+    #header .carousel .main  {
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+    }
+    #header .carousel .main  h3{
+        font-size: 30px;
+    }
+</style>
+<body>
+    <div id="header">
+        <div class="carousel">
+           <ul class="img-ct">
+               <li class="items">
+                   <div class="cover" data-bg-img="image/1.jpg"></div>
+                   <div class="main">
+                       <h3>只要记住你的名字</h3>
+                       <p>重要的人</p>
+                   </div>
+               </li>
+               <li class="items">
+                   <div class="cover" data-bg-img="image/2.png"></div>
+                   <div class="main">
+                       <h3>不管你在世界的哪个地方</h3>
+                       <p>不能忘记的人</p>
+                   </div>
+               </li>
+               <li class="items">
+                   <div class="cover" data-bg-img="image/3.png"></div>
+                   <div class="main">
+                       <h3>我一定会</h3>
+                       <p>不想忘记的人</p>
+                   </div>
+               </li>
+               <li class="items">
+                   <div class="cover" data-bg-img="image/4.jpg"></div>
+                   <div class="main">
+                       <h3>去见你</h3>
+                       <p>你，是谁？</p>
+                   </div>
+               </li>
+           </ul>
+            <ul class="bullet">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+
+        var $ct = $('.img-ct'),
+            $blt = $('.bullet'),
+            timer,
+            crtIdx = 0,
+            $items = $ct.children(),
+            imgWidth = $(window).width(),/*$covers.eq(0).width(),*/
+            isAnimate = false,
+            realImgNumber = imgNumber + 2;
+            $cover =  $items.find('.cover'),
+            imgNumber = $cover.size();
+        $ct.append($items.first().clone());
+        $ct.prepend($items.last().clone());
+        $ct.css({width: realImgNumber * imgWidth, left: -imgWidth});
+        $ct.find('.items').css('width', imgWidth);
+        $ct.find('.cover').css('width', imgWidth);
+
+        setBg(1);
+        autoPlay();
+        $blt.on('mouseenter', 'li', function () {
+            var idx = $(this).index();
+            //if(crtIdx - idx === 1 || crtIdx - idx === -1){
+                if(idx > crtIdx){
+                    playNext(idx - crtIdx);
+                }else if(idx < crtIdx) {
+                    playPre(crtIdx - idx);
+                }
+            clearInterval(timer);
+            console.log(idx);
+        });
+        $blt.on('mouseleave', function () {
+            autoPlay();
+        })
+        function playNext(idx) {
+            var idx = idx || 1;
+            if (isAnimate) return;
+            isAnimate = true;
+            setBg(crtIdx + 2);
+            $ct.animate({left: '-=' + idx * imgWidth + 'px'}, 1000, function () {
+                        crtIdx = (idx + crtIdx) % imgNumber;
+                if(crtIdx === 0){
+                    $ct.css('left', -imgWidth);
+                }
+                isAnimate = false;
+                setBlt(crtIdx);
+
+            });
+        }
+        /*function playNext(idx) {
+            var idx = idx || 1;
+            if (isAnimate) return;
+            isAnimate = true;
+            setBg(idx + crtIdx);
+            $ct.animate({left: '-=' + idx * imgWidth + 'px'}, 2000, function () {
+                crtIdx = (idx + crtIdx) % imgNumber;
+                /*if(crtIdx === 0){
+                 $ct.css('left', -imgWidth);
+                isAnimate = false;
+            });*/
+
+        function playPre(idx) {
+            var idx = idx || 1;
+            if(isAnimate) return;
+            isAnimate = true;
+            setBg(crtIdx);
+            $ct.animate({left: '+=' + idx * imgWidth + 'px'}, 1000, function () {
+                crtIdx = (imgNumber + crtIdx - idx) % imgNumber;
+                if (crtIdx === imgNumber - 1) {
+                    $ct.css('left', -imgNumber * imgWidth);
+                }
+                setBlt(crtIdx);
+                isAnimate = false;
+            });
+        }
+        function autoPlay() {
+            timer = setInterval(function () {
+                playNext();
+            }, 1000)
+        }
+        function setBlt(idx) {
+            $blt.children().removeClass('active')
+                    .eq(idx).addClass('active');
+        }
+        function setBg(idx) {
+            var idx = idx || 0,
+                $node = $ct.children().eq(idx),
+                $cover = $node.find('.cover'),
+                imgUrl = $cover.attr('data-bg-img');
+
+                if ($node.data('isBgSet')) return;
+                $cover.css('background-image', 'url(' + imgUrl + ')');
+                $node.data('isBgSet', true);
+        }
+
+    </script>
+</body>
+</html>

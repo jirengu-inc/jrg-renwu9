@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="http://ww3.sinaimg.cn/mw690/d6acdda5gw1faamnent5lj20m80go0vg.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://ww3.sinaimg.cn/mw690/d6acdda5gw1faamno21mjj20m80vewiy.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://ww2.sinaimg.cn/mw690/d6acdda5gw1faamnngkf1j20m80ciacs.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+var ct = document.querySelector(".ct");
+var div = document.querySelector(".img-preview");
+var img = document.createElement("img");
+ct.addEventListener("mouseover",function(e){
+         img.setAttribute("src",e.target.getAttribute("data-img"));
+         div.appendChild(img);
+},false)
+</script>
+</body>
+</html>

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>New Demo</title>
+	<link rel="stylesheet" type="text/css" href="csshake.css">
+	<style>
+	html,body{
+		padding:0px;
+		margin:0px;
+	}
+	*{font-family: "微软雅黑";
+	margin:0px;
+	padding:0px;
+	}
+	.layout{
+		width:1200px;
+		margin:0 auto;
+	}
+	header{
+		background:url(http://hoop8.com/1612A/cJ0bkyxk.png)center 0px  no-repeat,
+		 	url(http://upload-images.jianshu.io/upload_images/3257837-e6a2a1b7d3888113.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)center 250px no-repeat,
+ 			url(http://upload-images.jianshu.io/upload_images/3257837-d68162b751cb29bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)center 165px no-repeat,
+ 			url(http://upload-images.jianshu.io/upload_images/3257837-b03a20a76d7a938c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)center 170px no-repeat;
+		background-blend-mode:lighten;
+		width:100%;
+		min-width:1200px;
+		position: relative;
+		overflow: hidden;
+	}	
+	header a{
+		text-decoration: none;
+		color:#fff;
+	}
+	header a:hover{
+		color:#aee0e1;
+	}
+	header li{
+		list-style: none;
+	}
+	.hunger-logo{
+		float:left;
+		margin-top: 33px;
+		margin-right: 58px;
+	}
+	.header-title-list>li{
+		float:left;
+		margin-right:41px;
+		margin-top:45px;
+		position: relative;
+	}
+	.header-title-list>li>a{
+		font-size:18px;	
+	}
+	.header-title-list li img{
+		background: url("http://upload-images.jianshu.io/upload_images/3257837-9c6537bdc3901af3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat 0px 10px;
+		width:19px;
+		height:19px;
+		border-width:0px;
+		border-style:none;
+	}
+	.header-title-list li img{
+		margin-left:4px;
+	}
+	.header-title-list>li>ul{
+		display:none;
+		position:absolute;
+		width:200px;
+		line-height:1.7rem;
+	}
+	.header-title-list li:hover ul{
+		display:block;
+	}
+	.header-title-list li a:hover img{
+		background: url("http://upload-images.jianshu.io/upload_images/3257837-afab4336b01e5960.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240") no-repeat 0px 10px;
+	}
+	.header-title-list>li:nth-child(4):hover ul>li:nth-child(n+5){
+		margin-left: 80px;
+	}
+	.header-title-list>li:nth-child(4):hover ul>li:nth-child(5){
+		margin-top:-108px;
+	}
+	.title-login li{
+		float:right;
+		margin-top: 45px;
+	}
+	.title-login li:last-child{
+		margin-right: 28px;
+		margin-top:45px;
+		position: relative;
+	}
+	.title-login li:last-child span{
+		position: absolute;
+		left:10px;
+		top:-0px;
+	}
+	.title-login li:last-child input{
+		border-radius: 10px;
+		background: #09274b;
+		border:none;
+		height:25px;
+		width:127px;
+		outline:none;
+		padding-left:25px;
+		color:#aee0e1;
+	}
+	.title-login ul>li a{
+		font-size:18px;	
+	}
+	.title-login ul>li:nth-child(2){
+		font-size:25px;
+		margin: 40px 5px 0px 5px;
+		color:#fff;
+		}
+	.title-login:after{
+		content:"";
+		display: block;
+		clear: both;
+		margin-bottom: 114px;
+	}
+	/*以上为最上部分列表的样式*/
+	.header-content{
+		text-align: center;
+		position:relative;
+		height:80%;
+	}
+	.header-content>img{
+		margin-left:30px;
+		
+	}	
+	.header-content p{	
+		color:#fff;
+		text-shadow:0 0 7px #69c9d2;
+		font-size: 18px;
+		line-height:1;
+		letter-spacing:4px;
+	}
+	.header-content p:nth-child(2){
+		margin:100px 150px 23px 0px;
+	}
+	.header-content p:nth-child(3){
+		margin-left:150px;
+	}
+	.header-content span{
+		font-size:30px;
+	}
+	.header-content>a{
+		display:block;
+		border:2px solid #69c9d2;
+		margin:59px auto 220px auto;
+		width:160px;
+		height:50px;
+		border-radius: 5px;
+		text-align: center;
+		font-size:25px;
+		line-height:50px;
+		text-decoration: none;
+		color:rgba(255,255,255,0.8);
+		text-shadow:7 0 5px #fff;
+		transition:2s;
+	}
+	header:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	/*整个header的工作就完成了，上方都是header内容*/
+	.title-line{
+		text-align:center;
+		line-height:1;
+		position:relative;
+	}
+	.title-line p:first-child{
+		font-size:36px;
+		margin-top:69px;
+		margin-bottom: 11px;
+		}
+	.title-line p:nth-child(2){
+		font-size:18px;
+		margin-bottom:83px;
+		}
+	.title-line:before{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		top:25px;
+		left:355px;
+		}
+	.title-line:after{
+		content:"";
+		display:block;
+		border-top:2px solid black;
+		width:120px;
+		position:absolute;
+		top:25px;
+		left:725px;
+		}
+/*这是标题的标准格式，下面的都可以参照这个进行*/
+	.teacher-content{
+		width:100%;
+		background:#041529;
+		color:white;
+
+		}
+	.teacher-list {
+		background:#071b33;
+		text-align:center;	
+		position:relative;
+		height:100%;
+		}
+	.teacher-list  p:first-child{
+		display:block;
+		font-size:30px;
+		padding:28px 0 28px 0;
+		}
+	.teacher-list  img:nth-child(2){
+		display:block;
+		margin:0px auto 0 auto;
+		}
+	.teacher-list  p:nth-child(3){
+		display:block;
+		margin-top:47px;
+		font-size:24px;
+		line-height:2em;
+		}
+	.teacher-list  a:nth-child(4){
+		display:block;
+		border:2px solid #7ccef3;
+		box-shadow:0 0 5px #fff;
+		margin:21px auto 0 auto;
+		line-height:35px;
+		width:130px;
+		height:40px;
+		border-radius:5px;
+		text-decoration:none;
+		color:#fff;
+		}
+	.teacher-list  img:nth-child(5){	
+		display:block;
+		margin:24px auto 32px auto;
+		}
+	.teacher-list  a:nth-child(6){
+		position:absolute;
+		left:1127px;;
+		top:40%;
+	}
+	.teacher-list  a:last-child{
+		position:absolute;
+		left:28px;
+		top:40%;}
+/*上面内容是介绍老师的内容*/
+	.project-page{
+		position:relative;
+		border:1px solid #fff;
+	}
+	.project-page ul li{
+		display:block;
+		width:35%;
+		height:280px;
+		border:1px solid #ccc;
+		margin:0 auto;
+		background: #fff;
+		text-align:center;
+		padding:0 60px;
+		float:left;
+	}
+	.project-page ul li img{
+		width:80px;
+		height:80px;
+		margin:20px 0
+	}	
+	.project-page ul li p:nth-child(2),
+	.project-page ul li:last-child p:nth-child(3){
+		font-size:14px;
+		margin-bottom: 20px;
+	}
+	.project-page ul li P:nth-child(3){
+		font-size:12px;
+		color:#888;
+	}
+	.project-page ul li{
+		position:absolute;
+	}
+	
+	.project-page ul li:nth-child(2){
+		left:0px;
+		top:50px;
+	}
+	.project-page ul li:first-child{
+		right:0px;
+		top:50px;
+	}
+	.project-page ul li:last-child img{
+		width:100px;
+		height:100px;
+		margin:30px 0;
+	}
+
+	.project-page ul li:last-child p:nth-child(2){
+		font-size:18px;
+	}
+	.project-page ul li:last-child{
+		height:380px;
+		left:240px;
+		top:0;
+		font-size:18px;
+		width:50%;
+	}
+	.project-page ul li:last-child:before,
+	.project-page ul li:last-child:after,
+	.project-page ul li:nth-child(2):before,
+	.project-page ul li:first-child:after{
+		content:"";
+		z-index:-9999;
+		width:100px;
+		box-shadow:1px 1px 30px 20px #aaa;
+		-webkit-transform:rotate(-10deg);
+		position: absolute;
+		top:370px;
+		left:20px;
+
+	}
+	.project-page ul li:last-child:after{
+		-webkit-transform:rotate(10deg);
+		top:370px;
+		left:595px;
+		z-index: -9999;
+	}
+	.project-page ul li:nth-child(2):before{
+		-webkit-transform:rotate(-5deg);
+		box-shadow:1px 1px 30px 10px #aaa;
+		left:5px;
+		top:270px;
+	}
+	.project-page ul li:first-child:after{
+		-webkit-transform:rotate(5deg);
+		box-shadow:1px 1px 30px 10px #aaa;
+		left:435px;
+		top:270px;
+	}
+	
+	.project-page ul:after{
+		content:"";
+		display: block;
+		clear: both;
+		height:380px;
+	}
+	.project-page:after{
+		content:"";
+		display: block;
+		clear: both;
+		width: 300px;
+		box-shadow:1px 1px 30px 3px #ccc;
+		margin:83px auto 100px auto;	}
+/*以上是实战项目内容的样式*/
+	.study-content{
+		background: url(http://upload-images.jianshu.io/upload_images/3257837-2ab23d041f9b4804.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat ;
+		background-size:cover;
+		width:100%;
+		min-width:1200px;
+		border-bottom:1px solid #fff;
+		border-top:1px solid #fff;
+		position: relative;
+	}
+	.study-content>div{
+		width:900px;
+		height:610px;
+		background: rgba(127,205,243,0.1);
+		margin:46px auto 51px auto;
+	}
+	.study-content>div h2{
+		text-align: center;
+		padding-top:24px;
+		font-size: 24px;
+		color:#fff;
+
+	}
+	.study-content>div>img{
+		display: block;
+		width:700px;
+		height:293px;
+		margin:0 auto;
+	}
+	.study-content>div>a{
+		display: block;
+		position: absolute;
+		left:49%;
+		top:35%;	
+	}
+	.study-content>div>ul{
+		width:700px;
+		margin: 0 auto;
+	}
+	.study-content>div>ul li{
+		list-style: none;
+		color:#fff;
+		font-size: 18px;
+		float: left;
+		width:320px;
+		border:0px solid red;
+		margin-left: 21px;
+		margin-right: 91px;
+		line-height: 0px;
+	}
+	.study-content>div>ul li img{
+		margin-right: 5px;
+	}
+	.study-content>div>ul li:nth-child(2),
+	.study-content>div>ul li:nth-child(1){
+		margin-top: 26px;
+		margin-bottom: 24px;
+	}
+	.study-content>div>ul li:nth-child(5),
+	.study-content>div>ul li:nth-child(6){
+		margin-top: 24px;
+		margin-bottom: 31px;
+	}
+	.study-content>div>ul li:nth-child(2),
+	.study-content>div>ul li:nth-child(4),
+	.study-content>div>ul li:nth-child(6){
+		margin-right:-91px;
+		margin-left: -20px;
+	}
+	.study-content>div>ul:after{
+		content:"";
+		display: block;
+		clear: both;
+	}
+	.buy-class{
+		margin-left:112px;
+		position: relative;
+	}
+	.buy-class a{
+		display: inline-block;
+		box-shadow:0 0 5px #fff;
+		text-decoration: none;
+		height:25px;
+		border-radius: 10px;
+		color:#fff;
+		font-size: 12px;
+		text-align: center;
+		line-height: 25px;
+		margin-right: 10px;
+	}
+	.buy-class a:first-child{
+		width:70px;
+		background: #4cbaef;
+	}
+	.buy-class a:nth-child(2){
+		width:40px;
+		background: #6dee4b;
+	}
+	.buy-class a:nth-child(3){
+		width:110px;
+		background: #ce2a21;
+		z-index: 2;
+		position: relative;
+
+	}
+	.buy-class a:nth-child(4){
+		width:150px;
+		transition:2s;
+		height:25px;
+		border-radius: 0;
+		background: #9b2929;
+		box-shadow: none;
+		position: absolute;
+		top:35px;
+		left:140px;
+		z-index:1;
+		line-height:25px;
+		opacity:0;
+	}
+	#buy-line{
+		width:300px;
+		margin:20px auto 18px auto;
+		border-top: 1px solid #7fcdf3;
+		position: relative;
+	}
+	#buy-line:before,#buy-line:after{
+		content: "·";
+		clear: both;
+		display: block;
+		color:#7fcdf3;
+		font-size: 40px;
+		position: absolute;
+	}
+	#buy-line:before{
+		top:-29px;
+		left:-5px;
+	}
+	#buy-line:after{
+		top:-29px;
+		left:295px;
+	}
+	#buy-class:hover + #buy-finsh{
+		opacity:1;
+		width:200px;/*同级hover并且相邻的两个元素可以使用+来操作*/
+	}
+/*以上是学习内容的样式*/
+	.learning-style-content ul li{
+		margin-top: 10px;
+		border:0px solid #ccc;
+		box-shadow:0px 0px 3px 5px #ccc;
+		border-radius: 10px;
+		list-style: none;
+		display: inline-block;
+	}
+	.learning-style-content ul li:nth-last-child(n+5) p{
+		transform:skewX(20deg);
+	}
+	.learning-style-content ul{
+		margin-left:50px;
+	}
+	.learning-style-content ul li{
+		width:340px;
+		text-align: center;
+		font-size:36px;
+		line-height: 90px;
+		height:100px;
+		margin-left:30px;
+		transform:skewX(-20deg);
+		position: relative;	
+	}
+	.learning-style-content ul li:before{
+		border-radius:10px;
+		content: "";
+		position: absolute;
+		border:3px solid #206090;
+		height:100%;
+		width:100%;
+
+		top:-7px;
+		left:-7px;
+	}
+	.learning-style-content ul li:nth-child(3n+1){
+		width:300px;
+	}
+	.learning-style-content ul li:nth-child(4){
+		margin-left:15px;
+	}
+
+	.learning-style-content ul li:nth-child(n+4){
+		margin-top: 30px;
+		height:140px;
+		font-size:18px;
+		line-height:1em;
+		transform:skewX(3deg);
+		text-align: left;
+	}
+	.learning-style-content ul li:nth-child(n+4) p{
+		transform:skewX(-3deg);
+		padding:20px 30px;
+	}
+
+/*平行四边形的前三个*/
+
+	.learning-style-content ul li:last-child{
+		width:90%;
+		transform:skewX(-20deg);
+		height:100px;
+		margin-left: -0px
+	}
+	.learning-style-content ul li:last-child:before{
+		height:100px;
+	}
+	.learning-style-content ul li:last-child p{
+		font-size:36px;
+		line-height:50px;
+		transform:skewX(20deg);
+		margin-left:40px;
+	}
+	.learning-style-content ul li:last-child p span:first-child{
+		font-size:30px;
+		margin-left: 150px;
+	}
+	.learning-style-content ul li:last-child:after{
+		content: "";
+		display: block;
+		clear: both;
+		border-left: 1px solid #0a1921;
+		height:50px;
+		position: absolute;
+		top:30px;
+		left:280px;
+	}
+	
+	/*以上是学习方法的内容*/
+	footer{
+		background: #041529;
+		margin-top: 150px;
+		margin-bottom: -20px;
+		min-width:1200px;
+	}
+	footer ul{
+		width:500px;
+		padding-top: 40px;
+		margin:0 auto 40px auto;
+	}
+	footer ul li{
+		float:left;
+		font-size:18px;
+		list-style:none;
+		margin-left:70px;
+	}
+	footer ul li a{
+		color:#fff;
+		text-decoration: none;
+	}
+	footer ul li a:hover{
+		color:#aee0e1;
+	}
+	footer p{
+		color:white;
+		font-size:14px;
+		text-align: center;
+		padding-bottom: 40px;
+	}
+
+/*以上是页脚的内容*/
+.flash{
+	position: absolute;
+	z-index: 3;
+	color:#aaa;
+	font-size:50px;
+	transition:1s;
+}
+
+	</style>
+</head>
+<body>
+<header class="screen">
+	<div id="flash">
+		<ul>
+			<li class="flash">.</li>
+			<li class="flash">.</li>
+			<li class="flash">.</li>
+			<li class="flash">.</li>
+			<li class="flash">.</li>
+			<li class="flash">.</li>
+			<li class="flash">.</li>
+			<li class="flash">.</li>		
+		</ul>
+	</div>
+	<div class="header-title layout">
+		<div class="hunger-logo">
+			<a href="http://www.jirengu.com/"><img src="http://upload-images.jianshu.io/upload_images/3257837-76369d24af40e0e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+		</div>
+		<ul class="header-title-list">
+			<li><a href="http://www.jirengu.com/">首页</a></li>
+			<li><a href="javascript:;">课程<img src="http://upload-images.jianshu.io/upload_images/3257837-4b057ad88dcd01bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+				<ul>
+					<li><a href="http://www.jirengu.com/app/album/index">视频</a></li>
+					<li><a href="http://book.jirengu.com/">课件</a></li>
+					<li><a href="http://www.jirengu.com/app/teacher/index">讲师</a></li>
+				</ul>
+			</li>
+			<li><a href="javascript:;">学习<img src="http://upload-images.jianshu.io/upload_images/3257837-4b057ad88dcd01bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+				<ul>
+					<li><a href="http://www.jirengu.com/index.php?app=classroom&mod=About&act=charge">课程说明</a></li>
+					<li><a href="http://www.wenjuan.com/s/uUjEZv/#rd">填表说明</a></li>
+				</ul>
+			</li>
+			<li><a href="javascript:;">更多<img src="http://upload-images.jianshu.io/upload_images/3257837-4b057ad88dcd01bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+				<ul>
+					<li><a href="http://1.lintask.applinzi.com/http:/www.jirengu.com/blog">谷内学习</a></li>
+					<li><a href="https://zhuanlan.zhihu.com/study-fe">知乎专栏</a></li>
+					<li><a href="http://api.jirengu.com/">学习API</a></li>
+					<li><a href="http://jscode.me/">JScoed</a></li>
+					<li><a href="http://hungerworks.com">学生作品集</a></li>
+					<li><a href="http://www.jianshu.com/collection/38dd7fc9033a"/>简书博文汇</a></li>
+				</ul>
+			</li>
+		</ul>
+		<div class="title-login">
+			<!--<ul>
+				<li><a href="">注册</a></li>
+				<li>|</li>
+				<li><a href="">登录</a></li>
+				<li><input type="text" ><span><a href=""><img src="http://1.lintask.applinzi.com/%E6%8B%9B%E7%94%9F%E9%A1%B5%E9%9D%A2%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89/img/header/serch.png" alt=""></a></span></li>
+			</ul>
+		</div>-->
+	</div>
+<!-- ————————————————顶部菜单栏完成———————————————— -->
+	<div class="header-content layout">
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-ff53ac9f65fe2719.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+		<p>阿里腾讯<span>资深</span>前端工程师授课</p>
+		<p>业内<span>绝无仅有</span>的Nodejs课程</p>
+		<a id="login" href="https://www.wenjuan.com/s/uUjEZv/">申请试听</a>
+	</div>
+</header>
+<!-- ——————————————————HEADER内容完成—————————————— -->
+<div class="layout title-line">
+<p>导师介绍</p>
+<p>TEACHER INTRODUCTION</p>
+</div>
+<!-- ———————————————————标题内容完成——————————————— -->
+<div class="teacher-content">
+<div class="teacher-list layout">
+	<p>方方</P>
+	<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+	<p>人称“芳姐”，毕业于华中科技大学，曾就职腾讯，阿里巴巴B2B商家后台开发<br>
+	负责商家营销设置、客户管理等系统。精通Backbone（Marionette）、AngularJ
+	</p>
+	<a href="https://www.zhihu.com/people/zhihusucks/answers">他的授课</a>
+	<img src="http://upload-images.jianshu.io/upload_images/3257837-5941ed1baf9db0ac.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+	<a href=""><img src="http://upload-images.jianshu.io/upload_images/3257837-617196adffaa1f16.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+	<a href=""><img src="http://upload-images.jianshu.io/upload_images/3257837-429432b83edf241c.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"></a>
+</div>
+</div>
+<!-- ——————————————————介绍内容完成———————————————— -->
+<div class="layout title-line">
+	<p>实战项目</p>
+	<p>Actual combat project</p>
+</div>
+<!-- ———————————————————标题内容完成——————————————— -->
+<div class="project-page layout">
+	<ul>
+		<li>
+			<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+			<p>方方导师项目介绍</p>
+			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来
+			   表现HTML（标准通用标记语言的一个应用）或XML
+			  （标准通用标记语言的一个子集）等文件样式的计算机语言。
+			   CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。[1] 
+			   CSS 能够对网页中元素位置的排版进行像素级精确控制，
+			   支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力
+			</p>
+		</li>
+		<li >
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+			<p>方方导师项目介绍</p>
+			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来
+			   表现HTML（标准通用标记语言的一个应用）或XML
+			  （标准通用标记语言的一个子集）等文件样式的计算机语言。
+			   CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。[1] 
+			   CSS 能够对网页中元素位置的排版进行像素级精确控制，
+			   支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力
+			</p>
+		</li>
+		<li>
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-3987ea4a0479a259.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+			<p>方方导师项目介绍</p>
+			<p>层叠样式表(英文全称：Cascading Style Sheets)是一种用来
+			   表现HTML（标准通用标记语言的一个应用）或XML
+			  （标准通用标记语言的一个子集）等文件样式的计算机语言。
+			   CSS不仅可以静态地修饰网页，还可以配合各种脚本语言动态地对网页各元素进行格式化。[1] 
+			   CSS 能够对网页中元素位置的排版进行像素级精确控制，
+			   支持几乎所有的字体字号样式，拥有对网页对象和模型样式编辑的能力
+			</p>
+		</li>
+	</ul>
+</div>
+<!-- ——————————————————实战项目完成——————————————————-->
+<div class="layout title-line">
+	<p>课程内容</p>
+	<p>Actual combat project</p>
+</div>
+<!-- ———————————————————标题内容完成——————————————— -->
+<div class="study-content">
+	<div>
+		<h2>Node.JS项目组</h2>
+		<div id="buy-line"></div>
+		<img src="http://upload-images.jianshu.io/upload_images/3257837-d4e0c8266f7599d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">
+		<a href="javascript:"><img src="http://upload-images.jianshu.io/upload_images/3257837-f244fd98dbabb79b.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></a>
+		<ul>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">NodeJS历史、优势、生态、社区介绍</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">HTTP、实现一个WEB服务器</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">CommonJS规范</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">Express、Mongoose搭建网站</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">NodeJS语法</li>
+			<li><img src="http://upload-images.jianshu.io/upload_images/3257837-2f708df995627506.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="">多进程、OS、Cluster部署</li>
+		</ul>
+		<div class="buy-class">
+		<a href="">更多查看</a>
+		<a href="">查询</a>
+		<a id="buy-class" href="javascript:">￥ 168 | 点击购买</a>
+		<a id="buy-finsh" href="">购买完成后请联系班主任</a>
+		</div>
+	</div>
+</div>
+<!-- ———————————————————学习内容完成——————————————— -->
+<div class="layout title-line">
+	<p>学习方式</p>
+	<p>Learning style</p>
+</div>
+<!-- ———————————————————标题内容完成——————————————— -->
+<div class="learning-style-content layout">
+	<ul>
+	<li><p>录频学习</p></li>
+	<li><p>项目驱动</p></li>
+	<li><p>直播班</p></li>
+	<li><p>超清视频会议软件直播课程，可清晰地观看老师屏幕，和老师语音对话</p></li>
+	<li><p>超清视频会议软件直播课程，可清晰地观看老师屏幕，和老师语音对话</p></li>
+	<li><p>超清视频会议软件直播课程，可清晰地观看老师屏幕，和老师语音对话</p></li>
+	<li><p>适用人群<span>有JavaScript基础或者前端实际工作经验的同学</span></p></li>
+	</ul>
+</div>
+<!-- ———————————————————方式内容完成——————————————— -->
+<footer>
+	<ul>
+		<li id="nihao"><a href="">关于我们</a></li>
+		<li><a href="">加入我们</a></li>
+		<li><a href="">报名收费</a></li>
+	</ul>
+	<p>课程内容版权均归杭州饥人谷教育科技有限公司所有 浙ICP 备14041127号 -1</p>
+</footer>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script>
+	var hot=document.getElementsByClassName("flash");
+	function run(value){
+		for(i=0;i<value.length;i++){
+		if(value[i].style.textShadow=="none"){
+			value[i].style.textShadow="0px 0px 20px #fff";
+			value[i].style.top=Math.random()*800+"px";
+			value[i].style.left=Math.random()*1920+"px"
+		}
+		else{
+			value[i].style.textShadow="none"
+		}
+	}
+	}
+	setInterval("run(hot)",2000);
+
+	var cool=document.getElementById("login");
+	function light(value){
+		if(value.style.boxShadow=='none'){
+			value.style.boxShadow="0px 0px 20px #fff";
+		}
+		else{
+			value.style.boxShadow='none'
+		}
+	}
+	setInterval("light(cool)",500)
+	;
+</script>
+</body>
+</html>

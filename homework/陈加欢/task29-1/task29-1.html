@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-1</title>
+	<style type="text/css">
+		div{
+			height: 80px;
+			
+		}
+		#go-top{
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			padding: 10px;
+			border:1px solid #ddd;
+			border-radius: 3px;
+			box-shadow: 1px 1px 4px blue;
+			display: none;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+
+	<div>内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+	<div>内容4</div>
+	<div>内容5</div>
+	<div>内容6</div>
+	<div>内容7</div>
+	<div>内容8</div>
+	<div>内容9</div>
+	<div>内容10</div>
+	<div>内容11</div>
+	<div>内容12</div>
+	<div>内容13</div>
+	<div>内容14</div>
+	<div>内容15</div>
+	<div>内容16</div>
+	<div>内容17</div>
+	<div>内容18</div>
+	<div>内容19</div>
+	<div>内容20</div>
+	<div>内容1</div>
+	<div>内容2</div>
+	<div>内容3</div>
+	<div>内容4</div>
+	<div>内容5</div>
+	<div>内容6</div>
+	<div>内容7</div>
+	<div>内容8</div>
+	<div>内容9</div>
+	<div>内容10</div>
+	<div>内容11</div>
+	<div>内容12</div>
+	<div>内容13</div>
+	<div>内容14</div>
+	<div>内容15</div>
+	<div>内容16</div>
+	<div>内容17</div>
+	<div>内容18</div>
+	<div>内容19</div>
+	<div>内容20</div>
+
+
+	
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		//方法一
+		var $goTop=$("<button id='go-top'>回到顶部</button>");
+		$("body").append($goTop);
+		$(window).on("scroll",function(){
+			var scrollTop=$(window).scrollTop();
+			if(scrollTop>500){
+				$goTop.show();
+			}else{
+				$($goTop).hide();
+			}
+		})
+		$goTop.on("click",function(){
+			$(window).scrollTop(0);
+		})
+
+
+
+	// 	//方法二
+	// 	var GoTop = {
+	// 	init: function(){
+
+	// 		if($('#go-top').length > 0){
+	// 			return;
+	// 		}
+	// 		var $goTop = $('<button id="go-top">回到顶部</button>');
+	// 		$('body').append($goTop);
+
+	// 		this.$goTop = $goTop;
+	// 		this.bind();
+
+	// 	},
+	// 	bind: function(){
+	// 		var self = this;
+	// 		$(window).on('scroll', function(e){
+	// 			var offsetTop = $('body').scrollTop();
+	// 			if(offsetTop>100){
+
+	// 				self.$goTop.show();
+	// 			}else{
+	// 				self.$goTop.hide();
+	// 			}
+	// 		})
+	// 		this.$goTop.on('click', function(){
+	// 			$(window).scrollTop(0);
+	// 		});
+	// 	}
+	// }
+
+	// GoTop.init();
+
+
+
+
+
+
+
+		
+	</script>
+</body>
+</html>

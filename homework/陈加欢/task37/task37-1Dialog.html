@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>dialog 弹窗功能</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style type="text/css">
+       
+        .dialog{
+            position: absolute;
+            width: 330px;
+            left: 50%;
+            top:50%;
+            transform: translate(-50%,-50%);
+            box-sizing: border-box;
+            border:1px solid #ccc;
+            border-radius: 3px;
+            box-shadow: 1px 1px 4px 3px rgba(0,0,0,0.3)
+        }
+        .title{
+            padding: 10px 20px;
+            background:#666; 
+            color:#fff;
+        }
+        
+        .title:after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .body{
+            background: #eee; 
+            padding: 25px 25px 10px;
+        }
+       
+        .dialog h3{
+            float: left;
+            margin:0;
+            padding: 0;
+        }
+        .dialog .close{
+            float: right;
+            cursor: pointer;
+        }
+        .dialog .btn{
+             text-align: center;
+
+        }
+        .dialog .cancle, .dialog .confirm{
+            font-size: 15px;
+            margin:5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            border:none;
+            background: #e33100;
+            border-radius: 3px;
+            color:#fff;
+        }
+        .dialogMove{
+            opacity: 0.8;
+            cursor: move;
+        }
+    </style>
+
+  </head>
+<body>
+  
+  <button id="open1">打开1</button>
+  <button id="open2">打开2</button>
+  <button id="open3">打开3</button>
+  <button id="open4">打开4</button>
+  <button id="open5">打开5</button>
+
+
+
+
+ 
+
+<script type="text/javascript">
+    function Dialog(){
+    }
+    Dialog.prototype={
+        open:function(json){
+            this.title=json.title;
+            this.message=json.message;
+            this.isShowCloseBtn=json.isShowCloseBtn;
+            this.isShowConfirmBtn=json.isShowConfirmBtn;
+            this.onClose=json.onClose;
+            this.onConfirm=json.onConfirm;
+            this.createDialog();
+            this.setDialog();
+            this.bind();
+            this.dialogMove();
+            
+        },
+        createDialog:function(){
+            var tpl="<div class='dialog'><div class='title'><h3>"
+            +this.title+"</h3><div class='close'>X</div></div><div class='body'>"
+            +this.message+"<div class='btn'><button class='cancle'>取消</button><button class='confirm'>确定</button></div></div></div>";
+            this.$dialog=$(tpl);
+            $("body").append($(this.$dialog));
+            // this.setDialog();
+        },
+        setDialog:function(){ 
+            var $dialog=this.$dialog;     
+            if(!this.title){
+                $dialog.find(".title").hide();
+
+            }
+            if(this.isShowCloseBtn){
+                $dialog.find(".confirm").hide();
+            }
+            if(this.isShowConfirmBtn){
+                 $dialog.find(".cancel").hide();
+            }
+            if((!this.isShowCloseBtn)&&(!this.isShowConfirmBtn)){
+                 $dialog.find(".btn").hide();
+            }
+        },
+        bind:function(){
+            var me=this,
+                $dialog=this.$dialog;     
+            $dialog.find(".cancle").on("click",function(){
+                if(me.onClose){
+                    me.onClose();
+                };
+                $dialog.hide();
+            })
+            $dialog.find(".confirm").on("click",function(){
+                me.onConfirm();
+                $dialog.hide();
+            })
+            $dialog.find(".close").on("click",function(){
+               if(me.onClose){
+                    me.onClose();
+                };
+                $dialog.hide();
+            })
+        },
+        dialogMove:function(){
+            var x,y;
+            var $dialog=this.$dialog;
+
+            $dialog.on("mousedown",function(e){
+                x=e.pageX-$(this).offset().left;
+                y=e.pageY-$(this).offset().top;
+                $dialog.addClass("dialogMove");
+            })
+            $("body").on("mousemove",function(e){
+               $(".dialogMove").offset({left:e.pageX-x, top:e.pageY-y});
+
+            })
+            $("body").on("mouseup",function(){
+                $dialog.removeClass("dialogMove");
+            })
+        }
+    }
+
+    $('#open1').on('click',function(){
+        var dialog = new Dialog();
+        dialog.open({
+            message: "hello,这里是饥人谷",
+            isShowCloseBtn: true,
+          });
+        });
+
+     $('#open2').on('click',function(){
+        var dialog = new Dialog();
+        dialog.open({
+            message: "<a href='#'>饥人谷</a>",
+            isShowCloseBtn: true,
+          });
+        });
+
+      $('#open3').on('click',function(){
+        var dialog = new Dialog();
+        dialog.open({
+            title: '欢迎来到饥人谷',
+            message: "hello",
+            isShowConfirmBtn: true,
+            onClose: function(){
+              alert('close')
+            },
+            onConfirm: function(){
+              alert('确定');
+            }
+          });
+        });
+
+       $('#open4').on('click',function(){
+        var dialog = new Dialog();
+        dialog.open({
+            title: '欢迎来到饥人谷',
+            message: '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>',
+            isShowConfirmBtn: true,
+            onClose: function(){
+              alert('close')
+            },
+            onConfirm: function(){
+              alert('确定');
+            }
+          });
+        });
+
+       $('#open5').on('click',function(){
+        var dialog = new Dialog();
+        dialog.open({
+            title: '欢迎来到饥人谷',
+            message: "你好",
+          });
+        });
+
+
+   
+</script>
+
+</body>
+</html>

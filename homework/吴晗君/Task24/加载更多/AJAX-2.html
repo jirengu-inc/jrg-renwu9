@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Load</title>
+    <style>
+        body {
+            margin:0;
+            padding: 0;
+        }
+        li,ul{
+            list-style: none;
+            padding: 0;
+            margin-bottom: 12px;
+        }
+        ul li{
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        ul li:hover {
+            color: #fff;
+            background: green;
+        }
+        #btn {
+            text-decoration: none;
+            display:block;
+            height: 40px;
+            width: 80px;
+            line-height: 40px;
+            border: 1px solid pink;
+            margin: 0 auto;
+            text-align: center;
+            color: #E27272;
+            border-radius: 5px;
+            transition: all 1s;
+        }
+        #btn:hover {
+            background-color:green;
+            color: #fff;
+
+        }
+    </style>
+</head>
+<body>
+    <ul class="wrap">
+        <li class="box box1">内容1</li>
+        <li class="box box2">内容2</li>
+    </ul>
+    <a href="#" id="btn">加载更多</a>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        var btn = document.getElementById('btn');
+            s = 2;
+            wrap = document.querySelector('.wrap');
+            isloading = false;
+        btn.addEventListener('click', function (event) {
+            event.preventDefault(); //如果写成btn.repventDefault就什么也不动了。
+            if (isloading) {
+                alert('别急哦');
+                return;
+            }
+            isloading = true;
+            btn.innerHTML = 'loading';
+            $.ajax({
+                        url: '/getMore',
+                        dataType:'json',
+                        type:'get',
+                        data:{
+                            start: s,
+                            len: 5
+                        },
+                        success: function (json) {
+                            isloading = false;
+                            btn.innerHTML = '加载更多';
+                            onSuccess(json); //这些属性名在jquery内部都部署好的。
+                        },
+                        error: function () {
+                            isloading = false;
+                            btn.innerHTML = '加载更多';
+                            onError();
+                        }
+                    });
+        }, false);
+        //console.log(json);
+        function onSuccess(json) {
+            console.log(json);
+            if(json.status === 1) {
+                for (var i = 1; i < json.msg.length; ++i){
+                    //console.log(i);
+                    var newLi = document.createElement('li');
+                    newLi.innerHTML = "内容" + parseInt(json.msg[i]);
+                    //console.log(parseInt(json));
+                    wrap.appendChild(newLi);
+                }
+                s += json.msg.length-1;
+            } else {
+                alert('失败了。。');
+            }
+        }
+        function onError() {
+            alert('系统出错了');
+        }
+
+    </script>
+</body>
+</html>

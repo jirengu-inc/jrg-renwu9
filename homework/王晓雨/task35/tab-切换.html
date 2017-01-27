@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab切换</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0;box-sizing: border-box;}
+	ul,li{list-style: none;}
+	.clearfix:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+	#tab-ct{
+		width: 602px;
+		border: 1px solid #ccc;
+		margin: 50px auto;
+	}
+	.tabs li{
+		float: left;
+		width: 200px;
+		text-align: center;
+		padding: 10px;
+		border-bottom: 1px solid  #ccc;
+		border-right: 1px solid #ccc;
+		color:#d62038;
+		cursor: pointer;
+	}
+	.tabs .active{
+		background: #ccc;
+		opacity: 0.5;
+	}
+	.tabs li:last-child{
+		border-right: none;
+	}
+	.cont{
+		display: none;
+		height: 250px;
+		padding: 10px;
+	}
+	div.active{
+		display: block;
+	}
+	p{font-size: 22px;padding: 10px;}
+
+	</style>
+</head>
+<body>
+	<div id="tab-ct">
+	  <ul class="tabs clearfix">
+	  	<li class="active">电视剧</li>
+	  	<li>电影</li>
+	  	<li>动漫</li>
+	  </ul>
+	  <div class="cont active"><p>不良人</p> <p>仙剑</p> <p>诛仙</p></div>
+	  <div class="cont"><p>肖生克的救赎</p> <p>阿甘正传</p></div>	
+	  <div class="cont"><p>秦时明月</p> <p>不良人</p></div>
+	  </div>
+	</div>
+<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+<script type="text/javascript">
+	function tabChange($tab){
+		this.$tab=$tab;
+		this.$ul=this.$tab.find('.tabs');
+		this.$lis=this.$ul.find('li');
+		this.$cont=this.$tab.find('.cont');
+		this.bind()
+	}
+	tabChange.prototype={
+		bind:function(){
+			var cur=this;
+			cur.$lis.on('click',function(){
+				var idx=cur.$lis.index($(this));
+				cur.change(idx)
+			})
+		},
+
+		change:function(idx){
+			this.$lis.eq(idx).addClass('active').siblings().removeClass('active');
+			this.$cont.eq(idx).addClass('active').siblings().removeClass('active');
+		}
+	}
+	var tab1=new tabChange($('#tab-ct'));
+</script>	
+</body>
+</html>

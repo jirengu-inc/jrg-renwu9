@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>饥人谷demo</title>
+		<style>
+			/*重置*/
+			body,ul,li,h1,h4,div,a{margin: 0;
+			                       padding: 0;
+			                       }
+			body{font: 14px/1.5 "Microsoft YaHei","微软雅黑",sans-serif;}                       
+			a{text-decoration: none;}
+			li{list-style: none;}
+			/*公共样式*/
+		    .box{width: 900px;
+		         margin: 0 auto;
+		        }
+		    .clearfix:after{content: "";
+		                    display: block;
+		                    clear: both;
+		                    }    
+			/*头部样式*/
+			#header{background-color: #333;
+			        height: 50px;
+			        }
+			.logo img{height: 40px;}         
+			#header ul{float:right;}
+			#header li{float:left;
+			           ;}
+			#header a{color:#fff;
+			          line-height: 50px;
+			          padding: 0 10px;
+			          } 
+		/*内容样式*/
+		#content{margin-top: 10px;}
+		.left{width: 200px;
+		      height:500px;
+		      background-color:#ccc ;
+		      float: left;
+		      }
+		 .right{margin-left:210px;
+		        background-color: #ccc;
+		        }
+		 .right h1{padding:40px 0 40px 10px;}
+		 .right h4{padding:0 0 10px 10px ;
+		           font-weight: normal;
+		           }
+		 .right a{color:#000;}
+		 /*尾部样式*/
+		#footer{background-color:#333;
+		        height: 50px;
+		        }
+		#footer a{color: #fff;
+		          line-height: 50px;
+		          padding: 0 10px;
+		          }                  	                           
+		</style>
+	</head>
+	<body>
+		<div id="header" class="clearfix">
+			<div class="box">
+			<a href="#" class="logo">
+			<img src="http://cdn.jirengu.com/public/logo-tiny.png" alt="饥人谷"/>
+			</a>
+			<ul>
+				<li><a href="">技能</a></li>
+				<li><a href="">经历</a></li>
+				<li><a href="">作品</a></li>
+				<li><a href="">关于</a></li>
+			</ul>
+		</div>
+		</div>
+		<div id="content" class="clearfix">
+			<div class="box">
+			<div class="left"></div>
+			<div class="right">
+				<h1>我的作品</h1>
+				<h4><a href="">生活很美好</a></h4>
+				<h4><a href="">心情不错</a></h4>
+				<h4><a href="">代码写的很漂亮</a></h4>
+			</div>
+		</div>
+		</div>
+		<div id="footer">
+			<div class="box">
+			<a href="http://jirengu.com/" target="_blank">饥人谷</a>
+			<a href="http://jscode.me/" target="_blank">JSCODE</a>
+			<a href="http://js.jirengu.com/" target="_blank">JSBIN</a>
+		</div>
+		</div>
+	</body>
+</html>

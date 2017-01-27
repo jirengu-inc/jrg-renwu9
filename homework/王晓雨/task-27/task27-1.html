@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task26-1</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style type="text/css">
+	html,body,ul,li{margin: 0;padding:0;}
+	li{list-style: none}
+	a{text-decoration: none}
+	#box{
+		position: relative;
+		width: 400px;
+		height: 300px;
+		overflow: hidden;
+	}
+	.img-ct{
+		position: relative;
+	}
+	.img-ct li a img{
+		width: 400px;
+		height: 300px;
+	}
+	.img-ct:after{
+		content: "";
+		display: block;
+		clear:both;
+	}
+	
+	.arrow{
+		position: absolute;
+		top:50%;
+		margin-top: -15px;
+		text-align: center;
+		color: #fff;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		background-color: rgba(0,0,0,0.5);
+		border-radius: 50%;
+		cursor: pointer;
+		box-shadow: 0 0 1px #999;
+		opacity: 0.7;
+	}
+	.arrow:hover{opacity: 1}
+	.prev{left:30px;}
+	.next{right: 30px;}
+	.btns{
+		position: absolute;
+		bottom: 15px;
+		left: 50%;
+		transform: translate(-50%);
+	}
+	.btns li{
+		width: 20px;
+		height: 5px;
+		border-radius: 3px;
+		display: inline-block;
+		cursor: pointer;
+		background-color: #fff;
+
+	}
+	#box .btns li.active{
+		background: #666;
+	}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul class='img-ct'>
+		 	<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt="图片消失了"></a></li>
+		 	<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt="图片消失了"></a></li>
+		 	<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt="图片消失了"></a></li>
+		 	<li><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt="图片消失了"></a></li>
+		</ul>
+		<a class="prev arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		<ul class="btns">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		//获取所有元素
+			var $ct=$('.img-ct'),
+			    $pics=$ct.children(),
+			    $prev=$('.prev'),
+			    $next=$('.next'),
+			    $btns=$('.btns'),
+			    imgWidth=$pics.width(),
+			    imgCount=$ct.children().size();//4
+			    //.size()方法从jQuery 1.8开始被废弃
+			    //.size()方法功能上等价于.length属性
+			 
+			var curIdx=0;
+			var animated=false;//设置状态锁，防止动画正在进行时重复点击
+			
+			$prev.on('click',function(){
+				playPrev();
+			})
+			$next.on('click',function(){
+				playNext();
+			})
+			$btns.find('li').on('click',function(){
+				var idx=$(this).index();//当前点击按钮板的位置
+				play(idx)
+			})
+			
+
+			function playNext(){
+				play((curIdx+1)%imgCount);//curIdx+1
+			}
+			function playPrev(){
+				play((imgCount+curIdx-1)%imgCount);
+			}
+			function play(idx){
+				if(animated){
+					return //上锁很重要，防止重复点击
+				}
+				animated=true;
+				$pics.eq(curIdx).fadeOut(600);//此时重复点击无效
+				$pics.eq(idx).fadeIn(600, function() {
+					animated=false;
+				});
+
+				curIdx=idx;
+				setBtns();
+			}
+			function setBtns(){
+				$btns.children().removeClass('active')
+					 .eq(curIdx).addClass('active')
+			}
+			function stop(){
+				clearInterval(clock)
+			}
+			function autoPlay(){
+				var clock=setInterval(function(){
+					playNext()
+				},2000)
+			}
+			play(0);
+			autoPlay();
+	</script>
+</body>
+</html>
