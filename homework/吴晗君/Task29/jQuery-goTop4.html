@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    .ct {
+        height: 100px;
+        background-color: yellow;
+        color: #fff;
+        margin-bottom: 20px;
+        opacity: 0.3;
+    }
+    .go-top {
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border: 1px solid red;
+        border-radius: 4px;
+        cursor: pointer;
+        color: #E27272;
+        transition: all 1s;
+        display: none;
+    }
+    .go-top:hover {
+        background-color: green;
+        color: #fff;
+    }
+</style>
+<body>
+    <div class="ct">1</div>
+    <div class="ct">2</div>
+    <div class="ct">5</div>
+    <div class="ct">8</div>
+    <div class="ct">1</div>
+    <div class="ct">2</div>
+    <div class="ct">5</div>
+    <div class="ct">8</div>
+    <div class="ct">6</div>
+    <div class="ct">1</div>
+    <div class="ct">2</div>
+    <div class="ct">5</div>
+    <div class="ct point">8</div>
+    <div class="ct">666</div>
+    <div class="ct">1</div>
+    <div class="ct">2</div>
+    <div class="ct">5</div>
+    <div class="ct">8</div>
+    <div class="ct">6</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+
+    /*(function () {
+     var $goTop =  $('<div class="go-top">回到顶部</div>'),
+     winH = $(window).height();
+     $('body').append($goTop);
+     $(window).on('scroll', function () {
+     var scrollH = $(window).scrollTop();
+     if(scrollH  > 200) {
+     $goTop.show();
+     }else {
+     $goTop.hide();
+     }
+     });
+     })();*/
+    var goTop = function () {  //优点：别人在控制台看不到函数内容
+        function init() {
+            if($('.go-top').length > 0) return;
+            var $goTop = $('<div class="go-top">回到顶部</div>');
+            $('body').append($goTop);
+            var winH = $(window).height();
+            bind($goTop);
+        };
+        function bind($goTop) {
+            $(window).on('scroll', function() {
+                var scrollH = $(window).scrollTop();
+                if(scrollH > 200) {
+                    $goTop.show();
+                } else {
+                    $goTop.hide();
+                }
+            })
+            $goTop.on('click', function() {
+                $(window).scrollTop(0);
+            });
+        }
+        return {
+            init:init
+        }
+    };
+    var go = goTop();
+    go.init();
+
+</script>
+
+</body>
+</html>

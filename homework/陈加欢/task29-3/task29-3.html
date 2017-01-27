@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-3无限滚动</title>
+	<style type="text/css">
+		html,body,ul,li{
+			margin:0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+			border:1px solid #ccc;
+			margin:10px;
+		}
+		a{	
+			display: block;
+			text-decoration: none;
+			padding:10px;
+			color:#333;
+		}
+		button{
+			display: block;
+			width: 100px;
+			margin:0 auto;
+			border:1px solid red;
+			background: #ffe480;
+			border-radius: 5px;
+			padding:10px;
+		}
+		.bgColor{
+			background: #008000;
+		}
+	</style>
+</head>
+<body>
+
+		<ul class="ct">
+			<li><a href="#">内容1</a></li>
+			<li><a href="#">内容2</a></li>
+			<li><a href="#">内容3</a></li>
+			<li><a href="#">内容4</a></li>
+			<li><a href="#">内容5</a></li>
+			<li><a href="#">内容6</a></li>
+			<li><a href="#">内容7</a></li>
+			<li><a href="#">内容8</a></li>
+			<li><a href="#">内容9</a></li>
+			<li><a href="#">内容10</a></li>
+			<li><a href="#">内容11</a></li>
+			<li><a href="#">内容12</a></li>
+			<li><a href="#">内容13</a></li>
+			<li><a href="#">内容14</a></li>
+			<li><a href="#">内容15</a></li>
+			<li><a href="#">内容16</a></li>
+			<li><a href="#">内容17</a></li>
+			<li><a href="#">内容18</a></li>
+			<li><a href="#">内容19</a></li>
+			<li><a href="#">内容20</a></li>
+			<li><a href="#">内容21</a></li>
+			<li><a href="#">内容22</a></li>
+			<li><a href="#">内容23</a></li>
+			<li><a href="#">内容24</a></li>
+			<li><a href="#">内容25</a></li>
+		</ul>
+		<button>加载更多</button>
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		var first=6;
+		var $ct=$(".ct"),
+			$btn=$("button")
+
+	    $ct.on("mouseenter","a",function(){
+	    	$(this).addClass('bgColor');
+	    })
+	     $ct.on("mouseleave","a",function(){
+	    	$(this).removeClass('bgColor');
+	    })
+
+	    $("a").on("click",function(e){
+	     	e.preventDefault();
+	     })
+
+		$(window).on("scroll",function(){
+			if(isVisible($btn)){
+				if($btn.data("isLoading")){
+					return;
+				}
+				$btn.data("isLoading",true);
+				$.ajax({
+					url:"getmore.php",
+					type:"get",
+					dataType:"json",
+					data:{
+						first:first,
+						len:20
+					},
+					success:function(json){
+						onSuccess(json);
+					},
+					error:function(){
+						onError();
+					}
+				})
+			}
+		})
+
+		function onSuccess(json){
+			$btn.text("正在加载...")
+				.data("isLoading",false);
+			if(json.status==1){
+				append(json.data);   
+				first +=6
+			}else{
+				alert("获取数据失败")
+			}
+		}
+
+		function onError(){
+			$btn.text("正在加载...")
+				.data("isLoading",false);
+			alert("系统异常");
+		}
+
+		function append(arr){
+			for(var i=0; i<arr.length; i++){
+				$ct.append("<li><a href='#''>"+arr[i]+"</a></li>");
+			}
+		}
+
+
+		
+
+		
+
+		function isVisible($ele){
+		    var scrollH = $(window).scrollTop(),
+		  	    winH = $(window).height(),
+		  	    top = $ele.offset().top;
+
+	  	    if(top < winH + scrollH){
+	  	  		return true;
+	  	    }else{
+	  	  		return false;
+	  	    }
+		}
+
+		
+		
+	</script>
+</body>
+</html>

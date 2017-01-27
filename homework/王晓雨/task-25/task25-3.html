@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task25-3</title>
+	<style type="text/css">
+		/*基本样式*/
+	*{
+		box-sizing: border-box;
+	}
+	body,ul,li,p{
+		margin: 0;
+		padding: 0;
+	}
+	ul,ol{list-style: none;}
+	body{
+		font:12px  Arial,"微软雅黑";
+		color:#ccc;	
+	}
+	a{
+		text-decoration: none;
+		color: #666;
+	}
+	#layout{
+		margin: 10px auto;
+		width: 760px;
+	}
+	.clearfix:after{
+		display: block;
+		content: '';
+		clear:both;
+	}
+	.clearfix:after{*zoom:1;}//只针对IE6/7 
+	/*tabs样式*/
+	#tab-bar h1{
+		padding: 10px 0px;
+	}
+	
+	/*panel样式*/
+	#tab-bar .panel-box{
+		width: 702px;
+	}
+	#tab-bar .panel.active{
+		display: block;
+	}
+	#tab-bar .item-box{
+		margin:-20px 0 0 -20px;
+	}
+	#tab-bar .item{
+		position: relative;
+		float: left;
+		width: 220px;
+		padding: 10px 20px;
+		margin:20px 0 0 20px;
+		text-align: center;
+		border: 1px solid #ccc;
+		background: #fff;
+	}
+	#tab-bar .item.hover .cover{
+		opacity: 1;
+	}
+	#tab-bar .cover{
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom: 0;
+		background:rgba(0,0,0,0.2); 
+		transition: all 0.5s;
+		opacity: 0;
+	}
+	#tab-bar .cover .btn{
+		position: absolute;
+		top:50%;
+		left:50%;
+		transform: translate(-50%,-50%);
+		border:1px solid orange;
+		padding: 10px 15px;
+		border-radius: 5px;
+		text-align: center;
+		background: #fff;
+	}
+	#tab-bar .item-name{
+		height: 30px;
+		text-align: left;
+		font:12px normal;
+		color:#666;
+	}
+	#tab-bar .item-price{
+		text-align: left;
+		color: red;
+	}
+	#tab-bar .btn-add{
+		display: block;
+		width: 60px;
+		padding: 10px 15px;
+		border-radius: 5px;
+		background: #fff;
+		border:1px solid red;
+		color:red;
+		margin-top: 20px;
+	}
+	</style>
+</head>
+<body>
+ 	<!-- 在代码题2的样式上稍作修改即可，加上layout包裹居中
+ 	去掉panel的容器的边框，以及添加按钮-btn-add即可 -->
+<div id=layout>
+	<div id="tab-bar">
+		<h1 style="color: rgba(0,0,0,0.7);">珠宝首饰</h1>
+
+		<ul class="panel-box clearfix">
+			<li class="panel active">
+				<ul class="item-box">
+					<li class="item">
+						<div class="cover"><a href="javascript:void(0)" class="btn">立即抢购</a></div>
+						<a href="javascript:void(0)">
+							<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="图片消失了">
+							<div class="item-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="item-price">￥1699.00</div>
+						</a>
+					</li>
+						<li class="item">
+						<div class="cover"><a href="javascript:void(0)" class="btn">立即抢购</a></div>
+						<a href="javascript:void(0)">
+							<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="图片消失了">
+							<div class="item-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="item-price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="item">
+						<div class="cover"><a href="javascript:void(0)" class="btn">立即抢购</a></div>
+						<a href="javascript:void(0)">
+							<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="图片消失了">
+							<div class="item-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="item-price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="item">
+						<div class="cover"><a href="javascript:void(0)" class="btn">立即抢购</a></div>
+						<a href="javascript:void(0)">
+							<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="图片消失了">
+							<div class="item-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="item-price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="item">
+						<div class="cover"><a href="javascript:void(0)" class="btn">立即抢购</a></div>
+						<a href="javascript:void(0)">
+							<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="图片消失了">
+							<div class="item-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="item-price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="item">
+						<div class="cover"><a href="javascript:void(0)" class="btn">立即抢购</a></div>
+						<a href="javascript:void(0)">
+							<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="图片消失了">
+							<div class="item-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="item-price">￥1699.00</div>
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<a href="" class="btn-add">添加</a>
+	</div>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+var products = [
+	{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手 猴哥款',
+		price: '￥405.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金转运珠 猴哥款',
+		price: '￥100.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手链 3D猴哥款',
+		price: '￥45.00'
+	}
+]; 
+/*向html里添加元素,字符串的拼接*/
+	function getItemData(item){
+		var data='';//拼接<li class="item"><li>的内容
+		data+='<li class="item">';
+		data+='<div class="cover"><a href="" class="btn">立即抢购</a></div>';
+		data+='<a href="">';
+		data+=  '<img src=" '+item.img+' " alt="图片消失了">';
+		data+='<div class="item-name">'+item.name+'</div>';
+		data+='</a>';
+		data+='</li>';
+		return data;
+	}
+	$(function(){
+		$('.btn-add').on('click',function(e){
+			e.preventDefault();
+		$.each(products,function(idx, item) {
+				var str=getItemData(item);
+				$('.item-box').append(str);
+			});
+		})
+	})
+	$('.item-box').on('mouseenter','.item',function(e){
+		$(this).addClass('hover');
+	})
+	$('.item-box').on('mouseleave','.item',function(e){
+		$(this).removeClass('hover');
+	})
+	/*
+	//为什么这样有问题
+	//新增加的prod会没有效果，是因为绑定事件的时候只对当前的prod绑定。所以只需要在父元素上绑定事件代理就好了
+	$(' .prod').on('mouseenter', function(e){
+  		$(this).addClass('hover');
+		});
+	$(' .prod').on('mouseleave', function(e){
+  	$(this).removeClass('hover');
+	});
+*/
+</script>
+</body>
+</html>

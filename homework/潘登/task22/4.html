@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style>
+		html,body,div,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		#wrap{
+			width: 962px;
+			border: 1px solid #ccc;
+			margin: 100px auto;
+		}
+		#ul1{
+			border-bottom: 1px solid #ccc;
+		}
+		#ul1 li{
+			width: 320px;
+			height: 30px;
+			float: left;
+			text-align: center;
+			line-height: 30px;
+			list-style: none;
+		}
+		.li1{
+			border-right: 1px solid #ccc;
+		}
+		#ul1 li a{
+			text-decoration: none;
+			color: black;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
+		}
+		#wrap div{
+			display: none;
+			height: 200px;
+		}
+		#wrap .div1{
+			display: block;
+		}
+		#wrap #ul1 .active{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id='ul1' class="clearfix">
+			<li class='li1'><a class="active" href="javascript:;">tab1</a></li>
+			<li class='li1'><a href="javascript:;">tab2</a></li>
+			<li><a href="javascript:;">tab3</a></li>
+		</ul>
+		<div class="content1" style="display: block;">内容1</div>
+		<div class="content1">内容2</div>
+		<div class="content1">内容3</div>
+	</div>
+	<script>
+		var aWrap=document.getElementById('wrap');
+		var aUl=document.getElementById('ul1');
+		var oA=aUl.getElementsByTagName('a');
+		var oDiv=aWrap.getElementsByTagName('div');
+		for(var i=0;i<oA.length;i++){
+			oA[i].index=i;
+			oA[i].addEventListener('click',function(){
+				for(var j=0;j<oA.length;j++){
+					oA[j].className="";
+					oDiv[j].style.display="none";
+				}
+				this.className="active";
+				oDiv[this.index].style.display="block";
+			});
+		}
+	</script>
+</body>
+</html>

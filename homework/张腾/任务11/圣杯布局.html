@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>圣杯布局</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <style>
+    #content:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    
+    #content {
+        padding-left: 100px;
+        padding-right: 150px;
+    }
+    
+    .aside,
+    .main,
+    .extra {
+        float: left;
+    }
+    
+    .aside {
+        height: 300px;
+        width: 100px;
+        background: red;
+        margin-left: -100%;
+        position: relative;
+        left: -100px;
+    }
+    
+    .extra {
+        width: 150px;
+        height: 300px;
+        background: yellow;
+        margin-left: -150px;
+        position: relative;
+        left: 150px;
+    }
+    
+    .main {
+        height: 400px;
+        background: blue;
+        width: 100%;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div class="main">main</div>
+        <div class="aside">aside</div>
+        <div class="extra">extra</div>
+    </div>
+</body>
+
+</html>

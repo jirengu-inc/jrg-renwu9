@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta http-equiv="X-UA-compatible" content="IE=edge,chrome=1">
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="normalize.css" />
+		<title>项目展示</title>
+		<style>
+			body {
+				background: #2196f3;
+				font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", STHeiti, "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
+			}
+			
+			ul {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			ul li {
+				display: inline-block;
+			}
+			
+			.container {
+				padding-right: 15px;
+				padding-left: 15px;
+				margin-right: auto;
+				margin-left: auto;
+			}
+			
+			@media (min-width: 1200px) .container {
+				width: 1170px;
+			}
+			
+			@media (min-width: 992px) .container {
+				width: 970px;
+			}
+			
+			@media (min-width: 768px) .container {
+				width: 750px;
+			}
+			
+			#header>img {
+				width: 190px;
+				border-radius: 50%;
+			}
+			
+			#header {
+				text-align: center;
+				margin: 40px 0;
+			}
+			
+			#header>h1 {
+				font-size: 70px;
+				color: white;
+				font-weight: 100;
+			}
+			
+			#header>p {
+				text-align: center;
+				color: white;
+				font-size: 16px;
+				line-height: 1.6em;
+				letter-spacing: 1px;
+				font-weight: 300;
+				margin: 1.7em;
+			}
+			
+			nav .btn {
+				text-decoration: none;
+				display: inline-block;
+				margin: 3px;
+				padding: 6px 14px;
+				font-weight: 200;
+				border-radius: 2px;
+				background: #f44336;
+				color: #fff;
+			}
+			
+			nav .btn:hover {
+				box-shadow: 0 0 1px 1px #ffcdd2;
+			}
+			
+			nav .active {
+				background: #ff9800;
+			}
+			
+			#content {
+				width: 90%;
+				max-width: 69em;
+				margin: 0 auto;
+				padding: 0 1.375em;
+			}
+			
+			#content> .cards {
+				padding: 0;
+				list-style: none;
+				position: relative;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			
+			.cards li {
+				position: relative;
+				box-sizing: border-box;
+				display: inline-block;
+				vertical-align: top;
+				width: 100%;
+			}
+			
+			.cards .card {
+				background: white;
+				color: rgb(78, 78, 78);
+				position: relative;
+				border-radius: 3px;
+				border: 1px solid #edeeee;
+				margin: 0 0 30px 0;
+				font-weight: 400;
+				font-size: 95%;
+			}
+			
+			.card> h2 {
+				box-sizing: border-box;
+				font-weight: bold;
+				font-size: 15px;
+				padding: 14px 20px;
+				margin: 0;
+				height: 64px;
+				line-height: 36px;
+			}
+			
+			.card> time {
+				position: absolute;
+				top: 0;
+				font-size: 1.0em;
+				position: absolute;
+				line-height: 64px;
+				right: 5px;
+				margin-right: 1em;
+				color: #a5a7aa;
+			}
+			
+			.card>img {
+				width: 100%;
+				margin-bottom: 1em;
+				border-top: 1px solid #eeefef;
+				border-bottom: 1px solid #eeefef;
+			}
+			
+			.card ul {
+				padding: 0em 0;
+				margin: 0 1.5em;
+				list-style: none;
+			}
+			
+			.card ul li {
+				padding: 0.5em 0;
+			}
+			
+			.card li.skills {
+				overflow: auto;
+				margin-top: 9px;
+				border-top: 1px solid #eeefef;
+			}
+			
+			.skills span{
+				display: block;
+				float: left;
+				font-size: 1.3rem;
+				width: 40px;
+				height: 40px;
+				text-align: center;
+				line-height: 40px;
+				margin-right: 8px;
+				color: #a5a7aa;
+			}
+			
+			.skills .link {
+				float: right;
+				font-size: 0.8em;
+				line-height: 30px;
+				padding: 0 11px;
+				min-width: 70px;
+				box-sizing: border-box;
+				height: 32px;
+				border-radius: 3px;
+				background: white;
+				border: 1px solid #D5D6D8;
+				margin: 4px 0px;
+				transition: all 0.3s ease;
+			}
+			
+			.skills .link:hover{
+				background: #eee;
+			}
+			
+			.skills a {
+				text-decoration: none;
+				color: #a5a7aa;
+				display: block;
+				font-size: 14px;
+				font-weight: bold;
+			}
+			
+			.i-nodejs::before {
+				content: "";
+				display: block;
+				width: 40px;
+				height: 40px;
+				background: url(https://cdn0.iconfinder.com/data/icons/long-shadow-web-icons/512/nodejs-512.png) 50% 50% no-repeat;
+				background-size: 22px;
+			}
+			
+			.i-mongodb::before {
+				content: "";
+				display: block;
+				width: 40px;
+				height: 40px;
+				background: url(http://orig11.deviantart.net/21b0/f/2010/168/e/1/icon_mongodb_by_xkneo.png) 50% 50% no-repeat;
+				background-size: 22px;
+			}
+			.i-jquery::before {
+				content: "";
+				display: block;
+				width: 40px;
+				height: 40px;
+				background: url(http://www.myiconfinder.com/uploads/iconsets/addfd91beb329ef73f608f8b40cb144c.png) 50% 50% no-repeat;
+				background-size: 22px;
+			}
+			
+			#footer {
+				margin: 50px 0;
+				color: white;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container">
+			<div id="header">
+				<img src="https://ww2.sinaimg.cn/large/006tNbRwgw1fbawigpyg3j30ak0ak0uk.jpg" alt="" />
+				<h1>Kyle's Portfolio</h1>
+				<p>A front end newbie on the road.</p>
+				<nav>
+					<ul>
+						<li>
+							<a href="#music" class="btn active">壹</a>
+						</li>
+						<li>
+							<a href="#plugin" class="btn">贰</a>
+						</li>
+						<li>
+							<a href="#plane" class="btn">叁</a>
+						</li>
+						<li>
+							<a href="#gallery" class="btn">肆</a>
+						</li>
+						<li>
+							<a href="#slider" class="btn">伍</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div id="content">
+				<ul class="cards">
+					<li>
+						<div class="card" id="music">
+							<h2 class="title">Music Recommendation App</h2>
+							<time>2016.12</time>
+							<img src="https://ww3.sinaimg.cn/large/006tNbRwgw1fbaxncdqgqj30p00csafj.jpg" alt="" />
+							<ul>
+								<li>This app is a onlie music recommendation application, you can search whatever song even album and aritist you want. It will keep the record of your list of favorite stuff so you will get recommended song. It's not a tricky or complicated application, just have fun for it.</li>
+								<li class="skills">
+									<span><b>JS</b></span>
+									<span class="i-nodejs"></span>
+									<span class="i-mongodb"></span>
+									<span class="link"><a href="https://github.com/kylewh/IntoFrontEnd/tree/master/little_project/p2/Music-recommendation">View</a></span>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="card" id="plugin">
+							<h2 class="title">jQuery full-page scroll-able slider plugin</h2>
+							<time>2016.12</time>
+							<img src="https://ww2.sinaimg.cn/large/006tNbRwgw1fbazw6fy4rj319e0nv3z4.jpg" alt="" />
+							<ul>
+								<li>For practicing jQuery and encapsulation.</li>
+								<li class="skills">
+									<span><b>JS</b></span>
+									<span class="i-jquery"></span>									
+									<span class="link"><a href="https://kylewh.github.io/IntoFrontEnd/little_project/p3/jQurySlider.html">View</a></span>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="card">
+							<h2 class="title" id="plane">打飞机 小游戏</h2>
+							<time>2016.11</time>
+							<img src="https://ww2.sinaimg.cn/large/006tNbRwgw1fbazlq0ycyj30p00frgn5.jpg" alt="" />
+							<ul>
+								<li>A little game for practicing dom-manipulation. I didn't code using OOP style, so the code is not elegant enough and even a little bit messy. Will be updated by using OOP later.</li>
+								<li class="skills">
+									<span><b>JS</b></span>
+									<span class="link"><a href="https://kylewh.github.io/IntoFrontEnd/little_project/p5/main.html">View</a></span>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="card" id="gallery">
+							<h2 class="title">500px single-pic view mode imitated version</h2>
+							<time>2016.10</time>
+							<img src="https://ww4.sinaimg.cn/large/006tNbRwgw1fbaz12b9h3j317l0ncqfv.jpg" alt="" />
+							<ul>
+								<li>For practicing array and flow control in JS with little dom manipulation. You can iew photo in two mode: [circulation] [limited]</li>
+								<li class="skills">
+									<span><b>JS</b></span>
+									<span class="link"><a href="https://kylewh.github.io/IntoFrontEnd/little_project/p1/hw1_2.html">View</a></span>
+								</li>
+							</ul>
+						</div>
+					</li>
+					
+					<li>
+						<div class="card" id="slider">
+							<h2 class="title">JS Slider</h2>
+							<time>2016.10</time>
+							<img src="https://ww2.sinaimg.cn/large/006y8lVagw1fb920vfy32j31kw0uzwon.jpg" alt="" />
+							<ul>
+								<li>A slider can be controlled by user. Move, jump, stop.</li>
+								<li class="skills">
+									<span><b>JS</b></span>
+									<span class="link"><a href="https://kylewh.github.io/IntoFrontEnd/little_project/p4/hw3_1.html">View</a></span>
+								</li>
+							</ul>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div id="footer">
+				<p>Copyright © Kylewh 2016 </p>
+			</div>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>实战2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="./iconfont.js"></script>
+<script src="./iconfont2.js"></script>
+<style type="text/css">
+.icon {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+.icon2 {
+   width: 1em; height: 1em;
+   vertical-align: -0.15em;
+   fill: currentColor;
+   overflow: hidden;
+}
+ * {
+  margin: 0;
+  padding: 0;
+  font-family: STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑";
+}
+ul,li {
+  list-style: none;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both
+}
+.wrapper {
+  width: 960px;
+  /*border:1px solid blue;*/
+  margin: 0 auto
+}
+#header{
+  /*border:1px solid green;*/
+}
+#header:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+#header .user {
+  margin-top: 30px;
+  /*border:1px solid black;*/
+  width: 400px;
+  float: left;
+}
+#header .user-photo {
+  /*border:1px solid black;*/
+  width: 140px;
+  height: 140px;
+  border-radius: 70px;
+  background: url(http://img04.hc360.com/water/201611/201611101023296397.jpg) -30px 0px no-repeat;
+  background-size: 150%;
+  margin: 10px 30px 16px 0px;
+  float: left;
+}
+#header .username {
+  float: left;
+  font-weight: 100;
+  font-size: 40px;
+  /*border:1px solid black;*/
+  margin: 30px 0px 12px -3px;
+}
+#header .user-job {
+  font-weight: 700;
+  /*border:1px solid black;*/
+  font-size: 16px;
+  margin: 0px 0px 30px 0px;
+  float: left
+}
+#header .contacts {
+  float: right;
+  /*border:1px solid black;*/
+  margin: 50px 0px;
+  width: 280px
+}
+.contacts>p {
+  font-size: 22px;
+  font-weight: 900;	
+  display: block;
+  /*border:1px solid red;*/
+  line-height: 30px;
+  border-bottom: 4px solid black;
+}
+.contacts .word {
+	margin-left: 10px;
+	position: relative;
+	top: -1px;
+}
+.contacts>li:first-of-type {
+	padding-top:10px;
+}
+.contacts>li {
+	padding-bottom: 2px;
+	font-size: 14px;
+}
+.contacts .icon {
+	font-size:16px;
+}
+/*--------------------------*/
+#content {
+	font-size: 10px;
+}
+#content .container {
+	margin-bottom: 40px;
+}
+#content .title {
+	font-size: 20px;
+	font-weight: 600;
+	padding: 12px 0px;
+	display: inline-block;
+	width: 30%;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 20px
+}
+.content-words {
+	font-size: 10px;
+	padding-bottom: 20px;
+	margin-left: 4px;
+	position: relative;
+	border-left: 1px solid #ccc;
+}
+.content-words:last-child {
+    padding-bottom: 0px;
+}
+.content-words>p {
+	padding-left: 100px;
+}
+.mark::before {
+	content: "";
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #555;
+	position: absolute;
+	top: 0;
+	left: -5px;
+}
+.content-words>p:first-of-type {
+	padding-bottom: 10px;
+	font-size: 1.8em;
+	color: #666;
+}
+.content-words .years {
+	opacity: .6;
+	font-size: 16px;
+}
+.content-words>p:nth-of-type(2) {
+	font-size: 1.4em;
+	color: #666;
+	line-height: 1.5;
+}
+#content .eca .content-words {
+	border: none;
+	position: relative;
+}
+#content .eca .icon2 {
+	font-size: 20px;
+	position: absolute;
+	top: 1px;
+	left: -6px;
+}
+#content:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#content .eca {
+	float: left;
+	width: 460px;
+	margin-right: 40px;
+}
+#content .ps {
+	float: left;
+	width: 440px;
+}
+#content .eca .title,#content .ps .title {
+	white-space: nowrap;
+	width: 64%;
+	border-bottom: 1px solid #ccc;
+}
+#content .ps-words>p {
+	font-size: 16px;
+	font-weight: 600;
+}
+#content .ps-words {
+	border: none;
+	float: left;
+	display: block;
+	width: 220px;
+	margin-top: 10px;
+	margin-bottom: 30px
+}
+#content .ps ul:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#content .ps .icon2 {
+	font-size: 20px;
+	margin-right: 60px;
+}
+#content .ps-words>p {
+	display: inline-block;
+}
+</style>
+<body>
+</head>
+    <div id="header" class="wrapper">
+      <div class="user">
+        <div class="user-photo"></div>
+        <p class="username">Cheng Cai</p>
+        <p class="user-job">Web Designer</p>
+      </div>
+     <ul class="contacts">
+       <p>CONTACTS<p>
+       <li><svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-dizhi"></use>
+       <span class="word">800 Dongchuan Street,Shanghai,CA</span>
+       </li>
+       <li><svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-shouji"></use>
+       <span class="word">12 39b 394 3048</span>
+       </li>
+       <li><svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-MainStation"></use>
+       <span class="word">decolo@163.com</span>
+       </li>
+       <li><svg class="icon" aria-hidden="true">
+  <use xlink:href="#icon-youjian"></use>
+       <span class="word">www.behance.net/design</span>
+       </li>
+     </ul>
+    </div>
+
+    <div id="content" class="wrapper">
+      <ul class="work-exprience container">
+       <p class="title">WORK-EXPRIENCE</p>
+       <li class="content-words mark">
+       <p>Marketplace/<span class="years">2012-2013</span></p>
+       <p >Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+       </li>
+       <li class="content-words mark">
+       <p>Apple Inc/<span class="years">2013-2014</span></p>
+       <p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+       </li>
+       <li class="content-words mark">
+       <p>Aroma Bar Network/<span class="years">2014-Now</span></p>
+       <p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+       </li>
+      </ul>
+	  <ul class="education container">
+	  	<p class="title">Education</p>
+	  	<li class="content-words mark">
+	  	<p>College/<span class="years">2008-2011</span></p>
+	  	<p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+	  	</li>
+	  	<li class="content-words mark">
+	  	<p>University/<span class="years">2011-2014</span></p>
+	  	<p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.</p>
+	  	</li>
+	  </ul>
+	  <ul class="eca container">
+	  	<p class="title">EXTRA CURRICULAR ACTIVITIES</p>
+	  	<li class="content-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-hd"></use>
+	  	<p>Volunteer</p>
+	  	<p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. </p>
+	  	</li>
+	  	<li class="content-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-hd"></use>
+	  	<p>Volunteer</p>
+	  	<p>Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.</p>
+	  	</li>
+	  </ul>
+	  <div class="ps container">
+	   <p class="title">PROFESIONAL SKILL</p>
+	   <ul>
+	  	<li class="ps-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-jineng"></use>
+	  	<p>HTML&CSS</p>
+	  	</li>
+	  	<li class="ps-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-jineng"></use>
+	  	<p>JAVASCRIPT</p>
+	  	</li>
+	  	<li class="ps-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-jineng"></use>
+	  	<p>SLIM</p>
+	  	</li>
+	  	<li class="ps-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-jineng"></use>
+	  	<p>JQUERY</p>
+	  	</li>
+	  	<li class="ps-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-jineng"></use>
+	  	<p>PHOTOSHOP</p>
+	  	</li>
+	  	<li class="ps-words">
+	  	<svg class="icon2" aria-hidden="true">
+  <use xlink:href="#icon-jineng"></use>
+	  	<p>ILLUSTRATOR</p>
+	  	</li>
+	   </ul>	
+	  </div>	
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Sign in</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <form class="sign-in" action="">
+        <h3>注册</h3>
+        <dl>
+            <dt>用户名</dt>
+            <dd>
+                <input class="msg msg1" type="text" placeholder="用户名(whj被注册过)">
+            </dd>
+            <dd class="reminder r1">只能是字母、数字、下划线，3-10个字符</dd>
+            <dt>密码</dt>
+            <dd>
+                <input class="msg msg2" type="text">
+            </dd>
+            <dd class="reminder r2">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+            <dt>再输一次</dt>
+            <dd>
+                <input class="msg msg3" type="text" placeholder="再输入一次密码">
+            </dd>
+            <dd class="reminder r3">&nbsp</dd>
+            <dt><button>注册</button></dt>
+        </dl>
+    </form>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="test.js"></script>
+    <script src="RegExp.js"></script>
+    <script src="ajax.js"></script>
+    <script>
+        var usernameIpt = document.querySelector('.msg1'),
+            passwordIpt = document.querySelector('.msg2'),
+            passwordIpt2 = document.querySelector('.msg3'),
+            btn = document.getElementsByTagName('button')[0];
+
+            accountReminder = document.getElementsByClassName('r1')[0],
+            passwordReminder1 = document.getElementsByClassName('r2')[0],
+            passwordReminder2 = document.getElementsByClassName('r3')[0];
+         var MSG = {
+             'USERNAME_EXIST': '用户名已存在',
+             'USERNAME_TYPE_ERROR': '用户名格式错误',
+             'USERNAME_AVAILABLE': '用户名可用',
+             'PASSWORD_TYPE_ERROR': '密码格式错误',
+             'PASSWORD_AVAILABLE': '密码可用',
+             'PASSWORD_MISMATCHING': '两次输入密码不匹配'
+         };
+
+        usernameIpt.addEventListener('change', function () {
+            testAccountFormat();
+            testAccountAvailable();
+            //testRepeat();
+        }, false);
+        passwordIpt.addEventListener('change', function () {
+            testPasswordFormat()
+        }, false);
+        passwordIpt2.addEventListener('change', function () {
+            testPasswordRepeat();
+        }, false);
+        btn.addEventListener('click', function () {
+            if (testAccountFormat() && testPasswordFormat() && testPasswordRepeat() && testAccountAvailable()) {
+                alert('注册成功');
+            }
+        }, false);
+    </script>
+</body>
+</html>

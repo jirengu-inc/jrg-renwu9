@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>dialog2</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<style>
+
+    a{
+        text-decoration: none;
+    }
+    li {
+        list-style: none;
+    }
+    #btns {
+        padding-left: 0;
+
+    }
+    #btns li {
+        float: left;
+        margin: 10px 10px 10px 0;
+    }
+    #btns button {
+        padding: 3px;
+    }
+    #btns:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    #dialog {
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+        width: 340px;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        margin-left: -170px;
+    }
+    #dialog .header {
+        color: #fff;
+        background-color: #676666;
+    }
+    #dialog .header h3 {
+        float: left;
+        margin: 8px ;
+    }
+    #dialog .header .close-x {
+        float: right;
+        margin: 0 8px ;
+        cursor: pointer;
+        font: 25px sans-serif;
+    }
+    #dialog .header:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    #dialog .content {
+        padding: 10px;
+        margin: 13px;
+    }
+    #dialog .footer {
+        text-align: center; /*inline-block的特性*/
+    }
+    #dialog .footer .btn {
+        display: inline-block;
+        border: 1px solid;
+        border-radius: 4px;
+        background-color: #e33100;
+        color: #fff;
+        width: 40px;
+        height: 28px;
+        line-height: 28px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    #dialog .footer .btn:hover {
+        background-color: #9c2b0c;
+    }
+    .draggable {
+        opacity: 0.8;
+        cursor: move;
+    }
+</style>
+<body>
+    <ul id="btns">
+        <li><button class="btn1">打开1</button></li>
+        <li><button class="btn2">打开2</button></li>
+        <li><button class="btn3">打开3</button></li>
+        <li><button class="btn4">打开4</button></li>
+        <li><button class="btn5">打开5</button></li>
+    </ul>
+    <p>鼠标在 dialog 上左键按下可拖动 dialog</p>
+    <p>可创建多个 dialog</p>
+
+</body>
+
+<script>
+
+    function Dialog() {
+        this.createDialog();
+        this.bindEvent();
+    }
+    Dialog.prototype = {
+        defaultTemplate: {
+            title: '',
+            content: '',
+            isShowBtnConfirm: false,
+            isShowBtnCancle: true,
+            isShowBtnClose: true,
+            onClose: function () {},
+            onConfirm: function () {}
+        },
+        createDialog: function () {
+            var nodes = '<div id="dialog"><div class="header"> <h3></h3> <span class="close-x">x</span> </div> <div class="content"></div> <div class="footer"> <a class="btn btn-confirm" href="">确定</a> <a class="btn btn-cancle" href="">取消</a> </div> </div>'//template 模板
+            this.$nodes = $(nodes); //[div#dialog]
+            $('body').append(this.$nodes);
+        },
+        open: function (tpl) {
+            this.setTemplate(tpl);
+            this.setDialog();
+        },
+        setTemplate: function (tpl) {
+            if(typeof tpl === 'string') {
+                this.tpl = this.defaultTemplate;
+                this.tpl.content = tpl;
+            }
+            else if (typeof tpl === 'object') {
+                this.tpl = $.extend( {}, this.defaultTemplate, tpl )
+            }
+        },
+        setDialog: function () {
+            var $dialog = $(this.$nodes);
+            if(this.tpl.title){
+                $dialog.find('.header h3').text(this.tpl.title);
+            }
+            if(this.tpl.content){
+                $dialog.find('.content').append(this.tpl.content);
+            }
+
+            if(!this.tpl.isShowBtnConfirm) {
+
+                $dialog.find('.footer .btn-confirm').hide();
+            } else {
+                $dialog.find('.footer .btn-confirm').show();
+            }
+            if(this.tpl.isShowBtnClose){
+                $dialog.find('.header .close-x').show();
+            } else {
+                $dialog.find('.header .close-x').hide();
+            }
+        },
+        bindEvent: function () {
+            var me = this;
+            var $nodes = this.$nodes;
+            $nodes.find('.header .close-x').on('click', function (e) {
+               $nodes.hide();
+            });
+            $nodes.find('.footer .btn-confirm').on ('click', function (e) {
+                e.preventDefault();
+                me.tpl.onConfirm();
+            });
+            $nodes.find('.footer .btn-cancle').on ('click', function (e) {
+                e.preventDefault();
+                me.tpl.onClose();
+                $nodes.hide();
+            });
+            $nodes.on('mousedown', function (e) {
+                var $dialog = $(this),//me.$nodes,
+                        evtX = e.pageX - $dialog.offset().left,
+                        evtY = e.pageY - $dialog.offset().top;
+                $dialog.addClass('draggable').data('evtPst', {
+                    x:evtX,
+                    y:evtY
+                });
+            });
+            $('body').on('mousemove', function (e) {
+                $('.draggable').length && $('.draggable').offset({
+                    top: e.pageY - $('.draggable').data('evtPst').y,
+                    left: e.pageX - $('.draggable').data('evtPst').x
+                });
+            });
+            $('body').on('mouseup', function() {
+                $('.draggable').length && $('.draggable').removeClass('draggable').removeData('pst');
+            })
+        }
+
+    }
+
+
+
+    $('.btn1').on('click', function () {
+        var btn2 =  new Dialog();
+        btn2.open('欢迎你看我的Dialog-demo');
+    });
+    $('.btn2').on('click', function () {
+        var btn2 =  new Dialog();
+        btn2.open('我是内容2');
+    });
+    $('.btn3').on('click', function () {
+        var btn1 =  new Dialog();
+        btn1.open({
+            title: '欢迎回家',
+            content: '我是内容三',
+            isShowBtnConfirm: true,
+            isShowBtnClose: true,
+            onClose: function () {alert('You press the buttom of close ');},
+            onConfirm: function () {alert('You press the buttom of acknowledgement ');}
+        })
+    });
+    $('.btn4').on('click', function () {
+        var btn1 =  new Dialog();
+        btn1.open({
+            title: '来个标题',
+            content: '我是内容四',
+            isShowBtnConfirm: true,
+            isShowBtnClose: true,
+            onClose: function () {alert('You press the buttom of close ');},
+            onConfirm: function () {alert('You press the buttom of acknowledgement ');}
+        })
+    });
+    $('.btn5').on('click', function () {
+        var btn2 =  new Dialog();
+        btn2.open('<ul><li>列表1</li><li>列表2</li><li>列表3</li><li>列表4</li></ul>');
+    });
+
+</script>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>全屏轮播</title>
+<style type="text/css">
+html,body,ul,li,h3,p{
+	margin:0;
+	padding: 0;
+	font-family: '幼圆';
+}
+html,body,.carousel,.img-ct,.img-ct a{
+	width: 100%;
+	height: 100%;
+}
+
+li{
+	list-style: none;
+}
+a{
+	display: inline-block;
+	text-decoration: none;
+}
+.carousel{
+	position: relative;
+	overflow: hidden;
+}
+.img-ct{
+	position: relative;
+}
+.img-ct:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.img-ct li{
+	float: left;
+	width: 1600px;
+	height: 100%;
+}
+
+.arrow{
+	position: absolute;
+	top: 50%;
+	margin-top: -25px; /*垂直居中*/
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: #555;
+	color: #fff;
+	font-size: 22px;
+	border-radius: 50px;
+	box-shadow: 0 0 5px #888;
+	opacity: 0.7;
+}
+.arrow:hover{
+	opacity: 0.9;
+}
+.pre{
+	left: 20px;
+}
+.next{
+	right: 20px;
+}
+.bullet{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%); /*水平偏移，使其水平居中*/
+}
+.bullet li{
+	width: 16px;
+	height: 4px;
+	border-radius: 4px;
+	background: #fff;
+	display: inline-block;
+	cursor: pointer;
+}
+.bullet li.active{
+	background: #666;
+}
+
+.img-ct .text{
+	width: 1600px;
+	height: 100%;
+	text-align: center;
+	color: #fff;
+}
+.img-ct .main{
+	position: relative;
+	top: 50%;
+}
+.img-ct .main h3{
+	margin-bottom: 16px;
+}
+</style>
+</head>
+<body>
+<div class="carousel">
+	<ul class="img-ct">
+		<li data-id='0'>
+			<a href="#"><div class="text">
+                <div class="main"><h3>不将就</h3><p>互相折磨到白头，悲伤坚决不放手</p></div>
+			</div></a>
+		</li>
+		<li data-id='1'>
+			<a href="#"><div class="text">
+			    <div class="main"><h3>富士山下</h3><p>我把这陈年风䄛，送赠你解咒</p></div>
+			</div></a>
+		</li>
+		<li data-id='2'>
+		    <a href="#"><div class="text">
+		       <div class="main"><h3>独照</h3><p>记忆是照片，总不停拿出来翻阅</p></div>
+		    </div></a>
+		</li>
+		<li data-id='3'>
+		    <a href="#"><div class="text">
+		        <div class="main"><h3>空港</h3><p>剪断月光，停在没有回忆的空港</p></div>
+		    </div></a>
+		</li>
+	</ul>
+	<a href="#" class="pre arrow"><</a>
+	<a href="#" class="next arrow">></a>
+	<ul class="bullet">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+var $img=$('.img-ct').find('.text');
+$img.eq(0).css({'background-image':'url(img/1.jpg)','background-size':'1600px auto'});
+$img.eq(1).css({'background-image':'url(img/2.jpg)','background-size':'1600px auto'});
+$img.eq(2).css({'background-image':'url(img/3.jpg)','background-size':'1600px auto'});
+$img.eq(3).css({'background-image':'url(img/4.jpg)','background-size':'1600px auto'});
+
+
+	var $ct=$('.img-ct'),
+		$items=$ct.children(),
+		$pre=$('.pre'),
+		$next=$('.next'),
+		$bullet=$('.bullet'),
+		imgWidth=$items.width(),
+		imgCount=$ct.children().size(); //图片数量,.size()这里相当于.length
+
+	$ct.prepend($items.last().clone());
+	$ct.append($items.first().clone());
+	imgRealCount=$ct.children().length;
+	$ct.css({left:0-imgWidth,width:imgRealCount*imgWidth});
+
+	var curIdx=0;
+	var isAnimate=false;
+	$next.on('click',function(){
+		playNext();
+	});
+	$pre.on('click',function(){
+		playPre();
+	});
+	$bullet.find('li').on('click',function(){
+		var idx=$(this).index();
+		if(idx > curIdx){
+			playNext(idx-curIdx);
+		}else if(idx < curIdx){
+			playPre(curIdx-idx);
+		}
+	});
+
+	autoPlay();
+	function stopAuto(){
+		clearInterval(clock);
+	}
+	function autoPlay(){
+		clock=setInterval(function(){
+			playNext();
+		},3000);
+	}
+
+	function playNext(idx){
+		var idx = idx || 1;
+		if(!isAnimate){
+			isAnimate=true;
+			$ct.animate({left:'-='+(imgWidth*idx)},function(){
+				curIdx+=idx;
+				if(curIdx==imgCount){
+					$ct.css({left:0-imgWidth});
+					curIdx=0;
+				}
+				isAnimate=false;
+				setBullet();
+			});
+		}
+	}
+
+	function playPre(idx){
+		var idx=idx||1;
+		if(!isAnimate){
+			isAnimate=true;
+			$ct.animate({left:'+='+(imgWidth*idx)},function(){
+				curIdx=(imgCount+curIdx-idx)%imgCount;
+				if(curIdx==(imgCount-1)){
+					$ct.css({left:0-imgWidth*imgCount});
+				}
+				isAnimate=false;
+				setBullet();
+			});
+		}
+	}
+
+	function setBullet(){
+		$bullet.find('li').removeClass('active')
+						  .eq(curIdx).addClass('active');
+	}
+
+
+
+
+</script>
+</body>
+</html>

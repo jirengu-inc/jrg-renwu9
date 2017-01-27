@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>实战15-1</title>
+	<link rel="stylesheet" type="text/css" href="../../../../Font-Awesome-3.2.1/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../../../Font-Awesome-3.2.1/css/font-awesome-ie7.min.css">
+	<style type="text/css">
+		html,body,ul,h1{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			font-size: 14px;
+
+		}
+		p{
+			margin: 5px 0;
+		}
+		
+		.clear:after{
+			content:'';
+			display: block;
+			clear: both;
+		}
+		.ct{
+			width: 1000px;
+			margin: 0 auto;
+		}
+		a{
+			text-decoration: none;
+			color: #666;
+		}
+		li{
+			list-style: none;
+		}
+		#header>ul>li{
+			float: left;
+			padding: 20px 10px;
+			position: relative;
+		}
+
+		#header a:hover{
+			color: #000;
+		}
+		#header .navbar>li:hover .more{
+			display: block;
+		}
+		.icon-rocket{
+			font-size: 30px;
+			float: left;
+			line-height: 50px;
+			margin-right: 20px; 
+		}
+		.more{
+			position: absolute;
+			left: 1px;
+			top: 56px;
+			display: none;
+			border: 1px solid #ccc;
+		}
+		.more a{
+			display: block;
+			padding: 10px;
+			border-bottom: 1px dashed #ccc;
+			background: #fff;
+		}
+		.more .last{
+			border-bottom: 0;
+		}
+		.more a:hover{
+			background: #eee;
+		}
+		#descrip{
+			background: #b84d45;
+			padding: 30px 0;
+			color: #fff;
+		}
+		#main .home{
+			background: #eee;
+			margin-top: 40px;
+			height: 40px;
+			line-height: 40px;
+			padding-left: 10px;
+		}
+		.home a{
+			color: #b84d45;
+		}
+		.my-proj{
+			margin-top: 30px;
+			margin-left: -45px;
+		}
+		.my-proj li{
+			float: left;
+			border: 1px solid #ccc;
+			padding-bottom:10px;
+			margin-bottom: 20px;
+			margin-left: 45px;
+		}
+		.btn{
+			border:1px solid #ccc;
+			border-radius: 3px;
+			width: 50px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			display: block;
+			margin: 0 auto;
+
+		}
+		.my-proj a:active{
+			color: #ccc;
+		}
+		.my-proj a:hover{
+			color: #000;
+			transition: 0.3s;
+		}
+		.my-proj img{
+			width: 300px;
+		}
+		.my-proj h3,.my-proj p{
+			padding-left: 10px;
+		}
+		#detail{
+			background: #b84d45;
+			padding: 20px 0;
+			text-align: center;
+			color: #fff;
+		}
+		#detail a{
+			color: #fff;
+		}
+		#detail p{
+			margin: 12px 0;
+		}
+		#footer{
+			text-align: center;
+			margin: 30px 0;
+		}
+		#footer .ct{
+			border-top: 1px solid #eee;
+			padding: 30px 0;
+		}
+
+
+
+	</style>
+</head>
+<body>
+<div id="header" class="ct">
+	<a href="#" class="icon-rocket"></a>
+	<ul class="clear navbar">
+		<li><a href="#">博客</a></li>
+		<li><a href="#">项目</a></li>
+		<li><a href="#">简历</a></li>
+		<li><a href="#">更多</a> <i class="icon-caret-down"></i>
+			<ul class="more">
+				<li><a href="#">GitHub</a></li>
+				<li><a href="#">知乎</a></li>
+				<li><a href="#" class="last">微博</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+
+<div id="descrip">
+	<div class="ct">
+		<h1>我的简介</h1>
+		<p>这里是我的简介</p>
+		<p>我的简介简介</p>
+	</div>
+</div>
+
+<div id="main" class="ct">
+	<p class="home"><a href="#">首页</a> / 我的作品</p>
+	<ul class="my-proj clear">
+		<li>
+			<a href="#"><img src="1.jpg"></a>
+			<h3>作品标题</h3>
+			<p>作品介绍</p>
+			<a href="#" class="btn">查看</a>
+		</li>
+		<li>
+			<a href="#"><img src="1.jpg"></a>
+			<h3>作品标题</h3>
+			<p>作品介绍</p>
+			<a href="#" class="btn">查看</a>
+		</li>
+		<li>
+			<a href="#"><img src="1.jpg"></a>
+			<h3>作品标题</h3>
+			<p>作品介绍</p>
+			<a href="#" class="btn">查看</a>
+		</li>
+		<li>
+			<a href="#"><img src="1.jpg"></a>
+			<h3>作品标题</h3>
+			<p>作品介绍</p>
+			<a href="#" class="btn">查看</a>
+		</li>
+		<li>
+			<a href="#"><img src="1.jpg"></a>
+			<h3>作品标题</h3>
+			<p>作品介绍</p>
+			<a href="#" class="btn">查看</a>
+		</li>
+		<li>
+			<a href="#"><img src="1.jpg"></a>
+			<h3>作品标题</h3>
+			<p>作品介绍</p>
+			<a href="#" class="btn">查看</a>
+		</li>
+	</ul>
+</div>
+
+<div id="detail">
+	<div class="ct">
+		<h1>想更详细了解我？</h1>
+		<p>下载我的简历吧</p>
+		<a href="#" class="btn">下载</a>
+	</div>
+</div>
+
+<div id="footer">
+	<div class="ct">
+		来自@Lulu
+	</div>
+</div>
+</body>
+</html>
