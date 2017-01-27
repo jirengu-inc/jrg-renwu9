@@ -1,0 +1,146 @@
+* {margin:0px; padding:0px;}
+ul,li{list-style:none;}
+@font-face {
+  font-family: 'icon';  /* project id 226061 */
+  src: url('//at.alicdn.com/t/font_0ljm1msg8h5jnhfr.eot');
+  src: url('//at.alicdn.com/t/font_0ljm1msg8h5jnhfr.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_0ljm1msg8h5jnhfr.woff') format('woff'),
+  url('//at.alicdn.com/t/font_0ljm1msg8h5jnhfr.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_0ljm1msg8h5jnhfr.svg#iconfont') format('svg');
+}
+.wrapper {
+  width: 1000px;
+  margin: 30px auto;
+  padding-bottom:25px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 10px 5px #aaa;
+}
+.header {
+  width:100%;
+}
+.header > img{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  vertical-align:middle;
+  margin-left:160px;
+}
+.name{
+  display: inline-block;
+  padding-top:115px;
+  padding-left:40px;
+  width: 200px;
+  height: 185px;
+  vertical-align:middle; 
+  text-align:left;
+}
+.name>h4{
+   margin-top:10px;
+}
+.infor{
+  width:300px;
+  margin-left:70px;
+  display: inline-block;
+  vertical-align:middle;
+}
+.infor > h2{
+  border-bottom: 3px solid #333;
+}
+.list>li{
+  line-height:30px;
+  margin-top:10px;
+}
+.list>li>span{
+  font-family:icon;
+  font-size:25px;
+  vertical-align:middle;
+}
+.content{
+  padding:0px 125px;
+}
+.detail > h3{
+  width:435px;
+  padding-top:15px;
+  padding-bottom:15px;
+  border-bottom: 1px solid #333;
+}
+.detail-list{
+  margin-top:35px;
+  padding-left:85px;
+  border-left:1px solid #333;
+
+}
+.detail-list>li>p{
+  margin-bottom:10px;
+}
+.title{
+  width:300px;
+  margin-left:-94px;
+}
+.title:before{
+  content:'';
+  display:inline-block;
+  background-color:black;
+  width:18px;
+  height:18px;
+  border-radius:9px;  
+}
+.title>b{
+  display:inline-block;
+  margin-left:68px;
+  margin-bottom:10px;
+  font-size:20px;
+}
+.fotter  {
+  width:750px;
+  margin-left:125px;
+}
+.fotter:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+.else{
+  height:265px;
+  float:left;
+  box-sizing:border-box;
+  padding-top:10px;
+}
+.lside{
+  float:left;
+  width:50%;
+}
+.rside{
+  float:right;
+  width:40%;  
+}
+.else>h3{
+  width:90%;
+  border-bottom: 2px solid #ccc;
+}
+.else-list{
+  padding-top:15px;
+}
+.else-list:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+.else-list>li{
+  float:left;
+}
+.else-list>li>span{
+  font-family:icon;
+}
+.else-list>li>b{
+  display:inline-block;
+  margin:10px 0px 10px 10%;
+}
+.else-list>li>p{
+  margin-left:17%;
+}
+.rside li{
+  width:50%;
+  margin-bottom:28px;
+}
