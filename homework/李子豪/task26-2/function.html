@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{
+		width:200px;
+		height:200px;
+		background: red;
+		margin:30px 0;
+	}
+	div{
+		margin:10px 0;
+		border:1px solid #ccc;
+	}
+	.target-node{
+		background: red;
+		width:300px;
+		height:300px;
+	}
+	.btn{
+		width:200px;
+		height:200px;
+		background: green;
+	}
+	.div-height{
+		width:200px;
+		height:100px;
+	}
+	.scroll-top{
+		border:1px solid black;
+		width:200px;
+		height:200px;
+		overflow:auto
+	}
+	.offset{
+		width:200px;
+		height: 200px;
+		background: red;
+		margin-left: 100px;
+		margin-top:20px;
+	}
+	.font{
+		width:200px;
+		height:200px;
+		background: #ccc;
+	}
+	</style>
+</head>
+<body>
+<div class="add-class">
+	<div class='showClass'>
+		显示class属性值
+	</div>
+	<button class="addClass">点击添加class</button>
+	<button class="removeClass">点击删除class</button>
+</div>
+<div>
+	<div class="box">
+		
+	</div>
+	<button class="show-Class">点击显示</button>
+	<button class="hideClass">点击隐藏</button>
+</div>
+<div>
+	<img class="img-attr" src="http://pic3.zhongsou.com/image/38148fe0dbd0aae1d57.jpg" alt="老虎" title="tiger">
+	<ul class="attr">
+		<li class="attr-src">src:</li>
+		<li class="attr-alt">alt:</li>
+		<li class="attr-title">title:</li>
+	</ul>
+	<button class="getattr">获取属性</button>
+	<button class="change-attr">修改属性</button>
+</div>
+<div>
+	<div class="attr-name">给$node添加自定义属性
+		<h2 class="h2-attr">
+			属性值
+		</h2></div>
+	<button class="get-attr">获取属性</button>
+	<button class="add-attr">增加属性</button>
+</div>
+<div>
+	<ul class="prod-ct">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+	</ul>
+	<button class="first-prod">加入开头</button>
+	<button class="last-prod">加入末尾</button>	
+</div>
+
+<div class="node">
+	<div class="target-node">
+		我并不是一个空的div
+	</div>
+	<button class="empty-node">清空node</button>
+	<button class="remove-node">删除node</button>
+	
+</div>
+
+<div class="html">
+	<div class="reday-html">
+		设置了btn的背景色为绿色
+	</div>
+	<button class="change-html">修改html</button>
+	
+</div>
+
+<div>
+<div class="div-height">
+		原本宽200；高100
+</div>
+<button class="show-size">显示宽高</button>
+<button class="change-size">修改宽高</button>
+</div>
+
+<div class="scroll-top">
+This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text. This is some text.
+</div>
+<button class="get-scroll">点击获取滚动条位置</button>
+
+<div class="offset">
+	
+</div>
+<button class="get-offset">点击获取偏移位置</button>
+
+<div class="font">
+	这是文字这是文字这是文字
+</div>
+<button class="change-font">点击修改文字</button>
+
+<div>
+	<ul class="show-list">
+		<li class="item">aaa</li>
+		<li class="panel">bbb</li>
+		<li class="item">ccc</li>
+		<li>ddd</li>
+		<li class="item">eee</li>
+		<li>fff</li>
+	</ul>
+	<button class="get-list">点击遍历</button>
+	<button class="get-class">点击获取item</button>
+	<button class="get-panel">点击获取panel</button>
+	<button class="show-item">点击获取li数量</button>
+	<div>点击列表获取排行</div>
+	</div>
+</div>
+<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+<script>
+$(".addClass").on("click",function(){
+	$(".add-class").addClass("active");
+	$(".showClass").text(($(".add-class").attr("class")));
+})
+$(".removeClass").on("click",function(){
+	$(".add-class").removeClass("active");
+	$(".showClass").text(($(".add-class").attr("class")));
+})
+$(".show-Class").on("click",function(){
+	$(".box").show();
+})	
+$(".hideClass").on("click",function(){
+	$(".box").hide();
+})
+
+function getAttr(){
+	$(".attr-src").text("src:"+$(".img-attr").attr("src"));
+	$(".attr-alt").text("alt:"+$(".img-attr").attr("alt"));
+	$(".attr-title").text("title:"+$(".img-attr").attr("title"));
+}	
+$(".getattr").on("click",function(){getAttr()});
+$(".change-attr").on("click",function(){
+	$(".img-attr").attr("src","http://pic3.zhongsou.com/image/3815eb0a657ee200c1a.jpg");
+	$(".img-attr").attr("alt","面条");
+	$(".img-attr").attr("title","nodle");
+	getAttr()
+})
+$(".get-attr").on("click",function(){
+	$(".h2-attr").text("");
+	$(".h2-attr").text(($(".attr-name").html()));
+})
+$(".add-attr").on("click",function(){
+	$(".h2-attr").attr("data-src","value");
+	$(".h2-attr").text("");
+	$(".h2-attr").text(($(".attr-name").html()));
+})
+$(".first-prod").on("click",function(){
+	$(".prod-ct").prepend("<li>0</li>")
+})
+$(".last-prod").on("click",function(){
+	$(".prod-ct").append("<li>4</li>")
+})
+$(".empty-node").on("click",function(){
+	$(".target-node").empty()
+})
+$(".remove-node").on("click",function(){
+	$(".target-node").remove()
+})
+$(".change-html").on("click",function(){
+	$(".reday-html").html("<div class='btn'>这是修改的btn标签</div>")
+})
+
+$(".show-size").on("click",function(){
+	alert("width:"+$(".div-height").width()+"px;"+'height:'+$(".div-height").height()+"px");
+})
+$(".change-size").on("click",function(){
+	$(".div-height").css({"width":"300px","height":"300px"});
+	$(".div-height").text("高300px;宽:300px;")
+})
+$(".get-scroll").on("click",function(){
+	alert($(".scroll-top").scrollTop()+" px");
+})
+$(".get-offset").on("click",function(){
+	var x=$(".offset").offset()
+	alert("水平偏移:"+x.left+"px;垂直偏移"+parseInt(x.top)+"px")
+})
+
+$(".change-font").on("click",function(){
+	$(".font").css({
+		'font-size':"14px",
+		"color":"red"
+	})
+})
+
+$(".get-list").on("click",function(){
+	$(".show-list").children().each(function(){(
+		console.log(this)
+		)})
+})
+
+$(".get-class").on("click",function(){
+	$(".show-list").children().each(function(){
+		if($(this).attr("class")==="item"){
+			console.log($(this));
+		};}
+	);})
+
+$(".get-panel").on("click",function(){
+	$(".item").parents(".show-list").find(".panel").css("color","red")
+})
+
+$(".show-item").on("click",function(){
+	alert($(".show-list").children().length);
+});
+$(".show-list").on("click","li",function(){
+	alert($(this).index());
+});
+</script>
+</body>
+</html>

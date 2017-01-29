@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>66</title>
+</head>
+<style>
+    .item {
+        height: 50px;
+        border:1px solid #ddd;
+        margin:10px;
+    }
+    .go-top {
+        position: fixed;
+        bottom: 30px;
+        right: 18px;
+        width: 90px;
+        height: 50px;
+        line-height: 50px;
+        background: orange;
+        display: none;
+        text-align: center;
+        cursor: pointer;
+    }
+</style>
+<body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    for (var i = 0; i < 50; ++i) {
+        $('body').append('<div class="item">内容' + i + '</div>')
+    }
+    function GoTop(ct) {
+        this.createNode(ct);
+        this.bindEvent();
+        console.log(this);
+    }
+    GoTop.prototype = {
+        createNode: function (ct) {
+            this.ct = ct;
+            this.target = $('<div class="go-top">回到顶部</div>');
+            this.ct.append(this.target);
+        },
+        bindEvent: function () {
+            var me = this;
+
+            $(window).on('scroll', function () {
+                if($(window).scrollTop() > 300){
+                    me.target.show();
+                } else {
+                    me.target.hide();
+                }
+            });
+
+            this.target.on('click', function () {
+                $(window).scrollTop(0);
+            })
+        }
+    };
+    new GoTop( $('body') );
+
+</script>
+</body>
+</html>
