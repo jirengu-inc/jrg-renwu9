@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task40曝光组件</title>
+	<style type="text/css">
+		.box{
+			height: 1200px;
+			width: 50px;
+			border:1px solid;
+		}
+		.target{
+			width: 100px;
+			height: 50px;
+			padding: 80px;
+			float: left;
+			
+		}
+		.one{
+			background: orange;
+		}
+		.every{
+			background: pink;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div class="box"></div>
+	<div class="target every">我只有第一次出现在窗口时会打印1</div>
+	<div class="target one">我每次出现在窗口都会打印1</div>
+	<div class="box"></div>
+
+
+	
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+
+var Exposure=(function(){
+	var hasShow=false;
+	function one($target,callback){
+		$(window).on("scroll",function(){
+			if(hasShow){
+			return;
+			}
+			if(isVisible($target)){
+				callback.call($target);   //调用callback()，使$(this)代表$target
+				hasShow=true;
+			}
+		})
+		
+	}
+	function every($target,callback){
+		$(window).on("scroll",function(){
+			if(isVisible($target)){
+				callback.call($target);
+			}
+		})
+		
+	}
+
+	function isVisible($target){
+		var winH=$(window).height(),
+		    scrollTop=$(window).scrollTop(),
+		    offsetTop=$target.offset().top,
+		    $targetH=$target.innerHeight();
+		return ((winH+scrollTop>offsetTop)&&(scrollTop<offsetTop+$targetH));
+	}
+
+
+	return {
+		one:one,
+		every:every,
+	}
+})()
+
+Exposure.one($(".one"),function(){
+	console.log(1);   
+})
+Exposure.every($(".every"),function(){
+	console.log(2);   
+})
+
+		
+		
+
+		
+	</script>
+</body>
+</html>

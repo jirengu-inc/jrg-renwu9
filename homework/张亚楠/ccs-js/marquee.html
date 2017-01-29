@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	#slider
+	{
+		width: 300px;
+		height: 200px;
+		overflow: hidden;
+		border:1px solid;
+	}
+	.wrap
+	{
+		width: 900px;
+		height: 200px;
+		position: relative;
+		left:0px;
+		animation-name:animation;
+		animation-iteration-count:infinite;
+		animation-duration: 6s;
+		animation-direction:alternate;
+
+	}
+	.slide
+	{
+		width:300px;
+		height: 200px;
+		float: left;
+		outline: 1px solid red;
+	}
+	.slide:nth-child(1)
+	{
+		background: green;
+	}
+	.slide:nth-child(2)
+	{
+		background: grey;
+	}
+	.slide:nth-child(3)
+	{
+		background: yellow;
+	}
+	@keyframes animation
+	{
+		0%{left:0px;}
+		50%{left:-300px;}
+		100%{left:-600px;}
+		
+	}
+</style>
+</head>
+<body>
+    <div id="slider">
+    	<div class="wrap">
+    		<div class="slide">1</div>
+    		<div class="slide">2</div>
+    		<div class="slide">3</div>
+    	</div>
+    </div>
+</body>
+</html>

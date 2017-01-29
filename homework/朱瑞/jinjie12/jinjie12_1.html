@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>ajax实例&封装</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+   <button id="btn" type="button">请点击</button>
+   <div id="myDiv"></div>
+
+
+
+<script>
+//封装一个ajax，通过如下方式调用
+      function ajax(opts) {
+        var xmlhttp;
+        if(window.XMLHttpRequest) {           //IE7+,chrome,Safari,Opera,Firefox
+          xmlhttp = new XMLHttpRequest();
+        } else {
+          xmlhttp = new AcitveXObject("Microsoft.XMLHTTP");  //IE5,IE6
+        }
+        xmlhttp.onreadystatechange = function() {
+          if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          	var json = JSON.parse(xmlhttp.responseText);
+            opts.success(json);
+          }
+          if(xmlhttp.status == 404) {
+            opts.error();
+          }
+        }
+        var dataStr= '';
+        for(var key in opts.data) {
+          dataStr += key + '=' + opts.data[key] + '&';
+        }
+        dataStr = dataStr.substr(0,dataStr.length-1);
+        if(opts.type.toLowerCase() == 'get') {
+          xmlhttp.open(opts.type, opts.url + '?' + dataStr, true);
+          xmlhttp.send();
+        }
+        if(opts.type.toLowerCase() == 'post') {
+          xmlhttp.open(opts.type, opts.url, true);
+          xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xmlhttp.send(dataStr);
+        }
+      }
+      document.querySelector('#btn').addEventListener('click', function() {
+        ajax({
+          type: 'get',           // 类型，post或者get
+          url: 'task24_1.php',    // 接口地址
+          data: {
+            username: 'xiaoming',
+            password: 'abcd1234'
+          },
+          success: function(ret) {
+            console.log(ret);
+            var myDiv = document.querySelector('#myDiv');
+            myDiv.innerText = '用户名：' + ret.username + '\|' + '密码：' + ret.password;    // {status: 0}
+          },
+          error: function() {
+            console.log('出错了');
+          }
+        });
+      });
+    </script>
+    
+</body>
+</html>

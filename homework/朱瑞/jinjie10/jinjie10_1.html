@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Tab 切换</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+ *{
+  padding: 0;
+  margin: 0;
+ }
+
+#tabNav ul{
+ margin: 0;
+ padding: 0;
+ list-style: none;
+}
+#tabNav li,#tab1,#tab2,#tab3{
+ float: left;
+ width: 33%;
+ height: 30px;
+ line-height: 30px;
+ text-align: center;
+ /*  border-right: 1px solid #ccc; */
+  /*border-bottom: 1px solid #ccc; */
+ border: 1px solid #ccc;
+ cursor: pointer;
+}
+#tabNav:after{
+   content:'';
+   display: block;
+   clear: both;
+}
+
+#tabNav li:hover{
+  background: #eee;
+}
+</style>
+</head>
+<body>
+	<div id="tabNav">
+    	<ul>
+   	   	<li onclick="tab('tab1')">tab1</li>
+    		<li onclick="tab('tab2')">tab2</li>
+   		 	<li onclick="tab('tab3')">tab3</li>
+   </ul>
+   <div id="tab1" name="dv">内容一</div>
+   <div id="tab2" name="dv" style="display:none;">内容二</div>
+   <div id="tab3" name="dv" style="display:none;">内容三</div>
+ </div> 
+
+ <script>
+ //点击标题对应的内容显示，非点击标题对应的内容隐藏。
+ function tab(pid){
+ 	var tabs = ["tab1","tab2","tab3"];
+  //var tabs = document.getElementsByName("dv");
+   for(var i=0;i<tabs.length;i++){
+     if(tabs[i] == pid){
+      document.getElementById(tabs[i]).style.display = "block";
+    }else{
+      document.getElementById(tabs[i]).style.display = "none";
+    }
+  }
+ }
+ </script>
+    
+</body>
+</html>
