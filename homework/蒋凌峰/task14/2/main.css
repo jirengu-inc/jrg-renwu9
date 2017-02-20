@@ -1,0 +1,183 @@
+* {
+    margin: 0; padding: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+body {
+    font-family: 'Microsoft Yahei', 'Microsoft Sans Serif', serif;
+    font-size:14px;
+}
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.fl {
+    float: left;
+}
+.fr {
+    float: right;
+}
+.layout {
+    width: 960px;
+    margin: 0 auto;
+}
+
+/* header部分 */
+
+#header {
+    margin-top: 70px;
+}
+header .names {
+    display: table;
+}
+.avatar {
+    width: 152px;
+    height: 152px;
+    margin: 0 20px;
+    background-color: #000;
+    border-radius: 50%;
+    float: left;
+}
+header .title {
+    display: table-cell;
+    vertical-align: middle;
+}
+header .name {
+    font-size: 30px;
+    font-weight: bolder;
+}
+header .job {
+    font-size: 18px;
+    font-weight: 150%;
+}
+
+header .info {
+    width: 340px;
+}
+header .info h2 {
+    border-bottom: 3px solid black;
+    margin-bottom: 10px;
+}
+.personal-info li {
+    padding: 5px 0;
+}
+.personal-info li i {
+    margin-right: 10px;
+}
+.personal-info li address {
+    display: inline-block;
+}
+.personal-info li a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* main 部分 */
+
+main {
+    margin-top: 70px;
+}
+
+.profile {
+    margin-top: 50px;
+}
+.profile h2 {
+    width: 400px;
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ccc ;
+}
+
+.profile-item {
+    position: relative;
+    margin-left: 80px;
+}
+.profile-item.ini:before {
+    content: '';
+    width: 1px;
+    background-color: #b7b7b7;
+    position: absolute;
+    top: 14px;
+    bottom: 0px;
+    left: -40px;
+}
+.profile-item:before {
+    content: '';
+    width: 1px;
+    background-color: #b7b7b7;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: -40px;
+}
+.profile-item .dot {
+    width: 0;
+    height: 0;
+    border: 6px solid #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 14px;
+    left: -46px;
+}
+.profile-item h3 {
+    line-height: 40px;
+}
+.profile-item span {
+    color: #ccc;
+}
+.profile-item p {
+    line-height: 20px;
+    padding-bottom: 20px;
+}
+
+/* footer部分 */
+
+#footer {
+    margin-top: 40px;
+    padding-bottom: 100px;
+}
+footer .extra {
+    width: 460px;
+}
+footer h2 {
+    margin-bottom: 30px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ccc ;
+}
+
+footer .extra .extra-list {
+    margin-left: 80px;
+    margin-top: 30px;
+    position: relative;
+}
+footer .extra .extra-list i {
+    position: absolute;
+    top: 0;
+    left: -80px;
+}
+footer .extra .extra-list .extra-list-name {
+    padding-bottom: 20px;
+}
+footer .extra .extra-list .extra-name-detail {
+    line-height: 20px;
+}
+
+footer .professional {
+    width: 400px;
+}
+
+footer .professional .skills {
+    margin-right: -40px;
+}
+footer .professional .skills li {
+    float: left;
+    width: 200px;
+    line-height: 50px;
+    margin-right: 20px;
+}
+footer .professional .skills li span {
+    margin-left: 80px;
+}
