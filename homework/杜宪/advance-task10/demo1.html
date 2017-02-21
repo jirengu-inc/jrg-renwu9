@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	body,ul,li{padding:0;margin:0;list-style: none;}
+	.tab-box{
+		width: 300px;
+		height: 200px;
+		border: 1px solid #dedede;
+		margin: 20px 40px;
+	}
+	.tab-title{
+		height: 30px;
+		line-height: 30px;
+		border-bottom: 1px solid #dedede;
+	}
+	.tab-title li{
+		float: left;
+		border-right: 1px solid #dedede;
+		width: 99px;
+		text-align: center;
+	}
+	.tab-title li:last-child{border: none;}
+	.tab-title li.current{background: #f0f0f0;}
+	.tab-content li{
+		display: none;
+		padding: 10px;
+		line-height: 24px;
+	}
+	.tab-content li.current{display: block;}
+</style>
+</head>
+<body>
+    <div class="tab-box">
+    	<ul class="tab-title">
+    		<li class="current">tab1</li>
+    		<li>tab2</li>
+    		<li>tab3</li>
+    	</ul>
+    	<ul class="tab-content">
+    		<li class="current">内容1</li>
+    		<li>内容2</li>
+    		<li>内容3</li>
+    	</ul>
+    </div>
+<script>
+	var tabTop = document.querySelector('.tab-title')
+	var tabCon = document.querySelectorAll('.tab-content li')
+	tabTop.addEventListener('click', function (e) {
+		for (var i = 0; i < tabTop.children.length; i++) {
+			tabTop.children[i].classList.remove('current')
+		};
+		e.target.classList.add('current')
+		var oIndex = [].indexOf.call(tabTop.children, document.querySelector('.tab-title li.current'))
+		for (var j = 0; j < tabCon.length; j++) {
+			tabCon[j].classList.remove('current')
+		};
+		tabCon[oIndex].classList.add('current')
+	})
+</script>
+</body>
+</html>
