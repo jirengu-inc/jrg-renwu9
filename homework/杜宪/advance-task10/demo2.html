@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	body,h1,p{padding: 0;margin: 0;}
+	body,html{width: 100%;height: 100%}
+	a{text-decoration:none;}
+	.clear:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.btn{
+		background: #2196f3;
+		border: none;
+		border-radius: 4px;
+		padding: 10px 20px;
+		color: #fff;
+		font-size: 14px;
+		margin: 20px;
+	}
+	.btn:hover{background: #2188f3}
+	.shade-box{
+		display: none;
+		background: rgba(0,0,0,0.5);
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	.shade-box.show{
+		display: block;
+	}
+	.prompt-box{
+		position:absolute;
+		top: 50%;
+		left: 50%;
+		width: 300px;
+		height: 200px;
+		background: #fff;
+		border: 1px solid #dedede;
+		border-radius:10px;
+		margin-left: -150px;
+		margin-top: -100px;
+	}
+	.prompt-title{
+		font-size: 20px;
+		line-height: 40px;
+		border-bottom: 1px solid #dedede;
+		padding-left: 10px;
+	}
+	.prompt-title .close{
+		color: #666;
+		float: right;
+		margin-right: 10px;
+	}
+	.prompt-content{
+		padding: 10px;
+	}
+	.prompt-bottom{
+		position: absolute;
+		bottom:0;
+		left: 0;
+		height: 40px;
+		line-height: 40px;
+		border-top: 1px solid #dedede;
+		width: 100%;
+	}
+	.prompt-bottom a{
+		float: right;
+		color: #333;
+		margin:0 10px;
+	}
+</style>
+</head>
+<body>
+    <button class="btn">点我啊</button>
+    <div class="shade-box">
+    	<div class="prompt-box">
+    		<h1 class="prompt-title">我是标题<a href="javascript:void(0);" class="close">×</a></h1>
+    		<div class="prompt-content">我是内容</div>
+    		<div class="prompt-bottom">
+    			<a href="javascript:void(0);" class="close">取消</a>
+    			<a href="javascript:void(0);">确定</a>
+    		</div>
+    	</div>
+    </div>
+<script>
+	var oBtn = document.querySelector('.btn')
+	var oShade = document.querySelector('.shade-box')
+	var oClose = document.querySelectorAll('.close')
+	oBtn.addEventListener('click', function(){
+		oShade.classList.add('show')
+	})
+	oShade.addEventListener('click', function(e){
+		if(e.target.className === 'shade-box show'){
+			oShade.classList.remove('show')
+		}
+	})
+	for (var i = 0; i < oClose.length; i++) {
+		oClose[i].addEventListener('click',function(){
+			oShade.classList.remove('show')
+		})
+	};
+</script>
+</body>
+</html>
