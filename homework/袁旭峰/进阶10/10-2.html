@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>task10-2</title>
+  <script src="./iconfont.js"></script>
+</head>
+<body>
+  <style>
+    body{
+      padding: 0;
+      margin: 0;
+    }
+    a{
+      text-decoration: none;
+      color:#222;
+    }
+    #btn{
+      border-radius: 5px;
+      margin: 10px
+    }
+    .cover{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: #ddd;
+      opacity: 0.5;
+      z-index: 2;
+      display: none;
+    }
+    .dialog{
+      width: 400px;
+      border: 1px solid #bbb;
+      background-color: #fff;
+      position: absolute;
+      left:50%;
+      top:50%;
+      margin-left: -201px;
+      margin-top: -107px;
+      display: none;
+      z-index: 10;
+    }
+    .title{
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+    }
+    .title p{
+      float: left;
+      margin:0;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .closeBtn{
+      float: right;
+    }
+    .icon {
+     width: 1em;
+     height: 1em;
+     vertical-align: -0.15em;
+     fill: #aaa;
+     overflow: hidden;
+     cursor:pointer;
+    }
+    .title:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .content{
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+    }
+    .confirmBtn{
+      padding: 8px 15px;
+      text-align: right;
+    }
+    .confirmBtn a{
+      padding: 0px 4px;
+    }
+  </style>
+  <div class="container">
+    <div class="cover"></div>
+    <button id="btn">点我1</button>
+    <div class="dialog">
+      <div class="title">
+        <p>我是标题1</p>
+        <div class="closeBtn">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-cancel"></use>
+          </svg>
+        </div>
+      </div>
+      <div class="content">
+        <p>我是内容1</p>
+        <p>我是内容2</p>
+      </div>
+      <div class="confirmBtn">
+        <a href="#">取消</a>
+        <a href="#">确定</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    function $(e){
+      return document.querySelector(e);
+    }
+    function $$(cls){
+      return document.querySelectorAll(cls);
+    }
+    function closeDialog(){
+      cover.style.display='none';
+      dialog.style.display='none';
+    }
+    function openDialog(){
+      cover.style.display='block';
+      dialog.style.display='block';
+    }
+    var button=$('#btn');
+    var cover=$('.cover');
+    var dialog=$('.dialog');
+    var closeBtn=$('.closeBtn');
+    var cancelBtn=$('.confirmBtn a:first-of-type');
+    button.addEventListener('click',openDialog);
+    cover.addEventListener('click',closeDialog);
+    closeBtn.addEventListener('click',closeDialog);
+    cancelBtn.addEventListener('click',closeDialog);
+  </script>
+</body>
+</html>
