@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>瀑布流布局</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+		.ct {
+			position: relative;
+		}
+		.ct>ul>li {
+			position: absolute;
+			width: 200px;
+			margin-right: 10px;
+			margin-top: 10px;
+			transition: all 1s;
+			list-style: none;
+		}
+		.h1 {
+			height: 200px;
+			background-color: #f4b300;
+		}
+		.h2 {
+			height: 300px;
+			background-color: #691BB8;
+		}
+		.h3 {
+			height: 400px;
+			background-color: #006ac1;
+		}
+		.h4 {
+			height: 500px;
+			background-color: #aabbcc;
+        }
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul>
+			<li class="h1">1</li>
+			<li class="h2">2</li>
+			<li class="h3">3</li>
+			<li class="h4">4</li>
+			<li class="h2">5</li>
+			<li class="h4">6</li>
+			<li class="h3">7</li>
+			<li class="h1">8</li>
+			<li class="h1">9</li>
+			<li class="h2">10</li>
+			<li class="h3">11</li>
+			<li class="h1">12</li>
+			<li class="h1">13</li>
+			<li class="h2">14</li>
+		</ul>
+  </div>
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+		var colHeightArr, boxWidth, colCount;
+		init();
+		layout();
+
+		//绑定事件，当窗口发生变化时重新计算
+		$(window).on('resize', function() {
+			init();
+			layout();
+		})
+
+		function init() {
+			colHeightArr = [];
+			boxWidth = $('.ct>ul>li').outerWidth(true);
+			colCount = parseInt($('.ct').width() / boxWidth);
+			//初始化，每一列高度之和
+			for(var i=0; i<colCount; i++) {
+				colHeightArr.push(0);
+			}
+		}
+		
+		function layout() {
+			//水平方向位置：拿到下标
+			//垂直方向位置：最小高度
+			$('.ct>ul>li').each(function() {
+				var $box = $(this);
+				var minObject = getMin(colHeightArr),
+					minValue = minObject.minValue,
+					minIndex = minObject.minIndex;
+
+				$box.css({left: boxWidth * minIndex, top: minValue});
+				colHeightArr[minIndex] += $box.outerHeight(true);
+
+			})
+		}
+		
+		//从数组中获取最小值并得到下标
+		function getMin(arr) {
+			if(arr.length === 0) return;
+			var value = arr[0],
+				index = 0;
+			for(var i=0; i<arr.length; i++) {
+				if(arr[i] < value) {
+					value = arr[i];
+					index = i;
+				}
+			}
+			return {minValue: value, minIndex: index};
+        }
+	</script>
+
+</body>
+</html>
