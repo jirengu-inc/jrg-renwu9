@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>渐变轮播</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+html,body,ul,li,p{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.wrap{
+	position: relative;
+	width: 450px;
+	height: 300px;
+	overflow: hidden;
+}
+.wrap .img-ct{
+	position: absolute;
+}
+.wrap .img-ct img{
+	width: 450px;
+	height: 300px;
+}
+.wrap .img-ct li{
+	position: absolute;
+	display: none;
+}
+.btn{
+	position: absolute;
+	height: 30px;
+	width: 30px;
+	border-radius: 15px;
+	background: #000;
+	opacity: 0.4;
+	text-align: center;
+	line-height: 27px;
+	display: block;
+	color: #fff;
+	top: 50%;
+	transform: translateY(-50%);
+	transition: all 1s;            /*css3效果*/
+}
+.btn:hover{
+	opacity: 1
+}
+.btn-pre{
+	left: 10px;
+}
+.btn-next{
+	right: 10px;
+}
+.bullet{
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.bullet li{
+	height: 5px;
+	width: 20px;
+	background-color: #fff; 
+	cursor: pointer;
+	margin: 0 5px;
+	border-radius: 5px;
+	display: inline-block;
+}
+.bullet .active{
+	background-color: #666;
+}
+</style>
+
+</head>
+<body>
+	<div class="wrap">
+	<ul class="img-ct">
+		<li  data-index="0"><a href="javascript:;"><img src="img/1701.jpg"  alt=""></a></li>
+		<li  data-index="1"><a href="javascript:;"><img src="img/1702.jpg"  alt=""></a></li>
+		<li  data-index="2"><a href="javascript:;"><img src="img/1703.jpg"  alt=""></a></li>
+		<li  data-index="3"><a href="javascript:;"><img src="img/1704.jpg"  alt=""></a></li>
+		<li  data-index="3"><a href="javascript:;"><img src="img/1705.jpg"  alt=""></a></li>
+	</ul>
+	 <a href="javascript:;" class="btn btn-pre">&lt;</a>
+     <a href="javascript:;" class="btn btn-next">&gt;</a>
+	<ul class="bullet">
+		<li class="active"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+	
+
+
+ <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+ <script>
+	$(function(){
+	var	$imgCt = $('.img-ct'),
+		$items = $('.img-ct li'),
+		$btnPre = $('.btn-pre'),
+		$btnNxt = $('.btn-next'),
+		$bullet = $('.bullet');
+	var pageIndex = 0,
+		imgLength = $imgCt.children().length;
+	var isAnimate = false;
+	$btnPre.on('click', function(){
+		playPre();
+	})
+	$btnNxt.on('click', function(){
+		playNxt();
+	})
+	$bullet.find('li').on('click', function(){
+		playTo($(this).index());
+	})
+	playTo(0);
+	autoPlay();
+	function stopAuto(){
+		clearInterval(clock);
+	}
+	function autoPlay(){
+		clock = setInterval(function(){
+			playNxt();
+	}, 2000);	
+	}
+	function playNxt(){
+		playTo((pageIndex+1)%imgLength);
+	}
+	function playPre(){
+		playTo((imgLength+pageIndex-1)%imgLength);
+	}
+	function playTo(n){
+		if(isAnimate === true) return;
+		isAnimate = true;
+		$items.eq(pageIndex).fadeOut(500)
+		$items.eq(n).fadeIn(500, function(){
+			isAnimate = false;
+		})
+		pageIndex = n;
+		setBullet();
+	}
+	function setBullet(){
+		$bullet.children().removeClass('active').eq(pageIndex).addClass('active')
+	}
+	})
+	
+</script>
+
+    
+</body>
+</html>
