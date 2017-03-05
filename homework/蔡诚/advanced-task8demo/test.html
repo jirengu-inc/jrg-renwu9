@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <ul class="ct">
+        <li data-img="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488632257092&di=73b6fc4badfe2b1b33531ff3e0dd3200&imgtype=0&src=http%3A%2F%2Ff8.topit.me%2F8%2Fe0%2Fee%2F1111506623222eee08t.jpg">鼠标放置查看图片1</li>
+        <li data-img="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488632257091&di=59cd83f3e4c19ddd05c4ede01d17f590&imgtype=0&src=http%3A%2F%2Fcdnq.duitang.com%2Fuploads%2Fitem%2F201504%2F20%2F20150420H0800_Fx5za.thumb.224_0.jpeg">鼠标放置查看图片2</li>
+        <li data-img="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1488632257091&di=d9baf2877a24f5c5beed23bad5d0986b&imgtype=0&src=http%3A%2F%2Fimg5.duitang.com%2Fuploads%2Fitem%2F201410%2F09%2F20141009143312_XEdmM.thumb.224_0.jpeg">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+
+    <script>
+        function $(id) {
+            return document.querySelector(id)
+        }
+
+        function $$(cls) {
+            return document.querySelectorAll(cls)
+        }
+        var imgPreview = $('.img-preview')
+        $('.ct').addEventListener('mouseover', function(e) {
+            var img = document.createElement('img')
+            img.src = e.target.dataset.img
+            imgPreview.appendChild(img)
+        })
+        $('.ct').addEventListener('mouseout', function(e) {
+            imgPreview.innerHTML = ''
+        })
+    </script>
+
+</html>
