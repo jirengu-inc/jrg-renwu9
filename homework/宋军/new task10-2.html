@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  .box{
+    width: 300px;
+    height: 200px;
+    border: 1px solid #aaa;
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    display: none;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+    float: right;
+    margin-right: 10px;
+  }
+  h2, p+p{
+    border-bottom: 1px solid #aaa;
+  }
+  span a{
+    position: relative;
+    top: -40px;
+    right: 10px;
+  }
+
+  </style>
+</head>
+<body>
+
+<button class="btn">click</button>
+<div class="box">
+  <h2>标题</h2><span><a href="#">X</a></span>
+  <p>内容</p>
+  <p>内容</p>
+  <a href="#"><b>确定</b></a>&nbsp;<a href="#" class="cancel"><b>取消</b></a>
+</div>
+
+<script>
+var btn=document.querySelector('.btn');
+btn.addEventListener('click', function(e){
+  e.stopPropagation();
+  box.style.display='block';
+})
+
+var box=document.querySelector('.box');
+box.addEventListener('click', function(e){
+  e.stopPropagation();
+})
+
+window.addEventListener('click', function(){
+  box.style.display='none';
+})
+
+var cancel=document.querySelector('.cancel');
+cancel.addEventListener('click', function(){
+  box.style.display='none';
+})
+
+var close=document.querySelector('span');
+close.addEventListener('click', function(){
+  box.style.display='none';
+})
+
+</script>
+
+</body>
+</html>
