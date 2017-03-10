@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+    ul, li{
+      margin: 0;
+      padding: 0;
+    }
+    .ct{
+      width: 154px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    ul{
+      list-style: none;
+    }
+    .tab-header>li, .tab-container{
+      border: 1px solid #ccc;
+    }
+    .tab-header>li+li{
+      margin-left: -1px;
+    }
+    .tab-container{
+      height: 100px;
+      margin-top: -1px;
+    }
+    .tab-header>li{
+      float: left;
+      width: 50px;
+      text-align: center;
+    }
+    .tab-header>li:hover{
+      cursor: pointer;
+    }
+    .tab-header .active{
+      background: #ccc;
+      color: white;
+    }
+    .tab-header:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+    .tab-container>li{
+      display: none;
+    }
+    .tab-container .active{
+      display: block;
+    }
+
+	</style>
+</head>
+<body>
+
+<div class="ct">
+  <ul class="tab-header">
+    <li class="active">tab1</li>
+    <li>tab2</li>
+    <li>tab3</li>
+  </ul>
+  <ul class="tab-container">
+    <li class="active">content1</li>
+    <li>content2</li>
+    <li>content3</li>
+  </ul>
+</div>
+
+<script>
+
+  var listHeader=document.querySelector('.tab-header');
+  var listContent=document.querySelector('.tab-container');
+
+  listHeader.addEventListener('click', function(e){
+    if(e.target.tagName.toLowerCase()==='li'){
+      [].forEach.call(this.children, function(node){
+        node.classList.remove('active');
+      })
+      e.target.classList.add('active');
+      var index=[].indexOf.call(this.children, e.target);
+      [].forEach.call(listContent.children, function(node){
+        node.classList.remove('active');
+      })
+      listContent.children[index].classList.add('active');
+    }
+  })
+
+</script>
+</body>
+</html>
