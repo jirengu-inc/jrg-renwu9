@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <div class="query-area">
+        <input type="text" name="username">
+        <button>查询</button>
+    </div>
+    <div class="detail-area">
+        <ul>
+        </ul>
+    </div>
+
+    <script>
+        var btn = document.querySelector('.query-area button')
+        var input = document.querySelector('.query-area input')
+        var detailCt = document.querySelector('.detail-area ul')
+
+        btn.addEventListener('click', function() {
+            var xhr = new XMLHttpRequest()
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && (xhr.status == '200' || xhr.status == '304')) {
+                    var friends = JSON.parse(xhr.responseText)
+                    var html = render(friends)
+                    detailCt.innerHTML = html
+                }
+            }
+            xhr.open('get', '/friends?username=' + input.value, true)//异步
+            xhr.send()
+        })
+
+
+        function render(friends) {
+            var html = ""
+            for (var i = 0; i < friends.length; i++) {
+                html += '<li>' + friends[i] + '</li>'
+            }
+            return html
+        }
+    </script>
+</body>
+
+</html>

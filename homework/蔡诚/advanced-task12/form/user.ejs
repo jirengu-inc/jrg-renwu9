@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<body>
+    <div class="query-area">
+        <form action="/user" method="post">
+            <input type="text" name="username">
+            <button>查询</button>
+        </form>
+    </div>
+    <div class="detail-area">
+        <ul>
+            <% friends.forEach(function(friend){ %>
+                <li>
+                    <%= friend %>
+                </li>
+                <% }) %>
+        </ul>
+    </div>
+
+</body>
+
+</html>
