@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn" type="button">点击</button>
+    <div id="myDiv"></div>
+</body>
+<script>
+    var btn = document.querySelector('#btn')
+    var myDiv = document.querySelector('#myDiv')
+
+    btn.addEventListener('click',function(){
+
+        ajax({
+            type:'get',
+            url:'usermeeage',
+            data:{
+                username:'zyn',
+                password:'12345'
+            },
+            success:function(results){
+                dealwith(results)
+            },
+            error:function(){
+                alert('error')
+            }
+
+        })
+    })
+    
+
+    function ajax(opts){
+
+        var xhr;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest()
+        }else(
+            xhr = new AcitveXObject("Microsoft.XMLHTTP")
+        )
+
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4&& xhr.status ==200){
+                var json = JSON.parse(xhr.responseText)
+                opts.success(json)
+            }
+            if(xhr.status ==404){
+                opts.error()
+            }
+        }
+        var dataStr='';
+        for (var key in opts.data){
+            dataStr +=key+'='+opts.data[key]+'&'
+        }
+        dataStr = dataStr.substr(0,dataStr.length-1);
+        if(opts.type.toLowerCase()=='get'){
+            xhr.open('get',opts.url +'?'+ dataStr,true)
+            xhr.send();
+        }
+        if(opts.type.toLowerCase()=='post'){
+            xhr.open('post',url,true)
+            xhr.sendRequestHeader("Content-type","application/x-www-form-urlencoded")
+            xhr.send(dataStr);
+        }
+    }
+    function dealwith(results){
+        myDiv.innerText ='用户名：'+ results.username+' '+'密码：'+results.password;
+    }
+</script>
+</html>
