@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>JS Bin</title>
+</head>
+<style>
+    ul,li{
+        padding:0;
+        margin:0;
+        list-style:none;
+    }
+    a{
+        text-decoration:none;
+    }
+    li{
+        border:1px solid #ccc;
+        margin:10px 5px;
+        cursor:pointer;
+        padding:10px 8px;
+    }
+    li:hover{
+        background:green;
+    }
+
+    #more{
+        width: 100px;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+        border:1px solid red;
+        border-radius:4px;
+        padding:10px;
+        color:red;
+    }
+</style>
+<body>
+<ul id='ul1'>
+    <li class>内容1</li>
+    <li class>内容2</li>
+</ul>
+
+<a id="more" href="">加载更多</a>
+
+<script type="text/javascript">
+    function ajax(opts){
+        //创建 XMLHttpRequest 对象
+        var xhr=new XMLHttpRequest();
+        //当请求被发送到服务器时，我们需要执行一些基于响应的任务。 每当 readyState 改变时，就会触发 onreadystatechange 事件
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                //将服务器返回的文本xhr.responseText转换为JSON格式字符串
+                var str=JSON.parse(xhr.responseText);
+                //使用succss方法
+                opts.success(str);
+            }
+            if (xhr.status==404&&xhr.readyState==4) {
+                //若请求失败，调用error方法
+                opts.error();
+            }
+        }
+
+
+        //创建发送到服务器的数据
+        var dataStr="";
+        for(var key in opts.data){
+            dataStr+=key+"="+opts.data[key]+"&";
+        }
+        dataStr= dataStr.substr(0,dataStr.length-1);
+        dataStr+='&='+new Date().getTime();
+
+        //判断请求方式get or post
+        if(opts.type.toLowerCase()=="get"){
+            xhr.open("GET",opts.url+"?"+dataStr,true)
+            xhr.send();
+        }
+        if(opts.type.toLowerCase()=="post"){
+            xhr.open("POST",opts.url,true)
+            //为了使post请求与提交web表单相同，将 Content-Type 头部信息设置为 application/x-www-form-urlencoded来模仿表单提交功能（post必须的)
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+            xhr.send(dataStr);
+        }
+    }
+
+
+    var more = document.getElementById('more');
+    var ul =document.getElementById('ul1');
+    var onload = false;
+    var cur = 2;
+    more.addEventListener('click',function(e){
+        e.preventDefault();
+        if(onload){
+            return;
+        }
+        onload = true;
+        ajax({
+            url: '1.php',
+            dataType:'json',
+            type: 'get',
+            data: {
+                start: cur,
+                len: 6
+            },
+            success: function(json){
+                onSuccess(json);
+                onload = false;                 },
+            error: function(){
+                onError();
+                onload = false;
+            }
+        });
+
+
+        function onSuccess(json){
+            for (var i = 0;i < json.length;i++){
+                var newLi = document.createElement("li");
+                newLi.innerHTML = json[i];
+                ul.appendChild(newLi);
+            }
+            cur+=6;
+        };
+        function onError(json){
+            alert('error');
+        }
+    });
+</script>
+</body>
+</html>

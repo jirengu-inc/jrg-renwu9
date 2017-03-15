@@ -1,0 +1,410 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: '微软雅黑';
+    min-width: 1180px;
+    color: #333;
+}
+
+#nav:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+#nav {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background-color: rgba(14, 23, 54, 1);
+}
+
+#nav img {
+    float: left;
+    width: 70px;
+    margin: 5px;
+}
+
+#nav span {
+    font-size: 25px;
+    line-height: 80px;
+    color: #fef69d;
+}
+
+.layout {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+.items {
+    float: right;
+    text-align: center;
+}
+
+.items > li {
+    float: left;
+    margin-left: 30px;
+}
+
+.items > li > a {
+    font-size: 20px;
+    line-height: 34px;
+    display: inline-block;
+    height: 34px;
+    margin-top: 15px;
+    padding: 8px 10px;
+    color: #fff;
+}
+
+.items > li > a:hover {
+    color: black;
+    border-radius: 5px;
+    background-color: #fdee47;
+}
+
+#welcome {
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 700px;
+    padding-top: 280px;
+    text-align: center;
+    color: #fdee47;
+    background: url(../images/Bg.jpg);
+    background-size: cover;
+}
+
+#welcome > p {
+    font-size: 40px;
+}
+
+#welcome > h1 {
+    font-size: 70px;
+    margin-top: 10px;
+}
+
+.btn {
+    font-size: 20px;
+    display: inline-block;
+    margin-top: 60px;
+    padding: 25px 40px;
+    color: rgb(14, 23, 54);
+    border-radius: 5px;
+    background-color: #fdee47;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: rgb(255, 223, 25);
+}
+
+#writer {
+    text-align: center;
+}
+
+#writer:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.content > h2 {
+    font-size: 38px;
+    margin-top: 140px;
+    margin-bottom: 20px;
+}
+
+.content > p {
+    font-size: 20px;
+    margin-bottom: 100px;
+    color: #777;
+}
+
+.detail {
+    float: left;
+    box-sizing: border-box;
+    width: 392px;
+    margin-bottom: 90px;
+    padding: 0 15px;
+}
+
+.detail > span {
+    font-family: iconfont;
+    font-size: 100px;
+    color: rgb(255, 223, 25);
+}
+
+.detail > h3 {
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#scenery {
+    padding: 1px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.listwarp {
+    width: 1260px;
+    margin: 0 auto;
+}
+
+.listwarp:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.sce-list {
+    margin-left: -30px;
+    padding-bottom: 80px;
+}
+
+.sce-list:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.sce-list > li {
+    float: left;
+    width: 400px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    background-color: #fff;
+}
+
+.sce-list > li > a {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 270px;
+}
+
+.sce-list > li > a > img {
+    width: 400px;
+    height: 270px;
+}
+
+.listhover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 59px 0;
+    transition: all ease .5s;
+    opacity: 0;
+    background: rgba(254, 209, 54, .9);
+}
+
+.listhover > img {
+    width: 150px;
+}
+
+.listhover:hover {
+    opacity: .7;
+}
+
+.sce-list > li > h3 {
+    margin-top: 25px;
+    margin-bottom: 7px;
+}
+
+.sce-list > li > p {
+    margin-bottom: 35px;
+}
+
+#characters {
+    position: relative;
+    text-align: center;
+}
+
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+
+.timeline {
+    margin-top: 30px;
+}
+
+.timeline:after {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 50%;
+    width: 2px;
+    height: 70%;
+    margin-left: -1px;
+    content: '';
+    background: #777;
+}
+
+.timeline > li {
+    position: relative;
+    box-sizing: border-box;
+    height: 110px;
+    margin-bottom: 80px;
+}
+
+.timeline li:nth-of-type(odd) .cha-intor {
+    width: 41%;
+    text-align: right;
+}
+
+.timeline li:nth-of-type(even) .cha-intor {
+    float: right;
+    width: 41%;
+    text-align: left;
+}
+
+.cha-intor h4 {
+    font-size: 20px;
+    line-height: 1.5em;
+}
+
+.cha-intor p {
+    line-height: 1.2;
+}
+
+.cha-img {
+    position: absolute;
+    top: -50px;
+    left: 50.5%;
+    width: 160px;
+    height: 160px;
+    margin-left: -90px;
+    text-align: center;
+    border: 6px solid #f1f1f1;
+    border-radius: 50%;
+    background: #fdee47;
+    ;
+}
+
+.cha-img > img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+
+.cha-img > h4 {
+    margin-top: 60px;
+    color: rgba(14, 23, 54, 1);
+}
+
+#follow {
+    padding-top: 1px;
+    padding-bottom: 40px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+.flow-list {
+    padding: 0 30px;
+}
+
+.flow-list > li {
+    float: left;
+    box-sizing: border-box;
+    width: 400px;
+    padding: 20px;
+}
+
+.flow-list > li > div {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border: 6px solid #ccc;
+    border-radius: 50%;
+    background-color: yellow;
+}
+
+.flow-list > li > div > img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.flow-list > li > h4 {
+    margin-bottom: 20px;
+    padding-top: 25px;
+}
+
+.flow-list > li > a {
+    color: #333;
+}
+
+.flow-list > li > a:hover {
+    color: #fed136;
+}
+
+.flow-list > li span {
+    font-family: iconfont;
+    font-size: 46px;
+    margin-left: 8px;
+}
+
+#contact {
+    overflow: hidden;
+    height: 730px;
+    text-align: center;
+    color: #fdee47;
+    background: url(../images/Bg2.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.ct-infor {
+    float: left;
+    width: 49%;
+    border-radius: 5px;
+}
+
+.ct-infor > input {
+    line-height: 60px;
+    width: 90%;
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.ct-infor > textarea {
+    width: 90%;
+    height: 230px;
+    margin-bottom: 20px;
+}
+
+#contact > a {
+    margin-top: 20px;
+}
+
+#fotter {
+    line-height: 35px;
+    height: 60px;
+    padding-top: 40px;
+}
+
+#fotter .layout > ul > li {
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+#fotter .layout > ul > li > a {
+    font-family: iconfont;
+    font-size: 34px;
+    margin-left: 8px;
+    vertical-align: middle;
+    color: #333;
+}
