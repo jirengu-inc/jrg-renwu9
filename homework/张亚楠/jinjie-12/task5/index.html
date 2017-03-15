@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+	ul,li{
+		margin:0px;
+		padding:0px;
+	}
+	#ct li{
+		list-style: none;
+		border: 1px solid #ccc;
+		padding:10px;
+		margin-top: 10px;
+		cursor:pointer;
+	}
+	#load-more{
+		display: block;
+		margin: 10px auto;
+		text-align: center;
+		cursor: pointer;
+		height: 40px;
+		line-height: 40px;
+		width: 80px;
+		border-radius:3px;
+		border:1px solid #E27272;
+		text-decoration:none;
+		color: #E27272;
+
+	}
+	
+	.btn:hover{
+		background: green;
+		color: #fff;
+	}
+    li:hover{
+        background:red;
+    }
+</style>
+</head>
+<body>
+    <ul id="ct">
+    	
+    </ul>
+    <a id="load-more" class="btn" href="#">加载更多</a>
+
+</body>
+
+    <script>
+
+    var ct = document.querySelector('#ct');
+	var btn = document.querySelector('#load-more');
+
+	var num = 1 // 加载数据的序号
+    var len = 3 // 加载数据的个数
+    var locking  = true //状态锁 ，判断是否在加载数据
+
+
+    btn.addEventListener('click',function(e){
+        e.preventDefault();
+        if(!locking){
+            return;
+        }else{
+            ajax({
+                url:'loadMore',
+                type:'get',
+                data:{
+                    start:num,
+                    length:len
+                },
+                success:function(json){
+                    dealwith(json);
+                },
+                error:function(){
+                    onError();
+                }
+            })
+        }
+    });
+//http请求
+    function ajax(opts){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4 && xhr.status ===200 || xhr.status ===304){
+                var json =JSON.parse(xhr.responseText)
+                opts.success(json)
+            }
+            if(xhr.status === 404){
+                opts.error();
+            }
+        }
+        //转换字符串
+        var dataStr ='';
+        for(var key in opts.data){
+            dataStr +=key +'='+opts.data[key]+'&';
+        }
+        dataStr = dataStr.substr(0,dataStr.length-1);
+
+
+        //判断提交方式
+       if(opts.type.toLowerCase() === 'get'){
+           xhr.open('get',opts.url+'?'+dataStr,true)
+           xhr.send();
+           locking = false;
+       }
+       if(opts.type.toLowerCase() === 'post'){
+           xhr.open('post',opts.url,true)
+           xhr.sendRequestHeader('Content-type','application/x-www-form-urlencoded')
+           xhr.send('dataStr')
+           locking = false;
+       }
+    }
+
+    function dealwith(json){
+
+        for(var i =0 ; i<json.length;i++){
+            var newLi = document.createElement('li');
+            newLi.innerText = json[i]
+            ct.appendChild(newLi)
+        }
+        num += 3;
+        locking = true
+    }
+
+    function onError(){
+        alert('出错了')
+    }
+
+ 
+ 
+
+    </script>
+
+</html>
