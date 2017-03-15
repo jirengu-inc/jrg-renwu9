@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none
+        }
+        
+        #ct {
+            margin: 10px
+        }
+        
+        #ct li {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            border: 1px solid #ccc
+        }
+        
+        #load-more {
+            margin: 10px
+        }
+    </style>
+</head>
+
+<body>
+    <ul id='ct'>
+    </ul>
+    <a id="load-more" class="btn" href="javascript:void(0)">加载更多</a>
+</body>
+
+<script>
+    /*var btn = $('.btn')
+                                                var ct = $('#ct')
+                                                var pageCount = 0
+                                                var isArrive = true
+                                                btn.addEventListener('click', function(e) {
+                                                    e.preventDefault
+
+                                                    if (!isArrive) {
+                                                        return;
+                                                    }
+
+                                                    var xhr = new XMLHttpRequest()
+                                                    xhr.onreadystatechange = function() {
+                                                        if (xhr.readyState === 4) {
+                                                            if (xhr.status === 200 || xhr.status === 304) {
+                                                                var result = JSON.parse(xhr.responseText)
+                                                                console.log(result)
+                                                                var fragment = document.createDocumentFragment()
+                                                                for (var i = 0; i < result.length; i++) {
+                                                                    var node = document.createElement('li')
+                                                                    node.innerText = result[i]
+                                                                    fragment.appendChild(node)
+                                                                }
+                                                                ct.appendChild(fragment)
+                                                            } else {
+                                                                console.log('出错')
+                                                            }
+                                                            isArrive = true
+                                                        }
+                                                    }
+                                                    xhr.open('get', '/loadMore?index=' + pageCount + '&length=5', true) //异步
+                                                    xhr.send()
+                                                    isArrive = false
+                                                    pageCount += 5
+                                                })
+                                                */
+
+
+
+
+    /*
+    var btn = $('.btn')
+    var ct = $('#ct')
+    var pageCount = 0
+    var isArrive = true
+    btn.addEventListener('click', function(e) {
+        e.preventDefault
+        if (!isArrive) {
+            return;
+        }
+        loadData(function(news) {
+            renderPage(news)
+        })
+    })
+
+    function loadData(callback) {
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200 || xhr.status === 304) {
+                    var result = JSON.parse(xhr.responseText)
+                    callback(result)
+                    pageCount += 5
+                } else {
+                    console.log('出错')
+                }
+                isArrive = true
+            }
+        }
+        xhr.open('get', '/loadMore?index=' + pageCount + '&length=5', true) //异步
+        xhr.send()
+        isArrive = false
+    }
+
+    function renderPage(news) {
+        var fragment = document.createDocumentFragment()
+        for (var i = 0; i < news.length; i++) {
+            var node = document.createElement('li')
+            node.innerText = news[i]
+            fragment.appendChild(node)
+        }
+        ct.appendChild(fragment)
+    }
+    */
+
+
+
+    var btn = $('.btn')
+    var ct = $('#ct')
+    var pageCount = 0
+    var isArrive = true
+    btn.addEventListener('click', function(e) {
+        e.preventDefault;
+        if (!isArrive) {
+            return;
+        }
+
+        loadData(function(news) {
+            renderPage(news)
+        })
+    })
+
+    function loadData(callback) {
+        ajax({
+            type: 'get',
+            url: '/loadMore',
+            data: {
+                index: pageCount,
+                length: 5
+            },
+            onSuccess: callback,
+            onError: function() {
+                consolo.log('出错')
+            }
+        })
+    }
+
+    function renderPage(news) {
+        var fragment = document.createDocumentFragment()
+        for (var i = 0; i < news.length; i++) {
+            var node = document.createElement('li')
+            node.innerText = news[i]
+            fragment.appendChild(node)
+        }
+        ct.appendChild(fragment)
+    }
+
+    function ajax(options) {
+        var xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function() {
+            isArrive = true
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200 || xhr.status === 304) {
+                    var result = JSON.parse(xhr.responseText)
+                    options.onSuccess(result)
+                    pageCount += 5
+                } else {
+                    option.onError()
+                }
+            }
+        }
+        var query = '?'
+        for (key in options.data) {
+            query += key + '=' + options.data[key] + '&'
+        }
+        query = query.substr(0, query.length - 1)
+        xhr.open(options.type, options.url + query, true)
+        xhr.send()
+        isArrive = false
+    }
+
+
+    function $(id) {
+        return document.querySelector(id)
+    }
+
+    function $$(cls) {
+        return document.querySelectorAll(cls)
+    }
+</script>
+
+</html>

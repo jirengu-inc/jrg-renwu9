@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>task10-1</title>
+</head>
+<body>
+  <style>
+    ul{
+      padding: 0;
+      margin:0;
+    }
+    li{
+      list-style-type: none;
+    }
+    .container{
+      border:1px #aaa solid;
+      width:694px;
+      padding:10px;
+    }
+    .tab{
+      border:1px #aaa solid;
+    }
+    .tab:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .tab li{
+      float:left;
+      width: 230px;
+      text-align: center;
+      padding:5px 0px 5px 0px;
+    }
+    .tab li:first-of-type, .tab li:nth-child(2){
+      border-right: 1px #aaa solid;
+    }
+    #active{
+      background-color: #eee;
+    }
+    .panels{
+      border-right: 1px #aaa solid;
+      border-bottom: 1px #aaa solid;
+      border-left: 1px #aaa solid;
+    }
+    .panels li{
+      display: none;
+      padding:1.5em 0 4em 1.5em;
+    }
+    #preview{
+      display: block;
+    }
+  </style>
+  <div class="container">
+    <ul class="tab">
+      <li id="active">tab1</li>
+      <li>tab2</li>
+      <li>tab3</li>
+    </ul>
+    <ul class="panels">
+      <li id="preview">content1</li>
+      <li>content2</li>
+      <li>content3</li>
+    </ul>
+  </div>
+  <script>
+    function $(e){
+      return document.querySelector(e);
+    }
+    function $$(cls){
+      return document.querySelectorAll(cls);
+    }
+    var buttons=$('.tab');
+    buttons.addEventListener('mouseover',function(e){
+      var perTab=$$('.tab li');
+      var perPanel=$$('.panels li');
+      var active=$('#active');
+      var panel=$('.panels');
+      var preview=$('#preview');
+      var listMouseover=e.target;
+      if(listMouseover===buttons){
+        return 0;
+      }
+      for(var i=0;i<perTab.length;i++){
+        if(perTab[i].getAttribute('id')==='active'){
+          perTab[i].removeAttribute('id');
+        }
+        if(perTab[i]===listMouseover){
+          var selected=i;
+        }
+      }
+      listMouseover.setAttribute('id','active');
+      for(var a=0;a<perPanel.length;a++){
+        if(perPanel[a].getAttribute('id')==='preview'){
+          perPanel[a].removeAttribute('id');
+        }
+      }
+      console.log(perPanel[selected])
+      perPanel[selected].setAttribute('id','preview');
+    });
+  </script>
+</body>
+</html>

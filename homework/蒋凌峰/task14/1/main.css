@@ -1,0 +1,81 @@
+* {margin: 0; padding: 0;}
+body {
+  font-family: "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+  font-size: 14px;
+  color: #87968e;
+  text-align: center;
+  background: rgb(255, 242, 228);
+}
+ul {
+  list-style: none;
+}
+.layout {
+  width: 800px;
+  margin: 0 auto;
+}
+header h1 {
+  font-size: 40px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+header p {
+  margin-top: 10px;
+}
+
+.items-list {
+  margin-top: 40px;
+}
+.items-list:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+header .items-list li{
+  display: inline-block;
+}
+
+header .items-list li a {
+  display: inline-block;
+  padding: 10px 14px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #72b890;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+header .items-list li a.active {
+  opacity: .6;
+}
+header .items-list li a:hover {
+  opacity: .8;
+}
+#main .item-box, #main .btn {
+  margin-top: 40px;
+}
+
+.btn:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.btn a {
+  display: inline-block;
+  background: #72b890;
+  padding: 10px 14px;
+  margin: 0 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+.btn a:hover {
+  opacity: 0.8;
+}
+#footer {
+  margin-top: 40px;
+  
+}
+#footer a {
+  color: #72b890;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>项目展示</title>
+<link rel="stylesheet" href="normalize.css">
+<style>
+body {
+	background: lightblue;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #fff;
+}
+.clearfix:after {
+	content: '';
+	display: block;
+	clear: both;
+
+}
+#header {
+	text-align: center;
+}
+#header img {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+#header h1 {
+	color: white;
+	letter-spacing: 1px;
+	font-size: 40px;
+}
+#header p {
+	letter-spacing: 1px;
+	font-size: 16px;
+	font-weight: 900;
+	color: white;
+}
+#content a {
+	display: inline-block;
+	float: left;
+	margin-left: 10px;
+	padding: 6px 10px;
+	background: lightsalmon;
+	border-radius: 6px;
+}
+#content a:hover {
+	opacity: 0.8;
+}
+#content .active{
+	background: #ff7a7a;
+}
+#content li {
+	float: left;
+}
+#content .nav {
+	height: 30px;
+	display: table;
+	margin: 0 auto;
+	padding-left: 0;
+}
+#content .project {
+	margin-top: 20px;
+	text-align: center;
+}
+#content .details {
+	text-align: center;
+}
+#content .detail {
+	height: 40px;
+	display: inline-block;
+	padding-left: 0;
+}
+#footer {
+	text-align: center;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+	<div class="container layout">
+		<div id="header">
+			<img src="images/me.jpg" alt="me">
+			<h1>Mcavoy's Projects</h1>
+			<p>一句话项目介绍</p>
+		</div>
+    	<div id="content" class="clearfix">
+			<ul class="nav clearfix">
+				<li>
+					<a href="#" class="active">项目一</a>
+				</li>
+				<li>
+					<a href="#">项目二</a>
+				</li>
+				<li>
+					<a href="#">项目三</a>
+				</li>
+				<li>
+					<a href="#">项目四</a>
+				</li>
+				<li>
+					<a href="#">项目五</a>
+				</li>
+			</ul>
+			<div class="project">
+				<img src="images/elephant.png" alt="">
+			</div>
+			<div class="details clearfix">
+				<ul class="detail clearfix">
+					<li>
+					<a href="#">查看原码</a>
+				</li>
+				<li>
+					<a href="#">使用说明</a>
+				</li>
+				</ul>
+			</div>
+			
+    	</div>
+    	<div id="footer">
+    		<p>作者：我</p>
+    	</div>
+	</div>
+    
+
+</body>
+</html>
