@@ -1,0 +1,30 @@
+<html>
+<style>
+    html,
+    body {
+        margin: 0;
+    }
+    
+    input {
+        margin: 20px;
+        width: 200px;
+    }
+</style>
+
+<input id="input" type="text" placeholder="http://yu2.jrg.com:8080/b.html">
+<script>
+    // URL: http://yu2.jrg.com:8080/b.html
+
+    document.querySelector('#input').addEventListener('input', function() {
+        window.parent.document.querySelector('input').value = this.value;
+        var style = document.createElement('style')
+        style.innerText = 'input{border: 2px solid yellow}'
+        window.parent.document.head.appendChild(style)
+        console.log(this.value)
+    })
+
+
+    document.domain = 'jrg.com'; //降域
+</script>
+
+</html>
