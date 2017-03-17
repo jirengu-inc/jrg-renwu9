@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JSONp</title>
+</head>
+
+<body>
+    <div id="contaniner">
+        <ul id="news">
+            <li>第一条新闻</li>
+            <li>第二条新闻</li>
+            <li>第三条新闻</li>
+        </ul>
+        <button id="change">更换</button>
+    </div>
+    <script>
+        function $(id) {
+            return document.querySelector(id);
+        }
+
+        $('#change').addEventListener('click', function () {
+            var script = document.createElement('script');//
+            script.src ='http://zyn.com:8080/getNews?callback=appendHtml';//地址指向第三方的API网址,供一个回调函数来接收数据（函数名可约定，或通过地址参数传递）。
+            document.head.appendChild(script);
+            document.head.removeChild(script);
+        })
+
+        function appendHtml(news) {
+            var html = '';
+            for (var i = 0; i<news.length; i++) {
+                html += '<li>' + news[i] + '</li>';
+            }
+            console.log(html);
+            $('#news').innerHTML = html;
+        }
+    </script>
+</body>
+
+</html>

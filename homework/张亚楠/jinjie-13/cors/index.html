@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CORS</title>
+    <style>
+        .container{
+             width:900px;
+             margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="news">
+            <li>头条新闻1</li>
+            <li>头条新闻2</li>
+            <li>头条新闻3</li>
+            <li>头条新闻4</li>
+        </ul>
+        <button class="change">换一组</button>
+    </div>
+
+    <script>
+        function $(id){
+            return document.querySelector(id);
+        }
+
+        $('.change').addEventListener('click',function(){
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('get','http://a.zyn.com:8080/getNews',true);
+            //html通过zyn.com打开而通过ajax获取a.zyn.com上的资源，所以为跨域。
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                
+                if(xhr.readyState ===4 && xhr.status ===200){
+                    appendHtml(JSON.parse(xhr.responseText))
+                }
+            }
+        })
+
+        function appendHtml(news){
+
+            var html ='';
+            for(var i=0;i<news.length;i++){
+                html +='<li>'+news[i]+'</li>'
+
+            }
+            $('.news').innerHTML = html;
+        }
+    </script>
+</body>
+</html>
