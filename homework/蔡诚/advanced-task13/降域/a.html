@@ -1,0 +1,57 @@
+<html>
+<style>
+    .ct {
+        width: 910px;
+        margin: auto;
+    }
+    
+    .main {
+        float: left;
+        width: 450px;
+        height: 300px;
+        border: 1px solid #ccc;
+    }
+    
+    .main input {
+        margin: 20px;
+        width: 200px;
+    }
+    
+    .iframe {
+        float: right;
+    }
+    
+    iframe {
+        width: 450px;
+        height: 300px;
+        border: 1px dashed #ccc;
+    }
+</style>
+
+<div class="ct">
+    <h1>使用降域实现跨域</h1>
+    <div class="main">
+        <input type="text" placeholder="http://yu1.jrg.com:8080/a.html">
+    </div>
+
+    <iframe src="http://yu2.jrg.com:8080/b.html" frameborder="0"></iframe>
+
+</div>
+
+
+<script>
+    //URL: http://yu1.jrg.com:8080/a.html
+    document.querySelector('.main input').addEventListener('input', function() {
+        console.log(this.value);
+        window.frames[0].document.querySelector('#input').value = this.value;
+        var style = document.createElement('style')
+        style.innerHTML = '#input{background:pink}'
+        window.frames[0].document.head.appendChild(style)
+    })
+
+
+
+    document.domain = "jrg.com" //降域
+</script>
+
+</html>
