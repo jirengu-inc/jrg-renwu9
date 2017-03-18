@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    li{
+      list-style-type: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    ul{
+      padding-left: 0;
+    }
+    .icon {
+      width: 1em; height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+      float: right;
+    }
+    .index>li{
+      width: 250px;
+      padding: 0px 10px ;
+      background-color: #c22;
+      position: relative;
+    }
+    .index > li > a{
+      display: block;
+      padding: 10px 0px 10px 10px;
+      border-bottom: 1px solid #f22;
+      color: #fff;
+    }
+    .hidden{
+      position: absolute;
+      left:270px;
+      top:0;
+      width: 250px;
+      border: 1px solid #999;
+      display: none;
+    }
+    .hidden:after{
+      display: block;
+      content:'';
+      clear: both;
+    }
+    .hidden li{
+      float: left;
+      width: 100px;
+      padding: 8px 12px;
+    }
+    .hidden a{
+      color: #333;
+      font-size: 14px;
+    }
+  </style>
+  <ul class="index">
+    <li>
+      <a href="javascript:void 0">
+        <span>珠宝玉器</span>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-next"></use>
+        </svg>
+      </a>
+      <ul class="hidden">
+        <li><a href="javascript:void 0">翡翠</a></li>
+        <li><a href="javascript:void 0">玉石</a></li>
+        <li><a href="javascript:void 0">宝石</a></li>
+        <li><a href="javascript:void 0">水晶</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void 0">
+        <span>珠宝玉器</span>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-next"></use>
+        </svg>
+      </a>
+      <ul class="hidden">
+        <li><a href="javascript:void 0">翡翠</a></li>
+        <li><a href="javascript:void 0">玉石</a></li>
+        <li><a href="javascript:void 0">宝石</a></li>
+        <li><a href="javascript:void 0">水晶</a></li>
+        <li><a href="javascript:void 0">玛瑙</a></li>
+        <li><a href="javascript:void 0">珍珠</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void 0">
+        <span>珠宝玉器</span>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-next"></use>
+        </svg>
+      </a>
+      <ul class="hidden">
+        <li><a href="javascript:void 0">翡翠</a></li>
+        <li><a href="javascript:void 0">玉石</a></li>
+        <li><a href="javascript:void 0">宝石</a></li>
+        <li><a href="javascript:void 0">水晶</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void 0">
+        <span>珠宝玉器</span>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-next"></use>
+        </svg>
+      </a>
+      <ul class="hidden">
+        <li><a href="javascript:void 0">翡翠</a></li>
+        <li><a href="javascript:void 0">玉石</a></li>
+        <li><a href="javascript:void 0">宝石</a></li>
+        <li><a href="javascript:void 0">水晶</a></li>
+        <li><a href="javascript:void 0">玛瑙</a></li>
+        <li><a href="javascript:void 0">珍珠</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="javascript:void 0">
+        <span>珠宝玉器</span>
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-next"></use>
+        </svg>
+      </a>
+      <ul class="hidden">
+        <li><a href="javascript:void 0">翡翠</a></li>
+        <li><a href="javascript:void 0">玉石</a></li>
+        <li><a href="javascript:void 0">宝石</a></li>
+        <li><a href="javascript:void 0">水晶</a></li>
+      </ul>
+    </li>
+  </ul>
+  <script src="./font/iconfont.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+  <script>
+    var indexLi=$('.index>li')
+    var hidden=$('.hidden')
+    indexLi.on('mouseover',function(){
+      $(this).children('.hidden').css('display','block')
+    })
+    indexLi.on('mouseleave',function(){
+      $(this).children('.hidden').css('display','none')
+    })
+  </script>
+</body>
+</html>
