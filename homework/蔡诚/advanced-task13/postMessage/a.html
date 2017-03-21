@@ -1,0 +1,53 @@
+<html>
+<style>
+    .ct {
+        width: 910px;
+        margin: auto;
+    }
+    
+    .main {
+        float: left;
+        width: 450px;
+        height: 300px;
+        border: 1px solid #ccc;
+    }
+    
+    .main input {
+        margin: 20px;
+        width: 200px;
+    }
+    
+    .iframe {
+        float: right;
+    }
+    
+    iframe {
+        width: 450px;
+        height: 300px;
+        border: 1px dashed #ccc;
+    }
+</style>
+
+<div class="ct">
+    <h1>使用降域实现跨域</h1>
+    <div class="main">
+        <input type="text" placeholder="http://yu1.jrg.com:8080/a.html">
+    </div>
+
+    <iframe src="http://yu2.jrg.com:8080/b.html" frameborder="1"></iframe>
+
+</div>
+
+
+<script>
+    //URL: http://yu1.jrg.com:8080/a.html
+    document.querySelector('.main input').addEventListener('input', function(e) {
+        console.log(e.target.value)
+        window.frames[0].postMessage(e.target.value, 'http://yu2.jrg.com:8080/b.html')
+    })
+    window.addEventListener('message', function(e) {
+        document.querySelector('.main input').value = e.data
+    })
+</script>
+
+</html>

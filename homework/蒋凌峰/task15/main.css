@@ -1,0 +1,559 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+h2 {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #000;
+    text-align: center;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 75px;
+    color: #777;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+body {
+    font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.layout {
+    width: 996px;
+    margin: 0 auto;
+}
+
+
+/*******************
+*    Header 区域
+*******************/
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    z-index: 2;
+}
+
+header .navbar a {
+    font-size: 2em;
+    line-height: 100px;
+    text-transform: capitalize;
+    padding: 0 15px;
+    color: #fed136;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+header .nav li {
+    float: left;
+    padding: 24px 0;
+}
+
+header .nav li a {
+    display: block;
+    font-size: 15px;
+    text-transform: uppercase;
+    line-height: 52px;
+    padding: 0 16px;
+    color: #fff;
+}
+
+header .nav li a:hover {
+    color: yellow;
+}
+
+
+/*******************
+*    Intro 区域
+*******************/
+
+#intro {
+    background: url('./image/header-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    padding-top: 300px;
+    padding-bottom: 200px;
+    margin-top: 100px;
+    color: #fff;
+}
+
+#intro h2 {
+    color: #fff;
+    text-transform: capitalize;
+    margin-bottom: 25px;
+}
+
+#intro h3 {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 54px;
+    font-weight: bold;
+    margin-bottom: 48px;
+}
+
+#intro a {
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 20px 40px;
+    color: #fff;
+    background-color: #fed136;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+#intro a:hover {
+    background-color: #fec503;
+}
+
+
+/*******************
+*    Services 区域
+*******************/
+
+#services {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+}
+
+#services .service-lists>li {
+    width: 33.333333333%;
+    float: left;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+#services .service-lists>li span {
+    color: #fed136;
+}
+
+#services .service-lists h4 {
+    text-transform: capitalize;
+    margin: 15px 0;
+    color: #000;
+}
+
+#services .service-lists p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #777;
+}
+
+
+/*******************
+*    Portfolio 区域
+*******************/
+
+#portfolio {
+    background-color: #f7f7f7;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+}
+
+#portfolio h2 {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+#portfolio .portfolio-lists {}
+
+#portfolio .portfolio-lists li {
+    width: 300px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 30px;
+    float: left;
+    background: #fff;
+}
+
+#portfolio .portfolio-link {
+    display: block;
+    position: relative;
+}
+
+#portfolio .portfolio-link .portfolio-hover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(254, 209, 54, .9);
+    transition: all ease-in-out .5s;
+    opacity: 0;
+}
+
+#portfolio .portfolio-link .portfolio-hover:hover {
+    opacity: 1;
+}
+
+#portfolio .portfolio-link .portfolio-hover .portfolio-content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+#portfolio .portfolio-link .portfolio-hover .portfolio-content i {
+    margin-top: -30px;
+}
+
+#portfolio .portfolio-link img {
+    width: 300px;
+    height: auto;
+}
+
+#portfolio .portfolio-lists .portfolio-caption {
+    padding: 25px;
+}
+
+#portfolio .portfolio-lists .portfolio-caption h4 {
+    font-size: 18px;
+    color: #000;
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+
+/*******************
+*    About 区域
+*******************/
+
+#about {
+    padding: 150px 0;
+    text-align: center;
+    position: relative;
+}
+
+#about>h2 {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #000;
+}
+
+#about>p {
+    margin-top: 20px;
+    margin-bottom: 75px;
+    color: #777;
+}
+
+#about .timeline {
+    position: relative;
+}
+
+#about ul.timeline::before {
+    content: '';
+    width: 2px;
+    background-color: #f1f1f1;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 50%;
+    margin-left: -1px;
+}
+
+#about .timeline li {
+    position: relative;
+    min-width: 100px;
+    margin-bottom: 100px;
+}
+
+#about .timeline li::before {
+    content: '';
+    display: table;
+}
+
+#about .timeline li::after {
+    content: '';
+    display: table;
+}
+
+#about .timeline li .timeline-image {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    margin-left: -75px;
+    border-radius: 50%;
+}
+
+#about .timeline li .timeline-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+#about .timeline li .timeline-pannel {
+    width: 33%;
+    float: left;
+    padding: 0 20px 30px 20px;
+    text-align: right;
+}
+
+#about .timeline li.text-left .timeline-pannel {
+    float: right;
+    text-align: left;
+}
+
+#about .timeline li .timeline-pannel h4 {
+    margin-bottom: 10px;
+}
+
+#about .timeline li:nth-child(5) .timeline-image {
+    background-color: #fed136;
+    display: table;
+}
+
+#about .timeline li:nth-child(5) .timeline-image h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 26px;
+    color: #fff;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+
+/*******************
+*    Team 区域
+*******************/
+
+#team {
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+    background-color: #f7f7f7;
+}
+
+#team .team-memember {
+    margin-bottom: 50px;
+}
+
+#team .team-memember>li {
+    width: 33.333333333%;
+    float: left;
+}
+
+#team .team-memember>li img {
+    border-radius: 50%;
+}
+
+#team .team-memember h4 {
+    text-transform: capitalize;
+    margin: 15px 0;
+    color: #000;
+}
+
+#team .team-memember p {
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 10px;
+    color: #777;
+    text-align: center;
+}
+
+.social>li {
+    display: inline-block;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.social>li a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: block;
+    background-color: #222;
+    color: #fff;
+    border-radius: 50%;
+}
+
+
+/*******************
+*    Products 区域
+*******************/
+
+#products li {
+    display: inline-block;
+}
+
+#products li a {
+    display: block;
+    padding: 50px 23px;
+}
+
+
+/*******************
+*    Contact 区域
+*******************/
+
+#contact {
+    background-color: #000;
+    background-image: url('./image/map-image.png');
+    background-position: center;
+    background-size: contain;
+    padding: 150px 0;
+}
+
+#contact h2 {
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+#contact p {
+    margin-top: 20px;
+    margin-bottom: 75px;
+    color: #777;
+}
+
+#contact h2,
+#contact p {
+    text-align: center;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    text-transform: uppercase;
+    color: #777;
+}
+
+input::::-webkit-input-placeholder,
+textarea::::-webkit-input-placeholder {
+    text-transform: uppercase;
+    color: #777;
+}
+
+.left-form,
+.right-form {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 50%;
+    float: left;
+}
+
+#form-info {
+    padding-right: 20px;
+}
+
+#form-info input {
+    display: block;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+#form-message {
+    margin-bottom: 25px;
+}
+
+#form-message textarea {
+    height: 224px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+#contact .sumbit {
+    display: inherit;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 auto;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 40px;
+    background-color: #fed136;
+    border: 1px solid #fed136;
+    border-radius: 5px;
+}
+
+
+/*******************
+*    Footer 区域
+*******************/
+
+footer {
+    padding: 25px 0;
+    text-align: center;
+}
+
+footer .copyright span {
+    line-height: 40px;
+    color: #333;
+}
+
+footer .copyright,
+footer ul.social,
+footer .tos {
+    box-sizing: border-box;
+    width: 33.33333333%;
+    float: left;
+}
+
+footer .tos a {
+    line-height: 40px;
+    color: green;
+    padding: 0 5px;
+    text-transform: capitalize;
+}
+
+footer .tos a:hover {
+    text-decoration: underline;
+}

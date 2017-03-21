@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>对象/原型</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+ <style>
+    .box{
+         text-align:center;
+         color:white;
+    }
+    .button{
+         position:fixed;
+         right: 0px;
+         bottom:100px;
+    }
+    .content {
+         height: 2000px;
+    }
+    </style>
+</head>
+<body>
+    <div class="box">
+         <div class="content"></div>
+    </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    /*1. `ct`属性，GoTop 对应的 DOM 元素的容器
+    2.  `target`属性， GoTop 对应的 DOM 元素
+    3.  `bindEvent` 方法， 用于绑定事件
+    4 `createNode` 方法， 用于在容器内创建节点*/
+
+
+function GoTop($container) {
+    this.ct = $container || $('body');
+    this.target = $('<button class="button">Back to top</button>');
+    if( typeof this.bindEvent != 'function') {
+        GoTop.prototype.bindEvent = function() {
+      console.log("111");
+            var btn = this.target;
+            btn.on('click',function(){
+                $(window).scrollTop(0);
+            });
+            $(window).on('scroll', function(){
+        
+                var _scrollTop = $(this).scrollTop();
+        console.log(_scrollTop);
+                if( _scrollTop > 100 ) {
+                    btn.show();
+                }else{
+                    btn.hide();
+                }
+            });
+        };
+    }
+    
+    if( typeof createNode != 'function' ) {
+        GoTop.prototype.createNode = function(){
+      console.log("222");
+            this.ct.append(this.target);
+            this.target.hide();
+        };
+    }
+    this.createNode();
+    this.bindEvent();
+}
+
+var top = new GoTop();
+
+</script>
+    
+</body>
+</html>

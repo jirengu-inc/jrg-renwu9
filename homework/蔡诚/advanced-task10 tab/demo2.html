@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .clearfix {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .modul {
+            display: none;
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .modul .box {
+            background-color: #fff;
+            width: 300px;
+            border: 1px solid #ccc;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -85px;
+            margin-left: -150px;
+            z-index: 2
+        }
+        
+        .modul .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: gray;
+            opacity: 0.5;
+            z-index: 1
+        }
+        
+        .box>h3 {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            margin: 0px;
+        }
+        
+        .box>h3 .btn-back {
+            float: right;
+            font-weight: 400;
+            cursor: pointer
+        }
+        
+        .box .box-content {
+            padding: 10px;
+            margin: 0px;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .box .box-content>li {
+            padding: 6px 0px 2px 0px;
+        }
+        
+        .box .btn-choice>button {
+            margin: 10px;
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn">点我</button>
+    <div class='modul'>
+        <div class='cover'></div>
+        <div class="box">
+            <h3>我是标题<span class='btn-back'>x</span>
+            </h3>
+            <ul class="box-content">
+                <li>我是内容</li>
+                <li>我是内容</li>
+            </ul>
+            <div class="btn-choice clearfix">
+                <button>确定</button>
+                <button class="btn-cancel">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn = $('.btn'),
+            modul = $('.modul'),
+            btnBack = $('.box .btn-back'),
+            cover = $('.modul .cover'),
+            btnCancel = $('.btn-cancel')
+        btn.addEventListener("click", function(e) {
+            e.stopPropagation()
+            modul.classList.add('active')
+            console.log('active')
+        })
+        btnBack.addEventListener('click', function(e) {
+            e.stopPropagation()
+            modul.classList.remove('active')
+            console.log("don't active")
+        })
+        cover.addEventListener('click', function() {
+            modul.classList.remove('active')
+            console.log("don't active")
+        })
+        btnCancel.addEventListener('click', function() {
+            modul.classList.remove('active')
+            console.log("don't active")
+        })
+
+        function $(id) {
+            return document.querySelector(id)
+        }
+
+        function $$(cls) {
+            return document.querySelectorAll(cls)
+        }
+    </script>
+</body>
+
+</html>
