@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>postMessage</title>
+    <style>
+        html,body{
+            margin: 0px;
+        }
+        #input{
+            margin: 20px;
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+    <input id="input" type="text" placeholder="http://b.zyn.com:8080/b.html">
+</body>
+<script>
+    var input = document.querySelector('#input');
+    input.addEventListener('input',function(){
+        window.parent.postMessage(this.value,'*')
+    })
+   window.addEventListener('message',function(e){
+       input.value= e.data
+       console.log(e.data);
+   })
+</script>
+</html>

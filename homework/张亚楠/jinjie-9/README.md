@@ -1,0 +1,7 @@
+addEvent
+
+如果是支持标准浏览器事件addEventListener则使用该函数添加监听事件，否则是否支持IE的attachEvent事件如果支持则使用该函数，两者都不支持则return退出。
+
+removeEvent
+
+如果是支持标准浏览器事件removeEventListener则使用该函数移除监听事件，否则是否支持IE的datachEvent事件如果支持则使用该函数，两者都不支持则return退出。

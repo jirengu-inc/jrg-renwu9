@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    ul{
+      padding-left: 0;
+    }
+    li{
+      list-style-type: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    .container{
+      width: 908px;
+      margin: 0 auto;
+    }
+    .list li{
+      float: left;
+      width:220px;
+      margin: 10px;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      position: relative;
+    }
+    .list img{
+      margin-left: 12px;
+    }
+    .list:after{
+      display: block;
+      clear: both;
+      content: '';
+    }
+    .list li:nth-child(n+7) img{
+      margin: 33px 0px 33px 45px;
+    }
+    .list li:hover .hidden{
+      opacity: 1;
+    }
+    .hidden{
+      width: 100%;
+      height: 100%;
+      top:0;
+      left:0;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index:2;
+      opacity:0;
+      transition:0.5s;
+    }
+    .hidden a{
+      color:#f00;
+      display: block;
+      border-radius: 5px;
+      margin: 130px auto;
+      width: 64px;
+      padding:15px 25px;
+      border: 1px solid #f00;
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: 0.2s;
+    }
+    .hidden a:hover{
+      color: #fff;
+      background-color: rgba(255, 0, 0, 0.8);
+    }
+    .container h2,.container>a{
+      margin-left: 10px;
+    }
+    #btn{
+      display: block;
+      width: 32px;
+      padding: 12px 23px;
+      border: 1px solid #f00;
+      color:#f00;
+      border-radius: 8px;
+      transition: 0.2s;
+      background-color: #fff;
+    }
+    #btn:hover{
+      color:#fff;
+      background-color: #f00;
+    }
+  </style>
+  <div class="container">
+    <h2>珠宝首饰</h2>
+    <ul class="list">
+      <li>
+        <img src="./image/imageA.jpg">
+        <p>珠宝品牌</p>
+        <span>￥6666</span>
+        <div class="hidden">
+          <a href="#">立刻抢购</a>
+        </div>
+      </li>
+      <li>
+        <img src="./image/imageB.jpg">
+        <p>珠宝品牌</p>
+        <span>￥6666</span>
+        <div class="hidden">
+          <a href="#">立刻抢购</a>
+        </div>
+      </li>
+      <li>
+        <img src="./image/imageA.jpg">
+        <p>珠宝品牌</p>
+        <span>￥6666</span>
+        <div class="hidden">
+          <a href="#">立刻抢购</a>
+        </div>
+      </li>
+      <li>
+        <img src="./image/imageC.jpg">
+        <p>珠宝品牌</p>
+        <span>￥6666</span>
+        <div class="hidden">
+          <a href="#">立刻抢购</a>
+        </div>
+      </li>
+      <li>
+        <img src="./image/imageB.jpg">
+        <p>珠宝品牌</p>
+        <span>￥6666</span>
+        <div class="hidden">
+          <a href="#">立刻抢购</a>
+        </div>
+      </li>
+      <li>
+        <img src="./image/imageA.jpg">
+        <p>珠宝品牌</p>
+        <span>￥6666</span>
+        <div class="hidden">
+          <a href="#">立刻抢购</a>
+        </div>
+      </li>
+    </ul>
+    <a id='btn' href='javascript:void 0'>更多</a>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+  <script>
+    var products = [
+      {
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金手 猴哥款',
+        price: '￥405.00'
+      },{
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金转运珠 猴哥款',
+        price: '￥100.00'
+      },{
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金手链 3D猴哥款',
+        price: '￥45.00'
+      }
+    ];
+    var html='';
+    for(var i=0;i<products.length;i++){
+      html=html+'<li><img src="'+products[i]['img']+'"><p>'+products[i]['name']+'</p><span>'+products[i]['price']+'</span>'+
+      '<div class="hidden"><a href="#">立即抢购</a></div></li>'
+    }
+    var btn=$('#btn');
+    var list=$('.list')
+    btn.on('click',function(){
+      list.append(html);
+    })
+
+  </script>
+</body>
+</html>
