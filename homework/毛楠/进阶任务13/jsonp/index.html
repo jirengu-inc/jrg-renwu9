@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Document</title>
+</head>
+<body>
+    <h1>你所在的城市是：</h1>
+     <button class="change">获取城市</button>
+</body>
+<script>
+
+ document.querySelector('.change').addEventListener('click', function(){
+    var script = document.createElement('script');
+    script.src = 'http://api.jirengu.com/city.php?callback=getCity';
+    document.head.appendChild(script);
+    document.head.removeChild(script);
+  })
+
+  function getCity(city){
+      var nn=city;
+    Console.log(typeof nn)
+  }
+</script>
+
+
+
+
+</html>
