@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task15-2</title>
+</head>
+
+<body>
+    <style>
+        .list {
+            padding-left: 0px;
+            margin-bottom: 30px;
+        }
+        
+        li {
+            list-style-type: none;
+            margin-bottom: 8px;
+            padding: 15px 30px;
+            border: 1px solid #0f0;
+            transition: 0.2s;
+        }
+        
+        li:hover {
+            background-color: #0f0;
+        }
+        
+        .btn {
+            display: block;
+            padding: 15px 20px;
+            margin: 0 auto;
+            width: 64px;
+            text-decoration: none;
+            border: 1px solid #f00;
+            border-radius: 5px;
+            color: #222;
+            transition: 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #f00;
+            color: #fff;
+        }
+    </style>
+    <ul class="list">
+        <li>内容1</li>
+        <li>内容2</li>
+    </ul>
+    <a class="btn" href="javascript:void 0">更多信息</a>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        var index = 3
+        var $btn = $('.btn')
+        var isDataArrive = true
+        $btn.click(function() {
+            if (isDataArrive !== true) {
+                return 0
+            }
+            isDataArrive = false
+            $.ajax({
+                type: 'get',
+                url: '/content',
+                data: {
+                    length: 5,
+                    index: index
+                }
+            }).done(function(ret) {
+                isDataArrive = true
+                index += 5
+                render(ret)
+            }).fail(function() {
+                console.log('error')
+                isDataArrive = true
+            })
+        })
+
+        function render(ret) {
+            if (typeof ret === 'string') {
+                ret = JSON.parse(ret)
+            }
+            $.each(ret, function(inx, val) {
+                var html = '<li>内容' + val + '</li>'
+                $('.list').append(html)
+            })
+        }
+    </script>
+</body>
+
+</html>
