@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        .list {
+            padding-left: 0;
+            width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .list li {
+            list-style-type: none;
+        }
+        
+        .list li:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .list img {
+            float: left;
+            width: 65px;
+            height: 65px;
+            margin-right: 20px;
+        }
+        
+        .list h3 {
+            margin-bottom: 0px;
+        }
+        
+        .list p {
+            float: left
+        }
+        
+        .loadMore {
+            height: 5px;
+            width: 50px;
+            margin: 0 auto 200px auto;
+        }
+    </style>
+    <ul class='list'>
+        <li>
+            <img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/b/b3/Th143Cover2.jpg/250px-Th143Cover2.jpg">
+            <h3>美军多次提出南海自由航行 被特朗普政府压制</h3>
+            <p>美军多次提出南海自由航行 被特朗普政府压制</p>
+        </li>
+        <li>
+            <img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/8/88/Th075Cover.jpg/250px-Th075Cover.jpg">
+            <h3>国民党民调：65%民众不满蔡英文 30%支持罢免她</h3>
+            <p>国民党民调：65%民众不满蔡英文 30%支持罢免她</p>
+        </li>
+        <li>
+            <img src='./blank.jpg' data-src='https://static.mengniang.org/common/thumb/6/67/Th11Cover.jpg/250px-Th11Cover.jpg'>
+            <h3>包头居民楼爆炸救援现场：深夜又挖出1名遇难者</h3>
+            <p>包头居民楼爆炸救援现场：深夜又挖出1名遇难者</p>
+        </li>
+    </ul>
+    <p class="loadMore"></p>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        exchangeUrl($('.list img'))
+
+        function exchangeUrl($node) {
+            $node.each(function(index) {
+                var imgSrc = this.getAttribute('data-src')
+                this.setAttribute('src', imgSrc)
+            })
+        }
+        $(document).ready(function() {
+            var $window = $(window),
+                $loadMore = $('.loadMore'),
+                index = 0,
+                isDataArrive = true,
+                stackOverflow = 0,
+                windowHeight = $(window).height()
+            if (windowHeight > 270) {
+                ajaxGet('/dalaynews', {
+                    length: 3,
+                    index: index
+                })
+                if (windowHeight > 600) {
+                    ajaxGet('/dalaynews', {
+                        length: 3,
+                        index: index
+                    })
+                }
+            }
+
+            $window.on('scroll', isVisible)
+
+            function isVisible() {
+                if (isDataArrive !== true) {
+                    return 0
+                }
+                var windowHeight = $window.height(),
+                    scrollTop = $window.scrollTop(),
+                    objHeight = $loadMore.outerHeight(),
+                    objOffset = $loadMore.offset().top + 200
+                if (objOffset < windowHeight + scrollTop && objOffset > scrollTop + objHeight) {
+                    ajaxGet('/dalaynews', {
+                        length: 3,
+                        index: index
+                    })
+                }
+            }
+
+            function ajaxGet(url, data) {
+                isDataArrive = false
+                $.get(url, data, function(ret) {
+                        render(ret)
+                        index += 3
+                        isDataArrive = true
+                        exchangeUrl($('.list img:gt(-4)'))
+                    })
+                    .fail(function() {
+                        isDataArrive = true
+                        console.log('internal error')
+                    })
+            }
+
+            function render(ret) {
+                var result = JSON.parse(ret)
+                $.each(result, function(inx, ele) {
+                    if (result[inx] === null) {
+                        $loadMore.text('到底了')
+                        $loadMore.addClass('loadOver')
+                        $window.off('scroll', isVisible)
+                        return 0
+                    }
+
+                    var html = '<li><img src="./blank.jpg" data-src=' + result[inx].image + '>'
+                    html += '<h3>' + result[inx].title + '</h3>'
+                    html += '<p>' + result[inx].brif + '</h3></li>'
+                    $('.list').append(html)
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>
