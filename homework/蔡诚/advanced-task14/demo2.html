@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+        .ct>li {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 4px;
+        }
+        
+        .text {
+            background-color: yellowgreen;
+        }
+        
+        .back-top {
+            background: darkslategrey;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>内容1</li>
+        <li>内容2</li>
+        <li>内容3</li>
+        <li>内容4</li>
+    </ul>
+    <div class="text"></div>
+    <button class="btn">点我</button>
+    <div class="back-top">返回顶层</div>
+</body>
+<script src='./jquery-3.2.0.js'></script>
+<script>
+    $('.ct').on('click', 'li', function() {
+        var str = $(this).html()
+        $('.text').html(str)
+    })
+    $('.ct').on('click.console', 'li', function() { //命名空间
+        var str = $(this).html()
+        console.log(str)
+    })
+    $('.ct').off('click.console')
+    $('.btn').on('click', function() {
+        var index = $('.ct>li').length
+        console.log(index)
+        $('.ct').append('<li>内容' + (index + 1) + '</li>')
+    })
+    var $window = $(window)
+    $window.on('scroll', function() {
+        if ($window.scrollTop() > 100) {
+            $('.back-top').css('display', 'block')
+        } else {
+            $('.back-top').css('display', 'none')
+        }
+    })
+    $('.back-top').on('click', function() {
+            $(window).scrollTop(0)
+        })
+        // $(window).on('resize', function() {
+        //     console.log($(window).width(), $(window).height())
+        // })
+</script>
+
+</html>
