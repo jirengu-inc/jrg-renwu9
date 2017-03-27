@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>news</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .news {
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .ct>li {
+            background-color: rgba(0, 220, 100, .6);
+            border-radius: 4px;
+            font-size: 16px;
+            padding: 10px;
+            margin-bottom: 10px;
+            text-align: left;
+            color: lightslategray;
+        }
+        
+        .ct .hover {
+            background-color: rgba(100, 190, 190, .8);
+        }
+        
+        .btn {
+            background-color: lightskyblue;
+            border-radius: 4px;
+            display: inline-block;
+            padding: 10px;
+            color: lightslategray;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="news">
+        <ul class='ct'>
+            <li>内容1</li>
+            <li>内容2</li>
+        </ul>
+        <div class='icon-loading'><img src='./5-121204193R0.gif' /></div>
+        <a class='btn' href="#">加载更多</a>
+    </div>
+
+
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var indexPage = 3
+        var isLoading = false
+        $('.icon-loading').hide()
+        $('.btn').on('click', function(e) {
+            e.preventDefault();
+            if (isLoading) {
+                return;
+            }
+            isLoading = true
+            $('.icon-loading').show()
+            $('.btn').hide()
+            $.get('/getInfo', {
+                start: indexPage,
+                len: 5
+            }).done(function(ret) {
+                if (ret.status === 0) {
+                    add(ret.info)
+                    isLoading = false
+                    indexPage += 5
+                    $('.icon-loading').hide()
+                    $('.btn').show()
+                } else {
+                    alert('获取出错')
+                }
+            }).fail(function() {
+                console.log('系统异常')
+            })
+        })
+
+        function add(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                $('.ct').append('<li>' + arr[i] + '</li>')
+            }
+        }
+
+        $('.ct').on('mouseover', 'li', function() {
+            $(this).addClass('hover')
+        })
+        $('.ct').on('mouseout', 'li', function() {
+            $(this).removeClass('hover')
+        })
+    </script>
+</body>
+
+</html>
