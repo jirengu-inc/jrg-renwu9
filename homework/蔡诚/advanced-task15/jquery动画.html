@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+        p {
+            display: none;
+        }
+        
+        .list>li>h3 {
+            border: 1px solid red;
+        }
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lawngreen;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <p>asdf</p>
+    <button class="btn1">hide</btn>
+    <button class="btn2">show</btn>
+    <button class="btn3">toggle</button>
+    <button class="btn4">fade</button>
+    <button class="btn5">animate</button>
+    <button class="btn6">animate2</button>
+    <button class="btn7">stop</button>
+    <ul class="list">
+        <li>
+            <h3>标题1</h3>
+            <p>内容1</p>
+        </li>
+        <li>
+            <h3>标题2</h3>
+            <p>内容2</p>
+        </li>
+        <li>
+            <h3>标题3</h3>
+            <p>内容3</p>
+        </li>
+        <li>
+            <h3>标题4</h3>
+            <p>内容4</p>
+        </li>
+    </ul>
+    <div class="box"></div>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        $('.list>li').on('mouseover', function(e) {
+            $(this).children('p').slideDown(300)
+        })
+        $('.list>li').on('mouseout', function(e) {
+            $(this).children('p').slideUp(300)
+        })
+        $('.btn5').on('click', function() {
+            $('.box').animate({
+                width: '200px',
+                opacity: '.5',
+                left: '100px'
+            }, 1000, function() {
+                console.log(123)
+            })
+        });
+
+        var isMove = false;
+        $('.btn6').on('click', function() {
+            // $('.box').animate(pos[0], function() {
+            //     $('.box').animate(pos[1], function() {
+            //         $('.box').animate(pos[2], function() {
+            //             $('.box').animate(pos[3])
+            //         })
+            //     })
+            // })
+
+            if (!isMove) {
+                isMove = true;
+                $('.box').animate(pos[0]);
+                $('.box').animate(pos[1]);
+                $('.box').animate(pos[2]);
+                $('.box').animate(pos[3], function() {
+                    isMove = false;
+                });
+            }
+        })
+        $('.btn7').on('click', function() {
+            $('.box').stop(true, true)
+        })
+        var pos = [{
+            left: '100px',
+            top: '0px'
+        }, {
+            left: '100px',
+            top: '50px'
+        }, {
+            left: '0px',
+            top: '50px'
+        }, {
+            left: '0px',
+            top: '0px'
+        }]
+    </script>
+</body>
+
+</html>
