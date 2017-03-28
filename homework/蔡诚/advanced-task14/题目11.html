@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .tab {
+            margin-bottom: 50px;
+        }
+        
+        .content {
+            border: 1px solid #ccc;
+            border-bottom-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            width: 694px;
+            margin-left: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .tab-content {
+            margin-right: -20px;
+            margin-bottom: -20px;
+            display: block;
+        }
+        
+        .tab-content>li {
+            float: left;
+            width: 218px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            outline: 1px solid #ccc;
+            position: relative;
+        }
+        
+        .tab-content>li .cover {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 218px;
+            height: 254px;
+            background-color: dimgrey;
+            opacity: .8;
+        }
+        
+        .tab-content>li .cover a {
+            color: darkred;
+            padding: 5px;
+            background-color: white;
+            border-radius: 4px;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -42px;
+            margin-top: -21px;
+        }
+        
+        .tab-content>li p:first-of-type {
+            padding: 4px;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        
+        .tab-content>li .price {
+            padding-left: 4px;
+            color: darkred;
+            text-align: left;
+        }
+        
+        .tab-content>li img {
+            margin: 20px;
+        }
+        
+        .tab .add {
+            margin-left: 10px;
+            display: inline-block;
+            padding: 10px 20px;
+            border: 1px solid darkred;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class='content'>
+            <ul class="tab-content clearfix">
+                <li>
+                    <div class='cover'><a href="#">获取更多</a></div>
+                    <img src='http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg' />
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p class='price'>¥1699.00</p>
+                </li>
+                <li>
+                    <div class='cover'><a href="#">获取更多</a></div>
+                    <img src='http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg' />
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p class='price'>¥1699.00</p>
+                </li>
+                <li>
+                    <div class='cover'><a href="#">获取更多</a></div>
+                    <img src='http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg' />
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p class='price'>¥1699.00</p>
+                </li>
+                <li>
+                    <div class='cover'><a href="#">获取更多</a></div>
+                    <img src='http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg' />
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p class='price'>¥1699.00</p>
+                </li>
+                <li>
+                    <div class='cover'><a href="#">获取更多</a></div>
+                    <img src='http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg' />
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p class='price'>¥1699.00</p>
+                </li>
+                <li>
+                    <div class='cover'><a href="#">获取更多</a></div>
+                    <img src='http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg' />
+                    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+                    <p class='price'>¥1699.00</p>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="add">加载</a>
+    </div>
+
+    <script>
+        $('.tab-header>li').on('click', function(e) {
+            var index = $(e.target).index()
+            var $eTarget = $(e.target)
+            $eTarget.siblings().removeClass()
+            $eTarget.addClass('active')
+            console.log($eTarget)
+            $eTarget.parent().parent().find('.content .tab-content').removeClass('active')
+            $eTarget.parent().parent().find('.content .tab-content').eq(index).addClass('active')
+        })
+        $('.tab-content').on('mouseover', 'li', function() {
+            $(this).children('.cover').css('display', 'block')
+        })
+        $('.tab-content').on('mouseout', 'li', function() {
+            $(this).children('.cover').css('display', 'none')
+        })
+        var products = [{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手 猴哥款',
+            price: '￥405.00'
+        }, {
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金转运珠 猴哥款',
+            price: '￥100.00'
+        }, {
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手链 3D猴哥款',
+            price: '￥45.00'
+        }];
+
+        $('.tab .add').on('click', function() {
+            $.each(products, function(index, ele) {
+                var $li = $("<li><div class='cover'><a href='#'>获取更多</a></div>" +
+                    "<img src =" + ele.img + ">" +
+                    "<p>" + ele.name + "</p>" +
+                    "<p class='price'>" + ele.price + "</p></li>")
+                $('.tab-content').append($li)
+            })
+        })
+    </script>
+</body>
+
+</html>

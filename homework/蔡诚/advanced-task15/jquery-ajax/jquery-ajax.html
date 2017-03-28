@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+</head>
+
+<body>
+    <p id="target"></p>
+    <button class="load-more">点我</button>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        $('.load-more').on('click', function() {
+            $.ajax({
+                url: 'getInfo',
+                type: 'get',
+                dataType: 'text',
+                async: false,
+                data: data,
+                success: function(ret) {
+                    console.log('ajax')
+                    console.log(ret)
+                },
+                error: function() {
+                    console.log('error')
+                },
+                complete: function() {
+                        console.log('over')
+                    } //不论success还是error，最后都会执行这个
+            })
+        })
+    </script>
+</body>
+
+</html>
