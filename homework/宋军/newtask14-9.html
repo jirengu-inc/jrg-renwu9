@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<style>
+*{
+       padding: 0;
+       margin: 0;
+}
+.nav{
+    width: 200px;
+}
+ul li{
+    list-style: none;
+}
+.nav>li{
+    background: darkred;
+    border-bottom: 1px dotted red;
+    position: relative;
+}
+.sub-nav>ul{
+    display: none;
+    position: absolute;
+    left: 200px;
+    top: 0;
+    width: 200px;
+    border: 1px solid lightgrey;
+}
+.sub-nav.hover>ul{
+    display: block;
+}
+.sub-nav li{
+    width: 55px;
+    float: left;
+    padding: 10px 20px;
+}
+li a{
+    text-decoration: none;
+}
+.sub-nav>a{
+    color: white;
+    display: block;
+    height: 37px;
+    line-height: 37px;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+}
+.icon{
+    position: absolute;
+    right: 10px;
+    top: 18px;
+    color: white;
+}
+</style>
+</head>
+<body>
+<ul class="nav">
+    <li class="sub-nav">
+        <a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul>
+            <li><a href="#">翡翠</a></li>
+            <li><a href="#">玉石</a></li>
+            <li><a href="#">宝石</a></li>
+            <li><a href="#">水晶</a></li>
+            <li><a href="#">玛瑙</a></li>
+            <li><a href="#">珍珠</a></li>
+            <li><a href="#">钻石</a></li>
+            <li><a href="#">琥珀</a></li>
+            <li><a href="#">和田</a></li>
+            <li><a href="#">石英</a></li>
+        </ul>
+    </li>
+    <li class="sub-nav">
+        <a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul>
+            <li><a href="#">翡翠</a></li>
+            <li><a href="#">玉石</a></li>
+            <li><a href="#">宝石</a></li>
+            <li><a href="#">水晶</a></li>
+            <li><a href="#">玛瑙</a></li>
+            <li><a href="#">珍珠</a></li>
+        </ul>
+    </li>
+    <li class="sub-nav">
+        <a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul>
+            <li><a href="#">翡翠</a></li>
+            <li><a href="#">玉石</a></li>
+            <li><a href="#">宝石</a></li>
+            <li><a href="#">水晶</a></li>
+        </ul>
+    </li>
+    <li class="sub-nav">
+        <a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul>
+            <li><a href="#">翡翠</a></li>
+            <li><a href="#">玉石</a></li>
+            <li><a href="#">宝石</a></li>
+            <li><a href="#">水晶</a></li>
+            <li><a href="#">玛瑙</a></li>
+            <li><a href="#">珍珠</a></li>
+        </ul>
+    </li>
+    <li class="sub-nav">
+        <a href="#">珠宝玉器</a>
+        <span class="icon">></span>
+        <ul>
+            <li><a href="#">翡翠</a></li>
+            <li><a href="#">玉石</a></li>
+            <li><a href="#">宝石</a></li>
+            <li><a href="#">水晶</a></li>
+        </ul>
+    </li>
+</ul>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+
+$('.nav').on('mouseenter',  '.sub-nav', function(){
+    $(this).addClass('hover')
+})
+$('.nav').on('mouseleave', '.sub-nav', function(){
+    $(this).removeClass('hover')
+})
+
+</script>
+</body>
+</html>
