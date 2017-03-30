@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+    ul,li{
+        padding:0px;
+        margin: 0px;
+        list-style: none;
+    }
+    .wrap
+    {
+        width: 400px;
+        height: 200px;
+        overflow: hidden;
+        border:1px solid;
+        margin: 0 auto;
+    }
+    .ct-img-big 
+    {
+        width: 2400px;
+        height: 200px;
+        position: relative;
+        left:0px;
+        animation-name:animation;/*指定由@keyframes描述的关键帧名称。*/
+        animation-iteration-count:infinite;/*置动画重复次数， 可以指定infinite无限次重复动画*/
+        animation-duration: 18s;/*设置动画一个周期的时长。*/
+        animation-direction:alternate;/*设置动画在每次运行完后是反向运行还是重新回到开始位置重复运行。normal | reverse | alternate | alternate-reverse*/
+
+    }
+    .ct-img-big li
+    {
+        width:400px;
+        height: 200px;
+        float: left;
+        
+    }
+  
+    @keyframes animation/*关键帧*/
+    {
+        0%{left:0px;}
+        20%{left:-400px;}
+        40%{left:-800px;}
+        60%{left:-1200px;}
+        80%{left:-1600px;}
+        100%{left:-2000px;}
+    
+          
+
+    }
+</style>
+</head>
+<body>
+   
+        <div class="wrap">
+            <ul class="ct-img-big clear">
+                <li data-index=0  ><a href=""><img src="./img/1.png" alt=""></a></li>
+                <li data-index=1 ><a href=""><img src="./img/2.png" alt=""></a></li>
+                <li data-index=2 ><a href=""><img src="./img/3.png" alt=""></a></li>
+                <li data-index=3 ><a href=""><img src="./img/4.png" alt=""></a></li>
+                <li data-index=4 ><a href=""><img src="./img/5.png" alt=""></a></li>
+                <li data-index=5 ><a href=""><img src="./img/6.png" alt=""></a></li>
+            </ul>
+        </div>
+   
+</body>
+</html>
