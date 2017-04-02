@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TecentNews</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+            text-align: center;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .news-container {
+            margin: 0 auto;
+            width: 600px;
+        }
+        
+        .news-container>li {
+            margin-top: 42px;
+        }
+        
+        .news-container>li:first-of-type {
+            margin-top: 20px;
+        }
+        
+        .news-container>li:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .news-container>li img {
+            margin-left: 4px;
+            width: 160px;
+            border-radius: 4px;
+            float: left;
+        }
+        
+        .news-container>li .news-title {
+            font-size: 1.2em;
+            float: left;
+            padding-left: 20px;
+            padding-top: 24px;
+        }
+        
+        .news-container>li .news-brif {
+            font-size: 1em;
+            float: left;
+            padding-left: 20px;
+            margin-top: 30px;
+            color: #aaa;
+        }
+        
+        .load-more {
+            padding: 20px;
+        }
+        
+        .last-children {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            margin: 0 auto;
+            color: lightslategrey;
+            font-size: 1.4em;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="news-container">
+    </ul>
+    <img class="load-more" src='./5-121204193R0.gif' />
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        // $('button').on('click', function() {
+        //     $.get('/getNews', {
+        //         startIndex: 0,
+        //         length: 3
+        //     }).done(function(ret) {
+        //         console.log(ret);
+        //     });
+        // })
+        var $newsContainer = $('.news-container'),
+            $loadMore = $('.load-more'),
+            $window = $(window),
+            isOver = false,
+            isDataArrive = true
+        startIndex = 0
+        getNews() //先获取一部分新闻
+
+
+        $window.on('scroll', checkLoadMore) // 　滚动加载　
+
+
+        function checkLoadMore() {
+            if (isShow($loadMore) && !isOver && isDataArrive) {
+                getNews()
+            }
+        }
+
+        function getNews() {
+            isDataArrive = false
+            $.ajax({
+                url: '/getNews',
+                data: {
+                    'startIndex': startIndex,
+                },
+                dataType: 'json',
+                success: function(ret) {
+                    isDataArrive = true
+                    if (ret.status === 0) {
+                        console.log('get')
+                        startIndex += 3;
+                        console.log(ret)
+                        appendHtml(ret.data)
+                        checkLoadMore()
+                    } else {
+                        alert('fail to get data')
+                    }
+                },
+                error: function() {
+                    console.log('system error')
+                }
+            })
+
+        }
+
+        function appendHtml(news) {
+            if (news.length === 0) {
+                $loadMore.remove()
+                $newsContainer.append('<p class="last-children">没有了</p>')
+                isOver = true;
+            } else {
+                for (var i = 0; i < news.length; i++) {
+                    var newsBrif = news[i].brif,
+                        newsImg = news[i].img,
+                        newsLink = news[i].link,
+                        newsTitle = news[i].title
+                    var htmlItem = `
+				<li>
+				    <a href='${newsLink}'>
+					<img src= ${newsImg} alt='图片'/>
+					<p class='news-title'>${newsTitle}</p>
+					<p class='news-brif'>${newsBrif}</p>
+					</a>
+				</li>`
+                    $newsContainer.append(htmlItem)
+                }
+            }
+        }
+
+
+
+        function isShow($node) {
+            var offsetTop = $node.offset().top,
+                nodeHeight = $node.height(),
+                windowHeight = $(window).height(),
+                scrollTop = $(window).scrollTop()
+            if (windowHeight + scrollTop > offsetTop && offsetTop + nodeHeight > scrollTop) {
+                console.log('出现')
+                return true
+            } else {
+                console.log('消失')
+                return false
+            }
+        }
+    </script>
+</body>
+
+</html>
