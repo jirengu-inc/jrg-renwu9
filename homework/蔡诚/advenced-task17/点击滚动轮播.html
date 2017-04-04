@@ -169,7 +169,17 @@
                 playPre(-pageJump)
             }
         })
+        autoPlay()
 
+        function autoPlay() {
+            clock = setInterval(function() {
+                playNext(1)
+            }, 2000)
+        }
+
+        function stopAuto() {
+            clearInterval(clock)
+        }
 
         function playPre(n) {
             if (isAnimate) return
