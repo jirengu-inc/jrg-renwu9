@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>轮播</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .carousel {
+            top: 20px;
+            overflow: hidden;
+            width: 350px;
+            height: 210px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .carousel .container-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1400px;
+        }
+        
+        .carousel .container-img:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .container-img>li {
+            float: left;
+        }
+        
+        .carousel .container-img img {
+            width: 350px;
+            height: 210px;
+        }
+        
+        .button {
+            width: 28px;
+            height: 28px;
+            display: block;
+            border-radius: 14px;
+            background: #666;
+            text-align: center;
+            line-height: 28px;
+            color: lightgrey;
+            opacity: .8;
+        }
+        
+        .back {
+            position: absolute;
+            top: 50%;
+            left: 4px;
+            transform: translate(0, -50%)
+        }
+        
+        .forward {
+            position: absolute;
+            top: 50%;
+            right: 4px;
+            transform: translate(0, -50%)
+        }
+        
+        .carousel .bullet {
+            width: 112px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+        
+        .carousel .bullet:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .bullet>li {
+            width: 16px;
+            height: 8px;
+            border-radius: 6px;
+            background: slategrey;
+            float: left;
+            margin: 0 4px;
+            opacity: .6;
+        }
+        
+        .carousel .bullet .active {
+            background: lightgrey;
+            opacity: 1;
+        }
+    </style>
+
+    <body>
+        <div class='carousel'>
+            <ul class='container-img'>
+                <li data-index='0'>
+                    <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="1.jpg"></a>
+                </li>
+                <li data-index='1'>
+                    <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt="2.jpg"></a>
+                </li>
+                <li data-index='2'>
+                    <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt="3.jpg"></a>
+                </li>
+                <li data-index='3'>
+                    <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt="4.jpg"></a>
+                </li>
+            </ul>
+            <a href="#" class="button back">&lt;</a>
+            <a href="#" class="button forward">&gt;</a>
+            <ul class="bullet">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        let $btnBack = $('.back'),
+            $btnForward = $('.forward'),
+            $ctImg = $('.container-img'),
+            $bullet = $('.bullet'),
+            imgWidth = $('.carousel .container-img img').eq(0).width(),
+            imgLength = $ctImg.children().length,
+            currentIndex = 0,
+            isAnimate = false //避免重复点击
+
+        let $firstLiClone = $('.carousel .container-img>li').first().clone(),
+            $lastLiClone = $('.carousel .container-img>li').last().clone()
+
+        $ctImg.append($firstLiClone) //末尾放图一的克隆
+        $ctImg.prepend($lastLiClone) //开头放图四的克隆
+        $ctImg.css('left', -imgWidth)
+        $ctImg.css('width', imgWidth * $ctImg.children().length)
+
+        $btnBack.on('click', function() { //点击向后跳转
+            playPre(1)
+        })
+
+        $btnForward.on('click', function() { //点击向前跳转
+            playNext(1)
+        })
+        $bullet.on('click', 'li', function() {
+            let pageJump = $(this).index() - currentIndex //点击bullet时跳转的页数
+            console.log(pageJump)
+            if (pageJump > 0) {
+                playNext(pageJump)
+            } else if (pageJump < 0) {
+                playPre(-pageJump)
+            }
+        })
+
+
+        function playPre(n) {
+            if (isAnimate) return
+            isAnimate = true
+            let distanceJump = n * imgWidth
+            $ctImg.animate({
+                'left': '+=' + distanceJump
+            }, function() {
+                currentIndex -= n
+                if (currentIndex < 0) {
+                    $ctImg.css('left', -imgWidth * imgLength)
+                    currentIndex = imgLength - 1
+                }
+                console.log(currentIndex)
+                isAnimate = false
+                playBullet()
+            })
+        }
+
+        function playNext(n) {
+            if (isAnimate) return
+            isAnimate = true
+            let distanceJump = n * imgWidth
+            console.log(distanceJump)
+            $ctImg.animate({
+                'left': '-=' + distanceJump
+            }, function() {
+                currentIndex += n
+                if (currentIndex === imgLength) {
+                    $ctImg.css('left', -imgWidth)
+                    currentIndex = 0
+                }
+                console.log(currentIndex)
+                isAnimate = false
+                playBullet()
+            })
+        }
+
+        function playBullet() {
+            $bullet.children().removeClass('active').eq(currentIndex).addClass('active')
+        }
+    </script>
+</head>
+
+</html>
