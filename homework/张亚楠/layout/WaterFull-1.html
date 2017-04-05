@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>瀑布流布局</title>
+    <style>
+        .content{
+            position:relative;
+        }
+        .item{
+            position: absolute;
+            width:200px;
+            margin: 10px 0px 0px 10px;
+            transition:all 1s; /*渐变效果*/
+        }
+        .item img{
+            width:200px;
+        }
+      
+    </style> 
+</head>
+<body>
+    <div class="content">
+        <div class="item "><img src="./img/1.png" alt=""></div>
+        <div class="item "><img src="./img/2.png" alt=""></div>
+        <div class="item "><img src="./img/3.png" alt=""></div>
+        <div class="item "><img src="./img/4.png" alt=""></div>
+        <div class="item "><img src="./img/5.png" alt=""></div>
+        <div class="item "><img src="./img/6.png" alt=""></div>
+        <div class="item "><img src="./img/7.png" alt=""></div>
+        <div class="item "><img src="./img/8.png" alt=""></div>
+        <div class="item "><img src="./img/9.png" alt=""></div>
+        <div class="item "><img src="./img/10.png" alt=""></div>
+        <div class="item "><img src="./img/11.png" alt=""></div>
+        <div class="item "><img src="./img/12.png" alt=""></div>
+        <div class="item "><img src="./img/13.png" alt=""></div>
+        <div class="item "><img src="./img/14.png" alt=""></div>
+        <div class="item "><img src="./img/15.png" alt=""></div>
+        <div class="item "><img src="./img/16.png" alt=""></div>
+        <div class="item "><img src="./img/17.png" alt=""></div>
+        <div class="item "><img src="./img/18.png" alt=""></div>
+        <div class="item "><img src="./img/19.png" alt=""></div>
+        <div class="item "><img src="./img/20.png" alt=""></div>
+        <div class="item "><img src="./img/21.png" alt=""></div>
+        <div class="item "><img src="./img/22.png" alt=""></div>
+        <div class="item "><img src="./img/23.png" alt=""></div>
+        <div class="item "><img src="./img/24.png" alt=""></div>
+        <div class="item "><img src="./img/25.png" alt=""></div>
+        <div class="item "><img src="./img/26.png" alt=""></div>
+        <div class="item "><img src="./img/27.png" alt=""></div>
+        <div class="item "><img src="./img/28.png" alt=""></div>
+        
+    </div>
+    
+</body> 
+<script src="jquery-3.2.0.min.js"></script>
+<script>
+        //     waterFull();//开始先布局；
+        //     $(window).resize(function(){//当窗口改变大小时再重现布局
+        //         waterFull()
+        //     })
+        //  function waterFull(){
+        //         var nodeWidth =$('.item').width();//元素宽度
+        //         var colLength =parseInt($('.content').width()/nodeWidth)//一排放多少个（取整）
+        //         var itemArr = [];
+        //         for(var i=0; i<colLength;i++){//初始化
+        //         itemArr[i]=0;
+        //     }
+            
+        //     $('.item').each(function(){
+        //         var minValue = Math.min.apply(null,itemArr) //获取数组最小值es5
+        //         var minIndex = itemArr.indexOf(minValue)//获取最小值的下标；
+
+        //         $(this).css({
+        //             top:itemArr[minIndex],
+        //             left:$(this).outerWidth(true)*minIndex
+
+        //         })
+        //         itemArr[minIndex] += $(this).outerHeight(true);
+        //     })
+    var WaterFull=(function(){
+      function init(){
+             waterFull()
+            $(window).resize(function(){
+              waterFull()
+           })
+            $(window).on('scroll',Scroll)
+           
+
+         }
+    function waterFull(){
+                var nodeWidth =$('.item').width();//元素宽度
+                var num  =parseInt($('.content').width()/nodeWidth)//一排放多少个（取整）
+                var itemArr = [];//存放每列的高度；
+                for(var i=0; i<num;i++){//初始化
+                itemArr[i]=0;//目前每列高度为0；
+            }
+            
+            $('.item').each(function(){//循环所有图片
+                var minValue = Math.min.apply(null,itemArr) //获取数组最小值（第一次就是数组的第一项0；）
+                var minIndex = itemArr.indexOf(minValue)//获取最小值的下标；
+
+                $(this).css({//通过改变top left ;放入图片的位置；
+                    top:itemArr[minIndex],
+                    left:$(this).outerWidth(true)*minIndex
+
+                })
+                itemArr[minIndex] += $(this).outerHeight(true);//更改添加后列的高度
+            })
+
+     }  
+     function Scroll(){
+          var dataInt = {
+            'data':[{'src':'1.png'},{'src':'2.png'},{'src':'3.png'},{'src':'4.png'},{'src':'5.png'},{'src':'6.png'},{'src':'7.png'},
+            {'src':'8.png'},{'src':'9.png'},{'src':'10.png'},{'src':'11.png'},{'src':'12.png'},{'src':'13.png'},{'src':'14.png'}]
+            }
+          var isArrive= false;//防止多次滚动重复数据
+              if(checkScroll() && !isArrive){
+                  var oParent = document.getElementsByClassName('content')[0];
+                  for(var i =0;i<dataInt.data.length;i++){
+                      isArrive=true;
+                      var oDiv =document.createElement('div');//添加元素节点
+                      oDiv.className ='item';
+                      oDiv.innerHTML ='<img src="./img/'+dataInt.data[i].src+'">'
+                      oParent.appendChild(oDiv);                    
+                  }
+                  isArrive = false;
+                  waterFull()
+              }
+          } 
+
+     function checkScroll(){
+             var   oParent = document.getElementsByClassName('content')[0];
+	         var   aDiv =oParent.getElementsByClassName('item');
+             var   lastPinH=aDiv[aDiv.length-1].offsetTop+Math.floor(aDiv[aDiv.length-1].offsetHeight/2); 
+             //创建【触发添加块框函数waterfall()】的高度：最后一个块框的距离网页顶部+自身高的一半(实现未滚到底就开始加载)
+             var   scrollTop=$(window).scrollTop();//滚动高度
+             var   winndowHeight=$(window).height(); //页面高度
+             return   (lastPinH<scrollTop+winndowHeight)? true : false ; //到达指定高度后 返回true，触发waterfall()函数
+        }
+     return {
+              init:init
+          }
+     })()
+     
+     WaterFull.init();
+
+    
+
+     
+   
+    
+</script>   
+</html>

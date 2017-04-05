@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>木桶布局</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        .img-preview{
+            width:1000px;
+            margin: 0 auto;
+
+        }
+        .img-row{
+            margin-block-start: 8px;
+        }
+        .img-row:after{
+            content:'';
+            display: block;
+            clear:both;
+        }
+        .img-box{
+            float:left;
+        }
+       .img-line .img-box:first-child{
+           padding-left: 0px;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="img-preview"></div>
+</body>
+<script src="jquery-3.2.0.min.js"></script>
+<script>
+             
+            function Barrel($ct){
+                this.$ct = $ct;//保存参数；
+                this.rowList =[];//创建一个空数组，装那img的宽度；
+                //this.baseHeight=200;//假设高度200；
+                this.loadImg();//开始加载图片；
+                
+            }
+
+            Barrel.prototype = {
+
+
+                loadImg:function(){//构建url就是一个接口；也可以是ajax;
+                  var _this = this //保存作用于的this
+                  var imgUrls = this.getImgUrls(40);//如果是ajax是不可能根据图片地址获取他的宽高的
+
+                 $.each(imgUrls,function(idx,url){//所以循环这个数组，
+                      var  img = new Image();//创建一个图片对象；
+                      img.src =url;
+                      img.onload =function(){
+                        //   var originWidth = img.width,
+                        //       originHeight=img.height,
+                        //       ratio = originWidth/originHeight;
+
+                          var imgInfo ={
+                              target:$(img),//哪一张图片
+                              width:200*(img.width/img.height),//  x/200=img.width/img.height
+                              height:200//高度设为200；
+
+                          }
+                          _this.render(imgInfo);
+                      }
+                  })
+
+               },
+               render:function(imgInfo){
+                      var _this =this;
+                      var rowList = this.rowList;
+                      var clientWidth =  this.$ct.width()//容器的宽度；
+                      var rowWidth = 0;//传入img的宽度和；
+                      var lastImgInfo = imgInfo; //最后的一张图；
+                      var newRowHeight =0;//拉伸后的高度；
+                      this.rowList.push(imgInfo);//把imgInfo push到空数组里
+
+                     $.each(rowList,function(idx,imgInfo){//遍历数组
+                           rowWidth = rowWidth+imgInfo.width; //累加宽度；
+                           
+
+                      
+                      if(rowWidth>clientWidth){//如果超出容器宽；需要吧没超出的渲染出来，把超出的拿掉；
+                          rowList.pop();//拿出最后一个img
+                          rowWidth = rowWidth-lastImgInfo.width//目前每行的宽度；
+                          newRowHeight = clientWidth*200/rowWidth//拉伸后的高度   rowWidth/200 = clientWidth/x
+                          _this.createRow(newRowHeight);//摆放能放入的图片；
+                          _this.rowList = [];//摆放完成后，在清空刚才的数组；
+                          _this.rowList.push(lastImgInfo)
+                           console.log(2);
+
+                      }
+                    })
+
+
+               },
+                createRow:function(newRowHeight){
+                    console.log('createRow');
+                    var  $rowCt =$('<div class="img-row"></div>');//创建一行；
+                    $.each(this.rowList,function(idx,imgInfo){
+                        var $imgCt = $('<div class="img-box"></div>'),//图片包裹容器；
+                            $img =imgInfo.target;//拿到 target那张图
+                            $img.height(newRowHeight);
+                            $imgCt.append($img);
+                            $rowCt.append($imgCt);
+                    })
+                    console.log(this.$ct);
+                    this.$ct.append($rowCt);
+
+               },
+
+               getImgUrls:function(num){//生成随机图片
+                    var color, width, height, urls =[];
+                    for(var i=0;i<num; i++){
+                            color = Math.random().toString(16).substring(2,8);
+                            width = Math.floor(Math.random()* 100 + 50);
+                            height = Math.floor(Math.random()* 30 + 50);
+                            urls.push("http://placehold.it/"+ width +"x"+ height +"/"+ color +"/fff");
+                        }
+                        return  urls;
+                    }
+
+            }
+
+
+            var barrel = new Barrel($('.img-preview'))
+</script>
+</html>
