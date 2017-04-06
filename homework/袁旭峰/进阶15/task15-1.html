@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task15-1</title>
+</head>
+
+<body>
+    <style>
+        .btn {
+            display: block;
+            padding: 10px 20px;
+            border: 1px solid #f00;
+            border-radius: 3px;
+            width: 100px;
+            height: 20px;
+            background-color: #fff;
+            text-decoration: none;
+            color: #222;
+        }
+        
+        .div {
+            width: 220px;
+            height: 220px;
+            border: 1px solid #f00;
+        }
+        
+        .fixed {
+            position: fixed;
+            top: 0px;
+        }
+        
+        .blank {
+            height: 2000px;
+        }
+    </style>
+    <div>
+        <p>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</p>
+        <a href="javascript:void 0" class="btn">changeColor</a>
+        <p>当窗口滚动时，获取垂直滚动距离</p>
+        <button class='scroll-event'>监听滚动</button>
+        <button class="remove-scroll">去除监听</button>
+        <p class='float'>距离文档顶部的距离 : <span class="distance">0</span>px</p>
+        <p>当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</p>
+        <div class="div"></div>
+        <p>
+            当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+        </p>
+        <p>当选择 select 后，获取用户选择的内容</p>
+        <form>
+            <span>input:</span>
+            <input class="input" type="text">
+            <span>select:</span>
+            <select class="select" class="select">
+                <option value="Monday" selected='selected'>Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thurday</option>
+            </select>
+        </form>
+    </div>
+    <div class="blank"></div>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        function changeColorTo(ele, bgcolor1, bgcolor2) {
+            ele.animate({ //使用jquery-ui之前animate不支持背景颜色
+                backgroundColor: bgcolor1,
+                color: '#fff'
+            }, 1000).animate({
+                backgroundColor: bgcolor2
+            }, 1000)
+        }
+        $('.btn').click(function() {
+            changeColorTo($(this), '#f00', '#00f')
+        })
+
+        function scroll() {
+            var distance = $(this).scrollTop();
+            $('.distance').text(distance);
+            var $fixed = $('.float')
+            if (distance > 180) {
+                $fixed.addClass('fixed')
+            } else {
+                $fixed.removeClass('fixed')
+            }
+        }
+        $('.scroll-event').click(function() {
+            $(window).on('scroll', scroll)
+        })
+        $('.remove-scroll').click(function() {
+            $(window).off('scroll', scroll)
+        })
+
+
+
+        var $div = $('.div')
+        $div.mouseover(function() {
+            $div.css('background-color', '#f00')
+        })
+        $div.mouseleave(function() {
+            $div.css('background-color', '#fff')
+        })
+
+
+
+        var $input = $('.input')
+        $input.focusin(function() {
+            $input.css('borderColor', 'blue')
+        })
+        $input.on('input', function() {
+            var lowerCase = $input.val().toLowerCase()
+            $input.val(lowerCase)
+        })
+        $input.focusout(function() {
+            console.log($input.val())
+        })
+
+
+
+        $('.select').change(function() {
+            console.log($('.select option:selected').text())
+        })
+    </script>
+</body>
+
+</html>

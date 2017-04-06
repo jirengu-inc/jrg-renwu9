@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>蓝的每日工作</p>
+  <ul id='dailywork'>
+    <li>视察结界</li>
+    <li>去人里观察民情</li>
+    <li>访问白玉楼</li>
+  </ul>
+</body>
+<script>
+  var dailywork=document.querySelector('#dailywork');
+  window.addEventListener('message',function(e){
+    if(e.source!=window.parent){
+      return 0;
+    }
+    var data=dailywork.innerHTML;
+    window.parent.postMessage(data,'*');
+  })
+</script>
+</html>

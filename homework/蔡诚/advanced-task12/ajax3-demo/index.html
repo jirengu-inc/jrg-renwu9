@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+        
+        ul,
+        li {
+            list-style: none
+        }
+        
+        .ct {
+            margin: 10px
+        }
+        
+        .ct li {
+            text-align: left;
+            color: blanchedalmond;
+            padding: 10px;
+            background-color: lightsteelblue;
+            border-radius: 4px;
+            margin-bottom: 10px
+        }
+        
+        .ct li:hover {
+            background-color: dodgerblue;
+        }
+        
+        #load-more {
+            margin: 10px;
+            display: inline-block;
+            font-size: 14px;
+            padding: 4px;
+            color: lightcoral;
+        }
+        
+        #load-more .tooltip {
+            width: 0px;
+            height: 0px;
+            border-top: 10px solid lightcoral;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class='ct'>
+    </ul>
+    <a id="load-more" class="btn" href="javascript:void(0)">加载更多
+        <div class='tooltip'></div>
+    </a>
+
+
+
+    <script>
+        var ct = document.querySelector('.ct')
+        var btn = document.querySelector('.btn')
+        var pageCount = 0
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            var isDataArrive = true;
+            if (!isDataArrive) {
+                return;
+            }
+            ajax({
+                type: 'get',
+                url: '/news',
+                data: {
+                    index: pageCount,
+                    length: 5
+                },
+                dataType: 'json',
+                success: renderPage,
+                error: function() {
+                    console.log('出错了')
+                }
+            });
+
+            pageCount += 5
+        })
+
+
+        function renderPage(ret) {
+            var fragment = document.createDocumentFragment()
+            for (var i = 0; i < ret.length; i++) {
+                var li = document.createElement('li')
+                li.innerText = ret[i]
+                fragment.appendChild(li)
+            }
+            ct.appendChild(fragment)
+        }
+
+        function ajax(opt) {
+            opt.type = opt.type || 'get'
+            opt.url = opt.url || ''
+            opt.data = opt.data || {}
+            opt.dataType = opt.dataType || 'json'
+            opt.success = opt.success || function() {}
+            opt.error = opt.error || function() {}
+            var dataArr = []
+            for (var key in opt.data) {
+                dataArr.push(key + '=' + opt.data[key])
+            }
+            var dataStr = dataArr.join('&')
+
+            var xhr = new XMLHttpRequest;
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    isDataArrive = true
+                    console.log(isDataArrive)
+                    if (xhr.status === 200 || xhr.status === 304) {
+                        if (opt.dataType === 'text') {
+                            var result = xhr.responseText
+                            opt.success(result)
+                        }
+                        if (opt.dataType === 'json') {
+                            var result = JSON.parse(xhr.responseText)
+                            opt.success(result)
+                        }
+                    } else {
+                        opt.error()
+                    }
+                }
+            }
+
+            if (opt.type === 'get') {
+                xhr.open(opt.type, opt.url + '?' + dataStr, true)
+                xhr.send()
+            }
+            if (opt.type === 'post') {
+                xhr.open(opt.type, opt.url)
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+                xhr.send(dataStr)
+            }
+            isDataArrive = false
+            console.log(isDataArrive)
+        } //ajax
+    </script>
+</body>

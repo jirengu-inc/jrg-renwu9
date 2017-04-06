@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Carousel</title>
+</head>
+
+<body>
+    <style>
+        ul {
+            padding-left: 0;
+            margin: 0;
+        }
+        
+        li {
+            list-style-type: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .slideshow {
+            position: relative;
+            height: 250px;
+            width: 250px;
+            overflow: hidden;
+        }
+        
+        .img-list {
+            width: 1000px;
+            position: absolute;
+            left: -250px;
+            top: 0;
+        }
+        
+        .img-list:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .img-list li {
+            float: left;
+        }
+        
+        .img-list img {
+            width: 250px;
+            height: 250px;
+        }
+        
+        .btn {
+            display: block;
+            padding: 6px 11px;
+            position: absolute;
+            font-size: 1.5em;
+            top: 50%;
+            border-radius: 50%;
+            margin-top: -20px;
+            background-color: rgba(255, 255, 255, 0.4);
+            color: #fff;
+        }
+        
+        .prev {
+            left: 0;
+        }
+        
+        .next {
+            right: 0;
+        }
+        
+        .bullet {
+            width: 140px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -70px;
+        }
+        
+        .bullet:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .bullet li {
+            width: 25px;
+            height: 5px;
+            margin: 0 5px;
+            border-radius: 5px;
+            float: left;
+            background-color: #eee;
+        }
+        
+        #select {
+            background: #999;
+        }
+    </style>
+    <div class="slideshow">
+        <ul class="img-list">
+            <li>
+                <a href="javascript:void 0"><img src="./blank.jpg" data-src="https://static.mengniang.org/common/thumb/2/25/Th09cover.jpg/250px-Th09cover.jpg"></a>
+            </li>
+            <li>
+                <a href="javascript:void 0"><img src="./blank.jpg" data-src="https://static.mengniang.org/common/thumb/4/45/TH14Cover.jpg/250px-TH14Cover.jpg"></a>
+            </li>
+            <li>
+                <a href="javascript:void 0"><img src="./blank.jpg" data-src="https://static.mengniang.org/common/thumb/a/a0/Th10Cover.jpg/250px-Th10Cover.jpg"></a>
+            </li>
+            <li>
+                <a href="javascript:void 0"><img src="./blank.jpg" data-src="https://static.mengniang.org/common/thumb/d/d2/TH15Cover.jpg/250px-TH15Cover.jpg"></a>
+            </li>
+        </ul>
+        <a class="btn prev" href="javascript:void 0">&lt;</a>
+        <a class="btn next" href="javascript:void 0">&gt;</a>
+        <ul class="bullet">
+            <li id="select"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        exchangeUrl($('.img-list img'))
+
+        function exchangeUrl($node) {
+            $node.each(function(index) {
+                var imgSrc = this.getAttribute('data-src')
+                this.setAttribute('src', imgSrc)
+            })
+        }
+        var $beforeList = $('.img-list li:eq(0)'),
+            $afterList = $('.img-list li:eq(-1)'),
+            $imgList = $('.img-list')
+        $imgList.prepend($afterList.clone())
+        $imgList.append($beforeList.clone())
+        $imgList.width($imgList.width() + $afterList.outerWidth() * 2)
+        $(document).ready(function() {
+            var $next = $('.next')
+            var $prev = $('.prev')
+            var isAniComplete = true
+            $next.click(function() {
+                if (isAniComplete !== true) {
+                    return 0
+                }
+                next(1)
+            })
+            $prev.click(function() {
+                if (isAniComplete !== true) {
+                    return 0
+                }
+                prev(1)
+            })
+
+            function next(n) {
+                isAniComplete = false
+                var left = '-=' + 250 * n + 'px'
+                $imgList.animate({
+                    left: left
+                }, function() {
+                    isAniComplete = true
+                    if ($imgList.css('left') === '-1250px') {
+                        $imgList.css('left', '-250px')
+                    }
+                    var indexImg = Math.abs(parseInt($imgList.css('left'))) / 250 - 1
+                    bulletSwitch(indexImg)
+                })
+            }
+
+            function prev(n) {
+                isAniComplete = false
+                var left = '+=' + 250 * n + 'px'
+                $imgList.animate({
+                    left: left
+                }, function() {
+                    isAniComplete = true
+                    if ($imgList.css('left') === '0px') {
+                        $imgList.css('left', '-1000px')
+                    }
+                    var indexImg = Math.abs(parseInt($imgList.css('left'))) / 250 - 1
+                    bulletSwitch(indexImg)
+
+                })
+            }
+            var $bulletList = $('.bullet>li')
+            $bulletList.click(function() {
+                var bulletIndex = $(this).index()
+                var indexImg = Math.abs(parseInt($imgList.css('left'))) / 250 - 1
+                var result = bulletIndex - indexImg
+                if (result < 0) {
+                    prev(Math.abs(result))
+                } else if (result > 0) {
+                    next(result)
+                } else {
+                    return 0
+                }
+            })
+
+            function bulletSwitch(index) {
+                $($bulletList[index]).attr('id', 'select').siblings().removeAttr('id')
+            }
+        })
+    </script>
+</body>
+
+</html>

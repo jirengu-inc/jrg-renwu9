@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻实例</title>
+    <style>
+        html,body,h2,p,ul,li{
+            margin:0px;
+            padding:0px;
+            list-style: none;
+        }
+        a{
+            color:#333;
+            text-decoration:none;
+        }
+        .container{
+            width:600px;
+            margin:0 auto;
+        }
+        .item{
+            margin-top:20px;
+        }
+        .item:after{
+            content:'';
+            display: block;
+            clear:both;
+        }
+        .item .thumb img{
+            width:100px;
+            height:100px;
+        }
+        .item .thumb{
+            float:left;
+        }
+        .item h2{
+            margin-left:120px;
+            font-size:14px;
+          
+        }
+        .item p{
+            margin-left:120px;
+            font-size:14px;
+            margin-top:60px;
+            color:#ccc;
+        }
+        .load-more{
+             visibility: hidden;
+             margin: 3px;
+             height: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="news">
+            <!--<li>
+                <a>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <h2></h2>
+                    <p></p>
+                </a>
+            </li>
+          -->
+        </ul>
+        <p class="load-more">没有更多了</p>
+    </div>
+    
+    
+    <script src="jquery-3.2.0.min.js"></script>
+
+    <script>
+        var pageIndex =0;//每次后端给一页数据 一页数据加载2个新闻
+        var isOver = false;// 
+        var isNewsArrive = true ; //数据是否到了 给个锁
+        
+        getNews();
+        $(window).on('scroll',checkNews);
+
+        function checkNews(){
+            if(isShow($('.load-more')) && !isOver && isNewsArrive){
+                getNews();
+            }
+        }
+
+        function getNews(){
+            isNewsArrive = false;
+            
+            $.get('/getNews',{page:pageIndex}).done(function(ret){
+                isNewsArrive = true //数据到了
+                if(ret.status === 0){//与后端约定status===0时数据发送成功
+                    pageIndex++;
+                    appendHtml(ret.data)//ret.data获取后端retNews
+                    checkNews();
+
+                }else{
+                    alert('获取新闻出错')
+                }
+                
+            }).fail(function(){
+                alert('系统异常')
+            })
+        
+
+
+    }
+        
+      
+
+        function appendHtml(news){
+            if(news.length === 0){
+                isOver = true;
+                
+                $('.container').append('<p>没有更多了</p>')
+                return ;//数据全部加载完后
+            }
+            var  html ='';//接受到数据后拼接html
+            $.each(news,function(){
+                html +='<li class="item">';
+                html +=' <a href="'+this.link+'">';
+                html += '<div class="thumb">  <img src="'+ this.img +'" alt=""></div>';
+                html +='<h2>'+this.title+'</h2>';
+                html +=' <p>'+this.brif+'</P>';
+                html +='</a></li>';
+
+            })
+            $('.news').append(html);
+
+        }
+
+        function isShow($node){
+            var windowHeight = $(window).height(),
+                scrollTop = $(window).scrollTop(),
+                offsetTop = $node.offset().top,
+                nodeHeight = $node.outerHeight(true);
+                if(windowHeight+scrollTop>offsetTop && scrollTop< offsetTop+nodeHeight){
+                    return true
+                }else{
+                    return false
+                }
+        }
+      
+    </script>
+</body>
+</html>

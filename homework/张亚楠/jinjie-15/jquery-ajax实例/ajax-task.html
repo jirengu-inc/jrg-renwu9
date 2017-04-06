@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新闻实例</title>
+    <style>
+        html,body,h2,p,ul,li{
+            margin:0px;
+            padding:0px;
+            list-style: none;
+        }
+        a{
+            color:#333;
+            text-decoration:none;
+        }
+        .container{
+            width:600px;
+            margin:0 auto;
+        }
+        .item{
+            margin-top:20px;
+        }
+        .item:after{
+            content:'';
+            display: block;
+            clear:both;
+        }
+        .item .thumb img{
+            width:50px;
+            height: 50px;
+        }
+        .item .thumb{
+            float:left;
+        }
+        .item h2{
+            margin-left:60px;
+            font-size:14px;
+          
+        }
+        .item p{
+            margin-left:60px;
+            font-size:14px;
+            margin-top:10px;
+            color:#ccc;
+        }
+        .load-more{
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="news">
+            <li>
+                <a>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                    <h2></h2>
+                    <p></p>
+                </a>
+            </li>
+          
+        </ul>
+        <button class="load-more">加载更多</button>
+    </div>
+    
+    
+    <script src="jquery-3.2.0.min.js"></script>
+
+    <script>
+        var pageIndex =0;
+        $('.load-more').on('click',function(){
+            $.get('/getNews',{page:pageIndex}).done(function(ret){
+                if(ret.status === 0){
+                    pageIndex++;
+                    appendHtml(ret.data)
+
+                }else{
+                    alert('获取新闻出错')
+                }
+                
+            }).fail(function(){
+                alert('系统异常')
+            })
+        })
+
+
+        function appendHtml(news){
+            if(news.length === 0){
+                $('.load-more').remove();
+                $('.container').append('<p>没有更多了</p>')
+            }
+            var  html ='';
+            $.each(news,function(){
+                html +='<li class="item">';
+                html +=' <a href="'+this.link+'">';
+                html += '<div class="thumb">  <img src="'+ this.img +'" alt=""></div>';
+                html +='<h2>'+this.title+'</h2>';
+                html +=' <p>'+this.brif+'</P>';
+                html +='</a></li>';
+
+            })
+            $('.news').append(html);
+
+        }
+      
+    </script>
+</body>
+</html>

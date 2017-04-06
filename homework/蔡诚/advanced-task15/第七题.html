@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        .btn {
+            margin: 10px;
+        }
+        
+        .div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid green;
+            margin: 10px;
+        }
+        
+        .input {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class='btn'>点我</button>
+    <p>滑轮滚动距离<span class='scroll'></span>
+    </p>
+    <div class='div'></div>
+    <input class='input' type='text' />
+    <p></p>
+    <select name="user" class="choice">
+      <option value="opt1">opt1</option>
+      <option value="opt2">opt2</option>
+    </select>
+    <p>您选择的是：<span class="ret"></span></p>
+
+
+    <script>
+        $btn = $('.btn')
+        $div = $('.div')
+        $scroll = $('.scroll')
+        $input = $('.input')
+        $ret = $('.ret')
+        $choice = $('.choice')
+        $btn.on('click', function() {
+            $btn.css('background-color', 'red')
+            setTimeout(function() {
+                $btn.css('background-color', 'blue')
+            }, 1000)
+        })
+        $(window).on('scroll', function() {
+            $scroll.text($(window).scrollTop())
+        })
+        $div.on('mouseover', function() {
+            $div.css('background-color', 'red')
+        })
+        $div.on('mouseout', function() {
+            $div.css('background-color', 'white')
+        })
+        $input.on('focus', function() {
+            $input.css('outline-color', 'blue')
+        })
+        $input.on('keydown', function() {
+            $input.val($input.val().toUpperCase())
+        })
+        $input.on('keyup', function() {
+            $input.val($input.val().toUpperCase())
+        })
+        $input.on('blur', function() {
+            $input.css('outline', 'none')
+            console.log($input.val())
+        })
+        $choice.on("change", function() {
+            $ret.text($('.choice option:selected').text());
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jy</title>
+    <style>
+        .ct{
+            width:910px;
+            margin: auto;
+        }
+        .main{
+            float: left;
+            width:450px;
+            height: 300px;
+            border: 1px solid #ccc;
+        }
+        input{
+
+            margin: 20px;
+        }
+        iframe{
+            width:450px;
+            height: 300px;
+            border: 1px dashed #ccc;
+            float:right
+        }
+    </style>
+</head>
+<body>
+    <div class="ct">
+        <h1>使用降域实现跨域</h1>
+        <div class="main">
+            <input type="text" placeholder="http://a.zyn.com:8080/a.html">
+        </div>
+        <iframe src="http://b.zyn.com:8080/b.html" frameborder="0"></iframe>
+
+        <!--//此时是在a.zyn.com下请求b.zyn.com下的资源为跨域-->
+    </div>
+    
+    <script>
+        var input = document.querySelector('.main input');
+        input.addEventListener('input',function(){
+            window.frames[0].document.querySelector('input').value =this.value
+        })
+
+        document.domain ="zyn.com"//降域把a.zyn.com 降域为zyn.com 
+    </script>
+</body>
+</html>

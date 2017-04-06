@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>等高布局</title>
+    <style>
+        .wrap{
+            width:100%;
+            background:#ccc;
+            overflow: hidden;
+            min-width: 600px;
+           
+        }
+        .left{
+            width:300px;
+            float: left;
+            padding-bottom: 10000px;
+            margin-bottom: -10000px;
+            background: red;
+            text-align: center;
+            border: 1px saddlebrown solid;
+        }
+        .right{
+            width:300px;
+            float: right;
+            padding-bottom: 10000px;
+            margin-bottom: -10000px;
+            background:green;
+            text-align: center;
+            border: 1px saddlebrown solid;
+            
+            
+        }
+        h2{
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="left">
+           <img src="./img/1.png" alt="">
+           
+        </div>
+        <div class="right">
+           <img src="./img/2.png" alt="">
+        </div>
+    </div>
+   <button class="btn1">左侧栏增加高度</button>
+   <button class="btn2">右侧栏增加高度</button>
+    <script src="jquery-3.2.0.min.js"></script>
+    <script>
+          $('.btn1').on('click',function(){
+              $('.left').append('<img src="./img/1.png">')
+          })
+          $('.btn2').on('click',function(){
+              $('.right').append('<img src="./img/2.png">')
+          })
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <p>蓝的每日工作</p>
+  <ul id='dailyWork'name='work'>
+    <li>打理迷途之家</li>
+    <li>照顾紫</li>
+    <li>教导橙</li>
+  </ul>
+  <button id='domainBtn'>domain</button>
+  <iframe id='frame' src="http://yakumo.com:8080/b.html"></iframe>
+  <script>
+    document.domain='yakumo.com';
+    var dailywork=document.querySelector('#dailywork');
+    var domainBtn=document.querySelector('#domainBtn');
+    domainBtn.addEventListener('click',function(){
+      var frame=window.frames[0]['dailywork']
+      alert(frame.innerHTML);
+    })
+  </script>
+</body>
+</html>
