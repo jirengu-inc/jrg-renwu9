@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	*{
+      margin: 0;
+      padding: 0;
+    }
+    .container{
+      margin: 10px auto;
+      border: 1px solid red;
+      width: 650px;
+    }
+    .container:after{
+      display: block;
+      content: '';
+      clear: both;
+    }
+    li{
+      list-style: none;
+      padding: 10px 10px 0 10px;
+      margin: 10px 10px 0 10px;
+    }
+    .pic{
+      float:left;
+      margin-right: 10px;
+    }
+    img{
+      width: 120px;
+      height: 88px;
+    }
+    .para{
+      padding: 24px 0;
+    }
+    .para p{
+      color: grey;
+      white-space:nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    a{
+      text-decoration: none;
+      color: black;
+    }
+    .load{
+      margin: 3px;
+      visibility: hidden;
+    }
+
+	</style>
+</head>
+<body>
+
+<div class="container">
+  <ul>
+  </ul>
+  <button class="load"></button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ 	<script>
+
+var pageIndex=0,
+    isOver=false,
+    isNewsArrive=true
+
+getNews()
+$(window).on('scroll', checkNews)
+
+function checkNews(){
+  if(isShow($('.load')) && !isOver && isNewsArrive){
+    getNews()
+  }
+}
+
+function isShow($node){
+  var scrollTop=$(window).scrollTop(),
+      nodeHeight=$node.outerHeight(true),
+      offsetTop=$node.offset().top,
+      windowHeight=$(window).height()
+  if(scrollTop < nodeHeight + offsetTop && scrollTop + windowHeight > offsetTop){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function getNews(){
+  isNewsArrive=false
+    $.get('/getNews', {
+      index: pageIndex
+    }).done(function(result){
+      isNewsArrive=true
+      if(result.status===0){
+        pageIndex++
+        console.log(result.data)
+        appendHtml(result.data)
+        checkNews()
+      } else {
+          console.log('get no news!')
+        }
+    }).fail(function(){
+      console.log('system error')
+    })
+  }
+
+function appendHtml(rst){
+  if(rst.length===0){
+    isOver=true;
+    $('.container').append("<p>no more news!</p>")
+    return;
+  }
+    var html=""
+    $.each(rst, function(){
+      html+='<li>'
+      html+='<div class="pic">'
+      html+='<img src="'+this.img+'" alt="">'
+      html+='</div>'
+      html+='<div class="para">'
+      html+='<h3><a href="'+this.link+'">'+this.title+'</a></h3>'
+      html+='<p>'+this.content+'</p>'
+      html+='</div>'
+      html+='</li>'
+    })
+    $('ul').append(html)
+}
+
+	</script>
+</body>
+</html>
