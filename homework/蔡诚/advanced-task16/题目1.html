@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>news</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <style>
+        .box1 {
+            height: 600px;
+            background-color: beige;
+        }
+        
+        .box2 {
+            height: 600px;
+            background-color: beige;
+        }
+        
+        .text {
+            height: 50px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='box1'></div>
+    <p class='text'>Test</p>
+    <div class='box2'></div>
+</body>
+<script>
+    isVisible($('p'))
+    $(window).on('scroll', function() {
+        isVisible($('p'))
+    })
+
+    function isVisible($node) {
+        let windowHeight = $(window).height(),
+            scrollTop = $(window).scrollTop(),
+            offsetTop = $node.offset().top,
+            nodeHeight = $node.outerHeight()
+        if (scrollTop + windowHeight > offsetTop && offsetTop + nodeHeight > scrollTop) {
+            console.log('Visible')
+            return true;
+        } else {
+            console.log('Invisible')
+            return false
+        }
+    }
+</script>
+
+</html>

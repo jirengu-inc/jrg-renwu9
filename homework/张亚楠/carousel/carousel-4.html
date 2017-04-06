@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+    ul{
+        margin:0px;
+        padding:0px;
+        }
+    li{
+        list-style:none;
+        }
+    img{
+        vertical-align:top; 
+        border:0px;
+        }
+    body{
+        background:#666;
+        }
+    a{
+        text-decoration: none;
+    }     
+    #yd{
+        width:500px; 
+        margin:50px auto 0;
+        height:700px; 
+        background:#999; 
+        overflow:hidden;
+        }
+    .big{ 
+            width:500px;
+            height:500px;
+            position:relative;
+            background:#222; 
+            
+        
+    }
+    .big li{ 
+        width:500px;
+        height:500px; 
+        position:absolute;
+        top:0px;
+        left:0px; 
+        overflow:hidden;
+    
+        }
+
+    .cover{
+        width:250px; 
+        height:500px; 
+        position:absolute;
+        left:0px; 
+        top:0px;
+        opacity:0;
+        z-index:300000;
+
+    }    
+    .left{
+        left:0px;
+        top:0px; 
+        background:red;
+        }
+    .right{
+        left:250px; 
+        top:0px;
+        background:green; 
+        
+        }
+    .btn{
+        width:90px;
+        height:90px;
+        position:absolute;
+        opacity:0;
+        border-radius: 45px;
+        font-size:40px;
+        color:#fff;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+        line-height: 90px;
+        z-index: 300001;
+        top:50%;
+        margin-top: -45px;
+
+    } 
+    .btn:hover{
+        color:chocolate;
+    }    
+    .prev{ 
+    
+        left:0px;
+        }
+    .next{
+        
+        right:0px;
+        }
+    .small{
+        width:500px;
+        height:200px;
+        position:relative
+        }
+    .small ul{ 
+        width:500px;
+        height:200px;
+        position:absolute; 
+        left:0px; top:0px;}
+    .small li{
+        width:100px;
+        height:100px; 
+        float:left; 
+        padding:50px 0;
+        padding-left:50px; 
+        opacity:0.5;
+            }
+    .small li img{
+        height:100px;
+        width:100px;
+        }
+</style>
+
+</head>
+
+<body>
+<div id="yd">
+		<ul class="big">
+        	<div class="left cover"></div>
+            <div class="right cover"></div>
+            
+            <a class="next btn" href="javascript:;">&gt;</a>
+            <a class="prev btn" href="javascript:;">&lt;</a>
+            
+        	<li style="z-index:1"><img src="./img/1big.jpg"</li>
+            <li><img src="./img/2big.jpg"</li>
+            <li><img src="./img/3big.jpg"</li>
+            <li><img src="./img/4big.jpg"</li>
+            <li><img src="./img/5big.jpg"</li>
+            <li><img src="./img/6big.jpg"</li>
+        </ul>
+        <div  class="small">
+        	<ul>
+            	<li style="opacity:1"><img src="./img/1s.jpg"</li>
+                <li><img src="./img/2s.jpg"</li>
+                <li><img src="./img/3s.jpg"</li>
+                <li><img src="./img/4s.jpg"</li>
+                <li><img src="./img/5s.jpg"</li>
+                <li><img src="./img/6s.jpg"</li>
+            </ul>
+        </div>
+</div>
+<script>
+    function getStyle(obj,name)
+    {
+        if(obj.currentStyle)
+        {
+            return obj.currentStyle[name]
+        }else
+        {
+            return getComputedStyle(obj,false)[name]
+        }
+    }
+
+
+    function Move(obj,attr,iTarget)
+    {
+        clearInterval(obj.timer)
+        obj.timer=setInterval(function(){
+            var cur=0 
+            if(attr=='opacity')
+            {
+                cur=Math.round(parseFloat(getStyle(obj,attr))*100)
+            }else
+            {
+                cur=parseInt(getStyle(obj,attr))
+            
+            }
+            var speed =(iTarget-cur)/6
+            speed=speed>0?Math.ceil(speed):Math.floor(speed)
+            if(cur==iTarget)
+            {
+                clearInterval(obj.timer)
+            }else
+            {
+                if(attr=='opacity')
+                {
+                    obj.style.filter='alpha(opacity:'+(cur+speed)+')'
+                    obj.style.opacity=(cur+speed)/100
+                    
+                    
+                    
+                }else{
+                    
+                obj.style[attr]=cur+speed+'px'
+                }
+            }
+            
+        },30)
+    }
+  
+ 
+        var oDiv = document.getElementById('yd')
+        var oBtnPrev =document.getElementsByClassName('prev')[0]
+        var oBtnNext =document.getElementsByClassName('next')[0]
+        var oLeft =document.getElementsByClassName('left')[0]
+        var oRight =document.getElementsByClassName('right')[0]
+        
+        var oSmall=document.getElementsByClassName('small')[0]
+        var oUlSmall=oSmall.getElementsByTagName('ul')[0]
+        var aLiSmall=oSmall.getElementsByTagName('li')//小图li
+        
+        var oBig=document.getElementsByClassName('big')[0]
+        var aLiBig=oBig.getElementsByTagName('li')//大图li
+        
+        var nowZIndex=2;
+        var now=0
+        
+        oUlSmall.style.width=aLiSmall.length*aLiSmall[0].offsetWidth+300+'px'//小图容器宽度；
+        //左右按钮
+        oLeft.onmouseover = oBtnPrev.onmouseover = function()
+        {
+            Move(oBtnPrev,'opacity',100)
+        }
+       oLeft.onmouseout=oBtnPrev.onmouseout = function()
+        {
+            Move(oBtnPrev,'opacity',0)
+        }
+        oRight.onmouseover= oBtnNext.onmouseover = function()
+        {
+            Move(oBtnNext,'opacity',100)
+        }
+        oRight.onmouseout=oBtnNext.onmouseout = function()
+        {
+            Move(oBtnNext,'opacity',0)
+        }
+        
+        //小图切换
+        for(var i=0;i<aLiSmall.length;i++)
+        {    
+            aLiSmall[i].index=i
+            aLiSmall[i].onclick=function()
+            {
+                if(this.index==now)return;
+                now=this.index
+                
+                Tab()
+                
+            }
+         
+                if(this.index!=now)
+                {
+                Move(this,'opacity',60)
+                }
+            
+        }
+        function Tab()//图片切换函数；
+        {
+            aLiBig[now].style.zIndex=nowZIndex++;//改变大图的z-index的大小切换图片；
+                for(var i=0;i<aLiSmall.length;i++)
+                {
+                    Move(aLiSmall[i],'opacity',60)
+                }
+                
+                Move(aLiSmall[now],'opacity',100)
+                
+                aLiBig[now].style.height=0
+                Move(aLiBig[now],'height','500')//改变高度实现切换；高度0-500；
+                
+                if(now==0)//根据大图位置改变小图位置；
+                {
+                    Move(oUlSmall,'left',0)
+                }else if(now==aLiSmall.length-1)
+                {
+                    Move(oUlSmall,'left',-(now-2)*aLiSmall[0].offsetWidth)
+                }else{
+                
+                    Move(oUlSmall,'left',-(now-1)*aLiSmall[0].offsetWidth)
+                }
+        }
+        //对于两个边界进行设定
+        oBtnPrev.onclick= function()
+        {
+            now--;
+            if(now==-1)
+            {
+                now=aLiSmall.length-1
+            }
+            Tab()
+        }
+        
+        oBtnNext.onclick = function()
+        {
+            now++;
+            if(now==aLiSmall.length)
+            {
+                now=0
+            }
+            Tab()
+        }
+        
+        var timer=setInterval(oBtnNext.onclick,2000)
+        
+        oDiv.onmouseover= function()
+        {
+            clearInterval(timer)
+        }
+        oDiv.onmouseout= function()
+        {
+            timer=setInterval(oBtnNext.onclick,2000)
+        
+        }
+        
+
+</script>
+</body>
+</html>
