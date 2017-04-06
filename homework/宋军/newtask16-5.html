@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{
+      padding:0;
+      margin:0;
+    }
+    .container{
+      width: 680px;
+      margin: 0 auto;
+      border: 1px solid red;
+    }
+    .container:after{
+      display: block;
+      content: '';
+      clear: both;
+    }
+    ul{
+      margin-right: -10px;
+    }
+    ul li{
+      list-style: none;
+      float: left;
+      margin: 10px 10px 0 0;
+    }
+    img{
+      width: 220px;
+      height: 330px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <ul>
+    <li><img src="" data-src="http://s2.mogucdn.com/p2/170213/104376568_6bij3014l2b5j81139h4j5l43f45j_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p2/161003/165653070_777ljf66fejckkd7i43ii7k5l0283_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/mlcdn/c45406/170324_2faj4ja83h83200a3b1b0hia5ij1d_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/mlcdn/c45406/170331_061jgj3ibejag1jf0jfa808gfcl6g_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/mlcdn/c45406/170329_103a9jfbh9b5bac2cddhca0hij1dg_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p2/161029/167113776_60768hc9la5f298adlb7k9ei268e4_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p1/160423/106211340_ie4gem3fmy2wcnrrhazdambqgiyde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/mlcdn/c45406/170329_0ba1l172jed982356d8k3ghl41j4f_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p2/170307/118840844_3i2jh3c5i747bjg1dad9cdj1glid3_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p1/150812/14dhcd_iezwmmbwguzwcodggizdambqgyyde_1000x1500.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p2/170302/91277784_12573hjkfd2f69ga692ajc2hgck13_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p2/160901/27146761_55k79170b0bgk92kda2ji34c02ida_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/b7/pic/150615/g5ukp_ie2tozdgmvrgczldgezdambqhayde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/b7/pic/150514/1merje_ieytkojygezwgojsgezdambqmeyde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/b7/pic/150514/1merje_ieywiyrvgfrtayjsgezdambqmeyde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/b7/pic/150514/1merje_ieytqmlfmnrgcojsgezdambqmeyde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/b7/pic/150306/1icee0_iezdknlcmvsdmmtdmyytambqmmyde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/mlcdn/c45406/170316_1j8kbflgc2d01gee476578cijji7k_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/b7/pic/150514/1merje_iezdczbtgjrgiojsgezdambqmmyde_640x960.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p1/150623/14dhcd_ie2giyzwge4tsnlggezdambqgiyde_1000x1500.jpg_240x360.v1cAC.70.webp" alt=""></li>
+    <li><img src="" data-src="http://s2.mogucdn.com/p1/150721/14dhcd_ie2gintcmmytgobygizdambqgiyde_1000x1500.jpg_240x360.v1cAC.70.webp" alt=""></li>    
+  </ul>
+</div>
+  
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script>
+
+check()
+$(window).on('scroll', check)
+
+function check(){
+  $('.container img').not('.load').each(function(){
+    if(isShow($(this))){
+      showImage($(this))
+    }
+  })
+}
+
+function isShow($node){
+  var scrollTop=$(window).scrollTop(),
+      nodeHeight=$node.outerHeight(true),
+      offsetTop=$node.offset().top,
+      windowHeight=$(window).height()
+  if(scrollTop < nodeHeight + offsetTop && scrollTop + windowHeight > offsetTop){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+function showImage($img){
+    var url=$img.attr('data-src')
+    $img.attr('src', url).addClass('load')
+}
+
+  </script>
+</body>
+
+</html>
