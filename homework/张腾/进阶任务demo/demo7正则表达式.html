@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>正则表达式</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+    //2
+    function trim(str) {
+        return str.replace(/^\s+|\s+$/g, '')
+    }
+    var str = "     hello world    "
+
+    console.log(trim(str))
+
+    //3
+    function isEmail(str) {
+        var em = /^\S+[@]\S+[.]\S+$/g;
+        return em.test(str)
+    }
+    var str = '123456@qq.com';
+    console.log(isEmail(str))
+
+
+    //4
+    function isPhoneNum(str) {
+        var ph = /^(\+86-)?1[356789]\d{9}$/g;
+        return ph.test(str)
+    }
+    var str = '13911111111';
+    console.log(isPhoneNum(str))
+
+
+    //5
+    function isValidUsernam(str) {
+        var name = /^\w{6,20}$/;
+        return name.test(str)
+    }
+    var str = '123456';
+    console.log(isValidUsernam(str))
+
+
+    //6
+    function isValidPassword(str) {
+        var pattern = /^[0-9]$|^[A-Z]$|^_$|^[a-z]$/g;
+        var pattern1 = /\W/g;
+        if (str.length < 6 || str.length > 20) {
+            return false;
+        }
+        if (pattern.test(str)) {
+            return false;
+        }
+        if (pattern1.test(str)) {
+            return false;
+        }
+
+        return true;
+    }
+    console.log(isValidPassword('e6_*'))
+
+function isValidPassword(str){
+		if(str.length < 6 || str.length > 20 || /\W/.test(str))return false; 
+		if(/^[a-z]+$/.test(str))return false; 
+		if(/^[A-Z]+$/.test(str))return false; 
+		if(/^[0-9]+$/.test(str))return false; 
+		if(/^_+$/.test(str))return false; 
+
+		return true;
+}
+
+console.log(isValidPassword("e6_*"));
+
+    //7
+    var re = /#[0-9A-Fa-f]{6}/g;
+    var subj = "color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee #fd2 "
+    console.log(subj.match(re))
+
+    //8
+    var str = 'hello  "hunger" , hello "world"';
+    var pat = /".*"/g;
+    console.log(str.match(pat))
+        //输出[""hunger" , hello "world""]
+        //原因是. 匹配除换行和行结束符外的任意单个字符，而 *是贪婪模式，在满足条件的情况下，会尽可能多的匹配
+    var str = ' hello "hunger" , hello "world" ';
+    var pat = /".*?"/g;
+    str.match(pat); //["hunger", "world"]
+    </script>
+</body>
+
+</html>

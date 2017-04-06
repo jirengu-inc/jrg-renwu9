@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>进阶任务4</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+    // function inc(n){
+    //    n++;
+    // }
+    // var a = 10;
+    // inc(a);
+    // console.log(a);
+
+    var obj = {
+        age: 100,
+        friend: {
+            name: 'ruoyu',
+            sex: 'male'
+        }
+    }
+    var obj2 = obj
+    obj.age = 200
+    obj2.age == 200
+
+
+
+    function shadowCopy(obj) {
+        var newObj = {}
+        for (var key in obj) {
+            newObj[key] = obj[key]
+        }
+        return newObj
+    }
+    var obj3 = shadowCopy(obj)
+    obj.age = 400
+    console.log(obj3)
+
+
+
+
+
+    var obj1 = {
+        a: 1,
+        b: 2
+    };
+    var obj2 = {
+        a: 1,
+        b: 2
+    };
+    console.log(obj1 == obj2); //flase obj1与obj2同时在堆内存中开辟出一片空间存储各自的内容，只是保存着储存相同值的对象的地址，两者本身并不相等
+    console.log(obj1 = obj2); //object{a：1，b：2}
+    将obj2的值赋给obj1， 相当于obj1的指针也指向了obj2的存储空间
+    console.log(obj1 == obj2); //true
+
+
+
+
+
+    var a = 1
+    var b = 2
+    var c = {
+        name: '饥人谷',
+        age: 2
+    }
+    var d = [a, b, c]
+
+    var aa = a
+    var bb = b
+    var cc = c
+    var dd = d
+
+    a = 11
+    b = 22
+    c.name = 'hello'
+    d[2]['age'] = 3
+
+    console.log(aa) //1
+    console.log(bb) //2 都是值传递，a和aa都会开辟出一片属于自己的栈空间
+    console.log(cc) //{ name:'hello',age:3},对象的赋值是引用传递，cc和c都是指向同一片堆内存
+    console.log(dd) //[ 11,22,{ name:'hello',age:3}],数组的赋值也是引用传递。
+
+
+
+    var a = 1
+    var c = {
+        name: 'jirengu',
+        age: 2
+    }
+
+    function f1(n) {
+        ++n
+    }
+
+    function f2(obj) {
+        ++obj.age
+    }
+
+    f1(a) // 1 默认赋值 var n = a，属于值传递，++n时，a依然保持原始值不变。
+    f2(c) //{ name: 'jirengu', age: 3} 引用传递，在同一片内存中修改数值，
+    f1(c.age) //3
+    console.log(a) //1
+    console.log(c) //{ name: 'jirengu', age: 3 }
+
+
+
+
+    var arr = [3, 1, 0, -1, -3, 2, -5]
+
+    function filter(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] < 0) {
+                arr.splice(i, 1);
+                i--;
+            }
+        };
+    }
+    filter(arr)
+    console.log(arr) // [3,1,2]
+
+
+
+
+
+    var arr = [3, 1, 0, -1, -3, 2, -5]
+
+    function filter(arr) {
+        var newArr = [];
+        var j = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] > 0) {
+                newArr[j] = arr[i];
+                j++;
+            }
+        };
+    }
+    var arr2 = filter(arr)
+    console.log(arr2) // [3,1,2]
+    console.log(arr) // [3,1,0,-1,-2,2,-5]
+
+
+
+    1.
+
+    function deepCopy(obj) {
+        var newObj = {};
+
+        for (var key in obj) {
+            //只赋值对象自己的属性，原型上的属性不赋值
+            if (obj.hasownproperty(key)) {
+                //由于如果属性值是引用类型就不能直接赋值，所以我们需要判断一下属性的类型
+                //由于typeof null返回值也是object，所以不能直接用typeof obj[key] === 'object'来判断
+                if (typeof obj[key] === 'number' || typeof obj[key] === 'string' || typeof obj[key] === undefined || typeof obj[key] === null || typeof obj[key] === 'boolean') {
+                    newObj[key] = obj[key];
+                } else {
+                    //当再次递归之后，返回的是
+                    newObj[key] = deepCopy[obj[key]];
+                }
+            }
+
+        }
+        return newObj;
+
+    }
+
+
+    2.
+
+    function copy(obj) {
+        var newobj = JSON.parse(JSON.stringify(obj));
+        return newobj;
+    }
+    var obj2 = copy(obj1)
+    console.log(obj2)
+    </script>
+</body>
+
+</html>
