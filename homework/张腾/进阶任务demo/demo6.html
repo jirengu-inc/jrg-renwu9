@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>demo6</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+    1 - 1
+
+    function getRandom(min, max) {
+        var choices = max - min;
+        return Math.floor(min + Math.random() * choices);
+    }
+    var num = getRandom(1, 5);
+    console.log(num);
+
+
+    1 - 2
+
+    function getRandom(min, max) {
+        var choices = max - min + 1;
+        return Math.floor(min + Math.random() * choices);
+    }
+    var num = getRandom(1, 5);
+    console.log(num);
+
+
+    1 - 3
+
+    function getRandomStr(numb) {
+        var str = " 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var getStr = "";
+        for (var i = 0; i < numb; i++) {
+            var getNumb = Math.floor(Math.random() * 62);
+            getStr += str[getNumb];
+        }
+        return getStr;
+    }
+    console.log(getRandomStr(10));
+
+
+    //1-4
+    function getRandIp() {
+        var arr = [];
+        for (var i = 0; i < 4; i++) {
+            arr.push(Math.floor(Math.random() * 256))
+        }
+        return arr.join('.');
+    }
+    var ip = getRandIp()
+    console.log(ip)
+
+
+    1 - 5
+
+    function getRandColor() {
+        var str = "0123456789ABCDEF";
+        var color = "";
+        for (var i = 0; i < 6; i++) {
+            var index = Math.floor(Math.random() * 16);
+            color = color + str[index];
+        }
+        color = "#" + color;
+        return color;
+    }
+    var color = getRandColor();
+    console.log(color);
+
+    2 - 1
+    push() 方法用于将值添加进数组， 返回数组长度
+    pop() 方法删除数组最后一个元素， 返回被删除的元素
+    shift() 方法删除数组第一个元素， 返回被删除的元素
+    unshift() 方法在数组开头添加一个或多个值， 返回数组长度
+    join() 方法以指定分隔符将数组的值链接成字符串， 返回生成的新字符串，（） 内接受指定分隔符参数， 若为空字符， 则元素直接联结成字符串
+    split() 方法指定字符串中的某个字符为分隔符， 将字符串分割成数组， 返回生成的新数组，（） 内接受指定分割符参数， 若为无字符， 则每个字母会分割成单个元素
+
+    push 方法的实现
+    var arr = [1, 2, 3];
+
+    function rePush(arr, element) {
+        arr.splice(arr.length, 0, element);
+        return arr;
+    }
+    console.log(rePush(arr, 4))
+
+    pop
+    var arr = [1, 2, 3];
+
+    function rePop(arr) {
+        arr.splice(arr.length - 1, 1);
+        return arr;
+    }
+    console.log(rePop(arr));
+
+    shift
+    var arr = [1, 2, 3];
+
+    function myUnshift(arr) {
+        arr.splice(0, 1);
+        return arr;
+    }
+    console.log(myUnshift(arr));
+
+
+    unshift的实现方法
+
+    function myUnshift(arr, element) {
+        arr.splice(0, 0, element);
+        return arr;
+    }
+    var arr = [1, 2, 3];
+    console.log(myUnshift(arr, 4));
+
+
+    2 - 2
+    var arr = [1, 2, 3, 4];
+
+    function squareArr(arr) {
+        for (var i = 0; i < arr.length; i++) {
+
+
+            arr[i] = arr[i] * arr[i];
+        }
+        return arr;
+    }
+    squareArr(arr);
+    console.log(arr)
+
+    2 - 3
+
+    function filterPositive(arr) {
+        var newArr = [];
+        for (var i = 0; i < arr.length; i++) {
+            if (typeof arr[i] === 'number') {
+                if (arr[i] > 0) {
+                    newArr.push(arr[i]);
+                }
+            }
+        }
+        return newArr;
+    }
+    var arr = [3, -1, 2, '饥人谷', true, 123, 876];
+    var newArr = filterPositive(arr);
+    console.log(arr);
+    console.log(newArr);
+
+    3 - 1
+
+    function getChIntv(str) {
+        var nowTime = Date.now();
+        var endTime = Date.parse(str);
+        var gap = endTime - nowTime;
+        var days = parseInt(gap / (1000 * 60 * 60 * 24));
+        var hours = parseInt((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        var minutes = parseInt(((gap % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = parseInt(((gap % (1000 * 60 * 60 * 24)) % (1000 * 60 * 60)) % (1000 * 60) / 1000)
+        return "距离除夕还有 " + days + " 天 " + hours + " 小时 " + minutes + " 分钟 " + seconds + " 秒";
+    }
+    var str = getChIntv('2018-02-15')
+    console.log(str)
+
+    3 - 2
+
+    function getChsDate(str) {
+        var dist = ["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十", "二十一", "二十二", "二十三", "二十四", "二十五", "二十六", "二十七", "二十八", "二十九", "三十", "三十一"];
+        var arr = str.split('-');
+        var year = arr[0];
+        var month = arr[1];
+        var day = arr[2];
+
+        var Chyear = dist[parseInt(year[0])] + dist[parseInt(year[1])] + dist[parseInt(year[2])] + dist[parseInt(year[3])] + '年 ';
+        var Chmonth = dist[parseInt(month)] + '月 ';
+        var Chday = dist[parseInt(day)] + '日 ';
+        return Chyear + Chmonth + Chday;
+    }
+    var str = getChsDate('2017-03-23');
+    console.log(str);
+
+    3 - 3
+
+    function friendlyDate(time) {
+        var now = Date.now();
+        var offset = (now - parseInt(time)) / 1000 / 60;
+        var result;
+        if ((offset / 60 / 24 / 30 / 12) >= 1) {
+            result = parseInt(offset / 60 / 24 / 30 / 12) + "年前";
+        } else if ((offset / 60 / 24 / 30) >= 1) {
+            result = parseInt(offset / 60 / 24 / 30) + "个月前";
+        } else if ((offset / 60 / 24) >= 1) {
+            result = parseInt(offset / 60 / 24) + "天前";
+        } else if ((offset / 60) >= 1) {
+            result = parseInt(offset / 60) + "小时前";
+        } else if (offset >= 1) {
+            result = parseInt(offset) + "分钟前";
+        } else if (offset < 1) {
+            result = "刚刚";
+        }
+        return result;
+    }
+    var str = friendlyDate('1484286699422') //  1分钟前
+    var str2 = friendlyDate('1483941245793') //4天前
+    </script>
+</body>
+
+</html>

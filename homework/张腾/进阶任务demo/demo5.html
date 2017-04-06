@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>demo5</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+    <script>
+    var json = {
+        "name": "Byron",
+        "age": 24
+    };
+
+    var json_str = JSON.stringify(json);
+    console.log(json_str);
+    console.log(JSON.parse(json_str));
+
+
+
+    1 - 1
+    var prod = {
+        name: '女装',
+        styles: ['短款', '冬季', '春装']
+    };
+
+    function getTplStr(data) {
+        return '<dl calss= "product">\n' + '\t<dt>' + data['name'] + '</dt>\n' + '\t<dd>' + data['styles'][0] + '</dd>\n' + '\t<dd>' + data['styles'][1] + '</dd>\n' + '\t<dd>' + data['styles'][2] + '</dd>\n' + '</dl>'
+
+    };
+    var result = getTplStr(prod); //返回下面的字符串
+
+
+    2 - 1.
+    var longString = 'long' + 'long' + 'long' + 'string';
+
+    2 - 2.
+    var longString = 'long \
+    long \
+    long \
+    string \';
+
+    2 - 3.(function() {
+            /*
+               line 1
+               line 3
+                */
+        }).toString().split('\n').slice(1, -1).join('\n')
+        // "line 1 line 2 line 3";
+
+
+
+    3.
+    var str = ' hello\\\\饥人谷'
+    console.log(str)
+
+    4.
+    var str = 'jirengu\nruoyu'
+    console.log(str.length) //13 \n是转义字符代表换行只占据一个字符，且空格并不会计算在长度内
+
+    5.
+
+    function isPalindrome(str) {
+        newstr = str.split('').reverse().join('');
+        if (str == newstr) {
+            console.log('这是回文字符')
+        } else {
+            console.log('这不是回文字符')
+        }
+    }
+    var a = 'abccba';
+    isPalindrome(a);
+
+    6.
+    var str = "hello world nihao  nihao nihao haha ";
+	var dict = {};
+	for(var i=0;i<str.length;i++) {
+			if(dict[str[i]]) {
+				++dict[str[i]];
+			}else{
+				dict[str[i]]=1;
+			}
+		}
+
+	var count = 0;
+	var maxValue;
+	for(var key in dict) {
+		if(dict[key] > count) {
+		count = key;
+		maxValue= dict[key];
+		}
+	}
+
+	console.log(count,maxValue);	
+
+
+    7.
+
+    function camelize(str) {
+        var arr = str.split("-");
+        var tempStr = arr[0];
+        for (var i = 1; i < arr.length; i++) {
+            tempStr += arr[i].charAt(0).toUpperCase() + arr[i].slice(1, arr[i].length);
+        }
+
+        return tempStr;
+    }
+
+    console.log(camelize("background-color")); //== 'backgroundColor'
+    console.log(camelize("list-style-image")); // == 'listStyleImage'
+
+    8.
+
+    function ucFirst(str) {
+
+        return str = str.charAt(0).toUpperCase() + str.slice(1, str.length);
+    }
+
+    9.
+
+    function truncate(str, length) {
+        if (str.length > length) {
+            str = str.substr(0, length) + "...";
+        }
+        return str;
+    }
+    </script>
+</body>
+
+</html>
