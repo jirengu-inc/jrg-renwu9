@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>瀑布流</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            position: relative
+        }
+        
+        .container .item {
+            width: 200px;
+            margin: 5px;
+            position: absolute;
+            transition: all 1s;
+        }
+        
+        .container .h1 {
+            background-color: orangered;
+            height: 100px;
+        }
+        
+        .container .h2 {
+            background-color: seagreen;
+            height: 200px;
+        }
+        
+        .container .h3 {
+            background-color: cornflowerblue;
+            height: 300px;
+        }
+        
+        .container .h4 {
+            background-color: hotpink;
+            height: 400px;
+        }
+        
+        .container .h5 {
+            background-color: lightseagreen;
+            height: 450px;
+        }
+        
+        .container .h6 {
+            background-color: yellow;
+            height: 450px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item h1">1</div>
+        <div class="item h2">2</div>
+        <div class="item h3">3</div>
+        <div class="item h4">4</div>
+        <div class="item h1">5</div>
+        <div class="item h5">6</div>
+        <div class="item h2">7</div>
+        <div class="item h1">8</div>
+        <div class="item h5">9</div>
+        <div class="item h4">10</div>
+        <div class="item h1">11</div>
+        <div class="item h2">12</div>
+        <div class="item h4">13</div>
+        <div class="item h4">14</div>
+        <div class="item h6">15</div>
+        <div class="item h1">16</div>
+        <div class="item h3">17</div>
+        <div class="item h6">18</div>
+        <div class="item h5">19</div>
+        <div class="item h1">20</div>
+        <div class="item h1">21</div>
+        <div class="item h6">22</div>
+        <div class="item h2">23</div>
+        <div class="item h4">24</div>
+    </div>
+
+    <script>
+        var itemWidth = $('.item').outerWidth(true),
+            $window = $(window),
+            $item = $('.container .item')
+
+        // waterFall()
+        // $window.on('resize', function() {
+        //     waterFall()
+        // })
+
+        function waterFall() {
+            let columnCount = parseInt($(window).width() / itemWidth),
+                itemheightArr = []
+
+            for (let i = 0; i < columnCount; i++) {
+                itemheightArr.push(0)
+            }
+            $item.each(function() {
+                let minValue = Math.min.apply(undefined, itemheightArr),
+                    minIndex = itemheightArr.indexOf(minValue),
+                    $this = $(this)
+                $this.css({
+                    'top': minValue,
+                    'left': minIndex * itemWidth
+                })
+                itemheightArr[minIndex] += $this.outerHeight(true)
+            })
+        }
+
+        var WaterFall = (function() {
+            function init() {
+                waterFall()
+                $window.on('resize', function() {
+                    waterFall()
+
+                })
+            }
+            return {
+                initiate: init
+            }
+        })()
+        WaterFall.initiate()
+    </script>
+</body>
+
+</html>

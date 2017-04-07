@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>木桶布局</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            width: 910px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        
+        .img-row {
+            margin-bottom: 10px;
+        }
+        
+        .img-row:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .img-row img {
+            float: left;
+        }
+        /*.wrapper {
+            margin-right: -20px;
+        }
+        
+        .wrapper:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .child {
+            width: 450px;
+            background-color: green;
+            height: 200px;
+            float: left;
+            margin-right: 10px;
+        }*/
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+    </div>
+
+    <script>
+        function Barrel($ct) {
+            this.$ct = $ct
+            this.rowList = []
+            this.loadImg()
+            this.basicHeight = 200
+        }
+
+        Barrel.prototype = {
+            loadImg: function() {
+                // console.log(1)
+                var _this = this
+                var imgUrls = this.getImgUrls(50)
+                for (var i = 0; i < imgUrls.length; i++) {
+                    var img = new Image()
+                    img.src = imgUrls[i]
+                        // console.log(2)
+                    img.onload = function() {
+                        var originWidth = img.width,
+                            originHeight = img.height,
+                            ratio = originWidth / originHeight
+
+                        var imgInfo = {
+                            target: $(img),
+                            width: _this.basicHeight * ratio,
+                            height: _this.basicHeight
+                        }
+                        _this.render(imgInfo)
+                            // console.log(3)
+                    }
+                }
+            },
+
+            render: function(imgInfo) {
+                console.log(4)
+                var _this = this,
+                    rowList = this.rowList,
+                    rowWidth = 0,
+                    rowHeight = 0,
+                    clientWidth = this.$ct.width(),
+                    lastImgInfo = imgInfo
+
+                rowList.push(imgInfo)
+
+                $.each(rowList, function(idx, imgInfo) {
+                    rowWidth += imgInfo.width;
+                    if (rowWidth > clientWidth) {
+                        rowList.pop();
+                        console.log(1)
+                        rowWidth = rowWidth - lastImgInfo.width;
+                        rowHeight = clientWidth * _this.baseHeight / rowWidth;
+
+                        _this.createRow(rowHeight);
+                        _this.rowList = [];
+                        _this.rowList.push(lastImgInfo);
+                    }
+                });
+            },
+            createRow: function(rowHeight) {
+                // console.log(6)
+                var imgFragment = document.createDocumentFragment()
+                var rowFragment = document.createDocumentFragment()
+                var $rowContainer = $('<div class="img-row"></div>')
+                $.each(this.rowList, function(index, imgInfo) {
+                    var $img = imgInfo.target
+                    $img.height(rowHeight)
+                    imgFragment.appendChild($img[0])
+                    rowFragment.appendChild(imgFragment)
+                        // $imgContainer.append($img)
+                        // $rowContainer.append($imgContainer)
+                })
+                $rowContainer[0].appendChild(rowFragment)
+                this.$ct.append($rowContainer)
+            },
+            getImgUrls: function(num) {
+                var color, width, height, urls = [];
+                for (var i = 0; i < num; i++) {
+                    color = Math.random().toString(16).substr(2, 6)
+                    width = Math.floor(Math.random() * 101 + 80)
+                    height = Math.floor(Math.random() * 51 + 50)
+                    urls.push("http://placehold.it/" + width + "x" + height + "/" + color + "/fff")
+                }
+                return urls
+            }
+        }
+
+        new Barrel($('.container'))
+    </script>
+</body>
+
+</html>
