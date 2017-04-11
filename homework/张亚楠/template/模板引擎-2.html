@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板引擎-2</title>
+</head>
+<body>
+
+<script>
+ 
+
+    var template = '<p>Hello,my name is <%name%>. I am  <%age%> years old.</p>';
+
+    var data ={
+        name:'zyn',
+        age:31
+    }
+    var TemplateEngine = function (tpl,data){
+        var regex = /<%([^%>]+)?%>/g;
+        while(match = regex.exec(tpl)){
+            tpl = tpl.replace(match[0],data[match[1]])
+        }
+        return tpl
+    }
+    var string = TemplateEngine(template,data)
+    console.log(string);
+    document.body.innerHTML= string 
+    var s = "<p>Hello,my name is '+this.name+'I am '+this.profile.age+' year old"
+           
+</script>
+    
+</body>
+</html>

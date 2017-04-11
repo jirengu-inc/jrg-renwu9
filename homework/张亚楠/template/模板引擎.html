@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模板引擎</title>
+    <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        body{
+            color:#333;
+        }
+        .song-list{
+            width:200px;
+            margin:0 auto;
+        }
+        h1{
+            font-size: 20px; 
+            margin: 10px;
+        }
+        ol{
+            border-top:1px solid #ebebeb;
+        }
+        li{
+            padding:5px 10px;
+            background:white;
+            border-bottom:1px solid #ebebeb;
+            border-left:1px solid #ebebeb;
+            border-right:1px solid #ebebeb;
+        }
+    </style>
+</head>
+<body>
+   <!--<div class="song-list">
+       <h1>热歌榜</h1>
+       <ol>
+           <li>刚刚好 - 薛之谦</li>
+           <li>最佳歌手 - 许嵩</li>
+           <li>初学者 - 薛之谦</li>
+           <li>绅士 - 薛之谦</li>
+           <li>我们 - 陈伟霆</li>
+           <li>画风 - 后弦</li>
+           <li>we Are One - 郁可唯</li>
+       </ol>
+   </div>-->
+</body>
+<script src="jquery-3.2.0.min.js"></script>
+<script>
+    var songs =[
+        {name:'刚刚好', singer:'薛之谦', url:'http://music.163.com/xxx'},
+        {name:'最佳歌手', singer:'许嵩', url:'http://music.163.com/xxx'},
+        {name:'初学者', singer:'薛之谦', url:'http://music.163.com/xxx'},
+        {name:'绅士', singer:'薛之谦', url:'http://music.163.com/xxx'},
+        {name:'我们', singer:'陈伟霆', url:'http://music.163.com/xxx'},
+        {name:'画风', singer:'后弦', url:'http://music.163.com/xxx'},
+        {name:'We Are One', singer:'郁可唯', url:'http://music.163.com/xxx'} 
+
+    ]
+
+    //拼接字符串，有一定恶意脚本注入风险 遍历
+
+    var html = '';
+    html +='<div class="song-list">'
+    html +='  <h1>热歌榜</h1>'
+    html +='  <ol>'
+    for(var i=0;i<songs.length;i++){
+        html += '<li>'+songs[i].name+' - '+songs[i].singer+'</li>'
+    }
+    html +='  </ol>'
+    html +='</div>'
+
+    document.body.innerHTML =html;
+
+    
+
+    // 构造DOM对象 遍历 缺点复杂；
+   
+    // var elDiv = document.createElement('div')
+    // elDiv.className = 'song-list';
+    // var elH1 =document.createElement('h1')
+    // elH1.appendChild(document.createTextNode('热歌榜'))
+    // var elList = document.createElement('ol')
+    // for(var i = 0; i<songs.length;i++){
+    //     var li = document.createElement('li')
+    //     li.textContent = songs[i].name +' - ' + songs[i].singer
+    //     elList.appendChild(li)
+
+    // }
+    // elDiv.appendChild(elH1);
+    // elDiv.appendChild(elList);
+
+    // document.body.appendChild(elDiv);
+   
+
+    // textContext与innerText的区别
+    // 1.textContent 会获取所有元素的内容，包括 <script> 和 <style> 元素，然而 innerText 不会。
+    // 2.innerText意识到样式，并且不会返回隐藏元素的文本，而textContent会。
+    // 3.由于 innerText 受 CSS 样式的影响，它会触发重排（reflow），但textContent 不会。
+    // 4.与 textContent 不同的是, 在 Internet Explorer (对于小于等于 IE11 的版本) 中对 innerText 进行修改， 不仅会移除当前元素的子节点，而且还会永久性地破坏所有后代文本节点（所以不可能再次将节点再次插入到任何其他元素或同一元素中）。
+
+
+
+
+
+     // 构造DOM对象 遍历 jquery；
+    
+//     var $Div = $('<div class="song-list"></div>');
+    
+//     var $H1 =$('<h1>热歌榜</h1>')
+   
+//     var $List =$('<ol></ol>')
+//     for(var i = 0; i<songs.length;i++){
+//         var $li = $('<li>'+songs[i].name+' - '+songs[i].singer+'</li>')
+       
+//         $List.append($li)
+
+//     }
+//     $Div.append($H1);
+//     $Div.append($List);
+
+//    $('body').append($Div);
+
+
+
+
+// srtingFormat 字符串格式化
+
+// function srtingFormat(string){
+//     // var params = arguments.slice(1)//params可以取到string和面所有的参数，但是arguments是伪数组，不能使用数组的方法；
+//     var params = [].slice.call(arguments,1)
+//     //[].slice里的this是[]数组,call改变作用于，this只向arguments
+     
+//     var regex = /\{(\d+)\}/g
+
+//     //将字符串中的{n},替换成parmas[n]
+//     string = string.replace(regex,function(){
+//     var index = arguments[1];
+//      return params[index];
+
+// })
+// return string 
+   
+// }
+// var string =
+//  srtingFormat()
+</script>
+</html>
