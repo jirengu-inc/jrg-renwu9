@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <style>
+        *{
+            margin:0px;
+            padding:0px;
+        }
+        body{
+            color:#333;
+        }
+        .song-list{
+            width:200px;
+            margin:0 auto;
+        }
+        h1{
+            font-size: 20px; 
+            margin: 10px;
+        }
+        ol{
+            border-top:1px solid #ebebeb;
+        }
+        li{
+            padding:5px 10px;
+            background:white;
+            border-bottom:1px solid #ebebeb;
+            border-left:1px solid #ebebeb;
+            border-right:1px solid #ebebeb;
+        }
+    </style>
+</head>
+<body>
+    <script>
+  var songs =[
+        {name:'刚刚好', singer:'薛之谦', url:'http://music.163.com/xxx'},
+        {name:'最佳歌手', singer:'许嵩', url:'http://music.163.com/xxx'},
+        {name:'初学者', singer:'薛之谦', url:'http://music.163.com/xxx'},
+        {name:'绅士', singer:'薛之谦', url:'http://music.163.com/xxx'},
+        {name:'我们', singer:'陈伟霆', url:'http://music.163.com/xxx'},
+        {name:'画风', singer:'后弦', url:'http://music.163.com/xxx'},
+        {name:'We Are One', singer:'郁可唯', url:'http://music.163.com/xxx'} 
+
+    ]
+
+   
+
+   var html = 
+   '<div class="song-list">'+
+   '  <h1>热歌榜</h1>'+
+   '  <ol>'+
+   '<%for(var i=0; i<this.songs.length;i++){%>'+
+   '<li><%this.songs[i].name%> - <%this.songs[i].singer%></li>'+
+   '<%}%>'+
+   '  </ol>'+
+   '</div>'
+
+
+
+var TemplateEngine = function(html,options) {
+    var re = /<%([^%>]+)?%>/g, 
+        reExp = /(^( )?(if|for|else|switch|case|break|{|}))(.*)?/g, 
+        code = 'var Arr=[];\n', 
+        cursor = 0;
+    var add = function(line, js) {
+        js? (code += line.match(reExp) ? line + '\n' : 'Arr.push(' + line + ');\n') :
+            (code += line != '' ? 'Arr.push("' + line.replace(/"/g, '\\"') + '");\n' : '');
+        return add;
+    }
+    while(match = re.exec(html)) {
+        add(html.slice(cursor, match.index))
+        add(match[1], true);
+        cursor = match.index + match[0].length;
+    }
+    add(html.substr(cursor, html.length - cursor));
+    code += 'return Arr.join("");';
+    code.replace(/[\r\t\n]/g, '')
+    console.log(code);
+    var result= new Function (code.replace(/[\r\t\n]/g, ''))
+    return result
+}
+
+var results =TemplateEngine (html,songs)
+//document.body.innerHTML = results();
+</script>
+</body>
+
+</html>
