@@ -49,7 +49,6 @@
         
         .footer img {
             width: 200px;
-            opacity: 0;
             transition: 0.5s;
         }
     </style>
@@ -109,6 +108,7 @@
             var page = this
             this.imgReady = 1
             $(window).on('load', function() {
+                $('.footer>img').css('opacity', '0')
                 $(window).on('scroll', function() {
                     if (page.imgReady !== 1) {
                         return 0
