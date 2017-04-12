@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .list {
+            margin: 5px;
+        }
+        
+        .list:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .list img {
+            float: left;
+            margin: 5px;
+            height: 200px;
+        }
+        
+        .list div {
+            float: left;
+        }
+        
+        .list div:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .footer {
+            height: 200px;
+        }
+    </style>
+    <div class="list">
+    </div>
+    <div class="footer"></div>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        function Page() {
+            this.documentHeight = 0
+            this.rowIndex = 1
+            this.requestImg()
+            this.scroll()
+            this.ready()
+        }
+
+
+        Page.prototype.requestImg = function() {
+            var length = 0,
+                totalWidth = 0,
+                imgWidth = 1,
+                imgHeight = 1
+            $('.list').append(`<div class='row${this.rowIndex}'></div>`)
+            var $selector = $(`.row${this.rowIndex}`)
+            this.$selector = $selector
+            while (imgWidth / (imgHeight / 200) + totalWidth < $(window).width()) {
+                var imgWidth = parseInt(Math.floor(Math.random() * 600 + 350)),
+                    imgHeight = parseInt(Math.floor(Math.random() * 400 + 250))
+                $selector.append(`<img src=https://unsplash.it/${imgWidth}/${imgHeight}/?random>`)
+                totalWidth += imgWidth / imgHeight * 200
+                length += 1
+            }
+            this.rowIndex += 1
+            this.resize(totalWidth, length)
+            return length
+        }
+
+        Page.prototype.resize = function(totalWidth, length) {
+            var expendHeight = 200 + ($(window).width() - totalWidth - parseInt($('.list img').css('margin')) * length * 2 - parseInt($('.list').css('margin')) * 2 - 18) * 200 / totalWidth
+            this.$selector.children('img').each(function(i) {
+                $(this).css('height', expendHeight)
+            })
+            this.ready(expendHeight)
+        }
+        Page.prototype.imgOnload = function(length, page) {
+            var imgLoad = 0
+            this.$selector.children('img').on('load', function() {
+                imgLoad += 1
+                if (imgLoad === length) {
+                    page.imgReady = 1
+                }
+            })
+        }
+        Page.prototype.scroll = function() {
+            var page = this
+            this.imgReady = 1
+            $(window).on('load', function() {
+                $(window).on('scroll', function() {
+                    if (page.imgReady !== 1) {
+                        return 0
+                    }
+                    if ($('.footer').offset().top < $(window).height() + $(window).scrollTop()) {
+                        page.imgReady = 0
+                        var length = page.requestImg()
+                        page.imgOnload(length, page)
+                    }
+                })
+            })
+        }
+        Page.prototype.ready = function(expendHeight) {
+            this.documentHeight += expendHeight + parseInt($('.list img').css('margin')) * 2
+            if (this.documentHeight < $(window).width()) {
+                this.requestImg()
+            }
+        }
+        var newPage = new Page()
+    </script>
+</body>
+
+</html>

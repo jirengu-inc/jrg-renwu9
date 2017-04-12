@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <style>
+        .list {
+            position: relative;
+        }
+        
+        .list div {
+            position: absolute;
+            width: 200px;
+            margin: 5px;
+            transition: 1s;
+        }
+        
+        .blue {
+            background-color: #00f;
+            height: 200px;
+        }
+        
+        .red {
+            background-color: #f00;
+            height: 500px;
+        }
+        
+        .green {
+            background-color: #0f0;
+            height: 350px;
+        }
+        
+        .yellow {
+            background-color: #ff0;
+            height: 250px;
+        }
+    </style>
+    <div class="list">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        function PinterestLike() {
+            this.randomColor()
+            this.default()
+            this.resize()
+        }
+        PinterestLike.prototype.randomColor = function() {
+            var $item = $('.list').children()
+            this.$item = $item
+            var color = ['red', 'blue', 'green', 'yellow']
+            this.$item.each(function(i) {
+                var randomColor = Math.floor(Math.random() * 4)
+                $(this).attr('class', color[randomColor])
+            })
+
+        }
+        PinterestLike.prototype.default = function() {
+            var colLength = Math.floor($(window).width() / $(this.$item[0]).outerWidth())
+            if (this.colLength === colLength) {
+                return 0
+            }
+            this.colLength = colLength
+            var itemArr = []
+            for (let i = 0; i < colLength; i++) {
+                itemArr.push(0)
+            }
+            this.adjustPosition(itemArr)
+        }
+        PinterestLike.prototype.adjustPosition = function(arr) {
+            this.$item.each(function() {
+                var Min = Math.min.apply(null, arr)
+                $(this).css({
+                    top: Min,
+                    left: $(this).outerWidth(true) * arr.indexOf(Min)
+                })
+                arr[arr.indexOf(Min)] += $(this).outerHeight(true)
+            })
+        }
+        PinterestLike.prototype.resize = function() {
+            var pinterestLike = this
+            $(window).resize(function() {
+                pinterestLike.default()
+            })
+        }
+        var pinterestLike = new PinterestLike()
+    </script>
+</body>
+
+</html>
