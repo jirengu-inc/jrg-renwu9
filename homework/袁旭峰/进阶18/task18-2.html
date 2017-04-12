@@ -43,12 +43,19 @@
         }
         
         .footer {
-            height: 200px;
+            height: 1px;
+            text-align: center;
+        }
+        
+        .footer img {
+            width: 200px;
+            opacity: 0;
+            transition: 0.5s;
         }
     </style>
     <div class="list">
     </div>
-    <div class="footer"></div>
+    <div class="footer"><img src="./loading.gif"></div>
     <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
     <script>
         function Page() {
@@ -82,6 +89,7 @@
 
         Page.prototype.resize = function(totalWidth, length) {
             var expendHeight = 200 + ($(window).width() - totalWidth - parseInt($('.list img').css('margin')) * length * 2 - parseInt($('.list').css('margin')) * 2 - 18) * 200 / totalWidth
+            $('.footer>img').css('margin-top', `-${expendHeight+200}px`)
             this.$selector.children('img').each(function(i) {
                 $(this).css('height', expendHeight)
             })
@@ -90,6 +98,7 @@
         Page.prototype.imgOnload = function(length, page) {
             var imgLoad = 0
             this.$selector.children('img').on('load', function() {
+                $('.footer>img').css('opacity', '0')
                 imgLoad += 1
                 if (imgLoad === length) {
                     page.imgReady = 1
@@ -108,6 +117,7 @@
                         page.imgReady = 0
                         var length = page.requestImg()
                         page.imgOnload(length, page)
+                        $('.footer>img').css('opacity', '0.8')
                     }
                 })
             })
