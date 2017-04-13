@@ -24,16 +24,7 @@
         .pink{
             background:pink;
         }
-        .btn{
-               position:'fixed';
-               right:'100px';
-               bottom:'50px';
-               display:'none';
-               padding:'8px';
-               cursor:'pointer';
-               border:'1px solid';
-               border-radius:'4px';
-        }
+       
         
     </style>
 </head>
@@ -78,7 +69,8 @@
        var GoTop = function(ct,target){
            this.ct = ct;
            this.target= document.createElement('div')
-           this.target.className = 'btn1'
+           this.target.innerText = '回到顶部'
+           this.target.style.cssText= 'position:fixed;right:100px;bottom:50px;display:none;padding:8px;cursor:pointer;border:1px solid;border-radius:4px;'
         
               
 
@@ -89,18 +81,19 @@
        }
        GoTop.prototype.bindEvent =function(){
            var _this =this;
-           var scrollTop = document.body.scrollTop ;
+         
            window.onscroll =function(){
-              
+               scrollTop = document.body.scrollTop ||document.documentElement.scrollTop;
                 if(scrollTop>100){
-                    _this.target.className = 'btn'
+                    _this.target.style.cssText = 'position:fixed;right:100px;bottom:50px;display:block;padding:8px;cursor:pointer;border:1px solid;border-radius:4px;'
                 }else{
-                    _this.target.className = 'btn1'
+                     _this.target.style.cssText = 'position:fixed;right:100px;bottom:50px;display:none;padding:8px;cursor:pointer;border:1px solid;border-radius:4px;'
                 }
+                
            }
-        //    this.onclick=function(){
-        //        _this.ct.scrollTop =0;
-        //    }
+           this.target.onclick=function(){
+               _this.ct.scrollTop = 0;
+           }
 
 
        }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    
+    <script>
+        // var obj ={
+        //     height:100,
+        //     width:100,
+        //     background:'red'
+        // }
+        // console.log(obj)
+        // var keys =Object.keys(obj);//获取对象obj属性名组成的数组
+        // console.log(keys);
+        // var values = [];//保存对象obj属性值
+        
+        // for(var i=0;i<keys.length;i++){
+        //     var key = keys[i]
+        //       values[i]=obj[key]
+        //     console.log(values[i]);
+        // }
+        var div = document.getElementsByTagName('div')[0]
+        function css(dom, obj){
+             var obj ={
+              height:100,
+              width:100,
+              background:'red'
+          }
+      
+        
+       for( key in obj ){
+                               
+               dom.style.key =obj[key].vaule
+       }
+    }
+        css(div.obj)
+
+    </script>
+</body>
+</html>
