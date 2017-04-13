@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //如何通过构造函数的方式创建一个拥有属性和方法的对象？
+    var Animal = function(){
+         this.name = '动物'
+        
+}//构造函数
+
+    Animal.prototype.say =function(){
+         console.log(this.name+'叫')
+}
+
+    var animal = new Animal()//实例化，得到一个对象
+    animal.say()//动物叫
+
+
+
+
+//prototype 是什么？有什么特性 
+    function obj1(){}
+    obj1.prototype.name = "zyn";
+    var test = new obj1();
+    console.log(test.name)// zyn 
+
+    var name = "js";
+    function obj2(name){
+       console.log(this.name);//css
+    }
+    obj2.prototype.name = "css";
+    var test = new obj2();
+        console.log(test.name)//css
+
+
+    function person(name){
+        this.name = name 
+        this.sayHi = function(){
+            console.log('Hi' +' '+ this.name)
+        }
+       
+    }
+     var z= new person('zyn')
+     z.sayHi()//Hi zyn
+
+
+
+
+
+    var Animal =function(){}
+     var cat = new Animal();
+     cat.color = "green";
+      
+
+        var Animal =function(){}
+        Animal.prototype.color= "green";
+        var cat = new Animal();
+        var dog = new Animal();
+        console.log(cat.color);//green
+        console.log(dog.color);//green
+         
+
+
+var Animal =function(){}
+Animal.prototype.color= "green";
+var cat = new Animal();
+var dog = new Animal();
+console.log(cat.color);//green
+console.log(dog.color);//green
+Animal.prototype.run= function(){
+    console.log("run")
+}
+dog.run();
+
+
+Array.prototype.remove = function(elem){
+      var index = this.indexOf(elem);
+         if(index >= 0){
+            this.splice(index, 1);
+          }
+}
+var arr = [1, 2, 3] ;
+arr.remove(2);
+ 
+
+
+
+var Animal = function(){
+    this.color = "green";
+   this.run = function(){
+    console.log("run");
+     }
+}
+var mouse = new Animal();
+  mouse.run();
+
+
+
+
+
+ var Animal = function (){
+       var runAlready = false;
+       this.color = "green";
+       this.run = function(){
+            if(!runAlreadh){
+        console.log("start running");
+       } else {
+          console.log("already running")
+         }
+    }
+
+ }
+
+
+
+
+var Animal = function (){
+       var runAlready = false;
+       this.color = "green";
+       this.run = function(){
+            if(!runAlready){
+        console.log("start running");
+       } else {
+          console.log("already running")
+         }
+    }
+
+ }
+Animal.prototype.color = '';
+Animal.prototype.hide = function(){
+       console.log("111");
+}
+var horse = new Animal();
+horse.run();
+horse.hide();
+
+
+
+function People (name){
+  this.name = name;
+  this.sayName = function(){
+    console.log('my name is:' + this.name);
+  }
+}
+
+People.prototype.walk = function(){
+  console.log(this.name + ' is walking');  
+}
+
+var p1 = new People('饥人谷');
+var p2 = new People('前端');
+
+
+
+
+var Car = function(name,color,status){
+    this.name =name;
+    this.color =color;
+    this.status = status;
+   
+}
+    Car.prototype.run =function(){
+        console.log('running')
+    }
+    
+    Car.prototype.stop =function(){
+        console.log('stop')
+    }
+    
+    Car.prototype.getStatus =function(){
+        console.log(this.status)
+    }
+var Ben = new Car ('Ben','black',120)
+
+</script>
+</html>

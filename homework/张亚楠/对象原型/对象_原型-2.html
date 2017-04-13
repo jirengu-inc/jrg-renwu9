@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+      <style>
+        ul,li{
+            margin: 0px;
+            padding:0px;
+            list-style: none;
+        }
+        ul{
+            text-align: center;
+        }
+        li{
+            height: 100px;
+            line-height: 100px;
+            border: 1px solid;
+            margin-bottom: 8px;
+            font-size: 20px;
+        }
+        .pink{
+            background:pink;
+        }
+        .btn{
+               position:'fixed';
+               right:'100px';
+               bottom:'50px';
+               display:'none';
+               padding:'8px';
+               cursor:'pointer';
+               border:'1px solid';
+               border-radius:'4px';
+        }
+        
+    </style>
+</head>
+<body>
+     <div class="wrap">
+        <ul class="content">
+            <li>我是第1行</li>
+            <li>我是第2行</li>
+            <li>我是第3行</li>
+            <li>我是第4行</li>
+            <li>我是第5行</li>
+            <li>我是第6行</li>
+            <li>我是第7行</li>
+            <li>我是第8行</li>
+            <li>我是第9行</li>
+            <li>我是第10行</li>
+            <li>我是第11行</li>
+            <li>我是第12行</li>
+            <li>我是第13行</li>
+            <li>我是第14行</li>
+            <li>我是第15行</li>
+            <li>我是第16行</li>
+            <li>我是第17行</li>
+            <li>我是第18行</li>
+            <li>我是第19行</li>
+            <li>我是第20行</li>
+      </ul>
+    </div>
+
+  <script>
+       var obody = document.body;
+       var oUl = document.getElementsByClassName('content')[0];
+       var aItem = oUl.getElementsByTagName('li');
+       var oCt = document.getElementsByClassName('ct')[0];
+       for(var i=0; i<aItem.length;i++){
+           if(i%2==0){
+               aItem[i].className='pink';
+
+           }
+       }
+
+       var GoTop = function(ct,target){
+           this.ct = ct;
+           this.target= document.createElement('div')
+           this.target.className = 'btn1'
+        
+              
+
+       }
+        
+       GoTop.prototype.creatNode = function(){
+           this.ct.append(this.target);
+       }
+       GoTop.prototype.bindEvent =function(){
+           var _this =this;
+           var scrollTop = document.body.scrollTop ;
+           window.onscroll =function(){
+              
+                if(scrollTop>100){
+                    _this.target.className = 'btn'
+                }else{
+                    _this.target.className = 'btn1'
+                }
+           }
+        //    this.onclick=function(){
+        //        _this.ct.scrollTop =0;
+        //    }
+
+
+       }
+       var Gotop = new GoTop(obody)
+       Gotop.creatNode();
+       Gotop.bindEvent();
+
+
+
+
+
+
+
+
+
+
+
+// var Car = function(name,color,status){
+//     this.name =name;
+//     this.color =color;
+//     this.status = status;
+   
+// }
+//     Car.prototype.run =function(){
+//         console.log('running')
+//     }
+    
+//     Car.prototype.stop =function(){
+//         console.log('stop')
+//     }
+    
+//     Car.prototype.getStatus =function(){
+//         console.log(this.status)
+//     }
+// var Ben = new Car ('Ben','black',120)
+
+
+     
+  </script>    
+</body>
+
+</html>
