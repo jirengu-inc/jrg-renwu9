@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+.content{
+	position: relative;
+}
+.item{
+	position: absolute;
+	list-style: none;
+	width: 200px;
+	margin: 10px 10px 0 0;
+	transition: all 1s;
+}
+.low{
+	height: 100px;
+	background: red;
+}
+.mid{
+	height: 150px;
+	background: green;
+}
+.high{
+	height: 200px;
+	background: blue;
+}
+
+	</style>
+</head>
+<body>
+
+<div class="content">
+	<div class="item low">1</div>
+	<div class="item high">2</div>
+	<div class="item mid">3</div>
+	<div class="item low">4</div>
+	<div class="item high">5</div>
+	<div class="item mid">6</div>
+	<div class="item low">7</div>
+	<div class="item mid">8</div>
+	<div class="item high">9</div>
+	<div class="item mid">10</div>
+	<div class="item low">11</div>
+	<div class="item high">12</div>
+	<div class="item low">13</div>
+	<div class="item high">14</div>
+	<div class="item mid">15</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ 	<script>
+
+function waterfall(){
+	var colWidth = $('.item').outerWidth(true),
+	colLength = parseInt($('.content').width()/colWidth),
+	array=[]
+	for(var i=0; i<colLength; i++){
+		array[i] = 0
+	}
+	$('.item').each(function(){
+		var minValue = Math.min.apply(null, array),
+			minIndex = array.indexOf(minValue)
+		$(this).css({
+			top: minValue,
+			left: colWidth * minIndex
+		})
+		array[minIndex] += $(this).outerHeight(true)
+	})
+} waterfall()
+
+$(window).resize(function(){
+  waterfall()
+})
+
+	</script>
+</body>
+</html>
