@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <script>
+        function Person(nick, age) {
+            this.nick = nick
+            this.age = age
+        }
+        Person.prototype.run = function() {
+            console.log(this.nick + 'is running')
+        }
+        Person.prototype.say = function() {
+            console.log(this.nick + 'is saying')
+        }
+
+        function Boy(nick, age, sex) {
+            Person.call(this, nick, age)
+            this.sex = sex
+        }
+        Boy.prototype = Object.create(Person.prototype) //  Object.create(Person.prototype)就是一个以Person.prototype这个对象为原型的对象，
+            //  Boy.prototype就是一个以Person.prototype作为原型的对象
+        Boy.prototype.constructor = Boy
+        Boy.prototype.play = function() {
+            console.log(this.nick + 'is playing')
+        }
+
+        // function Fn() {}
+        // Fn.prototype = Person.prototype
+        // Boy.prototype = new Fn() //Boy.prototype这个对象的_proto_被赋值为Fn.prototype，也就是Person.prototype
+        // Boy.prototype.constructor = Boy
+        // Boy.prototype.play = function() {
+        //     console.log(this.nick + 'is playing')
+        // }
+
+        var boy = new Boy('Jack', 3, 'male')
+    </script>
+</body>
+
+</html>

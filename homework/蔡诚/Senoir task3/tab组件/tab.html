@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>tab的封装</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .tab {
+            margin: 0 auto;
+            padding-top: 10px;
+            width: 600px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 30px;
+        }
+        
+        .tab-header {
+            border-bottom: 1px solid #ccc;
+            margin: 0 10px;
+        }
+        
+        .tab-container {
+            margin: 0px 20px;
+            padding-bottom: 20px;
+        }
+        
+        .tab-header>li {
+            float: left;
+            padding: 6px 11px 5px 11px;
+            cursor: pointer;
+        }
+        
+        .tab-container>li {
+            display: none;
+            padding: 10px 0px;
+        }
+        
+        .tab-header .active {
+            color: cornflowerblue;
+            padding: 5px 10px;
+            margin-bottom: -1px;
+            border-bottom: 1px solid white;
+            border-top: 1px solid #ccc;
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        
+        .tab-container .active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class=tab>
+        <ul class="tab-header clearfix">
+            <li class="active">选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+        </ul>
+        <ul class="tab-container clearfix">
+            <li class="active">内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+        </ul>
+    </div>
+    <div class=tab>
+        <ul class="tab-header clearfix">
+            <li class="active">选项1</li>
+            <li>选项2</li>
+            <li>选项3</li>
+        </ul>
+        <ul class="tab-container clearfix">
+            <li class="active">内容1</li>
+            <li>内容2</li>
+            <li>内容3</li>
+        </ul>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js-someModals/simple-tab.js"></script>
+    <script>
+        Tab.init($('.tab'))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        .carousel {
+            top: 20px;
+            overflow: hidden;
+            width: 500px;
+            height: 250px;
+            position: relative;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+        
+        .carousel .container-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3000px;
+        }
+        
+        .carousel .container-img:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .container-img>li {
+            float: left;
+        }
+        
+        .carousel .container-img img {
+            width: 500px;
+        }
+        
+        .button {
+            width: 28px;
+            height: 28px;
+            display: block;
+            border-radius: 14px;
+            background: #666;
+            text-align: center;
+            line-height: 28px;
+            color: lightgrey;
+            opacity: .8;
+        }
+        
+        .button.pre {
+            position: absolute;
+            top: 50%;
+            left: 4px;
+            transform: translate(0, -50%)
+        }
+        
+        .button.next {
+            position: absolute;
+            top: 50%;
+            right: 4px;
+            transform: translate(0, -50%)
+        }
+        
+        .carousel .bullet {
+            width: 112px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, 0px);
+        }
+        
+        .carousel .bullet:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .bullet>li {
+            width: 16px;
+            height: 8px;
+            border-radius: 6px;
+            background: slategrey;
+            float: left;
+            margin: 0 4px;
+            opacity: .6;
+        }
+        
+        .carousel .bullet .active {
+            background: lightgrey;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='carousel'>
+        <ul class='container-img'>
+            <li data-index='0'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="1.jpg"></a>
+            </li>
+            <li data-index='1'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt="2.jpg"></a>
+            </li>
+            <li data-index='2'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt="3.jpg"></a>
+            </li>
+            <li data-index='3'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt="4.jpg"></a>
+            </li>
+        </ul>
+        <a href="#" class="button pre">&lt;</a>
+        <a href="#" class="button next">&gt;</a>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <div class='carousel'>
+        <ul class='container-img'>
+            <li data-index='0'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg" alt="1.jpg"></a>
+            </li>
+            <li data-index='1'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg" alt="2.jpg"></a>
+            </li>
+            <li data-index='2'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg" alt="3.jpg"></a>
+            </li>
+            <li data-index='3'>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg" alt="4.jpg"></a>
+            </li>
+        </ul>
+        <a href="#" class="button pre">&lt;</a>
+        <a href="#" class="button next">&gt;</a>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src='../js-someModals/auto-Carousel.js'></script>
+    <script>
+        Carousel.init($('.carousel'))
+    </script>
+</body>
+
+</html>
