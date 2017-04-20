@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Modal-dialog</title>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font: 12px/1 Tahoma, Helvetica, Arial, "\5b8b\4f53", sans-serif;
+            color: #536160;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+        
+        button {
+            padding: 6px;
+            margin: 10px;
+            border: none;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px #a4a4b4;
+            background-color: white;
+        }
+        
+        .dialog {
+            width: 250px;
+            box-shadow: 0 2px 6px #a4a4b4;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            background-color: white;
+            z-index: 2
+        }
+        
+        .background-cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: gray;
+            opacity: 0.1;
+            z-index: 1
+        }
+        
+        .dialog .dialog-header {
+            padding: 6px 0;
+            background-color: #83cbf4;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .dialog .dialog-header h3 {
+            font-size: 1.2rem;
+            display: inline-block;
+            padding: 6px 10px;
+        }
+        
+        .dialog .dialog-header .btn-close {
+            font-size: 1rem;
+            float: right;
+            padding: 6px 10px;
+        }
+        
+        .dialog .dialog-content {
+            padding: 20px 0;
+            margin: 0px 10px;
+            font-size: 1.2rem;
+        }
+        
+        .dialog .dialog-chioce {
+            text-align: center;
+            padding: 10px 0;
+        }
+        
+        .dialog .dialog-chioce a {
+            font-size: 1.2rem;
+            display: inline-block;
+            padding: 6px 10px;
+            color: white;
+            background-color: #4aead9;
+            border-radius: 4px
+        }
+        
+        .dialog .btn-close {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn1">modal1</button>
+    <button class="btn2">modal2</button>
+    <button class="btn3">modal3</button>
+    <button class="btn4">modal4</button>
+    <button class="btn5">modal5</button>
+
+    <!--<div class='dialog'>
+        <div class="dialog-header clearfix">
+            <h3>标题</h3><span class="btn-close">x</span>
+        </div>
+        <div class="dialog-content">hello,大家好</div>
+        <div class='dialog-chioce'>
+            <a href="#" class='confirm'>确定</a>
+            <a href="#" class='cancel'>取消</a>
+        </div>
+    </div>-->
+</body>
+<script>
+    var Dialog = (function() {
+        function Modal(opts) {
+            this.opts = opts
+            this.createDialog()
+            this.bindEvent()
+        }
+        Modal.prototype.defaultOpts = { //预设模版
+            title: '',
+            message: '',
+            isShowCancelBtn: true,
+            isShowConfirmBtn: false,
+            onCancel: function() {},
+            onConfirm: function() {}
+        }
+        Modal.prototype.open = function(opts) {
+            this.closeDialog() //关闭其他按钮之前打开的dialog
+            this.setOpts(opts) //设置opts
+            this.setDialog() //设置dialog
+            this.showDialog() //显示dialog
+        }
+        Modal.prototype.setOpts = function(opts) {
+            if (typeof opts === 'string') {
+                this.opts = $.extend({}, this.defaultOpts, {
+                    message: opts
+                });
+            } else if (typeof opts === 'object') {
+                this.opts = $.extend({}, this.defaultOpts, opts);
+            }
+        }
+        Modal.prototype.setDialog = function() {
+            if (!this.opts.title) {
+                this.$dialog.find('.dialog-header').hide()
+            } else {
+                this.$dialog.find('.dialog-header').show()
+            }
+
+            if (!this.opts.isShowCancelBtn) {
+                this.$dialog.find('.dialog-choice .cancel').hide()
+            } else {
+                this.$dialog.find('.dialog-choice .cancel').show()
+            }
+
+            if (!this.opts.isShowConfirmBtn) {
+                this.$dialog.find('.dialog-choice .confirm').show()
+            } else {
+                this.$dialog.find('.dialog-choice .confirm').hide()
+            }
+
+            this.$dialog.find('.dialog-header h3').text(this.opts.title)
+            this.$dialog.find('.dialog-content').html(this.opts.message)
+        }
+        Modal.prototype.createDialog = function() {
+            var tpl = `
+            <div class='dialog-container'>
+            <div class='dialog'>
+                 <div class="dialog-header clearfix"><h3></h3><span class="btn-close">x</span></div>
+                <div class="dialog-content "></div>
+                <div class='dialog-chioce'>
+                     <a href="#" class='confirm'>确定</a>
+                     <a href="#" class='cancel'>取消</a>
+                </div>
+                
+             </div>
+             <div class="background-cover"></div>
+             </div>
+        `
+
+            $('body').append($(tpl))
+            this.$dialog = $('body').find('.dialog-container')
+            console.log('1')
+            this.closeDialog()
+        }
+        Modal.prototype.bindEvent = function() {
+            var _this = this
+                //关闭dialog
+            this.$dialog.find('.confirm').on('click', function() {
+                _this.opts.onConfirm() //确定后要执行的
+                _this.closeDialog()
+            })
+            this.$dialog.find('.cancel').on('click', function() {
+                _this.opts.onCancel() //确定后要执行的
+                _this.closeDialog()
+            })
+            this.$dialog.find('.btn-close').on('click', function() {
+                _this.closeDialog()
+            })
+            this.$dialog.find('.background-cover').on('click', function() {
+                _this.closeDialog()
+            })
+        }
+        Modal.prototype.closeDialog = function() {
+            this.$dialog.hide()
+        }
+        Modal.prototype.showDialog = function() {
+            this.$dialog.show()
+        }
+
+        return new Modal()
+    })()
+
+    $('.btn1').on('click', function() {
+        Dialog.open('hello, 你好');
+    });
+
+    $('.btn2').on('click', function() {
+        Dialog.open('<a href="http://jirengu.com">饥人谷</a>');
+    });
+
+    $('.btn3').on('click', function() {
+        Dialog.open({
+            title: '标题',
+            message: 'hello',
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onCancel: function() {
+                alert('close')
+            },
+            onConfirm: function() {
+                alert('confirm')
+            }
+        });
+    });
+
+    var list = `<ul>
+                    <li>option1</li>
+                    <li>option2</li>
+                    <li>option3</li>
+                    <li>option4</li>
+                </ul>`
+    $('.btn4').on('click', function() {
+        Dialog.open({
+            title: '标题',
+            message: list,
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onCancel: function() {
+                alert('close')
+            },
+            onConfirm: function() {
+                alert('confirm')
+            }
+        });
+    });
+    $('.btn5').on('click', function() {
+        Dialog.open({
+            title: '标题',
+            message: 'hello',
+            isShowCloseBtn: false,
+            isShowConfirmBtn: false
+        });
+    });
+</script>
+
+</html>

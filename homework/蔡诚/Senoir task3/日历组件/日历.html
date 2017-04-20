@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Untitled Document</title>
+    <style>
+        * {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .wrap {
+            width: 600px;
+        }
+        
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .calendar {
+            float: left;
+            position: relative;
+        }
+        
+        .date-input {
+            margin: 20px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 4px;
+            border: none;
+            box-shadow: 0 1px 4px #ccc;
+            text-align: center;
+            font-weight: 300;
+        }
+        
+        .calendar-container {
+            width: 220px;
+            text-align: center;
+            box-shadow: 0 3px 4px #ccc;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            z-index: -2;
+        }
+        
+        .calendar-container .calendar-header {
+            font-weight: 300;
+            background-color: rgba(0, 100, 255, .6);
+            color: white
+        }
+        
+        .calendar-container .calendar-header .pre {
+            float: left;
+            padding: 10px;
+            font-size: 1em;
+            display: inline-block;
+        }
+        
+        .calendar-container .calendar-header .current-month {
+            padding: 12px;
+            display: inline-block
+        }
+        
+        .calendar-container .calendar-header .next {
+            float: right;
+            padding: 10px;
+            font-size: 1em;
+            display: inline-block;
+        }
+        
+        .calendar-container .panel thead tr th {
+            font-weight: 400;
+            width: 32px;
+            padding-top: 4px;
+            padding-bottom: 10px;
+            font-size: 1em;
+            margin-bottom:
+        }
+        
+        .calendar-container .panel tbody tr td {
+            font-weight: 300;
+            font-size: 1em;
+            height: 29px;
+        }
+        
+        .calendar-container .panel .cur-month:hover {
+            background-color: #ff4e41;
+            color: white;
+            border-radius: 16px;
+        }
+        
+        .calendar-container .panel .pre-month,
+        .next-month {
+            opacity: .4
+        }
+        
+        .calendar-container .panel .cur-month.cur-date {
+            color: red;
+            font-weight: 400;
+            text-shadow: 0 1px 1px #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap clearfix">
+        <div class="calendar">
+            <input class="date-input" placeholder="xx年xx月" />
+        </div>
+        <div class="calendar">
+            <input class="date-input" placeholder="xx年xx月" />
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        function DatePicker($dateInput) {
+            this.$dateInput = $dateInput
+            this.init()
+            this.bind()
+
+        }
+        DatePicker.prototype.init = function() {
+            this.isShow = false
+            this.dateNow = new Date()
+            this.yearNow = this.dateNow.getFullYear()
+            this.monthNow = this.dateNow.getMonth() + 1
+            this.dateForWatch = new Date()
+            this.yearForWatch = this.dateForWatch.getFullYear()
+            this.monthForWatch = this.dateForWatch.getMonth()
+            this.renderTemplate() //设置模版
+            this.setDate(this.dateNow)
+        }
+        DatePicker.prototype.renderTemplate = function() {
+
+            var tpl = `<div class="calendar-container">
+                            <ul class="calendar-header clearfix">
+                                <li class="pre"><a href="#">&lt;</a></li>
+                                <li class="current-month">${this.yearNow}年${this.monthNow}月</li>
+                                <li class="next"><a href="#">&gt;</a></li>
+                            </ul>
+                            <table class="panel">
+                            <thead>
+                                <tr>
+                                    <th>日</th>
+                                    <th>一</th>
+                                    <th>二</th>
+                                    <th>三</th>
+                                    <th>四</th>
+                                    <th>五</th>
+                                    <th>六</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                            </table>`
+            this.$dateInput.parent().append($(tpl))
+
+            this.$calendarContainer = this.$dateInput.parent().find('.calendar-container')
+
+            this.$calendarContainer.css({
+                'position': 'absolute',
+                'left': 20,
+                'top': this.$dateInput.offset().top + this.$dateInput.outerHeight(),
+                'display': 'none'
+            });
+
+        }
+        DatePicker.prototype.setDate = function(date) {
+            var dateArr = this.getDateArr(date)
+            this.$calendarContainer.find('.current-month').html(`${date.getFullYear()}年${date.getMonth()+1}月`)
+            this.renderDate(dateArr)
+        }
+        DatePicker.prototype.getDateArr = function(date) {
+            var year = date.getFullYear(),
+                month = date.getMonth() + 1,
+                firstDay = this.getFirstDay(date), //当前月的第一天
+                lastDay = this.getLastDay(date), //当前月的最后一天
+                dateArr = []
+
+            for (let i = firstDay.getDay(); i > 0; i--) {
+                var dateItem = new Date(firstDay.getTime() - i * 24 * 60 * 60 * 1000);
+                dateArr.push({
+                    type: 'pre-month',
+                    date: dateItem
+                });
+            } //上个月的
+
+            for (let i = 0; i < lastDay.getDate() - firstDay.getDate() + 1; i++) {
+                var dateItem = new Date(firstDay.getTime() + i * 24 * 60 * 60 * 1000);
+                dateArr.push({
+                    type: 'cur-month',
+                    date: dateItem
+                });
+            } //这个月的
+
+            for (let i = 1; i < 7 - lastDay.getDay(); i++) {
+                var dateItem = new Date(lastDay.getTime() + i * 24 * 60 * 60 * 1000);
+                dateArr.push({
+                    type: 'next-month',
+                    date: dateItem
+                })
+            } //下个月的
+            return dateArr
+        }
+        DatePicker.prototype.renderDate = function(dateArr) {
+            var dateString = ''
+            for (let i = 0; i < dateArr.length; i++) {
+                if (i % 7 === 0) {
+                    dateString += '<tr>'
+                    dateString += `<td class='${dateArr[i].type}'>${dateArr[i].date.getDate()}</td>`
+                } else if (i % 7 === 6) {
+                    dateString += `<td class='${dateArr[i].type}'>${dateArr[i].date.getDate()}</td>`
+                    dateString += '</tr>'
+                } else {
+                    dateString += `<td class='${dateArr[i].type}'>${dateArr[i].date.getDate()}</td>`
+                }
+            }
+            this.$calendarContainer.find('tbody').html(dateString)
+        }
+
+        DatePicker.prototype.bind = function() {
+            var _this = this
+
+            $(window).on('click', function(e) {
+                    if ($(e.target)[0] === _this.$dateInput[0]) { //显示
+                        _this.showCalendar()
+                        _this.setDate(_this.dateNow)
+                    } else if ($(e.target).parents('.calendar-container')[0] === undefined && _this.isShow) { //关闭
+                        _this.hideCalendar()
+                    }
+                }) //显示与隐藏日历
+
+
+
+            this.$calendarContainer.find('.pre').on('click', function() {
+                _this.monthForWatch--
+                    if (_this.monthForWatch < 0) {
+                        _this.monthForWatch = 11
+                        _this.yearForWatch--
+                    }
+                _this.dateForWatch = new Date(_this.yearForWatch, _this.monthForWatch, 1) //设置显示的月份
+                _this.setDate(_this.dateForWatch)
+            })
+            this.$calendarContainer.find('.next').on('click', function() {
+                _this.monthForWatch++
+                    if (_this.monthForWatch === 12) {
+                        _this.monthForWatch = 0
+                        _this.yearForWatch++
+                    }
+
+
+                _this.dateForWatch = new Date(_this.yearForWatch, _this.monthForWatch, 1) //设置显示的月份的第一天
+                _this.setDate(_this.dateForWatch)
+            })
+
+            this.$calendarContainer.on('click', '.cur-month', function() {
+                _this.$dateInput.val(`${_this.dateForWatch.getFullYear()}年${_this.dateForWatch.getMonth()+ 1}月${$(this).html()}日`)
+                _this.$calendarContainer.css({
+                        'display': 'none'
+                    }) //关闭日历
+                _this.isShow = false
+            })
+
+            this.$dateInput.on('input', function() {
+                _this.$calendarContainer.css({
+                        'display': 'none'
+                    }) //关闭日历
+                _this.isShow = false
+            })
+
+
+        }
+
+        DatePicker.prototype.showCalendar = function() {
+            this.$calendarContainer.css({
+                    'display': 'block'
+                }) //显示日历
+            this.isShow = true
+            console.log('show')
+        }
+        DatePicker.prototype.hideCalendar = function() {
+            this.$calendarContainer.css({
+                    'display': 'none'
+                }) //显示日历
+            this.isShow = false
+            console.log('hide')
+        }
+        DatePicker.prototype.getFirstDay = function(dateNow) {
+            return new Date(dateNow.getFullYear(), dateNow.getMonth(), 1)
+        }
+        DatePicker.prototype.getLastDay = function(dateNow) {
+            return new Date(dateNow.getFullYear(), dateNow.getMonth() + 1, 0)
+        }
+
+        // $('.date-input').each(function() {
+        //     new DatePicker($(this));
+        // })
+
+        $.fn.datePicker = function() {
+                this.each(function() {
+                    new DatePicker($(this))
+                })
+            } //设置成jquery插件
+        $('.date-input').datePicker()
+    </script>
+</body>
+
+</html>

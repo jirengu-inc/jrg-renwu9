@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Lazyload</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .news-container {
+            width: 600px;
+            margin: 0 auto;
+        }
+        
+        .news-lists {
+            margin-right: -64px;
+        }
+        
+        .news-container .news-lists>li {
+            float: left;
+            width: 280px;
+            height: 200px;
+            margin-right: 40px;
+            margin-top: 40px;
+        }
+        
+        .news-container .news-lists>li img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='news-container'>
+        <ul class='news-lists clearfix'>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/1.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/10.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/15.jpg">
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" alt="图片" data-src="http://cdn.jirengu.com/book.jirengu.com/img/16.jpg">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../js-someModals/Exposure.js"></script>
+    <script>
+        var Lazyload = (function() {
+            return {
+                init: function($target, callback) {
+                    $target.each(function(idx, target) {
+                        new Exposure($(target), callback)
+                    })
+                }
+            }
+        })()
+        Lazyload.init($('.news-container img'), function($node) {
+            setTimeout(function() {
+                showImg($node)
+            }, 1000)
+        })
+
+        function showImg($img) {
+            var imgUrl = $img.attr('data-src')
+            $img.attr('src', imgUrl)
+        }
+    </script>
+</body>
+
+</html>
