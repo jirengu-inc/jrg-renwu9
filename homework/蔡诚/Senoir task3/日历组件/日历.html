@@ -102,6 +102,11 @@
             border-radius: 16px;
         }
         
+        .calendar-container .panel .cur-month.cur-date:hover {
+            color: white;
+            text-shadow: none;
+        }
+        
         .calendar-container .panel .pre-month,
         .next-month {
             opacity: .4
@@ -142,7 +147,7 @@
             this.yearForWatch = this.dateForWatch.getFullYear()
             this.monthForWatch = this.dateForWatch.getMonth()
             this.renderTemplate() //设置模版
-            this.setDate(this.dateNow)
+            this.setDate(this.dateNow) //设置日期，最后渲染
         }
         DatePicker.prototype.renderTemplate = function() {
 
@@ -184,6 +189,7 @@
             this.$calendarContainer.find('.current-month').html(`${date.getFullYear()}年${date.getMonth()+1}月`)
             this.renderDate(dateArr)
         }
+
         DatePicker.prototype.getDateArr = function(date) {
             var year = date.getFullYear(),
                 month = date.getMonth() + 1,
@@ -239,6 +245,12 @@
                     if ($(e.target)[0] === _this.$dateInput[0]) { //显示
                         _this.showCalendar()
                         _this.setDate(_this.dateNow)
+                        _this.$calendarContainer.find('.panel .cur-month').each(function(idx, node) {
+                                if ($(node).html() === _this.dateNow.getDate().toString()) {
+                                    $(node).addClass('cur-date')
+                                }
+
+                            }) //设置显示当天的日期
                     } else if ($(e.target).parents('.calendar-container')[0] === undefined && _this.isShow) { //关闭
                         _this.hideCalendar()
                     }
@@ -247,40 +259,38 @@
 
 
             this.$calendarContainer.find('.pre').on('click', function() {
-                _this.monthForWatch--
-                    if (_this.monthForWatch < 0) {
-                        _this.monthForWatch = 11
-                        _this.yearForWatch--
-                    }
-                _this.dateForWatch = new Date(_this.yearForWatch, _this.monthForWatch, 1) //设置显示的月份
-                _this.setDate(_this.dateForWatch)
-            })
+                    _this.monthForWatch--
+                        if (_this.monthForWatch < 0) {
+                            _this.monthForWatch = 11
+                            _this.yearForWatch--
+                        }
+                    _this.dateForWatch = new Date(_this.yearForWatch, _this.monthForWatch, 1) //设置显示的月份的第一天
+                    _this.setDate(_this.dateForWatch)
+                }) //前滚日历
             this.$calendarContainer.find('.next').on('click', function() {
-                _this.monthForWatch++
-                    if (_this.monthForWatch === 12) {
-                        _this.monthForWatch = 0
-                        _this.yearForWatch++
-                    }
-
-
-                _this.dateForWatch = new Date(_this.yearForWatch, _this.monthForWatch, 1) //设置显示的月份的第一天
-                _this.setDate(_this.dateForWatch)
-            })
+                    _this.monthForWatch++
+                        if (_this.monthForWatch === 12) {
+                            _this.monthForWatch = 0
+                            _this.yearForWatch++
+                        }
+                    _this.dateForWatch = new Date(_this.yearForWatch, _this.monthForWatch, 1) //设置显示的月份的第一天
+                    _this.setDate(_this.dateForWatch)
+                }) //后滚日历
 
             this.$calendarContainer.on('click', '.cur-month', function() {
-                _this.$dateInput.val(`${_this.dateForWatch.getFullYear()}年${_this.dateForWatch.getMonth()+ 1}月${$(this).html()}日`)
-                _this.$calendarContainer.css({
-                        'display': 'none'
-                    }) //关闭日历
-                _this.isShow = false
-            })
+                    _this.$dateInput.val(`${_this.dateForWatch.getFullYear()}年${_this.dateForWatch.getMonth()+ 1}月${$(this).html()}日`)
+                    _this.$calendarContainer.css({
+                            'display': 'none'
+                        }) //关闭日历
+                    _this.isShow = false
+                }) //选中日期
 
             this.$dateInput.on('input', function() {
-                _this.$calendarContainer.css({
-                        'display': 'none'
-                    }) //关闭日历
-                _this.isShow = false
-            })
+                    _this.$calendarContainer.css({
+                            'display': 'none'
+                        }) //关闭日历
+                    _this.isShow = false
+                }) //输入日期
 
 
         }
