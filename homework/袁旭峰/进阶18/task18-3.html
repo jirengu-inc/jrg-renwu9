@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .waterfall {
+            width: 900px;
+            margin: 0 auto;
+        }
+        
+        .news {
+            position: relative;
+            padding-left: 0;
+        }
+        
+        .news li {
+            position: absolute;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            list-style-type: none;
+        }
+        
+        .news h4 {
+            margin: 5px 0 10px 0;
+            border-bottom: 1px solid #ccc;
+            line-height: 45px;
+        }
+        
+        .news p {
+            color: #999;
+            line-height: 24px;
+            font-size: 12px;
+            margin: 0;
+        }
+        /*.news img {
+            height: 173px;
+        }*/
+        
+        .news img,
+        .news h4,
+        .news p {
+            width: 260px;
+        }
+    </style>
+    <div class="waterfall">
+        <ul class="news">
+
+        </ul>
+        <div class="footer"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        function PinterestlikeNews() {
+            this.isDataArrive = true
+            this.curPage = 1
+            this.arr = this.line()
+            this.newsOnload = 1
+            this.ajax()
+            this.lazyLoad()
+        }
+        PinterestlikeNews.prototype.ajax = function() {
+            this.newsOnload = 0
+            this.isDataArrive = false
+            var pinterestlikeNews = this
+            $.ajax({
+                url: 'http://platform.sina.com.cn/slide/album_tech',
+                dataType: 'jsonp',
+                jsonp: "jsoncallback",
+                data: {
+                    app_key: '1271687855',
+                    num: 10,
+                    page: pinterestlikeNews.curPage
+                }
+            }).done(function(ret) {
+                if (ret.status.code === "0" || ret.status.code === 0) {
+                    pinterestlikeNews.curPage += 1
+                    pinterestlikeNews.isDataArrive = true
+                    pinterestlikeNews.getData(ret)
+                } else {
+                    console.log('Internal error')
+                }
+            }).fail(function() {
+                console.log('network error')
+            })
+        }
+
+        PinterestlikeNews.prototype.getData = function(ret) {
+            var list = ret.data,
+                html = ''
+            $.each(list, function(i) {
+                var header = list[i].short_name
+                var discribe = list[i].short_intro
+                var imgUrl = list[i].img_url
+                var imgLink = list[i].url
+                html += `<li><a href=${imgLink}><img src=${imgUrl}></a><h4>${header}</h4><p>${discribe}</p></li>`
+            })
+            this.$latestNews = $(html)
+            $('.news').append(this.$latestNews)
+            this.imgAddition()
+        }
+        PinterestlikeNews.prototype.line = function() {
+            var arr = []
+            for (var i = 0; i < 3; i++) {
+                arr.push(0)
+            }
+            return arr
+        }
+
+        PinterestlikeNews.prototype.imgAddition = function() {
+            var imgReady = 0,
+                pinterestlikeNews = this
+            $(document).ready(function() {
+                pinterestlikeNews.$latestNews.find('img').each(function() {
+                    $(this).ready(function() {
+                        imgReady += 1
+                        if (imgReady === 10) {
+                            setTimeout(function() {
+                                pinterestlikeNews.adjustPosition()
+                            }, 100)
+                            imgReady = 0
+                        }
+                    })
+                })
+            })
+        }
+        PinterestlikeNews.prototype.adjustPosition = function() {
+            var pinterestlikeNews = this
+            console.log(this.$latestNews)
+            this.$latestNews.each(function() {
+                var Min = Math.min.apply(null, pinterestlikeNews.arr)
+                $(this).css({
+                    top: Min,
+                    left: $(this).outerWidth(true) * pinterestlikeNews.arr.indexOf(Min)
+                })
+                console.log($(this).find('img').height())
+                pinterestlikeNews.arr[pinterestlikeNews.arr.indexOf(Min)] += $(this).outerHeight(true)
+            })
+            this.newsOnload = 1
+        }
+        PinterestlikeNews.prototype.lazyLoad = function() {
+            var pinterestlikeNews = this
+            $(window).scroll(function() {
+                if (!pinterestlikeNews.isDataArrive) {
+                    return 0
+                }
+                if ($(document).height() < $(window).height() + $(window).scrollTop() + 80 && pinterestlikeNews.newsOnload === 1) {
+                    pinterestlikeNews.ajax()
+                }
+            })
+        }
+        var waterfallNews = new PinterestlikeNews()
+            // func({
+            //     "status": {
+            //         "code": "0"
+            //     },
+            //     "total": "8639",
+            //     "count": "3",
+            //     "data": [{
+            //         "id": "76648",
+            //         "sid": "453",
+            //         "name": "\u6b8b\u5fcd\uff01\u52a0\u52d2\u6bd4\u6d77\u5cb8\u9cb8\u9c7c\u60e8\u906d\u6355\u6740\u88ab\u5207\u5757\u552e\u5356",
+            //         "short_name": "\u6b8b\u5fcd\uff01\u9cb8\u9c7c\u60e8\u906d\u6355\u6740\u88ab\u5207\u5757\u552e\u5356",
+            //         "url": "http:\/\/slide.tech.sina.com.cn\/d\/slide_5_453_76648.html\/d\/2",
+            //         "img_url": "http:\/\/n.sinaimg.cn\/tech\/transform\/20170410\/6yZO-fyecrxv4954513.jpg",
+            //         "createtime": "2017-04-10 07:46:48",
+            //         "img_count": "6",
+            //         "short_intro": "\u8fd1\u65e5\uff0c\u4e00\u7ec4\u9cb8\u9c7c\u60e8\u906d\u6355\u6740\u7684\u7167\u7247\u9707\u60ca\u4e86\u8bb8\u591a\u4eba\u3002\u636e\u7167\u7247\u62cd\u6444\u8005\u4e9a\u5f53o\u683c\u62c9\u97e6\u5c14(Adam Gravel)\u900f\u9732\uff0c\u8fd9\u7ec4\u6355\u9cb8\u7167\u62cd\u6444\u4e8e\u52a0\u52d2\u6bd4\u6d77\u5cb8\u7684\u5723\u6587\u68ee\u7279\u4e0e\u683c\u6797\u7eb3\u4e01\u65af\u7fa4\u5c9b\u3002\u800c\u5728\u4e16",
+            //         "uni_intro": "",
+            //         "sub_ch": "\u79d1\u666e",
+            //         "click": "59108",
+            //         "click_this_week": "59108",
+            //         "click_last_week": "0",
+            //         "click_this_month": "59108",
+            //         "click_last_month": "0",
+            //         "click_this_day": "4996",
+            //         "click_last_day": "11822",
+            //         "source": "\u5176\u4ed6",
+            //         "cmnt_url": "http:\/\/comment5.news.sina.com.cn\/comment\/skin\/default.html?channel=kj&newsid=slidenews-album-453-76648",
+            //         "category_2": ""
+            //     }, {
+            //         "id": "76603",
+            //         "sid": "453",
+            //         "name": "\u65e5\u672c\u864e\u5988\u66b4\u529b\u529d\u67b6 \u54ac\u80cc\u62ce\u51fa\u75db\u6b7b\u718a\u5b69\u5b50",
+            //         "short_name": "\u864e\u5988\u66b4\u529b\u529d\u67b6\u54ac\u80cc\u75db\u6b7b\u718a\u5b69\u5b50",
+            //         "url": "http:\/\/slide.tech.sina.com.cn\/d\/slide_5_453_76603.html\/d\/2",
+            //         "img_url": "http:\/\/n.sinaimg.cn\/tech\/transform\/20170409\/pTjD-fyecrxv4830098.jpg",
+            //         "createtime": "2017-04-09 08:58:47",
+            //         "img_count": "5",
+            //         "short_intro": "\u718a\u5b69\u5b50\u73a9\u800d\u96be\u514d\u6709\u65f6\u5019\u4f1a\u8fc7\u706b\u5e72\u67b6\u3002",
+            //         "uni_intro": "",
+            //         "sub_ch": "\u79d1\u666e",
+            //         "click": "35742",
+            //         "click_this_week": "11595",
+            //         "click_last_week": "24147",
+            //         "click_this_month": "35742",
+            //         "click_last_month": "0",
+            //         "click_this_day": "1314",
+            //         "click_last_day": "1657",
+            //         "source": "\u65b0\u6d6a",
+            //         "cmnt_url": "http:\/\/comment5.news.sina.com.cn\/comment\/skin\/default.html?channel=kj&newsid=slidenews-album-453-76603",
+            //         "category_2": ""
+            //     }, {
+            //         "id": "76602",
+            //         "sid": "453",
+            //         "name": "\u963f\u66fc\u6e14\u592b\u6d77\u5cb8\u7f51\u6355\u6c99\u4e01\u9c7c\u753b\u9762\u9707\u64bc",
+            //         "short_name": "\u963f\u66fc\u6e14\u592b\u6d77\u5cb8\u7f51\u6355\u6c99\u4e01\u9c7c",
+            //         "url": "http:\/\/slide.tech.sina.com.cn\/d\/slide_5_453_76602.html\/d\/2",
+            //         "img_url": "http:\/\/n.sinaimg.cn\/tech\/transform\/20170409\/7_jU-fyecfak9947467.jpg",
+            //         "createtime": "2017-04-09 08:55:44",
+            //         "img_count": "10",
+            //         "short_intro": "\u6e14\u592b\u7a7f\u68ad\u5728\u6210\u5428\u6c99\u4e01\u9c7c\u4e2d\uff0c\u753b\u9762\u5341\u5206\u9707\u64bc\u60ca\u8273\u3002",
+            //         "uni_intro": "",
+            //         "sub_ch": "\u79d1\u666e",
+            //         "click": "47915",
+            //         "click_this_week": "19565",
+            //         "click_last_week": "28350",
+            //         "click_this_month": "47915",
+            //         "click_last_month": "0",
+            //         "click_this_day": "2940",
+            //         "click_last_day": "2340",
+            //         "source": "\u65b0\u6d6a",
+            //         "cmnt_url": "http:\/\/comment5.news.sina.com.cn\/comment\/skin\/default.html?channel=kj&newsid=slidenews-album-453-76602",
+            //         "category_2": ""
+            //     }]
+            // })
+    </script>
+</body>
+
+</html>
