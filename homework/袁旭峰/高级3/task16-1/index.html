@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        .list {
+            padding-left: 0;
+            width: 664px;
+            margin: 0 auto;
+        }
+        
+        .list:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .list li {
+            float: left;
+            list-style-type: none;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #f00;
+        }
+        
+        img {
+            height: 250px;
+            width: 250px;
+        }
+        
+        .loadMore {
+            height: 5px;
+            width: 50px;
+            margin: 0 auto;
+        }
+        
+        .loadOver {
+            margin-bottom: 0px;
+        }
+    </style>
+    <ul class="list">
+        <li><img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/b/b3/Th143Cover2.jpg/250px-Th143Cover2.jpg"></li>
+        <li><img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/8/88/Th075Cover.jpg/250px-Th075Cover.jpg"></li>
+        <li><img src='./blank.jpg' data-src='https://static.mengniang.org/common/thumb/6/67/Th11Cover.jpg/250px-Th11Cover.jpg'></li>
+        <li><img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/a/a8/Th105cover.jpg/250px-Th105cover.jpg"></li>
+        <li><img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/7/72/Th123.jpg/250px-Th123.jpg"></li>
+        <li><img src='./blank.jpg' data-src="https://static.mengniang.org/common/thumb/8/8b/Th06cover.jpg/250px-Th06cover.jpg"></li>
+    </ul>
+    <p class="loadMore"></p>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        var lazyLoad = (function() {
+            function Lazyload(container) {
+                this.isDataArrive = true
+                this.index = 0
+                this.$window = $(window)
+                this.exchangeUrl($('.list img'))
+                this.loadMore()
+                this.scroll()
+            }
+
+            Lazyload.prototype.exchangeUrl = function($node) {
+                $node.each(function() {
+                    this.setAttribute('src', this.getAttribute('data-src'))
+                })
+            }
+            Lazyload.prototype.loadMore = function() {
+                var $loadMore = $('.loadMore')
+                this.$loadMore = $loadMore
+                if (!this.isDataArrive) {
+                    return 0
+                }
+                var windowHeight = this.$window.height(),
+                    scrollTop = this.$window.scrollTop(),
+                    objOffset = $loadMore.offset().top,
+                    objHeight = $loadMore.outerHeight()
+                if (objOffset < windowHeight + scrollTop && objOffset > scrollTop + objHeight) {
+                    this.ajaxGet('/dalayLoad', {
+                        length: 4,
+                        index: this.index
+                    })
+                }
+
+            }
+            Lazyload.prototype.scroll = function() {
+                var lazyLoad = this
+                this.$window.on('scroll', function isVisible() {
+                    lazyLoad.loadMore()
+                })
+            }
+            Lazyload.prototype.ajaxGet = function(url, data) {
+                this.isDataArrive = false
+                var lazyLoad = this
+                $.get(url, data, function(ret) {
+                        lazyLoad.render(ret)
+                        lazyLoad.isDataArrive = true
+                        lazyLoad.index += 4
+                    })
+                    .fail(function() {
+                        this.isDataArrive = true
+                        console.log('internal error')
+                    })
+            }
+            Lazyload.prototype.render = function(ret) {
+                var lazyLoad = this
+                var result = JSON.parse(ret)
+                $.each(result, function(inx, ele) {
+                    if (result[inx] === null) {
+                        lazyLoad.$loadMore.text('到底了').addClass('loadOver')
+                        lazyLoad.$window.off('scroll')
+                        return 0
+                    }
+                    var html = '<li><img src="./blank.jpg" data-src=' + result[inx] + '></li>'
+                    $('.list').append(html)
+                })
+                this.exchangeUrl($('.list img:gt(-5)'))
+            }
+            return {
+                init: function() {
+                    new Lazyload()
+                }
+            }
+        })()
+        lazyLoad.init()
+    </script>
+</body>
+
+</html>
