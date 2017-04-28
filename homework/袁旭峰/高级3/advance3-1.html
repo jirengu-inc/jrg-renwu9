@@ -128,69 +128,91 @@
             <li></li>
         </ul>
     </div>
+    <script src="./font/iconfont.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
     <script>
-        exchangeUrl($('.img-list img'))
-
-        function exchangeUrl($node) {
-            $node.each(function(index) {
-                var imgSrc = this.getAttribute('data-src')
-                this.setAttribute('src', imgSrc)
-            })
-        }
-        $(function() {
-            var isAniover = true,
-                i = 0,
-                $imgList = $('.img-list'),
-                imgCount = $('.img-list>li').length
-
-
-            $('.next').click(function() {
-                next()
-            })
-            $('.prev').click(function() {
-                isAniover = false
-                prev()
-            })
-
-            function next() {
-                if (isAniover !== true) {
-                    return 0
-                }
-                isAniover = false
-
-                var curIdx = (i + 1) % imgCount
-                switchImg(curIdx)
+        var slider = (function() {
+            function SlideShow() {
+                this.exchangeUrl($('.img-list img'))
+                this.isAnimeOver = true
+                this.index = 0
+                this.imgCount = $('.img-list>li').length
+                this.documentReady()
             }
-
-            function prev() {
-                if (isAniover !== true) {
-                    return 0
-                }
-                var curIdx = (imgCount + i - 1) % imgCount
-                switchImg(curIdx)
-            }
-
-            function switchImg(afterIdx) {
-
-                $imgList.children().eq(i).fadeOut(1000)
-                $imgList.children().eq(afterIdx).fadeIn(1000, function() {
-                    isAniover = true
+            SlideShow.prototype.exchangeUrl = function($node) {
+                $node.each(function() {
+                    var imgSrc = this.getAttribute('data-src')
+                    this.setAttribute('src', imgSrc)
                 })
-                i = afterIdx
-                bulletSwitch(afterIdx)
+            }
+            SlideShow.prototype.documentReady = function() {
+                var slideShow = this
+
+                $(function() {
+                    slideShow.clickEvent()
+                    slideShow.bulletClick()
+                        // slideShow.autoPlay()
+                })
+            }
+            SlideShow.prototype.clickEvent = function() {
+                var slideShow = this
+                $('.next').click(function() {
+                    slideShow.nextImg()
+                })
+                $('.prev').click(function() {
+                    slideShow.prev()
+                })
+            }
+            SlideShow.prototype.nextImg = function() {
+                console.log(this.isAnimeOver)
+                if (this.isAnimeOver !== true) {
+                    return 0
+                }
+                this.isAnimeOver = false
+                var curIdx = (this.index + 1) % this.imgCount
+                this.switchImg(curIdx)
+            }
+            SlideShow.prototype.prev = function() {
+                if (this.isAnimeOver !== true) {
+                    return 0
+                }
+                this.isAnimeOver = false
+                var curIdx = (this.imgCount + this.index - 1) % this.imgCount
+                this.switchImg(curIdx)
+            }
+            SlideShow.prototype.switchImg = function(afterIdx) {
+                var $imgList = $('.img-list'),
+                    slideShow = this
+                $imgList.children().eq(slideShow.index).fadeOut(1000)
+                $imgList.children().eq(afterIdx).fadeIn(1000, function() {
+                    slideShow.isAnimeOver = true
+                })
+                this.index = afterIdx
+                this.bulletSwitch(afterIdx)
             }
 
-            function bulletSwitch(index) {
-                $('.bullet li').eq(index).attr('id', 'select').siblings().removeAttr('id', 'select')
+            SlideShow.prototype.bulletSwitch = function(i) {
+                $('.bullet li').eq(i).attr('id', 'select').siblings().removeAttr('id', 'select')
             }
-            $('.bullet').find('li').click(function() {
-                var curIdx = $(this).index()
-                bulletSwitch(curIdx)
-                switchImg(curIdx)
-            })
-            setInterval(next, 3000)
-        })
+            SlideShow.prototype.bulletClick = function() {
+                var slideShow = this
+                $('.bullet').find('li').click(function() {
+                    var curIdx = $(this).index()
+                    slideShow.switchImg(curIdx)
+                })
+            }
+
+            SlideShow.prototype.autoPlay = function() {
+                var slideShow = this
+                setInterval(slideShow.nextImg, 3000)
+            }
+            return {
+                init: function() {
+                    new SlideShow()
+                }
+            }
+        })()
+        var slider = slider.init()
     </script>
 </body>
 
