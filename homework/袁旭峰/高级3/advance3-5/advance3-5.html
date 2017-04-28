@@ -96,19 +96,22 @@
     <script>
         var dialog = (function() {
             function Dialog(option) {
+                if ($('.container')[0]) {
+                    return 0
+                }
                 this.checkOption(option)
                 this.renderHtml(option)
                 this.dialogButton(option)
             }
             Dialog.prototype = {
                 checkOption: function(option) {
-                    if ((typeof option.header !== 'string' && typeof option.header !== 'undefined') || typeof option.content !== 'string') {
-                        throw new Error('input type error')
-                    }
                     option.hasCancelBtn = option.hasCancelBtn === true ? true : false
                     option.hasCloseBtn = option.hasCloseBtn === true ? true : false
                     option.hasconfirmBtn = option.hasConfirmBtn === true ? true : false
                     option.btnAlert = option.btnAlert === true ? true : false
+                    if ((typeof option.header !== 'string' && typeof option.header !== 'undefined') || typeof option.content !== 'string') {
+                        throw new Error('input type error')
+                    }
                     if (!option.hasTitle) {
                         option.hasCloseBtn = false
                     }
@@ -155,18 +158,22 @@
                     }
                 },
                 dialogButton: function(option) {
+                    var dialog = this
                     $('.content-block>a').click(function() {
-                        if (option.btnAlert) {
-                            alert('close')
-                        }
-                        $('.container').detach()
+                        dialog.containerClose(option)
                     })
                     $('.icon').click(function() {
-                        if (option.btnAlert) {
-                            alert('close')
-                        }
+                        dialog.containerClose(option)
+                    })
+                    $('#close-button').click(function() {
                         $('.container').detach()
                     })
+                },
+                containerClose: function(option) {
+                    if (option.btnAlert) {
+                        alert('close')
+                    }
+                    $('.container').detach()
                 }
             }
             return {
