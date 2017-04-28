@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        ul {
+            padding-left: 0;
+            margin: 5px 0;
+        }
+        
+        li {
+            float: left;
+            list-style-type: none;
+            width: 13.48%;
+            margin: auto 1px;
+            padding: 3px 0;
+        }
+        
+        ul:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .datePicker {
+            position: relative;
+        }
+        
+        .date {
+            width: 250px;
+            text-align: center;
+            border: 1px #ccc solid;
+            position: absolute;
+            top: 20px;
+            display: none;
+        }
+        
+        .day li {
+            cursor: pointer;
+        }
+        
+        .day li:hover {
+            background-color: #c00;
+            color: #fff;
+        }
+        
+        .date:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .prev {
+            float: left;
+        }
+        
+        .next {
+            float: right;
+        }
+        
+        .year-month {
+            background: #c00;
+            color: #fff;
+            padding: 5px 0;
+        }
+        
+        .not-current-month {
+            color: #eee;
+        }
+        
+        .week {
+            font-family: '黑体';
+        }
+        
+        .current-time {
+            left: 178px;
+        }
+    </style>
+    <form class="datePicker">
+        <input type="text" placeholder="有初始值">
+        <div class="date default-time">
+            <div class="year-month">
+                <div class="prev">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-prev"></use>
+                    </svg>
+                </div>
+                <span><span class="current-year">2016</span>年<span class="current-month">5</span>月</span>
+                <div class="next">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-next"></use>
+                    </svg>
+                </div>
+            </div>
+            <ul class="week">
+                <li>日</li>
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li>六</li>
+            </ul>
+            <ul class="day">
+                <li>01</li>
+                <li>02</li>
+                <li>03</li>
+                <li>04</li>
+                <li>05</li>
+                <li>06</li>
+                <li>07</li>
+                <li>08</li>
+                <li>09</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+                <li class="not-current-month">01</li>
+                <li class="not-current-month">02</li>
+                <li class="not-current-month">03</li>
+                <li class="not-current-month">04</li>
+            </ul>
+        </div>
+        <input type="text" placeholder="无初始值">
+        <div class="date current-time">
+            <div class="year-month">
+                <div class="prev">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-prev"></use>
+                    </svg>
+                </div>
+                <span><span class="current-year"></span>年<span class="current-month"></span>月</span>
+                <div class="next">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-next"></use>
+                    </svg>
+                </div>
+            </div>
+            <ul class="week">
+                <li>日</li>
+                <li>一</li>
+                <li>二</li>
+                <li>三</li>
+                <li>四</li>
+                <li>五</li>
+                <li>六</li>
+            </ul>
+            <ul class="day">
+
+            </ul>
+        </div>
+    </form>
+    <script src="./font/iconfont.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+    <script>
+        var datePicker = (function() {
+            function DatePicker(container) {
+                this.container = container
+                this.checkDefaultDate()
+                this.inputClick()
+                this.dateStopPropagation()
+                this.switchMonth()
+                this.returnDatetoInput()
+            }
+            DatePicker.prototype = {
+                inputClick: function() {
+                    $(this.container).prev('input').click(function(e) {
+                        $(this).next('.date').show().siblings('.date').hide()
+                        e.stopPropagation()
+                    })
+                    $(window).click(function() {
+                        $('.date').hide()
+                    })
+                },
+                switchMonth: function() {
+                    let datePicker = this
+                    $(`${this.container} .prev`).click(function() {
+                        var targetMonth = parseInt(datePicker.$currentMonth.text()) - 2
+                        datePicker.getDate(targetMonth)
+                        datePicker.returnDatetoInput()
+                    })
+                    $(`${this.container} .next`).click(function() {
+                        var targetMonth = parseInt(datePicker.$currentMonth.text())
+                        datePicker.getDate(targetMonth)
+                        datePicker.returnDatetoInput()
+                    })
+                },
+                checkDefaultDate: function() {
+                    this.$currentYear = $(`${this.container} .current-year`)
+                    this.$currentMonth = $(`${this.container} .current-month`)
+                    let resYear = (this.$currentYear.text() === '') ? this.$currentYear.text(new Date().getFullYear()) : 0
+                    let resMonth = (this.$currentMonth.text() === '') ? this.$currentMonth.text(new Date().getMonth() + 1) : 0
+                    if (resYear || resMonth) {
+                        this.getDate(parseInt(this.$currentMonth.text()) - 1)
+                    }
+                },
+                getDate: function(targetMonth) {
+                    let year = parseInt(this.$currentYear.text()),
+                        targetDayHtml = '',
+                        lastRowNotCurrentMonthHtml = '',
+                        firstRowNotCurrentMonthHtml = ''
+                    let targetDayCount = new Date(year, targetMonth + 1, 0).getDate(),
+                        targetweekday = new Date(year, targetMonth + 1, 0).getDay(),
+                        beforeTargetDayCount = new Date(year, targetMonth, 0).getDate(),
+                        firstRowNotCurrentMonth = new Date(year, targetMonth, 0).getDay(),
+                        lastRowNotCurrentMonth = 6 - new Date(year, targetMonth + 1, 0).getDay()
+                    year = new Date(year, targetMonth + 1, 0).getFullYear()
+                    targetMonth = new Date(year, targetMonth + 1, 0).getMonth() + 1
+                    for (let i = 1; i < lastRowNotCurrentMonth + 1; i++) {
+                        lastRowNotCurrentMonthHtml += `<li class=not-current-month>0${i}</li>`
+                    }
+                    for (let i = beforeTargetDayCount - firstRowNotCurrentMonth; i < beforeTargetDayCount + 1; i++) {
+                        firstRowNotCurrentMonthHtml += `<li class=not-current-month>${i}</li>`
+                    }
+                    for (let i = 1; i < targetDayCount + 1; i++) {
+                        if (i < 10) {
+                            targetDayHtml += `<li>0${i}</li>`
+                        } else {
+                            targetDayHtml += `<li>${i}</li>`
+                        }
+                    }
+                    let html = firstRowNotCurrentMonthHtml + targetDayHtml + lastRowNotCurrentMonthHtml
+                    this.render(html, year, targetMonth)
+                },
+                render: function(day, year, month) {
+                    $(`${this.container} .day`).empty().append(day)
+                    this.$currentYear.text(year)
+                    this.$currentMonth.text(month)
+                },
+                returnDatetoInput: function() {
+                    let datePicker = this
+                    $(`${this.container} .day`).children().click(function() {
+                        $('.date').hide()
+                        let day = parseInt($(this).text())
+                        let month = parseInt(datePicker.$currentMonth.text()) - 1
+                        let year = parseInt(datePicker.$currentYear.text())
+                        if ($(this).hasClass('not-current-month')) {
+                            if (parseInt($(this).text()) < 15) {
+                                month += 1
+                            } else {
+                                month -= 1
+                            }
+                        }
+                        let inputDateMonth = new Date(year, month, day).getMonth() + 1
+                        let inputDateYear = new Date(year, month, day).getFullYear()
+                        let inputDate = `${inputDateYear}/${inputDateMonth}/${day}`
+                        $(datePicker.container).prev('input').val(inputDate)
+                    })
+                },
+                dateStopPropagation: function() {
+                    $('.date').click(function(e) {
+                        e.stopPropagation()
+                    })
+                }
+            }
+            return {
+                init: function(container) {
+                    for (let i in container) {
+                        new DatePicker(container[i])
+                    }
+                }
+            }
+        })()
+        let DatePicker = datePicker.init(['.current-time', '.default-time'])
+    </script>
+</body>
+
+</html>

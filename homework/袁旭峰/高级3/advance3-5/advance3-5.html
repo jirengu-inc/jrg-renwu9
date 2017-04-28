@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+        
+        .title {
+            background-color: #555;
+            width: 350px;
+            padding: 20px;
+            color: #fff;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        
+        .title div {
+            float: right;
+        }
+        
+        .close {
+            cursor: pointer;
+        }
+        
+        .content-block {
+            background-color: #eee;
+            width: 374px;
+            min-height: 80px;
+            padding: 8px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        
+        .content-block:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        
+        .content {
+            margin: 13px 13px 13px 13px;
+        }
+        
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -195px;
+            margin-top: -170px;
+            z-index: 10;
+            box-shadow: 0px 0px 0px 10000px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        .content-block>a {
+            display: block;
+            float: right;
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            margin: 13px 8px;
+            border-radius: 5px;
+        }
+    </style>
+    <button id="buttonA">对话框1</button>
+    <button id="buttonB">对话框2</button>
+    <button id="buttonC">对话框3</button>
+    <button id="buttonD">对话框4</button>
+    <button id="buttonE">对话框5</button>
+    <button id="close-button">关闭</button>
+    <script src="./font/iconfont.js "></script>
+    <script src="https://code.jquery.com/jquery-3.2.0.js "></script>
+    <script>
+        var dialog = (function() {
+            function Dialog(option) {
+                this.checkOption(option)
+                this.renderHtml(option)
+                this.dialogButton(option)
+            }
+            Dialog.prototype = {
+                checkOption: function(option) {
+                    if ((typeof option.header !== 'string' && typeof option.header !== 'undefined') || typeof option.content !== 'string') {
+                        throw new Error('input type error')
+                    }
+                    option.hasCancelBtn = option.hasCancelBtn === true ? true : false
+                    option.hasCloseBtn = option.hasCloseBtn === true ? true : false
+                    option.hasconfirmBtn = option.hasConfirmBtn === true ? true : false
+                    option.btnAlert = option.btnAlert === true ? true : false
+                    if (!option.hasTitle) {
+                        option.hasCloseBtn = false
+                    }
+                    if (option.content === '') {
+                        throw new Error('Initialize fail,please input what you need to display')
+                    }
+                    if (!option.hasCloseBtn) {
+                        if (!option.hasCancelBtn && !option.hasConfirmBtn) {
+                            throw new Error('Initialize fail,dialog need button to close')
+                        }
+                    }
+                },
+                renderHtml: function(option) {
+                    let buttonClose = (option.hasCloseBtn) ? `
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-cancel"></use>
+                            </svg>` : ''
+                    let title = (option.hasTitle) ? `
+                            <div class="title">
+                                <span>${option.header}</span>
+                                <div class="close">
+                                    ${buttonClose}
+                                </div>
+                             </div>
+                             ` : ''
+                    let buttonCancel = (option.hasCancelBtn) ? `<a href="javascript:void 0" id="cancel">确认</a>` : ''
+                    let buttonConfirm = (option.hasConfirmBtn) ? `<a href="javascript:void 0" id="confirm">取消</a>` : ''
+                    let contentBlock = `
+                        <div class="content-block">
+                            <div class="content">${option.content}</div>
+                            ${buttonCancel}
+                            ${buttonConfirm}
+                        </div>`
+                    let html = `
+                        <div class="container">
+                            ${title}
+                            ${contentBlock}
+                        </div>
+                        `
+                    $html = $(html)
+                    $('body').append($html)
+                    if (title === '') {
+                        $('.content-block').css('border-radius', '5px')
+                    }
+                },
+                dialogButton: function(option) {
+                    $('.content-block>a').click(function() {
+                        if (option.btnAlert) {
+                            alert('close')
+                        }
+                        $('.container').detach()
+                    })
+                    $('.icon').click(function() {
+                        if (option.btnAlert) {
+                            alert('close')
+                        }
+                        $('.container').detach()
+                    })
+                }
+            }
+            return {
+                openDialog: function(option) {
+                    new Dialog(option)
+                }
+            }
+        })()
+        $('#buttonA').click(function() {
+            dialog.openDialog({
+                content: '这是第一个内容',
+                hasConfirmBtn: true
+            })
+        })
+        $('#buttonB').click(function() {
+            dialog.openDialog({
+                content: '<a herf="#">这是2号</a>',
+                hasCancelBtn: true
+            })
+        })
+        $('#buttonC').click(function() {
+            dialog.openDialog({
+                header: '标题',
+                content: '第三个',
+                hasCloseBtn: true,
+                hasTitle: true,
+                hasCancelBtn: true,
+                hasConfirmBtn: true,
+                btnAlert: true
+            })
+        })
+
+        $('#buttonD').click(function() {
+            dialog.openDialog({
+                header: '标题',
+                content: '<ul><li>1</li><li>2</li><li>3</li><li>4</li></ul>',
+                hasCloseBtn: true,
+                hasTitle: true,
+                hasCancelBtn: true,
+                hasConfirmBtn: true,
+                btnAlert: true
+            })
+        })
+        $('#buttonE').click(function() {
+            dialog.openDialog({
+                header: '第五个标题',
+                content: '这是第五个按钮',
+                hasCloseBtn: true,
+                hasTitle: true,
+            })
+        })
+
+
+        // let option = {
+        //     header: '', type:string
+        //     content: '', type:string
+        //     hasCloseBtn: true / false,
+        //     hasTitle: true / false
+        //     hasCancelBtn: true/false,
+        //     hasConfirmBtn: true/false,
+        //     btnAlert:true/false
+        // 
+        // 
+        // tip:
+        // the button option only except boolean ，any other input will consider as false 
+        // you must input something into content or error will occur;
+        // lt's OK to not to input any word into title
+        // if hasCloseBtn is false, hasCancelBtn or hasconfirmBtn must be true or error will occur
+        // if hastitle is false ,the property of title and hascloseBtn will be ignored
+        // }
+    </script>
+</body>
+
+</html>
