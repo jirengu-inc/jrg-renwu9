@@ -54,7 +54,6 @@ define(['jquery'], function($) {
 
                     if (clear) {
                         _this.$tabItem.removeClass('active')
-                        console.log('aaa')
                     }
                 }, 100)
 
