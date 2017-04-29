@@ -104,7 +104,8 @@ define(['jquery'], function($) {
             var _this = this
             this.clock = setInterval(function() {
                 _this.playNext(1)
-            }, 3000)
+                console.log('auto')
+            }, 2500)
         }
         _Carousel.prototype.stopPlay = function() {
             clearInterval(this.clock)
