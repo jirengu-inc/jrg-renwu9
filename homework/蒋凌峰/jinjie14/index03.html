@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>代理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        ul,
+        li {
+            list-style: none;
+        }
+        
+        body {
+            color: #000;
+        }
+        
+        .wrapper {
+            width: 702px;
+            margin: 0 auto;
+        }
+        
+        .wrapper h2 {
+            padding-bottom: 20px;
+        }
+        
+        .wrapper .add {
+            border: 1px solid #c81623;
+            color: #c81623;
+            padding: 10px 15px;
+            border-radius: 3px;
+            background-color: #fff;
+        }
+        
+        .wrapper .add:hover {
+            cursor: pointer;
+        }
+        
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .container {
+            position: relative;
+            width: 702px;
+            margin-bottom: 20px;
+        }
+        
+        .product {
+            margin-left: -20px;
+            margin-top: -20px;
+            display: none;
+        }
+        
+        .modal {
+            display: none;
+        }
+        
+        .btn:hover {
+            cursor: pointer;
+        }
+        
+        .product .product-item {
+            margin: 20px 0 0 20px;
+            border: 1px solid #eee;
+            width: 220px;
+            padding: 0 10px 10px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .product>li {
+            float: left;
+        }
+        
+        .product .des {
+            text-align: left;
+        }
+        
+        .product div.price {
+            color: red;
+            text-align: left;
+        }
+        
+        .product-item .modal {
+            width: 100%;
+            height: 100%;
+            background-color: #dd2;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        
+        .product-item .modal button {
+            border: 1px solid #c81623;
+            color: #c81623;
+            padding: 10px 15px;
+            border-radius: 3px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .active {
+            display: block;
+        }
+        
+        .category-item.on {
+            background-color: #eee;
+        }
+        
+        .category-list .category-item.on a {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h2>珠宝首饰</h2>
+        <div class="container">
+            <ul class="product clearfix active">
+                <li class="product-item">
+                    <div class="modal"><button class="btn">立即抢购</button></div>
+                    <div class="product-item-box">
+                        <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                        <p class="des">藏美千足金和田玉金镶玉路路通吊坠</p>
+                        <div class="price">￥1699.00</div>
+                    </div>
+                </li>
+                <li class="product-item">
+                    <div class="modal"><button class="btn">立即抢购</button></div>
+                    <div class="product-item-box">
+                        <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                        <p class="des">藏美千足金和田玉金镶玉路路通吊坠</p>
+                        <div class="price">￥1699.00</div>
+                    </div>
+                </li>
+                <li class="product-item">
+                    <div class="modal"><button class="btn">立即抢购</button></div>
+                    <div class="product-item-box">
+                        <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                        <p class="des">藏美千足金和田玉金镶玉路路通吊坠</p>
+                        <div class="price">￥1699.00</div>
+                    </div>
+                </li>
+                <li class="product-item">
+                    <div class="modal"><button class="btn">立即抢购</button></div>
+                    <div class="product-item-box">
+                        <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                        <p class="des">藏美千足金和田玉金镶玉路路通吊坠</p>
+                        <div class="price">￥1699.00</div>
+                    </div>
+                </li>
+                <li class="product-item">
+                    <div class="modal"><button class="btn">立即抢购</button></div>
+                    <div class="product-item-box">
+                        <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                        <p class="des">藏美千足金和田玉金镶玉路路通吊坠</p>
+                        <div class="price">￥1699.00</div>
+                    </div>
+                </li>
+                <li class="product-item">
+                    <div class="modal"><button class="btn">立即抢购</button></div>
+                    <div class="product-item-box">
+                        <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+                        <p class="des">藏美千足金和田玉金镶玉路路通吊坠</p>
+                        <div class="price">￥1699.00</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <button class="add">添加</button>
+    </div>
+
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(".add").on("click", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    add(JSON.parse(xhr.responseText)); //调用add函数处理返回数据
+                }
+            };
+            xhr.open('GET', '/getmore', true);
+            xhr.send();
+        });
+        // 处理返回数据，添加li
+        function add(data) {
+            var $ul = $(".product"),
+                html;
+
+            $.each(data, function(index, value) {
+                html = '<li class="product-item">' +
+                    '<div class="modal"><button class="btn">立即抢购</button></div>' +
+                    '<div class="product-item-box">' +
+                    '<img src=' + value.img + ' alt="">' +
+                    '<p class="des">' + value.name + '</p>' +
+                    '<div class="price">' + value.price + '</div>' +
+                    '</div>' +
+                    '</li>';
+                $ul.append(html);
+            });
+        }
+    </script>
+</body>
+
+</html>
