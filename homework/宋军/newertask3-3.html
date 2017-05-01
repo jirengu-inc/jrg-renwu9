@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+ul, li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tab{
+	width: 500px;
+	border: 1px solid grey;
+	padding: 10px;
+	margin: 10px;
+}
+
+.header{
+	border-bottom: 1px solid grey;
+}
+
+.header:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+
+.header>li{
+	float: left;
+	list-style: none;
+	text-align: center;
+	border: 1px solid white;
+	border-bottom: none;
+	width: 100px;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.header .active{
+   border: 1px solid grey;
+   border-bottom-color: white;
+   margin-bottom: -1px;
+   color: red;
+}
+
+.container>li{
+	display: none;
+	padding: 10px;
+}
+
+.container .active{
+	display: block;
+	color: red;
+}
+
+	</style>
+</head>
+<body>
+
+<div class="tab">
+	<ul class="header">
+		<li class="active">option1</li>
+		<li>option2</li>
+		<li>option3</li>
+	</ul>
+	<ul class="container">
+		<li class="active">content1</li>
+		<li>content2</li>
+		<li>content3</li>
+	</ul>
+</div>
+
+<div class="tab">
+	<ul class="header">
+		<li class="active">option1</li>
+		<li>option2</li>
+		<li>option3</li>
+	</ul>
+	<ul class="container">
+		<li class="active">content1</li>
+		<li>content2</li>
+		<li>content3</li>
+	</ul>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+ 	<script>
+
+var Tab = function(ctn){
+	this.ctn = ctn;
+	this.init();
+	this.bind();
+}
+
+Tab.prototype.init = function(){
+	this.tabLists = this.ctn.querySelectorAll('.header>li');
+	this.tabPanels = this.ctn.querySelectorAll('.container>li');
+}
+
+Tab.prototype.bind = function(){
+	var _this = this;
+	this.tabLists.forEach(function(list, index){
+		list.onclick = function(){
+			_this.tabLists.forEach(function(list){
+				list.classList.remove('active');
+			})
+			list.classList.add('active');
+			
+			_this.tabPanels.forEach(function(panel){
+				panel.classList.remove('active');
+			})
+			_this.tabPanels[index].classList.add('active');
+		}	
+	})
+}
+
+var tab1 = new Tab(document.querySelectorAll('.tab')[0])
+var tab2 = new Tab(document.querySelectorAll('.tab')[1])
+
+	</script>
+</body>
+</html>
