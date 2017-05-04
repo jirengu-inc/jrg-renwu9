@@ -1,0 +1,23 @@
+{
+  "name": "www",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mywebpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "jquery": "^3.2.1"
+  }
+}
