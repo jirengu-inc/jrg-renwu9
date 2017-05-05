@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>加载更多</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    .news-list>li {
+        padding: 8px 10px;
+        margin-top: 15px;
+        border: 1px solid #ccc;
+    }
+    
+    .news-list>li:hover {
+        cursor: pointer;
+    }
+    
+    .btn {
+        font-size: 16px;
+        color: #e27272;
+        border: 1px solid #e27272;
+        border-radius: 3px;
+        margin: 10px auto;
+        display: block;
+        background-color: #fff;
+        width: 80px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+    }
+    
+    .btn:hover {
+        cursor: pointer;
+    }
+    
+    .btn img {
+        height: 38px;
+        width: 38px;
+    }
+    
+    .on {
+        background-color: green;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <ul class="news-list">
+            <li>内容1</li>
+            <li>内容2</li>
+        </ul>
+        <button class="btn">加载更多</button>
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var $ul = $(".news-list"),
+            $btn = $(".btn"),
+            cur = 2,
+            isLoading;
+        $ul.on("mouseenter", "li", function() {
+            $(this).addClass("on");
+        }).on("mouseleave", "li", function() {
+            $(this).removeClass("on");
+        });
+
+        $btn.on("click", function() {
+            if ($(this).data("isLoading")) {
+                return
+            }
+            $(this).data("isLoading", true)
+                .html('<img src="loading.gif" />');
+            $.ajax({
+                method: "get",
+                url: '/getInfo',
+                data: {
+                    index: cur,
+                    length: 5
+                },
+                dataType: 'json',
+                success: function(xhr) {
+                    success(xhr);
+                },
+                error: function(xhr) {
+                    error(xhr);
+                }
+            });
+        });
+
+        function success(xhr) {
+            $btn.data("isLoading", false)
+                .text("加载更多");
+            var html = '';
+            if (xhr.status === 1) {
+                for (var key in xhr.data) {
+                    html += "<li>" + xhr.data[key] + "</li>";
+                }
+                $ul.append(html);
+                cur += 5;
+            } else {
+                alert("获取数据失败");
+            }
+        }
+
+        function error(xhr) {
+            $btn.data("isLoading", false)
+                .text("加载更多");
+            alert("系统错误");
+        }
+    </script>
+
+</body>
+
+</html>
