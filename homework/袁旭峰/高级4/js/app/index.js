@@ -1,5 +1,7 @@
-define(['com/slideshow', 'com/goTop', 'com/waterfall'], function(slideshow, goTop, waterfall) {
-    slideshow.init()
+define(['com/slideshow', 'com/goTop', 'com/waterfall', 'jquery'], function(slideshow, goTop, waterfall, $) {
     goTop.backtoTop('.goTop')
-    waterfall.init()
+    $(document).ready(function() {
+        slideshow.init()
+        waterfall.init()
+    })
 })
