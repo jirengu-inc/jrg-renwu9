@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ajax懒加载</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .container {
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    .newsItem {
+        margin: 10px 0;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+    }
+
+    .clearfix:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    .desImg {
+        width: 50px;
+        height: 50px;
+        float: left;
+        /*padding: 0 5px;*/
+    }
+
+    .title,
+    .description {
+        font-size: 14px;
+        margin-left: 60px;
+    }
+
+    .description {
+        margin-top: 10px;
+        color: #ccc;
+    }
+
+    .load-more {
+        visibility: hidden;
+        height: 3px;
+        margin: 3px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <ul class="newsList">
+            <!--<li class="newsItem">
+                <a href="http://view.inews.qq.com/a/20160830A02SEB00" class="clearfix">
+                    <img src="http://inews.gtimg.com/newsapp_ls/0/531730377_150120/0" alt="" class="desImg" data-src="">
+                    <h2 class="title">中国轰6K研发险些被俄罗斯发动机厂商卡脖子</h2>
+                    <p class="description">近日，轰6K＂战神＂轰炸机首次公开亮相。在中国..</p>
+                </a>
+            </li>
+            <li class="newsItem">
+                <a href="http://xw.qq.com/mil/20160830028700/MIL2016083002870002">
+                    <img src="http://inews.gtimg.com/newsapp_ls/0/531644649_150120/0" alt="" class="desImg" data-src="">
+                    <h2 class="title">外媒称中国已经决心造出世界先进的航空发动机</h2>
+                    <p class="description">资料图：2012年11月14日，第九届中国国际...</p>
+                </a>
+            </li>-->
+        </ul>
+        <p class="load-more">加载更多</p>
+    </div>
+
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var pageIndex = 0,
+            lock = false,
+            isNewsLoaded = true;
+
+
+
+        checkNews();
+        $(window).on("scroll", checkNews);
+
+        function checkNews() {
+            if (check($('.load-more')) && !lock && isNewsLoaded) {
+                getNews();
+            }
+        }
+
+        function getNews() {
+            isNewsLoaded = false;
+            $.get("/getNews", {
+                    page: pageIndex
+                })
+                .done(function (resNews) {
+                    isNewsLoaded = true;
+                    if (resNews.status === 0) {
+                        pageIndex++;
+                        render(resNews.data);
+                        checkNews();
+                    } else {
+                        alert("获取新闻失败");
+                    }
+                })
+                .fail(function () {
+                    alert("系统错误");
+                })
+        }
+        // 判断是否显示
+        function check($node) {
+            var windowHeight = $(window).height(),
+                scrollTop = $(window).scrollTop(),
+                nodeTop = $node.offset().top,
+                nodeHeight = $node.outerHeight(true);
+            if (windowHeight + scrollTop > nodeTop && scrollTop < nodeTop + nodeHeight) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+
+        // 渲染
+        function render(e) {
+            var html = '';
+            if (e.length === 0) {
+                lock = true;
+                $(".container").append('<p>没有更多数据了...</p>');
+                return;
+            }
+            $.each(e, function () {
+                console.log(e);
+                html += '<li class="newsItem">' +
+                    '<a href="' + this.link + '" class="clearfix">' +
+                    '<img src="' + this.img + '" alt="" class="desImg" data-src="">' +
+                    '<h2 class="title">' + this.title + '</h2>' +
+                    '<p class="description">' + this.brif + '</p>' +
+                    '</a></li>';
+                console.log(this);
+                console.log(html);
+            })
+            $(".newsList").append(html);
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layload image</title>
+    <style>
+      * {margin: 0; padding: 0;}
+        ul {
+            list-style: none;
+            width: 820px;
+            margin: 0 auto;
+        }
+        .clearfix:after {
+          display: block;
+          content: "";
+          clear: both;
+        }
+        h1 {
+            text-align: center;
+        }
+        
+        li {
+            float: left;
+            margin: 5px;
+        }
+        
+        #img-list .img-item img {
+            width: 400px;
+            height: 301px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>懒加载-不夜港人</h1>
+    <ul id="img-list" class="clearfix">
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792692_815132.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792691_150037.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792696_630285.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792699_558870.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792697_768175.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792690_523024.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792689_260943.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792698_452338.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792700_104735.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792701_654318.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792695_740158.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792694_471705.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792693_277537.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792702_145298.jpg">
+            </a>
+        </li>
+    </ul>
+
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        var lock = false;
+        render();
+        $(window).on("scroll", function() {
+            if (lock) {
+                return;
+            }
+            render();
+        });
+
+        function render() {
+            $(".img-item img").each(function() {
+                //是否检测加载 是否在里面
+                var $this = $(this);
+                if (check($this) && !loaded($this)) {
+                    load($this);
+                    console.log("test");
+                }
+            })
+        }
+
+        function check($img) {
+            var windowHeight = $(window).height(),
+                scrollTop = $(window).scrollTop(),
+                nodeTop = $img.offset().top,
+                nodeHeight = $img.outerHeight(true);
+            if (windowHeight + scrollTop > nodeTop && scrollTop < nodeTop + nodeHeight) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function loaded($img) {
+            return $img.attr("src") === $img.attr("data-src");
+        }
+
+        function load($img) {
+            $img.attr("src", $img.attr("data-src"));
+        }
+    </script>
+
+</body>
+
+</html>
