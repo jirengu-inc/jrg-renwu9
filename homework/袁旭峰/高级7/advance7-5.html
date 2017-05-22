@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        .background {
+            height: 100vh;
+            background: url(./header.jpg) 0 0 no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            z-index: -1;
+        }
+        
+        .background:before {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(to left, rgba(256, 0, 0, 0.8), rgba(256, 0, 0, 0.6), rgba(256, 0, 0, 0.4), rgba(256, 0, 0, 0))
+        }
+        
+        .background:after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: linear-gradient(to right, rgba(0, 256, 0, 0.8), rgba(0, 256, 0, 0.6), rgba(0, 256, 0, 0.4), rgba(0, 256, 0, 0.0))
+        }
+    </style>
+    <div class="background"></div>
+</body>
+
+</html>

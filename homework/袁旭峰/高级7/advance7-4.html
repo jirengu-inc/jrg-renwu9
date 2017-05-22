@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        body {
+            margin-left: 80px;
+        }
+        
+        div {
+            margin-bottom: 80px;
+        }
+        
+        .round div {
+            width: 200px;
+            background-color: #f00;
+        }
+        
+        .wane {
+            height: 200px;
+            border-radius: 5px;
+        }
+        
+        .round .circle {
+            height: 200px;
+            border-radius: 50%;
+        }
+        
+        .box-shadow {
+            height: 200px;
+            width: 200px;
+            box-shadow: 20px 20px 50px 20px #0f0;
+        }
+        
+        .flat div,
+        .threeDimensional div {
+            height: 200px;
+            width: 200px;
+            background-color: #777;
+        }
+        
+        .enlarge {
+            margin-top: 80px;
+            transform: scale(1.5, 1.5);
+        }
+        
+        .lessen {
+            transform: scale(0.5, 0.5);
+        }
+        
+        .move {
+            transform: translate(50px, 100px);
+            margin-bottom: 150px;
+        }
+        
+        .rotate {
+            transform: rotate(45deg);
+        }
+        
+        .threMovement {
+            transform: translateY(60px);
+            perspective: 600px;
+            margin-bottom: 120px;
+        }
+        
+        .circle {
+            transform: rotateY(65deg) rotateZ(-60deg);
+            perspective: 1000px;
+        }
+        
+        .gradient {
+            height: 200px;
+            width: 200px;
+            background: linear-gradient(to right, #0f0, #f00, #00f)
+        }
+        
+        .transition {
+            height: 100px;
+            width: 80px;
+            background-color: #ff0;
+            transition: 1s ease;
+        }
+        
+        .transition:hover {
+            height: 200px;
+            width: 200px;
+            background-color: #0ff;
+        }
+        
+        @keyframes change {
+            0% {
+                border: #f00 solid 1px;
+                background-color: transparent;
+            }
+            50% {
+                margin-left: 600px;
+                background-color: #f00;
+                width: 250px;
+            }
+            100% {
+                margin-left: 200px;
+                height: 250px;
+            }
+        }
+        
+        .animate {
+            width: 150px;
+            height: 150px;
+            background-color: #ccc;
+            animation: change 5s infinite;
+        }
+    </style>
+    <div class="round">
+        <p>1. 圆角</p>
+        <div class="wane"></div>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;圆形</p>
+        <div class="circle"></div>
+    </div>
+    <p>2. div 阴影</p>
+    <div class="box-shadow"></div>
+    <div class="flat">
+        <p>3.2D转换</p>
+        <p>标准图</p>
+        <div class="standrad">123456</div>
+        <p>放大</p>
+        <div class="enlarge">456789</div>
+        <p>缩小</p>
+        <div class="lessen"></div>
+        <p>偏移</p>
+        <div class="move">123</div>
+        <p>旋转</p>
+        <div class="rotate">987</div>
+    </div>
+    <div class="threeDimensional">
+        <p>4. 3D</p>
+        <p>标准图</p>
+        <div class="standrad">225</div>
+        <p>移动</p>
+        <div class="threMovement">4854546</div>
+        <p>旋转</p>
+        <div class="circle">5464</div>
+    </div>
+    <p>5.渐变图</p>
+    <div class="gradient"></div>
+    <p>6.过渡效果</p>
+    <div class="transition"></div>
+    <p>7.动画</p>
+    <div class="animate"></div>
+</body>
+
+</html>

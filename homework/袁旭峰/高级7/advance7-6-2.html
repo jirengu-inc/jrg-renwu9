@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        body {
+            height: 100vh;
+            background-color: #0aa;
+            position: relative;
+        }
+        
+        .loading {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #0aa;
+            border: 20px solid rgba(0, 255, 255, 0.3);
+            border-top-color: #fff;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            margin-left: -80px;
+        }
+        
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+        
+        .loading {
+            animation: 1.5s rotate linear infinite;
+        }
+    </style>
+    <div class="loading"></div>
+</body>
+
+</html>

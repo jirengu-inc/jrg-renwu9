@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        body {
+            height: 100vh;
+            background-color: #0aa;
+            position: relative;
+        }
+        
+        .loading,
+        .loading:after,
+        .loading:before {
+            width: 14px;
+            height: 50px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+        }
+        
+        .loading {
+            top: 50px;
+            margin-left: -14px;
+        }
+        
+        .loading:before,
+        .loading:after {
+            display: block;
+            content: '';
+            position: absolute;
+        }
+        
+        .loading:before {
+            margin-left: -27px;
+        }
+        
+        .loading:after {
+            margin-left: 13px;
+        }
+        
+        @keyframes load {
+            0%,
+            90% {
+                box-shadow: 0 0 #fff;
+            }
+            10% {
+                box-shadow: 0 -25px #fff;
+                height: 75px;
+            }
+        }
+        
+        .loading,
+        .loading:after,
+        .loading:before {
+            animation: load 1s ease-in-out infinite;
+        }
+        
+        .loading {
+            animation-delay: 0.15s;
+        }
+        
+        .loading:after {
+            animation-delay: 0.30s;
+        }
+    </style>
+    <div class="loading"></div>
+
+</body>
+
+</html>
