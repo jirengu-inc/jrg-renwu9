@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            margin: 0 auto;
+        }
+        
+        .container div {
+            width: 16.66%;
+            height: 30px;
+            border: 1px solid #000;
+            float: left;
+            box-sizing: border-box;
+        }
+        
+        @media (min-width:1201px) {
+            .container .col-large-8 {
+                width: 20%;
+            }
+            .container .col-large-7 {
+                width: 25%;
+            }
+            .container .col-large-6 {
+                width: 30%;
+            }
+            .container .col-large-5 {
+                width: 40%;
+            }
+            .container .col-large-4 {
+                width: 55%;
+            }
+            .container .col-large-3 {
+                width: 70%;
+            }
+            .container .col-large-2 {
+                width: 90%;
+            }
+            .container .col-large-1 {
+                width: 100%
+            }
+        }
+        
+        @media(max-width:1200px) {
+            .container .col-middle-8 {
+                width: 12.5%;
+            }
+            .container .col-middle-7 {
+                width: 14.28%;
+            }
+            .container .col-middle-6 {
+                width: 16.66%
+            }
+            .container .col-middle-5 {
+                width: 20%;
+            }
+            .container .col-middle-4 {
+                width: 25%;
+            }
+            .container .col-middle-3 {
+                width: 33.33%;
+            }
+            .container .col-middle-2 {
+                width: 50%;
+            }
+            .container .col-middle-1 {
+                width: 100%;
+            }
+        }
+        
+        @media(max-width:800px) {
+            .container .col-small-8 {
+                width: 8%;
+            }
+            .container .col-small-7 {
+                width: 11%;
+            }
+            .container .col-small-6 {
+                width: 13%;
+            }
+            .container .col-small-5 {
+                width: 16%;
+            }
+            .container .col-small-4 {
+                width: 20%;
+            }
+            .container .col-small-3 {
+                width: 25%;
+            }
+            .container .col-small-2 {
+                width: 40%;
+            }
+            .container .col-small-1 {
+                width: 70%
+            }
+        }
+    </style>
+    <div class="container">
+        <div class="col-small-1 col-middle-1">1</div>
+        <div class="col-small-2 col-middle-2">2</div>
+        <div class="col-small-4 col-middle-4">3</div>
+        <div class="col-small-6 col-middle-6">4</div>
+        <div class="col-middle-8">5</div>
+        <div class="col-middle-6">6</div>
+        <div class="col-middle-5">7</div>
+        <div class="col-middle-1">8</div>
+        <div class="col-middle-3 col-large-1">9</div>
+        <div class="col-middle-6 col-large-8">10</div>
+        <div class="col-middle-8 col-large-5">11</div>
+    </div>
+</body>
+
+</html>
