@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>layload image</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        li {
+            float: left;
+            margin: 5px;
+        }
+        .img-list:after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+        .img-list .img-item img {
+            width: 400px;
+            height: 301px;
+            /*height: auto;*/
+        }
+    </style>
+</head>
+
+<body>
+    <h1>懒加载-不夜港人</h1>
+    <ul class="img-list">
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792692_815132.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792691_150037.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792696_630285.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792699_558870.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792697_768175.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792690_523024.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792689_260943.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792698_452338.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792700_104735.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792701_654318.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792695_740158.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792694_471705.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792693_277537.jpg">
+            </a>
+        </li>
+        <li class="img-item">
+            <a href="javascript:void(0)">
+                <img src="" data-src="http://storage.slide.news.sina.com.cn/slidenews/1_t5000/2017_11/64237_792702_145298.jpg">
+            </a>
+        </li>
+    </ul>
+    <h1>一周精选</h1>
+    <ul class="img-list">
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GAEE719BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GCS7R19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img2.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GDEBG19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G8TF819BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img5.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GDU5319BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img5.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GDL6K19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img6.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GB2I619BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img6.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GAO7N19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img2.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G79MT19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img6.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G865719BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img5.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G8Q2819BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img2.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GARC319BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GCJFR19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img5.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GC78219BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img6.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G942219BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img6.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G942219BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img6.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G89MM19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img5.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G8HKL19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G7V7C19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G7OVE19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G8BG919BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G7F3719BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img4.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G8K2C19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img2.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G8NOP19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img3.cache.netease.com/photo/0001/2017-05-12/900x600_CK8G92K319BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img2.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GB7LA19BR0001.jpg"></a></li>
+        <li class="img-item"><a href="javascript:void(0)"><img src="" alt="" data-src="https://img2.cache.netease.com/photo/0001/2017-05-12/900x600_CK8GBUKJ19BR0001.jpg"></a></li>
+    </ul>
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        // var lock = false;
+        // render();
+        // $(window).on("scroll", function () {
+        //     if (lock) {
+        //         return;
+        //     }
+        //     render();
+        // });
+
+        // function render() {
+        //     $(".img-item img").each(function () {
+        //         //是否检测加载 是否在里面
+        //         var $this = $(this);
+        //         if (check($this) && !loaded($this)) {
+        //             load($this);
+        //             console.log("test");
+        //         }
+        //     })
+        // }
+
+        // function check($img) {
+        //     var windowHeight = $(window).height(),
+        //         scrollTop = $(window).scrollTop(),
+        //         nodeTop = $img.offset().top,
+        //         nodeHeight = $img.outerHeight(true);
+        //     if (windowHeight + scrollTop > nodeTop && scrollTop < nodeTop + nodeHeight) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
+
+        // function loaded($img) {
+        //     return $img.attr("src") === $img.attr("data-src");
+        // }
+
+        // function load($img) {
+        //     $img.attr("src", $img.attr("data-src"));
+        // }
+
+        function Layload(ct) {
+            var that = this;
+            this.ct = ct;
+            this.init();
+            this.render();
+            $(window).on("scroll", function () {
+                if (that.lock) {
+                    return;
+                }
+                that.render();
+            });
+        }
+
+        Layload.prototype.init = function () {
+            this.imgItems = this.ct.find(".img-item");
+            this.img = this.ct.find(".img-item a > img");
+            this.lock = false;
+        }
+
+        Layload.prototype.check = function (e) {
+            var windowHeight = $(window).height(),
+                scrollTop = $(window).scrollTop(),
+                nodeTop = $(e).offset().top,
+                nodeHeight = $(e).outerHeight(true);
+            if (windowHeight + scrollTop > nodeTop && scrollTop < nodeTop + nodeHeight) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        Layload.prototype.loaded = function (e) {
+
+            return $(e).attr("src") === $(e).attr("data-src");
+        }
+
+        Layload.prototype.load = function (e) {
+            $(e).attr("src", $(e).attr("data-src"));
+        }
+
+        Layload.prototype.render = function () {
+            var _this = this;
+            this.img.each(function () {
+                if (_this.check(this) && !_this.loaded(this)) {
+                    _this.load(this);
+                    console.log("test");
+                }
+            })
+        }
+
+
+        // var lay01 = new Layload($(".img-list").first());
+        // var lay02 = new Layload($(".img-list").last());
+        var lay01 = new Layload($(".img-list").eq(0));
+        var lay02 = new Layload($(".img-list").eq(1));
+    </script>
+
+</body>
+
+</html>

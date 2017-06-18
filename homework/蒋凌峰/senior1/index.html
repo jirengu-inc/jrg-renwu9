@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>木桶布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .img-preview {
+            width: 1000px;
+            margin: 0 auto;
+        }
+
+        .img-row {
+            margin-bottom: 10px;
+        }
+
+        .img-row:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .img-box {
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="img-preview">
+        <!--<div class="img-row">
+            <div class="img-box"><img src="" alt=""></div>
+        </div>-->
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js "></script>
+    <script>
+
+        function Barrel($ct) {
+            this.$ct = $ct;
+            this.baseHeigh =100;
+            this.imgNum = 50;
+            this.rowList = [];
+            this.loadImg();
+        }
+
+        Barrel.prototype = {
+            // 随机生成图片地址
+            getImgUrls: function (num) {
+                var width, height, color, urls = [];
+
+                for (var i = 0; i < num; i++) {
+                    width = Math.floor(Math.random() * 100 + 50);
+                    height = Math.floor(Math.random() * 30 + 50);
+                    color = Math.random().toString(16).substring(2, 8);
+                    urls.push("http://via.placeholder.com/" + width + 'x' + height + '/' + color);
+                    // urls.push("https://unsplash.it/" + width +"/" + height)
+                }
+                return urls;
+            },
+            //加载图片
+
+            loadImg: function () {
+                var _this = this,
+                    imgs = this.getImgUrls(_this.imgNum);
+                console.log("这是", imgs);
+                // for (var i = 0; i < imgs.length; i++) {
+                //     var img = new Image();
+                //     img.src = imgs[i];
+                    
+                //     // console.log(img.width, img.height);
+                //     img.onload= function () {
+                //         console.log(img);
+                //         console.log(img.width, img.height);
+                //         // 定义每张图片的信息
+                //         var imgInfo = {
+                //             target: $(img),
+                //             height: 200,
+                //             width: 200 * this.width / this.height
+                //         };
+                        
+                //         console.log("render", imgInfo);
+                //         _this.render(imgInfo);
+                        
+                //     }
+                // }
+                $.each(imgs, function(idx, url) {
+                    
+                    console.log(url);
+                    var img = new Image();
+                    img.src = url;
+                    img.onload = function() {
+                        var imgInfo = {
+                            target: $(img),
+                            height: _this.baseHeigh,
+                            width: _this.baseHeigh * img.width / img.height 
+                        }
+                        _this.render(imgInfo);
+                    }
+                });
+            },
+            
+            render: function (imgInfo) {
+                var _this = this;
+                var clientWidth = this.$ct.width(),
+                    rowWidth = 0,
+                    rowHeight = 0;
+                this.rowList.push(imgInfo);
+                for (var i = 0; i < this.rowList.length; i++) {
+                    rowWidth += this.rowList[i].width;
+                }
+                if (rowWidth > clientWidth) {
+                    this.rowList.pop();
+                    rowWidth = rowWidth - imgInfo.width;
+                    rowHeight = _this.baseHeigh * clientWidth / rowWidth;
+                    this.createRow(rowHeight);
+                    this.rowList = [];
+                    this.rowList.push(imgInfo);
+                }
+            },
+
+            createRow: function (rowHeight) {
+                console.log('createRow');
+                var $rowCt = $('<div class="img-row"></div>')
+                $.each(this.rowList, function (idx, imgInfo) {
+                    var $imgCt = $('<div class="img-box"></div>'),
+                        $img = imgInfo.target;
+                    $img.height(rowHeight);
+                    $imgCt.append($img);
+                    $rowCt.append($imgCt);
+                })
+                console.log('这是', $rowCt);
+                this.$ct.append($rowCt);
+            }
+        }
+        new Barrel($('.img-preview'));
+    </script>
+</body>
+
+</html>

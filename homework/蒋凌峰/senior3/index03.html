@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <title>轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .carousel {
+            width: 250px;
+            height: 176px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel .img-ct {
+            position: relative;
+        }
+
+        .carousel .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .carousel .img-ct li {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel .img-ct li img {
+            width: 250px;
+            height: 176px;
+        }
+
+        .carousel .btn {
+            display: block;
+            text-align: center;
+            color: #fff;
+            width: 20px;
+            height: 20px;
+            font-size: 16px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .carousel .btn:hover {
+            cursor: pointer;
+        }
+
+        .carousel .btn-pre {
+            left: 10px;
+        }
+
+        .carousel .btn-next {
+            right: 10px;
+        }
+        /* 条形 */
+
+        .carousel .icon {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel .icon:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .carousel .icon li {
+            width: 20px;
+            height: 5px;
+            background-color: #fff;
+            border-radius: 5px;
+            float: left;
+            margin: 0 5px;
+        }
+
+        .carousel .icon li:hover {
+            cursor: pointer;
+        }
+
+        .carousel .icon li.active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <ul class="img-ct">
+            <li data-id="0">
+                <a href="javascript:void(0)"><img src="http://img6.cache.netease.com/photo/0009/2017-05-17/900x600_CKKIETEM0AI20009.jpg" alt=""></a>
+            </li>
+            <li data-id="1">
+                <a href="javascript:void(0)"><img src="http://img6.cache.netease.com/photo/0009/2017-05-17/900x600_CKKIET8I0AI20009.jpg" alt=""></a>
+            </li>
+            <li data-id="2">
+                <a href="javascript:void(0)"><img src="http://img3.cache.netease.com/photo/0009/2017-05-17/900x600_CKKIETNU0AI20009.jpg" alt=""></a>
+            </li>
+            <li data-id="3">
+                <a href="javascript:void(0)"><img src="http://img5.cache.netease.com/photo/0009/2017-05-17/900x600_CKKIEU0R0AI20009.jpg" alt=""></a>
+            </li>
+        </ul>
+        <span class="btn btn-pre">&#60;</span>
+        <span class="btn btn-next">&#62;</span>
+        <ul class="icon">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://lib.baomitu.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        // var $imgct = $(".img-ct"),
+        //     $items = $imgct.children(),
+        //     $imgCount = $items.length,
+        //     curIndex = 0,
+        //     isloading = false;
+
+        // play(0);
+        // setInterval(function () {
+        //     playnext();
+        // }, 2000);
+
+        // function play(idx) {
+        //     if (isloading) return;
+        //     isloading = true;
+        //     //   console.log("这是play（idx）的curIndex:"+curIndex);
+        //     //   console.log($items.eq(curIndex)[0]);
+        //     $items.eq(curIndex).fadeOut(600);
+        //     $items.eq(idx).fadeIn(600, function () {
+        //         isloading = false;
+
+        //     });
+        //     //   console.log("这是play（idx）的idx:"+idx);
+        //     //   console.log($items.eq(idx)[0]);
+        //     curIndex = idx;
+        //     //   console.log("这是play（idx）的curIndex："+curIndex);
+        //     setIcon();
+        // }
+
+        // function playpre() {
+        //     play(($imgCount + curIndex - 1) % $imgCount);
+        // }
+
+        // function playnext() {
+        //     play((curIndex + 1) % $imgCount);
+        // }
+
+        // function setIcon() {
+        //     $(".icon").children()
+        //         .removeClass("active")
+        //         .eq(curIndex)
+        //         .addClass("active");
+        // }
+
+        // $(".btn-pre").on("click", function () {
+        //     // playpre();
+        //     play(($imgCount + curIndex - 1) % $imgCount);
+        // });
+
+        // $(".btn-next").on("click", function () {
+        //     // playnext();
+        //     play((curIndex + 1) % $imgCount);
+        // });
+
+        // $(".icon li").on("click", function (e) {
+        //     e.preventDefault();
+        //     var len = $(this).index();
+        //     play(len);
+        // });
+
+
+        function Carousel(ct) {
+            var _this = this;
+            this.ct = ct;
+            this.init();
+            this.bind();
+            this.play(0);
+            setInterval(function () {
+                // console.log(this);
+                _this.play((_this.curIndex + 1) % _this.$imgCount);
+            }, 2000);
+
+        }
+
+        Carousel.prototype.init = function () {
+            this.$imgct = this.ct.find(".img-ct");
+            this.$items = this.$imgct.children();
+            this.$imgCount = this.$items.length;
+            this.curIndex = 0;
+            this.isloading = false;
+            this.Icon = this.ct.find(".icon");
+            this.btnNext = this.ct.find(".btn-next");
+            this.btnPre = this.ct.find(".btn-pre");
+        }
+
+        Carousel.prototype.setIcon = function () {
+            this.Icon.children()
+                .removeClass("active")
+                .eq(this.curIndex)
+                .addClass("active");
+        }
+        Carousel.prototype.play = function (idx) {
+            var _this = this;
+            if (this.isloading) return;
+            this.isloading = true;
+            this.$items.eq(this.curIndex).fadeOut(600);
+            this.$items.eq(idx).fadeIn(600, function () {
+                _this.isloading = false;
+            });
+
+            this.curIndex = idx;
+
+            this.setIcon();
+        }
+        Carousel.prototype.bind = function () {
+            var _this = this;
+            _this.btnNext.on('click', function () {
+                console.log("前")
+                _this.play((_this.curIndex + 1) % _this.$imgCount);
+            })
+            _this.btnPre.on('click', function () {
+                console.log("后")
+                _this.play((_this.$imgCount + _this.curIndex - 1) % _this.$imgCount);
+            })
+
+
+            _this.Icon.find('li').on('click', function (e) {
+                e.preventDefault();
+                var len = $(this).index();
+                _this.play(len);
+            })
+        }
+        var tab1 = new Carousel($('.carousel').eq(0));
+    </script>
+</body>
+
+</html>
