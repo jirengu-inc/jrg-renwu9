@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .background {
+            border: 1px solid transparent;
+            height: 100vh;
+            background-color: #f00;
+        }
+        
+        @media (min-width:1201px) {
+            .background {
+                background-color: #f00;
+            }
+        }
+        
+        @media (max-width:1200px) {
+            .background {
+                background-color: #0f0;
+            }
+        }
+        
+        @media (max-width:900px) {
+            .background {
+                background-color: #ff0;
+            }
+        }
+        
+        @media(max-width:600px) {
+            .background {
+                background-color: #777;
+            }
+        }
+    </style>
+    <div class="background">
+        <ol>
+            <li>在页面宽度&gt; 1200px 时页面背景为红色 </li>
+            <li>在页面1200px&gt;=宽度&gt; 900px 时页面背景为绿色</li>
+            <li>在页面900px&gt;=宽度&gt; 600px 时页面背景为黄色</li>
+            <li>宽度 &lt;=600px 背景为灰色</li>
+        </ol>
+    </div>
+</body>
+
+</html>
