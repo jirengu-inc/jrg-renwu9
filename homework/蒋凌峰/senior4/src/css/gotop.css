@@ -1,0 +1,16 @@
+.gotop {
+    font-size: 18px;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 3px 5px;
+    background: #fff;
+    position: fixed;
+    right: 50px;
+    bottom: 100px;
+    padding: 10px;
+    font-weight: bold
+}
+
+.gotop:hover {
+    cursor: pointer;
+}

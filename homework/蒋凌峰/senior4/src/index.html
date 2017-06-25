@@ -6,6 +6,9 @@
     <title>企业官网</title>
     <link rel="stylesheet" href="https://lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./css/carousel.css">
+    <link rel="stylesheet" href="./css/newslist.css">
+    <link rel="stylesheet" href="./css/gotop.css">
 </head>
 
 <body>
@@ -15,21 +18,42 @@
                 <a href="#page-top">start bootstrap</a>
             </div>
             <ul class="nav fr">
-                <li><a href="#">services</a></li>
-                <li><a href="#">portfilio</a></li>
-                <li><a href="#">about</a></li>
-                <li><a href="#">team</a></li>
-                <li><a href="#">contact</a></li>
+                <li><a href="#services">services</a></li>
+                <li><a href="#portfolio">portfolio</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#team">team</a></li>
+                <li><a href="#newsList">news</a></li>
+                <li><a href="#contact">contact</a></li>
             </ul>
         </div>
     </header>
     <section id="intro">
-        <div class="layout">
-            <h2>Welcome To Our Studio!</h2>
-            <h3>IT'S NICE TO MEET YOU</h3>
-            <a href="">tell me more</a>
+        <div class="carousel ">
+            <ul class="img-ct layout">
+                <li data-id="0">
+                    <a href="javascript:void(0)"><img src="./image/header01.jpg" alt=""></a>
+                </li>
+                <li data-id="1">
+                    <a href="javascript:void(0)"><img src="./image/header02.jpg" alt=""></a>
+                </li>
+                <li data-id="2">
+                    <a href="javascript:void(0)"><img src="./image/header03.jpg" alt=""></a>
+                </li>
+                <li data-id="3">
+                    <a href="javascript:void(0)"><img src="./image/header04.jpg" alt=""></a>
+                </li>
+            </ul>
+            <span class="btn btn-pre">&#60;</span>
+            <span class="btn btn-next">&#62;</span>
+            <ul class="icon">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
         </div>
     </section>
+
     <section id="services">
         <div class="layout">
             <h2>services</h2>
@@ -298,21 +322,23 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
         </div>
     </section>
-    <section id="products">
-        <ul class="layout">
-            <li>
-                <a href="#"><img src="./image/logo/creative-market.jpg" alt=""></a>
-            </li>
-            <li>
-                <a href="#"><img src="./image/logo/designmodo.jpg" alt=""></a>
-            </li>
-            <li>
-                <a href="#"><img src="./image/logo/envato.jpg" alt=""></a>
-            </li>
-            <li>
-                <a href="#"><img src="./image/logo/themeforest.jpg" alt=""></a>
-            </li>
-        </ul>
+    <section id="newsList">
+        <div class="layout">
+            <h2>News List</h2>
+            <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+            <ul class="content">
+                <!--<li class="item">
+                <a href="">
+                    <img src="http://n.sinaimg.cn/tech/transform/20170524/nXxb-fyfkzht0340941.jpg" alt="">
+                    <h4>全球动物袭击人类惊魂瞬间</h4>
+                    <p>加拿大列治文市渔人码头发生一起海狮袭人事件。</p>
+                </a>
+            </li>-->
+                <li class="item hide"></li>
+            </ul>
+            <div class="load">加载更多</div>
+        </div>
+
     </section>
     <section id="contact">
         <div class="layout">
@@ -356,6 +382,10 @@
             <div class="tos"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
         </div>
     </footer>
+
+
+    <!--<script data-main="./js/common" src="./js/lib/require.js"></script>-->
+    <script data-main="./js/megre" src="./js/lib/require.js"></script>
 </body>
 
 </html>

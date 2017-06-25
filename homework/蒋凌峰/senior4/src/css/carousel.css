@@ -1,0 +1,89 @@
+        .carousel {
+            /*width: 250px;*/
+            width: 996px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel .img-ct {
+            position: relative;
+        }
+        
+        .carousel .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .img-ct li {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+        }
+        
+        .carousel .img-ct li img {
+            /*width: 250px;*/
+            width: 996px;
+            height: 500px;
+        }
+        
+        .carousel .btn {
+            display: block;
+            text-align: center;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            font-size: 40px;
+            line-height: 40px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .carousel .btn:hover {
+            cursor: pointer;
+        }
+        
+        .carousel .btn-pre {
+            left: 20px;
+        }
+        
+        .carousel .btn-next {
+            right: 20px;
+        }
+        /* 条形 */
+        
+        .carousel .icon {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .carousel .icon:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .icon li {
+            width: 20px;
+            height: 5px;
+            background-color: #fff;
+            border-radius: 5px;
+            float: left;
+            margin: 0 5px;
+        }
+        
+        .carousel .icon li:hover {
+            cursor: pointer;
+        }
+        
+        .carousel .icon li.active {
+            background-color: red;
+        }
