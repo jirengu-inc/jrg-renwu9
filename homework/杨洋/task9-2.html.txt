@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<div  class="work-box">
+    <div class="title">1.雪碧图</div>
+    <div class="box icon1">前进</div>
+    <div class="box icon2">开始</div>
+    <div class="box icon3">停止</div>
+</div>
+<div class="work-box">
+    <div class="title">2.字体图标</div>
+    <span class="aa">&#xe601; 前进</span>
+    <span class="aa">&#xe684; 开始</span>
+    <span class="aa">&#xe61b; 停止</span>
+</div>
+<div class="work-box">
+    <div class="title">3.三角形&对话框&太极</div>
+    <br>
+    <div class="caret"></div>
+    <div class="caret2"></div>
+    <div class="caret3"></div>
+    <div class="caret4"></div>
+    <div class="caret5"></div>
+    <div class="caret6"></div>
+    <div class="caret7"></div>
+    <div class="tooltip">
+        <div class="content">对话框</div>
+        <div class="tip"></div>
+    </div>
+</div>
+<div class="taiji">
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <div class="circle3"></div>
+    <div class="circle4"></div>
+    <div class="circle5"></div>
+    <div class="circle6"></div>
+</div>
+</body>
+</html>

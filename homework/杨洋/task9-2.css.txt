@@ -1,0 +1,189 @@
+.work-box{
+    border: 1px dotted red;
+    padding:20px 0px;
+    margin-bottom: 10px;
+}
+.box{
+    height: 30px;
+    width: 40px;
+    line-height: 30px;
+    display: inline-block;
+    padding-left: 45px;
+    background: url("http://csssprites.com/results/1d9b50626e87ccb8d3a3aadb57ab095a/result.png") no-repeat;
+    cursor: pointer;
+}
+.title{
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    font-size: 20px;
+    color: red;
+}
+.box:hover{color: #a663be;}
+.icon1{background-position: 0px -2px;  }
+.icon1:hover{ background-position: -1px -137px;  }
+.icon2{background-position: 0px -46px;}
+.icon2:hover{background-position: -5px -187px;}
+.icon3{background-position: 0px -93px;}
+.icon3:hover{background-position: 4px -231px;  }
+
+@font-face {
+    font-family: 'iconfont';  /* project id 204254 */
+    src: url('//at.alicdn.com/t/font_vdt1z5445iykfbt9.eot');
+    src: url('//at.alicdn.com/t/font_vdt1z5445iykfbt9.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_vdt1z5445iykfbt9.woff') format('woff'),
+    url('//at.alicdn.com/t/font_vdt1z5445iykfbt9.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_vdt1z5445iykfbt9.svg#iconfont') format('svg');
+}
+.aa{
+    font-family: iconfont;
+    font-size: 24px;
+    vertical-align: bottom;
+    margin-right: 5px;
+}
+.aa:hover{
+    color: #a663be;
+    cursor: pointer;
+}
+.caret{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-top:30px solid red;
+    border-bottom:30px solid black;
+    border-left:30px solid blue;
+    border-right:30px solid yellow;
+    float: left;
+}
+.caret2{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-top:30px solid red;
+    border-left:30px solid transparent;
+    border-right:30px solid  transparent;
+    float: left;
+}
+.caret3{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-top:30px solid transparent;
+    border-bottom:30px solid transparent;
+    border-left:30px solid blue;
+    float: left;
+}
+.caret4{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-bottom:30px solid black;
+    border-left:30px solid transparent;
+    border-right:30px solid transparent;
+    float: left;
+}
+.caret5{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-top:30px solid transparent;
+    border-bottom:30px solid transparent;
+    border-right:30px solid yellow;
+    float: left;
+}
+.caret6{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-top:50px solid transparent;
+    border-right:50px solid green;
+    float: left;
+}
+.caret7{
+    width:0px;
+    height:0px;
+    margin:20px;
+    border-top:50px solid transparent;
+    border-left:50px solid red;
+    float: left;
+}
+.content{
+    clear: both;
+    position:relative;
+    padding-left: 10px;
+    width: 70px;
+    height:40px;
+    line-height: 40px;
+    background-color:#5ec332;
+    border: 1px solid #666;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.tip{
+    width: 10px;
+    height: 10px;
+    background-color:#5ec332;
+    border-top: 1px solid #666;
+    border-right: 1px solid #666;
+    position:relative;
+    left: 96px;
+    top: -25px;
+    transform: rotate(41deg);
+}
+.taiji{
+    position: relative;
+}
+.circle1{
+    width: 50px;
+    height: 100px;
+    border-radius: 50px 0 0 50px;
+    background-color: red;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.circle2{
+    width: 50px;
+    height: 100px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: black;
+    position: absolute;
+    top:0;
+    left: 50px;
+}
+.circle3{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: red;
+    position: absolute;
+    top:0;
+    left: 25px;
+}
+.circle4{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+    position: absolute;
+    top:50px;
+    left: 25px;
+}
+.circle5{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: black;
+    position: absolute;
+    top:15px;
+    left: 40px;
+}
+.circle6{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background-color: red;
+    position: absolute;
+    top:65px;
+    left: 40px;
+}
