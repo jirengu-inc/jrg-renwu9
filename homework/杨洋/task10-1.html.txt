@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style>
+     *{
+     	margin:0;
+     	padding:0;
+     }
+     .header{
+     	height:60px;
+     	width:100%;
+     	background:#333 url(http://cdn.jirengu.com/public/logo-tiny.png) no-repeat 200px 0 ;
+     	clear:both;
+     }
+     /*.header img{
+     	float:left;
+     }*/
+     .header .nav{
+     	float:right;
+     	color: #fefefe;
+     	font-size:18px;
+     	padding-right:210px;
+     }
+     .header li{
+     	float:left;
+     	list-style:none;
+        height: 60px;
+     	line-height: 60px;
+     	padding:0 10px;
+     }
+     .content{
+     	width:910px;
+     	height:500px;
+     	margin:10px auto 1px ;
+     	/*border:1px solid black;*/
+     	clear:both;
+     }
+     .aside{
+     	width: 200px;
+     	height:500px;
+     	background:#eee;
+     	float:left;
+     }
+     .main{
+     	width:700px;
+     	height:200px;
+     	background:#eee;
+     	float:left;
+     	margin-left: 10px;
+     	
+      
+     }
+     .main h1,p{  
+     	   padding-left:10px;
+     	   color: #a7a7a7;
+     }
+     .main h1{
+     	      padding-top:50px;
+     	      padding-bottom:20px;
+     	     color:#656565;
+     	    }
+    .footer{
+    	height:30px;
+     	width:100%;
+     	background:#333;
+     	/*text-align:center;*/
+     	font-size: 18px;
+     	line-height: 30px;
+     	color: #fefefe;
+     	padding-left:230px;
+    }
+    </style>
+</head>
+<body>
+	<div class="header">
+		<!-- <img src="http://cdn.jirengu.com/public/logo-tiny.png"/> -->
+		<ul class="nav">
+			<li>技能</li>
+			<li>经历</li>
+			<li>作品</li>
+			<li>关于</li>
+		</ul>
+	</div>
+	<div class="content">
+		<div class="aside"></div>
+		<div class="main">
+			<h1>我的作品</h1>
+			<p>
+				心情很美好<br>
+				心情不错<br>
+				代码写得很漂亮<br>
+			</p>
+		</div>
+	</div>
+	<div class="footer">
+	饥人谷 JSCODE JSBIN
+	</div>
+</body>
+</html>
